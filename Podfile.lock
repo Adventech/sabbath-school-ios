@@ -1,0 +1,16 @@
+PODS:
+  - Alamofire (3.2.0)
+  - HanekeSwift (0.10.1)
+  - Hue (1.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.2)
+  - HanekeSwift (~> 0.10)
+  - Hue (~> 1.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  Hue: 0a53589bb58317e74068863b701ef1e5eee89ac1
+
+COCOAPODS: 0.39.0
