@@ -8,26 +8,27 @@
 
 import UIKit
 
-private let kTableHeaderHeight: CGFloat = 300.0
+private let kTableHeaderHeight: CGFloat = 350.0
 private let kTableHeaderCutAway: CGFloat = 50.0
 
 class QuarterTableViewController: UITableViewController {
+
+    private var isAnimating = false
     var headerMaskLayer: CAShapeLayer!
     var headerView: UIView!
+    lazy var navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height+20
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Sabbath School".uppercaseString
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
+        // Configure bounce header
         headerView = tableView.tableHeaderView
         tableView.tableHeaderView = nil
         tableView.addSubview(headerView)
         
-        tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight-navigationBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
         
         headerMaskLayer = CAShapeLayer()
@@ -66,8 +67,6 @@ class QuarterTableViewController: UITableViewController {
         cell.subtitleLabel.text = "by Allen Meyer"
         cell.detailLabel.text = "First quarter 2016"
 
-        // Configure the cell...
-
         return cell
     }
     
@@ -80,9 +79,45 @@ class QuarterTableViewController: UITableViewController {
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
+        
+        if (scrollView.contentOffset.y >= -(kTableHeaderCutAway+navigationBarHeight)) {
+            if (!isAnimating) {
+                let navBar = self.navigationController?.navigationBar
+                if (navBar?.layer.animationForKey(kCATransition) == nil) {
+                    let animation = CATransition()
+                    animation.duration = 0.3
+                    animation.delegate = self
+                    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                    animation.type = kCATransitionFade
+                    navBar?.layer.addAnimation(animation, forKey: kCATransition)
+                }
+                self.setTranslucentNavigation(true, color: UIColor.hex("#088667"), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), andFont: UIFont.latoMediumOfSize(15))
+            }
+        } else {
+            let navBar = self.navigationController?.navigationBar
+            if (navBar?.layer.animationForKey(kCATransition) == nil) {
+                let animation = CATransition()
+                animation.duration = 0.3
+                animation.delegate = self
+                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                animation.type = kCATransitionFade
+                navBar?.layer.addAnimation(animation, forKey: kCATransition)
+            }
+            self.setTransparentNavigation()
+        }
     }
     
-    //
+    // MARK: - Animation delegate
+    
+    override func animationDidStart(anim: CAAnimation) {
+        isAnimating = true
+    }
+    
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+        isAnimating = false
+    }
+    
+    // MARK: - Update Bounce Header
     
     func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: tableView.bounds.width, height: kTableHeaderHeight)
