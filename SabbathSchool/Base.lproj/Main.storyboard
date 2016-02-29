@@ -11,7 +11,9 @@
         </mutableArray>
         <mutableArray key="Lato-Medium.ttf">
             <string>Lato-Medium</string>
-            <string>Lato-Medium</string>
+        </mutableArray>
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -27,7 +29,7 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="300"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-header" translatesAutoresizingMaskIntoConstraints="NO" id="IJx-st-ZXm">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Illustration" translatesAutoresizingMaskIntoConstraints="NO" id="IJx-st-ZXm">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                 </imageView>
                             </subviews>
@@ -49,7 +51,7 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIS-Kq-Dc5">
                                             <rect key="frame" x="15" y="15" width="90" height="120"/>
-                                            <color key="backgroundColor" red="0.88055044410000005" green="0.48067814110000001" blue="0.4510204196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.93653303384780884" green="0.93861126899719238" blue="0.95611840486526489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="3pm-O8-zDa"/>
                                                 <constraint firstAttribute="width" constant="90" id="azb-Kk-Edz"/>
@@ -62,13 +64,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYH-X2-UdA">
-                                            <rect key="frame" x="115" y="61" width="477" height="20"/>
-                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
+                                            <rect key="frame" x="115" y="61" width="477" height="18"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                             <color key="textColor" red="0.55925065279006958" green="0.55867296457290649" blue="0.57969838380813599" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vC-qm-VDG">
-                                            <rect key="frame" x="115" y="92" width="477" height="17"/>
+                                            <rect key="frame" x="115" y="90" width="477" height="17"/>
                                             <fontDescription key="fontDescription" name="Lato-Italic" family="Lato" pointSize="14"/>
                                             <color key="textColor" red="0.55925065279006958" green="0.55867296457290649" blue="0.57969838380813599" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -159,6 +161,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg-header" width="1242" height="825"/>
+        <image name="Illustration" width="750" height="700"/>
     </resources>
 </document>

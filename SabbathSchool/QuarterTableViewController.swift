@@ -16,6 +16,9 @@ class QuarterTableViewController: UITableViewController {
     private var isAnimating = false
     var headerMaskLayer: CAShapeLayer!
     var headerView: UIView!
+    var primaryColor: UIColor!
+    var secondaryColor: UIColor!
+    var backgroundColor: UIColor!
     lazy var navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height+20
     
     override func viewDidLoad() {
@@ -36,6 +39,13 @@ class QuarterTableViewController: UITableViewController {
         
         headerView.layer.mask = headerMaskLayer
         updateHeaderView()
+        
+        //
+        let image = UIImage(named: "Illustration")
+        let (background, primary, secondary, detail) = image!.colors()
+        backgroundColor = background
+        primaryColor = primary
+        secondaryColor = secondary
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +74,7 @@ class QuarterTableViewController: UITableViewController {
         
 //        cell.coverImageView.backgroundColor = UIColor.lightGrayColor()
         cell.titleLabel.text = "Rebelion and Redemption"
+        cell.titleLabel.textColor = backgroundColor
         cell.subtitleLabel.text = "by Allen Meyer"
         cell.detailLabel.text = "First quarter 2016"
 
@@ -91,7 +102,7 @@ class QuarterTableViewController: UITableViewController {
                     animation.type = kCATransitionFade
                     navBar?.layer.addAnimation(animation, forKey: kCATransition)
                 }
-                self.setTranslucentNavigation(true, color: UIColor.hex("#088667"), tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), andFont: UIFont.latoMediumOfSize(15))
+                self.setTranslucentNavigation(true, color: backgroundColor, tintColor: primaryColor, titleColor: primaryColor, andFont: UIFont.latoMediumOfSize(15))
             }
         } else {
             let navBar = self.navigationController?.navigationBar
