@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        applyCustomAppearance()
+        
         return true
     }
 
@@ -41,6 +44,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    // MARK: - App Custom Appearance
+    
+    func applyCustomAppearance() {
+        window?.tintColor = UIColor.baseBlue()
+        
+        UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithColor(UIColor.baseBlue()), forBarMetrics: UIBarMetrics.Default)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.latoMediumOfSize(15)]
+        
+        UITabBar.appearance().barTintColor = UIColor.baseGrayToolbar()
+        UIBarButtonItem.appearance().tintColor = UIColor.whiteColor()
+    }
 
 }
 
