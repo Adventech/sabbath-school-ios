@@ -8,20 +8,19 @@
 
 import UIKit
 
-class LessonsTableViewController: UITableViewController {
-
+class LessonsTableViewController: StretchyTableViewController {
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        let image = UIImage(named: "Illustration")
+        let (background, primary, secondary, _) = image!.colors()
+        backgroundColor = background
+        primaryColor = primary
+        secondaryColor = secondary
         
+        super.viewDidLoad()
         self.title = "Jeremiah".uppercaseString
         
         setBackButtom()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,17 +31,18 @@ class LessonsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 13
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
+        cell.textLabel?.text = "Rebelion and Redemption"
 
         return cell
     }
