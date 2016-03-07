@@ -30,7 +30,6 @@ class StretchyHeader: NSObject {
         
         headerMaskLayer = CAShapeLayer()
         headerMaskLayer.fillColor = UIColor.blackColor().CGColor
-        
         headerView.layer.mask = headerMaskLayer
     }
     

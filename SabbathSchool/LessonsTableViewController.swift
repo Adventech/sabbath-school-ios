@@ -8,7 +8,9 @@
 
 import UIKit
 
-class LessonsTableViewController: StretchyTableViewController {
+final class LessonsTableViewController: StretchyTableViewController {
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         let image = UIImage(named: "Illustration")
@@ -21,6 +23,11 @@ class LessonsTableViewController: StretchyTableViewController {
         self.title = "Jeremiah".uppercaseString
         
         setBackButtom()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        hideNavigationBar()
     }
 
     override func didReceiveMemoryWarning() {

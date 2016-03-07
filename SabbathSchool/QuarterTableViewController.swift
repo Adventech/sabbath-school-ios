@@ -8,7 +8,9 @@
 
 import UIKit
 
-class QuarterTableViewController: StretchyTableViewController {
+final class QuarterTableViewController: StretchyTableViewController {
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         let image = UIImage(named: "Illustration2")
@@ -33,7 +35,7 @@ class QuarterTableViewController: StretchyTableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 6
     }
     
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

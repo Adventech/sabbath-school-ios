@@ -34,34 +34,45 @@ class StretchyTableViewController: UITableViewController {
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         stretchyHeader.updateHeaderView()
         
-//        let navigationBarHeight = navigationController!.navigationBar.frame.height+20
-        let navigationBarHeight: CGFloat = 64.0
-        
-        if (scrollView.contentOffset.y >= -(stretchyHeader.kTableHeaderCutAway+navigationBarHeight)) {
-            if (!isAnimating) {
-                let navBar = self.navigationController?.navigationBar
-                if (navBar?.layer.animationForKey(kCATransition) == nil) {
-                    let animation = CATransition()
-                    animation.duration = 0.3
-                    animation.delegate = self
-                    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                    animation.type = kCATransitionFade
-                    navBar?.layer.addAnimation(animation, forKey: kCATransition)
-                }
-                self.setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), andFont: UIFont.latoMediumOfSize(15))
+        if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
+            if (scrollView.contentOffset.y >= -(stretchyHeader.kTableHeaderCutAway+navigationBarHeight+20)) {
+                showNavigationBar()
+            } else {
+                hideNavigationBar()
             }
-        } else {
-            let navBar = self.navigationController?.navigationBar
-            if (navBar?.layer.animationForKey(kCATransition) == nil) {
-                let animation = CATransition()
-                animation.duration = 0.3
-                animation.delegate = self
-                animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                animation.type = kCATransitionFade
-                navBar?.layer.addAnimation(animation, forKey: kCATransition)
-            }
-            self.setTransparentNavigation()
         }
+    }
+    
+    // MARK: - Navigation Bar Animation
+    
+    func showNavigationBar() {
+        if (isAnimating) { return }
+        
+        let navBar = self.navigationController?.navigationBar
+        if (navBar?.layer.animationForKey(kCATransition) == nil) {
+            let animation = CATransition()
+            animation.duration = 0.3
+            animation.delegate = self
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.type = kCATransitionFade
+            navBar?.layer.addAnimation(animation, forKey: kCATransition)
+        }
+        self.setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), andFont: UIFont.latoMediumOfSize(15))
+    }
+    
+    func hideNavigationBar() {
+        if (isAnimating) { return }
+        
+        let navBar = self.navigationController?.navigationBar
+        if (navBar?.layer.animationForKey(kCATransition) == nil) {
+            let animation = CATransition()
+            animation.duration = 0.3
+            animation.delegate = self
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.type = kCATransitionFade
+            navBar?.layer.addAnimation(animation, forKey: kCATransition)
+        }
+        self.setTransparentNavigation()
     }
     
     // MARK: - Animation delegate
