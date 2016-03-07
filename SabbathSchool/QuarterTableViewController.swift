@@ -57,6 +57,17 @@ final class QuarterTableViewController: StretchyTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("segueToLesson", sender: indexPath)
     }
+    
+    // MARK: - NavBar Actions
+    
+    @IBAction func didTapOnSettings(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func didTapOnFilter(sender: AnyObject) {
+        
+    }
+    
 
     // MARK: - Status Bar Style
 

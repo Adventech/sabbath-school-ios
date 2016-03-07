@@ -104,7 +104,18 @@
                             <outlet property="delegate" destination="cdL-LM-88u" id="2GD-kI-DaA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="oCP-lB-JOc"/>
+                    <navigationItem key="navigationItem" id="oCP-lB-JOc">
+                        <barButtonItem key="leftBarButtonItem" image="icon-navbar-settings" id="aGD-Ka-YUz">
+                            <connections>
+                                <action selector="didTapOnSettings:" destination="cdL-LM-88u" id="sxY-BL-4Ab"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon-navbar-filter" id="u5N-5o-d92">
+                            <connections>
+                                <action selector="didTapOnFilter:" destination="cdL-LM-88u" id="awt-vL-XEW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="XEx-kR-AAg" kind="show" identifier="segueToLesson" id="ONb-Rs-wsf"/>
                     </connections>
@@ -179,5 +190,7 @@
     <resources>
         <image name="Illustration" width="750" height="700"/>
         <image name="Illustration2" width="375" height="350"/>
+        <image name="icon-navbar-filter" width="24" height="22"/>
+        <image name="icon-navbar-settings" width="22" height="22"/>
     </resources>
 </document>
