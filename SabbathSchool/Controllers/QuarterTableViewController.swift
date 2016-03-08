@@ -43,8 +43,7 @@ final class QuarterTableViewController: StretchyTableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as!
-        QuarterTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.quarterCell, forIndexPath: indexPath)!
         
 //        cell.coverImageView.backgroundColor = UIColor.lightGrayColor()
         cell.titleLabel.text = "Rebelion and Redemption"

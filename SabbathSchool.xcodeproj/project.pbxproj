@@ -163,8 +163,8 @@
 		1A96F4D41C8F3DC40034AF2C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */,
 				1A96F4D61C8F3DC40034AF2C /* QuarterTableViewController.swift */,
+				1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
