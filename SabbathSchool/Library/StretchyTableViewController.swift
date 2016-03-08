@@ -57,7 +57,7 @@ class StretchyTableViewController: UITableViewController {
             animation.type = kCATransitionFade
             navBar?.layer.addAnimation(animation, forKey: kCATransition)
         }
-        self.setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), andFont: UIFont.latoMediumOfSize(15))
+        self.setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.whiteColor(), titleColor: UIColor.whiteColor(), andFont: R.font.latoMedium(size: 15)!)
     }
     
     func hideNavigationBar() {

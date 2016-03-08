@@ -2,15 +2,21 @@ PODS:
   - Alamofire (3.2.0)
   - HanekeSwift (0.10.1)
   - Hue (1.0.1)
+  - R.swift (1.3.0):
+    - R.swift.Library (~> 1.1.0)
+  - R.swift.Library (1.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.2)
   - HanekeSwift (~> 0.10)
   - Hue (~> 1.0)
+  - R.swift (~> 1.3)
 
 SPEC CHECKSUMS:
   Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   Hue: 0a53589bb58317e74068863b701ef1e5eee89ac1
+  R.swift: 43f8a833dd8cbb4a19908cbfd37fb982e9147899
+  R.swift.Library: 775f3086e07313ed1a1dfddca8418317f5a87397
 
 COCOAPODS: 0.39.0

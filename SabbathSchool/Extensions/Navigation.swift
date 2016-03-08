@@ -28,18 +28,9 @@ extension UINavigationController {
 extension UIViewController: UIGestureRecognizerDelegate {
     
     func setBackButtom() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-navbar-back"), style: UIBarButtonItemStyle.Plain, target: self, action:"popBack")
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItemStyle.Plain, target: self, action:"popBack")
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
     }
-    
-//    func setCloseButton() {
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "btn-navbar-close"), style: UIBarButtonItemStyle.Plain, target: self, action:"dismiss")
-//    }
-//    
-//    func setShareButton() {
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "btn-navbar-share"), style: UIBarButtonItemStyle.Plain, target: self, action:"share:")
-//    }
     
     func popBack() {
         self.navigationController?.popViewControllerAnimated(true)
@@ -48,11 +39,6 @@ extension UIViewController: UIGestureRecognizerDelegate {
     func dismiss() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    func share(sender: UIBarButtonItem) {
-    }
-    
-    func languageRefresh() {}
     
     // MARK: - Bounce with color
     

@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */; };
-		1A407E951C80FB3E00BD2272 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A407E931C80FB3E00BD2272 /* Main.storyboard */; };
-		1A407E971C80FB3E00BD2272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A407E961C80FB3E00BD2272 /* Assets.xcassets */; };
-		1A407E9A1C80FB3E00BD2272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A407E981C80FB3E00BD2272 /* LaunchScreen.storyboard */; };
 		1A407EA51C80FB3F00BD2272 /* SabbathSchoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EA41C80FB3F00BD2272 /* SabbathSchoolTests.swift */; };
-		1A407EB01C8106FD00BD2272 /* QuarterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EAF1C8106FD00BD2272 /* QuarterTableViewController.swift */; };
-		1A407EB21C8108DF00BD2272 /* LessonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB11C8108DF00BD2272 /* LessonsTableViewController.swift */; };
 		1A407EB51C8277E100BD2272 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB41C8277E100BD2272 /* Color.swift */; };
 		1A407EB71C82780D00BD2272 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB61C82780D00BD2272 /* Image.swift */; };
-		1A407EB91C82788500BD2272 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB81C82788500BD2272 /* Font.swift */; };
-		1A407EC21C82790000BD2272 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A407EBC1C82790000BD2272 /* Lato-Bold.ttf */; };
-		1A407EC31C82790000BD2272 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A407EBD1C82790000BD2272 /* Lato-BoldItalic.ttf */; };
-		1A407EC41C82790000BD2272 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A407EBE1C82790000BD2272 /* Lato-Italic.ttf */; };
-		1A407EC51C82790000BD2272 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A407EBF1C82790000BD2272 /* Lato-Medium.ttf */; };
-		1A407EC61C82790000BD2272 /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A407EC01C82790000BD2272 /* Lato-MediumItalic.ttf */; };
-		1A407EC71C82790000BD2272 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A407EC11C82790000BD2272 /* Lato-Regular.ttf */; };
 		1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EC81C827C7500BD2272 /* Navigation.swift */; };
 		1A407ECC1C8281C600BD2272 /* QuarterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407ECB1C8281C600BD2272 /* QuarterTableViewCell.swift */; };
-		1A96F4CD1C88D5AC0034AF2C /* StretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4CC1C88D5AC0034AF2C /* StretchyHeader.swift */; };
-		1A96F4CF1C8A0CE30034AF2C /* StretchyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4CE1C8A0CE30034AF2C /* StretchyTableViewController.swift */; };
+		1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */; };
+		1A96F4D71C8F3DC40034AF2C /* LessonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */; };
+		1A96F4D81C8F3DC40034AF2C /* QuarterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D61C8F3DC40034AF2C /* QuarterTableViewController.swift */; };
+		1A96F4E71C8F3E3D0034AF2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */; };
+		1A96F4E81C8F3E3D0034AF2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DB1C8F3E3D0034AF2C /* LaunchScreen.storyboard */; };
+		1A96F4E91C8F3E3D0034AF2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DD1C8F3E3D0034AF2C /* Main.storyboard */; };
+		1A96F4EA1C8F3E3D0034AF2C /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E11C8F3E3D0034AF2C /* Lato-Bold.ttf */; };
+		1A96F4EB1C8F3E3D0034AF2C /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E21C8F3E3D0034AF2C /* Lato-BoldItalic.ttf */; };
+		1A96F4EC1C8F3E3D0034AF2C /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E31C8F3E3D0034AF2C /* Lato-Italic.ttf */; };
+		1A96F4ED1C8F3E3D0034AF2C /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E41C8F3E3D0034AF2C /* Lato-Medium.ttf */; };
+		1A96F4EE1C8F3E3D0034AF2C /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E51C8F3E3D0034AF2C /* Lato-MediumItalic.ttf */; };
+		1A96F4EF1C8F3E3D0034AF2C /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E61C8F3E3D0034AF2C /* Lato-Regular.ttf */; };
+		1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */; };
+		1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */; };
 		C51B5625532011155052E860 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7E275B2AE9EC9448CBF70E /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,28 +43,28 @@
 /* Begin PBXFileReference section */
 		1A407E8C1C80FB3E00BD2272 /* SabbathSchool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SabbathSchool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1A407E941C80FB3E00BD2272 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1A407E961C80FB3E00BD2272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1A407E991C80FB3E00BD2272 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A407E9B1C80FB3E00BD2272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A407EA01C80FB3E00BD2272 /* SabbathSchoolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SabbathSchoolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A407EA41C80FB3F00BD2272 /* SabbathSchoolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTests.swift; sourceTree = "<group>"; };
 		1A407EA61C80FB3F00BD2272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A407EAF1C8106FD00BD2272 /* QuarterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterTableViewController.swift; sourceTree = "<group>"; };
-		1A407EB11C8108DF00BD2272 /* LessonsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsTableViewController.swift; sourceTree = "<group>"; };
 		1A407EB41C8277E100BD2272 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1A407EB61C82780D00BD2272 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		1A407EB81C82788500BD2272 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		1A407EBC1C82790000BD2272 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
-		1A407EBD1C82790000BD2272 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
-		1A407EBE1C82790000BD2272 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
-		1A407EBF1C82790000BD2272 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
-		1A407EC01C82790000BD2272 /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
-		1A407EC11C82790000BD2272 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1A407EC81C827C7500BD2272 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		1A407ECB1C8281C600BD2272 /* QuarterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterTableViewCell.swift; sourceTree = "<group>"; };
-		1A96F4CC1C88D5AC0034AF2C /* StretchyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyHeader.swift; sourceTree = "<group>"; };
-		1A96F4CE1C8A0CE30034AF2C /* StretchyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyTableViewController.swift; sourceTree = "<group>"; };
+		1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsTableViewController.swift; sourceTree = "<group>"; };
+		1A96F4D61C8F3DC40034AF2C /* QuarterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterTableViewController.swift; sourceTree = "<group>"; };
+		1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A96F4DC1C8F3E3D0034AF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1A96F4DE1C8F3E3D0034AF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1A96F4E11C8F3E3D0034AF2C /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		1A96F4E21C8F3E3D0034AF2C /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1A96F4E31C8F3E3D0034AF2C /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		1A96F4E41C8F3E3D0034AF2C /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		1A96F4E51C8F3E3D0034AF2C /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
+		1A96F4E61C8F3E3D0034AF2C /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyHeader.swift; sourceTree = "<group>"; };
+		1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyTableViewController.swift; sourceTree = "<group>"; };
 		25ACC3C910812FB2116D4672 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AB7E275B2AE9EC9448CBF70E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8FE2C6FC27051FE975AC572 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,18 +112,13 @@
 		1A407E8E1C80FB3E00BD2272 /* SabbathSchool */ = {
 			isa = PBXGroup;
 			children = (
-				1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */,
-				1A407EAF1C8106FD00BD2272 /* QuarterTableViewController.swift */,
-				1A407EB11C8108DF00BD2272 /* LessonsTableViewController.swift */,
-				1A96F4CE1C8A0CE30034AF2C /* StretchyTableViewController.swift */,
-				1A96F4CC1C88D5AC0034AF2C /* StretchyHeader.swift */,
+				1A96F4D31C8F3D770034AF2C /* Application */,
+				1A96F4F51C8F3EF80034AF2C /* Models */,
 				1A407ECA1C8281A000BD2272 /* Views */,
+				1A96F4D41C8F3DC40034AF2C /* Controllers */,
 				1A407EB31C8277D200BD2272 /* Extensions */,
-				1A407E931C80FB3E00BD2272 /* Main.storyboard */,
-				1A407E981C80FB3E00BD2272 /* LaunchScreen.storyboard */,
-				1A407E961C80FB3E00BD2272 /* Assets.xcassets */,
-				1A407EBA1C82790000BD2272 /* Fonts */,
-				1A407E9B1C80FB3E00BD2272 /* Info.plist */,
+				1A96F4F01C8F3E9C0034AF2C /* Library */,
+				1A96F4D91C8F3E3D0034AF2C /* Resources */,
 			);
 			path = SabbathSchool;
 			sourceTree = "<group>";
@@ -142,31 +137,9 @@
 			children = (
 				1A407EB41C8277E100BD2272 /* Color.swift */,
 				1A407EB61C82780D00BD2272 /* Image.swift */,
-				1A407EB81C82788500BD2272 /* Font.swift */,
 				1A407EC81C827C7500BD2272 /* Navigation.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		1A407EBA1C82790000BD2272 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				1A407EBB1C82790000BD2272 /* Lato */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		1A407EBB1C82790000BD2272 /* Lato */ = {
-			isa = PBXGroup;
-			children = (
-				1A407EC11C82790000BD2272 /* Lato-Regular.ttf */,
-				1A407EBE1C82790000BD2272 /* Lato-Italic.ttf */,
-				1A407EBC1C82790000BD2272 /* Lato-Bold.ttf */,
-				1A407EBD1C82790000BD2272 /* Lato-BoldItalic.ttf */,
-				1A407EBF1C82790000BD2272 /* Lato-Medium.ttf */,
-				1A407EC01C82790000BD2272 /* Lato-MediumItalic.ttf */,
-			);
-			path = Lato;
 			sourceTree = "<group>";
 		};
 		1A407ECA1C8281A000BD2272 /* Views */ = {
@@ -175,6 +148,74 @@
 				1A407ECB1C8281C600BD2272 /* QuarterTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1A96F4D31C8F3D770034AF2C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */,
+				1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */,
+				1A407E9B1C80FB3E00BD2272 /* Info.plist */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		1A96F4D41C8F3DC40034AF2C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */,
+				1A96F4D61C8F3DC40034AF2C /* QuarterTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1A96F4D91C8F3E3D0034AF2C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A96F4DD1C8F3E3D0034AF2C /* Main.storyboard */,
+				1A96F4DB1C8F3E3D0034AF2C /* LaunchScreen.storyboard */,
+				1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */,
+				1A96F4DF1C8F3E3D0034AF2C /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1A96F4DF1C8F3E3D0034AF2C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1A96F4E01C8F3E3D0034AF2C /* Lato */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		1A96F4E01C8F3E3D0034AF2C /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				1A96F4E11C8F3E3D0034AF2C /* Lato-Bold.ttf */,
+				1A96F4E21C8F3E3D0034AF2C /* Lato-BoldItalic.ttf */,
+				1A96F4E31C8F3E3D0034AF2C /* Lato-Italic.ttf */,
+				1A96F4E41C8F3E3D0034AF2C /* Lato-Medium.ttf */,
+				1A96F4E51C8F3E3D0034AF2C /* Lato-MediumItalic.ttf */,
+				1A96F4E61C8F3E3D0034AF2C /* Lato-Regular.ttf */,
+			);
+			path = Lato;
+			sourceTree = "<group>";
+		};
+		1A96F4F01C8F3E9C0034AF2C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */,
+				1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */,
+			);
+			name = Library;
+			path = SabbathSchool/Library;
+			sourceTree = SOURCE_ROOT;
+		};
+		1A96F4F51C8F3EF80034AF2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		39B8FE0B90D685FB4D5F9E3C /* Frameworks */ = {
@@ -201,8 +242,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A407EA91C80FB3F00BD2272 /* Build configuration list for PBXNativeTarget "SabbathSchool" */;
 			buildPhases = (
-				0B113BD411989DA6E29D00D4 /* Check Pods Manifest.lock */,
+				1A96F4D01C8E2E400034AF2C /* ShellScript */,
 				1A407E881C80FB3E00BD2272 /* Sources */,
+				0B113BD411989DA6E29D00D4 /* Check Pods Manifest.lock */,
 				1A407E891C80FB3E00BD2272 /* Frameworks */,
 				1A407E8A1C80FB3E00BD2272 /* Resources */,
 				84A526AA837324B23667D93E /* Embed Pods Frameworks */,
@@ -279,15 +321,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A407E9A1C80FB3E00BD2272 /* LaunchScreen.storyboard in Resources */,
-				1A407E971C80FB3E00BD2272 /* Assets.xcassets in Resources */,
-				1A407E951C80FB3E00BD2272 /* Main.storyboard in Resources */,
-				1A407EC21C82790000BD2272 /* Lato-Bold.ttf in Resources */,
-				1A407EC71C82790000BD2272 /* Lato-Regular.ttf in Resources */,
-				1A407EC41C82790000BD2272 /* Lato-Italic.ttf in Resources */,
-				1A407EC61C82790000BD2272 /* Lato-MediumItalic.ttf in Resources */,
-				1A407EC51C82790000BD2272 /* Lato-Medium.ttf in Resources */,
-				1A407EC31C82790000BD2272 /* Lato-BoldItalic.ttf in Resources */,
+				1A96F4ED1C8F3E3D0034AF2C /* Lato-Medium.ttf in Resources */,
+				1A96F4EA1C8F3E3D0034AF2C /* Lato-Bold.ttf in Resources */,
+				1A96F4E81C8F3E3D0034AF2C /* LaunchScreen.storyboard in Resources */,
+				1A96F4EB1C8F3E3D0034AF2C /* Lato-BoldItalic.ttf in Resources */,
+				1A96F4EF1C8F3E3D0034AF2C /* Lato-Regular.ttf in Resources */,
+				1A96F4E71C8F3E3D0034AF2C /* Assets.xcassets in Resources */,
+				1A96F4E91C8F3E3D0034AF2C /* Main.storyboard in Resources */,
+				1A96F4EE1C8F3E3D0034AF2C /* Lato-MediumItalic.ttf in Resources */,
+				1A96F4EC1C8F3E3D0034AF2C /* Lato-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +357,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		1A96F4D01C8E2E400034AF2C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
 		};
 		21E994C714DF0D38E33CD821 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -353,16 +408,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A407EB21C8108DF00BD2272 /* LessonsTableViewController.swift in Sources */,
+				1A96F4D71C8F3DC40034AF2C /* LessonsTableViewController.swift in Sources */,
 				1A407EB51C8277E100BD2272 /* Color.swift in Sources */,
+				1A96F4D81C8F3DC40034AF2C /* QuarterTableViewController.swift in Sources */,
+				1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */,
 				1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */,
-				1A96F4CF1C8A0CE30034AF2C /* StretchyTableViewController.swift in Sources */,
-				1A407EB91C82788500BD2272 /* Font.swift in Sources */,
 				1A407ECC1C8281C600BD2272 /* QuarterTableViewCell.swift in Sources */,
-				1A407EB01C8106FD00BD2272 /* QuarterTableViewController.swift in Sources */,
 				1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */,
 				1A407EB71C82780D00BD2272 /* Image.swift in Sources */,
-				1A96F4CD1C88D5AC0034AF2C /* StretchyHeader.swift in Sources */,
+				1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */,
+				1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,20 +440,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1A407E931C80FB3E00BD2272 /* Main.storyboard */ = {
+		1A96F4DB1C8F3E3D0034AF2C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1A407E941C80FB3E00BD2272 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1A407E981C80FB3E00BD2272 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1A407E991C80FB3E00BD2272 /* Base */,
+				1A96F4DC1C8F3E3D0034AF2C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1A96F4DD1C8F3E3D0034AF2C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A96F4DE1C8F3E3D0034AF2C /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

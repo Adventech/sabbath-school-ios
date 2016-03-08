@@ -13,7 +13,7 @@ final class QuarterTableViewController: StretchyTableViewController {
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
-        let image = UIImage(named: "Illustration2")
+        let image = R.image.illustration2()
         let (background, primary, secondary, _) = image!.colors()
         backgroundColor = background
         primaryColor = primary
@@ -55,7 +55,7 @@ final class QuarterTableViewController: StretchyTableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("segueToLesson", sender: indexPath)
+        self.performSegueWithIdentifier(R.segue.quarterTableViewController.segueToLesson, sender: indexPath)
     }
     
     // MARK: - NavBar Actions

@@ -13,7 +13,7 @@ final class LessonsTableViewController: StretchyTableViewController {
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
-        let image = UIImage(named: "Illustration")
+        let image = R.image.illustration()
         let (background, primary, secondary, _) = image!.colors()
         backgroundColor = background
         primaryColor = primary
