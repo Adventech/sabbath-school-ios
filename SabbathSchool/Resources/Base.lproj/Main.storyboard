@@ -8,11 +8,14 @@
     <customFonts key="customFonts">
         <mutableArray key="Lato-Italic.ttf">
             <string>Lato-Italic</string>
+            <string>Lato-Italic</string>
         </mutableArray>
         <mutableArray key="Lato-Medium.ttf">
             <string>Lato-Medium</string>
+            <string>Lato-Medium</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
@@ -91,6 +94,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="SYH-X2-UdA" secondAttribute="trailing" id="xv8-XJ-Kwu"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="coverImageView" destination="zme-oD-buU" id="VYX-Ta-riu"/>
                                     <outlet property="detailLabel" destination="5vC-qm-VDG" id="TTI-Xi-GEi"/>
@@ -149,13 +153,54 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LessonCell" id="EVp-YF-rJU">
-                                <rect key="frame" x="0.0" y="442" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LessonCell" rowHeight="64" id="EVp-YF-rJU" customClass="LessonTableViewCell" customModule="SabbathSchool" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="442" width="600" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EVp-YF-rJU" id="Gof-26-h84">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YqU-uX-VZd">
+                                            <rect key="frame" x="12" y="21" width="23" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="23" id="I5k-OS-RBC"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
+                                            <color key="textColor" red="0.55925065279006958" green="0.55867296457290649" blue="0.57969838380813599" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Prophetic Calling of Jeremiah" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WL3-R2-jrk">
+                                            <rect key="frame" x="45" y="12" width="547" height="21"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                            <color key="textColor" red="0.21958515048027039" green="0.21962237358093262" blue="0.21957698464393616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Sep 26 - Oct 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zK-uD-iYR">
+                                            <rect key="frame" x="45" y="31" width="547" height="24"/>
+                                            <fontDescription key="fontDescription" name="Lato-Italic" family="Lato" pointSize="14"/>
+                                            <color key="textColor" red="0.55925065279006958" green="0.55867296457290649" blue="0.57969838380813599" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="YqU-uX-VZd" firstAttribute="top" secondItem="Gof-26-h84" secondAttribute="topMargin" constant="13" id="0w3-yV-4bu"/>
+                                        <constraint firstItem="WL3-R2-jrk" firstAttribute="top" secondItem="Gof-26-h84" secondAttribute="topMargin" constant="4" id="70D-u2-jvU"/>
+                                        <constraint firstItem="WL3-R2-jrk" firstAttribute="trailing" secondItem="Gof-26-h84" secondAttribute="trailingMargin" id="83Q-kb-DEF"/>
+                                        <constraint firstItem="YqU-uX-VZd" firstAttribute="leading" secondItem="Gof-26-h84" secondAttribute="leading" constant="12" id="C8M-pW-Wec"/>
+                                        <constraint firstItem="1zK-uD-iYR" firstAttribute="trailing" secondItem="Gof-26-h84" secondAttribute="trailingMargin" id="I3l-VC-SUU"/>
+                                        <constraint firstItem="WL3-R2-jrk" firstAttribute="leading" secondItem="YqU-uX-VZd" secondAttribute="trailing" constant="10" id="RwW-zW-VbK"/>
+                                        <constraint firstItem="1zK-uD-iYR" firstAttribute="leading" secondItem="YqU-uX-VZd" secondAttribute="trailing" constant="10" id="Vf1-Aj-CKQ"/>
+                                        <constraint firstItem="1zK-uD-iYR" firstAttribute="bottom" secondItem="Gof-26-h84" secondAttribute="bottomMargin" id="a5x-et-bFt"/>
+                                        <constraint firstItem="1zK-uD-iYR" firstAttribute="top" secondItem="WL3-R2-jrk" secondAttribute="bottom" constant="-2" id="i4N-iU-zFe"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="YqU-uX-VZd" secondAttribute="bottom" constant="13" id="ld4-rN-08r"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="numberLabel" destination="YqU-uX-VZd" id="Ra9-Uy-RXY"/>
+                                    <outlet property="subtitleLabel" destination="1zK-uD-iYR" id="KFY-Ak-2VN"/>
+                                    <outlet property="titleLabel" destination="WL3-R2-jrk" id="IHR-wY-vWv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

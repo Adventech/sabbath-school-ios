@@ -1,19 +1,18 @@
 //
-//  QuarterTableViewCell.swift
+//  LessonTableViewCell.swift
 //  SabbathSchool
 //
-//  Created by Heberti Almeida on 27/02/16.
+//  Created by Heberti Almeida on 15/03/16.
 //  Copyright © 2016 Adventech. All rights reserved.
 //
 
 import UIKit
 
-class QuarterTableViewCell: UITableViewCell {
+class LessonTableViewCell: UITableViewCell {
 
-    @IBOutlet var coverImageView: UIView!
+    @IBOutlet var numberLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
-    @IBOutlet var detailLabel: UILabel!
     
     override var layoutMargins: UIEdgeInsets {
         get { return UIEdgeInsetsZero }

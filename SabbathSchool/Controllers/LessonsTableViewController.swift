@@ -30,11 +30,6 @@ final class LessonsTableViewController: StretchyTableViewController {
         hideNavigationBar()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -44,12 +39,16 @@ final class LessonsTableViewController: StretchyTableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 13
     }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.lessonCell, forIndexPath: indexPath)!
-
-        // Configure the cell...
-        cell.textLabel?.text = "Rebelion and Redemption"
+        cell.numberLabel.text = String(indexPath.row+1)
+        cell.titleLabel.text = "The Prophetic Calling of Jeremiah"
+        cell.subtitleLabel.text = "Sep 26 - Oct 2"
 
         return cell
     }
