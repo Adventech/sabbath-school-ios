@@ -6,4 +6,6 @@ target 'SabbathSchool' do
     pod 'R.swift', '~> 3.1'
     # pod 'Alamofire', '~> 4.0'
     #pod 'HanekeSwift', '~> 0.10'
+    pod 'AsyncDisplayKit', '~> 1.9'
+    pod 'RocketData', '~> 3.0'
 end

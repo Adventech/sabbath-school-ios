@@ -1,12 +1,30 @@
 PODS:
+  - AsyncDisplayKit (1.9.90):
+    - AsyncDisplayKit/PINRemoteImage (= 1.9.90)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.90)
+  - AsyncDisplayKit/Core (1.9.90):
+    - AsyncDisplayKit/ASDealloc2MainObject
+  - AsyncDisplayKit/PINRemoteImage (1.9.90):
+    - AsyncDisplayKit/Core
+    - PINRemoteImage/iOS (>= 3.0.0-beta.3)
+  - ConsistencyManager (4.0.0)
   - Hue (2.0.0)
+  - PINCache (3.0.1-beta)
+  - PINRemoteImage/Core (3.0.0-beta.3):
+    - PINCache (>= 3.0.0-beta)
+  - PINRemoteImage/iOS (3.0.0-beta.3):
+    - PINRemoteImage/Core
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - RocketData (3.0.0):
+    - ConsistencyManager (~> 4.0.0)
 
 DEPENDENCIES:
+  - AsyncDisplayKit (~> 1.9)
   - Hue (from `https://github.com/hyperoslo/Hue.git`, branch `swift-3`)
   - R.swift (~> 3.1)
+  - RocketData (~> 3.0)
 
 EXTERNAL SOURCES:
   Hue:
@@ -19,10 +37,15 @@ CHECKOUT OPTIONS:
     :git: https://github.com/hyperoslo/Hue.git
 
 SPEC CHECKSUMS:
+  AsyncDisplayKit: 926ded3ca3fb7026565e0e81f0e132fea4d3a6eb
+  ConsistencyManager: 323ee466a5c933973529dfa5baa5cbc238633a67
   Hue: 2b317616a04cc5d7cccdb024c88e6d143e2b9cf1
+  PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
+  PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  RocketData: dbf7e18b3493b3300d581ca424023f0a6524fdd1
 
-PODFILE CHECKSUM: 14b5f6a3d6ada359e6904e7b81072be5911a57df
+PODFILE CHECKSUM: 5d6a91bb09e0eeb2836abb77965d964cbed1a100
 
 COCOAPODS: 1.1.0.rc.2
