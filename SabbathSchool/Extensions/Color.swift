@@ -11,22 +11,22 @@ import Hue
 
 extension UIColor {
     class func baseBlue() -> UIColor {
-        return UIColor.hex("#006F6B")
+        return UIColor.init(hex: "#006F6B")
     }
     
     class func baseAqua() -> UIColor {
-        return UIColor.hex("#25BBAD")
+        return UIColor.init(hex: "#25BBAD")
     }
     
     class func baseGray() -> UIColor {
-        return UIColor.hex("#45555F")
+        return UIColor.init(hex: "#45555F")
     }
     
     class func baseGrayToolbar()  -> UIColor {
-        return UIColor.hex("F6F8F8")
+        return UIColor.init(hex: "F6F8F8")
     }
     
     class func baseSuperLightBlue()  -> UIColor {
-        return UIColor.hex("#F3FAF9")
+        return UIColor.init(hex: "#F3FAF9")
     }
 }

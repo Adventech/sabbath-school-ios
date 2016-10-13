@@ -29,7 +29,7 @@ class StretchyHeader: NSObject {
         tableView.addSubview(headerView)
         
         headerMaskLayer = CAShapeLayer()
-        headerMaskLayer.fillColor = UIColor.blackColor().CGColor
+        headerMaskLayer.fillColor = UIColor.black.cgColor
         headerView.layer.mask = headerMaskLayer
     }
     
@@ -45,14 +45,14 @@ class StretchyHeader: NSObject {
         
         // Cut
         let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: 0, y: 0))
-        path.addLineToPoint(CGPoint(x: headerRect.width, y: 0))
-        path.addLineToPoint(CGPoint(x: headerRect.width, y: headerRect.height))
-        path.addLineToPoint(CGPoint(x: 0, y: headerRect.height-kTableHeaderCutAway))
-        headerMaskLayer?.path = path.CGPath
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: headerRect.width, y: 0))
+        path.addLine(to: CGPoint(x: headerRect.width, y: headerRect.height))
+        path.addLine(to: CGPoint(x: 0, y: headerRect.height-kTableHeaderCutAway))
+        headerMaskLayer?.path = path.cgPath
     }
     
-    func updateOffset(barHeight barHeight: CGFloat) {
+    func updateOffset(barHeight: CGFloat) {
         tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight-barHeight, left: 0, bottom: 0, right: 0)
         tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight+barHeight)
         self.updateHeaderView()

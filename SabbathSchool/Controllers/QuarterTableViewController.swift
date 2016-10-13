@@ -20,7 +20,7 @@ final class QuarterTableViewController: StretchyTableViewController {
         secondaryColor = secondary
         
         super.viewDidLoad()
-        self.title = "Sabbath School".uppercaseString
+        self.title = "Sabbath School".uppercased()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,20 +30,20 @@ final class QuarterTableViewController: StretchyTableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
     
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.quarterCell, forIndexPath: indexPath)!
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.quarterCell, for: indexPath)!
         
 //        cell.coverImageView.backgroundColor = UIColor.lightGrayColor()
         cell.titleLabel.text = "Rebelion and Redemption"
@@ -53,24 +53,24 @@ final class QuarterTableViewController: StretchyTableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier(R.segue.quarterTableViewController.segueToLesson, sender: indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: R.segue.quarterTableViewController.segueToLesson, sender: indexPath)
     }
     
     // MARK: - NavBar Actions
     
-    @IBAction func didTapOnSettings(sender: AnyObject) {
+    @IBAction func didTapOnSettings(_ sender: AnyObject) {
         
     }
     
-    @IBAction func didTapOnFilter(sender: AnyObject) {
+    @IBAction func didTapOnFilter(_ sender: AnyObject) {
         
     }
     
 
     // MARK: - Status Bar Style
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

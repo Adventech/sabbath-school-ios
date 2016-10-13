@@ -15,7 +15,7 @@ class LessonTableViewCell: UITableViewCell {
     @IBOutlet var subtitleLabel: UILabel!
     
     override var layoutMargins: UIEdgeInsets {
-        get { return UIEdgeInsetsZero }
+        get { return UIEdgeInsets.zero }
         set(newVal) {}
     }
     
@@ -24,7 +24,7 @@ class LessonTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

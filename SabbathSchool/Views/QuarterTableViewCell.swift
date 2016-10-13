@@ -16,7 +16,7 @@ class QuarterTableViewCell: UITableViewCell {
     @IBOutlet var detailLabel: UILabel!
     
     override var layoutMargins: UIEdgeInsets {
-        get { return UIEdgeInsetsZero }
+        get { return UIEdgeInsets.zero }
         set(newVal) {}
     }
     
@@ -25,7 +25,7 @@ class QuarterTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
