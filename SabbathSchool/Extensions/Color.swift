@@ -10,23 +10,35 @@ import UIKit
 import Hue
 
 extension UIColor {
-    class func baseBlue() -> UIColor {
-        return UIColor.init(hex: "#006F6B")
+    class var baseBlue: UIColor {
+        return UIColor.init(hex: "#FB695A")
     }
     
-    class func baseAqua() -> UIColor {
+    class var baseAqua: UIColor {
         return UIColor.init(hex: "#25BBAD")
     }
     
-    class func baseGray() -> UIColor {
-        return UIColor.init(hex: "#45555F")
+    class var baseGray1: UIColor {
+        return UIColor.init(hex: "#EFEFF4")
     }
     
-    class func baseGrayToolbar()  -> UIColor {
+    class var baseGray2: UIColor {
+        return UIColor.init(hex: "#8F8E94")
+    }
+    
+    class var baseGray3: UIColor {
+        return UIColor.init(hex: "#606060")
+    }
+    
+    class var baseGray4: UIColor {
+        return UIColor.init(hex: "#383838")
+    }
+    
+    class var baseGrayToolbar: UIColor {
         return UIColor.init(hex: "F6F8F8")
     }
     
-    class func baseSuperLightBlue()  -> UIColor {
+    class var baseSuperLightBlue: UIColor {
         return UIColor.init(hex: "#F3FAF9")
     }
 }

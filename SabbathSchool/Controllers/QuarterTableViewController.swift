@@ -9,69 +9,143 @@
 import UIKit
 import AsyncDisplayKit
 
-final class QuarterTableViewController: StretchyTableViewController {
+struct State {
+    var itemCount: Int
+    var fetchingMore: Bool
+    static let empty = State(itemCount: 20, fetchingMore: false)
+}
+
+final class QuarterViewController: ASViewController<ASDisplayNode> {
+    var tableNode: ASTableNode { return node as! ASTableNode}
+    var backgroundColor: UIColor!
+    private(set) var state: State = .empty
+    fileprivate var isAnimating = false
     
-    // MARK: - View Life Cycle
+    // MARK: - Init
     
-    override func viewDidLoad() {
-        let image = R.image.illustration2()
-        let (background, primary, secondary, _) = image!.colors()
-        backgroundColor = background
-        primaryColor = primary
-        secondaryColor = secondary
+    init() {
+        super.init(node: ASTableNode())
         
-        super.viewDidLoad()
+        // 
+        backgroundColor = UIColor.baseBlue
+        
+        tableNode.delegate = self
+        tableNode.dataSource = self
+        tableNode.backgroundColor = backgroundColor
+        
         self.title = "Sabbath School".uppercased()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("storyboards are incompatible with truth and beauty")
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.quarterCell, for: indexPath)!
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-//        cell.coverImageView.backgroundColor = UIColor.lightGrayColor()
-        cell.titleLabel.text = "Rebelion and Redemption"
-        cell.subtitleLabel.text = "by Allen Meyer"
-        cell.detailLabel.text = "First quarter 2016"
-
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: R.segue.quarterTableViewController.segueToLesson, sender: indexPath)
+        if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
+            let height = navigationBarHeight+20
+            tableNode.view.contentOffset = CGPoint(x: 0, y: -height)
+        }
     }
     
     // MARK: - NavBar Actions
     
-    @IBAction func didTapOnSettings(_ sender: AnyObject) {
+    func didTapOnSettings(_ sender: AnyObject) {
         
     }
     
-    @IBAction func didTapOnFilter(_ sender: AnyObject) {
+    func didTapOnFilter(_ sender: AnyObject) {
         
     }
     
-
+    // MARK: - Navigation Bar Animation
+    
+    func showNavigationBar() {
+        if (isAnimating) { return }
+        
+        let navBar = self.navigationController?.navigationBar
+        if (navBar?.layer.animation(forKey: kCATransition) == nil) {
+            let animation = CATransition()
+            animation.duration = 0.3
+            animation.delegate = self
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.type = kCATransitionFade
+            navBar?.layer.add(animation, forKey: kCATransition)
+        }
+        self.setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.white, titleColor: UIColor.white, andFont: R.font.latoMedium(size: 15)!)
+    }
+    
+    func hideNavigationBar() {
+        if (isAnimating) { return }
+        
+        let navBar = self.navigationController?.navigationBar
+        if (navBar?.layer.animation(forKey: kCATransition) == nil) {
+            let animation = CATransition()
+            animation.duration = 0.3
+            animation.delegate = self
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.type = kCATransitionFade
+            navBar?.layer.add(animation, forKey: kCATransition)
+        }
+        self.setTransparentNavigation()
+    }
+    
     // MARK: - Status Bar Style
-
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+// MARK: - Animation delegate
+
+extension QuarterViewController: CAAnimationDelegate {
+    
+    func animationDidStart(_ anim: CAAnimation) {
+        isAnimating = true
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        isAnimating = false
+    }
+}
+
+// MARK: - ASTableDataSource
+
+extension QuarterViewController: ASTableDataSource {
+
+    func tableView(_ tableView: ASTableView, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
+        if indexPath.row == 0 {
+            let node = CurrentQuarterCellNode(title: "The Book of Job", subtitle: "First quarter 2016", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
+            return node
+        }
+        
+        let node = QuarterCellNode(title: "Rebelion and Redemption", subtitle: "First quarter 2016", detail: "Many people struggle with the age-old question, If God exists, and is so good, so loving, and so powerful, why so much suffering? Hence, this quarterâ€™s study: the book of Job", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
+        return node
+    }
+    
+    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return state.itemCount
+    }
+}
+
+// MARK: - ASTableDelegate
+
+extension QuarterViewController: ASTableDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
+//            if (scrollView.contentOffset.y >= navigationBarHeight+20) {
+            if (scrollView.contentOffset.y >= -navigationBarHeight) {
+                showNavigationBar()
+            } else {
+                hideNavigationBar()
+            }
+        }
     }
 }
