@@ -14,18 +14,24 @@ class CurrentQuarterCellNode: ASCellNode {
     let titleNode = ASTextNode()
     let subtitleNode = ASTextNode()
     let readButton = ASButtonNode()
-    private let dividerHeight: CGFloat = 60
-    private let divider = ASDisplayNode()
+    
+    private let whiteSpace = ASDisplayNode()
+    private let infiniteColor = ASDisplayNode()
+    
+    // MARK: - Init
     
     init(title: String, subtitle: String, cover: URL?) {
         super.init()
-//        backgroundColor = UIColor.white
         
-        // Cell divider
-        divider.backgroundColor = UIColor.white
-        divider.shouldRasterizeDescendants = true
-        insertSubnode(divider, at: 0)
+        clipsToBounds = false
+        insertSubnode(infiniteColor, at: 0)
+        selectionStyle = .none
+        
+        whiteSpace.backgroundColor = UIColor.white
+        whiteSpace.shouldRasterizeDescendants = true
+        insertSubnode(whiteSpace, at: 1)
      
+        // Nodes
         titleNode.attributedText = TextStyles.currentQuarterTitleStyle(string: title)
         subtitleNode.attributedText = TextStyles.currentQuarterSubtitleStyle(string: subtitle)
         coverNode.url = cover
@@ -39,15 +45,19 @@ class CurrentQuarterCellNode: ASCellNode {
         addSubnode(subtitleNode)
         addSubnode(coverNode)
         addSubnode(readButton)
-        
-//        usesImplicitHierarchyManagement = true
     }
+    
+    override func didLoad() {
+        infiniteColor.backgroundColor = backgroundColor
+    }
+    
+    // MARK: - Layout
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.preferredFrameSize = CGSize(width: 125, height: 187)
         
         let space = ASLayoutSpec()
-        space.spacingAfter = 60
+        space.spacingAfter = 100
         
         readButton.spacingBefore = 14
         readButton.spacingAfter = 28
@@ -57,7 +67,7 @@ class CurrentQuarterCellNode: ASCellNode {
             spacing: 4,
             justifyContent: .start,
             alignItems: .start,
-            children: [space, titleNode, subtitleNode, readButton]
+            children: [titleNode, subtitleNode, readButton]
         )
         vSpec.flexShrink = true
         
@@ -69,11 +79,20 @@ class CurrentQuarterCellNode: ASCellNode {
             children: [coverNode, vSpec]
         )
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: hSpec)
+        let spaceSpec = ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [space, hSpec]
+        )
+        
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: spaceSpec)
     }
     
     override func layout() {
-        divider.frame = CGRect(x: 0, y: calculatedSize.height-dividerHeight, width: calculatedSize.width, height: dividerHeight)
         super.layout()
+        whiteSpace.frame = CGRect(x: 0, y: calculatedSize.height-60, width: calculatedSize.width, height: 60)
+        infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-1000, width: calculatedSize.width, height: 1000)
     }
 }

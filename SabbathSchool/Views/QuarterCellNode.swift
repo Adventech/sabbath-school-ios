@@ -14,6 +14,8 @@ class QuarterCellNode: ASCellNode {
     let titleNode = ASTextNode()
     let subtitleNode = ASTextNode()
     let detailNode = ASTextNode()
+    private let dividerHeight: CGFloat = 0.5
+    private let divider = ASDisplayNode()
     
     init(title: String, subtitle: String, detail: String, cover: URL?) {
         super.init()
@@ -27,6 +29,11 @@ class QuarterCellNode: ASCellNode {
         coverNode.url = cover
         
         usesImplicitHierarchyManagement = true
+        
+        // Cell divider
+        divider.backgroundColor = UIColor.baseGray1
+        divider.shouldRasterizeDescendants = true
+        addSubnode(divider)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -50,6 +57,11 @@ class QuarterCellNode: ASCellNode {
             children: [coverNode, vSpec]
         )
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: hSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15+dividerHeight, right: 15), child: hSpec)
+    }
+    
+    override func layout() {
+        super.layout()
+        divider.frame = CGRect(x: 0, y: calculatedSize.height-dividerHeight, width: calculatedSize.width, height: dividerHeight)
     }
 }

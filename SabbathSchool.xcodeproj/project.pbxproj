@@ -17,7 +17,7 @@
 		1A85DAB01DB0E48C00B815E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAAF1DB0E48C00B815E4 /* Constants.swift */; };
 		1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */; };
 		1A96F4D71C8F3DC40034AF2C /* LessonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */; };
-		1A96F4D81C8F3DC40034AF2C /* QuarterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D61C8F3DC40034AF2C /* QuarterTableViewController.swift */; };
+		1A96F4D81C8F3DC40034AF2C /* QuarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D61C8F3DC40034AF2C /* QuarterViewController.swift */; };
 		1A96F4E71C8F3E3D0034AF2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */; };
 		1A96F4E81C8F3E3D0034AF2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DB1C8F3E3D0034AF2C /* LaunchScreen.storyboard */; };
 		1A96F4E91C8F3E3D0034AF2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DD1C8F3E3D0034AF2C /* Main.storyboard */; };
@@ -59,7 +59,7 @@
 		1A85DAAF1DB0E48C00B815E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsTableViewController.swift; sourceTree = "<group>"; };
-		1A96F4D61C8F3DC40034AF2C /* QuarterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterTableViewController.swift; sourceTree = "<group>"; };
+		1A96F4D61C8F3DC40034AF2C /* QuarterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterViewController.swift; sourceTree = "<group>"; };
 		1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A96F4DC1C8F3E3D0034AF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A96F4DE1C8F3E3D0034AF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		1A96F4D41C8F3DC40034AF2C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1A96F4D61C8F3DC40034AF2C /* QuarterTableViewController.swift */,
+				1A96F4D61C8F3DC40034AF2C /* QuarterViewController.swift */,
 				1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */,
 			);
 			path = Controllers;
@@ -434,7 +434,7 @@
 			files = (
 				1A96F4D71C8F3DC40034AF2C /* LessonsTableViewController.swift in Sources */,
 				1A407EB51C8277E100BD2272 /* Color.swift in Sources */,
-				1A96F4D81C8F3DC40034AF2C /* QuarterTableViewController.swift in Sources */,
+				1A96F4D81C8F3DC40034AF2C /* QuarterViewController.swift in Sources */,
 				1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */,
 				1A85DAB01DB0E48C00B815E4 /* Constants.swift in Sources */,
 				1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */,

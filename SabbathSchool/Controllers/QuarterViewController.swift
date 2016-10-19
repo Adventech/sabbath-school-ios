@@ -12,7 +12,7 @@ import AsyncDisplayKit
 struct State {
     var itemCount: Int
     var fetchingMore: Bool
-    static let empty = State(itemCount: 20, fetchingMore: false)
+    static let empty = State(itemCount: 5, fetchingMore: false)
 }
 
 final class QuarterViewController: ASViewController<ASDisplayNode> {
@@ -31,7 +31,7 @@ final class QuarterViewController: ASViewController<ASDisplayNode> {
         
         tableNode.delegate = self
         tableNode.dataSource = self
-        tableNode.backgroundColor = backgroundColor
+        tableNode.view.separatorStyle = .none
         
         self.title = "Sabbath School".uppercased()
     }
@@ -46,6 +46,9 @@ final class QuarterViewController: ASViewController<ASDisplayNode> {
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
             let height = navigationBarHeight+20
             tableNode.view.contentOffset = CGPoint(x: 0, y: -height)
+            tableNode.view.contentInset = UIEdgeInsets(top: -height, left: 0, bottom: 0, right: 0)
+//            tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight-barHeight, left: 0, bottom: 0, right: 0)
+//            tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight+barHeight)
         }
     }
     
@@ -67,7 +70,7 @@ final class QuarterViewController: ASViewController<ASDisplayNode> {
         let navBar = self.navigationController?.navigationBar
         if (navBar?.layer.animation(forKey: kCATransition) == nil) {
             let animation = CATransition()
-            animation.duration = 0.3
+            animation.duration = 0.2
             animation.delegate = self
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = kCATransitionFade
@@ -82,7 +85,7 @@ final class QuarterViewController: ASViewController<ASDisplayNode> {
         let navBar = self.navigationController?.navigationBar
         if (navBar?.layer.animation(forKey: kCATransition) == nil) {
             let animation = CATransition()
-            animation.duration = 0.3
+            animation.duration = 0.2
             animation.delegate = self
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = kCATransitionFade
@@ -118,6 +121,7 @@ extension QuarterViewController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
         if indexPath.row == 0 {
             let node = CurrentQuarterCellNode(title: "The Book of Job", subtitle: "First quarter 2016", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
+            node.backgroundColor = backgroundColor
             return node
         }
         
@@ -139,13 +143,10 @@ extension QuarterViewController: ASTableDataSource {
 extension QuarterViewController: ASTableDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
-//            if (scrollView.contentOffset.y >= navigationBarHeight+20) {
-            if (scrollView.contentOffset.y >= -navigationBarHeight) {
-                showNavigationBar()
-            } else {
-                hideNavigationBar()
-            }
+        if scrollView.contentOffset.y >= 30 {
+            showNavigationBar()
+        } else {
+            hideNavigationBar()
         }
     }
 }

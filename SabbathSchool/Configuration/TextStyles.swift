@@ -56,7 +56,7 @@ struct TextStyles {
     
     static func currentQuarterSubtitleStyle(string: String) -> NSAttributedString {
         let attributes = [
-            NSForegroundColorAttributeName: UIColor.white,
+            NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7),
             NSFontAttributeName: R.font.latoItalic(size: 16)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
