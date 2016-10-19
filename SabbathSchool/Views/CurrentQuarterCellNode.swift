@@ -87,7 +87,7 @@ class CurrentQuarterCellNode: ASCellNode {
             children: [space, hSpec]
         )
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: spaceSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 20, right: 15), child: spaceSpec)
     }
     
     override func layout() {

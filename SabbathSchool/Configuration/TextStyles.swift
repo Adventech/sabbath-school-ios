@@ -62,6 +62,14 @@ struct TextStyles {
         return NSAttributedString(string: string, attributes: attributes)
     }
     
+    static func cellLessonNumberStyle(string: String) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.baseGray2.withAlphaComponent(0.5),
+            NSFontAttributeName: R.font.latoRegular(size: 22)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
     static func readButtonStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white,

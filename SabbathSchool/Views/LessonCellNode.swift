@@ -9,23 +9,20 @@
 import UIKit
 import AsyncDisplayKit
 
-class QuarterCellNode: ASCellNode {
-    let coverNode = ASNetworkImageNode()
+class LessonCellNode: ASCellNode {
     let titleNode = ASTextNode()
     let subtitleNode = ASTextNode()
-    let detailNode = ASTextNode()
+    let numberNode = ASTextNode()
     
     // MARK: - Init
     
-    init(title: String, subtitle: String, detail: String, cover: URL?) {
+    init(title: String, subtitle: String, number: String) {
         super.init()
         backgroundColor = UIColor.white
      
         titleNode.attributedText = TextStyles.cellTitleStyle(string: title)
         subtitleNode.attributedText = TextStyles.cellSubtitleStyle(string: subtitle)
-        detailNode.attributedText = TextStyles.cellDetailStyle(string: detail)
-        detailNode.maximumNumberOfLines = 2
-        coverNode.url = cover
+        numberNode.attributedText = TextStyles.cellLessonNumberStyle(string: number)
         
         usesImplicitHierarchyManagement = true
     }
@@ -33,24 +30,24 @@ class QuarterCellNode: ASCellNode {
     // MARK: - Layout
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        coverNode.preferredFrameSize = CGSize(width: 90, height: 135)
-        detailNode.spacingBefore = 6
+//        numberNode.spacingBefore = 6
+        numberNode.preferredFrameSize = CGSize(width: 24, height: constrainedSize.max.height)
         
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 4,
             justifyContent: .start,
             alignItems: .start,
-            children: [titleNode, subtitleNode, detailNode]
+            children: [titleNode, subtitleNode]
         )
         vSpec.flexShrink = true
         
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
-            spacing: 10,
+            spacing: 15,
             justifyContent: .start,
             alignItems: .center,
-            children: [coverNode, vSpec]
+            children: [numberNode, vSpec]
         )
         
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: hSpec)

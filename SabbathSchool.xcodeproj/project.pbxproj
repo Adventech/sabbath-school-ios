@@ -20,7 +20,6 @@
 		1A96F4D81C8F3DC40034AF2C /* QuarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D61C8F3DC40034AF2C /* QuarterViewController.swift */; };
 		1A96F4E71C8F3E3D0034AF2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */; };
 		1A96F4E81C8F3E3D0034AF2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DB1C8F3E3D0034AF2C /* LaunchScreen.storyboard */; };
-		1A96F4E91C8F3E3D0034AF2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DD1C8F3E3D0034AF2C /* Main.storyboard */; };
 		1A96F4EA1C8F3E3D0034AF2C /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E11C8F3E3D0034AF2C /* Lato-Bold.ttf */; };
 		1A96F4EB1C8F3E3D0034AF2C /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E21C8F3E3D0034AF2C /* Lato-BoldItalic.ttf */; };
 		1A96F4EC1C8F3E3D0034AF2C /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E31C8F3E3D0034AF2C /* Lato-Italic.ttf */; };
@@ -30,6 +29,8 @@
 		1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */; };
 		1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */; };
 		1AB0A13B1C98DFB300EBFA37 /* LessonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0A13A1C98DFB300EBFA37 /* LessonTableViewCell.swift */; };
+		1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */; };
+		1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */; };
 		1AF2AE701DB6161E00553919 /* CurrentQuarterCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */; };
 		F629798371D98823D87AB39D /* Pods_SabbathSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3A20F0D099002EC87A1390 /* Pods_SabbathSchool.framework */; };
 /* End PBXBuildFile section */
@@ -62,7 +63,6 @@
 		1A96F4D61C8F3DC40034AF2C /* QuarterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterViewController.swift; sourceTree = "<group>"; };
 		1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A96F4DC1C8F3E3D0034AF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1A96F4DE1C8F3E3D0034AF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A96F4E11C8F3E3D0034AF2C /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1A96F4E21C8F3E3D0034AF2C /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		1A96F4E31C8F3E3D0034AF2C /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
@@ -72,6 +72,8 @@
 		1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyHeader.swift; sourceTree = "<group>"; };
 		1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyTableViewController.swift; sourceTree = "<group>"; };
 		1AB0A13A1C98DFB300EBFA37 /* LessonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonTableViewCell.swift; sourceTree = "<group>"; };
+		1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonCellNode.swift; sourceTree = "<group>"; };
 		1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentQuarterCellNode.swift; sourceTree = "<group>"; };
 		27EA38CA868383203E1580BB /* Pods-SabbathSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabbathSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-SabbathSchool/Pods-SabbathSchool.release.xcconfig"; sourceTree = "<group>"; };
 		6DE7B167C46BE88BC4F70504 /* Pods-SabbathSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabbathSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SabbathSchool/Pods-SabbathSchool.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				1A85DAA81DB0C5F200B815E4 /* QuarterCellNode.swift */,
 				1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */,
+				1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */,
 				1AB0A13A1C98DFB300EBFA37 /* LessonTableViewCell.swift */,
 			);
 			path = Views;
@@ -193,7 +196,6 @@
 		1A96F4D91C8F3E3D0034AF2C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1A96F4DD1C8F3E3D0034AF2C /* Main.storyboard */,
 				1A96F4DB1C8F3E3D0034AF2C /* LaunchScreen.storyboard */,
 				1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */,
 				1A96F4DF1C8F3E3D0034AF2C /* Fonts */,
@@ -227,6 +229,7 @@
 			children = (
 				1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */,
 				1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */,
+				1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */,
 			);
 			name = Library;
 			path = SabbathSchool/Library;
@@ -351,7 +354,6 @@
 				1A96F4EB1C8F3E3D0034AF2C /* Lato-BoldItalic.ttf in Resources */,
 				1A96F4EF1C8F3E3D0034AF2C /* Lato-Regular.ttf in Resources */,
 				1A96F4E71C8F3E3D0034AF2C /* Assets.xcassets in Resources */,
-				1A96F4E91C8F3E3D0034AF2C /* Main.storyboard in Resources */,
 				1A96F4EE1C8F3E3D0034AF2C /* Lato-MediumItalic.ttf in Resources */,
 				1A96F4EC1C8F3E3D0034AF2C /* Lato-Italic.ttf in Resources */,
 			);
@@ -441,10 +443,12 @@
 				1A85DAA91DB0C5F200B815E4 /* QuarterCellNode.swift in Sources */,
 				1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */,
 				1AB0A13B1C98DFB300EBFA37 /* LessonTableViewCell.swift in Sources */,
+				1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */,
 				1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */,
 				1A407EB71C82780D00BD2272 /* Image.swift in Sources */,
 				1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */,
 				1AF2AE701DB6161E00553919 /* CurrentQuarterCellNode.swift in Sources */,
+				1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */,
 				1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,14 +478,6 @@
 				1A96F4DC1C8F3E3D0034AF2C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		1A96F4DD1C8F3E3D0034AF2C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1A96F4DE1C8F3E3D0034AF2C /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

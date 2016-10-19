@@ -18,8 +18,12 @@ extension UIColor {
         return UIColor.init(hex: "#25BBAD")
     }
     
+    class var baseSeparator: UIColor {
+        return UIColor.init(hex: "#D7D7D7")
+    }
+    
     class var baseGray1: UIColor {
-        return UIColor.init(hex: "#EFEFF4")
+        return UIColor.init(hex: "#EFEFEF")
     }
     
     class var baseGray2: UIColor {

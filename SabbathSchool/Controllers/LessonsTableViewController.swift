@@ -7,49 +7,69 @@
 //
 
 import UIKit
+import AsyncDisplayKit
 
-final class LessonsTableViewController: StretchyTableViewController {
+final class LessonsViewController: BaseTableViewController {
+    private(set) var state: State = .empty
     
-    // MARK: - View Life Cycle
+    // MARK: - Init
+    
+    override init() {
+        super.init()
+        tableNode.delegate = self
+        tableNode.dataSource = self
+        
+        self.title = "Lesson".uppercased()
+        
+        backgroundColor = UIColor.baseBlue
+        
+        state = State(itemCount: 14, fetchingMore: false)
+    }
     
     override func viewDidLoad() {
-        let image = R.image.illustration()
-        let (background, primary, secondary, _) = image!.colors()
-        backgroundColor = background
-        primaryColor = primary
-        secondaryColor = secondary
-        
         super.viewDidLoad()
-        self.title = "Jeremiah".uppercased()
         
         setBackButtom()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        hideNavigationBar()
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("storyboards are incompatible with truth and beauty")
     }
+}
 
-    // MARK: - Table view data source
+// MARK: - ASTableDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 13
+extension LessonsViewController: ASTableDataSource {
+    
+    func tableView(_ tableView: ASTableView, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
+        if indexPath.row == 0 {
+            let node = CurrentQuarterCellNode(title: "The Book of Job", subtitle: "First quarter 2016", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
+            node.backgroundColor = backgroundColor
+            return node
+        }
+        
+        let node = LessonCellNode(title: "The Prophetic Calling of Jeremiah", subtitle: "Sep 2 - Oct 2", number: "\(indexPath.row)")
+        return node
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return state.itemCount
     }
+}
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.lessonCell, for: indexPath)!
-        cell.numberLabel.text = String(indexPath.row+1)
-        cell.titleLabel.text = "The Prophetic Calling of Jeremiah"
-        cell.subtitleLabel.text = "Sep 26 - Oct 2"
+// MARK: - ASTableDelegate
 
-        return cell
+extension LessonsViewController: ASTableDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= 30 {
+            showNavigationBar()
+        } else {
+            hideNavigationBar()
+        }
     }
 }

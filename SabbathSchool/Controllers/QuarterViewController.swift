@@ -9,47 +9,23 @@
 import UIKit
 import AsyncDisplayKit
 
-struct State {
-    var itemCount: Int
-    var fetchingMore: Bool
-    static let empty = State(itemCount: 5, fetchingMore: false)
-}
-
-final class QuarterViewController: ASViewController<ASDisplayNode> {
-    var tableNode: ASTableNode { return node as! ASTableNode}
-    var backgroundColor: UIColor!
+final class QuarterViewController: BaseTableViewController {
     private(set) var state: State = .empty
-    fileprivate var isAnimating = false
     
     // MARK: - Init
     
-    init() {
-        super.init(node: ASTableNode())
-        
-        // 
-        backgroundColor = UIColor.baseBlue
-        
+    override init() {
+        super.init()
         tableNode.delegate = self
         tableNode.dataSource = self
-        tableNode.view.separatorStyle = .none
         
         self.title = "Sabbath School".uppercased()
+        
+        backgroundColor = UIColor.init(hex: "#B30558")
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
-            let height = navigationBarHeight+20
-            tableNode.view.contentOffset = CGPoint(x: 0, y: -height)
-            tableNode.view.contentInset = UIEdgeInsets(top: -height, left: 0, bottom: 0, right: 0)
-//            tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight-barHeight, left: 0, bottom: 0, right: 0)
-//            tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight+barHeight)
-        }
     }
     
     // MARK: - NavBar Actions
@@ -60,57 +36,6 @@ final class QuarterViewController: ASViewController<ASDisplayNode> {
     
     func didTapOnFilter(_ sender: AnyObject) {
         
-    }
-    
-    // MARK: - Navigation Bar Animation
-    
-    func showNavigationBar() {
-        if (isAnimating) { return }
-        
-        let navBar = self.navigationController?.navigationBar
-        if (navBar?.layer.animation(forKey: kCATransition) == nil) {
-            let animation = CATransition()
-            animation.duration = 0.2
-            animation.delegate = self
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            animation.type = kCATransitionFade
-            navBar?.layer.add(animation, forKey: kCATransition)
-        }
-        self.setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.white, titleColor: UIColor.white, andFont: R.font.latoMedium(size: 15)!)
-    }
-    
-    func hideNavigationBar() {
-        if (isAnimating) { return }
-        
-        let navBar = self.navigationController?.navigationBar
-        if (navBar?.layer.animation(forKey: kCATransition) == nil) {
-            let animation = CATransition()
-            animation.duration = 0.2
-            animation.delegate = self
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            animation.type = kCATransitionFade
-            navBar?.layer.add(animation, forKey: kCATransition)
-        }
-        self.setTransparentNavigation()
-    }
-    
-    // MARK: - Status Bar Style
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
-    }
-}
-
-// MARK: - Animation delegate
-
-extension QuarterViewController: CAAnimationDelegate {
-    
-    func animationDidStart(_ anim: CAAnimation) {
-        isAnimating = true
-    }
-    
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        isAnimating = false
     }
 }
 
@@ -129,10 +54,6 @@ extension QuarterViewController: ASTableDataSource {
         return node
     }
     
-    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return state.itemCount
     }
@@ -141,6 +62,11 @@ extension QuarterViewController: ASTableDataSource {
 // MARK: - ASTableDelegate
 
 extension QuarterViewController: ASTableDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let lessonList = LessonsViewController()
+        show(lessonList, sender: nil)
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= 30 {
