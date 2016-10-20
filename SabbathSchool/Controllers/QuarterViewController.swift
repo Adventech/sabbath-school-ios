@@ -43,15 +43,21 @@ final class QuarterViewController: BaseTableViewController {
 
 extension QuarterViewController: ASTableDataSource {
 
-    func tableView(_ tableView: ASTableView, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
-        if indexPath.row == 0 {
-            let node = CurrentQuarterCellNode(title: "The Book of Job", subtitle: "First quarter 2016", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
-            node.backgroundColor = backgroundColor
+    func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        
+        // this will be executed on a background thread - important to make sure it's thread safe
+        let cellNodeBlock: () -> ASCellNode = {
+            if indexPath.row == 0 {
+                let node = CurrentQuarterCellNode(title: "The Book of Job", subtitle: "First quarter 2016", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
+                node.backgroundColor = self.backgroundColor
+                return node
+            }
+            
+            let node = QuarterCellNode(title: "Rebelion and Redemption", subtitle: "First quarter 2016", detail: "Many people struggle with the age-old question, If God exists, and is so good, so loving, and so powerful, why so much suffering? Hence, this quarterâ€™s study: the book of Job", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
             return node
         }
         
-        let node = QuarterCellNode(title: "Rebelion and Redemption", subtitle: "First quarter 2016", detail: "Many people struggle with the age-old question, If God exists, and is so good, so loving, and so powerful, why so much suffering? Hence, this quarterâ€™s study: the book of Job", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
-        return node
+        return cellNodeBlock
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

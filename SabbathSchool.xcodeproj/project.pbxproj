@@ -29,7 +29,6 @@
 		1A96F4EF1C8F3E3D0034AF2C /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E61C8F3E3D0034AF2C /* Lato-Regular.ttf */; };
 		1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */; };
 		1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */; };
-		1AB0A13B1C98DFB300EBFA37 /* LessonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0A13A1C98DFB300EBFA37 /* LessonTableViewCell.swift */; };
 		1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */; };
 		1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */; };
 		1AF2AE701DB6161E00553919 /* CurrentQuarterCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */; };
@@ -74,7 +73,6 @@
 		1A96F4E61C8F3E3D0034AF2C /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyHeader.swift; sourceTree = "<group>"; };
 		1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyTableViewController.swift; sourceTree = "<group>"; };
-		1AB0A13A1C98DFB300EBFA37 /* LessonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonTableViewCell.swift; sourceTree = "<group>"; };
 		1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonCellNode.swift; sourceTree = "<group>"; };
 		1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentQuarterCellNode.swift; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				1A85DAA81DB0C5F200B815E4 /* QuarterCellNode.swift */,
 				1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */,
 				1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */,
-				1AB0A13A1C98DFB300EBFA37 /* LessonTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -453,7 +450,6 @@
 				1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */,
 				1A85DAA91DB0C5F200B815E4 /* QuarterCellNode.swift in Sources */,
 				1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */,
-				1AB0A13B1C98DFB300EBFA37 /* LessonTableViewCell.swift in Sources */,
 				1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */,
 				1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */,
 				1A407EB71C82780D00BD2272 /* Image.swift in Sources */,

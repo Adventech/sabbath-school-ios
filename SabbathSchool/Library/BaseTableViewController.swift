@@ -66,7 +66,7 @@ class BaseTableViewController: ASViewController<ASDisplayNode> {
         let navBar = self.navigationController?.navigationBar
         if (navBar?.layer.animation(forKey: kCATransition) == nil) {
             let animation = CATransition()
-            animation.duration = 0.2
+            animation.duration = 0.1
             animation.delegate = self
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             animation.type = kCATransitionFade

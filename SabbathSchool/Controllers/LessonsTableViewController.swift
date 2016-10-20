@@ -32,6 +32,11 @@ final class LessonsViewController: BaseTableViewController {
         setBackButtom()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hideNavigationBar()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
@@ -41,15 +46,20 @@ final class LessonsViewController: BaseTableViewController {
 
 extension LessonsViewController: ASTableDataSource {
     
-    func tableView(_ tableView: ASTableView, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
-        if indexPath.row == 0 {
-            let node = CurrentQuarterCellNode(title: "The Book of Job", subtitle: "First quarter 2016", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
-            node.backgroundColor = backgroundColor
+    func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        
+        // this will be executed on a background thread - important to make sure it's thread safe
+        let cellNodeBlock: () -> ASCellNode = {
+            if indexPath.row == 0 {
+                let node = CurrentQuarterCellNode(title: "The Book of Job", subtitle: "First quarter 2016", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
+                node.backgroundColor = self.backgroundColor
+                return node
+            }
+            
+            let node = LessonCellNode(title: "The Prophetic Calling of Jeremiah", subtitle: "Sep 2 - Oct 2", number: "\(indexPath.row)")
             return node
         }
-        
-        let node = LessonCellNode(title: "The Prophetic Calling of Jeremiah", subtitle: "Sep 2 - Oct 2", number: "\(indexPath.row)")
-        return node
+        return cellNodeBlock
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
