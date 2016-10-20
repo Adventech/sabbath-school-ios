@@ -47,18 +47,10 @@ final class QuarterliesViewController: BaseTableViewController {
     
     func loadQuarterlies(language: QuarterlyLanguage) {
         database.child("quarterlies").child(language.code).observe(.value, with: { (snapshot) in
-            print(snapshot.value)
-            
-            guard let json = snapshot.value as? [AnyObject] else { return }
+            guard let json = snapshot.value as? [[String: AnyObject]] else { return }
             
             do {
-                var items = [Quarterly]()
-                try json.forEach { item in
-                    guard let item = item as? [String: AnyObject] else { return }
-                    let object: Quarterly = try unbox(dictionary: item)
-                    items.append(object)
-                }
-                
+                let items: [Quarterly] = try unbox(dictionaries: json)
                 self.dataSource = items
                 
                 self.tableNode.view.beginUpdates()
@@ -67,7 +59,6 @@ final class QuarterliesViewController: BaseTableViewController {
             } catch let error {
                 print(error)
             }
-                
         }) { (error) in
             print(error.localizedDescription)
         }
