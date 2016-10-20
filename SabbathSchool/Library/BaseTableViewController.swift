@@ -24,7 +24,6 @@ class BaseTableViewController: ASViewController<ASDisplayNode> {
     
     init() {
         super.init(node: ASTableNode())
-//        tableNode.view.separatorStyle = .none
         tableNode.view.separatorColor = UIColor.baseSeparator
         tableNode.view.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
@@ -40,6 +39,15 @@ class BaseTableViewController: ASViewController<ASDisplayNode> {
             let height = navigationBarHeight+20
             tableNode.view.contentOffset = CGPoint(x: 0, y: -height)
             tableNode.view.contentInset = UIEdgeInsets(top: -height, left: 0, bottom: 0, right: 0)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Remove selection if exists
+        if let selected = tableNode.view.indexPathForSelectedRow {
+            tableNode.view.deselectRow(at: selected, animated: true)
         }
     }
     
