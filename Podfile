@@ -4,8 +4,9 @@ use_frameworks!
 target 'SabbathSchool' do
     pod 'Hue', :git => 'https://github.com/hyperoslo/Hue.git', :branch => 'swift-3'
     pod 'R.swift', '~> 3.1'
-    # pod 'Alamofire', '~> 4.0'
-    #pod 'HanekeSwift', '~> 0.10'
     pod 'AsyncDisplayKit', '~> 1.9'
-    pod 'RocketData', '~> 3.0'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Messaging'
+    pod 'Firebase/Auth'
 end

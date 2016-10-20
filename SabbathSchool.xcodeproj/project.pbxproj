@@ -12,6 +12,7 @@
 		1A407EB51C8277E100BD2272 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB41C8277E100BD2272 /* Color.swift */; };
 		1A407EB71C82780D00BD2272 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB61C82780D00BD2272 /* Image.swift */; };
 		1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EC81C827C7500BD2272 /* Navigation.swift */; };
+		1A753BBF1DB8AA8100204B31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A753BBE1DB8AA8100204B31 /* GoogleService-Info.plist */; };
 		1A85DAA91DB0C5F200B815E4 /* QuarterCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAA81DB0C5F200B815E4 /* QuarterCellNode.swift */; };
 		1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAAB1DB0C7EE00B815E4 /* TextStyles.swift */; };
 		1A85DAB01DB0E48C00B815E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAAF1DB0E48C00B815E4 /* Constants.swift */; };
@@ -55,6 +56,8 @@
 		1A407EB41C8277E100BD2272 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1A407EB61C82780D00BD2272 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		1A407EC81C827C7500BD2272 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		1A753BBD1DB8A96E00204B31 /* SabbathSchool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SabbathSchool.entitlements; sourceTree = "<group>"; };
+		1A753BBE1DB8AA8100204B31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A85DAA81DB0C5F200B815E4 /* QuarterCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterCellNode.swift; sourceTree = "<group>"; };
 		1A85DAAB1DB0C7EE00B815E4 /* TextStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		1A85DAAF1DB0E48C00B815E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */,
 				1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */,
 				1A407E9B1C80FB3E00BD2272 /* Info.plist */,
+				1A753BBE1DB8AA8100204B31 /* GoogleService-Info.plist */,
+				1A753BBD1DB8A96E00204B31 /* SabbathSchool.entitlements */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -316,6 +321,11 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = XVGX5G4YQ9;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					1A407E9F1C80FB3E00BD2272 = {
 						CreatedOnToolsVersion = 7.2;
@@ -350,6 +360,7 @@
 			files = (
 				1A96F4ED1C8F3E3D0034AF2C /* Lato-Medium.ttf in Resources */,
 				1A96F4EA1C8F3E3D0034AF2C /* Lato-Bold.ttf in Resources */,
+				1A753BBF1DB8AA8100204B31 /* GoogleService-Info.plist in Resources */,
 				1A96F4E81C8F3E3D0034AF2C /* LaunchScreen.storyboard in Resources */,
 				1A96F4EB1C8F3E3D0034AF2C /* Lato-BoldItalic.ttf in Resources */,
 				1A96F4EF1C8F3E3D0034AF2C /* Lato-Regular.ttf in Resources */,
@@ -577,6 +588,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SabbathSchool/SabbathSchool.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = SabbathSchool/Info.plist;
@@ -593,6 +605,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SabbathSchool/SabbathSchool.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = SabbathSchool/Info.plist;
