@@ -1,5 +1,5 @@
 //
-//  LessonsTableViewController.swift
+//  QuarterTableViewController.swift
 //  SabbathSchool
 //
 //  Created by Heberti Almeida on 26/02/16.
@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-final class LessonsViewController: BaseTableViewController {
+final class QuarterViewController: BaseTableViewController {
     private(set) var state: State = .empty
     
     // MARK: - Init
@@ -19,33 +19,30 @@ final class LessonsViewController: BaseTableViewController {
         tableNode.delegate = self
         tableNode.dataSource = self
         
-        self.title = "Lesson".uppercased()
+        self.title = "Sabbath School".uppercased()
         
-        backgroundColor = UIColor.baseBlue
-        
-        state = State(itemCount: 14, fetchingMore: false)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setBackButtom()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        hideNavigationBar()
+        backgroundColor = UIColor.init(hex: "#B30558")
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
+    
+    // MARK: - NavBar Actions
+    
+    func didTapOnSettings(_ sender: AnyObject) {
+        
+    }
+    
+    func didTapOnFilter(_ sender: AnyObject) {
+        
+    }
 }
 
 // MARK: - ASTableDataSource
 
-extension LessonsViewController: ASTableDataSource {
-    
+extension QuarterViewController: ASTableDataSource {
+
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         
         // this will be executed on a background thread - important to make sure it's thread safe
@@ -56,9 +53,10 @@ extension LessonsViewController: ASTableDataSource {
                 return node
             }
             
-            let node = LessonCellNode(title: "The Prophetic Calling of Jeremiah", subtitle: "Sep 2 - Oct 2", number: "\(indexPath.row)")
+            let node = QuarterCellNode(title: "Rebelion and Redemption", subtitle: "First quarter 2016", detail: "Many people struggle with the age-old question, If God exists, and is so good, so loving, and so powerful, why so much suffering? Hence, this quarterâ€™s study: the book of Job", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
             return node
         }
+        
         return cellNodeBlock
     }
     
@@ -69,10 +67,11 @@ extension LessonsViewController: ASTableDataSource {
 
 // MARK: - ASTableDelegate
 
-extension LessonsViewController: ASTableDelegate {
+extension QuarterViewController: ASTableDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let lessonList = LessonsViewController()
+        show(lessonList, sender: nil)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
