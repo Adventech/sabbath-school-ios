@@ -13,12 +13,21 @@
 		1A407EB71C82780D00BD2272 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB61C82780D00BD2272 /* Image.swift */; };
 		1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EC81C827C7500BD2272 /* Navigation.swift */; };
 		1A753BBF1DB8AA8100204B31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A753BBE1DB8AA8100204B31 /* GoogleService-Info.plist */; };
-		1A85DAA91DB0C5F200B815E4 /* QuarterCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAA81DB0C5F200B815E4 /* QuarterCellNode.swift */; };
+		1A753BC11DB8CE5C00204B31 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BC01DB8CE5C00204B31 /* Day.swift */; };
+		1A753BC31DB8CF4F00204B31 /* DayComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BC21DB8CF4F00204B31 /* DayComments.swift */; };
+		1A753BC51DB8D04800204B31 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BC41DB8D04800204B31 /* Lesson.swift */; };
+		1A753BC71DB8D0B700204B31 /* LessonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BC61DB8D0B700204B31 /* LessonInfo.swift */; };
+		1A753BC91DB8D13200204B31 /* Quarterly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BC81DB8D13200204B31 /* Quarterly.swift */; };
+		1A753BCB1DB8D1A400204B31 /* QuarterlyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BCA1DB8D1A400204B31 /* QuarterlyInfo.swift */; };
+		1A753BCD1DB8D1DF00204B31 /* QuarterlyLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BCC1DB8D1DF00204B31 /* QuarterlyLanguage.swift */; };
+		1A753BCF1DB8D21500204B31 /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BCE1DB8D21500204B31 /* Read.swift */; };
+		1A753BD11DB8D25200204B31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BD01DB8D25200204B31 /* User.swift */; };
+		1A85DAA91DB0C5F200B815E4 /* QuarterlyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAA81DB0C5F200B815E4 /* QuarterlyCellNode.swift */; };
 		1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAAB1DB0C7EE00B815E4 /* TextStyles.swift */; };
 		1A85DAB01DB0E48C00B815E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAAF1DB0E48C00B815E4 /* Constants.swift */; };
 		1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */; };
-		1A96F4D71C8F3DC40034AF2C /* LessonsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */; };
-		1A96F4D81C8F3DC40034AF2C /* QuarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D61C8F3DC40034AF2C /* QuarterViewController.swift */; };
+		1A96F4D71C8F3DC40034AF2C /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D51C8F3DC40034AF2C /* LessonsViewController.swift */; };
+		1A96F4D81C8F3DC40034AF2C /* QuarterliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D61C8F3DC40034AF2C /* QuarterliesViewController.swift */; };
 		1A96F4E71C8F3E3D0034AF2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */; };
 		1A96F4E81C8F3E3D0034AF2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4DB1C8F3E3D0034AF2C /* LaunchScreen.storyboard */; };
 		1A96F4EA1C8F3E3D0034AF2C /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E11C8F3E3D0034AF2C /* Lato-Bold.ttf */; };
@@ -31,7 +40,7 @@
 		1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */; };
 		1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */; };
 		1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */; };
-		1AF2AE701DB6161E00553919 /* CurrentQuarterCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */; };
+		1AF2AE701DB6161E00553919 /* FeaturedQuarterlyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */; };
 		F629798371D98823D87AB39D /* Pods_SabbathSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3A20F0D099002EC87A1390 /* Pods_SabbathSchool.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,12 +66,21 @@
 		1A407EC81C827C7500BD2272 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		1A753BBD1DB8A96E00204B31 /* SabbathSchool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SabbathSchool.entitlements; sourceTree = "<group>"; };
 		1A753BBE1DB8AA8100204B31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1A85DAA81DB0C5F200B815E4 /* QuarterCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterCellNode.swift; sourceTree = "<group>"; };
+		1A753BC01DB8CE5C00204B31 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		1A753BC21DB8CF4F00204B31 /* DayComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayComments.swift; sourceTree = "<group>"; };
+		1A753BC41DB8D04800204B31 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		1A753BC61DB8D0B700204B31 /* LessonInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonInfo.swift; sourceTree = "<group>"; };
+		1A753BC81DB8D13200204B31 /* Quarterly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quarterly.swift; sourceTree = "<group>"; };
+		1A753BCA1DB8D1A400204B31 /* QuarterlyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyInfo.swift; sourceTree = "<group>"; };
+		1A753BCC1DB8D1DF00204B31 /* QuarterlyLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyLanguage.swift; sourceTree = "<group>"; };
+		1A753BCE1DB8D21500204B31 /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
+		1A753BD01DB8D25200204B31 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1A85DAA81DB0C5F200B815E4 /* QuarterlyCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyCellNode.swift; sourceTree = "<group>"; };
 		1A85DAAB1DB0C7EE00B815E4 /* TextStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		1A85DAAF1DB0E48C00B815E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsTableViewController.swift; sourceTree = "<group>"; };
-		1A96F4D61C8F3DC40034AF2C /* QuarterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterViewController.swift; sourceTree = "<group>"; };
+		1A96F4D51C8F3DC40034AF2C /* LessonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
+		1A96F4D61C8F3DC40034AF2C /* QuarterliesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterliesViewController.swift; sourceTree = "<group>"; };
 		1A96F4DA1C8F3E3D0034AF2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A96F4DC1C8F3E3D0034AF2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A96F4E11C8F3E3D0034AF2C /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -75,7 +93,7 @@
 		1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyTableViewController.swift; sourceTree = "<group>"; };
 		1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonCellNode.swift; sourceTree = "<group>"; };
-		1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentQuarterCellNode.swift; sourceTree = "<group>"; };
+		1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedQuarterlyCellNode.swift; sourceTree = "<group>"; };
 		27EA38CA868383203E1580BB /* Pods-SabbathSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabbathSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-SabbathSchool/Pods-SabbathSchool.release.xcconfig"; sourceTree = "<group>"; };
 		6DE7B167C46BE88BC4F70504 /* Pods-SabbathSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SabbathSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SabbathSchool/Pods-SabbathSchool.debug.xcconfig"; sourceTree = "<group>"; };
 		AB7E275B2AE9EC9448CBF70E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,8 +176,8 @@
 		1A407ECA1C8281A000BD2272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1A85DAA81DB0C5F200B815E4 /* QuarterCellNode.swift */,
-				1AF2AE6F1DB6161E00553919 /* CurrentQuarterCellNode.swift */,
+				1A85DAA81DB0C5F200B815E4 /* QuarterlyCellNode.swift */,
+				1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */,
 				1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */,
 			);
 			path = Views;
@@ -189,8 +207,8 @@
 		1A96F4D41C8F3DC40034AF2C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1A96F4D61C8F3DC40034AF2C /* QuarterViewController.swift */,
-				1A96F4D51C8F3DC40034AF2C /* LessonsTableViewController.swift */,
+				1A96F4D61C8F3DC40034AF2C /* QuarterliesViewController.swift */,
+				1A96F4D51C8F3DC40034AF2C /* LessonsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -240,6 +258,15 @@
 		1A96F4F51C8F3EF80034AF2C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1A753BC01DB8CE5C00204B31 /* Day.swift */,
+				1A753BC21DB8CF4F00204B31 /* DayComments.swift */,
+				1A753BC41DB8D04800204B31 /* Lesson.swift */,
+				1A753BC61DB8D0B700204B31 /* LessonInfo.swift */,
+				1A753BC81DB8D13200204B31 /* Quarterly.swift */,
+				1A753BCA1DB8D1A400204B31 /* QuarterlyInfo.swift */,
+				1A753BCC1DB8D1DF00204B31 /* QuarterlyLanguage.swift */,
+				1A753BCE1DB8D21500204B31 /* Read.swift */,
+				1A753BD01DB8D25200204B31 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -442,19 +469,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A96F4D71C8F3DC40034AF2C /* LessonsTableViewController.swift in Sources */,
+				1A96F4D71C8F3DC40034AF2C /* LessonsViewController.swift in Sources */,
+				1A753BCD1DB8D1DF00204B31 /* QuarterlyLanguage.swift in Sources */,
 				1A407EB51C8277E100BD2272 /* Color.swift in Sources */,
-				1A96F4D81C8F3DC40034AF2C /* QuarterViewController.swift in Sources */,
+				1A753BC11DB8CE5C00204B31 /* Day.swift in Sources */,
+				1A753BC91DB8D13200204B31 /* Quarterly.swift in Sources */,
+				1A96F4D81C8F3DC40034AF2C /* QuarterliesViewController.swift in Sources */,
 				1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */,
+				1A753BC31DB8CF4F00204B31 /* DayComments.swift in Sources */,
+				1A753BCF1DB8D21500204B31 /* Read.swift in Sources */,
 				1A85DAB01DB0E48C00B815E4 /* Constants.swift in Sources */,
 				1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */,
-				1A85DAA91DB0C5F200B815E4 /* QuarterCellNode.swift in Sources */,
+				1A85DAA91DB0C5F200B815E4 /* QuarterlyCellNode.swift in Sources */,
+				1A753BC51DB8D04800204B31 /* Lesson.swift in Sources */,
 				1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */,
 				1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */,
 				1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */,
 				1A407EB71C82780D00BD2272 /* Image.swift in Sources */,
 				1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */,
-				1AF2AE701DB6161E00553919 /* CurrentQuarterCellNode.swift in Sources */,
+				1A753BC71DB8D0B700204B31 /* LessonInfo.swift in Sources */,
+				1AF2AE701DB6161E00553919 /* FeaturedQuarterlyCellNode.swift in Sources */,
+				1A753BD11DB8D25200204B31 /* User.swift in Sources */,
+				1A753BCB1DB8D1A400204B31 /* QuarterlyInfo.swift in Sources */,
 				1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */,
 				1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */,
 			);

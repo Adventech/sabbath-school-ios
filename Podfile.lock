@@ -59,6 +59,7 @@ PODS:
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - Unbox (2.1)
 
 DEPENDENCIES:
   - AsyncDisplayKit (~> 1.9)
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Hue (from `https://github.com/hyperoslo/Hue.git`, branch `swift-3`)
   - R.swift (~> 3.1)
+  - Unbox
 
 EXTERNAL SOURCES:
   Hue:
@@ -98,7 +100,8 @@ SPEC CHECKSUMS:
   PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  Unbox: 7070b89261391fbd1a9ccb5029079a884b897a62
 
-PODFILE CHECKSUM: 323760875522b721c8481d1e001d810ce20254ac
+PODFILE CHECKSUM: 0852fdb454839f3cd8a8a23c36eee8563bde9367
 
 COCOAPODS: 1.1.0.rc.2

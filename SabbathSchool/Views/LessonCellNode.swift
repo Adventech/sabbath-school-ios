@@ -1,5 +1,5 @@
 //
-//  QuarterCellNode.swift
+//  QuarterlyCellNode.swift
 //  SabbathSchool
 //
 //  Created by Heberti Almeida on 14/10/16.

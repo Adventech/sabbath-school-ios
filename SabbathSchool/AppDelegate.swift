@@ -16,16 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Init Firebase
+        FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
+        
+        // Root View
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
         
         applyCustomAppearance()
         
-        self.window?.rootViewController = ASNavigationController(rootViewController: QuarterViewController())
+        self.window?.rootViewController = ASNavigationController(rootViewController: QuarterliesViewController())
         self.window?.makeKeyAndVisible()
-        
-        // Init Firebase
-        FIRApp.configure()
         
         return true
     }

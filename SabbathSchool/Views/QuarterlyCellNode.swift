@@ -1,5 +1,5 @@
 //
-//  QuarterCellNode.swift
+//  QuarterlyCellNode.swift
 //  SabbathSchool
 //
 //  Created by Heberti Almeida on 14/10/16.
@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class QuarterCellNode: ASCellNode {
+class QuarterlyCellNode: ASCellNode {
     let coverNode = ASNetworkImageNode()
     let titleNode = ASTextNode()
     let subtitleNode = ASTextNode()
