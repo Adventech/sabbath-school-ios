@@ -8,22 +8,40 @@
 
 import UIKit
 import AsyncDisplayKit
+import Firebase
+import Unbox
 
 final class LessonsViewController: BaseTableViewController {
-    private(set) var state: State = .empty
+    var database: FIRDatabaseReference!
+    var quarterlyInfo: QuarterlyInfo!
     
     // MARK: - Init
     
-    override init() {
+    init(quarterlyIndex: String) {
         super.init()
         tableNode.delegate = self
         tableNode.dataSource = self
         
-        self.title = "Lesson".uppercased()
-        
+        title = "Lesson".uppercased()
         backgroundColor = UIColor.baseBlue
         
-        state = State(itemCount: 14, fetchingMore: false)
+        database = FIRDatabase.database().reference()
+        database.keepSynced(true)
+        
+        // Load data
+        let emptyQuarterly = Quarterly(
+            id: "",
+            title: "",
+            description: "",
+            date: "",
+            cover: "",
+            index: "",
+            path: "",
+            fullPath: "",
+            lang: "")
+        quarterlyInfo = QuarterlyInfo(quarterly: emptyQuarterly, lessons: [])
+        
+        loadQuarterlyInfo(quarterlyIndex: quarterlyIndex)
     }
     
     override func viewDidLoad() {
@@ -40,6 +58,27 @@ final class LessonsViewController: BaseTableViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
+    
+    //
+    
+    func loadQuarterlyInfo(quarterlyIndex: String) {
+        database.child("quarterly-info").child(quarterlyIndex).observe(.value, with: { (snapshot) in
+            guard let json = snapshot.value as? [String: AnyObject] else { return }
+            
+            do {
+                let item: QuarterlyInfo = try unbox(dictionary: json)
+                self.quarterlyInfo = item
+                
+                self.tableNode.view.beginUpdates()
+                self.tableNode.view.reloadData()
+                self.tableNode.view.endUpdates()
+            } catch let error {
+                print(error)
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
 }
 
 // MARK: - ASTableDataSource
@@ -47,23 +86,33 @@ final class LessonsViewController: BaseTableViewController {
 extension LessonsViewController: ASTableDataSource {
     
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        let quarterly = quarterlyInfo.quarterly
         
         // this will be executed on a background thread - important to make sure it's thread safe
         let cellNodeBlock: () -> ASCellNode = {
             if indexPath.row == 0 {
-                let node = FeaturedQuarterlyCellNode(title: "The Book of Job", subtitle: "First quarter 2016", cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png"))
+                let node = FeaturedQuarterlyCellNode(
+                    title: quarterly.title,
+                    subtitle: quarterly.date,
+                    cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png")
+                )
                 node.backgroundColor = self.backgroundColor
                 return node
             }
             
-            let node = LessonCellNode(title: "The Prophetic Calling of Jeremiah", subtitle: "Sep 2 - Oct 2", number: "\(indexPath.row)")
+            let lesson = self.quarterlyInfo.lessons[indexPath.row-1]
+            let node = LessonCellNode(
+                title: lesson.title,
+                subtitle: lesson.date,
+                number: "\(indexPath.row)"
+            )
             return node
         }
         return cellNodeBlock
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return state.itemCount
+        return quarterlyInfo.lessons.count+1
     }
 }
 

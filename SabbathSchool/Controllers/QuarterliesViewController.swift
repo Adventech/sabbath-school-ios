@@ -117,7 +117,8 @@ extension QuarterliesViewController: ASTableDataSource {
 extension QuarterliesViewController: ASTableDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let lessonList = LessonsViewController()
+        let quarterly = dataSource[indexPath.row]
+        let lessonList = LessonsViewController(quarterlyIndex: quarterly.index)
         show(lessonList, sender: nil)
     }
     
