@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0B162D1DBA4661009B6284 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0B162C1DBA4661009B6284 /* Date.swift */; };
 		1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */; };
 		1A407EA51C80FB3F00BD2272 /* SabbathSchoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EA41C80FB3F00BD2272 /* SabbathSchoolTests.swift */; };
 		1A407EB51C8277E100BD2272 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB41C8277E100BD2272 /* Color.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A0B162C1DBA4661009B6284 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1A407E8C1C80FB3E00BD2272 /* SabbathSchool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SabbathSchool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A407E9B1C80FB3E00BD2272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				1A407EB41C8277E100BD2272 /* Color.swift */,
 				1A407EB61C82780D00BD2272 /* Image.swift */,
 				1A407EC81C827C7500BD2272 /* Navigation.swift */,
+				1A0B162C1DBA4661009B6284 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				1A753BC11DB8CE5C00204B31 /* Day.swift in Sources */,
 				1A753BC91DB8D13200204B31 /* Quarterly.swift in Sources */,
 				1A96F4D81C8F3DC40034AF2C /* QuarterliesViewController.swift in Sources */,
+				1A0B162D1DBA4661009B6284 /* Date.swift in Sources */,
 				1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */,
 				1A753BC31DB8CF4F00204B31 /* DayComments.swift in Sources */,
 				1A753BCF1DB8D21500204B31 /* Read.swift in Sources */,

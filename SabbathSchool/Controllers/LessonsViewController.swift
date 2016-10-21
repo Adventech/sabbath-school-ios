@@ -29,16 +29,7 @@ final class LessonsViewController: BaseTableViewController {
         database.keepSynced(true)
         
         // Load data
-        let emptyQuarterly = Quarterly(
-            id: "",
-            title: "",
-            description: "",
-            date: "",
-            cover: "",
-            index: "",
-            path: "",
-            fullPath: "",
-            lang: "")
+        let emptyQuarterly = Quarterly(id: "", title: "", description: "", humanDate: "", startDate: Date(), endDate: Date(), cover: URL(string: "a:/a")!, index: "", path: "", fullPath: URL(string: "a:/a")!, lang: "")
         quarterlyInfo = QuarterlyInfo(quarterly: emptyQuarterly, lessons: [])
         
         loadQuarterlyInfo(quarterlyIndex: quarterlyIndex)
@@ -90,21 +81,21 @@ extension LessonsViewController: ASTableDataSource {
         
         // this will be executed on a background thread - important to make sure it's thread safe
         let cellNodeBlock: () -> ASCellNode = {
-            if indexPath.row == 0 {
+            if indexPath.section == 0 {
                 let node = FeaturedQuarterlyCellNode(
                     title: quarterly.title,
-                    subtitle: quarterly.date,
-                    cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png")
+                    subtitle: quarterly.humanDate,
+                    cover: quarterly.cover
                 )
                 node.backgroundColor = self.backgroundColor
                 return node
             }
             
-            let lesson = self.quarterlyInfo.lessons[indexPath.row-1]
+            let lesson = self.quarterlyInfo.lessons[indexPath.row]
             let node = LessonCellNode(
                 title: lesson.title,
-                subtitle: lesson.date,
-                number: "\(indexPath.row)"
+                subtitle: "\(lesson.startDate.stringLessonDate()) - \(lesson.endDate.stringLessonDate())",
+                number: "\(indexPath.row+1)"
             )
             return node
         }
@@ -112,7 +103,11 @@ extension LessonsViewController: ASTableDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return quarterlyInfo.lessons.count+1
+        return section == 0 ? 1 : quarterlyInfo.lessons.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
 }
 

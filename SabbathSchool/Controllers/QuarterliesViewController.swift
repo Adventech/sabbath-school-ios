@@ -88,8 +88,8 @@ extension QuarterliesViewController: ASTableDataSource {
             if indexPath.row == 0 {
                 let node = FeaturedQuarterlyCellNode(
                     title: quarterly.title,
-                    subtitle: quarterly.date,
-                    cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png")
+                    subtitle: quarterly.humanDate,
+                    cover: quarterly.cover
                 )
                 node.backgroundColor = self.backgroundColor
                 return node
@@ -97,9 +97,9 @@ extension QuarterliesViewController: ASTableDataSource {
             
             let node = QuarterlyCellNode(
                 title: quarterly.title,
-                subtitle: quarterly.date,
+                subtitle: quarterly.humanDate,
                 detail: quarterly.description,
-                cover: URL(string: "https://s3-us-west-2.amazonaws.com/com.cryart.sabbathschool/en/2016-04/cover.png")
+                cover: quarterly.cover
             )
             return node
         }

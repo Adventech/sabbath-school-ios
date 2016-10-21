@@ -13,11 +13,13 @@ struct Quarterly {
     let id: String
     let title: String
     let description: String
-    let date: String
-    let cover: String
+    let humanDate: String
+    let startDate: Date
+    let endDate: Date
+    let cover: URL
     let index: String
     let path: String
-    let fullPath: String
+    let fullPath: URL
     let lang: String
 }
 
@@ -26,7 +28,9 @@ extension Quarterly: Unboxable {
         id = try unboxer.unbox(key: "id")
         title = try unboxer.unbox(key: "title")
         description = try unboxer.unbox(key: "description")
-        date = try unboxer.unbox(key: "date")
+        humanDate = try unboxer.unbox(key: "human_date")
+        startDate = try unboxer.unbox(key: "start_date", formatter: Date.serverDateFormatter())
+        endDate = try unboxer.unbox(key: "end_date", formatter: Date.serverDateFormatter())
         cover = try unboxer.unbox(key: "cover")
         index = try unboxer.unbox(key: "index")
         path = try unboxer.unbox(key: "path")
