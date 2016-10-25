@@ -24,13 +24,13 @@ final class QuarterliesViewController: BaseTableViewController {
         
         self.title = "Sabbath School".uppercased()
         
-        backgroundColor = UIColor.init(hex: "#B30558")
-        
         database = FIRDatabase.database().reference()
         database.keepSynced(true)
         
         loadLanguages()
         loadQuarterlies(language: QuarterlyLanguage(code: "en", name: "English"))
+        
+        backgroundColor = UIColor.red
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,9 +67,11 @@ final class QuarterliesViewController: BaseTableViewController {
                 let items: [Quarterly] = try unbox(dictionaries: json)
                 self.dataSource = items
                 
-                self.tableNode.view.beginUpdates()
+                if let color = self.dataSource.first?.colorPrimary {
+                    self.backgroundColor = UIColor.init(hex: color)
+                }
+                
                 self.tableNode.view.reloadData()
-                self.tableNode.view.endUpdates()
             } catch let error {
                 print(error)
             }
@@ -105,7 +107,7 @@ extension QuarterliesViewController: ASTableDataSource {
                     subtitle: quarterly.humanDate,
                     cover: quarterly.cover
                 )
-                node.backgroundColor = self.backgroundColor
+                node.backgroundColor = UIColor.init(hex: quarterly.colorPrimary)
                 return node
             }
             

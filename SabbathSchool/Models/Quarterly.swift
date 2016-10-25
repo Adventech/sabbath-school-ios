@@ -17,6 +17,8 @@ struct Quarterly {
     let startDate: Date
     let endDate: Date
     let cover: URL
+    let colorPrimary: String
+    let colorPrimaryDark: String
     let index: String
     let path: String
     let fullPath: URL
@@ -32,6 +34,8 @@ extension Quarterly: Unboxable {
         startDate = try unboxer.unbox(key: "start_date", formatter: Date.serverDateFormatter())
         endDate = try unboxer.unbox(key: "end_date", formatter: Date.serverDateFormatter())
         cover = try unboxer.unbox(key: "cover")
+        colorPrimary = try unboxer.unbox(key: "color_primary")
+        colorPrimaryDark = try unboxer.unbox(key: "color_primary_dark")
         index = try unboxer.unbox(key: "index")
         path = try unboxer.unbox(key: "path")
         fullPath = try unboxer.unbox(key: "full_path")

@@ -29,7 +29,21 @@ final class LessonsViewController: BaseTableViewController {
         database.keepSynced(true)
         
         // Load data
-        let emptyQuarterly = Quarterly(id: "", title: "", description: "", humanDate: "", startDate: Date(), endDate: Date(), cover: URL(string: "a:/a")!, index: "", path: "", fullPath: URL(string: "a:/a")!, lang: "")
+        let emptyQuarterly = Quarterly(
+            id: "",
+            title: "",
+            description: "",
+            humanDate: "",
+            startDate: Date(),
+            endDate: Date(),
+            cover: URL(string: "a:/a")!,
+            colorPrimary: "",
+            colorPrimaryDark: "",
+            index: "",
+            path: "",
+            fullPath:
+            URL(string: "a:/a")!,
+            lang: "")
         quarterlyInfo = QuarterlyInfo(quarterly: emptyQuarterly, lessons: [])
         
         loadQuarterlyInfo(quarterlyIndex: quarterlyIndex)
@@ -59,10 +73,8 @@ final class LessonsViewController: BaseTableViewController {
             do {
                 let item: QuarterlyInfo = try unbox(dictionary: json)
                 self.quarterlyInfo = item
-                
-                self.tableNode.view.beginUpdates()
+                self.backgroundColor = UIColor.init(hex: self.quarterlyInfo.quarterly.colorPrimary)
                 self.tableNode.view.reloadData()
-                self.tableNode.view.endUpdates()
             } catch let error {
                 print(error)
             }
@@ -87,7 +99,7 @@ extension LessonsViewController: ASTableDataSource {
                     subtitle: quarterly.humanDate,
                     cover: quarterly.cover
                 )
-                node.backgroundColor = self.backgroundColor
+                node.backgroundColor = UIColor.init(hex: quarterly.colorPrimary)
                 return node
             }
             
