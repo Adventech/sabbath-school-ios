@@ -77,4 +77,23 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
+    
+    // MARK: - Login
+    
+    static func signInButtonTitleStyle(string: String, color: UIColor = UIColor.baseGray3) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: R.font.latoBold(size: 16)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func loginLogoTextStyle(string: String) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.baseGreen,
+            NSFontAttributeName: R.font.latoBold(size: 26)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
 }

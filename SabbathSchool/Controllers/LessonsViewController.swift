@@ -23,7 +23,7 @@ final class LessonsViewController: BaseTableViewController {
         tableNode.dataSource = self
         
         title = "Lesson".uppercased()
-        backgroundColor = UIColor.baseBlue
+        backgroundColor = UIColor.baseGreen
         
         database = FIRDatabase.database().reference()
         database.keepSynced(true)

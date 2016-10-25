@@ -37,7 +37,21 @@ final class QuarterliesViewController: BaseTableViewController {
         fatalError("storyboards are incompatible with truth and beauty")
     }
     
-    //
+    override func loadView() {
+        super.loadView()
+        
+        let leftButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(leftAction))
+        navigationItem.leftBarButtonItem = leftButton
+    }
+    
+    // MARK: -
+    
+    func leftAction() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.logoutAnimated()
+    }
+    
+    // MARK: - Model fetch
     
     func loadLanguages() {
         database.child("languages").observeSingleEvent(of: .value, with: { (snapshot) in

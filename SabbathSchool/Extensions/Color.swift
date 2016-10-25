@@ -10,12 +10,8 @@ import UIKit
 import Hue
 
 extension UIColor {
-    class var baseBlue: UIColor {
-        return UIColor.init(hex: "#FB695A")
-    }
-    
-    class var baseAqua: UIColor {
-        return UIColor.init(hex: "#25BBAD")
+    class var baseGreen: UIColor {
+        return UIColor.init(hex: "#16A365")
     }
     
     class var baseSeparator: UIColor {
@@ -44,5 +40,11 @@ extension UIColor {
     
     class var baseSuperLightBlue: UIColor {
         return UIColor.init(hex: "#F3FAF9")
+    }
+    
+    // MARK: - Social
+    
+    class var facebook: UIColor {
+        return UIColor.init(hex: "#3B529A")
     }
 }
