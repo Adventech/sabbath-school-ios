@@ -39,7 +39,7 @@ final class QuarterliesViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let leftButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(leftAction))
+        let leftButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(leftAction))
         navigationItem.leftBarButtonItem = leftButton
     }
     
