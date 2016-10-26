@@ -23,22 +23,21 @@ final class QuarterliesViewController: BaseTableViewController {
         tableNode.dataSource = self
         
         self.title = "Sabbath School".uppercased()
+        backgroundColor = UIColor.baseGreen
         
         database = FIRDatabase.database().reference()
         database.keepSynced(true)
         
         loadLanguages()
         loadQuarterlies(language: QuarterlyLanguage(code: "en", name: "English"))
-        
-        backgroundColor = UIColor.red
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         let leftButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(leftAction))
         navigationItem.leftBarButtonItem = leftButton

@@ -30,8 +30,8 @@ class LoginViewController: ASViewController<ASDisplayNode> {
         fatalError("storyboards are incompatible with truth and beauty")
     }
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         GIDSignIn.sharedInstance().uiDelegate = self
     }
