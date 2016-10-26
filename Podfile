@@ -12,4 +12,5 @@ target 'SabbathSchool' do
     pod 'Firebase/Messaging'
     pod 'Firebase/Auth'
     pod 'GoogleSignIn'
+    pod 'FacebookLogin'
 end

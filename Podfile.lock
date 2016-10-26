@@ -7,6 +7,24 @@ PODS:
   - AsyncDisplayKit/PINRemoteImage (1.9.90):
     - AsyncDisplayKit/Core
     - PINRemoteImage/iOS (>= 3.0.0-beta.3)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FBSDKCoreKit (4.16.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.16.1):
+    - FBSDKCoreKit
   - Firebase/Auth (3.7.1):
     - Firebase/Core
     - FirebaseAuth (= 3.0.5)
@@ -74,6 +92,7 @@ PODS:
 
 DEPENDENCIES:
   - AsyncDisplayKit (~> 1.9)
+  - FacebookLogin
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -96,6 +115,11 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AsyncDisplayKit: 926ded3ca3fb7026565e0e81f0e132fea4d3a6eb
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
+  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
   FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
@@ -119,6 +143,6 @@ SPEC CHECKSUMS:
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   Unbox: 7070b89261391fbd1a9ccb5029079a884b897a62
 
-PODFILE CHECKSUM: 2987eb8bb0426ddf5fd05f4553462827cea6bd63
+PODFILE CHECKSUM: 65cbb9dc8c6a2b6f9c5c3a4ed8f8e0dc5973d3d7
 
 COCOAPODS: 1.1.0.rc.2

@@ -10,6 +10,7 @@ import UIKit
 import AsyncDisplayKit
 import Firebase
 import GoogleSignIn
+import FacebookCore
 
 typealias User = FIRUser
 
@@ -20,12 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Init Firebase
+        // Firebase SDK
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = true
         
+        // Google SDK
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        
+        // Facebook SDK
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Root View
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -45,17 +50,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    //
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        AppEventsLogger.activate(application)
+    }
     
+    // MARK: Open URL
+    
+    @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        let facebookHandle = SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        
+        if facebookHandle {
+            return facebookHandle
+        }
+        
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//        var options: [String: AnyObject] = [
-//            UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication as AnyObject,
-//            UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation as AnyObject
-//        ]
+        let facebookHandle = SDKApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        if facebookHandle {
+            return facebookHandle
+        }
+        
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
@@ -92,6 +110,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                           animations: { self.window?.rootViewController = LoginViewController() },
                           completion: nil)
     }
+    
+    func finishLoginWith(credential: FIRAuthCredential) {
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.loginAnimated()
+        }
+    }
+    
+    func signInAnonymously() {
+        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            self.loginAnimated()
+        })
+    }
 }
 
 // MARK: - GIDSignInDelegate
@@ -106,14 +144,7 @@ extension AppDelegate: GIDSignInDelegate {
         let authentication = user.authentication
         let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,
                                                           accessToken: (authentication?.accessToken)!)
-        
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            self.loginAnimated()
-        }
+        finishLoginWith(credential: credential)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
