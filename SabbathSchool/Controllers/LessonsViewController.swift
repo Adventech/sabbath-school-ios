@@ -67,7 +67,7 @@ final class LessonsViewController: BaseTableViewController {
     //
     
     func loadQuarterlyInfo(quarterlyIndex: String) {
-        database.child("quarterly-info").child(quarterlyIndex).observe(.value, with: { (snapshot) in
+        database.child(Constants.Firebase.quarterlyInfo).child(quarterlyIndex).observe(.value, with: { (snapshot) in
             guard let json = snapshot.value as? [String: AnyObject] else { return }
             
             do {
@@ -94,9 +94,10 @@ extension LessonsViewController: ASTableDataSource {
         // this will be executed on a background thread - important to make sure it's thread safe
         let cellNodeBlock: () -> ASCellNode = {
             if indexPath.section == 0 {
-                let node = FeaturedQuarterlyCellNode(
+                let node = FeaturedLessonCellNode(
                     title: quarterly.title,
                     subtitle: quarterly.humanDate,
+                    detail: quarterly.description,
                     cover: quarterly.cover
                 )
                 node.backgroundColor = UIColor.init(hex: quarterly.colorPrimary)

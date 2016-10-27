@@ -53,13 +53,13 @@ final class QuarterliesViewController: BaseTableViewController {
     // MARK: - Model fetch
     
     func loadLanguages() {
-        database.child("languages").observeSingleEvent(of: .value, with: { (snapshot) in
+        database.child(Constants.Firebase.languages).observeSingleEvent(of: .value, with: { (snapshot) in
             print(snapshot.value)
         })
     }
     
     func loadQuarterlies(language: QuarterlyLanguage) {
-        database.child("quarterlies").child(language.code).observe(.value, with: { (snapshot) in
+        database.child(Constants.Firebase.quarterlies).child(language.code).observe(.value, with: { (snapshot) in
             guard let json = snapshot.value as? [[String: AnyObject]] else { return }
             
             do {
