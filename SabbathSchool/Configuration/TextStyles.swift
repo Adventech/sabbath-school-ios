@@ -38,9 +38,9 @@ struct TextStyles {
         return NSAttributedString(string: string, attributes: attributes)
     }
     
-    static func cellDetailStyle(string: String) -> NSAttributedString {
+    static func cellDetailStyle(string: String, color: UIColor = .baseGray2) -> NSAttributedString {
         let attributes = [
-            NSForegroundColorAttributeName: UIColor.baseGray2,
+            NSForegroundColorAttributeName: color,
             NSFontAttributeName: R.font.latoMedium(size: 14)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
@@ -96,4 +96,13 @@ struct TextStyles {
         return NSAttributedString(string: string, attributes: attributes)
     }
     
+    // MARK: - Profile
+    
+    static func profileUserNameStyle(string: String) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.baseGray4,
+            NSFontAttributeName: R.font.latoBold(size: 20)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
 }

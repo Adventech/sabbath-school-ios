@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //
         if (FIRAuth.auth()?.currentUser) != nil {
-            window?.rootViewController = ASNavigationController(rootViewController: QuarterliesViewController())
+            window?.rootViewController = SwipeViewController()
         } else {
             window?.rootViewController = LoginViewController()
         }
@@ -93,11 +93,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Login Actions
     
     func loginAnimated() {
-        let viewController = ASNavigationController(rootViewController: QuarterliesViewController())
         UIView.transition(with: self.window!,
                           duration: 0.5,
                           options: .transitionFlipFromLeft,
-                          animations: { self.window?.rootViewController = viewController },
+                          animations: { self.window?.rootViewController = SwipeViewController() },
                           completion: nil)
     }
     

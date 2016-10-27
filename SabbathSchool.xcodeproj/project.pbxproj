@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1A0B162D1DBA4661009B6284 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0B162C1DBA4661009B6284 /* Date.swift */; };
+		1A3D635D1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D635C1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift */; };
 		1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */; };
 		1A407EA51C80FB3F00BD2272 /* SabbathSchoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EA41C80FB3F00BD2272 /* SabbathSchoolTests.swift */; };
 		1A407EB51C8277E100BD2272 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB41C8277E100BD2272 /* Color.swift */; };
 		1A407EB71C82780D00BD2272 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB61C82780D00BD2272 /* Image.swift */; };
 		1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EC81C827C7500BD2272 /* Navigation.swift */; };
+		1A4960771DC1EA2A0047C2DF /* EZSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4960761DC1EA2A0047C2DF /* EZSwipeController.swift */; };
+		1A4960791DC208500047C2DF /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4960781DC208500047C2DF /* SwipeViewController.swift */; };
+		1A5E74541DC2322D00E50759 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E74521DC2322D00E50759 /* NotesViewController.swift */; };
+		1A5E74551DC2322D00E50759 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E74531DC2322D00E50759 /* ProfileViewController.swift */; };
+		1A5E74571DC2365500E50759 /* ProfileUserCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E74561DC2365500E50759 /* ProfileUserCellNode.swift */; };
 		1A753BBF1DB8AA8100204B31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A753BBE1DB8AA8100204B31 /* GoogleService-Info.plist */; };
 		1A753BC11DB8CE5C00204B31 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BC01DB8CE5C00204B31 /* Day.swift */; };
 		1A753BC31DB8CF4F00204B31 /* DayComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A753BC21DB8CF4F00204B31 /* DayComments.swift */; };
@@ -60,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		1A0B162C1DBA4661009B6284 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		1A3D635C1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedLessonCellNode.swift; sourceTree = "<group>"; };
 		1A407E8C1C80FB3E00BD2272 /* SabbathSchool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SabbathSchool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A407E9B1C80FB3E00BD2272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +76,11 @@
 		1A407EB41C8277E100BD2272 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1A407EB61C82780D00BD2272 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		1A407EC81C827C7500BD2272 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		1A4960761DC1EA2A0047C2DF /* EZSwipeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZSwipeController.swift; sourceTree = "<group>"; };
+		1A4960781DC208500047C2DF /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
+		1A5E74521DC2322D00E50759 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		1A5E74531DC2322D00E50759 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1A5E74561DC2365500E50759 /* ProfileUserCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUserCellNode.swift; sourceTree = "<group>"; };
 		1A753BBD1DB8A96E00204B31 /* SabbathSchool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SabbathSchool.entitlements; sourceTree = "<group>"; };
 		1A753BBE1DB8AA8100204B31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A753BC01DB8CE5C00204B31 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -188,8 +200,10 @@
 				1A85DAA81DB0C5F200B815E4 /* QuarterlyCellNode.swift */,
 				1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */,
 				1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */,
+				1A3D635C1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift */,
 				1AF0057F1DBF3EC2005C1CCE /* LoginNode.swift */,
 				1AF005811DBF4035005C1CCE /* SignInButtonNode.swift */,
+				1A5E74561DC2365500E50759 /* ProfileUserCellNode.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,7 +232,10 @@
 		1A96F4D41C8F3DC40034AF2C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1A4960781DC208500047C2DF /* SwipeViewController.swift */,
 				1AD37CCF1DBD559E00B14B16 /* LoginViewController.swift */,
+				1A5E74521DC2322D00E50759 /* NotesViewController.swift */,
+				1A5E74531DC2322D00E50759 /* ProfileViewController.swift */,
 				1A96F4D61C8F3DC40034AF2C /* QuarterliesViewController.swift */,
 				1A96F4D51C8F3DC40034AF2C /* LessonsViewController.swift */,
 				1AD37CD11DBD574300B14B16 /* ReaderViewController.swift */,
@@ -260,6 +277,7 @@
 		1A96F4F01C8F3E9C0034AF2C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				1A4960761DC1EA2A0047C2DF /* EZSwipeController.swift */,
 				1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */,
 				1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */,
 				1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */,
@@ -482,10 +500,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A96F4D71C8F3DC40034AF2C /* LessonsViewController.swift in Sources */,
+				1A3D635D1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift in Sources */,
 				1AF005801DBF3EC2005C1CCE /* LoginNode.swift in Sources */,
 				1A753BCD1DB8D1DF00204B31 /* QuarterlyLanguage.swift in Sources */,
 				1A407EB51C8277E100BD2272 /* Color.swift in Sources */,
 				1A753BC11DB8CE5C00204B31 /* Day.swift in Sources */,
+				1A5E74551DC2322D00E50759 /* ProfileViewController.swift in Sources */,
 				1A753BC91DB8D13200204B31 /* Quarterly.swift in Sources */,
 				1AD37CD21DBD574300B14B16 /* ReaderViewController.swift in Sources */,
 				1A96F4D81C8F3DC40034AF2C /* QuarterliesViewController.swift in Sources */,
@@ -493,6 +513,7 @@
 				1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */,
 				1A753BC31DB8CF4F00204B31 /* DayComments.swift in Sources */,
 				1AF005821DBF4035005C1CCE /* SignInButtonNode.swift in Sources */,
+				1A4960791DC208500047C2DF /* SwipeViewController.swift in Sources */,
 				1A753BCF1DB8D21500204B31 /* Read.swift in Sources */,
 				1A85DAB01DB0E48C00B815E4 /* Constants.swift in Sources */,
 				1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */,
@@ -501,13 +522,16 @@
 				1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */,
 				1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */,
 				1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */,
+				1A4960771DC1EA2A0047C2DF /* EZSwipeController.swift in Sources */,
 				1A407EB71C82780D00BD2272 /* Image.swift in Sources */,
 				1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */,
 				1A753BC71DB8D0B700204B31 /* LessonInfo.swift in Sources */,
 				1AF2AE701DB6161E00553919 /* FeaturedQuarterlyCellNode.swift in Sources */,
 				1A753BCB1DB8D1A400204B31 /* QuarterlyInfo.swift in Sources */,
+				1A5E74541DC2322D00E50759 /* NotesViewController.swift in Sources */,
 				1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */,
 				1AD37CD01DBD559E00B14B16 /* LoginViewController.swift in Sources */,
+				1A5E74571DC2365500E50759 /* ProfileUserCellNode.swift in Sources */,
 				1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

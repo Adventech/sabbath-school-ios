@@ -22,7 +22,7 @@ final class QuarterliesViewController: BaseTableViewController {
         tableNode.delegate = self
         tableNode.dataSource = self
         
-        self.title = "Sabbath School".uppercased()
+        title = "Sabbath School".uppercased()
         backgroundColor = UIColor.baseGreen
         
         database = FIRDatabase.database().reference()
@@ -39,15 +39,6 @@ final class QuarterliesViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let leftButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(leftAction))
-        navigationItem.leftBarButtonItem = leftButton
-    }
-    
-    // MARK: -
-    
-    func leftAction() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.logoutAnimated()
     }
     
     // MARK: - Model fetch
