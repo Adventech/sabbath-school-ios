@@ -18,7 +18,7 @@ class SwipeViewController: EZSwipeController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 1)
+        view.backgroundColor = UIColor.black
     }
     
     // MARK: - Status Bar Style

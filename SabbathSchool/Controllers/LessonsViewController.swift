@@ -13,7 +13,7 @@ import Unbox
 
 final class LessonsViewController: BaseTableViewController {
     var database: FIRDatabaseReference!
-    var quarterlyInfo: QuarterlyInfo!
+    var quarterlyInfo: QuarterlyInfo?
     
     // MARK: - Init
     
@@ -29,23 +29,6 @@ final class LessonsViewController: BaseTableViewController {
         database.keepSynced(true)
         
         // Load data
-        let emptyQuarterly = Quarterly(
-            id: "",
-            title: "",
-            description: "",
-            humanDate: "",
-            startDate: Date(),
-            endDate: Date(),
-            cover: URL(string: "a:/a")!,
-            colorPrimary: "",
-            colorPrimaryDark: "",
-            index: "",
-            path: "",
-            fullPath:
-            URL(string: "a:/a")!,
-            lang: "")
-        quarterlyInfo = QuarterlyInfo(quarterly: emptyQuarterly, lessons: [])
-        
         loadQuarterlyInfo(quarterlyIndex: quarterlyIndex)
     }
     
@@ -57,7 +40,12 @@ final class LessonsViewController: BaseTableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        hideNavigationBar()
+        
+        if tableNode.view.contentOffset.y >= 30 {
+            showNavigationBar()
+        } else {
+            hideNavigationBar()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -73,7 +61,7 @@ final class LessonsViewController: BaseTableViewController {
             do {
                 let item: QuarterlyInfo = try unbox(dictionary: json)
                 self.quarterlyInfo = item
-                self.backgroundColor = UIColor.init(hex: self.quarterlyInfo.quarterly.colorPrimary)
+                self.backgroundColor = UIColor.init(hex: item.quarterly.colorPrimary)
                 self.tableNode.view.reloadData()
             } catch let error {
                 print(error)
@@ -89,22 +77,25 @@ final class LessonsViewController: BaseTableViewController {
 extension LessonsViewController: ASTableDataSource {
     
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let quarterly = quarterlyInfo.quarterly
+        guard let quarterlyInfo = quarterlyInfo else {
+            let cellNodeBlock: () -> ASCellNode = { return ASCellNode() }
+            return cellNodeBlock
+        }
         
         // this will be executed on a background thread - important to make sure it's thread safe
         let cellNodeBlock: () -> ASCellNode = {
             if indexPath.section == 0 {
                 let node = FeaturedLessonCellNode(
-                    title: quarterly.title,
-                    subtitle: quarterly.humanDate,
-                    detail: quarterly.description,
-                    cover: quarterly.cover
+                    title: quarterlyInfo.quarterly.title,
+                    subtitle: quarterlyInfo.quarterly.humanDate,
+                    detail: quarterlyInfo.quarterly.description,
+                    cover: quarterlyInfo.quarterly.cover
                 )
-                node.backgroundColor = UIColor.init(hex: quarterly.colorPrimary)
+                node.backgroundColor = UIColor.init(hex: quarterlyInfo.quarterly.colorPrimary)
                 return node
             }
             
-            let lesson = self.quarterlyInfo.lessons[indexPath.row]
+            let lesson = quarterlyInfo.lessons[indexPath.row]
             let node = LessonCellNode(
                 title: lesson.title,
                 subtitle: "\(lesson.startDate.stringLessonDate()) - \(lesson.endDate.stringLessonDate())",
@@ -116,7 +107,8 @@ extension LessonsViewController: ASTableDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : quarterlyInfo.lessons.count
+        guard let lessons = quarterlyInfo?.lessons else { return 0 }
+        return section == 0 ? 1 : lessons.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -129,7 +121,9 @@ extension LessonsViewController: ASTableDataSource {
 extension LessonsViewController: ASTableDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        guard let lesson = quarterlyInfo?.lessons[indexPath.row] else { return }
+        let reader = ReadsViewController(lessonIndex: lesson.index)
+        show(reader, sender: nil)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

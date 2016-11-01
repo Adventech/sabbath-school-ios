@@ -10,13 +10,21 @@ import UIKit
 import Unbox
 
 struct Read {
+    let id: String
+    let date: Date
+    let index: String
+    let title: String
     let content: String
-    let verses: [String]
+    let bible: BibleVerses?
 }
 
 extension Read: Unboxable {
     init(unboxer: Unboxer) throws {
+        id = try unboxer.unbox(key: "id")
+        date = try unboxer.unbox(key: "date", formatter: Date.serverDateFormatter())
+        index = try unboxer.unbox(key: "index")
+        title = try unboxer.unbox(key: "title")
         content = try unboxer.unbox(key: "content")
-        verses = try unboxer.unbox(key: "verses")
+        bible = unboxer.unbox(key: "bible")
     }
 }

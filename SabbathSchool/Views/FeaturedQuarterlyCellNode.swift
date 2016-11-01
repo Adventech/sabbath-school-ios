@@ -60,7 +60,7 @@ class FeaturedQuarterlyCellNode: ASCellNode {
         space.spacingAfter = 100
         
         readButton.spacingBefore = 14
-        readButton.spacingAfter = 28
+        readButton.spacingAfter = 23
         
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,

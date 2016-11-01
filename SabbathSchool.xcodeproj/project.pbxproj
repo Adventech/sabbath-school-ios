@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A07380C1DC34C87005E96CF /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A07380B1DC34C86005E96CF /* BibleVerses.swift */; };
 		1A0B162D1DBA4661009B6284 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0B162C1DBA4661009B6284 /* Date.swift */; };
+		1A3BA4831DC8721200248A9E /* ReadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BA4821DC8721200248A9E /* ReadsViewController.swift */; };
+		1A3BA4851DC8834B00248A9E /* DayCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BA4841DC8834B00248A9E /* DayCellNode.swift */; };
 		1A3D635D1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3D635C1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift */; };
 		1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */; };
 		1A407EA51C80FB3F00BD2272 /* SabbathSchoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EA41C80FB3F00BD2272 /* SabbathSchoolTests.swift */; };
@@ -47,7 +50,8 @@
 		1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */; };
 		1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */; };
 		1AD37CD01DBD559E00B14B16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD37CCF1DBD559E00B14B16 /* LoginViewController.swift */; };
-		1AD37CD21DBD574300B14B16 /* ReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD37CD11DBD574300B14B16 /* ReaderViewController.swift */; };
+		1AE9A8D71DC32F8400276E39 /* ReaderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE9A8D61DC32F8400276E39 /* ReaderNode.swift */; };
+		1AE9A8D91DC332BF00276E39 /* ReaderTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE9A8D81DC332BF00276E39 /* ReaderTheme.swift */; };
 		1AF005801DBF3EC2005C1CCE /* LoginNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF0057F1DBF3EC2005C1CCE /* LoginNode.swift */; };
 		1AF005821DBF4035005C1CCE /* SignInButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF005811DBF4035005C1CCE /* SignInButtonNode.swift */; };
 		1AF2AE701DB6161E00553919 /* FeaturedQuarterlyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */; };
@@ -65,7 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A07380B1DC34C86005E96CF /* BibleVerses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleVerses.swift; sourceTree = "<group>"; };
 		1A0B162C1DBA4661009B6284 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		1A3BA4821DC8721200248A9E /* ReadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadsViewController.swift; sourceTree = "<group>"; };
+		1A3BA4841DC8834B00248A9E /* DayCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCellNode.swift; sourceTree = "<group>"; };
 		1A3D635C1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedLessonCellNode.swift; sourceTree = "<group>"; };
 		1A407E8C1C80FB3E00BD2272 /* SabbathSchool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SabbathSchool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A407E8F1C80FB3E00BD2272 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +117,8 @@
 		1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonCellNode.swift; sourceTree = "<group>"; };
 		1AD37CCF1DBD559E00B14B16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1AD37CD11DBD574300B14B16 /* ReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderViewController.swift; sourceTree = "<group>"; };
+		1AE9A8D61DC32F8400276E39 /* ReaderNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderNode.swift; sourceTree = "<group>"; };
+		1AE9A8D81DC332BF00276E39 /* ReaderTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderTheme.swift; sourceTree = "<group>"; };
 		1AF0057F1DBF3EC2005C1CCE /* LoginNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNode.swift; sourceTree = "<group>"; };
 		1AF005811DBF4035005C1CCE /* SignInButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInButtonNode.swift; sourceTree = "<group>"; };
 		1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedQuarterlyCellNode.swift; sourceTree = "<group>"; };
@@ -139,6 +147,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A3BA4871DC8B88100248A9E /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				1A3BA4841DC8834B00248A9E /* DayCellNode.swift */,
+				1AE9A8D61DC32F8400276E39 /* ReaderNode.swift */,
+			);
+			name = Read;
+			sourceTree = "<group>";
+		};
+		1A3BA4881DC8B89900248A9E /* Quarterly */ = {
+			isa = PBXGroup;
+			children = (
+				1A85DAA81DB0C5F200B815E4 /* QuarterlyCellNode.swift */,
+				1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */,
+			);
+			name = Quarterly;
+			sourceTree = "<group>";
+		};
+		1A3BA4891DC8B8CF00248A9E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1AF0057F1DBF3EC2005C1CCE /* LoginNode.swift */,
+				1AF005811DBF4035005C1CCE /* SignInButtonNode.swift */,
+				1A5E74561DC2365500E50759 /* ProfileUserCellNode.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		1A3BA48A1DC8B8D700248A9E /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */,
+				1A3D635C1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift */,
+			);
+			name = Lesson;
+			sourceTree = "<group>";
+		};
 		1A407E831C80FB3E00BD2272 = {
 			isa = PBXGroup;
 			children = (
@@ -197,13 +242,10 @@
 		1A407ECA1C8281A000BD2272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1A85DAA81DB0C5F200B815E4 /* QuarterlyCellNode.swift */,
-				1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */,
-				1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */,
-				1A3D635C1DC0C3A000DFB391 /* FeaturedLessonCellNode.swift */,
-				1AF0057F1DBF3EC2005C1CCE /* LoginNode.swift */,
-				1AF005811DBF4035005C1CCE /* SignInButtonNode.swift */,
-				1A5E74561DC2365500E50759 /* ProfileUserCellNode.swift */,
+				1A3BA4881DC8B89900248A9E /* Quarterly */,
+				1A3BA48A1DC8B8D700248A9E /* Lesson */,
+				1A3BA4891DC8B8CF00248A9E /* Login */,
+				1A3BA4871DC8B88100248A9E /* Read */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				1A85DAAF1DB0E48C00B815E4 /* Constants.swift */,
+				1AE9A8D81DC332BF00276E39 /* ReaderTheme.swift */,
 				1A85DAAB1DB0C7EE00B815E4 /* TextStyles.swift */,
 			);
 			path = Configuration;
@@ -238,7 +281,7 @@
 				1A5E74531DC2322D00E50759 /* ProfileViewController.swift */,
 				1A96F4D61C8F3DC40034AF2C /* QuarterliesViewController.swift */,
 				1A96F4D51C8F3DC40034AF2C /* LessonsViewController.swift */,
-				1AD37CD11DBD574300B14B16 /* ReaderViewController.swift */,
+				1A3BA4821DC8721200248A9E /* ReadsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -297,6 +340,7 @@
 				1A753BCA1DB8D1A400204B31 /* QuarterlyInfo.swift */,
 				1A753BCC1DB8D1DF00204B31 /* QuarterlyLanguage.swift */,
 				1A753BCE1DB8D21500204B31 /* Read.swift */,
+				1A07380B1DC34C86005E96CF /* BibleVerses.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -505,10 +549,11 @@
 				1A753BCD1DB8D1DF00204B31 /* QuarterlyLanguage.swift in Sources */,
 				1A407EB51C8277E100BD2272 /* Color.swift in Sources */,
 				1A753BC11DB8CE5C00204B31 /* Day.swift in Sources */,
+				1A3BA4851DC8834B00248A9E /* DayCellNode.swift in Sources */,
 				1A5E74551DC2322D00E50759 /* ProfileViewController.swift in Sources */,
 				1A753BC91DB8D13200204B31 /* Quarterly.swift in Sources */,
-				1AD37CD21DBD574300B14B16 /* ReaderViewController.swift in Sources */,
 				1A96F4D81C8F3DC40034AF2C /* QuarterliesViewController.swift in Sources */,
+				1AE9A8D91DC332BF00276E39 /* ReaderTheme.swift in Sources */,
 				1A0B162D1DBA4661009B6284 /* Date.swift in Sources */,
 				1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */,
 				1A753BC31DB8CF4F00204B31 /* DayComments.swift in Sources */,
@@ -518,14 +563,17 @@
 				1A85DAB01DB0E48C00B815E4 /* Constants.swift in Sources */,
 				1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */,
 				1A85DAA91DB0C5F200B815E4 /* QuarterlyCellNode.swift in Sources */,
+				1A3BA4831DC8721200248A9E /* ReadsViewController.swift in Sources */,
 				1A753BC51DB8D04800204B31 /* Lesson.swift in Sources */,
 				1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */,
 				1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */,
+				1AE9A8D71DC32F8400276E39 /* ReaderNode.swift in Sources */,
 				1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */,
 				1A4960771DC1EA2A0047C2DF /* EZSwipeController.swift in Sources */,
 				1A407EB71C82780D00BD2272 /* Image.swift in Sources */,
 				1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */,
 				1A753BC71DB8D0B700204B31 /* LessonInfo.swift in Sources */,
+				1A07380C1DC34C87005E96CF /* BibleVerses.swift in Sources */,
 				1AF2AE701DB6161E00553919 /* FeaturedQuarterlyCellNode.swift in Sources */,
 				1A753BCB1DB8D1A400204B31 /* QuarterlyInfo.swift in Sources */,
 				1A5E74541DC2322D00E50759 /* NotesViewController.swift in Sources */,

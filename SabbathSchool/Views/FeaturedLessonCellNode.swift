@@ -13,7 +13,7 @@ class FeaturedLessonCellNode: ASCellNode {
     let coverNode = ASNetworkImageNode()
     let titleNode = ASTextNode()
     let subtitleNode = ASTextNode()
-    var detailNode: ASTextNode?
+    var detailNode = ASTextNode()
     let readButton = ASButtonNode()
     
     private let whiteSpace = ASDisplayNode()
@@ -21,8 +21,7 @@ class FeaturedLessonCellNode: ASCellNode {
     
     // MARK: - Init
     
-    init(title: String, subtitle: String, detail: String? = nil
-        , cover: URL?) {
+    init(title: String, subtitle: String, detail: String, cover: URL?) {
         super.init()
         
         clipsToBounds = false
@@ -36,13 +35,8 @@ class FeaturedLessonCellNode: ASCellNode {
         // Nodes
         titleNode.attributedText = TextStyles.currentQuarterTitleStyle(string: title)
         subtitleNode.attributedText = TextStyles.currentQuarterSubtitleStyle(string: subtitle)
-        
-        if let detail = detail {
-            detailNode = ASTextNode()
-            detailNode?.attributedText = TextStyles.cellDetailStyle(string: detail, color: .white)
-//            detailNode?.maximumNumberOfLines = 4
-            addSubnode(detailNode!)
-        }
+        detailNode.attributedText = TextStyles.cellDetailStyle(string: detail, color: .white)
+        detailNode.maximumNumberOfLines = 4
         coverNode.url = cover
         
         readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Today's Lesson"), for: ASControlState())
@@ -52,6 +46,7 @@ class FeaturedLessonCellNode: ASCellNode {
         
         addSubnode(titleNode)
         addSubnode(subtitleNode)
+        addSubnode(detailNode)
         addSubnode(coverNode)
         addSubnode(readButton)
     }
@@ -64,25 +59,16 @@ class FeaturedLessonCellNode: ASCellNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.preferredFrameSize = CGSize(width: 125, height: 187)
-        
-        let space = ASLayoutSpec()
-        space.spacingAfter = 100
-        
-        readButton.spacingBefore = 14
-        readButton.spacingAfter = 25
-        
-        var textDetailNodes: [ASLayoutable] = [titleNode, subtitleNode, readButton]
-        
-        if let detail = detailNode {
-            textDetailNodes.insert(detail, at: 2)
-        }
+        readButton.spacingBefore = 10
+        readButton.spacingAfter = 13
+        subtitleNode.spacingAfter = 6
         
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 4,
             justifyContent: .start,
             alignItems: .start,
-            children: textDetailNodes
+            children: [titleNode, subtitleNode, detailNode, readButton]
         )
         vSpec.flexShrink = true
         
@@ -94,20 +80,12 @@ class FeaturedLessonCellNode: ASCellNode {
             children: [coverNode, vSpec]
         )
         
-        let spaceSpec = ASStackLayoutSpec(
-            direction: .vertical,
-            spacing: 0,
-            justifyContent: .start,
-            alignItems: .start,
-            children: [space, hSpec]
-        )
-        
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 20, right: 15), child: spaceSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 100, left: 15, bottom: 20, right: 15), child: hSpec)
     }
     
     override func layout() {
         super.layout()
-        whiteSpace.frame = CGRect(x: 0, y: calculatedSize.height-60, width: calculatedSize.width, height: 60)
+        whiteSpace.frame = CGRect(x: 0, y: calculatedSize.height-50, width: calculatedSize.width, height: 50)
         infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-1000, width: calculatedSize.width, height: 1000)
     }
 }

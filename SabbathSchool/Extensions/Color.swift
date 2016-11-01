@@ -47,4 +47,47 @@ extension UIColor {
     class var facebook: UIColor {
         return UIColor.init(hex: "#3B529A")
     }
+    
+    // MARK: - Tint Color
+    
+    class var tintColor: UIColor {
+        guard let appDelegate = UIApplication.shared.delegate,
+            let window = appDelegate.window,
+            let tintColor = window?.tintColor else { return UIColor.baseGreen }
+        return tintColor
+    }
+    
+    // Reader theme
+    
+    class var readerWhite: UIColor {
+        return UIColor.white
+    }
+    
+    class var readerWhiteFont: UIColor {
+        return UIColor.baseGray4
+    }
+    
+    class var readerDark: UIColor {
+        return UIColor.init(hex: "#292929")
+    }
+    
+    class var readerDarkFont: UIColor {
+        return UIColor.init(hex: "#CCCCCC")
+    }
+    
+    class var readerSepia: UIColor {
+        return UIColor.init(hex: "#FBF0D9")
+    }
+    
+    class var readerSepiaFont: UIColor {
+        return UIColor.init(hex: "#5b4636")
+    }
+    
+    class var readerSeparator: UIColor {
+        return UIColor(white: 0.5, alpha: 0.2)
+    }
+    
+    class var readerNormal: UIColor {
+        return UIColor(white: 0.5, alpha: 0.7)
+    }
 }
