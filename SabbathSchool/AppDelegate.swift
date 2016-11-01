@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Root View
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
+        window?.layer.cornerRadius = 4
+        window?.clipsToBounds = true
         
         applyCustomAppearance()
         
