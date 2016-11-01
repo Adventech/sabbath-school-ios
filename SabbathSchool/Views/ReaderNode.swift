@@ -23,6 +23,7 @@ class ReaderNode: ASDisplayNode {
     let webNode = ASDisplayNode { UIWebView() }
     var webView: UIWebView { return webNode.view as! UIWebView }
     var headerHeight: CGFloat = 0
+    fileprivate var cover: URL?
     fileprivate var animatingHeaderHeight: CGFloat = 0
     fileprivate var scrollPercent: CGFloat = 0
     fileprivate var readingProgressHeight: CGFloat = 3
@@ -32,10 +33,18 @@ class ReaderNode: ASDisplayNode {
     init(withCover cover: URL?) {
         super.init()
 //        self.backgroundColor = ReaderTheme.current.colorForTheme()
+        self.cover = cover
         
-        
+        // Cover
+        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+        coverNode.delegate = self
+        coverNode.url = cover
+        coverNode.contentMode = .scaleToFill // Fix size bug
         addSubnode(coverNode)
         
+        if cover == nil {
+            coverNode.alpha = 0
+        }
         
         addSubnode(webNode)
         
@@ -46,14 +55,6 @@ class ReaderNode: ASDisplayNode {
     }
     
     override func didLoad() {
-        // Cover
-        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-        coverNode.delegate = self
-//        coverNode.url = cover
-        coverNode.contentMode = .scaleToFill // Fix size bug
-        //            coverNode.addBorder()
-        coverNode.placeholderEnabled = true
-        coverNode.placeholderFadeDuration = 0.6
         
         // WebView
         webView.backgroundColor = UIColor.clear
@@ -66,9 +67,7 @@ class ReaderNode: ASDisplayNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         var imageRatio: CGFloat {
-            if isPad {
-                return 0.4
-            }
+            guard isPhone else { return 0.4 }
             return coverNode.image != nil ? (coverNode.image?.size.height)! / (coverNode.image?.size.width)! : 0.5
         }
         
@@ -168,6 +167,7 @@ extension ReaderNode: UIWebViewDelegate {
     func webViewDidFinishLoad(_ webView: UIWebView) {
         UIView.animate(withDuration: 0.3) {
             webView.alpha = 1
+            self.coverNode.alpha = 1
         }
         
         // Delegate

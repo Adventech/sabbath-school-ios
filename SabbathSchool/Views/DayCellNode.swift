@@ -31,15 +31,20 @@ class DayCellNode: ASCellNode {
     override func didLoad() {
         super.didLoad()
         
-        readerNode.webView.loadHTMLString(read.content, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+        let indexPath = Bundle.main.path(forResource: "index", ofType: "html")
+        var index = try? String(contentsOfFile: indexPath!, encoding: String.Encoding.utf8)
+        index = index?.replacingOccurrences(of: "{{content}}", with: read.content)
+        index = index?.replacingOccurrences(of: "css/", with: "") // Fix the css path
+        index = index?.replacingOccurrences(of: "js/", with: "") // Fix the js path
+        
+        readerNode.webView.loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+        readerNode.webView.alpha = 0
     }
     
     // MARK: - Layout
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        print("size \(constrainedSize.max)")
         readerNode.preferredFrameSize = constrainedSize.max
-        
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: readerNode)
     }
 }
