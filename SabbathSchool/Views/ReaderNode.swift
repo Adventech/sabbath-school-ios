@@ -97,7 +97,7 @@ class ReaderNode: ASDisplayNode {
     func updateInsets() {
         headerHeight = coverNode.calculatedSize.height
         let topInset = headerHeight
-        webView.scrollView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 44, right: 0)
+        webView.scrollView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
     }
     
     // MARK: Scroll to Position
