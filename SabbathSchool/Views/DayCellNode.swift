@@ -16,13 +16,13 @@ class DayCellNode: ASCellNode {
     
     // MARK: - Init
     
-    init(read: Read) {
+    init(read: Read, cover: URL?) {
         super.init()
         
         self.read = read
         self.backgroundColor = UIColor.white
         
-        readerNode = ReaderNode(withCover: nil)
+        readerNode = ReaderNode(withCover: cover)
         readerNode.delegate = self
         
         usesImplicitHierarchyManagement = true

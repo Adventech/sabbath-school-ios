@@ -23,7 +23,7 @@ final class QuarterliesViewController: BaseTableViewController {
         tableNode.dataSource = self
         
         title = "Sabbath School".uppercased()
-        backgroundColor = UIColor.baseGreen
+        backgroundColor = UIColor.tintColor
         
         database = FIRDatabase.database().reference()
         database.keepSynced(true)
@@ -57,8 +57,10 @@ final class QuarterliesViewController: BaseTableViewController {
                 let items: [Quarterly] = try unbox(dictionaries: json)
                 self.dataSource = items
                 
-                if let color = self.dataSource.first?.colorPrimary {
-                    self.backgroundColor = UIColor.init(hex: color)
+                if let colorHex = self.dataSource.first?.colorPrimary {
+                    let color = UIColor.init(hex: colorHex)
+                    self.view.window?.tintColor = color
+                    self.backgroundColor = color
                 }
                 
                 self.tableNode.view.reloadData()

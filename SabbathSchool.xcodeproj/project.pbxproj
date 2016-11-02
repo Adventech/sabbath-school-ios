@@ -104,8 +104,6 @@
 		1A96F4ED1C8F3E3D0034AF2C /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E41C8F3E3D0034AF2C /* Lato-Medium.ttf */; };
 		1A96F4EE1C8F3E3D0034AF2C /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E51C8F3E3D0034AF2C /* Lato-MediumItalic.ttf */; };
 		1A96F4EF1C8F3E3D0034AF2C /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A96F4E61C8F3E3D0034AF2C /* Lato-Regular.ttf */; };
-		1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */; };
-		1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */; };
 		1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */; };
 		1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */; };
 		1AD37CD01DBD559E00B14B16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD37CCF1DBD559E00B14B16 /* LoginViewController.swift */; };
@@ -230,8 +228,6 @@
 		1A96F4E41C8F3E3D0034AF2C /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		1A96F4E51C8F3E3D0034AF2C /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
 		1A96F4E61C8F3E3D0034AF2C /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
-		1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyHeader.swift; sourceTree = "<group>"; };
-		1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchyTableViewController.swift; sourceTree = "<group>"; };
 		1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		1AC27DA91DB7A47700130AD3 /* LessonCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonCellNode.swift; sourceTree = "<group>"; };
 		1AD37CCF1DBD559E00B14B16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -554,8 +550,6 @@
 			isa = PBXGroup;
 			children = (
 				1A4960761DC1EA2A0047C2DF /* EZSwipeController.swift */,
-				1A96F4F11C8F3E9C0034AF2C /* StretchyHeader.swift */,
-				1A96F4F21C8F3E9C0034AF2C /* StretchyTableViewController.swift */,
 				1AC27DA71DB7761000130AD3 /* BaseTableViewController.swift */,
 			);
 			name = Library;
@@ -847,7 +841,6 @@
 				1A96F4D81C8F3DC40034AF2C /* QuarterliesViewController.swift in Sources */,
 				1AE9A8D91DC332BF00276E39 /* ReaderTheme.swift in Sources */,
 				1A0B162D1DBA4661009B6284 /* Date.swift in Sources */,
-				1A96F4F41C8F3E9C0034AF2C /* StretchyTableViewController.swift in Sources */,
 				1A753BC31DB8CF4F00204B31 /* DayComments.swift in Sources */,
 				1AF005821DBF4035005C1CCE /* SignInButtonNode.swift in Sources */,
 				1A4960791DC208500047C2DF /* SwipeViewController.swift in Sources */,
@@ -872,7 +865,6 @@
 				1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */,
 				1AD37CD01DBD559E00B14B16 /* LoginViewController.swift in Sources */,
 				1A5E74571DC2365500E50759 /* ProfileUserCellNode.swift in Sources */,
-				1A96F4F31C8F3E9C0034AF2C /* StretchyHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

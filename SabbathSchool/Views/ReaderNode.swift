@@ -22,7 +22,7 @@ class ReaderNode: ASDisplayNode {
     let readingProgressNode = ASDisplayNode()
     let webNode = ASDisplayNode { UIWebView() }
     var webView: UIWebView { return webNode.view as! UIWebView }
-    var headerHeight: CGFloat = 0
+    var headerHeight: CGFloat = 64
     fileprivate var cover: URL?
     fileprivate var animatingHeaderHeight: CGFloat = 0
     fileprivate var scrollPercent: CGFloat = 0
@@ -61,6 +61,7 @@ class ReaderNode: ASDisplayNode {
         webView.delegate = self
         webView.scrollView.delegate = self
         webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
+        webView.scrollView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
     }
     
     // MARK: Layout
@@ -128,6 +129,10 @@ extension ReaderNode: ASNetworkImageNodeDelegate {
             setNeedsLayout()
         }
         
+        UIView.animate(withDuration: 0.3) {
+            imageNode.alpha = 1
+        }
+        
         updateInsets()
     }
 }
@@ -167,7 +172,6 @@ extension ReaderNode: UIWebViewDelegate {
     func webViewDidFinishLoad(_ webView: UIWebView) {
         UIView.animate(withDuration: 0.3) {
             webView.alpha = 1
-            self.coverNode.alpha = 1
         }
         
         // Delegate

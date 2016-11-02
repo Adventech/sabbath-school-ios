@@ -17,6 +17,7 @@ class ReadsViewController: ASViewController<ASDisplayNode> {
     var database: FIRDatabaseReference!
     var lessonInfo: LessonInfo?
     var reads = [Read]()
+    fileprivate var isAnimating = false
     
     // MARK: - Init
     
@@ -59,6 +60,44 @@ class ReadsViewController: ASViewController<ASDisplayNode> {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        showNavigationBar()
+    }
+    
+    // MARK: - Navigation Bar Animation
+    
+    func showNavigationBar() {
+        if (isAnimating) { return }
+        
+        let navBar = self.navigationController?.navigationBar
+        if (navBar?.layer.animation(forKey: kCATransition) == nil) {
+            let animation = CATransition()
+            animation.duration = 0.2
+            animation.delegate = self
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.type = kCATransitionFade
+            navBar?.layer.add(animation, forKey: kCATransition)
+        }
+        self.setTranslucentNavigation(true, color: UIColor.tintColor, tintColor: UIColor.white, titleColor: UIColor.white, andFont: R.font.latoMedium(size: 15)!)
+    }
+    
+    func hideNavigationBar() {
+        if (isAnimating) { return }
+        
+        let navBar = self.navigationController?.navigationBar
+        if (navBar?.layer.animation(forKey: kCATransition) == nil) {
+            let animation = CATransition()
+            animation.duration = 0.1
+            animation.delegate = self
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.type = kCATransitionFade
+            navBar?.layer.add(animation, forKey: kCATransition)
+        }
+        self.setTransparentNavigation()
     }
     
     // MARK: Load Data
@@ -113,7 +152,7 @@ extension ReadsViewController: ASCollectionDataSource {
         
         // this will be executed on a background thread - important to make sure it's thread safe
         let cellNodeBlock: () -> ASCellNode = {
-            let node = DayCellNode(read: read)
+            let node = DayCellNode(read: read, cover: self.lessonInfo?.lesson.cover)
             return node
         }
         
@@ -133,5 +172,18 @@ extension ReadsViewController: ASCollectionDelegate {
     @objc(collectionView:constrainedSizeForNodeAtIndexPath:)
     func collectionView(_ collectionView: ASCollectionView, constrainedSizeForNodeAt indexPath: IndexPath) -> ASSizeRange {
         return ASSizeRangeMakeExactSize(node.calculatedSize)
+    }
+}
+
+// MARK: - Animation delegate
+
+extension ReadsViewController: CAAnimationDelegate {
+    
+    func animationDidStart(_ anim: CAAnimation) {
+        isAnimating = true
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        isAnimating = false
     }
 }
