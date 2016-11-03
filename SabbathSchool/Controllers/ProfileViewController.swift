@@ -34,7 +34,7 @@ class ProfileViewController: ASViewController<ASDisplayNode> {
         navigationItem.leftBarButtonItem = leftButton
     }
     
-    // MARK: -
+    // MARK: - NavBar Actions
     
     func leftAction() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

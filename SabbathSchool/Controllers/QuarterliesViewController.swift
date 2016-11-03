@@ -39,6 +39,8 @@ final class QuarterliesViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let rightButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(rightAction(sender:)))
+        navigationItem.rightBarButtonItem = rightButton
     }
     
     // MARK: - Model fetch
@@ -74,12 +76,8 @@ final class QuarterliesViewController: BaseTableViewController {
     
     // MARK: - NavBar Actions
     
-    func didTapOnSettings(_ sender: AnyObject) {
-        
-    }
-    
-    func didTapOnFilter(_ sender: AnyObject) {
-        
+    func rightAction(sender: UIBarButtonItem) {
+        print("Right Action")
     }
 }
 
