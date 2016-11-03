@@ -16,12 +16,16 @@ extension Date {
     public static func serverDateFormatter() -> DateFormatter {
         let format = DateFormatter()
         format.dateFormat = "dd/MM/yyyy"
+        format.locale = Locale.ReferenceType.current
+        format.calendar = Calendar.ReferenceType.current
         return format
     }
     
     func stringLessonDate() -> String {
         let format = DateFormatter()
         format.dateFormat = "MMM dd"
+        format.locale = Locale.ReferenceType.current
+        format.calendar = Calendar.ReferenceType.current
         return format.string(from: self)
     }
 }
