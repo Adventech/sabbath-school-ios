@@ -40,6 +40,9 @@ class ReaderNode: ASDisplayNode {
         coverNode.delegate = self
         coverNode.url = cover
         coverNode.contentMode = .scaleToFill // Fix size bug
+        coverNode.imageModificationBlock = { image in
+            image.tint(tintColor: .tintColor)
+        }
         addSubnode(coverNode)
         
         if cover == nil {
