@@ -12,9 +12,11 @@ import Firebase
 import GoogleSignIn
 import FacebookCore
 import FacebookLogin
+import Unbox
 
 class LoginViewController: ASViewController<ASDisplayNode> {
     var loginNode: LoginNode { return node as! LoginNode}
+    var database: FIRDatabaseReference!
     
     // MARK: - Init
     
@@ -24,6 +26,9 @@ class LoginViewController: ASViewController<ASDisplayNode> {
         loginNode.facebookButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         loginNode.googleButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         loginNode.anonymousButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
+        
+        database = FIRDatabase.database().reference()
+        database.keepSynced(true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +39,30 @@ class LoginViewController: ASViewController<ASDisplayNode> {
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance().uiDelegate = self
+        
+        setInitialLanguage()
+    }
+    
+    // MARK: - Set initial quarterly language
+    
+    func setInitialLanguage() {
+        database.child(Constants.Firebase.languages).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let json = snapshot.value as? [[String: AnyObject]],
+                let locale = Locale.current.languageCode,
+                (UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) == nil) else { return }
+            
+            do {
+                let items: [QuarterlyLanguage] = try unbox(dictionaries: json)
+                let filtered = items.filter({ $0.code == locale })
+                if let language = filtered.first {
+                    UserDefaults.standard.set(language.code, forKey: Constants.DefaultKey.quarterlyLanguage)
+                } else {
+                    UserDefaults.standard.set("en", forKey: Constants.DefaultKey.quarterlyLanguage)
+                }
+            } catch let error {
+                print(error)
+            }
+        })
     }
     
     // MARK: - Actions

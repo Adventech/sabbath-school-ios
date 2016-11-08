@@ -26,6 +26,7 @@ class QuarterlyCellNode: ASCellNode {
         detailNode.attributedText = TextStyles.cellDetailStyle(string: detail)
         detailNode.maximumNumberOfLines = 2
         coverNode.url = cover
+        coverNode.backgroundColor = .baseGray1
         
         usesImplicitHierarchyManagement = true
     }

@@ -16,9 +16,9 @@ struct Constants {
     }
     
     struct DefaultKey {
-        static let interfaceLanguage = "com.postbeyond.InterfaceLanguage"
-        static let firstRun = "com.postbeyond.FirstRun"
-        static let environment = "com.postbeyond.Environment"
+        static let interfaceLanguage = "io.adventech.interfaceLanguage"
+        static let quarterlyLanguage = "io.adventech.interfaceLanguage"
+        static let firstRun = "io.adventech.firstRun"
     }
     
     struct Path {
@@ -40,6 +40,5 @@ struct Constants {
         static let highlights = "highlights"
         static let comments = "comments"
         static let suggestions = "suggestions"
-        
     }
 }

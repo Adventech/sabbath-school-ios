@@ -17,6 +17,6 @@ struct QuarterlyLanguage {
 extension QuarterlyLanguage: Unboxable {
     init(unboxer: Unboxer) throws {
         code = try unboxer.unbox(key: "code")
-        name = try unboxer.unbox(key: "language")
+        name = try unboxer.unbox(key: "name")
     }
 }

@@ -36,7 +36,7 @@ class ReaderNode: ASDisplayNode {
         self.cover = cover
         
         // Cover
-        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+        coverNode.backgroundColor = .baseGray1
         coverNode.delegate = self
         coverNode.url = cover
         coverNode.contentMode = .scaleToFill // Fix size bug

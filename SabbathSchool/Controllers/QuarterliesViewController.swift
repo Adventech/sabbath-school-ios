@@ -14,6 +14,8 @@ import Unbox
 final class QuarterliesViewController: BaseTableViewController {
     var database: FIRDatabaseReference!
     var dataSource = [Quarterly]()
+    var languageList = [QuarterlyLanguage]()
+    let animator = PopupTransitionAnimator()
     
     // MARK: - Init
     
@@ -28,8 +30,10 @@ final class QuarterliesViewController: BaseTableViewController {
         database = FIRDatabase.database().reference()
         database.keepSynced(true)
         
+        let currentLanguage = languageFor(code: UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? String)
+        
         loadLanguages()
-        loadQuarterlies(language: QuarterlyLanguage(code: "en", name: "English"))
+        loadQuarterlies(language: currentLanguage)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,11 +47,27 @@ final class QuarterliesViewController: BaseTableViewController {
         navigationItem.rightBarButtonItem = rightButton
     }
     
+    // MARK: - Language for code
+    
+    func languageFor(code: String?) -> QuarterlyLanguage {
+        guard let current = code, let language = languageList.filter({$0.code == current}).first else {
+            return QuarterlyLanguage(code: "en", name: "English")
+        }
+        return language
+    }
+    
     // MARK: - Model fetch
     
     func loadLanguages() {
         database.child(Constants.Firebase.languages).observeSingleEvent(of: .value, with: { (snapshot) in
-            print(snapshot.value)
+            guard let json = snapshot.value as? [[String: AnyObject]] else { return }
+            
+            do {
+                let items: [QuarterlyLanguage] = try unbox(dictionaries: json)
+                self.languageList = items
+            } catch let error {
+                print(error)
+            }
         })
     }
     
@@ -63,6 +83,9 @@ final class QuarterliesViewController: BaseTableViewController {
                     let color = UIColor.init(hex: colorHex)
                     self.view.window?.tintColor = color
                     self.backgroundColor = color
+                } else {
+                    self.view.window?.tintColor = .baseGreen
+                    self.backgroundColor = .baseGreen
                 }
                 
                 self.tableNode.view.reloadData()
@@ -77,7 +100,19 @@ final class QuarterliesViewController: BaseTableViewController {
     // MARK: - NavBar Actions
     
     func rightAction(sender: UIBarButtonItem) {
-        print("Right Action")
+        let buttonView = sender.value(forKey: "view") as! UIView
+        animator.style = .arrow
+        animator.fromView = buttonView
+        animator.arrowColor = .tintColor
+        
+        let languages = LanguagesViewController(languages: languageList)
+        languages.delegate = self
+        
+        let navigation = ASNavigationController(rootViewController: languages)
+        navigation.transitioningDelegate = animator
+        navigation.modalPresentationStyle = .custom
+        navigation.preferredContentSize = CGSize(width: node.frame.width, height: 400)
+        present(navigation, animated: true, completion: nil)
     }
 }
 
@@ -97,7 +132,11 @@ extension QuarterliesViewController: ASTableDataSource {
                     subtitle: quarterly.humanDate,
                     cover: quarterly.cover
                 )
-                node.backgroundColor = UIColor.init(hex: quarterly.colorPrimary)
+                if let color = quarterly.colorPrimary {
+                    node.backgroundColor = UIColor.init(hex: color)
+                } else {
+                    node.backgroundColor = UIColor.baseGreen
+                }
                 return node
             }
             
@@ -134,5 +173,13 @@ extension QuarterliesViewController: ASTableDelegate {
         } else {
             hideNavigationBar()
         }
+    }
+}
+
+// MARK: - LanguagesViewControllerDelegate
+
+extension QuarterliesViewController: LanguagesViewControllerDelegate {
+    func languagesDidSelect(language: QuarterlyLanguage) {
+        loadQuarterlies(language: language)
     }
 }

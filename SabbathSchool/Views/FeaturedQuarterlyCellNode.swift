@@ -35,6 +35,7 @@ class FeaturedQuarterlyCellNode: ASCellNode {
         titleNode.attributedText = TextStyles.currentQuarterTitleStyle(string: title)
         subtitleNode.attributedText = TextStyles.currentQuarterSubtitleStyle(string: subtitle)
         coverNode.url = cover
+        coverNode.backgroundColor = .baseGray1
         
         readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Today's Lesson"), for: ASControlState())
         readButton.backgroundColor = UIColor.baseGray4

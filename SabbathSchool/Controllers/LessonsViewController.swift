@@ -61,8 +61,14 @@ final class LessonsViewController: BaseTableViewController {
             do {
                 let item: QuarterlyInfo = try unbox(dictionary: json)
                 self.quarterlyInfo = item
-                self.backgroundColor = UIColor.init(hex: item.quarterly.colorPrimary)
-                self.tableNode.view.reloadData()
+                
+                if let color = item.quarterly.colorPrimary {
+                    self.backgroundColor = UIColor.init(hex: color)
+                } else {
+                    self.backgroundColor = .baseGreen
+                }
+                
+                self.tableNode.view.reloadSections(IndexSet(arrayLiteral: 0, 1), with: .fade)
             } catch let error {
                 print(error)
             }
@@ -91,7 +97,13 @@ extension LessonsViewController: ASTableDataSource {
                     detail: quarterlyInfo.quarterly.description,
                     cover: quarterlyInfo.quarterly.cover
                 )
-                node.backgroundColor = UIColor.init(hex: quarterlyInfo.quarterly.colorPrimary)
+                
+                if let color = quarterlyInfo.quarterly.colorPrimary {
+                    node.backgroundColor = UIColor.init(hex: color)
+                } else {
+                    node.backgroundColor = .baseGreen
+                }
+                
                 return node
             }
             

@@ -65,7 +65,7 @@ class BaseTableViewController: ASViewController<ASDisplayNode> {
             animation.type = kCATransitionFade
             navBar?.layer.add(animation, forKey: kCATransition)
         }
-        self.setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.white, titleColor: UIColor.white, andFont: R.font.latoMedium(size: 15)!)
+        setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.white, titleColor: UIColor.white, andFont: R.font.latoMedium(size: 15)!)
     }
     
     func hideNavigationBar() {
@@ -80,7 +80,7 @@ class BaseTableViewController: ASViewController<ASDisplayNode> {
             animation.type = kCATransitionFade
             navBar?.layer.add(animation, forKey: kCATransition)
         }
-        self.setTransparentNavigation()
+        setTransparentNavigation()
     }
     
     // MARK: - Status Bar Style

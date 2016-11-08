@@ -38,6 +38,7 @@ class FeaturedLessonCellNode: ASCellNode {
         detailNode.attributedText = TextStyles.cellDetailStyle(string: detail, color: .white)
         detailNode.maximumNumberOfLines = 4
         coverNode.url = cover
+        coverNode.backgroundColor = .baseGray1
         
         readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Today's Lesson"), for: ASControlState())
         readButton.backgroundColor = UIColor.baseGray4
