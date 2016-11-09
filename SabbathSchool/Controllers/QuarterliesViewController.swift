@@ -30,10 +30,8 @@ final class QuarterliesViewController: BaseTableViewController {
         database = FIRDatabase.database().reference()
         database.keepSynced(true)
         
-        let currentLanguage = languageFor(code: UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? String)
-        
         loadLanguages()
-        loadQuarterlies(language: currentLanguage)
+        loadQuarterlies(language: currentLanguage())
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,10 +47,12 @@ final class QuarterliesViewController: BaseTableViewController {
     
     // MARK: - Language for code
     
-    func languageFor(code: String?) -> QuarterlyLanguage {
-        guard let current = code, let language = languageList.filter({$0.code == current}).first else {
-            return QuarterlyLanguage(code: "en", name: "English")
+    func currentLanguage() -> QuarterlyLanguage {
+        guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
+           return QuarterlyLanguage(code: "en", name: "English")
         }
+        
+        let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
         return language
     }
     

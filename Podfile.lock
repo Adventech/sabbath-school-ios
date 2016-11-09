@@ -89,6 +89,7 @@ PODS:
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
   - Unbox (2.1)
+  - Wrap (2.0)
 
 DEPENDENCIES:
   - AsyncDisplayKit (~> 1.9)
@@ -102,6 +103,7 @@ DEPENDENCIES:
   - pop
   - R.swift (~> 3.1)
   - Unbox
+  - Wrap
 
 EXTERNAL SOURCES:
   Hue:
@@ -142,7 +144,8 @@ SPEC CHECKSUMS:
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   Unbox: 7070b89261391fbd1a9ccb5029079a884b897a62
+  Wrap: e9efa35ea41984a77bf2de4c9492c53ddc443085
 
-PODFILE CHECKSUM: 65cbb9dc8c6a2b6f9c5c3a4ed8f8e0dc5973d3d7
+PODFILE CHECKSUM: 6f4b07936616d0468e5c97f6ef7ce91f156144aa
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.1

@@ -7,6 +7,7 @@ target 'SabbathSchool' do
     pod 'AsyncDisplayKit', '~> 1.9'
     pod 'pop'
     pod 'Unbox'
+    pod 'Wrap'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Messaging'

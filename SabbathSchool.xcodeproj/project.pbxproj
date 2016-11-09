@@ -111,6 +111,7 @@
 		1ADD1ED41DD1B67200E68FF8 /* PopupTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD1ED31DD1B67200E68FF8 /* PopupTransitionAnimator.swift */; };
 		1AE9A8D71DC32F8400276E39 /* ReaderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE9A8D61DC32F8400276E39 /* ReaderNode.swift */; };
 		1AE9A8D91DC332BF00276E39 /* ReaderTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE9A8D81DC332BF00276E39 /* ReaderTheme.swift */; };
+		1AEA6A471DD303F800DCDDB8 /* LanguageCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEA6A461DD303F800DCDDB8 /* LanguageCellNode.swift */; };
 		1AF005801DBF3EC2005C1CCE /* LoginNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF0057F1DBF3EC2005C1CCE /* LoginNode.swift */; };
 		1AF005821DBF4035005C1CCE /* SignInButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF005811DBF4035005C1CCE /* SignInButtonNode.swift */; };
 		1AF2AE701DB6161E00553919 /* FeaturedQuarterlyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */; };
@@ -237,6 +238,7 @@
 		1ADD1ED31DD1B67200E68FF8 /* PopupTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupTransitionAnimator.swift; sourceTree = "<group>"; };
 		1AE9A8D61DC32F8400276E39 /* ReaderNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderNode.swift; sourceTree = "<group>"; };
 		1AE9A8D81DC332BF00276E39 /* ReaderTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderTheme.swift; sourceTree = "<group>"; };
+		1AEA6A461DD303F800DCDDB8 /* LanguageCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCellNode.swift; sourceTree = "<group>"; };
 		1AF0057F1DBF3EC2005C1CCE /* LoginNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNode.swift; sourceTree = "<group>"; };
 		1AF005811DBF4035005C1CCE /* SignInButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInButtonNode.swift; sourceTree = "<group>"; };
 		1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedQuarterlyCellNode.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				1A85DAA81DB0C5F200B815E4 /* QuarterlyCellNode.swift */,
 				1AF2AE6F1DB6161E00553919 /* FeaturedQuarterlyCellNode.swift */,
+				1AEA6A461DD303F800DCDDB8 /* LanguageCellNode.swift */,
 			);
 			name = Quarterly;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				1AF2AE701DB6161E00553919 /* FeaturedQuarterlyCellNode.swift in Sources */,
 				1A753BCB1DB8D1A400204B31 /* QuarterlyInfo.swift in Sources */,
 				1A5E74541DC2322D00E50759 /* NotesViewController.swift in Sources */,
+				1AEA6A471DD303F800DCDDB8 /* LanguageCellNode.swift in Sources */,
 				1AC27DA81DB7761000130AD3 /* BaseTableViewController.swift in Sources */,
 				1AD37CD01DBD559E00B14B16 /* LoginViewController.swift in Sources */,
 				1A5E74571DC2365500E50759 /* ProfileUserCellNode.swift in Sources */,

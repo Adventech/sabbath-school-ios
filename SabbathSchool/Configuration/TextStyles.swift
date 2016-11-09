@@ -108,11 +108,19 @@ struct TextStyles {
     
     // MARK: - Languages
     
-    static func languageTitleStyle() -> [String: Any] {
+    static func languageTitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray4,
-            NSFontAttributeName: R.font.latoRegular(size: 18)!
+            NSFontAttributeName: R.font.latoRegular(size: 17)!
         ]
-        return attributes
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func languageSubtitleStyle(string: String) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.baseGray2,
+            NSFontAttributeName: R.font.latoRegular(size: 13)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
     }
 }

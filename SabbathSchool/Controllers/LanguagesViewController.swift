@@ -8,6 +8,8 @@
 
 import UIKit
 import AsyncDisplayKit
+import Unbox
+import Wrap
 
 protocol LanguagesViewControllerDelegate: class {
     func languagesDidSelect(language: QuarterlyLanguage)
@@ -17,6 +19,7 @@ class LanguagesViewController: ASViewController<ASDisplayNode> {
     var delegate: LanguagesViewControllerDelegate?
     var tableNode: ASTableNode { return node as! ASTableNode}
     var dataSource = [QuarterlyLanguage]()
+    let selectedLanguage = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any]
     
     // MARK: - Init
     
@@ -48,13 +51,22 @@ extension LanguagesViewController: ASTableDataSource {
     
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let language = dataSource[indexPath.row]
+        let locale = Locale(identifier: language.code)
+        let currentLocale = Locale.current
+        let originalName = locale.localizedString(forLanguageCode: language.code) ?? ""
+        let translatedName = currentLocale.localizedString(forLanguageCode: language.code) ?? ""
         
         // this will be executed on a background thread - important to make sure it's thread safe
         let cellNodeBlock: () -> ASCellNode = {
-            let cell = ASTextCellNode()
-            cell.text = language.name
-            cell.textAttributes = TextStyles.languageTitleStyle()
-            cell.textInsets = UIEdgeInsets(top: 13, left: 15, bottom: 13, right: 15)
+            let cell = LanguageCellNode(
+                title: originalName.capitalized,
+                subtitle: translatedName.capitalized
+            )
+            
+            if let selectedLanguage = self.selectedLanguage {
+                let current: QuarterlyLanguage = try! unbox(dictionary: selectedLanguage)
+                cell.isSelected = language.code == current.code
+            }
             return cell
         }
         
@@ -73,7 +85,9 @@ extension LanguagesViewController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let language = dataSource[indexPath.row]
         delegate?.languagesDidSelect(language: language)
-        UserDefaults.standard.set(language.code, forKey: Constants.DefaultKey.quarterlyLanguage)
         dismiss()
+        
+        let dictionary: [String: Any] = try! wrap(language)
+        UserDefaults.standard.set(dictionary, forKey: Constants.DefaultKey.quarterlyLanguage)
     }
 }

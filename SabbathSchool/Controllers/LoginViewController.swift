@@ -13,6 +13,7 @@ import GoogleSignIn
 import FacebookCore
 import FacebookLogin
 import Unbox
+import Wrap
 
 class LoginViewController: ASViewController<ASDisplayNode> {
     var loginNode: LoginNode { return node as! LoginNode}
@@ -54,11 +55,9 @@ class LoginViewController: ASViewController<ASDisplayNode> {
             do {
                 let items: [QuarterlyLanguage] = try unbox(dictionaries: json)
                 let filtered = items.filter({ $0.code == locale })
-                if let language = filtered.first {
-                    UserDefaults.standard.set(language.code, forKey: Constants.DefaultKey.quarterlyLanguage)
-                } else {
-                    UserDefaults.standard.set("en", forKey: Constants.DefaultKey.quarterlyLanguage)
-                }
+                let language = filtered.first ?? QuarterlyLanguage(code: "en", name: "English")
+                let dictionary: [String: Any] = try! wrap(language)
+                UserDefaults.standard.set(dictionary, forKey: Constants.DefaultKey.quarterlyLanguage)
             } catch let error {
                 print(error)
             }
