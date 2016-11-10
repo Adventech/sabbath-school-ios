@@ -9,59 +9,23 @@
 /* Begin PBXBuildFile section */
 		1A07380C1DC34C87005E96CF /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A07380B1DC34C86005E96CF /* BibleVerses.swift */; };
 		1A0B162D1DBA4661009B6284 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0B162C1DBA4661009B6284 /* Date.swift */; };
+		1A2AD0631DD4639D003A0AD0 /* Lora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD0501DD4639D003A0AD0 /* Lora-Bold.ttf */; };
+		1A2AD0641DD4639D003A0AD0 /* Lora-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD0511DD4639D003A0AD0 /* Lora-BoldItalic.ttf */; };
+		1A2AD0651DD4639D003A0AD0 /* Lora-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD0521DD4639D003A0AD0 /* Lora-Italic.ttf */; };
+		1A2AD0661DD4639D003A0AD0 /* Lora-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD0531DD4639D003A0AD0 /* Lora-Regular.ttf */; };
+		1A2AD06B1DD4639D003A0AD0 /* PT_Sans-Web-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD05A1DD4639D003A0AD0 /* PT_Sans-Web-Bold.ttf */; };
+		1A2AD06C1DD4639D003A0AD0 /* PT_Sans-Web-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD05B1DD4639D003A0AD0 /* PT_Sans-Web-BoldItalic.ttf */; };
+		1A2AD06D1DD4639D003A0AD0 /* PT_Sans-Web-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD05C1DD4639D003A0AD0 /* PT_Sans-Web-Italic.ttf */; };
+		1A2AD06E1DD4639D003A0AD0 /* PT_Sans-Web-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD05D1DD4639D003A0AD0 /* PT_Sans-Web-Regular.ttf */; };
+		1A2AD06F1DD4639D003A0AD0 /* PT_Serif-Web-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD05F1DD4639D003A0AD0 /* PT_Serif-Web-Bold.ttf */; };
+		1A2AD0701DD4639D003A0AD0 /* PT_Serif-Web-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD0601DD4639D003A0AD0 /* PT_Serif-Web-BoldItalic.ttf */; };
+		1A2AD0711DD4639D003A0AD0 /* PT_Serif-Web-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD0611DD4639D003A0AD0 /* PT_Serif-Web-Italic.ttf */; };
+		1A2AD0721DD4639D003A0AD0 /* PT_Serif-Web-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A2AD0621DD4639D003A0AD0 /* PT_Serif-Web-Regular.ttf */; };
 		1A3BA4831DC8721200248A9E /* ReadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BA4821DC8721200248A9E /* ReadsViewController.swift */; };
 		1A3BA4851DC8834B00248A9E /* DayCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BA4841DC8834B00248A9E /* DayCellNode.swift */; };
 		1A3BA4DD1DC8C2E800248A9E /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA48E1DC8C2E700248A9E /* base.css */; };
 		1A3BA4DE1DC8C2E800248A9E /* fonts.css in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA48F1DC8C2E800248A9E /* fonts.css */; };
 		1A3BA4DF1DC8C2E800248A9E /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4901DC8C2E800248A9E /* reset.css */; };
-		1A3BA4E01DC8C2E800248A9E /* andada-bold-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4931DC8C2E800248A9E /* andada-bold-webfont.ttf */; };
-		1A3BA4E11DC8C2E800248A9E /* andada-bold-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4941DC8C2E800248A9E /* andada-bold-webfont.woff */; };
-		1A3BA4E21DC8C2E800248A9E /* andada-bold-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4951DC8C2E800248A9E /* andada-bold-webfont.woff2 */; };
-		1A3BA4E31DC8C2E800248A9E /* andada-bolditalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4961DC8C2E800248A9E /* andada-bolditalic-webfont.ttf */; };
-		1A3BA4E41DC8C2E800248A9E /* andada-bolditalic-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4971DC8C2E800248A9E /* andada-bolditalic-webfont.woff */; };
-		1A3BA4E51DC8C2E800248A9E /* andada-bolditalic-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4981DC8C2E800248A9E /* andada-bolditalic-webfont.woff2 */; };
-		1A3BA4E61DC8C2E800248A9E /* andada-italic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4991DC8C2E800248A9E /* andada-italic-webfont.ttf */; };
-		1A3BA4E71DC8C2E800248A9E /* andada-italic-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA49A1DC8C2E800248A9E /* andada-italic-webfont.woff */; };
-		1A3BA4E81DC8C2E800248A9E /* andada-italic-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA49B1DC8C2E800248A9E /* andada-italic-webfont.woff2 */; };
-		1A3BA4E91DC8C2E800248A9E /* andada-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA49C1DC8C2E800248A9E /* andada-regular-webfont.ttf */; };
-		1A3BA4EA1DC8C2E800248A9E /* andada-regular-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA49D1DC8C2E800248A9E /* andada-regular-webfont.woff */; };
-		1A3BA4EB1DC8C2E800248A9E /* andada-regular-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA49E1DC8C2E800248A9E /* andada-regular-webfont.woff2 */; };
-		1A3BA4EC1DC8C2E800248A9E /* andadasc-bold-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA49F1DC8C2E800248A9E /* andadasc-bold-webfont.ttf */; };
-		1A3BA4ED1DC8C2E800248A9E /* andadasc-bold-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A01DC8C2E800248A9E /* andadasc-bold-webfont.woff */; };
-		1A3BA4EE1DC8C2E800248A9E /* andadasc-bold-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A11DC8C2E800248A9E /* andadasc-bold-webfont.woff2 */; };
-		1A3BA4EF1DC8C2E800248A9E /* andadasc-bolditalic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A21DC8C2E800248A9E /* andadasc-bolditalic-webfont.ttf */; };
-		1A3BA4F01DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A31DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff */; };
-		1A3BA4F11DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A41DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff2 */; };
-		1A3BA4F21DC8C2E800248A9E /* andadasc-italic-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A51DC8C2E800248A9E /* andadasc-italic-webfont.ttf */; };
-		1A3BA4F31DC8C2E800248A9E /* andadasc-italic-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A61DC8C2E800248A9E /* andadasc-italic-webfont.woff */; };
-		1A3BA4F41DC8C2E800248A9E /* andadasc-italic-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A71DC8C2E800248A9E /* andadasc-italic-webfont.woff2 */; };
-		1A3BA4F51DC8C2E800248A9E /* andadasc-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A81DC8C2E800248A9E /* andadasc-regular-webfont.ttf */; };
-		1A3BA4F61DC8C2E800248A9E /* andadasc-regular-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4A91DC8C2E800248A9E /* andadasc-regular-webfont.woff */; };
-		1A3BA4F71DC8C2E800248A9E /* andadasc-regular-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4AA1DC8C2E800248A9E /* andadasc-regular-webfont.woff2 */; };
-		1A3BA5041DC8C2E800248A9E /* pts55f-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4B91DC8C2E800248A9E /* pts55f-webfont.ttf */; };
-		1A3BA5051DC8C2E800248A9E /* pts55f-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4BA1DC8C2E800248A9E /* pts55f-webfont.woff */; };
-		1A3BA5061DC8C2E800248A9E /* pts55f-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4BB1DC8C2E800248A9E /* pts55f-webfont.woff2 */; };
-		1A3BA5071DC8C2E800248A9E /* pts56f-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4BC1DC8C2E800248A9E /* pts56f-webfont.ttf */; };
-		1A3BA5081DC8C2E800248A9E /* pts56f-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4BD1DC8C2E800248A9E /* pts56f-webfont.woff */; };
-		1A3BA5091DC8C2E800248A9E /* pts56f-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4BE1DC8C2E800248A9E /* pts56f-webfont.woff2 */; };
-		1A3BA50A1DC8C2E800248A9E /* pts75f-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4BF1DC8C2E800248A9E /* pts75f-webfont.ttf */; };
-		1A3BA50B1DC8C2E800248A9E /* pts75f-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C01DC8C2E800248A9E /* pts75f-webfont.woff */; };
-		1A3BA50C1DC8C2E800248A9E /* pts75f-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C11DC8C2E800248A9E /* pts75f-webfont.woff2 */; };
-		1A3BA50D1DC8C2E800248A9E /* pts76f-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C21DC8C2E800248A9E /* pts76f-webfont.ttf */; };
-		1A3BA50E1DC8C2E800248A9E /* pts76f-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C31DC8C2E800248A9E /* pts76f-webfont.woff */; };
-		1A3BA50F1DC8C2E800248A9E /* pts76f-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C41DC8C2E800248A9E /* pts76f-webfont.woff2 */; };
-		1A3BA5101DC8C2E800248A9E /* ptf55f-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C61DC8C2E800248A9E /* ptf55f-webfont.ttf */; };
-		1A3BA5111DC8C2E800248A9E /* ptf55f-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C71DC8C2E800248A9E /* ptf55f-webfont.woff */; };
-		1A3BA5121DC8C2E800248A9E /* ptf55f-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C81DC8C2E800248A9E /* ptf55f-webfont.woff2 */; };
-		1A3BA5131DC8C2E800248A9E /* ptf56f-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4C91DC8C2E800248A9E /* ptf56f-webfont.ttf */; };
-		1A3BA5141DC8C2E800248A9E /* ptf56f-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4CA1DC8C2E800248A9E /* ptf56f-webfont.woff */; };
-		1A3BA5151DC8C2E800248A9E /* ptf56f-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4CB1DC8C2E800248A9E /* ptf56f-webfont.woff2 */; };
-		1A3BA5161DC8C2E800248A9E /* ptf75f-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4CC1DC8C2E800248A9E /* ptf75f-webfont.ttf */; };
-		1A3BA5171DC8C2E800248A9E /* ptf75f-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4CD1DC8C2E800248A9E /* ptf75f-webfont.woff */; };
-		1A3BA5181DC8C2E800248A9E /* ptf75f-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4CE1DC8C2E800248A9E /* ptf75f-webfont.woff2 */; };
-		1A3BA5191DC8C2E800248A9E /* ptf76f-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4CF1DC8C2E800248A9E /* ptf76f-webfont.ttf */; };
-		1A3BA51A1DC8C2E800248A9E /* ptf76f-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4D01DC8C2E800248A9E /* ptf76f-webfont.woff */; };
-		1A3BA51B1DC8C2E800248A9E /* ptf76f-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4D11DC8C2E800248A9E /* ptf76f-webfont.woff2 */; };
 		1A3BA51C1DC8C2E800248A9E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4D21DC8C2E800248A9E /* index.html */; };
 		1A3BA51D1DC8C2E800248A9E /* jquery-3.1.1.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4D41DC8C2E800248A9E /* jquery-3.1.1.min.js */; };
 		1A3BA51E1DC8C2E800248A9E /* jsface.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BA4D51DC8C2E800248A9E /* jsface.min.js */; };
@@ -131,59 +95,23 @@
 /* Begin PBXFileReference section */
 		1A07380B1DC34C86005E96CF /* BibleVerses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleVerses.swift; sourceTree = "<group>"; };
 		1A0B162C1DBA4661009B6284 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		1A2AD0501DD4639D003A0AD0 /* Lora-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Bold.ttf"; sourceTree = "<group>"; };
+		1A2AD0511DD4639D003A0AD0 /* Lora-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1A2AD0521DD4639D003A0AD0 /* Lora-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Italic.ttf"; sourceTree = "<group>"; };
+		1A2AD0531DD4639D003A0AD0 /* Lora-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Regular.ttf"; sourceTree = "<group>"; };
+		1A2AD05A1DD4639D003A0AD0 /* PT_Sans-Web-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Sans-Web-Bold.ttf"; sourceTree = "<group>"; };
+		1A2AD05B1DD4639D003A0AD0 /* PT_Sans-Web-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Sans-Web-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1A2AD05C1DD4639D003A0AD0 /* PT_Sans-Web-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Sans-Web-Italic.ttf"; sourceTree = "<group>"; };
+		1A2AD05D1DD4639D003A0AD0 /* PT_Sans-Web-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Sans-Web-Regular.ttf"; sourceTree = "<group>"; };
+		1A2AD05F1DD4639D003A0AD0 /* PT_Serif-Web-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Serif-Web-Bold.ttf"; sourceTree = "<group>"; };
+		1A2AD0601DD4639D003A0AD0 /* PT_Serif-Web-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Serif-Web-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1A2AD0611DD4639D003A0AD0 /* PT_Serif-Web-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Serif-Web-Italic.ttf"; sourceTree = "<group>"; };
+		1A2AD0621DD4639D003A0AD0 /* PT_Serif-Web-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Serif-Web-Regular.ttf"; sourceTree = "<group>"; };
 		1A3BA4821DC8721200248A9E /* ReadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadsViewController.swift; sourceTree = "<group>"; };
 		1A3BA4841DC8834B00248A9E /* DayCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCellNode.swift; sourceTree = "<group>"; };
 		1A3BA48E1DC8C2E700248A9E /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
 		1A3BA48F1DC8C2E800248A9E /* fonts.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = fonts.css; sourceTree = "<group>"; };
 		1A3BA4901DC8C2E800248A9E /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
-		1A3BA4931DC8C2E800248A9E /* andada-bold-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-bold-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4941DC8C2E800248A9E /* andada-bold-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-bold-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4951DC8C2E800248A9E /* andada-bold-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-bold-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4961DC8C2E800248A9E /* andada-bolditalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-bolditalic-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4971DC8C2E800248A9E /* andada-bolditalic-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-bolditalic-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4981DC8C2E800248A9E /* andada-bolditalic-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-bolditalic-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4991DC8C2E800248A9E /* andada-italic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-italic-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA49A1DC8C2E800248A9E /* andada-italic-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-italic-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA49B1DC8C2E800248A9E /* andada-italic-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-italic-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA49C1DC8C2E800248A9E /* andada-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-regular-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA49D1DC8C2E800248A9E /* andada-regular-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-regular-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA49E1DC8C2E800248A9E /* andada-regular-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andada-regular-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA49F1DC8C2E800248A9E /* andadasc-bold-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-bold-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4A01DC8C2E800248A9E /* andadasc-bold-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-bold-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4A11DC8C2E800248A9E /* andadasc-bold-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-bold-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4A21DC8C2E800248A9E /* andadasc-bolditalic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-bolditalic-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4A31DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-bolditalic-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4A41DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-bolditalic-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4A51DC8C2E800248A9E /* andadasc-italic-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-italic-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4A61DC8C2E800248A9E /* andadasc-italic-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-italic-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4A71DC8C2E800248A9E /* andadasc-italic-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-italic-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4A81DC8C2E800248A9E /* andadasc-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-regular-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4A91DC8C2E800248A9E /* andadasc-regular-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-regular-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4AA1DC8C2E800248A9E /* andadasc-regular-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "andadasc-regular-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4B91DC8C2E800248A9E /* pts55f-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts55f-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4BA1DC8C2E800248A9E /* pts55f-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts55f-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4BB1DC8C2E800248A9E /* pts55f-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts55f-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4BC1DC8C2E800248A9E /* pts56f-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts56f-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4BD1DC8C2E800248A9E /* pts56f-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts56f-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4BE1DC8C2E800248A9E /* pts56f-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts56f-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4BF1DC8C2E800248A9E /* pts75f-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts75f-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4C01DC8C2E800248A9E /* pts75f-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts75f-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4C11DC8C2E800248A9E /* pts75f-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts75f-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4C21DC8C2E800248A9E /* pts76f-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts76f-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4C31DC8C2E800248A9E /* pts76f-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts76f-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4C41DC8C2E800248A9E /* pts76f-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pts76f-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4C61DC8C2E800248A9E /* ptf55f-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf55f-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4C71DC8C2E800248A9E /* ptf55f-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf55f-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4C81DC8C2E800248A9E /* ptf55f-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf55f-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4C91DC8C2E800248A9E /* ptf56f-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf56f-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4CA1DC8C2E800248A9E /* ptf56f-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf56f-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4CB1DC8C2E800248A9E /* ptf56f-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf56f-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4CC1DC8C2E800248A9E /* ptf75f-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf75f-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4CD1DC8C2E800248A9E /* ptf75f-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf75f-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4CE1DC8C2E800248A9E /* ptf75f-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf75f-webfont.woff2"; sourceTree = "<group>"; };
-		1A3BA4CF1DC8C2E800248A9E /* ptf76f-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf76f-webfont.ttf"; sourceTree = "<group>"; };
-		1A3BA4D01DC8C2E800248A9E /* ptf76f-webfont.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf76f-webfont.woff"; sourceTree = "<group>"; };
-		1A3BA4D11DC8C2E800248A9E /* ptf76f-webfont.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ptf76f-webfont.woff2"; sourceTree = "<group>"; };
 		1A3BA4D21DC8C2E800248A9E /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		1A3BA4D41DC8C2E800248A9E /* jquery-3.1.1.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.1.1.min.js"; sourceTree = "<group>"; };
 		1A3BA4D51DC8C2E800248A9E /* jsface.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jsface.min.js; sourceTree = "<group>"; };
@@ -267,6 +195,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A2AD04E1DD4639D003A0AD0 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1A2AD04F1DD4639D003A0AD0 /* andada */,
+				1A2AD0591DD4639D003A0AD0 /* pt-sans */,
+				1A2AD05E1DD4639D003A0AD0 /* pt-serif */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		1A2AD04F1DD4639D003A0AD0 /* andada */ = {
+			isa = PBXGroup;
+			children = (
+				1A2AD0501DD4639D003A0AD0 /* Lora-Bold.ttf */,
+				1A2AD0511DD4639D003A0AD0 /* Lora-BoldItalic.ttf */,
+				1A2AD0521DD4639D003A0AD0 /* Lora-Italic.ttf */,
+				1A2AD0531DD4639D003A0AD0 /* Lora-Regular.ttf */,
+			);
+			path = andada;
+			sourceTree = "<group>";
+		};
+		1A2AD0591DD4639D003A0AD0 /* pt-sans */ = {
+			isa = PBXGroup;
+			children = (
+				1A2AD05A1DD4639D003A0AD0 /* PT_Sans-Web-Bold.ttf */,
+				1A2AD05B1DD4639D003A0AD0 /* PT_Sans-Web-BoldItalic.ttf */,
+				1A2AD05C1DD4639D003A0AD0 /* PT_Sans-Web-Italic.ttf */,
+				1A2AD05D1DD4639D003A0AD0 /* PT_Sans-Web-Regular.ttf */,
+			);
+			path = "pt-sans";
+			sourceTree = "<group>";
+		};
+		1A2AD05E1DD4639D003A0AD0 /* pt-serif */ = {
+			isa = PBXGroup;
+			children = (
+				1A2AD05F1DD4639D003A0AD0 /* PT_Serif-Web-Bold.ttf */,
+				1A2AD0601DD4639D003A0AD0 /* PT_Serif-Web-BoldItalic.ttf */,
+				1A2AD0611DD4639D003A0AD0 /* PT_Serif-Web-Italic.ttf */,
+				1A2AD0621DD4639D003A0AD0 /* PT_Serif-Web-Regular.ttf */,
+			);
+			path = "pt-serif";
+			sourceTree = "<group>";
+		};
 		1A3BA4871DC8B88100248A9E /* Read */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,8 +279,8 @@
 		1A3BA48B1DC8C2E700248A9E /* Reader */ = {
 			isa = PBXGroup;
 			children = (
+				1A2AD04E1DD4639D003A0AD0 /* fonts */,
 				1A3BA48D1DC8C2E700248A9E /* css */,
-				1A3BA4911DC8C2E800248A9E /* fonts */,
 				1A3BA4D21DC8C2E800248A9E /* index.html */,
 				1A3BA4D31DC8C2E800248A9E /* js */,
 			);
@@ -324,85 +295,6 @@
 				1A3BA4901DC8C2E800248A9E /* reset.css */,
 			);
 			path = css;
-			sourceTree = "<group>";
-		};
-		1A3BA4911DC8C2E800248A9E /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				1A3BA4921DC8C2E800248A9E /* andada */,
-				1A3BA4B81DC8C2E800248A9E /* pt-sans */,
-				1A3BA4C51DC8C2E800248A9E /* pt-serif */,
-			);
-			path = fonts;
-			sourceTree = "<group>";
-		};
-		1A3BA4921DC8C2E800248A9E /* andada */ = {
-			isa = PBXGroup;
-			children = (
-				1A3BA4931DC8C2E800248A9E /* andada-bold-webfont.ttf */,
-				1A3BA4941DC8C2E800248A9E /* andada-bold-webfont.woff */,
-				1A3BA4951DC8C2E800248A9E /* andada-bold-webfont.woff2 */,
-				1A3BA4961DC8C2E800248A9E /* andada-bolditalic-webfont.ttf */,
-				1A3BA4971DC8C2E800248A9E /* andada-bolditalic-webfont.woff */,
-				1A3BA4981DC8C2E800248A9E /* andada-bolditalic-webfont.woff2 */,
-				1A3BA4991DC8C2E800248A9E /* andada-italic-webfont.ttf */,
-				1A3BA49A1DC8C2E800248A9E /* andada-italic-webfont.woff */,
-				1A3BA49B1DC8C2E800248A9E /* andada-italic-webfont.woff2 */,
-				1A3BA49C1DC8C2E800248A9E /* andada-regular-webfont.ttf */,
-				1A3BA49D1DC8C2E800248A9E /* andada-regular-webfont.woff */,
-				1A3BA49E1DC8C2E800248A9E /* andada-regular-webfont.woff2 */,
-				1A3BA49F1DC8C2E800248A9E /* andadasc-bold-webfont.ttf */,
-				1A3BA4A01DC8C2E800248A9E /* andadasc-bold-webfont.woff */,
-				1A3BA4A11DC8C2E800248A9E /* andadasc-bold-webfont.woff2 */,
-				1A3BA4A21DC8C2E800248A9E /* andadasc-bolditalic-webfont.ttf */,
-				1A3BA4A31DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff */,
-				1A3BA4A41DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff2 */,
-				1A3BA4A51DC8C2E800248A9E /* andadasc-italic-webfont.ttf */,
-				1A3BA4A61DC8C2E800248A9E /* andadasc-italic-webfont.woff */,
-				1A3BA4A71DC8C2E800248A9E /* andadasc-italic-webfont.woff2 */,
-				1A3BA4A81DC8C2E800248A9E /* andadasc-regular-webfont.ttf */,
-				1A3BA4A91DC8C2E800248A9E /* andadasc-regular-webfont.woff */,
-				1A3BA4AA1DC8C2E800248A9E /* andadasc-regular-webfont.woff2 */,
-			);
-			path = andada;
-			sourceTree = "<group>";
-		};
-		1A3BA4B81DC8C2E800248A9E /* pt-sans */ = {
-			isa = PBXGroup;
-			children = (
-				1A3BA4B91DC8C2E800248A9E /* pts55f-webfont.ttf */,
-				1A3BA4BA1DC8C2E800248A9E /* pts55f-webfont.woff */,
-				1A3BA4BB1DC8C2E800248A9E /* pts55f-webfont.woff2 */,
-				1A3BA4BC1DC8C2E800248A9E /* pts56f-webfont.ttf */,
-				1A3BA4BD1DC8C2E800248A9E /* pts56f-webfont.woff */,
-				1A3BA4BE1DC8C2E800248A9E /* pts56f-webfont.woff2 */,
-				1A3BA4BF1DC8C2E800248A9E /* pts75f-webfont.ttf */,
-				1A3BA4C01DC8C2E800248A9E /* pts75f-webfont.woff */,
-				1A3BA4C11DC8C2E800248A9E /* pts75f-webfont.woff2 */,
-				1A3BA4C21DC8C2E800248A9E /* pts76f-webfont.ttf */,
-				1A3BA4C31DC8C2E800248A9E /* pts76f-webfont.woff */,
-				1A3BA4C41DC8C2E800248A9E /* pts76f-webfont.woff2 */,
-			);
-			path = "pt-sans";
-			sourceTree = "<group>";
-		};
-		1A3BA4C51DC8C2E800248A9E /* pt-serif */ = {
-			isa = PBXGroup;
-			children = (
-				1A3BA4C61DC8C2E800248A9E /* ptf55f-webfont.ttf */,
-				1A3BA4C71DC8C2E800248A9E /* ptf55f-webfont.woff */,
-				1A3BA4C81DC8C2E800248A9E /* ptf55f-webfont.woff2 */,
-				1A3BA4C91DC8C2E800248A9E /* ptf56f-webfont.ttf */,
-				1A3BA4CA1DC8C2E800248A9E /* ptf56f-webfont.woff */,
-				1A3BA4CB1DC8C2E800248A9E /* ptf56f-webfont.woff2 */,
-				1A3BA4CC1DC8C2E800248A9E /* ptf75f-webfont.ttf */,
-				1A3BA4CD1DC8C2E800248A9E /* ptf75f-webfont.woff */,
-				1A3BA4CE1DC8C2E800248A9E /* ptf75f-webfont.woff2 */,
-				1A3BA4CF1DC8C2E800248A9E /* ptf76f-webfont.ttf */,
-				1A3BA4D01DC8C2E800248A9E /* ptf76f-webfont.woff */,
-				1A3BA4D11DC8C2E800248A9E /* ptf76f-webfont.woff2 */,
-			);
-			path = "pt-serif";
 			sourceTree = "<group>";
 		};
 		1A3BA4D31DC8C2E800248A9E /* js */ = {
@@ -692,74 +584,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A3BA50A1DC8C2E800248A9E /* pts75f-webfont.ttf in Resources */,
-				1A3BA5151DC8C2E800248A9E /* ptf56f-webfont.woff2 in Resources */,
-				1A3BA5041DC8C2E800248A9E /* pts55f-webfont.ttf in Resources */,
-				1A3BA4E01DC8C2E800248A9E /* andada-bold-webfont.ttf in Resources */,
 				1A3BA51C1DC8C2E800248A9E /* index.html in Resources */,
-				1A3BA4E11DC8C2E800248A9E /* andada-bold-webfont.woff in Resources */,
+				1A2AD06D1DD4639D003A0AD0 /* PT_Sans-Web-Italic.ttf in Resources */,
+				1A2AD0661DD4639D003A0AD0 /* Lora-Regular.ttf in Resources */,
 				1A96F4ED1C8F3E3D0034AF2C /* Lato-Medium.ttf in Resources */,
-				1A3BA4E21DC8C2E800248A9E /* andada-bold-webfont.woff2 in Resources */,
-				1A3BA4EF1DC8C2E800248A9E /* andadasc-bolditalic-webfont.ttf in Resources */,
+				1A2AD0701DD4639D003A0AD0 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
+				1A2AD0711DD4639D003A0AD0 /* PT_Serif-Web-Italic.ttf in Resources */,
 				1A96F4EA1C8F3E3D0034AF2C /* Lato-Bold.ttf in Resources */,
+				1A2AD0651DD4639D003A0AD0 /* Lora-Italic.ttf in Resources */,
+				1A2AD06C1DD4639D003A0AD0 /* PT_Sans-Web-BoldItalic.ttf in Resources */,
 				1A753BBF1DB8AA8100204B31 /* GoogleService-Info.plist in Resources */,
-				1A3BA5161DC8C2E800248A9E /* ptf75f-webfont.ttf in Resources */,
-				1A3BA4E61DC8C2E800248A9E /* andada-italic-webfont.ttf in Resources */,
-				1A3BA5101DC8C2E800248A9E /* ptf55f-webfont.ttf in Resources */,
-				1A3BA4E41DC8C2E800248A9E /* andada-bolditalic-webfont.woff in Resources */,
 				1A96F4E81C8F3E3D0034AF2C /* LaunchScreen.storyboard in Resources */,
-				1A3BA4F21DC8C2E800248A9E /* andadasc-italic-webfont.ttf in Resources */,
 				1A3BA51D1DC8C2E800248A9E /* jquery-3.1.1.min.js in Resources */,
-				1A3BA5141DC8C2E800248A9E /* ptf56f-webfont.woff in Resources */,
 				1A3BA51F1DC8C2E800248A9E /* rangy-classapplier.js in Resources */,
 				1A96F4EB1C8F3E3D0034AF2C /* Lato-BoldItalic.ttf in Resources */,
-				1A3BA4E51DC8C2E800248A9E /* andada-bolditalic-webfont.woff2 in Resources */,
-				1A3BA4EB1DC8C2E800248A9E /* andada-regular-webfont.woff2 in Resources */,
-				1A3BA4F31DC8C2E800248A9E /* andadasc-italic-webfont.woff in Resources */,
-				1A3BA4E31DC8C2E800248A9E /* andada-bolditalic-webfont.ttf in Resources */,
+				1A2AD06B1DD4639D003A0AD0 /* PT_Sans-Web-Bold.ttf in Resources */,
 				1A3BA4DE1DC8C2E800248A9E /* fonts.css in Resources */,
 				1A3BA4DD1DC8C2E800248A9E /* base.css in Resources */,
 				1A3BA5231DC8C2E800248A9E /* ss-reader.js in Resources */,
-				1A3BA4F71DC8C2E800248A9E /* andadasc-regular-webfont.woff2 in Resources */,
-				1A3BA50E1DC8C2E800248A9E /* pts76f-webfont.woff in Resources */,
-				1A3BA5131DC8C2E800248A9E /* ptf56f-webfont.ttf in Resources */,
-				1A3BA50B1DC8C2E800248A9E /* pts75f-webfont.woff in Resources */,
-				1A3BA4F41DC8C2E800248A9E /* andadasc-italic-webfont.woff2 in Resources */,
-				1A3BA5071DC8C2E800248A9E /* pts56f-webfont.ttf in Resources */,
-				1A3BA4EE1DC8C2E800248A9E /* andadasc-bold-webfont.woff2 in Resources */,
-				1A3BA5121DC8C2E800248A9E /* ptf55f-webfont.woff2 in Resources */,
-				1A3BA4EC1DC8C2E800248A9E /* andadasc-bold-webfont.ttf in Resources */,
 				1A96F4EF1C8F3E3D0034AF2C /* Lato-Regular.ttf in Resources */,
-				1A3BA4E71DC8C2E800248A9E /* andada-italic-webfont.woff in Resources */,
-				1A3BA51A1DC8C2E800248A9E /* ptf76f-webfont.woff in Resources */,
-				1A3BA5081DC8C2E800248A9E /* pts56f-webfont.woff in Resources */,
-				1A3BA5111DC8C2E800248A9E /* ptf55f-webfont.woff in Resources */,
-				1A3BA50D1DC8C2E800248A9E /* pts76f-webfont.ttf in Resources */,
 				1A96F4E71C8F3E3D0034AF2C /* Assets.xcassets in Resources */,
+				1A2AD06E1DD4639D003A0AD0 /* PT_Sans-Web-Regular.ttf in Resources */,
 				1A3BA51E1DC8C2E800248A9E /* jsface.min.js in Resources */,
-				1A3BA4F11DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff2 in Resources */,
-				1A3BA5191DC8C2E800248A9E /* ptf76f-webfont.ttf in Resources */,
 				1A3BA4DF1DC8C2E800248A9E /* reset.css in Resources */,
+				1A2AD0631DD4639D003A0AD0 /* Lora-Bold.ttf in Resources */,
 				1A96F4EE1C8F3E3D0034AF2C /* Lato-MediumItalic.ttf in Resources */,
 				1A3BA5211DC8C2E800248A9E /* rangy-highlighter.js in Resources */,
-				1A3BA4ED1DC8C2E800248A9E /* andadasc-bold-webfont.woff in Resources */,
-				1A3BA4F61DC8C2E800248A9E /* andadasc-regular-webfont.woff in Resources */,
-				1A3BA50C1DC8C2E800248A9E /* pts75f-webfont.woff2 in Resources */,
 				1A96F4EC1C8F3E3D0034AF2C /* Lato-Italic.ttf in Resources */,
-				1A3BA5171DC8C2E800248A9E /* ptf75f-webfont.woff in Resources */,
-				1A3BA50F1DC8C2E800248A9E /* pts76f-webfont.woff2 in Resources */,
-				1A3BA4F01DC8C2E800248A9E /* andadasc-bolditalic-webfont.woff in Resources */,
-				1A3BA51B1DC8C2E800248A9E /* ptf76f-webfont.woff2 in Resources */,
-				1A3BA5061DC8C2E800248A9E /* pts55f-webfont.woff2 in Resources */,
-				1A3BA4F51DC8C2E800248A9E /* andadasc-regular-webfont.ttf in Resources */,
-				1A3BA5091DC8C2E800248A9E /* pts56f-webfont.woff2 in Resources */,
 				1A3BA5221DC8C2E800248A9E /* rangy-serializer.js in Resources */,
-				1A3BA5181DC8C2E800248A9E /* ptf75f-webfont.woff2 in Resources */,
+				1A2AD06F1DD4639D003A0AD0 /* PT_Serif-Web-Bold.ttf in Resources */,
 				1A3BA5201DC8C2E800248A9E /* rangy-core.js in Resources */,
-				1A3BA4EA1DC8C2E800248A9E /* andada-regular-webfont.woff in Resources */,
-				1A3BA5051DC8C2E800248A9E /* pts55f-webfont.woff in Resources */,
-				1A3BA4E91DC8C2E800248A9E /* andada-regular-webfont.ttf in Resources */,
-				1A3BA4E81DC8C2E800248A9E /* andada-italic-webfont.woff2 in Resources */,
+				1A2AD0641DD4639D003A0AD0 /* Lora-BoldItalic.ttf in Resources */,
+				1A2AD0721DD4639D003A0AD0 /* PT_Serif-Web-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
