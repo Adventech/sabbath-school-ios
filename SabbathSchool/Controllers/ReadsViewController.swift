@@ -12,11 +12,12 @@ import Firebase
 import Unbox
 
 class ReadsViewController: ASViewController<ASDisplayNode> {
-    var collectionNode: ASCollectionNode { return node as! ASCollectionNode}
+    var collectionNode: ASCollectionNode { return node as! ASCollectionNode }
     let collectionViewLayout = UICollectionViewFlowLayout()
     var database: FIRDatabaseReference!
     var lessonInfo: LessonInfo?
     var reads = [Read]()
+    let popupAnimator = PopupTransitionAnimator()
     fileprivate var isAnimating = false
     
     // MARK: - Init
@@ -147,12 +148,14 @@ class ReadsViewController: ASViewController<ASDisplayNode> {
 // MARK: - ASCollectionDataSource
 
 extension ReadsViewController: ASCollectionDataSource {
+    
     func collectionView(_ collectionView: ASCollectionView, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let read = reads[indexPath.row]
         
         // this will be executed on a background thread - important to make sure it's thread safe
         let cellNodeBlock: () -> ASCellNode = {
             let node = DayCellNode(read: read, cover: self.lessonInfo?.lesson.cover)
+            node.delegate = self
             return node
         }
         
@@ -185,5 +188,31 @@ extension ReadsViewController: CAAnimationDelegate {
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         isAnimating = false
+    }
+}
+
+// MARK: - DayCellNodeDelegate
+
+extension ReadsViewController: DayCellNodeDelegate {
+    
+    func dayCellNode(dayCellNode: DayCellNode, openVerse: String) {
+        let indexPath = collectionNode.view.indexPath(for: dayCellNode)
+        let read = reads[indexPath.row]
+        
+        if read.bible.count > 0 {
+            popupAnimator.style = .square
+            
+            let bibleVerses = BibleVersesViewController(bibleVerses: read.bible, verse: openVerse)
+            
+            let navigation = ASNavigationController(rootViewController: bibleVerses)
+            navigation.transitioningDelegate = popupAnimator
+            navigation.modalPresentationStyle = .custom
+            navigation.preferredContentSize = CGSize(width: node.frame.width*0.9, height: node.frame.height*0.8)
+            present(navigation, animated: true, completion: nil)
+        } else {
+            // TODO: Show error message
+            print("No verses available")
+        }
+        
     }
 }

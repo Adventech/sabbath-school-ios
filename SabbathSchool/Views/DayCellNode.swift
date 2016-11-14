@@ -10,7 +10,12 @@ import UIKit
 import AsyncDisplayKit
 import SafariServices
 
+protocol DayCellNodeDelegate: class {
+    func dayCellNode(dayCellNode: DayCellNode, openVerse: String)
+}
+
 class DayCellNode: ASCellNode {
+    var delegate: DayCellNodeDelegate?
     var readerNode: ReaderNode!
     var read: Read!
     
@@ -108,5 +113,11 @@ extension DayCellNode: ReaderNodeDelegate {
             //            nav.modalPresentationStyle = .CurrentContext
             //            presentViewController(nav, animated: true, completion: nil)
         }
+    }
+    
+    // MARK: - User Actions
+    
+    func readerNode(readerNode: ReaderNode, openVerse: String) {
+        delegate?.dayCellNode(dayCellNode: self, openVerse: openVerse)
     }
 }

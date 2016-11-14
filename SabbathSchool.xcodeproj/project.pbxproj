@@ -40,6 +40,9 @@
 		1A407EB51C8277E100BD2272 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB41C8277E100BD2272 /* Color.swift */; };
 		1A407EB71C82780D00BD2272 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EB61C82780D00BD2272 /* Image.swift */; };
 		1A407EC91C827C7500BD2272 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A407EC81C827C7500BD2272 /* Navigation.swift */; };
+		1A4315E71DD923E500C46061 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4315E61DD923E500C46061 /* Array.swift */; };
+		1A4315E91DD9B43000C46061 /* BibleVersesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4315E81DD9B43000C46061 /* BibleVersesViewController.swift */; };
+		1A4315EB1DD9B9FE00C46061 /* VersesNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4315EA1DD9B9FE00C46061 /* VersesNode.swift */; };
 		1A4960771DC1EA2A0047C2DF /* EZSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4960761DC1EA2A0047C2DF /* EZSwipeController.swift */; };
 		1A4960791DC208500047C2DF /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4960781DC208500047C2DF /* SwipeViewController.swift */; };
 		1A5E74541DC2322D00E50759 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E74521DC2322D00E50759 /* NotesViewController.swift */; };
@@ -130,6 +133,9 @@
 		1A407EB41C8277E100BD2272 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1A407EB61C82780D00BD2272 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		1A407EC81C827C7500BD2272 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		1A4315E61DD923E500C46061 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		1A4315E81DD9B43000C46061 /* BibleVersesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleVersesViewController.swift; sourceTree = "<group>"; };
+		1A4315EA1DD9B9FE00C46061 /* VersesNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersesNode.swift; sourceTree = "<group>"; };
 		1A4960761DC1EA2A0047C2DF /* EZSwipeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZSwipeController.swift; sourceTree = "<group>"; };
 		1A4960781DC208500047C2DF /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		1A5E74521DC2322D00E50759 /* NotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +249,7 @@
 			children = (
 				1A3BA4841DC8834B00248A9E /* DayCellNode.swift */,
 				1AE9A8D61DC32F8400276E39 /* ReaderNode.swift */,
+				1A4315EA1DD9B9FE00C46061 /* VersesNode.swift */,
 			);
 			name = Read;
 			sourceTree = "<group>";
@@ -362,6 +369,7 @@
 				1A407EB61C82780D00BD2272 /* Image.swift */,
 				1A407EC81C827C7500BD2272 /* Navigation.swift */,
 				1A0B162C1DBA4661009B6284 /* Date.swift */,
+				1A4315E61DD923E500C46061 /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -410,6 +418,7 @@
 				1A96F4D61C8F3DC40034AF2C /* QuarterliesViewController.swift */,
 				1A96F4D51C8F3DC40034AF2C /* LessonsViewController.swift */,
 				1A3BA4821DC8721200248A9E /* ReadsViewController.swift */,
+				1A4315E81DD9B43000C46061 /* BibleVersesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -715,11 +724,13 @@
 				1A85DAA91DB0C5F200B815E4 /* QuarterlyCellNode.swift in Sources */,
 				1A3BA4831DC8721200248A9E /* ReadsViewController.swift in Sources */,
 				1A753BC51DB8D04800204B31 /* Lesson.swift in Sources */,
+				1A4315E71DD923E500C46061 /* Array.swift in Sources */,
 				1A407E901C80FB3E00BD2272 /* AppDelegate.swift in Sources */,
 				1AC27DAA1DB7A47700130AD3 /* LessonCellNode.swift in Sources */,
 				1AE9A8D71DC32F8400276E39 /* ReaderNode.swift in Sources */,
 				1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */,
 				1A4960771DC1EA2A0047C2DF /* EZSwipeController.swift in Sources */,
+				1A4315E91DD9B43000C46061 /* BibleVersesViewController.swift in Sources */,
 				1A407EB71C82780D00BD2272 /* Image.swift in Sources */,
 				1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */,
 				1A753BC71DB8D0B700204B31 /* LessonInfo.swift in Sources */,
@@ -733,6 +744,7 @@
 				1AD37CD01DBD559E00B14B16 /* LoginViewController.swift in Sources */,
 				1A5E74571DC2365500E50759 /* ProfileUserCellNode.swift in Sources */,
 				1ADD1ED41DD1B67200E68FF8 /* PopupTransitionAnimator.swift in Sources */,
+				1A4315EB1DD9B9FE00C46061 /* VersesNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

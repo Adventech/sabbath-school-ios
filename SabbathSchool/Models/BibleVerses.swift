@@ -10,13 +10,13 @@ import UIKit
 import Unbox
 
 struct BibleVerses {
-    let name: String?
-    let verses: [String: String]?
+    let name: String
+    let verses: [String: String]
 }
 
 extension BibleVerses: Unboxable {
     init(unboxer: Unboxer) throws {
-        name = unboxer.unbox(key: "name")
-        verses = unboxer.unbox(key: "verses")
+        name = try unboxer.unbox(key: "name")
+        verses = try unboxer.unbox(key: "verses")
     }
 }

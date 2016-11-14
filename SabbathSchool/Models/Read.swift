@@ -15,7 +15,7 @@ struct Read {
     let index: String
     let title: String
     let content: String
-    let bible: BibleVerses?
+    let bible: [BibleVerses]
 }
 
 extension Read: Unboxable {
@@ -25,6 +25,6 @@ extension Read: Unboxable {
         index = try unboxer.unbox(key: "index")
         title = try unboxer.unbox(key: "title")
         content = try unboxer.unbox(key: "content")
-        bible = unboxer.unbox(key: "bible")
+        bible = unboxer.unbox(key: "bible") ?? []
     }
 }

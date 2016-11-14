@@ -64,6 +64,7 @@ final class LessonsViewController: BaseTableViewController {
                 
                 if let color = item.quarterly.colorPrimary {
                     self.backgroundColor = UIColor.init(hex: color)
+                    self.view.window?.tintColor = UIColor.init(hex: color)
                 } else {
                     self.backgroundColor = .baseGreen
                 }

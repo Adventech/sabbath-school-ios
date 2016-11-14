@@ -14,6 +14,9 @@ protocol ReaderNodeDelegate: class {
     func readerNode(readerNode: ReaderNode, scrollViewToPercent percent: CGFloat)
     func readerNode(readerNode: ReaderNode, webViewDidFinishLoad webView: UIWebView)
     func readerNode(readerNode: ReaderNode, segueToURL URL: URL)
+    
+    // User actions
+    func readerNode(readerNode: ReaderNode, openVerse: String)
 }
 
 class ReaderNode: ASDisplayNode {
@@ -182,10 +185,26 @@ extension ReaderNode: UIWebViewDelegate {
     }
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        let url = request.url
+        guard let url = request.url else { return false }
+        
+        // Check for domain and encoded data
+        if let domain = url.host, let encodedData = url.pathComponents[safe: 1] {
+            switch domain {
+            case "verse":
+                let decodedData = Data(base64Encoded: encodedData, options: Data.Base64DecodingOptions.init(rawValue: 0))
+                if let decodedString = String(data: decodedData!, encoding: String.Encoding.utf8) {
+                    delegate?.readerNode(readerNode: self, openVerse: decodedString)
+                }
+                return false
+            default:
+                print("Not implemented: \(domain)")
+            }
+        }
+        
+        
 
-        if let scheme = url?.scheme, (scheme == "http" || scheme == "https"), navigationType == .linkClicked {
-            delegate?.readerNode(readerNode: self, segueToURL: url!)
+        if let scheme = url.scheme, (scheme == "http" || scheme == "https"), navigationType == .linkClicked {
+            delegate?.readerNode(readerNode: self, segueToURL: url)
             return false
         }
         
