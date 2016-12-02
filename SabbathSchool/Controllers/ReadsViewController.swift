@@ -83,7 +83,7 @@ class ReadsViewController: ASViewController<ASDisplayNode> {
             animation.type = kCATransitionFade
             navBar?.layer.add(animation, forKey: kCATransition)
         }
-        self.setTranslucentNavigation(true, color: UIColor.tintColor, tintColor: UIColor.white, titleColor: UIColor.white, andFont: R.font.latoMedium(size: 15)!)
+        setTranslucentNavigation(true, color: .tintColor, tintColor: .white, titleColor: .white)
     }
     
     func hideNavigationBar() {

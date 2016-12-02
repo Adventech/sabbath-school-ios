@@ -19,6 +19,7 @@ struct Constants {
         static let interfaceLanguage = "io.adventech.interfaceLanguage"
         static let quarterlyLanguage = "io.adventech.interfaceLanguage"
         static let firstRun = "io.adventech.firstRun"
+        static let preferredBibleVersion = "io.adventech.preferredBibleVersion." + currentLanguage().code
     }
     
     struct Path {

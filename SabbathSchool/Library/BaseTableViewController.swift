@@ -65,7 +65,7 @@ class BaseTableViewController: ASViewController<ASDisplayNode> {
             animation.type = kCATransitionFade
             navBar?.layer.add(animation, forKey: kCATransition)
         }
-        setTranslucentNavigation(true, color: backgroundColor, tintColor: UIColor.white, titleColor: UIColor.white, andFont: R.font.latoMedium(size: 15)!)
+        setTranslucentNavigation(true, color: backgroundColor, tintColor: .white, titleColor: .white)
     }
     
     func hideNavigationBar() {

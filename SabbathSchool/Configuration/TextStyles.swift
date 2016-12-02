@@ -15,7 +15,33 @@ struct TextStyles {
     static func navBarTitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: R.font.latoMedium(size: 17)!
+            NSFontAttributeName: R.font.latoBold(size: 15)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func navBarButtonStyle(string: String) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: R.font.latoRegular(size: 15)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    // MARK: - Menu
+    
+    static func menuTitleStyle(string: String, color: UIColor = .baseGray4) -> NSAttributedString {
+        let attributes = [
+            NSFontAttributeName: R.font.latoRegular(size: 16)!,
+            NSForegroundColorAttributeName: color
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func menuSubtitleStyle(string: String, color: UIColor = .baseGray3) -> NSAttributedString {
+        let attributes = [
+            NSFontAttributeName: R.font.latoRegular(size: 13)!,
+            NSForegroundColorAttributeName: color
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
@@ -80,7 +106,7 @@ struct TextStyles {
     
     // MARK: - Login
     
-    static func signInButtonTitleStyle(string: String, color: UIColor = UIColor.baseGray3) -> NSAttributedString {
+    static func signInButtonTitleStyle(string: String, color: UIColor = .baseGray3) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: color,
             NSFontAttributeName: R.font.latoBold(size: 16)!

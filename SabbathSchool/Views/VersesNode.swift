@@ -22,7 +22,7 @@ class VersesNode: ASDisplayNode {
     }
     
     override func didLoad() {
-        webView.backgroundColor = UIColor.clear
+        webView.backgroundColor = UIColor.white
     }
     
     // MARK: - Layout

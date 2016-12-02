@@ -45,17 +45,6 @@ final class QuarterliesViewController: BaseTableViewController {
         navigationItem.rightBarButtonItem = rightButton
     }
     
-    // MARK: - Language for code
-    
-    func currentLanguage() -> QuarterlyLanguage {
-        guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
-           return QuarterlyLanguage(code: "en", name: "English")
-        }
-        
-        let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
-        return language
-    }
-    
     // MARK: - Model fetch
     
     func loadLanguages() {

@@ -41,7 +41,7 @@ class LanguagesViewController: ASViewController<ASDisplayNode> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white, andFont: R.font.latoMedium(size: 15)!)
+        setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
     }
 }
 

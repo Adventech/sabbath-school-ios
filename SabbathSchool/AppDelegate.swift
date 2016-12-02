@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithColor(UIColor.baseGreen), for: UIBarMetrics.default)
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: R.font.latoMedium(size: 15)!]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: R.font.latoBold(size: 15)!]
         
         UITabBar.appearance().barTintColor = UIColor.baseGrayToolbar
         UIBarButtonItem.appearance().tintColor = UIColor.white

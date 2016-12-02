@@ -37,7 +37,15 @@ extension UIViewController: UIGestureRecognizerDelegate {
     }
     
     func dismiss() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func dismiss(completion: (() -> Void)?) {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: {
+                completion?()
+            })
+        }
     }
     
     // MARK: - Bounce with color
@@ -65,7 +73,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navBar?.isTranslucent = true
     }
     
-    func setTranslucentNavigation(_ translucent: Bool = true, color: UIColor, tintColor: UIColor = UIColor.white, titleColor: UIColor = UIColor.black, andFont font: UIFont = UIFont.systemFont(ofSize: 17)) {
+    func setTranslucentNavigation(_ translucent: Bool = true, color: UIColor, tintColor: UIColor = UIColor.white, titleColor: UIColor = UIColor.black, andFont font: UIFont = R.font.latoBold(size: 15)!) {
         let navBar = self.navigationController?.navigationBar
         navBar?.setBackgroundImage(UIImage.imageWithColor(color), for: UIBarMetrics.default)
         navBar?.showBottomHairline()
