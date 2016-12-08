@@ -187,22 +187,14 @@ extension ReaderNode: UIWebViewDelegate {
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         guard let url = request.url else { return false }
         
-        // Check for domain and encoded data
-        if let domain = url.host, let encodedData = url.pathComponents[safe: 1] {
-            switch domain {
-            case "verse":
-                let decodedData = Data(base64Encoded: encodedData, options: Data.Base64DecodingOptions.init(rawValue: 0))
-                if let decodedString = String(data: decodedData!, encoding: String.Encoding.utf8) {
-                    delegate?.readerNode(readerNode: self, openVerse: decodedString)
-                }
-                return false
-            default:
-                print("Not implemented: \(domain)")
-            }
+        // Verse
+        if let verse = url.valueForParameter(key: "verse"), let decoded = verse.base64Decode() {
+            delegate?.readerNode(readerNode: self, openVerse: decoded)
+            return false
         }
         
         
-
+        // Http & Https
         if let scheme = url.scheme, (scheme == "http" || scheme == "https"), navigationType == .linkClicked {
             delegate?.readerNode(readerNode: self, segueToURL: url)
             return false
