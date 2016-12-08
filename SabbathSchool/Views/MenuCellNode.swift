@@ -12,10 +12,11 @@ import AsyncDisplayKit
 
 class MenuCellNode: ASCellNode {
     let titleNode = ASTextNode()
+    var selectedNode: ASImageNode?
     var subtileNode: ASTextNode?
     var imageNode: ASImageNode?
     
-    init(withTitle title: String, subtitle: String? = nil, icon: UIImage? = nil, iconSize: CGSize = CGSize(width: 20, height: 20), active: Bool = false, destructive: Bool = false) {
+    init(title: String, subtitle: String? = nil, icon: UIImage? = nil, iconSize: CGSize = CGSize(width: 20, height: 20), active: Bool = false, destructive: Bool = false, selected: Bool = false) {
         super.init()
         
         backgroundColor = UIColor.white
@@ -48,6 +49,11 @@ class MenuCellNode: ASCellNode {
             imageNode!.contentMode = .center
         }
         
+        if selected {
+            selectedNode = ASImageNode()
+            selectedNode!.image = R.image.iconCheckmark()?.imageTintColor(.tintColor)
+        }
+        
         usesImplicitHierarchyManagement = true
     }
     
@@ -69,6 +75,13 @@ class MenuCellNode: ASCellNode {
         
         if let imageNode = imageNode {
             mainChildren.insert(imageNode, at: 0)
+        }
+        
+        if let selectedNode = selectedNode {
+            let spacer = ASLayoutSpec()
+            spacer.flexGrow = true
+            mainChildren.append(spacer)
+            mainChildren.append(selectedNode)
         }
         
         let mainSpec = ASStackLayoutSpec(

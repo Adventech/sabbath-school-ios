@@ -87,15 +87,21 @@ class BibleVersesViewController: ASViewController<ASDisplayNode> {
     }
     
     func changeVersion(sender: UIBarButtonItem) {
-        popupAnimator.style = .arrow
-        popupAnimator.fromView = versionButton
-        
+        let versionName = preferredBibleVersionFor(bibleVerses: bibleVerses) ?? ""
         var menuitems = [MenuItem]()
         
         bibleVerses.forEach { item in
-            let menuItem = MenuItem(name: item.name, subtitle: nil, image: nil)
+            let menuItem = MenuItem(
+                name: item.name,
+                subtitle: nil,
+                image: nil,
+                selected: versionName == item.name
+            )
             menuitems.append(menuItem)
         }
+        
+        popupAnimator.style = .arrow
+        popupAnimator.fromView = versionButton
         
         let menu = MenuViewController(withItems: menuitems)
         menu.delegate = self
@@ -117,9 +123,8 @@ extension BibleVersesViewController: MenuViewControllerDelegate {
             loadVerse(verse: openVerse)
         }
         
-        versionButton.setTitle(bibleVerse.name, for: .normal)
+        versionButton.setAttributedTitle(TextStyles.navBarButtonStyle(string: bibleVerse.name), for: .normal)
         versionButton.sizeToFit()
-        navigationItem.setRightBarButton(UIBarButtonItem(customView: versionButton), animated: true)
         
         UserDefaults.standard.set(bibleVerse.name, forKey: Constants.DefaultKey.preferredBibleVersion)
     }

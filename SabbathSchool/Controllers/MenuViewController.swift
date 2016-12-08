@@ -13,6 +13,7 @@ struct MenuItem {
     var name: String
     var subtitle: String?
     var image: UIImage?
+    var selected: Bool?
     
     static var height: CGFloat {
         return 51.5
@@ -49,7 +50,12 @@ class MenuViewController: ASViewController<ASDisplayNode>, ASTableDataSource, AS
         let menuItem = items[indexPath.row]
         
         let cellNodeBlock: () -> ASCellNode = {
-            let cell = MenuCellNode(withTitle: menuItem.name, subtitle: menuItem.subtitle, icon: menuItem.image)
+            let cell = MenuCellNode(
+                title: menuItem.name,
+                subtitle: menuItem.subtitle,
+                icon: menuItem.image,
+                selected: menuItem.selected ?? false
+            )
             return cell
         }
         return cellNodeBlock
