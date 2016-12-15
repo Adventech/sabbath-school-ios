@@ -207,7 +207,10 @@ extension ReadsViewController: DayCellNodeDelegate {
             let navigation = ASNavigationController(rootViewController: bibleVerses)
             navigation.transitioningDelegate = popupAnimator
             navigation.modalPresentationStyle = .custom
-            navigation.preferredContentSize = CGSize(width: node.frame.width*0.9, height: node.frame.height*0.8)
+            navigation.preferredContentSize = CGSize(
+                width: round(node.frame.width*0.9),
+                height: round(node.frame.height*0.8)
+            )
             present(navigation, animated: true, completion: nil)
         } else {
             // TODO: Show error message
