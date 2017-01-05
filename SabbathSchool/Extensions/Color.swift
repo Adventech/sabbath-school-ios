@@ -35,7 +35,7 @@ extension UIColor {
     }
     
     class var baseGrayToolbar: UIColor {
-        return UIColor.init(hex: "F6F8F8")
+        return UIColor.black
     }
     
     class var baseSuperLightBlue: UIColor {

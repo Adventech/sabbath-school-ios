@@ -67,6 +67,7 @@
 		1A85DAAC1DB0C7EE00B815E4 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAAB1DB0C7EE00B815E4 /* TextStyles.swift */; };
 		1A85DAB01DB0E48C00B815E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A85DAAF1DB0E48C00B815E4 /* Constants.swift */; };
 		1A8812CD1DD1C96B0038B471 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8812CC1DD1C96B0038B471 /* LanguagesViewController.swift */; };
+		1A8CD6CC1E1E27F400C08A72 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8CD6CB1E1E27F400C08A72 /* TabBarViewController.swift */; };
 		1A96F4D21C8E2F8E0034AF2C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */; };
 		1A96F4D71C8F3DC40034AF2C /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D51C8F3DC40034AF2C /* LessonsViewController.swift */; };
 		1A96F4D81C8F3DC40034AF2C /* QuarterliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A96F4D61C8F3DC40034AF2C /* QuarterliesViewController.swift */; };
@@ -167,6 +168,7 @@
 		1A85DAAB1DB0C7EE00B815E4 /* TextStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		1A85DAAF1DB0E48C00B815E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1A8812CC1DD1C96B0038B471 /* LanguagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
+		1A8CD6CB1E1E27F400C08A72 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1A96F4D11C8E2F8D0034AF2C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		1A96F4D51C8F3DC40034AF2C /* LessonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
 		1A96F4D61C8F3DC40034AF2C /* QuarterliesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterliesViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			children = (
 				1A1357481DF17003003A088B /* MenuViewController.swift */,
 				1A4960781DC208500047C2DF /* SwipeViewController.swift */,
+				1A8CD6CB1E1E27F400C08A72 /* TabBarViewController.swift */,
 				1AD37CCF1DBD559E00B14B16 /* LoginViewController.swift */,
 				1A5E74521DC2322D00E50759 /* NotesViewController.swift */,
 				1A5E74531DC2322D00E50759 /* ProfileViewController.swift */,
@@ -767,6 +770,7 @@
 				1A5E74571DC2365500E50759 /* ProfileUserCellNode.swift in Sources */,
 				1ADD1ED41DD1B67200E68FF8 /* PopupTransitionAnimator.swift in Sources */,
 				1A4315EB1DD9B9FE00C46061 /* VersesNode.swift in Sources */,
+				1A8CD6CC1E1E27F400C08A72 /* TabBarViewController.swift in Sources */,
 				1A1357411DF15E4C003A088B /* Button.swift in Sources */,
 				1A1357491DF17003003A088B /* MenuViewController.swift in Sources */,
 			);

@@ -30,6 +30,7 @@ class ReaderNode: ASDisplayNode {
     fileprivate var animatingHeaderHeight: CGFloat = 0
     fileprivate var scrollPercent: CGFloat = 0
     fileprivate var readingProgressHeight: CGFloat = 3
+    var indexPath = 0
     
     // MARK: Init
     
@@ -61,13 +62,14 @@ class ReaderNode: ASDisplayNode {
     }
     
     override func didLoad() {
+        print("index: \(indexPath) did Load")
         
         // WebView
-        webView.backgroundColor = UIColor.clear
+        webView.backgroundColor = .clear
         webView.delegate = self
         webView.scrollView.delegate = self
         webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
-        webView.scrollView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
+        updateInsets(measure: false)
     }
     
     // MARK: Layout
@@ -81,7 +83,7 @@ class ReaderNode: ASDisplayNode {
         let imagePlace = ASRatioLayoutSpec(ratio: imageRatio, child: coverNode)
         
         readingProgressNode.preferredFrameSize = CGSize(width: constrainedSize.max.width, height: readingProgressHeight)
-        webNode.preferredFrameSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
+        webNode.preferredFrameSize = constrainedSize.max
 
         let staticSpec = ASStaticLayoutSpec(children: [imagePlace, webNode, readingProgressNode])
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: staticSpec)
@@ -100,10 +102,14 @@ class ReaderNode: ASDisplayNode {
         }
     }
     
-    func updateInsets() {
-        headerHeight = coverNode.calculatedSize.height
-        let topInset = headerHeight
-        webView.scrollView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+    func updateInsets(measure: Bool) {
+        if measure {
+            headerHeight = coverNode.calculatedSize.height
+        }
+        
+        print("index: \(indexPath) headerHeight: \(headerHeight)")
+        
+        webView.scrollView.contentInset = UIEdgeInsets(top: headerHeight, left: 0, bottom: 0, right: 0)
     }
     
     // MARK: Scroll to Position
@@ -135,11 +141,12 @@ extension ReaderNode: ASNetworkImageNodeDelegate {
             setNeedsLayout()
         }
         
-        UIView.animate(withDuration: 0.3) {
-            imageNode.alpha = 1
-        }
+//        UIView.animate(withDuration: 0.3) {
+//            imageNode.alpha = 1
+//        }
+        print("delegate index: \(indexPath) image.size.height: \(image.size.height)")
         
-        updateInsets()
+        updateInsets(measure: true)
     }
 }
 

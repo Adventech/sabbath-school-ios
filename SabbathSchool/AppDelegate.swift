@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //
         if (FIRAuth.auth()?.currentUser) != nil {
-            window?.rootViewController = SwipeViewController()
+            window?.rootViewController = defaultTabBar()
         } else {
             window?.rootViewController = LoginViewController()
         }
@@ -54,6 +54,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         AppEventsLogger.activate(application)
+    }
+    
+    // MARK: Configure TabBar
+    
+    func defaultTabBar() -> ASTabBarController {
+        let tabBarController = TabBarViewController()
+        tabBarController.viewControllers = tabBarController.tabBarControllersFor(items: TabBarItem.defaultItems())
+        return tabBarController
     }
     
     // MARK: Open URL
@@ -88,7 +96,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: R.font.latoBold(size: 15)!]
         
-        UITabBar.appearance().barTintColor = UIColor.baseGrayToolbar
+        UITabBar.appearance().backgroundImage = UIImage.imageWithColor(UIColor.baseGrayToolbar)
+        UITabBar.appearance().shadowImage = nil
+        UITabBar.appearance().tintColor = UIColor.white
         UIBarButtonItem.appearance().tintColor = UIColor.white
     }
     
@@ -98,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIView.transition(with: self.window!,
                           duration: 0.5,
                           options: .transitionFlipFromLeft,
-                          animations: { self.window?.rootViewController = SwipeViewController() },
+                          animations: { self.window?.rootViewController = self.defaultTabBar() },
                           completion: nil)
     }
     
