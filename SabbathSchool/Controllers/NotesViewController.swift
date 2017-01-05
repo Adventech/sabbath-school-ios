@@ -9,7 +9,7 @@
 import UIKit
 import AsyncDisplayKit
 
-class NotesViewController: ASViewController<ASDisplayNode> {
+final class NotesViewController: ASViewController<ASDisplayNode> {
     
     // MARK: - Init
         
@@ -18,10 +18,23 @@ class NotesViewController: ASViewController<ASDisplayNode> {
 //        tableNode.delegate = self
 //        tableNode.dataSource = self
         
-        title = "Note".uppercased()
+        title = "Notes".uppercased()
+        tabBarItem.image = R.image.iconNotes()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTranslucentNavigation(true, color: .tintColor, tintColor: .white, titleColor: .white)
+    }
+    
+    
+    // MARK: - Status Bar Style
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

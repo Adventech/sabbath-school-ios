@@ -25,6 +25,8 @@ final class QuarterliesViewController: BaseTableViewController {
         tableNode.dataSource = self
         
         title = "Sabbath School".uppercased()
+        tabBarItem.image = R.image.iconLesson()
+        
         backgroundColor = UIColor.tintColor
         
         database = FIRDatabase.database().reference()
@@ -100,7 +102,7 @@ final class QuarterliesViewController: BaseTableViewController {
         let navigation = ASNavigationController(rootViewController: languages)
         navigation.transitioningDelegate = animator
         navigation.modalPresentationStyle = .custom
-        navigation.preferredContentSize = CGSize(width: node.frame.width, height: 400)
+        navigation.preferredContentSize = CGSize(width: node.frame.width, height: round(node.frame.height*0.8))
         present(navigation, animated: true, completion: nil)
     }
 }
@@ -153,6 +155,7 @@ extension QuarterliesViewController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let quarterly = dataSource[indexPath.row]
         let lessonList = LessonsViewController(quarterlyIndex: quarterly.index)
+        lessonList.hidesBottomBarWhenPushed = true
         show(lessonList, sender: nil)
     }
     

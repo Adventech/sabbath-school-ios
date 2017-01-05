@@ -10,7 +10,7 @@ import UIKit
 import AsyncDisplayKit
 import Firebase
 
-class ProfileViewController: ASViewController<ASDisplayNode> {
+final class ProfileViewController: ASViewController<ASDisplayNode> {
     var tableNode: ASTableNode { return node as! ASTableNode}
     
     // MARK: - Init
@@ -21,6 +21,7 @@ class ProfileViewController: ASViewController<ASDisplayNode> {
         tableNode.dataSource = self
         
         title = "Profile".uppercased()
+        tabBarItem.image = R.image.iconProfile()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -30,17 +31,36 @@ class ProfileViewController: ASViewController<ASDisplayNode> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let leftButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(leftAction))
-        navigationItem.leftBarButtonItem = leftButton
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutAction))
+        let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(settingsAction))
+        navigationItem.leftBarButtonItem = logoutButton
+        navigationItem.rightBarButtonItem = settingsButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTranslucentNavigation(true, color: .tintColor, tintColor: .white, titleColor: .white)
     }
     
     // MARK: - NavBar Actions
     
-    func leftAction() {
+    func logoutAction() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.logoutAnimated()
     }
+    
+    func settingsAction() {
+        print("settings")
+    }
+    
+    // MARK: - Status Bar Style
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
 }
+
+// MARK: ASTableDataSource
 
 extension ProfileViewController: ASTableDataSource {
 
