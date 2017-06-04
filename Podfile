@@ -1,17 +1,23 @@
-platform :ios, '8.0'
-use_frameworks!
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
 
-target 'SabbathSchool' do
-    pod 'Hue', :git => 'https://github.com/hyperoslo/Hue.git', :branch => 'swift-3'
-    pod 'R.swift', '~> 3.1'
-    pod 'AsyncDisplayKit', '~> 1.9'
-    pod 'pop'
-    pod 'Unbox'
-    pod 'Wrap'
-    pod 'Firebase/Core'
-    pod 'Firebase/Database'
-    pod 'Firebase/Messaging'
-    pod 'Firebase/Auth'
-    pod 'GoogleSignIn'
-    pod 'FacebookLogin'
+target 'Sabbath School' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Sabbath School
+  pod 'Hue'
+  pod 'FacebookLogin'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'FontBlaster'
+  pod 'GoogleSignIn'
+  pod 'R.swift', '~> 3.1'
+  pod 'pop'
+  pod 'Shimmer'
+  pod 'SwiftMessages'
+  pod 'Texture'
+  pod 'Unbox'
+  pod 'Wrap'
 end
