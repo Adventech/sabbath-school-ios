@@ -7,8 +7,11 @@
 //
 
 import AsyncDisplayKit
+import Crashlytics
+import Fabric
 import FacebookCore
 import Firebase
+import FirebaseDatabase
 import FontBlaster
 import GoogleSignIn
 import UIKit
@@ -18,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let fabricAPIKeyPath = Bundle.main.path(forResource: "Fabric", ofType: "apiKey")
+        let fabricAPIKey = try? String(contentsOfFile: fabricAPIKeyPath!, encoding: String.Encoding.utf8)
+        
+        Fabric.with([Crashlytics.start(withAPIKey: fabricAPIKey ?? "")])
         
         // TODO: - Configure per envoronment (stage, prod)
         
@@ -33,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
+        window?.layer.cornerRadius = 6
+        window?.clipsToBounds = true
         
         if (Auth.auth().currentUser) != nil {
             window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule()

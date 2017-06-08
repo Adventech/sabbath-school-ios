@@ -14,7 +14,6 @@
 		7A280F941ED94439003C7458 /* GoogleService-Info-Stage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */; };
 		7A280F971ED94964003C7458 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F961ED94964003C7458 /* R.generated.swift */; };
 		7A280F9B1EDA015D003C7458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F991EDA015D003C7458 /* AppDelegate.swift */; };
-		7A280F9C1EDA015D003C7458 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F9A1EDA015D003C7458 /* Info.plist */; };
 		7A280FB31EDA0276003C7458 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */; };
 		7A280FB41EDA0276003C7458 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FAE1EDA0276003C7458 /* Lato-BoldItalic.ttf */; };
 		7A280FB51EDA0276003C7458 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FAF1EDA0276003C7458 /* Lato-Italic.ttf */; };
@@ -34,12 +33,10 @@
 		7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FDE1EDCB9A9003C7458 /* QuarterlyInteractor.swift */; };
 		7A280FE11EDCBA16003C7458 /* QuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE01EDCBA16003C7458 /* QuarterlyController.swift */; };
 		7A280FE31EDCBA7D003C7458 /* QuarterlyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE21EDCBA7D003C7458 /* QuarterlyCellNode.swift */; };
-		7A280FE71EDCE460003C7458 /* Quarterly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE61EDCE460003C7458 /* Quarterly.swift */; };
 		7A280FE91EDCE4B1003C7458 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE81EDCE4B1003C7458 /* Date.swift */; };
 		7A280FEB1EDCEAD2003C7458 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FEA1EDCEAD2003C7458 /* Constants.swift */; };
 		7A280FEE1EDCFB4E003C7458 /* PopupTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FED1EDCFB4E003C7458 /* PopupTransitionAnimation.swift */; };
 		7A280FF81EDD0246003C7458 /* LanguageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FF71EDD0246003C7458 /* LanguageProtocols.swift */; };
-		7A280FFA1EDD02D1003C7458 /* QuarterlyLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FF91EDD02D1003C7458 /* QuarterlyLanguage.swift */; };
 		7A280FFC1EDD032E003C7458 /* LanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FFB1EDD032E003C7458 /* LanguageController.swift */; };
 		7A280FFE1EDD039C003C7458 /* LanguageCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FFD1EDD039C003C7458 /* LanguageCellNode.swift */; };
 		7A2810001EDD051D003C7458 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FFF1EDD051D003C7458 /* Image.swift */; };
@@ -49,8 +46,6 @@
 		7A2810081EDD0C51003C7458 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2810071EDD0C51003C7458 /* Navigation.swift */; };
 		7A28100A1EDD2546003C7458 /* QuarterlyFeaturedCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2810091EDD2546003C7458 /* QuarterlyFeaturedCellNode.swift */; };
 		7A2810141EDDCB1D003C7458 /* LessonProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2810131EDDCB1D003C7458 /* LessonProtocols.swift */; };
-		7A2810161EDDCB62003C7458 /* QuarterlyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2810151EDDCB62003C7458 /* QuarterlyInfo.swift */; };
-		7A2810181EDDCB9D003C7458 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2810171EDDCB9D003C7458 /* Lesson.swift */; };
 		7A28101A1EDDCC1A003C7458 /* LessonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2810191EDDCC1A003C7458 /* LessonController.swift */; };
 		7A28101C1EDDCDEC003C7458 /* LessonWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28101B1EDDCDEC003C7458 /* LessonWireFrame.swift */; };
 		7A28101E1EDDCE36003C7458 /* LessonPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28101D1EDDCE36003C7458 /* LessonPresenter.swift */; };
@@ -85,14 +80,7 @@
 		7A922E1A1EDFB6F600C12A67 /* ThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E191EDFB6F600C12A67 /* ThemeController.swift */; };
 		7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */; };
 		7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */; };
-		7A922E201EDFC61D00C12A67 /* ReadCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1F1EDFC61D00C12A67 /* ReadCellNode.swift */; };
-		7A922E221EDFC64500C12A67 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E211EDFC64500C12A67 /* Day.swift */; };
-		7A922E241EDFC67300C12A67 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E231EDFC67300C12A67 /* Comment.swift */; };
-		7A922E261EDFC70D00C12A67 /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E251EDFC70D00C12A67 /* Read.swift */; };
-		7A922E281EDFC72200C12A67 /* ReadComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E271EDFC72200C12A67 /* ReadComments.swift */; };
-		7A922E2A1EDFC79300C12A67 /* ReadHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E291EDFC79300C12A67 /* ReadHighlights.swift */; };
-		7A922E2C1EDFCAE200C12A67 /* LessonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E2B1EDFCAE200C12A67 /* LessonInfo.swift */; };
-		7A922E2E1EDFCDB400C12A67 /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E2D1EDFCDB400C12A67 /* BibleVerses.swift */; };
+		7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1F1EDFC61D00C12A67 /* ReadView.swift */; };
 		7A922E301EE07C6100C12A67 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E2F1EE07C6100C12A67 /* Reader.swift */; };
 		7A922E541EE07EC200C12A67 /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E331EE07EC200C12A67 /* base.css */; };
 		7A922E551EE07EC200C12A67 /* fonts.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E341EE07EC200C12A67 /* fonts.css */; };
@@ -117,6 +105,25 @@
 		7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E511EE07EC200C12A67 /* rangy-highlighter.js */; };
 		7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E521EE07EC200C12A67 /* rangy-serializer.js */; };
 		7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E531EE07EC200C12A67 /* ss-reader.js */; };
+		7AA43BB81EE76B8D00525696 /* Fabric.apiKey in Resources */ = {isa = PBXBuildFile; fileRef = 7AA43BB61EE76B8D00525696 /* Fabric.apiKey */; };
+		7AA43BB91EE76B8D00525696 /* Fabric.buildSecret in Resources */ = {isa = PBXBuildFile; fileRef = 7AA43BB71EE76B8D00525696 /* Fabric.buildSecret */; };
+		7AA43BBB1EE7B48300525696 /* ReadContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA43BBA1EE7B48300525696 /* ReadContextMenuView.swift */; };
+		7AA43BBD1EE7B4E500525696 /* ReadContextMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA43BBC1EE7B4E500525696 /* ReadContextMenuController.swift */; };
+		7AC26AE41EE48925003F946C /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = 7AC26AE21EE48925003F946C /* Appfile */; };
+		7AC26AE51EE48925003F946C /* Fastfile in Resources */ = {isa = PBXBuildFile; fileRef = 7AC26AE31EE48925003F946C /* Fastfile */; };
+		7AC26AE71EE4FA9E003F946C /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE61EE4FA9E003F946C /* ReaderView.swift */; };
+		7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE81EE5EB63003F946C /* Preferences.swift */; };
+		7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */; };
+		7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEC1EE5EBDE003F946C /* Comment.swift */; };
+		7AC26AF81EE5EBDE003F946C /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AED1EE5EBDE003F946C /* Day.swift */; };
+		7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEE1EE5EBDE003F946C /* Lesson.swift */; };
+		7AC26AFA1EE5EBDE003F946C /* LessonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEF1EE5EBDE003F946C /* LessonInfo.swift */; };
+		7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF01EE5EBDE003F946C /* Quarterly.swift */; };
+		7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF11EE5EBDE003F946C /* QuarterlyInfo.swift */; };
+		7AC26AFD1EE5EBDE003F946C /* QuarterlyLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF21EE5EBDE003F946C /* QuarterlyLanguage.swift */; };
+		7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF31EE5EBDE003F946C /* Read.swift */; };
+		7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF41EE5EBDE003F946C /* ReadComments.swift */; };
+		7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */; };
 		C6AD5FC4E686836BCB68D63F /* Pods_Sabbath_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA77760489FE123F60F36B6 /* Pods_Sabbath_School.framework */; };
 /* End PBXBuildFile section */
 
@@ -151,12 +158,10 @@
 		7A280FDE1EDCB9A9003C7458 /* QuarterlyInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyInteractor.swift; sourceTree = "<group>"; };
 		7A280FE01EDCBA16003C7458 /* QuarterlyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyController.swift; sourceTree = "<group>"; };
 		7A280FE21EDCBA7D003C7458 /* QuarterlyCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyCellNode.swift; sourceTree = "<group>"; };
-		7A280FE61EDCE460003C7458 /* Quarterly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quarterly.swift; sourceTree = "<group>"; };
 		7A280FE81EDCE4B1003C7458 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7A280FEA1EDCEAD2003C7458 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7A280FED1EDCFB4E003C7458 /* PopupTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupTransitionAnimation.swift; sourceTree = "<group>"; };
 		7A280FF71EDD0246003C7458 /* LanguageProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageProtocols.swift; sourceTree = "<group>"; };
-		7A280FF91EDD02D1003C7458 /* QuarterlyLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyLanguage.swift; sourceTree = "<group>"; };
 		7A280FFB1EDD032E003C7458 /* LanguageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageController.swift; sourceTree = "<group>"; };
 		7A280FFD1EDD039C003C7458 /* LanguageCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageCellNode.swift; sourceTree = "<group>"; };
 		7A280FFF1EDD051D003C7458 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -166,8 +171,6 @@
 		7A2810071EDD0C51003C7458 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		7A2810091EDD2546003C7458 /* QuarterlyFeaturedCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyFeaturedCellNode.swift; sourceTree = "<group>"; };
 		7A2810131EDDCB1D003C7458 /* LessonProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonProtocols.swift; sourceTree = "<group>"; };
-		7A2810151EDDCB62003C7458 /* QuarterlyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyInfo.swift; sourceTree = "<group>"; };
-		7A2810171EDDCB9D003C7458 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		7A2810191EDDCC1A003C7458 /* LessonController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonController.swift; sourceTree = "<group>"; };
 		7A28101B1EDDCDEC003C7458 /* LessonWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonWireFrame.swift; sourceTree = "<group>"; };
 		7A28101D1EDDCE36003C7458 /* LessonPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPresenter.swift; sourceTree = "<group>"; };
@@ -202,14 +205,7 @@
 		7A922E191EDFB6F600C12A67 /* ThemeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeController.swift; sourceTree = "<group>"; };
 		7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadInteractor.swift; sourceTree = "<group>"; };
 		7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseInteractor.swift; sourceTree = "<group>"; };
-		7A922E1F1EDFC61D00C12A67 /* ReadCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadCellNode.swift; sourceTree = "<group>"; };
-		7A922E211EDFC64500C12A67 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
-		7A922E231EDFC67300C12A67 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		7A922E251EDFC70D00C12A67 /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
-		7A922E271EDFC72200C12A67 /* ReadComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadComments.swift; sourceTree = "<group>"; };
-		7A922E291EDFC79300C12A67 /* ReadHighlights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadHighlights.swift; sourceTree = "<group>"; };
-		7A922E2B1EDFCAE200C12A67 /* LessonInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonInfo.swift; sourceTree = "<group>"; };
-		7A922E2D1EDFCDB400C12A67 /* BibleVerses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleVerses.swift; sourceTree = "<group>"; };
+		7A922E1F1EDFC61D00C12A67 /* ReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
 		7A922E2F1EE07C6100C12A67 /* Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		7A922E331EE07EC200C12A67 /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
 		7A922E341EE07EC200C12A67 /* fonts.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = fonts.css; sourceTree = "<group>"; };
@@ -234,6 +230,25 @@
 		7A922E511EE07EC200C12A67 /* rangy-highlighter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-highlighter.js"; sourceTree = "<group>"; };
 		7A922E521EE07EC200C12A67 /* rangy-serializer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-serializer.js"; sourceTree = "<group>"; };
 		7A922E531EE07EC200C12A67 /* ss-reader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ss-reader.js"; sourceTree = "<group>"; };
+		7AA43BB61EE76B8D00525696 /* Fabric.apiKey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Fabric.apiKey; path = "Sabbath School/Resources/Fabric.apiKey"; sourceTree = SOURCE_ROOT; };
+		7AA43BB71EE76B8D00525696 /* Fabric.buildSecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Fabric.buildSecret; path = "Sabbath School/Resources/Fabric.buildSecret"; sourceTree = SOURCE_ROOT; };
+		7AA43BBA1EE7B48300525696 /* ReadContextMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadContextMenuView.swift; sourceTree = "<group>"; };
+		7AA43BBC1EE7B4E500525696 /* ReadContextMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadContextMenuController.swift; sourceTree = "<group>"; };
+		7AC26AE21EE48925003F946C /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
+		7AC26AE31EE48925003F946C /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
+		7AC26AE61EE4FA9E003F946C /* ReaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
+		7AC26AE81EE5EB63003F946C /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleVerses.swift; sourceTree = "<group>"; };
+		7AC26AEC1EE5EBDE003F946C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		7AC26AED1EE5EBDE003F946C /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		7AC26AEE1EE5EBDE003F946C /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		7AC26AEF1EE5EBDE003F946C /* LessonInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonInfo.swift; sourceTree = "<group>"; };
+		7AC26AF01EE5EBDE003F946C /* Quarterly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quarterly.swift; sourceTree = "<group>"; };
+		7AC26AF11EE5EBDE003F946C /* QuarterlyInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyInfo.swift; sourceTree = "<group>"; };
+		7AC26AF21EE5EBDE003F946C /* QuarterlyLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyLanguage.swift; sourceTree = "<group>"; };
+		7AC26AF31EE5EBDE003F946C /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
+		7AC26AF41EE5EBDE003F946C /* ReadComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadComments.swift; sourceTree = "<group>"; };
+		7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadHighlights.swift; sourceTree = "<group>"; };
 		7AF191A81ED7B89B000CCF0C /* Sabbath School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabbath School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -360,6 +375,7 @@
 				7A280FC01EDA03C0003C7458 /* Configuration */,
 				7A280FC11EDA03C0003C7458 /* Extensions */,
 				7A280FEC1EDCFB38003C7458 /* Library */,
+				7AC26AEA1EE5EBDE003F946C /* Model */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -370,6 +386,7 @@
 				7A922E061EDEDEA700C12A67 /* ButtonStyle.swift */,
 				7A280FEA1EDCEAD2003C7458 /* Constants.swift */,
 				7A280FC21EDA03ED003C7458 /* TextStyle.swift */,
+				7AC26AE81EE5EB63003F946C /* Preferences.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -460,24 +477,6 @@
 			path = WireFrame;
 			sourceTree = "<group>";
 		};
-		7A280FE51EDCE454003C7458 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7A280FE61EDCE460003C7458 /* Quarterly.swift */,
-				7A280FF91EDD02D1003C7458 /* QuarterlyLanguage.swift */,
-				7A2810151EDDCB62003C7458 /* QuarterlyInfo.swift */,
-				7A2810171EDDCB9D003C7458 /* Lesson.swift */,
-				7A922E211EDFC64500C12A67 /* Day.swift */,
-				7A922E231EDFC67300C12A67 /* Comment.swift */,
-				7A922E251EDFC70D00C12A67 /* Read.swift */,
-				7A922E271EDFC72200C12A67 /* ReadComments.swift */,
-				7A922E291EDFC79300C12A67 /* ReadHighlights.swift */,
-				7A922E2B1EDFCAE200C12A67 /* LessonInfo.swift */,
-				7A922E2D1EDFCDB400C12A67 /* BibleVerses.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		7A280FEC1EDCFB38003C7458 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +488,7 @@
 				7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */,
 				7A922E2F1EE07C6100C12A67 /* Reader.swift */,
 				7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */,
+				7AC26AE61EE4FA9E003F946C /* ReaderView.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -706,6 +706,7 @@
 			children = (
 				7A922E171EDFB61600C12A67 /* ReadController.swift */,
 				7A3BCE3D1EE2F209003EC12B /* ReadOptionsController.swift */,
+				7AA43BBC1EE7B4E500525696 /* ReadContextMenuController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -737,8 +738,9 @@
 		7A922E0F1EDF88F800C12A67 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7A922E1F1EDFC61D00C12A67 /* ReadCellNode.swift */,
+				7A922E1F1EDFC61D00C12A67 /* ReadView.swift */,
 				7A3BCE3F1EE2F27F003EC12B /* ReadOptionsView.swift */,
+				7AA43BBA1EE7B48300525696 /* ReadContextMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -754,6 +756,8 @@
 		7A922E311EE07EC200C12A67 /* sabbath-school-reader */ = {
 			isa = PBXGroup;
 			children = (
+				7AA43BB61EE76B8D00525696 /* Fabric.apiKey */,
+				7AA43BB71EE76B8D00525696 /* Fabric.buildSecret */,
 				7A922E321EE07EC200C12A67 /* css */,
 				7A922E361EE07EC200C12A67 /* fonts */,
 				7A922E4B1EE07EC200C12A67 /* index.html */,
@@ -837,6 +841,33 @@
 			path = js;
 			sourceTree = "<group>";
 		};
+		7AC26AE11EE48925003F946C /* Fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				7AC26AE21EE48925003F946C /* Appfile */,
+				7AC26AE31EE48925003F946C /* Fastfile */,
+			);
+			path = Fastlane;
+			sourceTree = "<group>";
+		};
+		7AC26AEA1EE5EBDE003F946C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */,
+				7AC26AEC1EE5EBDE003F946C /* Comment.swift */,
+				7AC26AED1EE5EBDE003F946C /* Day.swift */,
+				7AC26AEE1EE5EBDE003F946C /* Lesson.swift */,
+				7AC26AEF1EE5EBDE003F946C /* LessonInfo.swift */,
+				7AC26AF01EE5EBDE003F946C /* Quarterly.swift */,
+				7AC26AF11EE5EBDE003F946C /* QuarterlyInfo.swift */,
+				7AC26AF21EE5EBDE003F946C /* QuarterlyLanguage.swift */,
+				7AC26AF31EE5EBDE003F946C /* Read.swift */,
+				7AC26AF41EE5EBDE003F946C /* ReadComments.swift */,
+				7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7AF1919F1ED7B89B000CCF0C = {
 			isa = PBXGroup;
 			children = (
@@ -864,7 +895,6 @@
 				7A280FEF1EDCFCA7003C7458 /* Language */,
 				7A28100D1EDDC9A4003C7458 /* Lesson */,
 				7A280F701ED7CF05003C7458 /* Login */,
-				7A280FE51EDCE454003C7458 /* Model */,
 				7A280FD11EDCB736003C7458 /* Quarterly */,
 				7A922E0A1EDF88F800C12A67 /* Read */,
 				7A280F8C1ED7D75E003C7458 /* Resources */,
@@ -875,6 +905,7 @@
 		C6B7EC586755A52E1EB59B9D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				7AC26AE11EE48925003F946C /* Fastlane */,
 				462CFE2EEEB08613B21AB017 /* Pods-Sabbath School.debug.xcconfig */,
 				57506EF65FC71A870E0BE99F /* Pods-Sabbath School.release.xcconfig */,
 			);
@@ -903,6 +934,7 @@
 				7AF191A61ED7B89B000CCF0C /* Resources */,
 				1B6A00FE81B5E044B0CF66AE /* [CP] Embed Pods Frameworks */,
 				361CDFACACA3413B1C861855 /* [CP] Copy Pods Resources */,
+				7AC26AE01EE46BF0003F946C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -926,7 +958,7 @@
 					7AF191A71ED7B89B000CCF0C = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = XVGX5G4YQ9;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -959,7 +991,7 @@
 				7A922E601EE07EC200C12A67 /* PT_Sans-Web-BoldItalic.ttf in Resources */,
 				7A922E651EE07EC200C12A67 /* PT_Serif-Web-Italic.ttf in Resources */,
 				7A922E571EE07EC200C12A67 /* Lora-Bold.ttf in Resources */,
-				7A280F9C1EDA015D003C7458 /* Info.plist in Resources */,
+				7AA43BB91EE76B8D00525696 /* Fabric.buildSecret in Resources */,
 				7A280FB61EDA0276003C7458 /* Lato-Medium.ttf in Resources */,
 				7A922E611EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf in Resources */,
 				7A922E5A1EE07EC200C12A67 /* Lora-Regular.ttf in Resources */,
@@ -968,9 +1000,11 @@
 				7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */,
 				7A922E5F1EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf in Resources */,
 				7A922E671EE07EC200C12A67 /* index.html in Resources */,
+				7AC26AE51EE48925003F946C /* Fastfile in Resources */,
 				7A280FB31EDA0276003C7458 /* Lato-Bold.ttf in Resources */,
 				7A922E631EE07EC200C12A67 /* PT_Serif-Web-Bold.ttf in Resources */,
 				7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */,
+				7AC26AE41EE48925003F946C /* Appfile in Resources */,
 				7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */,
 				7A922E551EE07EC200C12A67 /* fonts.css in Resources */,
 				7A922E691EE07EC200C12A67 /* jsface.min.js in Resources */,
@@ -980,6 +1014,7 @@
 				7A922E541EE07EC200C12A67 /* base.css in Resources */,
 				7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */,
 				7A922E641EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
+				7AA43BB81EE76B8D00525696 /* Fabric.apiKey in Resources */,
 				7A280FB41EDA0276003C7458 /* Lato-BoldItalic.ttf in Resources */,
 				7A280FB81EDA0276003C7458 /* Lato-Regular.ttf in Resources */,
 				7A922E591EE07EC200C12A67 /* Lora-Italic.ttf in Resources */,
@@ -1035,6 +1070,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
 		};
+		7AC26AE01EE46BF0003F946C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FABRIC_APIKEY_FILE=\"${SRCROOT}/Sabbath School/Resources/Fabric.apiKey\"\nFABRIC_BUILDSECRET_FILE=\"${SRCROOT}/Sabbath School/Resources/Fabric.buildSecret\"\n\nFABRIC_APIKEY=$(cat \"$FABRIC_APIKEY_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_APIKEY_FILE\"\nexit 1\nfi\n\nFABRIC_BUILDSECRET=$(cat \"$FABRIC_BUILDSECRET_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_BUILDSECRET_FILE\"\nexit 1\nfi\n\necho \"Uploading dSYM files to Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" \"$FABRIC_APIKEY\" \"$FABRIC_BUILDSECRET\"\n";
+		};
 		C3EA699729E75B81F7930178 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1061,34 +1109,38 @@
 				7A280FC91EDA0EB5003C7458 /* LoginPresenter.swift in Sources */,
 				7A922E121EDF89D600C12A67 /* ReadProtocols.swift in Sources */,
 				7A922E031EDE348D00C12A67 /* LessonQuarterlyInfoCell.swift in Sources */,
-				7A922E241EDFC67300C12A67 /* Comment.swift in Sources */,
 				7A2810021EDD060F003C7458 /* LanguagePresenter.swift in Sources */,
+				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
+				7AA43BBB1EE7B48300525696 /* ReadContextMenuView.swift in Sources */,
+				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
 				7A3BCE361EE27776003EC12B /* BiblePresenter.swift in Sources */,
+				7AC26AE71EE4FA9E003F946C /* ReaderView.swift in Sources */,
 				7A280FEE1EDCFB4E003C7458 /* PopupTransitionAnimation.swift in Sources */,
 				7A3BCE381EE29203003EC12B /* BibleVersionView.swift in Sources */,
 				7A2810061EDD071B003C7458 /* LanguageWireFrame.swift in Sources */,
 				7A280FE11EDCBA16003C7458 /* QuarterlyController.swift in Sources */,
-				7A2810181EDDCB9D003C7458 /* Lesson.swift in Sources */,
 				7A922E1A1EDFB6F600C12A67 /* ThemeController.swift in Sources */,
-				7A922E2E1EDFCDB400C12A67 /* BibleVerses.swift in Sources */,
+				7AC26AFA1EE5EBDE003F946C /* LessonInfo.swift in Sources */,
 				7A280FD01EDA23F0003C7458 /* LoginInteractor.swift in Sources */,
+				7AA43BBD1EE7B4E500525696 /* ReadContextMenuController.swift in Sources */,
 				7A922E091EDF623500C12A67 /* TableController.swift in Sources */,
 				7A280FCE1EDA10ED003C7458 /* LoginProtocols.swift in Sources */,
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,
+				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
 				7A280FC31EDA03ED003C7458 /* TextStyle.swift in Sources */,
 				7A922E141EDF8A6A00C12A67 /* ReadWireFrame.swift in Sources */,
 				7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */,
-				7A922E261EDFC70D00C12A67 /* Read.swift in Sources */,
+				7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */,
 				7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */,
 				7A2810141EDDCB1D003C7458 /* LessonProtocols.swift in Sources */,
 				7A3BCE321EE27717003EC12B /* BibleWireFrame.swift in Sources */,
 				7A280F9B1EDA015D003C7458 /* AppDelegate.swift in Sources */,
 				7A280FC71EDA06F9003C7458 /* LoginButton.swift in Sources */,
+				7AC26AF81EE5EBDE003F946C /* Day.swift in Sources */,
 				7A28101C1EDDCDEC003C7458 /* LessonWireFrame.swift in Sources */,
+				7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */,
 				7A28101A1EDDCC1A003C7458 /* LessonController.swift in Sources */,
-				7A922E2C1EDFCAE200C12A67 /* LessonInfo.swift in Sources */,
 				7A280FDB1EDCB846003C7458 /* QuarterlyWireFrame.swift in Sources */,
-				7A280FE71EDCE460003C7458 /* Quarterly.swift in Sources */,
 				7A3BCE3A1EE292E9003EC12B /* BibleVersionController.swift in Sources */,
 				7A280FFC1EDD032E003C7458 /* LanguageController.swift in Sources */,
 				7A3BCE341EE2776A003EC12B /* BibleInteractor.swift in Sources */,
@@ -1096,18 +1148,19 @@
 				7A3BCE211EE0EC60003EC12B /* String.swift in Sources */,
 				7A922E161EDF8AB300C12A67 /* ReadPresenter.swift in Sources */,
 				7A280FF81EDD0246003C7458 /* LanguageProtocols.swift in Sources */,
-				7A280FFA1EDD02D1003C7458 /* QuarterlyLanguage.swift in Sources */,
 				7A280FCC1EDA0F9D003C7458 /* LoginController.swift in Sources */,
 				7A280FDD1EDCB936003C7458 /* QuarterlyPresenter.swift in Sources */,
 				7A280F7A1ED7CF2C003C7458 /* LoginNode.swift in Sources */,
 				7A3BCE3C1EE29605003EC12B /* Button.swift in Sources */,
+				7AC26AFD1EE5EBDE003F946C /* QuarterlyLanguage.swift in Sources */,
 				7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */,
 				7A280FD91EDCB79F003C7458 /* QuarterlyProtocols.swift in Sources */,
+				7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */,
 				7A3BCE421EE37E30003EC12B /* DiscreteSlider.swift in Sources */,
+				7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */,
 				7A3BCE1F1EE0EC28003EC12B /* URL.swift in Sources */,
-				7A922E281EDFC72200C12A67 /* ReadComments.swift in Sources */,
-				7A922E221EDFC64500C12A67 /* Day.swift in Sources */,
 				7A2810001EDD051D003C7458 /* Image.swift in Sources */,
+				7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */,
 				7A2810251EDDE2AA003C7458 /* QuarterlyEmptyCell.swift in Sources */,
 				7A2810271EDDE3D3003C7458 /* DisplayNode.swift in Sources */,
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
@@ -1116,20 +1169,19 @@
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageCellNode.swift in Sources */,
 				7A280F971ED94964003C7458 /* R.generated.swift in Sources */,
-				7A922E2A1EDFC79300C12A67 /* ReadHighlights.swift in Sources */,
 				7A922E071EDEDEA700C12A67 /* ButtonStyle.swift in Sources */,
 				7A280FE91EDCE4B1003C7458 /* Date.swift in Sources */,
 				7A280FE31EDCBA7D003C7458 /* QuarterlyCellNode.swift in Sources */,
 				7A2810231EDDD011003C7458 /* LessonCellNode.swift in Sources */,
 				7A3BCE401EE2F27F003EC12B /* ReadOptionsView.swift in Sources */,
 				7A922E181EDFB61600C12A67 /* ReadController.swift in Sources */,
-				7A922E201EDFC61D00C12A67 /* ReadCellNode.swift in Sources */,
+				7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */,
+				7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */,
 				7A2810201EDDCEC9003C7458 /* LessonInteractor.swift in Sources */,
 				7A2810081EDD0C51003C7458 /* Navigation.swift in Sources */,
 				7A3BCE2E1EE2753C003EC12B /* BibleController.swift in Sources */,
 				7A2810041EDD0675003C7458 /* LanguageInteractor.swift in Sources */,
 				7A2810291EDDE41F003C7458 /* ShimmeringNode.swift in Sources */,
-				7A2810161EDDCB62003C7458 /* QuarterlyInfo.swift in Sources */,
 				7A922E051EDE38F400C12A67 /* OpenButton.swift in Sources */,
 				7A28100A1EDD2546003C7458 /* QuarterlyFeaturedCellNode.swift in Sources */,
 				7A280FC51EDA04A6003C7458 /* Color.swift in Sources */,
@@ -1252,12 +1304,16 @@
 			baseConfigurationReference = 462CFE2EEEB08613B21AB017 /* Pods-Sabbath School.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.sabbathschool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3cb2d919-90b8-48e6-9047-6414d009435c";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1267,12 +1323,15 @@
 			baseConfigurationReference = 57506EF65FC71A870E0BE99F /* Pods-Sabbath School.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.sabbathschool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3cb2d919-90b8-48e6-9047-6414d009435c";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

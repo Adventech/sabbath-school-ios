@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum ReaderTheme: String {
-    case Light = "light"
-    case Dark = "dark"
-    case Sepia = "sepia"
-}
-
 struct ReaderStyle {
     struct Theme {
         static var Light: String {
@@ -72,10 +66,6 @@ struct ReaderStyle {
 
 @objc protocol ReaderOutputProtocol {
     @objc optional func didLoadContent(content: String)
-    @objc optional func didChangeTheme(theme: String)
-    
-    // TODO: Remove
-    @objc optional func didLoadReadContent(content: String)
 }
 
 class Reader {
@@ -90,19 +80,5 @@ class Reader {
         index = index?.replacingOccurrences(of: "css/", with: "") // Fix the css path
         index = index?.replacingOccurrences(of: "js/", with: "") // Fix the js path
         delegate?.didLoadContent!(content: index!)
-    }
-    
-    // TODO: Remove
-    func loadReadContent(read: Read){
-        let indexPath = Bundle.main.path(forResource: "index", ofType: "html")
-        var index = try? String(contentsOfFile: indexPath!, encoding: String.Encoding.utf8)
-        index = index?.replacingOccurrences(of: "{{content}}", with: read.content)
-        index = index?.replacingOccurrences(of: "css/", with: "") // Fix the css path
-        index = index?.replacingOccurrences(of: "js/", with: "") // Fix the js path
-        delegate?.didLoadReadContent!(content: index!)
-    }
-    
-    func setThemeLight() {
-        delegate?.didChangeTheme!(theme: ReaderStyle.Theme.Light)
     }
 }

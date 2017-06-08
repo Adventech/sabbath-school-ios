@@ -1,20 +1,19 @@
 //
-//  ReadOptionsController.swift
+//  ContextMenuController.swift
 //  Sabbath School
 //
-//  Created by Vitaliy Lim on 2017-06-03.
+//  Created by Vitaliy Lim on 2017-06-07.
 //  Copyright © 2017 Adventech. All rights reserved.
 //
 
 import AsyncDisplayKit
 import UIKit
 
-class ReadOptionsController: ASViewController<ASDisplayNode> {
-    var readOptionsView = ReadOptionsView()
+class ReadContextMenuController: ASViewController<ASDisplayNode> {
+    var readContextMenuView = ReadContextMenuView()
     
-    init(delegate: ReadOptionsDelegate) {
-        readOptionsView.delegate = delegate
-        super.init(node: readOptionsView)
+    init() {
+        super.init(node: readContextMenuView)
     }
     
     required init?(coder aDecoder: NSCoder) {

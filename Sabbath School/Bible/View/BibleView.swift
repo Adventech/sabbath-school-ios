@@ -21,9 +21,31 @@ class BibleView: ASDisplayNode {
     
     override func didLoad() {
         webView.backgroundColor = UIColor.white
+        webView.delegate = self
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: webNode)
+    }
+}
+
+extension BibleView: UIWebViewDelegate {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        
+        let theme = currentTheme()
+        let typeface = currentTypeface()
+        let size = currentSize()
+        
+        if !theme.isEmpty {
+            webView.stringByEvaluatingJavaScript(from: "ssReader.setTheme('"+theme+"')")
+        }
+        
+        if !typeface.isEmpty {
+            webView.stringByEvaluatingJavaScript(from: "ssReader.setFont('"+typeface+"')")
+        }
+        
+        if !size.isEmpty {
+            webView.stringByEvaluatingJavaScript(from: "ssReader.setSize('"+size+"')")
+        }
     }
 }

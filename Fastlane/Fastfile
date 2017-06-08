@@ -1,0 +1,36 @@
+# More documentation about how to customize your build
+# can be found here:
+# https://docs.fastlane.tools
+fastlane_version "1.109.0"
+
+# This value helps us track success metrics for Fastfiles
+# we automatically generate. Feel free to remove this line
+# once you get things running smoothly!
+generated_fastfile_id "7dd5e07e-9fdb-4a2c-8176-894d433097a4"
+
+default_platform :ios
+
+# Fastfile actions accept additional configuration, but
+# don't worry, fastlane will prompt you for required
+# info which you can add here later
+lane :beta do
+  increment_build
+  match(type: "adhoc", git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git")
+  # build your iOS app
+  gym(
+    scheme: "Sabbath School",
+    export_method: "ad-hoc"
+  )
+
+  crashlytics(
+    api_token: "cbba8a9b03b81d1950eac4e13949f2977d1b5b00",
+    build_secret: "31c2db39cb1a646b83e70eb5f60a8d332e08fc06225132f17830287eca3d5186",
+    groups: "ios-beta-testers"
+  )
+end
+
+lane :increment_build do
+  date_number = Time.new.strftime("%Y.%m")
+  build_number = "#{date_number}.#{number_of_commits}"
+  increment_build_number(build_number: build_number)
+end

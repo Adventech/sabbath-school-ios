@@ -30,6 +30,12 @@ final class QuarterlyController: TableController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let lastQuarterlyIndex = currentQuarterly()
+        if !lastQuarterlyIndex.isEmpty {
+            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
+        }
+        
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(rightAction(sender:)))
         navigationItem.rightBarButtonItem = rightButton
         presenter?.configure()

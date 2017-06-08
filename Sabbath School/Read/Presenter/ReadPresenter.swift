@@ -32,7 +32,7 @@ class ReadPresenter: ReadPresenterProtocol {
     }
     
     func presentReadOptionsScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate){
-        let readOptionsScreen = ReadOptionsController()
+        let readOptionsScreen = ReadOptionsController(delegate: self.controller as! ReadOptionsDelegate)
         readOptionsScreen.transitioningDelegate = transitioningDelegate
         readOptionsScreen.modalPresentationStyle = .custom
         readOptionsScreen.preferredContentSize = size

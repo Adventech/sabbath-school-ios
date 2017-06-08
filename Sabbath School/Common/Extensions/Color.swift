@@ -66,7 +66,7 @@ extension UIColor {
     }
     
     class var readerDarkFont: UIColor {
-        return UIColor.init(hex: "#CCCCCC")
+        return UIColor.init(hex: "#efefef")
     }
     
     class var readerSepia: UIColor {

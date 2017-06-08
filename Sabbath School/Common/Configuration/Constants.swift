@@ -20,8 +20,13 @@ struct Constants {
         static let quarterlyLanguage = "io.adventech.interfaceLanguage"
         static let firstRun = "io.adventech.firstRun"
         static var preferredBibleVersion: String {
-            return "io.adventech.preferredBibleVersion." + "en"
+            return "io.adventech.preferredBibleVersion." + currentLanguage().code
         }
+        static let lastQuarterlyIndex = "io.adventech.lastQuarterlyIndex"
+        
+        static let readingOptionsTheme = "io.adventech.readingOptionsTheme"
+        static let readingOptionsTypeface = "io.adventech.readingOptionsTypeface"
+        static let readingOptionsSize = "io.adventech.readingOptionsSize"
     }
     
     struct Path {

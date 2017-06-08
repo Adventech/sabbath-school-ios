@@ -6,15 +6,17 @@ target 'Sabbath School' do
   use_frameworks!
 
   # Pods for Sabbath School
-  pod 'Hue'
+  pod 'Crashlytics'
+  pod 'Fabric'
   pod 'FacebookLogin'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'FontBlaster'
   pod 'GoogleSignIn'
-  pod 'R.swift', '~> 3.1'
+  pod 'Hue'
   pod 'pop'
+  pod 'R.swift', '~> 3.1'
   pod 'Shimmer'
   pod 'SwiftMessages'
   pod 'Texture'
