@@ -18,6 +18,7 @@ lane :beta do
   match(type: "adhoc", git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git")
   # build your iOS app
   gym(
+    workspace: "./Sabbath School.xcworkspace",
     scheme: "Sabbath School",
     export_method: "ad-hoc"
   )
