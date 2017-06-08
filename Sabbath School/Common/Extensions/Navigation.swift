@@ -75,6 +75,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
     
     func setTranslucentNavigation(_ translucent: Bool = true, color: UIColor, tintColor: UIColor = UIColor.white, titleColor: UIColor = UIColor.black, andFont font: UIFont = R.font.latoBold(size: 15)!) {
         let navBar = self.navigationController?.navigationBar
+        
         navBar?.setBackgroundImage(UIImage.imageWithColor(color), for: UIBarMetrics.default)
         navBar?.showBottomHairline()
         navBar?.isTranslucent = translucent

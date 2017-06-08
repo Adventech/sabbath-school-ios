@@ -35,7 +35,12 @@ class BibleController: ASViewController<ASDisplayNode> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
+        let theme = currentTheme()
+        if theme == ReaderStyle.Theme.Dark {
+            setTranslucentNavigation(true, color: .readerDark, tintColor: .readerDarkFont, titleColor: .readerDarkFont)
+        } else {
+            setTranslucentNavigation(true, color: .tintColor, tintColor: .white, titleColor: .white)
+        }
         
         let closeButton = UIBarButtonItem(image: R.image.iconNavbarClose(), style: .done, target: self, action: #selector(closeAction(sender:)))
         navigationItem.leftBarButtonItem = closeButton

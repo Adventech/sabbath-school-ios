@@ -25,10 +25,13 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+.DS_Store
+.idea
 
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+*.dSYM.zip
 
 ## Playgrounds
 timeline.xctimeline
@@ -49,5 +52,9 @@ Pods/
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
 
-fastlane/report.xml
-fastlane/screenshots
+Fastlane/report.xml
+Fastlane/screenshots
+
+# Private stuff
+Fabric.apiKey
+Fabric.buildSecret

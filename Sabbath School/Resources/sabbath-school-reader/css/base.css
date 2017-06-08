@@ -101,6 +101,10 @@ html, body {
   background-color: #525252;
 }
 
+.ss-wrapper-dark a.verse {
+  border-bottom: 1px solid #ccc;
+}
+
 .ss-wrapper p {
   padding: 0 0 10px 0;
 }

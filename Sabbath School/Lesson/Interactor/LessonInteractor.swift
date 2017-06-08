@@ -18,6 +18,7 @@ class LessonInteractor: FirebaseDatabaseInteractor, LessonInteractorInputProtoco
             do {
                 let item: QuarterlyInfo = try unbox(dictionary: json)
                 
+                self.saveLastQuarterlyIndex(lastQuarterlyIndex: quarterlyIndex)
                 self.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: item)
             } catch let error {
                 self.presenter?.onError(error)
@@ -25,5 +26,9 @@ class LessonInteractor: FirebaseDatabaseInteractor, LessonInteractorInputProtoco
         }) { (error) in
             self.presenter?.onError(error)
         }
+    }
+    
+    func saveLastQuarterlyIndex(lastQuarterlyIndex: String){
+        UserDefaults.standard.set(lastQuarterlyIndex, forKey: Constants.DefaultKey.lastQuarterlyIndex)
     }
 }

@@ -9,35 +9,47 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol ReadCellNodeDelegate {
-    func didScrollView(readCellNode: ReadCellNode, scrollView: UIScrollView)
+protocol ReadViewDelegate {
+    func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
     func didClickVerse(read: Read, verse: String)
+    func doShowContextMenu()
+    func didLoadWebView(webView: UIWebView)
 }
 
-class ReadCellNode: ASCellNode {
-    var delegate: ReadCellNodeDelegate
+class ReadView: ASCellNode {
+    var delegate: ReadViewDelegate
     let coverNode = ASNetworkImageNode()
     let textNode = ASTextNode()
-    let webNode = ASDisplayNode { UIWebView() }
+    let webNode = ASDisplayNode { ReaderView() }
     let reader = Reader()
+    let contextMenu = ReadContextMenuView()
     var read: Read?
     
     var initialCoverNodeHeight: CGFloat = 0
     var parallaxCoverNodeHeight: CGFloat = 0
     
-    var webView: UIWebView { return webNode.view as! UIWebView }
+    var webView: ReaderView { return webNode.view as! ReaderView }
     
-    init(lessonInfo: LessonInfo, read: Read, delegate: ReadCellNodeDelegate) {
+    init(lessonInfo: LessonInfo, read: Read, delegate: ReadViewDelegate) {
         self.delegate = delegate
         super.init()
         self.read = read
         
-        coverNode.url = lessonInfo.lesson.cover
         coverNode.contentMode = .scaleAspectFill
-        coverNode.backgroundColor = UIColor.tintColor
-        coverNode.imageModificationBlock = { image in
-            image.tint(tintColor: .tintColor)
+        
+        if !(lessonInfo.lesson.cover?.absoluteString ?? "").isEmpty {
+            coverNode.url = lessonInfo.lesson.cover
+            coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+            coverNode.placeholderEnabled = true
+            coverNode.placeholderFadeDuration = 0.6
+            coverNode.imageModificationBlock = { image in
+                image.tint(tintColor: .tintColor)
+            }
+        } else {
+            coverNode.backgroundColor = .tintColor
         }
+        
+        
         coverNode.clipsToBounds = true
         
         textNode.attributedText = TextStyles.cellDetailStyle(string: "hello,world")
@@ -62,30 +74,45 @@ class ReadCellNode: ASCellNode {
     override func didLoad() {
         super.didLoad()
         
+        contextMenu.isHidden = true
+        
         initialCoverNodeHeight = coverNode.calculatedSize.height
 
         webView.backgroundColor = .clear
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.delegate = self
         webView.delegate = self
+        webView.alpha = 0
+        webView.readerViewDelegate = self
         
-        reader.loadReadContent(read: read!)
+        reader.loadContent(content: read!.content)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height*0.4)
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
+        contextMenu.style.preferredSize = CGSize(width: 300, height: 160)
+        
         
         let layoutSpec = ASAbsoluteLayoutSpec(
             sizing: .sizeToFit,
             children: [coverNode, webNode]
         )
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: layoutSpec)
+        let contextMenuWrapper = ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 0,
+            justifyContent: .start,
+            alignItems: .center,
+            children: [contextMenu])
+        
+        return ASBackgroundLayoutSpec(child: contextMenuWrapper, background: layoutSpec)
+        
+//        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: layoutSpec)
     }
 }
 
-extension ReadCellNode: UIScrollViewDelegate {
+extension ReadView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate.didScrollView(readCellNode: self, scrollView: scrollView)
         
@@ -96,16 +123,22 @@ extension ReadCellNode: UIScrollViewDelegate {
     }
 }
 
-extension ReadCellNode: ReaderOutputProtocol {
-    func didLoadReadContent(content: String) {
+extension ReadView: ReaderOutputProtocol {
+    func didLoadContent(content: String) {
         webView.loadHTMLString(content, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
-    }
-    func didPrepareChangeTheme(theme: String) {
-        print(theme)
     }
 }
 
-extension ReadCellNode: UIWebViewDelegate {
+extension ReadView: UIWebViewDelegate {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        if !webView.isLoading {
+            
+            
+            
+            self.delegate.didLoadWebView(webView: webView)
+        }
+    }
+    
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         guard let url = request.url else { return false }
         
@@ -120,5 +153,11 @@ extension ReadCellNode: UIWebViewDelegate {
         }
         
         return true
+    }
+}
+
+extension ReadView: ReaderViewDelegateProtocol {
+    func showContextMenu(){
+        self.delegate.doShowContextMenu()
     }
 }
