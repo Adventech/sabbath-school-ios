@@ -130,10 +130,8 @@ extension ReadView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate.didScrollView(readCellNode: self, scrollView: scrollView)
         
-        if coverNode.image != nil {
-            self.parallaxCoverNodeHeight = -scrollView.contentOffset.y
-            self.setNeedsLayout()
-        }
+        self.parallaxCoverNodeHeight = -scrollView.contentOffset.y
+        self.setNeedsLayout()
     }
 }
 
