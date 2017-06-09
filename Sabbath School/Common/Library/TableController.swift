@@ -29,6 +29,7 @@ class TableController: ThemeController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         correctHairline()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,10 +41,11 @@ class TableController: ThemeController {
         
         correctHairline()
         colorize()
-        
     }
     
     func correctHairline(){
+        self.setNeedsStatusBarAppearanceUpdate()
+        navigationController?.setNavigationBarHidden(false, animated: true)
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
             if self.tableNode.view.contentOffset.y >= -navigationBarHeight {
                 navigationController?.navigationBar.showBottomHairline()
