@@ -12,7 +12,6 @@ import UIKit
 class ReadController: ThemeController {
     let animator = PopupTransitionAnimator()
     
-    
     var presenter: ReadPresenterProtocol?
     var collectionNode: ASPagerNode { return node as! ASPagerNode }
     
@@ -23,10 +22,8 @@ class ReadController: ThemeController {
     var lastContentOffset: CGFloat = 0
     var lastCellNode = false
     var lastPageIndex = 0
-    var lastTapLocation: CGPoint = CGPoint.zero
+    var lastTapLocation: CGPoint = .zero
     
-    
-    var t = false
     
     init() {
         super.init(node: ASPagerNode())
@@ -54,6 +51,10 @@ class ReadController: ThemeController {
         self.collectionNode.view.addGestureRecognizer(gestureRecognizer)
         self.collectionNode.view.addGestureRecognizer(gestureRecognizerPan)
         
+        for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
+            scrollGestureRecognizer.require(toFail: (self.navigationController?.interactivePopGestureRecognizer)!)
+        }
+        
         automaticallyAdjustsScrollViewInsets = false
         
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
@@ -72,6 +73,7 @@ class ReadController: ThemeController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.hideBottomHairline()
+        scrollBehavior()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -106,12 +108,16 @@ class ReadController: ThemeController {
         })
     }
     
-    func scrollBehavior(scrollView: UIScrollView){
+    func scrollBehavior(){
+        let scrollView = (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.scrollView
         
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height {
+            
             if (-scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight){
-                readNavigationBarStyle(color: .tintColor)
+                title = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.read?.title.uppercased()
+                readNavigationBarStyle(color: .tintColor, titleColor: UIColor.white.withAlphaComponent(1-(-scrollView.contentOffset.y-navigationBarHeight)/navigationBarHeight))
             } else {
+                title = ""
                 setTransparentNavigation()
             }
         }
@@ -172,12 +178,23 @@ class ReadController: ThemeController {
         }
     }
     
-    func readNavigationBarStyle(color: UIColor = .tintColor){
+    func readNavigationBarStyle(color: UIColor = .tintColor, titleColor: UIColor = .white){
         let theme = currentTheme()
+        var colorPrimary = color
         if theme == ReaderStyle.Theme.Dark {
             setTranslucentNavigation(true, color: .readerDark, tintColor: .readerDarkFont, titleColor: .readerDarkFont)
+            self.collectionNode.backgroundColor = .readerDark
+            (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverOverlayNode.backgroundColor = .readerDark
+            colorPrimary = .readerDark
         } else {
-            setTranslucentNavigation(true, color: color, tintColor: .white, titleColor: .white)
+            setTranslucentNavigation(true, color: color, tintColor: .white, titleColor: titleColor)
+            self.collectionNode.backgroundColor = .baseGray1
+            (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverOverlayNode.backgroundColor = .tintColor
+        }
+        
+        for webViewIndex in 0...self.reads.count {
+            if self.collectionNode.currentPageIndex == webViewIndex { continue }
+            (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.coverOverlayNode.backgroundColor = colorPrimary
         }
     }
 }
@@ -185,7 +202,6 @@ class ReadController: ThemeController {
 extension ReadController: ReadControllerProtocol {
     func loadLessonInfo(lessonInfo: LessonInfo){
         self.lessonInfo = lessonInfo
-        title = lessonInfo.lesson.title.uppercased()
     }
     
     func showRead(read: Read) {
@@ -216,44 +232,28 @@ extension ReadController: ASPagerDataSource {
 }
 
 extension ReadController: ASCollectionDelegate {
-    func collectionNode(_ collectionNode: ASCollectionNode, willDisplayItemWith node: ASCellNode) {
-        lastPageIndex = self.collectionNode.indexOfPage(with: node)
-        scrollBehavior(scrollView: (node as! ReadView).webView.scrollView)
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        scrollBehavior()
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollBehavior()
     }
 }
 
 extension ReadController: ReadViewDelegate {
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView) {
-        if (self.collectionNode.indexOfPage(with: readCellNode as ASCellNode) != lastPageIndex) {
-            return
-        }
-        scrollBehavior(scrollView: scrollView)
+        scrollBehavior()
     }
     
     func didClickVerse(read: Read, verse: String) {
         let size = CGSize(width: round(node.frame.width*0.9), height: round(node.frame.height*0.8))
         
         animator.style = .square
-        
         presenter?.presentBibleScreen(read: read, verse: verse, size: size, transitioningDelegate: animator)
     }
     
     func didLoadWebView(webView: UIWebView){
-        let theme = currentTheme()
-        let typeface = currentTypeface()
-        let size = currentSize()
         
-        if !theme.isEmpty {
-            webView.stringByEvaluatingJavaScript(from: "ssReader.setTheme('"+theme+"')")
-        }
-        
-        if !typeface.isEmpty {
-            webView.stringByEvaluatingJavaScript(from: "ssReader.setFont('"+typeface+"')")
-        }
-        
-        if !size.isEmpty {
-            webView.stringByEvaluatingJavaScript(from: "ssReader.setSize('"+size+"')")
-        }
         
         UIView.animate(withDuration: 0.3) {
             webView.alpha = 1
@@ -261,20 +261,20 @@ extension ReadController: ReadViewDelegate {
     }
     
     func doShowContextMenu(){
-        let contextMenuNode = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.contextMenu
-        contextMenuNode?.isHidden = false
-        
-        var origin = CGPoint(x: self.lastTapLocation.x - (contextMenuNode!.view.frame.size.width / 2), y: self.lastTapLocation.y - (contextMenuNode!.view.frame.size.height + 20))
-        
-        if origin.x < 0 {
-            origin.x = 0
-        }
-        
-        if origin.y < 0 {
-            origin.y = 0
-        }
-        
-        contextMenuNode!.view.frame = CGRect(origin: origin, size: contextMenuNode!.view.frame.size)
+//        let contextMenuNode = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.contextMenu
+//        contextMenuNode?.isHidden = false
+//        
+//        var origin = CGPoint(x: self.lastTapLocation.x - (contextMenuNode!.view.frame.size.width / 2), y: self.lastTapLocation.y - (contextMenuNode!.view.frame.size.height + 20))
+//        
+//        if origin.x < 0 {
+//            origin.x = 0
+//        }
+//        
+//        if origin.y < 0 {
+//            origin.y = 0
+//        }
+//        
+//        contextMenuNode!.view.frame = CGRect(origin: origin, size: contextMenuNode!.view.frame.size)
     }
 }
 
@@ -282,6 +282,7 @@ extension ReadController: ReadOptionsDelegate {
     func didSelectTheme(theme: String) {
         readNavigationBarStyle()
         evaluateJavascriptOnAllWebViews(command: "ssReader.setTheme('"+theme+"')")
+        scrollBehavior()
     }
     
     func didSelectTypeface(typeface: String){

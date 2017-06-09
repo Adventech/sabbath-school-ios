@@ -144,4 +144,16 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
+    
+    static func readTitleStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: R.font.latoMediumItalic(size: 30)!,
+            NSParagraphStyleAttributeName: style
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
 }

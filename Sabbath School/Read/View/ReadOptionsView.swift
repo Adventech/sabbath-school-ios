@@ -19,9 +19,9 @@ struct ReaderOptionsMapper {
     struct Theme {
         static var Mapper: [Int: String] {
             return [
-                0: "light",
-                1: "sepia",
-                2: "dark"
+                0: ReaderStyle.Theme.Light,
+                1: ReaderStyle.Theme.Sepia,
+                2: ReaderStyle.Theme.Dark
             ]
         }
     }
@@ -29,10 +29,10 @@ struct ReaderOptionsMapper {
     struct Typeface {
         static var Mapper: [Int: String]{
             return [
-                0: "andada",
-                1: "lato",
-                2: "pt-serif",
-                3: "pt-sans"
+                0: ReaderStyle.Typeface.Andada,
+                1: ReaderStyle.Typeface.Lato,
+                2: ReaderStyle.Typeface.PTSerif,
+                3: ReaderStyle.Typeface.PTSans
             ]
         }
     }
@@ -40,21 +40,21 @@ struct ReaderOptionsMapper {
     struct Size {
         static var Mapper: [Int: String]{
             return [
-                0: "tiny",
-                1: "small",
-                2: "medium",
-                3: "large",
-                4: "huge"
+                0: ReaderStyle.Size.Tiny,
+                1: ReaderStyle.Size.Small,
+                2: ReaderStyle.Size.Medium,
+                3: ReaderStyle.Size.Large,
+                4: ReaderStyle.Size.Huge
             ]
         }
         
         static var MapperReverse: [String: Int]{
             return [
-                "tiny": 0,
-                "small": 1,
-                "medium": 2,
-                "large": 3,
-                "huge": 4
+                ReaderStyle.Size.Tiny: 0,
+                ReaderStyle.Size.Small: 1,
+                ReaderStyle.Size.Medium: 2,
+                ReaderStyle.Size.Large: 3,
+                ReaderStyle.Size.Huge: 4
             ]
         }
     }
