@@ -20,7 +20,10 @@ lane :beta do
   gym(
     workspace: "./Sabbath School.xcworkspace",
     scheme: "Sabbath School",
-    export_method: "ad-hoc"
+    export_method: "ad-hoc",
+    clean: true, 
+    include_bitcode: true,
+    output_directory: "./Fastlane/build"
   )
 
   crashlytics(
