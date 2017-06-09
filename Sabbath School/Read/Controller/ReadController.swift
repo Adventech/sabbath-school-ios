@@ -185,16 +185,19 @@ class ReadController: ThemeController {
             setTranslucentNavigation(true, color: .readerDark, tintColor: .readerDarkFont, titleColor: .readerDarkFont)
             self.collectionNode.backgroundColor = .readerDark
             (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverOverlayNode.backgroundColor = .readerDark
+            (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverNode.backgroundColor = .readerDark
             colorPrimary = .readerDark
         } else {
             setTranslucentNavigation(true, color: color, tintColor: .white, titleColor: titleColor)
             self.collectionNode.backgroundColor = .baseGray1
             (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverOverlayNode.backgroundColor = .tintColor
+            (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverNode.backgroundColor = .tintColor
         }
         
         for webViewIndex in 0...self.reads.count {
             if self.collectionNode.currentPageIndex == webViewIndex { continue }
             (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.coverOverlayNode.backgroundColor = colorPrimary
+            (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.coverNode.backgroundColor = colorPrimary
         }
     }
 }
