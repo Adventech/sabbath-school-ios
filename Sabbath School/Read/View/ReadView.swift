@@ -44,6 +44,8 @@ class ReadView: ASCellNode {
             coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
             coverNode.placeholderEnabled = true
             coverNode.placeholderFadeDuration = 0.6
+        } else {
+            coverNode.backgroundColor = .tintColor
         }
         
         let theme = currentTheme()
