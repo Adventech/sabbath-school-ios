@@ -20,7 +20,15 @@ class BibleView: ASDisplayNode {
     }
     
     override func didLoad() {
-        webView.backgroundColor = UIColor.white
+        let theme = currentTheme()
+        
+        if theme == ReaderStyle.Theme.Dark {
+            webView.backgroundColor = .readerDark
+        } else {
+            webView.backgroundColor = .baseGray1
+        }
+        
+        
         webView.delegate = self
     }
     
@@ -37,7 +45,7 @@ extension BibleView: UIWebViewDelegate {
         let size = currentSize()
         
         if !theme.isEmpty {
-            webView.stringByEvaluatingJavaScript(from: "ssReader.setTheme('"+theme+"')")
+            print("yo", webView.stringByEvaluatingJavaScript(from: "ssReader.setTheme('"+theme+"')") ?? "")
         }
         
         if !typeface.isEmpty {

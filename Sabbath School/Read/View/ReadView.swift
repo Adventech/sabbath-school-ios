@@ -19,7 +19,9 @@ protocol ReadViewDelegate {
 class ReadView: ASCellNode {
     var delegate: ReadViewDelegate
     let coverNode = ASNetworkImageNode()
-    let textNode = ASTextNode()
+    let coverOverlayNode = ASDisplayNode()
+    let coverTitleNode = ASTextNode()
+    
     let webNode = ASDisplayNode { ReaderView() }
     let reader = Reader()
     let contextMenu = ReadContextMenuView()
@@ -42,17 +44,22 @@ class ReadView: ASCellNode {
             coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
             coverNode.placeholderEnabled = true
             coverNode.placeholderFadeDuration = 0.6
-            coverNode.imageModificationBlock = { image in
-                image.tint(tintColor: .tintColor)
-            }
-        } else {
-            coverNode.backgroundColor = .tintColor
         }
         
+        let theme = currentTheme()
+        
+        if theme == ReaderStyle.Theme.Dark {
+            coverOverlayNode.backgroundColor = .readerDark
+        } else {
+            coverOverlayNode.backgroundColor = .tintColor
+        }
+        
+        coverOverlayNode.alpha = 0
+        coverTitleNode.alpha = 1
+        coverTitleNode.maximumNumberOfLines = 1
         
         coverNode.clipsToBounds = true
-        
-        textNode.attributedText = TextStyles.cellDetailStyle(string: "hello,world")
+        coverTitleNode.attributedText = TextStyles.readTitleStyle(string: read.title)
         
         reader.delegate = self
         
@@ -62,11 +69,17 @@ class ReadView: ASCellNode {
     override func layout() {
         super.layout()        
         
-        if self.parallaxCoverNodeHeight > 0 {
+        if self.parallaxCoverNodeHeight >= 0 {
+            self.coverOverlayNode.alpha = 1 - ((self.parallaxCoverNodeHeight-80) * (1/(self.initialCoverNodeHeight-80)))
+            
             if self.parallaxCoverNodeHeight <= self.initialCoverNodeHeight {
                 self.coverNode.frame.origin.y = self.coverNode.frame.origin.y - (self.initialCoverNodeHeight - parallaxCoverNodeHeight) / 2
+                self.coverTitleNode.frame.origin.y = self.coverTitleNode.frame.origin.y - (self.initialCoverNodeHeight - parallaxCoverNodeHeight) / 1.3
+                self.coverTitleNode.alpha = self.parallaxCoverNodeHeight * (1/self.initialCoverNodeHeight)
             } else {
+                self.coverOverlayNode.frame.size = CGSize(width: coverOverlayNode.calculatedSize.width, height: parallaxCoverNodeHeight)
                 self.coverNode.frame.size = CGSize(width: coverNode.calculatedSize.width, height: parallaxCoverNodeHeight)
+                self.coverTitleNode.alpha = 1-((self.parallaxCoverNodeHeight - self.coverTitleNode.frame.origin.y) - 101)/self.coverTitleNode.frame.origin.y*1.6
             }
         }
     }
@@ -92,11 +105,14 @@ class ReadView: ASCellNode {
         coverNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height*0.4)
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
         contextMenu.style.preferredSize = CGSize(width: 300, height: 160)
-        
+        coverTitleNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 80)
+        coverTitleNode.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-100)
+
+        let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [coverTitleNode, coverOverlayNode]))
         
         let layoutSpec = ASAbsoluteLayoutSpec(
             sizing: .sizeToFit,
-            children: [coverNode, webNode]
+            children: [coverNodeOverlaySpec, webNode]
         )
         
         let contextMenuWrapper = ASStackLayoutSpec(
@@ -107,8 +123,6 @@ class ReadView: ASCellNode {
             children: [contextMenu])
         
         return ASBackgroundLayoutSpec(child: contextMenuWrapper, background: layoutSpec)
-        
-//        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: layoutSpec)
     }
 }
 
@@ -125,6 +139,23 @@ extension ReadView: UIScrollViewDelegate {
 
 extension ReadView: ReaderOutputProtocol {
     func didLoadContent(content: String) {
+        var content = content
+        let theme = currentTheme()
+        let typeface = currentTypeface()
+        let size = currentSize()
+        
+        if !theme.isEmpty {
+            content = content.replacingOccurrences(of: "ss-wrapper-light", with: "ss-wrapper-"+theme)
+        }
+        
+        if !typeface.isEmpty {
+            content = content.replacingOccurrences(of: "ss-wrapper-andada", with: "ss-wrapper-"+typeface)
+        }
+        
+        if !size.isEmpty {
+            content = content.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size)
+        }
+        
         webView.loadHTMLString(content, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
     }
 }
@@ -132,9 +163,6 @@ extension ReadView: ReaderOutputProtocol {
 extension ReadView: UIWebViewDelegate {
     func webViewDidFinishLoad(_ webView: UIWebView) {
         if !webView.isLoading {
-            
-            
-            
             self.delegate.didLoadWebView(webView: webView)
         }
     }

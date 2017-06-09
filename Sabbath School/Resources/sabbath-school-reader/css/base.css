@@ -105,6 +105,19 @@ html, body {
   border-bottom: 1px solid #ccc;
 }
 
+.ss-wrapper-dark .textarea, .ss-wrapper-dark code {
+    box-shadow: none;
+}
+
+.ss-wrapper-dark .textarea {
+    background-color: #c4c2c4;
+    background-image: -webkit-linear-gradient(#ccc 1px, rgba(0, 0, 0, 0) 1px);
+}
+
+.ss-wrapper-dark .textarea-border {
+    background: #ada6a7;
+}
+
 .ss-wrapper p {
   padding: 0 0 10px 0;
 }

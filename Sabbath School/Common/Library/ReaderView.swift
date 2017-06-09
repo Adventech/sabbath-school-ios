@@ -15,10 +15,11 @@ protocol ReaderViewDelegateProtocol {
 class ReaderView: UIWebView {
     var readerViewDelegate: ReaderViewDelegateProtocol?
     
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(UIResponderStandardEditActions.copy(_:)) {
-            readerViewDelegate?.showContextMenu()
-        }
-        return false
-    }
+//    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+//        if action == #selector(UIResponderStandardEditActions.copy(_:)) {
+//            return true
+////            readerViewDelegate?.showContextMenu()
+//        }
+//        return false
+//    }
 }
