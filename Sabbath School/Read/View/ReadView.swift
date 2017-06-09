@@ -39,16 +39,20 @@ class ReadView: ASCellNode {
         
         coverNode.contentMode = .scaleAspectFill
         
+        let theme = currentTheme()
+        
         if !(lessonInfo.lesson.cover?.absoluteString ?? "").isEmpty {
             coverNode.url = lessonInfo.lesson.cover
             coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
             coverNode.placeholderEnabled = true
             coverNode.placeholderFadeDuration = 0.6
         } else {
-            coverNode.backgroundColor = .tintColor
+            if theme == ReaderStyle.Theme.Dark {
+                coverNode.backgroundColor = .readerDark
+            } else {
+                coverNode.backgroundColor = .tintColor
+            }
         }
-        
-        let theme = currentTheme()
         
         if theme == ReaderStyle.Theme.Dark {
             coverOverlayNode.backgroundColor = .readerDark
