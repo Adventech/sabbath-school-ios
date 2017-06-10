@@ -20,6 +20,7 @@ target 'Sabbath School' do
   pod 'R.swift', '~> 3.1'
   pod 'Shimmer'
   pod 'SwiftMessages'
+  pod 'SwiftDate', '~> 4.0.13'
   pod 'Texture'
   pod 'Unbox'
   pod 'Wrap'

@@ -7,6 +7,7 @@
 //
 
 import AsyncDisplayKit
+import SwiftDate
 import UIKit
 
 final class LessonController: TableController {
@@ -36,8 +37,18 @@ final class LessonController: TableController {
     }
     
     func readButtonAction(sender: OpenButton){
-        // TODO: get today's date if within this quarter
         guard let lesson = dataSource?.lessons[0] else { return }
+        
+        // TODO: get today's date if within this quarter
+        let today = Date()
+        for lesson in (dataSource?.lessons)! {
+            if today.isAfter(date: lesson.startDate, orEqual: true, granularity: Calendar.Component.day) &&
+                today.isBefore(date: lesson.endDate, orEqual: true, granularity: Calendar.Component.day){
+                presenter?.presentReadScreen(lessonIndex: lesson.index)
+                return
+            }
+        }
+        
         presenter?.presentReadScreen(lessonIndex: lesson.index)
     }
 }
