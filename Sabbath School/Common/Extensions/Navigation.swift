@@ -7,8 +7,8 @@
 //
 
 import UIKit
+
 extension UINavigationController {
-    
     open override var preferredStatusBarStyle : UIStatusBarStyle {
         if let rootViewController = self.viewControllers.first {
             return rootViewController.preferredStatusBarStyle
@@ -23,10 +23,18 @@ extension UINavigationController {
     open override var shouldAutorotate : Bool {
         return visibleViewController!.shouldAutorotate
     }
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
 }
 
 extension UIViewController: UIGestureRecognizerDelegate {
-    
     func setBackButton() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popBack))
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
@@ -47,9 +55,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
             })
         }
     }
-    
-    // MARK: - Bounce with color
-    
+
     func bounceTopWithColor(_ color: UIColor, belowView: UIView?) {
         // Bounce with color
         let size = 1000 as CGFloat
@@ -63,9 +69,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
             view.addSubview(topView)
         }
     }
-    
-    // MARK: - NavigationBar
-    
+
     func setTransparentNavigation() {
         let navBar = self.navigationController?.navigationBar
         navBar?.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -90,15 +94,12 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navBar?.isTranslucent = false
     }
     
-    // MARK: - Orientation
-    
     public func setOrientationToRotate(_ orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
     }
 }
 
 extension UINavigationBar {
-    
     func hideBottomHairline() {
         let navigationBarImageView = hairlineImageViewInNavigationBar(self)
         navigationBarImageView!.isHidden = true
