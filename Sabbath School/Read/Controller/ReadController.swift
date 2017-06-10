@@ -20,10 +20,6 @@ class ReadController: ThemeController {
     
     var shouldHideStatusBar = false
     var lastContentOffset: CGFloat = 0
-    var lastCellNode = false
-    var lastPageIndex = 0
-    var lastTapLocation: CGPoint = .zero
-    
     
     init() {
         super.init(node: ASPagerNode())
@@ -41,16 +37,7 @@ class ReadController: ThemeController {
         setBackButton()
         presenter?.configure()
         setTransparentNavigation()
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleSingleTap(_:)))
-        gestureRecognizer.delegate = self
-        
-        let gestureRecognizerPan = UIPanGestureRecognizer(target: self, action: #selector(self.handleSingleTap(_:)))
-        gestureRecognizerPan.delegate = self
-        
-        self.collectionNode.view.addGestureRecognizer(gestureRecognizer)
-        self.collectionNode.view.addGestureRecognizer(gestureRecognizerPan)
-        
+
         for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
             scrollGestureRecognizer.require(toFail: (self.navigationController?.interactivePopGestureRecognizer)!)
         }
@@ -60,14 +47,6 @@ class ReadController: ThemeController {
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
         navigationItem.rightBarButtonItem = rightButton
         
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if (gestureRecognizer is UITapGestureRecognizer || gestureRecognizer is UIPanGestureRecognizer) {
-            return true
-        } else {
-            return false
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -143,41 +122,6 @@ class ReadController: ThemeController {
         lastContentOffset = -scrollView.contentOffset.y
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        let contextMenuNode = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.contextMenu
-        if (contextMenuNode?.isHidden != true){
-            contextMenuNode!.view.frame = CGRect(origin: self.lastTapLocation, size: contextMenuNode!.view.frame.size)
-        }
-    }
-
-    
-    func handleSingleTap(_ recognizer: UITapGestureRecognizer){
-        self.lastTapLocation = recognizer.location(in: recognizer.view?.superview)
-        
-        let view = recognizer.view
-        let loc = recognizer.location(in: view)
-        let subview = view?.hitTest(loc, with: nil) // note: it is a `UIView?`
-
-        let contextMenuNode = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.contextMenu
-        
-        if (subview != contextMenuNode!.view){
-            if (contextMenuNode?.isHidden != true){
-                contextMenuNode?.isHidden = true
-            }
-        }
-    }
-    
-    func evaluateJavascriptOnAllWebViews(command: String){
-        (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView.stringByEvaluatingJavaScript(from: command)
-        
-        for webViewIndex in 0...self.reads.count {
-            if self.collectionNode.currentPageIndex == webViewIndex { continue }
-            
-            (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.webView.stringByEvaluatingJavaScript(from: command)
-        }
-    }
-    
     func readNavigationBarStyle(color: UIColor = .tintColor, titleColor: UIColor = .white){
         let theme = currentTheme()
         var colorPrimary = color
@@ -218,9 +162,7 @@ extension ReadController: ASPagerDataSource {
         let read = reads[index]
         
         let cellNodeBlock: () -> ASCellNode = {
-            let node = ReadView(lessonInfo: self.lessonInfo!, read: read, delegate: self)
-            
-            return node
+            return ReadView(lessonInfo: self.lessonInfo!, read: read, delegate: self)
         }
         
         return cellNodeBlock
@@ -243,7 +185,7 @@ extension ReadController: ASCollectionDelegate {
     }
 }
 
-extension ReadController: ReadViewDelegate {
+extension ReadController: ReadViewOutputProtocol {
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView) {
         scrollBehavior()
     }
@@ -256,43 +198,31 @@ extension ReadController: ReadViewDelegate {
     }
     
     func didLoadWebView(webView: UIWebView){
-        
-        
         UIView.animate(withDuration: 0.3) {
             webView.alpha = 1
         }
-    }
-    
-    func doShowContextMenu(){
-//        let contextMenuNode = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.contextMenu
-//        contextMenuNode?.isHidden = false
-//        
-//        var origin = CGPoint(x: self.lastTapLocation.x - (contextMenuNode!.view.frame.size.width / 2), y: self.lastTapLocation.y - (contextMenuNode!.view.frame.size.height + 20))
-//        
-//        if origin.x < 0 {
-//            origin.x = 0
-//        }
-//        
-//        if origin.y < 0 {
-//            origin.y = 0
-//        }
-//        
-//        contextMenuNode!.view.frame = CGRect(origin: origin, size: contextMenuNode!.view.frame.size)
     }
 }
 
 extension ReadController: ReadOptionsDelegate {
     func didSelectTheme(theme: String) {
         readNavigationBarStyle()
-        evaluateJavascriptOnAllWebViews(command: "ssReader.setTheme('"+theme+"')")
+        for webViewIndex in 0...self.reads.count {
+            (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.webView.setTheme(theme)
+        }
+        
         scrollBehavior()
     }
     
     func didSelectTypeface(typeface: String){
-        evaluateJavascriptOnAllWebViews(command: "ssReader.setFont('"+typeface+"')")
+        for webViewIndex in 0...self.reads.count {
+            (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.webView.setTypeface(typeface)
+        }
     }
     
     func didSelectSize(size: String){
-        evaluateJavascriptOnAllWebViews(command: "ssReader.setSize('"+size+"')")
+        for webViewIndex in 0...self.reads.count {
+            (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.webView.setSize(size)
+        }
     }
 }

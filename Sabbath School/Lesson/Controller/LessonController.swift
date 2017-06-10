@@ -75,7 +75,6 @@ extension LessonController: ASTableDataSource {
         let lesson = dataSource?.lessons[indexPath.row]
         
         let cellNodeBlock: () -> ASCellNode = {
-            
             if indexPath.section == 0 {
                 let node = LessonQuarterlyInfoNode(quarterly: (self.dataSource?.quarterly)!)
                 node.readButton.addTarget(self, action: #selector(self.readButtonAction(sender:)), forControlEvents: .touchUpInside)
