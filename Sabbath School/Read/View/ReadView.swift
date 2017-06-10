@@ -9,30 +9,27 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol ReadViewDelegate {
-    func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
+protocol ReadViewOutputProtocol {
     func didClickVerse(read: Read, verse: String)
-    func doShowContextMenu()
+    func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
     func didLoadWebView(webView: UIWebView)
 }
 
 class ReadView: ASCellNode {
-    var delegate: ReadViewDelegate
+    var delegate: ReadViewOutputProtocol
     let coverNode = ASNetworkImageNode()
     let coverOverlayNode = ASDisplayNode()
     let coverTitleNode = ASTextNode()
     
-    let webNode = ASDisplayNode { ReaderView() }
-    let reader = Reader()
-    let contextMenu = ReadContextMenuView()
+    let webNode = ASDisplayNode { Reader() }
     var read: Read?
     
     var initialCoverNodeHeight: CGFloat = 0
     var parallaxCoverNodeHeight: CGFloat = 0
     
-    var webView: ReaderView { return webNode.view as! ReaderView }
+    var webView: Reader { return webNode.view as! Reader }
     
-    init(lessonInfo: LessonInfo, read: Read, delegate: ReadViewDelegate) {
+    init(lessonInfo: LessonInfo, read: Read, delegate: ReadViewOutputProtocol) {
         self.delegate = delegate
         super.init()
         self.read = read
@@ -67,8 +64,6 @@ class ReadView: ASCellNode {
         coverNode.clipsToBounds = true
         coverTitleNode.attributedText = TextStyles.readTitleStyle(string: read.title)
         
-        reader.delegate = self
-        
         automaticallyManagesSubnodes = true
     }
     
@@ -93,8 +88,6 @@ class ReadView: ASCellNode {
     override func didLoad() {
         super.didLoad()
         
-        contextMenu.isHidden = true
-        
         initialCoverNodeHeight = coverNode.calculatedSize.height
 
         webView.backgroundColor = .clear
@@ -103,14 +96,12 @@ class ReadView: ASCellNode {
         webView.delegate = self
         webView.alpha = 0
         webView.readerViewDelegate = self
-        
-        reader.loadContent(content: read!.content)
+        webView.loadContent(content: read!.content)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height*0.4)
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
-        contextMenu.style.preferredSize = CGSize(width: 300, height: 160)
         coverTitleNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 80)
         coverTitleNode.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-100)
 
@@ -119,16 +110,9 @@ class ReadView: ASCellNode {
         let layoutSpec = ASAbsoluteLayoutSpec(
             sizing: .sizeToFit,
             children: [coverNodeOverlaySpec, webNode]
-        )
+        )        
         
-        let contextMenuWrapper = ASStackLayoutSpec(
-            direction: .vertical,
-            spacing: 0,
-            justifyContent: .start,
-            alignItems: .center,
-            children: [contextMenu])
-        
-        return ASBackgroundLayoutSpec(child: contextMenuWrapper, background: layoutSpec)
+        return layoutSpec
     }
 }
 
@@ -141,55 +125,24 @@ extension ReadView: UIScrollViewDelegate {
     }
 }
 
-extension ReadView: ReaderOutputProtocol {
-    func didLoadContent(content: String) {
-        var content = content
-        let theme = currentTheme()
-        let typeface = currentTypeface()
-        let size = currentSize()
-        
-        if !theme.isEmpty {
-            content = content.replacingOccurrences(of: "ss-wrapper-light", with: "ss-wrapper-"+theme)
-        }
-        
-        if !typeface.isEmpty {
-            content = content.replacingOccurrences(of: "ss-wrapper-andada", with: "ss-wrapper-"+typeface)
-        }
-        
-        if !size.isEmpty {
-            content = content.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size)
-        }
-        
-        webView.loadHTMLString(content, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
-    }
-}
-
 extension ReadView: UIWebViewDelegate {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        return (webView as! Reader).shouldStartLoad(request: request, navigationType: navigationType)
+    }
+    
     func webViewDidFinishLoad(_ webView: UIWebView) {
+        (webView as! Reader).setupContextMenu()
         if !webView.isLoading {
             self.delegate.didLoadWebView(webView: webView)
         }
     }
-    
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        guard let url = request.url else { return false }
-        
-        if let verse = url.valueForParameter(key: "verse"), let decoded = verse.base64Decode() {
-            self.delegate.didClickVerse(read: self.read!, verse: decoded)
-            return false
-        }
-        
-        if let scheme = url.scheme, (scheme == "http" || scheme == "https"), navigationType == .linkClicked {
-//            delegate?.readerNode(readerNode: self, segueToURL: url)
-//            return false
-        }
-        
-        return true
-    }
 }
 
-extension ReadView: ReaderViewDelegateProtocol {
-    func showContextMenu(){
-        self.delegate.doShowContextMenu()
+extension ReadView: ReaderOutputProtocol {
+    func didLoadContent(content: String) {}
+    func didTapHighlightGreen() {}
+    
+    func didClickVerse(verse: String) {
+        self.delegate.didClickVerse(read: self.read!, verse: verse)
     }
 }

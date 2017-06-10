@@ -10,12 +10,11 @@ import AsyncDisplayKit
 import UIKit
 
 class BibleView: ASDisplayNode {
-    let webNode = ASDisplayNode { UIWebView() }
-    var webView: UIWebView { return webNode.view as! UIWebView }
+    let webNode = ASDisplayNode { Reader() }
+    var webView: Reader { return webNode.view as! Reader }
     
     override init() {
         super.init()
-        
         automaticallyManagesSubnodes = true
     }
     
@@ -27,33 +26,13 @@ class BibleView: ASDisplayNode {
         } else {
             webView.backgroundColor = .baseGray1
         }
-        
-        
-        webView.delegate = self
+    }
+    
+    func loadContent(content: String){
+        webView.loadContent(content: content)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: webNode)
-    }
-}
-
-extension BibleView: UIWebViewDelegate {
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        
-        let theme = currentTheme()
-        let typeface = currentTypeface()
-        let size = currentSize()
-        
-        if !theme.isEmpty {
-            print("yo", webView.stringByEvaluatingJavaScript(from: "ssReader.setTheme('"+theme+"')") ?? "")
-        }
-        
-        if !typeface.isEmpty {
-            webView.stringByEvaluatingJavaScript(from: "ssReader.setFont('"+typeface+"')")
-        }
-        
-        if !size.isEmpty {
-            webView.stringByEvaluatingJavaScript(from: "ssReader.setSize('"+size+"')")
-        }
     }
 }

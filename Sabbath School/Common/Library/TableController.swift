@@ -44,8 +44,6 @@ class TableController: ThemeController {
     }
     
     func correctHairline(){
-        self.setNeedsStatusBarAppearanceUpdate()
-        navigationController?.setNavigationBarHidden(false, animated: true)
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
             if self.tableNode.view.contentOffset.y >= -navigationBarHeight {
                 navigationController?.navigationBar.showBottomHairline()
@@ -53,12 +51,13 @@ class TableController: ThemeController {
                 navigationController?.navigationBar.hideBottomHairline()
             }
         }
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
 
 extension TableController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Implement
+        // Implement within actual controller
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

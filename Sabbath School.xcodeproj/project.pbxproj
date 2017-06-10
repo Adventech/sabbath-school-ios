@@ -81,7 +81,6 @@
 		7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */; };
 		7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */; };
 		7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1F1EDFC61D00C12A67 /* ReadView.swift */; };
-		7A922E301EE07C6100C12A67 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E2F1EE07C6100C12A67 /* Reader.swift */; };
 		7A922E541EE07EC200C12A67 /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E331EE07EC200C12A67 /* base.css */; };
 		7A922E551EE07EC200C12A67 /* fonts.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E341EE07EC200C12A67 /* fonts.css */; };
 		7A922E561EE07EC200C12A67 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E351EE07EC200C12A67 /* reset.css */; };
@@ -107,11 +106,9 @@
 		7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E531EE07EC200C12A67 /* ss-reader.js */; };
 		7AA43BB81EE76B8D00525696 /* Fabric.apiKey in Resources */ = {isa = PBXBuildFile; fileRef = 7AA43BB61EE76B8D00525696 /* Fabric.apiKey */; };
 		7AA43BB91EE76B8D00525696 /* Fabric.buildSecret in Resources */ = {isa = PBXBuildFile; fileRef = 7AA43BB71EE76B8D00525696 /* Fabric.buildSecret */; };
-		7AA43BBB1EE7B48300525696 /* ReadContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA43BBA1EE7B48300525696 /* ReadContextMenuView.swift */; };
-		7AA43BBD1EE7B4E500525696 /* ReadContextMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA43BBC1EE7B4E500525696 /* ReadContextMenuController.swift */; };
 		7AC26AE41EE48925003F946C /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = 7AC26AE21EE48925003F946C /* Appfile */; };
 		7AC26AE51EE48925003F946C /* Fastfile in Resources */ = {isa = PBXBuildFile; fileRef = 7AC26AE31EE48925003F946C /* Fastfile */; };
-		7AC26AE71EE4FA9E003F946C /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE61EE4FA9E003F946C /* ReaderView.swift */; };
+		7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE61EE4FA9E003F946C /* Reader.swift */; };
 		7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE81EE5EB63003F946C /* Preferences.swift */; };
 		7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */; };
 		7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEC1EE5EBDE003F946C /* Comment.swift */; };
@@ -206,7 +203,6 @@
 		7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadInteractor.swift; sourceTree = "<group>"; };
 		7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseInteractor.swift; sourceTree = "<group>"; };
 		7A922E1F1EDFC61D00C12A67 /* ReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
-		7A922E2F1EE07C6100C12A67 /* Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		7A922E331EE07EC200C12A67 /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
 		7A922E341EE07EC200C12A67 /* fonts.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = fonts.css; sourceTree = "<group>"; };
 		7A922E351EE07EC200C12A67 /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
@@ -232,11 +228,9 @@
 		7A922E531EE07EC200C12A67 /* ss-reader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ss-reader.js"; sourceTree = "<group>"; };
 		7AA43BB61EE76B8D00525696 /* Fabric.apiKey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Fabric.apiKey; path = "Sabbath School/Resources/Fabric.apiKey"; sourceTree = SOURCE_ROOT; };
 		7AA43BB71EE76B8D00525696 /* Fabric.buildSecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Fabric.buildSecret; path = "Sabbath School/Resources/Fabric.buildSecret"; sourceTree = SOURCE_ROOT; };
-		7AA43BBA1EE7B48300525696 /* ReadContextMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadContextMenuView.swift; sourceTree = "<group>"; };
-		7AA43BBC1EE7B4E500525696 /* ReadContextMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadContextMenuController.swift; sourceTree = "<group>"; };
 		7AC26AE21EE48925003F946C /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
 		7AC26AE31EE48925003F946C /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
-		7AC26AE61EE4FA9E003F946C /* ReaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
+		7AC26AE61EE4FA9E003F946C /* Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		7AC26AE81EE5EB63003F946C /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleVerses.swift; sourceTree = "<group>"; };
 		7AC26AEC1EE5EBDE003F946C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -334,6 +328,8 @@
 				7A280FAB1EDA0276003C7458 /* Fonts */,
 				7A922E311EE07EC200C12A67 /* sabbath-school-reader */,
 				7A280F901ED7D8B8003C7458 /* LaunchScreen.storyboard */,
+				7AA43BB61EE76B8D00525696 /* Fabric.apiKey */,
+				7AA43BB71EE76B8D00525696 /* Fabric.buildSecret */,
 				7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */,
 			);
 			path = Resources;
@@ -486,9 +482,8 @@
 				7A922E081EDF623500C12A67 /* TableController.swift */,
 				7A922E191EDFB6F600C12A67 /* ThemeController.swift */,
 				7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */,
-				7A922E2F1EE07C6100C12A67 /* Reader.swift */,
 				7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */,
-				7AC26AE61EE4FA9E003F946C /* ReaderView.swift */,
+				7AC26AE61EE4FA9E003F946C /* Reader.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -706,7 +701,6 @@
 			children = (
 				7A922E171EDFB61600C12A67 /* ReadController.swift */,
 				7A3BCE3D1EE2F209003EC12B /* ReadOptionsController.swift */,
-				7AA43BBC1EE7B4E500525696 /* ReadContextMenuController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -740,7 +734,6 @@
 			children = (
 				7A922E1F1EDFC61D00C12A67 /* ReadView.swift */,
 				7A3BCE3F1EE2F27F003EC12B /* ReadOptionsView.swift */,
-				7AA43BBA1EE7B48300525696 /* ReadContextMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -756,8 +749,6 @@
 		7A922E311EE07EC200C12A67 /* sabbath-school-reader */ = {
 			isa = PBXGroup;
 			children = (
-				7AA43BB61EE76B8D00525696 /* Fabric.apiKey */,
-				7AA43BB71EE76B8D00525696 /* Fabric.buildSecret */,
 				7A922E321EE07EC200C12A67 /* css */,
 				7A922E361EE07EC200C12A67 /* fonts */,
 				7A922E4B1EE07EC200C12A67 /* index.html */,
@@ -1105,16 +1096,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A922E301EE07C6100C12A67 /* Reader.swift in Sources */,
 				7A280FC91EDA0EB5003C7458 /* LoginPresenter.swift in Sources */,
 				7A922E121EDF89D600C12A67 /* ReadProtocols.swift in Sources */,
 				7A922E031EDE348D00C12A67 /* LessonQuarterlyInfoCell.swift in Sources */,
 				7A2810021EDD060F003C7458 /* LanguagePresenter.swift in Sources */,
 				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
-				7AA43BBB1EE7B48300525696 /* ReadContextMenuView.swift in Sources */,
 				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
 				7A3BCE361EE27776003EC12B /* BiblePresenter.swift in Sources */,
-				7AC26AE71EE4FA9E003F946C /* ReaderView.swift in Sources */,
+				7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */,
 				7A280FEE1EDCFB4E003C7458 /* PopupTransitionAnimation.swift in Sources */,
 				7A3BCE381EE29203003EC12B /* BibleVersionView.swift in Sources */,
 				7A2810061EDD071B003C7458 /* LanguageWireFrame.swift in Sources */,
@@ -1122,7 +1111,6 @@
 				7A922E1A1EDFB6F600C12A67 /* ThemeController.swift in Sources */,
 				7AC26AFA1EE5EBDE003F946C /* LessonInfo.swift in Sources */,
 				7A280FD01EDA23F0003C7458 /* LoginInteractor.swift in Sources */,
-				7AA43BBD1EE7B4E500525696 /* ReadContextMenuController.swift in Sources */,
 				7A922E091EDF623500C12A67 /* TableController.swift in Sources */,
 				7A280FCE1EDA10ED003C7458 /* LoginProtocols.swift in Sources */,
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,

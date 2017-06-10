@@ -17,12 +17,8 @@ class BibleController: ASViewController<ASDisplayNode> {
     var read: Read?
     var verse: String?
     
-    let reader = Reader()
-    
     init(read: Read, verse: String) {
         super.init(node: bibleView)
-
-        self.reader.delegate = self
         
         self.read = read
         self.verse = verse
@@ -93,13 +89,7 @@ class BibleController: ASViewController<ASDisplayNode> {
 
 extension BibleController: BibleControllerProtocol {
     func showBibleVerse(content: String){
-        reader.loadContent(content: content)
-    }
-}
-
-extension BibleController: ReaderOutputProtocol {
-    func didLoadContent(content: String) {        
-        bibleView.webView.loadHTMLString(content, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+        bibleView.loadContent(content: content)
     }
 }
 
