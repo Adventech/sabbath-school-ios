@@ -30,6 +30,7 @@ protocol QuarterlyWireFrameProtocol: class {
     static func createQuarterlyModule() -> ASNavigationController
     func reloadQuarterlyModule()
     func presentLessonScreen(view: QuarterlyControllerProtocol, quarterlyIndex: String)
+    func presentLoginScreen()
 }
 
 protocol QuarterlyInteractorOutputProtocol: class {

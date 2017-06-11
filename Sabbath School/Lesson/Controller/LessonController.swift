@@ -33,13 +33,16 @@ final class LessonController: TableController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let lesson = dataSource?.lessons[indexPath.row] else { return }
-        presenter?.presentReadScreen(lessonIndex: lesson.index)
+        
+        if (indexPath.section == 0){
+            openToday()
+        } else {
+            presenter?.presentReadScreen(lessonIndex: lesson.index)
+        }
     }
     
-    func readButtonAction(sender: OpenButton){
+    func openToday(){
         guard let lesson = dataSource?.lessons[0] else { return }
-        
-        // TODO: get today's date if within this quarter
         let today = Date()
         for lesson in (dataSource?.lessons)! {
             if today.isAfter(date: lesson.startDate, orEqual: true, granularity: Calendar.Component.day) &&
@@ -48,8 +51,11 @@ final class LessonController: TableController {
                 return
             }
         }
-        
         presenter?.presentReadScreen(lessonIndex: lesson.index)
+    }
+    
+    func readButtonAction(sender: OpenButton){
+        openToday()
     }
 }
 

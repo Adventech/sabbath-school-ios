@@ -156,4 +156,16 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
+    
+    static func readDateStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: R.font.latoItalic(size: 15)!,
+            NSParagraphStyleAttributeName: style
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
 }

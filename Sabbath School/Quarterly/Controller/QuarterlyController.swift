@@ -7,6 +7,7 @@
 //
 
 import AsyncDisplayKit
+import FirebaseAuth
 import UIKit
 
 final class QuarterlyController: TableController {
@@ -36,7 +37,11 @@ final class QuarterlyController: TableController {
             presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
         }
         
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutAction))
+        
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(rightAction(sender:)))
+        
+        navigationItem.leftBarButtonItem = logoutButton
         navigationItem.rightBarButtonItem = rightButton
         presenter?.configure()
         retrieveQuarterlies()
@@ -62,6 +67,11 @@ final class QuarterlyController: TableController {
     
     func openButtonAction(sender: OpenButton){
         presenter?.presentLessonScreen(quarterlyIndex: dataSource[0].index)
+    }
+    
+    func logoutAction() {
+        try! Auth.auth().signOut()
+        presenter?.wireFrame?.presentLoginScreen()
     }
 }
 

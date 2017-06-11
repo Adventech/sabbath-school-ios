@@ -7,6 +7,7 @@
 //
 
 import AsyncDisplayKit
+import SwiftDate
 import UIKit
 
 protocol ReadViewOutputProtocol {
@@ -14,7 +15,7 @@ protocol ReadViewOutputProtocol {
     func didClickVerse(read: Read, verse: String)
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
     func didLoadWebView(webView: UIWebView)
-    func didReceiveHighlights(read: Read, highlights: String)
+    func didReceiveHighlights(readHighlights: ReadHighlights)
     func didReceiveComment(readComments: ReadComments)
 }
 
@@ -23,6 +24,7 @@ class ReadView: ASCellNode {
     let coverNode = ASNetworkImageNode()
     let coverOverlayNode = ASDisplayNode()
     let coverTitleNode = ASTextNode()
+    let readDateNode = ASTextNode()
     
     let webNode = ASDisplayNode { Reader() }
     var read: Read?
@@ -64,12 +66,16 @@ class ReadView: ASCellNode {
             coverOverlayNode.backgroundColor = .tintColor
         }
         
+        coverNode.clipsToBounds = true
+        
         coverOverlayNode.alpha = 0
         coverTitleNode.alpha = 1
         coverTitleNode.maximumNumberOfLines = 2
-        
-        coverNode.clipsToBounds = true
         coverTitleNode.attributedText = TextStyles.readTitleStyle(string: read.title)
+        
+        readDateNode.alpha = 1
+        readDateNode.maximumNumberOfLines = 1
+        readDateNode.attributedText = TextStyles.readDateStyle(string: read.date.string(custom: "EEEE, MMMM dd"))
         
         automaticallyManagesSubnodes = true
     }
@@ -84,11 +90,17 @@ class ReadView: ASCellNode {
                 self.coverNode.frame.origin.y = self.coverNode.frame.origin.y - (self.initialCoverNodeHeight - parallaxCoverNodeHeight) / 2
                 self.coverTitleNode.frame.origin.y = self.coverTitleNode.frame.origin.y - (self.initialCoverNodeHeight - parallaxCoverNodeHeight) / 1.3
                 self.coverTitleNode.alpha = self.parallaxCoverNodeHeight * (1/self.initialCoverNodeHeight)
+                
+                self.readDateNode.frame.origin.y = self.readDateNode.frame.origin.y - (self.initialCoverNodeHeight - parallaxCoverNodeHeight) / 1.3
+                self.readDateNode.alpha = self.parallaxCoverNodeHeight * (1/self.initialCoverNodeHeight)
             } else {
                 self.coverOverlayNode.frame.size = CGSize(width: coverOverlayNode.calculatedSize.width, height: parallaxCoverNodeHeight)
                 self.coverNode.frame.size = CGSize(width: coverNode.calculatedSize.width, height: parallaxCoverNodeHeight)
                 self.coverTitleNode.alpha = 1-((self.parallaxCoverNodeHeight - self.coverTitleNode.frame.origin.y) - 101)/self.coverTitleNode.frame.origin.y*1.6
                 self.coverTitleNode.frame.origin.y = self.coverTitleNode.frame.origin.y + (parallaxCoverNodeHeight - self.initialCoverNodeHeight)
+                
+                self.readDateNode.alpha = self.coverTitleNode.alpha
+                self.readDateNode.frame.origin.y = self.readDateNode.frame.origin.y + (parallaxCoverNodeHeight - self.initialCoverNodeHeight)
             }
         }
     }
@@ -112,8 +124,19 @@ class ReadView: ASCellNode {
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
         coverTitleNode.style.preferredSize = CGSize(width: constrainedSize.max.width-20, height: 80)
         coverTitleNode.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-100)
+        readDateNode.style.preferredSize = CGSize(width: constrainedSize.max.width-20, height: 80)
+        readDateNode.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-60)
         
-        let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [coverTitleNode, coverOverlayNode]))
+//        
+//        let titleDateSpec = ASStackLayoutSpec(
+//            direction: .vertical,
+//            spacing: 10,
+//            justifyContent: .start,
+//            alignItems: .start,
+//            children: [coverTitleNode, readDateNode]
+//        )
+        
+        let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [coverTitleNode, readDateNode, coverOverlayNode]))
         
         let layoutSpec = ASAbsoluteLayoutSpec(
             sizing: .sizeToFit,
@@ -172,7 +195,7 @@ extension ReadView: ReaderOutputProtocol {
     }
     
     func didReceiveHighlights(highlights: String){
-        self.delegate.didReceiveHighlights(read: self.read!, highlights: highlights)
+        self.delegate.didReceiveHighlights(readHighlights: ReadHighlights(readIndex: (read?.index)!, highlights: highlights))
     }
     
     func didReceiveComment(comment: String, elementId: String){
