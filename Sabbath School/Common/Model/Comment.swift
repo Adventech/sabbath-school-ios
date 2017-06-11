@@ -10,7 +10,7 @@ import Unbox
 
 struct Comment {
     let elementId: String
-    let comment: String
+    var comment: String
 }
 
 extension Comment: Unboxable {
