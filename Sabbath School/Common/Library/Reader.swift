@@ -130,7 +130,7 @@ open class Reader: UIWebView {
     
     func showContextMenu(){
         if menuVisible { return }
-        let rect = CGRectFromString("{{-1000, -1000}, {-1000, -1000}}")
+        let rect = CGRectFromString("{{10000, 10000}, {10000, 10000}}")
         UIMenuController.shared.setTargetRect(rect, in: self)
         UIMenuController.shared.setMenuVisible(true, animated: false)
         menuVisible = true
