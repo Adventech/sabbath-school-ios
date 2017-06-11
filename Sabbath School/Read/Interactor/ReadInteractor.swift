@@ -55,12 +55,18 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
             .child(Constants.Firebase.highlights)
             .child((Auth.auth().currentUser?.uid)!)
             .child(read.index).observeSingleEvent(of: .value, with: { (snapshot) in
-                guard let json = snapshot.value as? String else {
+                guard let json = snapshot.value as? [String: AnyObject] else {
                     self.retrieveComments(read: read, highlights: ReadHighlights(readIndex: read.index, highlights: ""))
                     return
                 }
-                let item = ReadHighlights(readIndex: read.index, highlights: json)
-                self.retrieveComments(read: read, highlights: item)
+                
+                do {
+                    let readHighlights: ReadHighlights = try unbox(dictionary: json)
+                    self.retrieveComments(read: read, highlights: readHighlights)
+                } catch let error {
+                    self.presenter?.onError(error)
+                }
+                
             }) { (error) in
                 self.presenter?.onError(error)
             }
@@ -87,11 +93,16 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
         }
     }
     
-    func saveHighlights(read: Read, highlights: String){
-        database.child(Constants.Firebase.highlights)
-            .child((Auth.auth().currentUser?.uid)!)
-            .child(read.index)
-            .setValue(highlights)
+    func saveHighlights(highlights: ReadHighlights){
+        do {
+            let wrappedHighlights: WrappedDictionary = try wrap(highlights)
+            database.child(Constants.Firebase.highlights)
+                .child((Auth.auth().currentUser?.uid)!)
+                .child(highlights.readIndex)
+                .setValue(wrappedHighlights)
+        } catch let error {
+            self.presenter?.onError(error)
+        }
     }
     
     func saveComments(comments: ReadComments){

@@ -213,7 +213,7 @@ open class Reader: UIWebView {
     }
     
     func setTypeface(_ typeface: String){
-        self.stringByEvaluatingJavaScript(from: "ssReader.setTypeface('"+typeface+"')")
+        self.stringByEvaluatingJavaScript(from: "ssReader.setFont('"+typeface+"')")
     }
     
     func setSize(_ size: String){

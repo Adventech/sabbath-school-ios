@@ -217,8 +217,8 @@ extension ReadController: ReadViewOutputProtocol {
         }
     }
     
-    func didReceiveHighlights(read: Read, highlights: String){
-        presenter?.interactor?.saveHighlights(read: read, highlights: highlights)
+    func didReceiveHighlights(readHighlights: ReadHighlights){
+        presenter?.interactor?.saveHighlights(highlights: readHighlights)
     }
     
     func didReceiveComment(readComments: ReadComments){

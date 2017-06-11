@@ -44,6 +44,6 @@ protocol ReadInteractorInputProtocol: class {
     func retrieveRead(readIndex: String)
     func retrieveLessonInfo(lessonIndex: String)
     func retrieveHighlights(read: Read)
-    func saveHighlights(read: Read, highlights: String)
+    func saveHighlights(highlights: ReadHighlights)
     func saveComments(comments: ReadComments)
 }
