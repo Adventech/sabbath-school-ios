@@ -10,9 +10,12 @@ import AsyncDisplayKit
 import UIKit
 
 protocol ReadViewOutputProtocol {
+    func didTapHighlight(color: String)
     func didClickVerse(read: Read, verse: String)
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
     func didLoadWebView(webView: UIWebView)
+    func didReceiveHighlights(read: Read, highlights: String)
+    func didReceiveComment(readComments: ReadComments)
 }
 
 class ReadView: ASCellNode {
@@ -23,16 +26,20 @@ class ReadView: ASCellNode {
     
     let webNode = ASDisplayNode { Reader() }
     var read: Read?
+    var highlights: ReadHighlights?
+    var comments: ReadComments?
     
     var initialCoverNodeHeight: CGFloat = 0
     var parallaxCoverNodeHeight: CGFloat = 0
     
     var webView: Reader { return webNode.view as! Reader }
     
-    init(lessonInfo: LessonInfo, read: Read, delegate: ReadViewOutputProtocol) {
+    init(lessonInfo: LessonInfo, read: Read, highlights: ReadHighlights, comments: ReadComments, delegate: ReadViewOutputProtocol) {
         self.delegate = delegate
         super.init()
         self.read = read
+        self.highlights = highlights
+        self.comments = comments
         
         coverNode.contentMode = .scaleAspectFill
         
@@ -68,7 +75,7 @@ class ReadView: ASCellNode {
     }
     
     override func layout() {
-        super.layout()        
+        super.layout()
         
         if self.parallaxCoverNodeHeight >= 0 {
             self.coverOverlayNode.alpha = 1 - ((self.parallaxCoverNodeHeight-80) * (1/(self.initialCoverNodeHeight-80)))
@@ -89,7 +96,7 @@ class ReadView: ASCellNode {
         super.didLoad()
         
         initialCoverNodeHeight = coverNode.calculatedSize.height
-
+        
         webView.backgroundColor = .clear
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.delegate = self
@@ -104,13 +111,13 @@ class ReadView: ASCellNode {
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
         coverTitleNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 80)
         coverTitleNode.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-100)
-
+        
         let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [coverTitleNode, coverOverlayNode]))
         
         let layoutSpec = ASAbsoluteLayoutSpec(
             sizing: .sizeToFit,
             children: [coverNodeOverlaySpec, webNode]
-        )        
+        )
         
         return layoutSpec
     }
@@ -131,7 +138,9 @@ extension ReadView: UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
+        (webView as! Reader).contextMenuEnabled = true
         (webView as! Reader).setupContextMenu()
+
         if !webView.isLoading {
             self.delegate.didLoadWebView(webView: webView)
         }
@@ -139,10 +148,46 @@ extension ReadView: UIWebViewDelegate {
 }
 
 extension ReadView: ReaderOutputProtocol {
+    func ready(){
+        if self.highlights != nil {
+            webView.setHighlights((self.highlights?.highlights)!)
+        }
+        
+        if !(self.comments?.comments.isEmpty)! {
+            for comment in (self.comments?.comments)! {
+                webView.setComment(comment)
+            }
+        }
+    }
+    
     func didLoadContent(content: String) {}
-    func didTapHighlightGreen() {}
+    
+    func didTapHighlight(color: String) {
+        self.delegate.didTapHighlight(color: color)
+    }
     
     func didClickVerse(verse: String) {
         self.delegate.didClickVerse(read: self.read!, verse: verse)
+    }
+    
+    func didReceiveHighlights(highlights: String){
+        self.delegate.didReceiveHighlights(read: self.read!, highlights: highlights)
+    }
+    
+    func didReceiveComment(comment: String, elementId: String){
+        var found = false
+        for (index, readComment) in (self.comments?.comments.enumerated())! {
+            if readComment.elementId == elementId {
+                found = true
+                
+                self.comments?.comments[index].comment = comment
+            }
+        }
+        
+        if !found {
+            self.comments?.comments.append(Comment(elementId: elementId, comment: comment))
+        }
+        
+        self.delegate.didReceiveComment(readComments: self.comments!)
     }
 }

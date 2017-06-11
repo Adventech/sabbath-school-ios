@@ -9,13 +9,6 @@
 import Foundation
 
 extension String {
-    
-    
-    /**
-     Base 64 decode.
-     
-     - returns: A decoded String.
-     */
     func base64Decode() -> String? {
         guard let decodedData = Data(base64Encoded: self, options: Data.Base64DecodingOptions.init(rawValue: 0)) else {
             return nil
@@ -26,5 +19,9 @@ extension String {
         }
         
         return decodedString
+    }
+    
+    func base64Encode() -> String? {
+        return Data(self.utf8).base64EncodedString()
     }
 }

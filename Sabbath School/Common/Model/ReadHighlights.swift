@@ -10,7 +10,7 @@ import Unbox
 
 struct ReadHighlights {
     let readIndex: String
-    let highlights: [String]
+    let highlights: String
 }
 
 extension ReadHighlights: Unboxable {

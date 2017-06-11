@@ -1,5 +1,12 @@
 timeout = null;
 
+function getRectForSelectedText() {
+    var selection = window.getSelection();
+    var range = selection.getRangeAt(0);
+    var rect = range.getBoundingClientRect();
+    return "{{" + rect.left + "," + rect.top + "}, {" + rect.width + "," + rect.height + "}}";
+}
+
 $(function(){
   window.ssReader = Class({
     $singleton: true,
@@ -86,11 +93,14 @@ $(function(){
     },
 
     highlightSelection: function(color){
+      console.log(color)
       try {
         this.highlighter.highlightSelection("highlight_" + color);
         this.clearSelection();
         SSBridge.onReceiveHighlights(this.getHighlights());
-      } catch(err){}
+      } catch(err){
+        console.log(err)
+      }
     },
 
     unHighlightSelection: function(color){
@@ -137,6 +147,10 @@ $(function(){
       request: function(data){
         window.location = this.urlBase + data;
       },
+                            
+      onReady: function(){
+        this.request("?ready=true");
+      },
 
       onReceiveHighlights: function(highlights){
         this.request("?highlights=" + highlights);
@@ -146,8 +160,8 @@ $(function(){
         this.request("?verse=" + verse);
       },
 
-      onCommentsClick: function(comments){
-        this.request("?comments=" + comments);
+      onCommentsClick: function(comment, elementId){
+        this.request("?comment=" + comment + "&elementId=" + elementId);
       },
 
       onCopy: function(text){
@@ -162,6 +176,7 @@ $(function(){
         this.request("?search=" + text);
       }
     });
+    SSBridge.onReady();
   }
 
   if(typeof ssReader !== "undefined"){ssReader.init();}

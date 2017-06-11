@@ -10,7 +10,7 @@ import Unbox
 
 struct ReadComments {
     let readIndex: String
-    let comments: [Comment]
+    var comments: [Comment]
 }
 
 extension ReadComments: Unboxable {

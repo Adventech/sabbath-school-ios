@@ -17,6 +17,8 @@ class ReadController: ThemeController {
     
     var lessonInfo: LessonInfo?
     var reads = [Read]()
+    var highlights = [ReadHighlights]()
+    var comments = [ReadComments]()
     
     var shouldHideStatusBar = false
     var lastContentOffset: CGFloat = 0
@@ -88,6 +90,10 @@ class ReadController: ThemeController {
     }
     
     func scrollBehavior(){
+        if reads.isEmpty {
+            return
+        }
+        
         let scrollView = (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.scrollView
         
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height {
@@ -151,8 +157,10 @@ extension ReadController: ReadControllerProtocol {
         self.lessonInfo = lessonInfo
     }
     
-    func showRead(read: Read) {
+    func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments) {
         self.reads.append(read)
+        self.highlights.append(highlights)
+        self.comments.append(comments)
         self.collectionNode.reloadData()
     }
 }
@@ -160,9 +168,11 @@ extension ReadController: ReadControllerProtocol {
 extension ReadController: ASPagerDataSource {
     func pagerNode(_ pagerNode: ASPagerNode, nodeBlockAt index: Int) -> ASCellNodeBlock {
         let read = reads[index]
+        let readHighlights = highlights[index]
+        let readComments = comments[index]
         
         let cellNodeBlock: () -> ASCellNode = {
-            return ReadView(lessonInfo: self.lessonInfo!, read: read, delegate: self)
+            return ReadView(lessonInfo: self.lessonInfo!, read: read, highlights: readHighlights, comments: readComments, delegate: self)
         }
         
         return cellNodeBlock
@@ -186,6 +196,10 @@ extension ReadController: ASCollectionDelegate {
 }
 
 extension ReadController: ReadViewOutputProtocol {
+    func didTapHighlight(color: String){
+        (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.highlight(color: color)
+    }
+    
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView) {
         scrollBehavior()
     }
@@ -201,6 +215,14 @@ extension ReadController: ReadViewOutputProtocol {
         UIView.animate(withDuration: 0.3) {
             webView.alpha = 1
         }
+    }
+    
+    func didReceiveHighlights(read: Read, highlights: String){
+        presenter?.interactor?.saveHighlights(read: read, highlights: highlights)
+    }
+    
+    func didReceiveComment(readComments: ReadComments){
+        presenter?.interactor?.saveComments(comments: readComments)
     }
 }
 
