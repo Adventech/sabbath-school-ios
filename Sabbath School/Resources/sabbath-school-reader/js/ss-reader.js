@@ -1,11 +1,7 @@
 timeout = null;
 
-function getRectForSelectedText() {
-    var selection = window.getSelection();
-    var range = selection.getRangeAt(0);
-    var rect = range.getBoundingClientRect();
-    return "{{" + rect.left + "," + rect.top + "}, {" + rect.width + "," + rect.height + "}}";
-}
+var userAgent = window.navigator.userAgent.toLowerCase(),
+    iOS = /iphone|ipod|ipad/.test(userAgent);
 
 $(function(){
   window.ssReader = Class({
@@ -89,21 +85,19 @@ $(function(){
 
     setComment: function(comment, inputId){
       $("#"+inputId).val(ssReader.base64decode(comment));
-      $("#"+inputId).trigger("input");
+      $("#"+inputId).css({'height':'auto','overflow-y':'hidden'}).height($("#"+inputId).scrollHeight);
+      $("#"+inputId).next().css({'height':'auto','overflow-y':'hidden'}).height($("#"+inputId).height());
     },
 
     highlightSelection: function(color){
-      console.log(color)
       try {
         this.highlighter.highlightSelection("highlight_" + color);
         this.clearSelection();
         SSBridge.onReceiveHighlights(this.getHighlights());
-      } catch(err){
-        console.log(err)
-      }
+      } catch(err){}
     },
 
-    unHighlightSelection: function(color){
+    unHighlightSelection: function(){
       try {
         this.highlighter.unhighlightSelection();
         SSBridge.onReceiveHighlights(this.getHighlights());
@@ -139,7 +133,7 @@ $(function(){
     }
   });
 
-  if (typeof SSBridge == "undefined"){
+  if (iOS){
     window.SSBridge = Class({
       $singleton: true,
       urlBase: "sabbath-school://ss",
@@ -147,7 +141,7 @@ $(function(){
       request: function(data){
         window.location = this.urlBase + data;
       },
-                            
+
       onReady: function(){
         this.request("?ready=true");
       },
@@ -160,7 +154,7 @@ $(function(){
         this.request("?verse=" + verse);
       },
 
-      onCommentsClick: function(comment, elementId){
+      onCommentsClick: function(comments, elementId){
         this.request("?comment=" + comment + "&elementId=" + elementId);
       },
 
@@ -179,7 +173,9 @@ $(function(){
     SSBridge.onReady();
   }
 
-  if(typeof ssReader !== "undefined"){ssReader.init();}
+  if(typeof ssReader !== "undefined"){
+    ssReader.init();
+  }
 
   $(".verse").click(function(){
     SSBridge.onVerseClick(ssReader.base64encode($(this).attr("verse")));

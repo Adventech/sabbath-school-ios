@@ -196,6 +196,10 @@ extension ReadController: ASCollectionDelegate {
 }
 
 extension ReadController: ReadViewOutputProtocol {
+    func didTapClearHighlight(){
+        (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.clearHighlight()
+    }
+    
     func didTapHighlight(color: String){
         (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.highlight(color: color)
     }

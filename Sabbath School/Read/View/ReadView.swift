@@ -11,6 +11,7 @@ import SwiftDate
 import UIKit
 
 protocol ReadViewOutputProtocol {
+    func didTapClearHighlight()
     func didTapHighlight(color: String)
     func didClickVerse(read: Read, verse: String)
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
@@ -185,6 +186,10 @@ extension ReadView: ReaderOutputProtocol {
     }
     
     func didLoadContent(content: String) {}
+    
+    func didTapClearHighlight() {
+        self.delegate.didTapClearHighlight()
+    }
     
     func didTapHighlight(color: String) {
         self.delegate.didTapHighlight(color: color)
