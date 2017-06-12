@@ -39,6 +39,11 @@ fastlane beta
 fastlane increment_build
 ```
 
+### match_config
+```
+fastlane match_config
+```
+Easily sync your certificates and profiles across your team using git
 
 ----
 
