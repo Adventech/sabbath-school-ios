@@ -85,6 +85,7 @@ struct ReaderStyle {
 
 protocol ReaderOutputProtocol {
     func ready()
+    func didTapClearHighlight()
     func didTapHighlight(color: String)
     func didLoadContent(content: String)
     func didClickVerse(verse: String)
@@ -116,6 +117,10 @@ open class Reader: UIWebView {
             self.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Orange)
         }
         
+        let clearHighlight = UIMenuItem(title: "*", image: R.image.iconHighlightClear()) { _ in
+            self.readerViewDelegate?.didTapClearHighlight()
+        }
+        
         let copy = UIMenuItem(title: "Copy") { [weak self] _ in
 //            self?.readerViewDelegate?.didTapHighlightGreen()
         }
@@ -124,7 +129,7 @@ open class Reader: UIWebView {
 //            self?.readerViewDelegate?.didTapHighlightGreen()
         }
         
-        UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, copy, share]
+        UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, share]
         showContextMenu()
     }
     
@@ -138,6 +143,12 @@ open class Reader: UIWebView {
     
     func highlight(color: String){
         self.stringByEvaluatingJavaScript(from: "ssReader.highlightSelection('"+color+"');")
+        self.isUserInteractionEnabled = false
+        self.isUserInteractionEnabled = true
+    }
+    
+    func clearHighlight(){
+        self.stringByEvaluatingJavaScript(from: "ssReader.unHighlightSelection()")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
