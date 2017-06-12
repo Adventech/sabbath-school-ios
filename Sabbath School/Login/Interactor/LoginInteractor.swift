@@ -39,8 +39,9 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
             Auth.auth().signInAnonymously(completion: { (user, error) in
                 if let error = error {
                     self.presenter?.onError(error)
+                } else {
+                    self.presenter?.onSuccess()
                 }
-                self.presenter?.onSuccess()
             })
         })
         
@@ -73,8 +74,9 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
             if error != nil {
                 self.presenter?.onError(error)
                 return
+            } else {
+                self.presenter?.onSuccess()
             }
-            self.presenter?.onSuccess()
         }
     }
 }
