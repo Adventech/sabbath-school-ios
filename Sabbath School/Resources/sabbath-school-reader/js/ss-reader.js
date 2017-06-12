@@ -155,7 +155,7 @@ $(function(){
       },
 
       onCommentsClick: function(comments, elementId){
-        this.request("?comment=" + comment + "&elementId=" + elementId);
+        this.request("?comment=" + comments + "&elementId=" + elementId);
       },
 
       onCopy: function(text){

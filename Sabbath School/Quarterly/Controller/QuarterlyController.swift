@@ -37,7 +37,7 @@ final class QuarterlyController: TableController {
             presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
         }
         
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutAction))
+        let logoutButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
         
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(rightAction(sender:)))
         

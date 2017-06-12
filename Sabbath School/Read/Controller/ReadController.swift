@@ -7,6 +7,7 @@
 //
 
 import AsyncDisplayKit
+import SwiftDate
 import UIKit
 
 class ReadController: ThemeController {
@@ -128,6 +129,7 @@ class ReadController: ThemeController {
         lastContentOffset = -scrollView.contentOffset.y
     }
     
+    // TODO: - Refactor
     func readNavigationBarStyle(color: UIColor = .tintColor, titleColor: UIColor = .white){
         let theme = currentTheme()
         var colorPrimary = color
@@ -170,8 +172,16 @@ extension ReadController: ASPagerDataSource {
         let read = reads[index]
         let readHighlights = highlights[index]
         let readComments = comments[index]
+        let today = Date()
         
         let cellNodeBlock: () -> ASCellNode = {
+            
+            if today.isInSameDayOf(date: read.date){
+                DispatchQueue.main.async {
+                    self.collectionNode.scrollToPage(at: index, animated: false)
+                }
+            }
+            
             return ReadView(lessonInfo: self.lessonInfo!, read: read, highlights: readHighlights, comments: readComments, delegate: self)
         }
         
