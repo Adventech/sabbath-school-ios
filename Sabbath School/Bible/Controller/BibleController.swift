@@ -16,6 +16,7 @@ class BibleController: ASViewController<ASDisplayNode> {
     
     var read: Read?
     var verse: String?
+    var delegate: BibleControllerOutputProtocol?
     
     init(read: Read, verse: String) {
         super.init(node: bibleView)
@@ -55,10 +56,12 @@ class BibleController: ASViewController<ASDisplayNode> {
         
         presenter?.configure()
         presenter?.presentBibleVerse(read: self.read!, verse: self.verse!)
+        UIMenuController.shared.menuItems = []
     }
     
     func closeAction(sender: UIBarButtonItem) {
         dismiss()
+        delegate?.didDismissBibleScreen()
     }
     
     func changeVersionAction(sender: UIBarButtonItem) {

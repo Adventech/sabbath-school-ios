@@ -163,7 +163,6 @@ extension ReadView: UIWebViewDelegate {
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         (webView as! Reader).contextMenuEnabled = true
-        (webView as! Reader).setupContextMenu()
 
         if !webView.isLoading {
             self.delegate.didLoadWebView(webView: webView)

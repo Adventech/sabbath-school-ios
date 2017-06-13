@@ -23,12 +23,12 @@ class ReadPresenter: ReadPresenterProtocol {
     func presentBibleScreen(read: Read, verse: String, size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate){
         
         let bibleScreen = BibleWireFrame.createBibleModule(read: read, verse: verse)
+        (bibleScreen as! BibleController).delegate = (controller as! BibleControllerOutputProtocol)
         let navigation = ASNavigationController(rootViewController: bibleScreen)
         navigation.transitioningDelegate = transitioningDelegate
         navigation.modalPresentationStyle = .custom
         navigation.preferredContentSize = size
-        (controller as! UIViewController).present(navigation, animated: true, completion: nil)
-
+        (controller as! UIViewController).present(navigation, animated: true, completion: nil)        
     }
     
     func presentReadOptionsScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate){

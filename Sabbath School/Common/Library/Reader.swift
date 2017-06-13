@@ -99,8 +99,6 @@ open class Reader: UIWebView {
     var contextMenuEnabled = false
     
     func setupContextMenu(){
-        if !contextMenuEnabled { return }
-        
         let highlightGreen = UIMenuItem(title: "*", image: R.image.iconHighlightGreen()) { _ in
             self.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Green)
         }

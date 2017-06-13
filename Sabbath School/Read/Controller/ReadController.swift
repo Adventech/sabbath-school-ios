@@ -58,6 +58,10 @@ class ReadController: ThemeController {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.hideBottomHairline()
         scrollBehavior()
+
+        if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
+            webView.setupContextMenu()
+        }
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -225,6 +229,7 @@ extension ReadController: ReadViewOutputProtocol {
         
         animator.style = .square
         presenter?.presentBibleScreen(read: read, verse: verse, size: size, transitioningDelegate: animator)
+        UIMenuController.shared.menuItems = []
     }
     
     func didLoadWebView(webView: UIWebView){
@@ -261,6 +266,14 @@ extension ReadController: ReadOptionsDelegate {
     func didSelectSize(size: String){
         for webViewIndex in 0...self.reads.count {
             (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.webView.setSize(size)
+        }
+    }
+}
+
+extension ReadController: BibleControllerOutputProtocol {
+    func didDismissBibleScreen() {
+        if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
+            webView.setupContextMenu()
         }
     }
 }

@@ -24,6 +24,10 @@ protocol BibleControllerProtocol: class {
     func showBibleVerse(content: String)
 }
 
+protocol BibleControllerOutputProtocol: class {
+    func didDismissBibleScreen()
+}
+
 protocol BibleWireFrameProtocol: class {
     static func createBibleModule(read: Read, verse: String) -> ASViewController<ASDisplayNode>
 }
