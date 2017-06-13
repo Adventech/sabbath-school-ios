@@ -89,6 +89,23 @@ struct TextStyles {
         return NSAttributedString(string: string, attributes: attributes)
     }
     
+    static func lessonInfoTitleStyle(string: String) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: R.font.latoBold(size: 34)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func lessonInfoHumanDateStyle(string: String, color: UIColor = .baseGray2) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7),
+            NSFontAttributeName: R.font.latoRegular(size: 12)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+
+    }
+    
     static func cellLessonNumberStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2.withAlphaComponent(0.5),

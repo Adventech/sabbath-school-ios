@@ -10,7 +10,8 @@ import UIKit
 import AsyncDisplayKit
 
 class LessonQuarterlyInfoNode: ASCellNode {
-    let coverNode = ASNetworkImageNode()
+    let coverNode = ASDisplayNode()
+    var coverImageNode: WrapperNode!
     let titleNode = ASTextNode()
     let humanDateNode = ASTextNode()
     var detailNode = ASTextNode()
@@ -32,24 +33,33 @@ class LessonQuarterlyInfoNode: ASCellNode {
         }
         
         // Nodes
-        titleNode.attributedText = TextStyles.featuredQuarterlyTitleStyle(string: quarterly.title)
-        humanDateNode.attributedText = TextStyles.featuredQuarterlyHumanDateStyle(string: quarterly.humanDate)
+        titleNode.attributedText = TextStyles.lessonInfoTitleStyle(string: quarterly.title)
+        humanDateNode.attributedText = TextStyles.lessonInfoHumanDateStyle(string: quarterly.humanDate.uppercased())
         detailNode.attributedText = TextStyles.cellDetailStyle(string: quarterly.description, color: .white)
-        detailNode.maximumNumberOfLines = 7
-        coverNode.url = quarterly.cover
-        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-        coverNode.placeholderEnabled = true
-        coverNode.placeholderFadeDuration = 0.6
+        detailNode.maximumNumberOfLines = 8
         
         readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".uppercased()), for: UIControlState())
         readButton.backgroundColor = UIColor.init(hex: (quarterly.colorPrimaryDark)!)
         readButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
-        readButton.cornerRadius = 4
+        readButton.cornerRadius = 18
+        
+        coverNode.cornerRadius = 4
+        coverNode.shadowColor = UIColor.baseGray2.cgColor
+        coverNode.shadowOffset = CGSize(width: 1, height: 2)
+        coverNode.shadowRadius = 3
+        coverNode.shadowOpacity = 0.6
+        coverNode.backgroundColor = .clear
+        coverNode.clipsToBounds = false
+        
+        coverImageNode = WrapperNode(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
+        
+        coverImageNode.style.alignSelf = .stretch
         
         addSubnode(titleNode)
         addSubnode(humanDateNode)
         addSubnode(detailNode)
         addSubnode(coverNode)
+        addSubnode(coverImageNode)
         addSubnode(readButton)
     }
     
@@ -58,9 +68,9 @@ class LessonQuarterlyInfoNode: ASCellNode {
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        coverNode.style.preferredSize = CGSize(width: 125, height: 187)
+        coverNode.style.preferredSize = CGSize(width: 130, height: 192)
+        titleNode.style.spacingAfter = 20
         readButton.style.spacingBefore = 10
-        readButton.style.spacingAfter = 13
         humanDateNode.style.spacingAfter = 6
         
         let vSpec = ASStackLayoutSpec(
@@ -68,7 +78,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
             spacing: 4,
             justifyContent: .start,
             alignItems: .start,
-            children: [titleNode, humanDateNode]
+            children: [humanDateNode, titleNode]
         )
         
         let vSpec2 = ASStackLayoutSpec(
@@ -79,16 +89,17 @@ class LessonQuarterlyInfoNode: ASCellNode {
             children: [detailNode, readButton]
         )
         
-        
         vSpec.style.flexShrink = 1.0
         vSpec2.style.flexShrink = 1.0
+        
+        let coverSpec = ASBackgroundLayoutSpec(child: coverImageNode, background: coverNode)
         
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 15,
-            justifyContent: .start,
-            alignItems: .start,
-            children: [coverNode, vSpec2]
+            justifyContent: .end,
+            alignItems: .end,
+            children: [coverSpec, vSpec2]
         )
         
         let mainSpec = ASStackLayoutSpec(
@@ -105,5 +116,30 @@ class LessonQuarterlyInfoNode: ASCellNode {
     override func layout() {
         super.layout()
         infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-1000, width: calculatedSize.width, height: 1000)
+    }
+    
+    final class WrapperNode: ASDisplayNode {
+        
+        var imageNode = ASNetworkImageNode()
+        
+        init(imageURL: URL, corner: CGFloat) {
+            super.init()
+            
+            imageNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+            imageNode.placeholderEnabled = true
+            imageNode.placeholderFadeDuration = 0.6
+            
+            cornerRadius = corner
+            clipsToBounds = true
+            
+            imageNode.url = imageURL
+            
+            automaticallyManagesSubnodes = true
+        }
+        
+        override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+            imageNode.style.preferredSize = CGSize(width: 125, height: 187)
+            return ASAbsoluteLayoutSpec(children: [imageNode])
+        }
     }
 }
