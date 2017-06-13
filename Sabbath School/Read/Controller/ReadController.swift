@@ -24,6 +24,8 @@ class ReadController: ThemeController {
     var shouldHideStatusBar = false
     var lastContentOffset: CGFloat = 0
     
+    var menuItems = [UIMenuItem]()
+    
     init() {
         super.init(node: ASPagerNode())
         self.collectionNode.backgroundColor = .baseGray1

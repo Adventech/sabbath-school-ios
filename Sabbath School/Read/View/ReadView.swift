@@ -123,21 +123,20 @@ class ReadView: ASCellNode {
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height*0.4)
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
-        coverTitleNode.style.preferredSize = CGSize(width: constrainedSize.max.width-20, height: 80)
-        coverTitleNode.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-100)
-        readDateNode.style.preferredSize = CGSize(width: constrainedSize.max.width-20, height: 80)
-        readDateNode.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-60)
+        coverTitleNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("90%"), ASDimensionMake(.auto, 0))
+        readDateNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("90%"), ASDimensionMake(.auto, 0))
+  
+        let titleDateSpec = ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 10,
+            justifyContent: .center,
+            alignItems: .center,
+            children: [coverTitleNode, readDateNode]
+        )
+        titleDateSpec.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-130)
+        titleDateSpec.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("100%"), ASDimensionMake(.auto, 0))
         
-//        
-//        let titleDateSpec = ASStackLayoutSpec(
-//            direction: .vertical,
-//            spacing: 10,
-//            justifyContent: .start,
-//            alignItems: .start,
-//            children: [coverTitleNode, readDateNode]
-//        )
-        
-        let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [coverTitleNode, readDateNode, coverOverlayNode]))
+        let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [titleDateSpec, coverOverlayNode]))
         
         let layoutSpec = ASAbsoluteLayoutSpec(
             sizing: .sizeToFit,
