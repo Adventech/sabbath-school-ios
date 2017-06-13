@@ -1300,8 +1300,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3cb2d919-90b8-48e6-9047-6414d009435c";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
+				PROVISIONING_PROFILE = "319e7d78-f018-417e-9634-f1e4beb95cc2";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1311,15 +1311,15 @@
 			baseConfigurationReference = 57506EF65FC71A870E0BE99F /* Pods-Sabbath School.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3cb2d919-90b8-48e6-9047-6414d009435c";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.cryart.SabbathSchool";
+				PROVISIONING_PROFILE = "704ed434-6849-4f5f-9cd9-9890ca765b38";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc *";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

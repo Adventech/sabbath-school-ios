@@ -29,6 +29,11 @@ xcode-select --install
 </table>
 
 # Available Actions
+### travis
+```
+fastlane travis
+```
+
 ### beta
 ```
 fastlane beta
