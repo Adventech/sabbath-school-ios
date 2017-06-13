@@ -110,7 +110,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
             children: [vSpec, hSpec]
         )
     
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 20, right: 15), child: mainSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 30, right: 15), child: mainSpec)
     }
     
     override func layout() {
