@@ -14,6 +14,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
     
     var titles = [[String]]()
     var sections = [String]()
+    var footers = [String]()
     
     init() {
         super.init(node: SettingsView(style: .grouped))
@@ -23,14 +24,23 @@ class SettingsController: ASViewController<ASDisplayNode> {
         title = "Settings".uppercased()
         
         titles = [
-            ["Theme", "Typeface", "Font Size"],
             ["Reminder", "Time"],
-            ["Instagram", "Facebook", "GitHub", "About"],
+            ["🐙 Github"],
+            ["🤠 About us", "💌 Recommend Sabbath School", "🎉 Rate app"],
             ["Log out"]
         ]
         
         sections = [
-            "Reading Options", "Reminder", "About", ""
+            "Reminder",
+            "Contribute",
+            "More",
+            ""
+        ]
+        
+        footers = [
+            "Set the reminder to be notified daily to study the lesson",
+            "Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute",
+            ""
         ]
     }
     
@@ -102,25 +112,13 @@ extension SettingsController: ASTableDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == sections.count-1 {
-            let header = UIView()
-            
-            let copyrightImage = UIImageView(image: R.image.bulletArrowDown())
-            copyrightImage.center = tableView.center
-            header.addSubview(copyrightImage)
-            
-            var imageframe = copyrightImage.frame
-            imageframe.origin.y = 34
-            copyrightImage.frame = imageframe
-            
-            let versionY = copyrightImage.frame.height+copyrightImage.frame.origin.y
-            let versionLabel = UILabel(frame: CGRect(x: 0, y: versionY, width: view.frame.width, height: 18))
+            let versionLabel = UILabel(frame: CGRect(x: 0, y: 34, width: view.frame.width, height: 18))
             versionLabel.textAlignment = .center
-            versionLabel.attributedText = TextStyles.settingsFooterCopyrightStyle(string: "yo")
-            header.addSubview(versionLabel)
-            
-            return header
+            versionLabel.attributedText = TextStyles.settingsFooterCopyrightStyle(string: "Made with \u{2764} by Adventech")
+            return versionLabel
         } else {
-            return nil
+            if footers[section].isEmpty { return nil }
+            return getLabelForSectionFooter(section: section)
         }
     }
     
@@ -128,8 +126,21 @@ extension SettingsController: ASTableDelegate {
         if section == sections.count-1 {
             return 100
         } else {
-            return 20
+            if footers[section].isEmpty { return 20 }
+            return getLabelForSectionFooter(section: section).frame.size.height + 20
         }
+    }
+    
+    func getLabelForSectionFooter(section: Int) -> UIView {
+        let footerView = UIView()
+        let footerLabel = UILabel(frame: CGRect(x: 15, y: 10, width: view.frame.width-20, height: 0))
+        footerLabel.numberOfLines = 0
+        footerLabel.attributedText = TextStyles.settingsFooterStyle(string: footers[section])
+        footerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        footerLabel.sizeToFit()
+        footerView.addSubview(footerLabel)
+        footerView.frame.size.height = footerLabel.frame.size.height
+        return footerView
     }
     
     func getAppVersionText() -> String {

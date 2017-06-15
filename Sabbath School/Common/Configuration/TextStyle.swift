@@ -199,6 +199,20 @@ struct TextStyles {
         return NSAttributedString(string: string.uppercased(), attributes: attributes)
     }
     
+    static func settingsFooterStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .left
+        
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.baseGray2,
+            NSFontAttributeName: R.font.latoMedium(size: 12)!,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    
     static func settingsFooterCopyrightStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
