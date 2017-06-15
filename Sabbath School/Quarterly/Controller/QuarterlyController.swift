@@ -70,8 +70,11 @@ final class QuarterlyController: TableController {
     }
     
     func logoutAction() {
-        try! Auth.auth().signOut()
-        presenter?.wireFrame?.presentLoginScreen()
+        let settings = SettingsController()
+        self.show(settings, sender: nil)
+        
+//        try! Auth.auth().signOut()
+//        presenter?.wireFrame?.presentLoginScreen()
     }
 }
 

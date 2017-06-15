@@ -11,6 +11,7 @@ import AsyncDisplayKit
 
 class QuarterlyFeaturedCellNode: ASCellNode {
     let coverNode = ASNetworkImageNode()
+    var coverImageNode: RoundedCornersImage!
     let titleNode = ASTextNode()
     let humanDateNode = ASTextNode()
     let descriptionNode = ASTextNode()
@@ -33,6 +34,7 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         
         titleNode.attributedText = TextStyles.featuredQuarterlyTitleStyle(string: quarterly.title)
         titleNode.maximumNumberOfLines = 3
+        titleNode.pointSizeScaleFactors = [0.9, 0.8]
         
         humanDateNode.attributedText = TextStyles.featuredQuarterlyHumanDateStyle(string: quarterly.humanDate)
         humanDateNode.maximumNumberOfLines = 1
@@ -40,20 +42,22 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         descriptionNode.attributedText = TextStyles.featuredQuarterlyDescriptionStyle(string: quarterly.description)
         descriptionNode.maximumNumberOfLines = 3
         
-        coverNode.url = quarterly.cover
-        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-        coverNode.placeholderEnabled = true
-        coverNode.placeholderFadeDuration = 0.6
+        coverNode.cornerRadius = 4
+        coverNode.clipsToBounds = true
+        
+        coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
+        coverImageNode.style.alignSelf = .stretch
         
         openButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Open".uppercased()), for: UIControlState())
         openButton.backgroundColor = UIColor.init(hex: (quarterly.colorPrimaryDark)!)
         openButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
-        openButton.cornerRadius = 4
+        openButton.cornerRadius = 18
         
         addSubnode(titleNode)
         addSubnode(humanDateNode)
         addSubnode(descriptionNode)
         addSubnode(coverNode)
+        addSubnode(coverImageNode)
         addSubnode(openButton)
     }
     
@@ -70,17 +74,19 @@ class QuarterlyFeaturedCellNode: ASCellNode {
             spacing: 4,
             justifyContent: .start,
             alignItems: .start,
-            children: [titleNode, humanDateNode, descriptionNode, openButton]
+            children: [humanDateNode, titleNode, openButton]
         )
         
         vSpec.style.flexShrink = 1.0
+        
+        let coverSpec = ASBackgroundLayoutSpec(child: coverImageNode, background: coverNode)
         
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 15,
             justifyContent: .start,
-            alignItems: .start,
-            children: [coverNode, vSpec]
+            alignItems: .center,
+            children: [coverSpec, vSpec]
         )
         
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 20, right: 15), child: hSpec)

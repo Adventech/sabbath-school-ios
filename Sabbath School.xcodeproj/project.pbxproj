@@ -69,6 +69,11 @@
 		7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3BCE3D1EE2F209003EC12B /* ReadOptionsController.swift */; };
 		7A3BCE401EE2F27F003EC12B /* ReadOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3BCE3F1EE2F27F003EC12B /* ReadOptionsView.swift */; };
 		7A3BCE421EE37E30003EC12B /* DiscreteSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */; };
+		7A535A7A1EF0A56D00CBDEAB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A535A791EF0A56D00CBDEAB /* SettingsController.swift */; };
+		7A535A7C1EF0A58A00CBDEAB /* SettingsItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A535A7B1EF0A58A00CBDEAB /* SettingsItemController.swift */; };
+		7A8C68481EF206E100CD3228 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C68471EF206E100CD3228 /* SettingsView.swift */; };
+		7A8C684A1EF2094300CD3228 /* SettingsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C68491EF2094300CD3228 /* SettingsItemView.swift */; };
+		7A8C684D1EF231E200CD3228 /* RoundedCornersImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */; };
 		7A922E031EDE348D00C12A67 /* LessonQuarterlyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E021EDE348D00C12A67 /* LessonQuarterlyInfoCell.swift */; };
 		7A922E051EDE38F400C12A67 /* OpenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E041EDE38F400C12A67 /* OpenButton.swift */; };
 		7A922E071EDEDEA700C12A67 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E061EDEDEA700C12A67 /* ButtonStyle.swift */; };
@@ -191,6 +196,11 @@
 		7A3BCE3D1EE2F209003EC12B /* ReadOptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOptionsController.swift; sourceTree = "<group>"; };
 		7A3BCE3F1EE2F27F003EC12B /* ReadOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOptionsView.swift; sourceTree = "<group>"; };
 		7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscreteSlider.swift; sourceTree = "<group>"; };
+		7A535A791EF0A56D00CBDEAB /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		7A535A7B1EF0A58A00CBDEAB /* SettingsItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemController.swift; sourceTree = "<group>"; };
+		7A8C68471EF206E100CD3228 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7A8C68491EF2094300CD3228 /* SettingsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemView.swift; sourceTree = "<group>"; };
+		7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersImage.swift; sourceTree = "<group>"; };
 		7A922E021EDE348D00C12A67 /* LessonQuarterlyInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonQuarterlyInfoCell.swift; sourceTree = "<group>"; };
 		7A922E041EDE38F400C12A67 /* OpenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenButton.swift; sourceTree = "<group>"; };
 		7A922E061EDEDEA700C12A67 /* ButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
@@ -484,6 +494,7 @@
 				7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */,
 				7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */,
 				7AC26AE61EE4FA9E003F946C /* Reader.swift */,
+				7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -679,6 +690,65 @@
 			isa = PBXGroup;
 			children = (
 				7A3BCE311EE27717003EC12B /* BibleWireFrame.swift */,
+			);
+			path = WireFrame;
+			sourceTree = "<group>";
+		};
+		7A535A721EF0A4F000CBDEAB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7A535A731EF0A4F000CBDEAB /* Controller */,
+				7A535A741EF0A4F000CBDEAB /* Interactor */,
+				7A535A751EF0A4F000CBDEAB /* Presenter */,
+				7A535A761EF0A4F000CBDEAB /* Protocols */,
+				7A535A771EF0A4F000CBDEAB /* View */,
+				7A535A781EF0A4F000CBDEAB /* WireFrame */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7A535A731EF0A4F000CBDEAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A535A791EF0A56D00CBDEAB /* SettingsController.swift */,
+				7A535A7B1EF0A58A00CBDEAB /* SettingsItemController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7A535A741EF0A4F000CBDEAB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		7A535A751EF0A4F000CBDEAB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7A535A761EF0A4F000CBDEAB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7A535A771EF0A4F000CBDEAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7A8C68471EF206E100CD3228 /* SettingsView.swift */,
+				7A8C68491EF2094300CD3228 /* SettingsItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7A535A781EF0A4F000CBDEAB /* WireFrame */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = WireFrame;
 			sourceTree = "<group>";
@@ -889,6 +959,7 @@
 				7A280FD11EDCB736003C7458 /* Quarterly */,
 				7A922E0A1EDF88F800C12A67 /* Read */,
 				7A280F8C1ED7D75E003C7458 /* Resources */,
+				7A535A721EF0A4F000CBDEAB /* Settings */,
 			);
 			path = "Sabbath School";
 			sourceTree = "<group>";
@@ -1109,6 +1180,7 @@
 				7A2810061EDD071B003C7458 /* LanguageWireFrame.swift in Sources */,
 				7A280FE11EDCBA16003C7458 /* QuarterlyController.swift in Sources */,
 				7A922E1A1EDFB6F600C12A67 /* ThemeController.swift in Sources */,
+				7A535A7A1EF0A56D00CBDEAB /* SettingsController.swift in Sources */,
 				7AC26AFA1EE5EBDE003F946C /* LessonInfo.swift in Sources */,
 				7A280FD01EDA23F0003C7458 /* LoginInteractor.swift in Sources */,
 				7A922E091EDF623500C12A67 /* TableController.swift in Sources */,
@@ -1117,6 +1189,7 @@
 				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
 				7A280FC31EDA03ED003C7458 /* TextStyle.swift in Sources */,
 				7A922E141EDF8A6A00C12A67 /* ReadWireFrame.swift in Sources */,
+				7A8C684D1EF231E200CD3228 /* RoundedCornersImage.swift in Sources */,
 				7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */,
 				7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */,
 				7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */,
@@ -1143,6 +1216,7 @@
 				7AC26AFD1EE5EBDE003F946C /* QuarterlyLanguage.swift in Sources */,
 				7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */,
 				7A280FD91EDCB79F003C7458 /* QuarterlyProtocols.swift in Sources */,
+				7A8C68481EF206E100CD3228 /* SettingsView.swift in Sources */,
 				7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */,
 				7A3BCE421EE37E30003EC12B /* DiscreteSlider.swift in Sources */,
 				7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */,
@@ -1154,6 +1228,7 @@
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
 				7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */,
 				7A280FEB1EDCEAD2003C7458 /* Constants.swift in Sources */,
+				7A535A7C1EF0A58A00CBDEAB /* SettingsItemController.swift in Sources */,
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageCellNode.swift in Sources */,
 				7A280F971ED94964003C7458 /* R.generated.swift in Sources */,
@@ -1163,6 +1238,7 @@
 				7A2810231EDDD011003C7458 /* LessonCellNode.swift in Sources */,
 				7A3BCE401EE2F27F003EC12B /* ReadOptionsView.swift in Sources */,
 				7A922E181EDFB61600C12A67 /* ReadController.swift in Sources */,
+				7A8C684A1EF2094300CD3228 /* SettingsItemView.swift in Sources */,
 				7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */,
 				7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */,
 				7A2810201EDDCEC9003C7458 /* LessonInteractor.swift in Sources */,

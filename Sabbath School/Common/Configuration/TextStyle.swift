@@ -68,7 +68,7 @@ struct TextStyles {
     static func featuredQuarterlyTitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: R.font.latoBold(size: 20)!
+            NSFontAttributeName: R.font.latoBold(size: 30)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
@@ -76,9 +76,9 @@ struct TextStyles {
     static func featuredQuarterlyHumanDateStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7),
-            NSFontAttributeName: R.font.latoItalic(size: 16)!
+            NSFontAttributeName: R.font.latoRegular(size: 12)!
         ]
-        return NSAttributedString(string: string, attributes: attributes)
+        return NSAttributedString(string: string.uppercased(), attributes: attributes)
     }
     
     static func featuredQuarterlyDescriptionStyle(string: String) -> NSAttributedString {
@@ -183,6 +183,58 @@ struct TextStyles {
             NSFontAttributeName: R.font.latoItalic(size: 15)!,
             NSParagraphStyleAttributeName: style
         ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func settingsHeaderStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .left
+        
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.baseGray2,
+            NSFontAttributeName: R.font.latoMedium(size: 12)!,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string.uppercased(), attributes: attributes)
+    }
+    
+    static func settingsFooterCopyrightStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes = [
+            NSFontAttributeName: R.font.latoItalic(size: 11)!,
+            NSForegroundColorAttributeName: UIColor.baseGray4,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func settingsCellStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes = [
+            NSFontAttributeName: R.font.latoRegular(size: 16)!,
+            NSForegroundColorAttributeName: UIColor.baseGray5,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func settingsCellDetailStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes = [
+            NSFontAttributeName: R.font.latoRegular(size: 15)!,
+            NSForegroundColorAttributeName: UIColor.baseGray4,
+            NSParagraphStyleAttributeName: style
+        ]
+        
         return NSAttributedString(string: string, attributes: attributes)
     }
 }

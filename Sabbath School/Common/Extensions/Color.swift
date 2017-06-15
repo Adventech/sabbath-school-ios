@@ -34,6 +34,22 @@ extension UIColor {
         return UIColor.init(hex: "#383838")
     }
     
+    class var baseGray5: UIColor {
+        return UIColor.init(hex: "#3B3F3F")
+    }
+    
+    class var baseGray6: UIColor {
+        return UIColor.init(hex: "#FAFAFA")
+    }
+    
+    class var baseGray7: UIColor {
+        return UIColor.init(hex: "#E2E2E5")
+    }
+    
+    class var baseRed: UIColor {
+        return UIColor.init(hex: "#F1706B")
+    }
+    
     class var baseGrayToolbar: UIColor {
         return UIColor.black
     }

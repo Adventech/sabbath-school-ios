@@ -9,10 +9,15 @@
 import UIKit
 
 extension UINavigationController {
-    open override var preferredStatusBarStyle : UIStatusBarStyle {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        if let lastViewController = self.viewControllers.last {
+            return lastViewController.preferredStatusBarStyle
+        }
+        
         if let rootViewController = self.viewControllers.first {
             return rootViewController.preferredStatusBarStyle
         }
+
         return self.preferredStatusBarStyle
     }
     

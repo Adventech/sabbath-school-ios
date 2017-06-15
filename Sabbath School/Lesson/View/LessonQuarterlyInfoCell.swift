@@ -11,7 +11,7 @@ import AsyncDisplayKit
 
 class LessonQuarterlyInfoNode: ASCellNode {
     let coverNode = ASDisplayNode()
-    var coverImageNode: WrapperNode!
+    var coverImageNode: RoundedCornersImage!
     let titleNode = ASTextNode()
     let humanDateNode = ASTextNode()
     var detailNode = ASTextNode()
@@ -45,14 +45,12 @@ class LessonQuarterlyInfoNode: ASCellNode {
         
         coverNode.cornerRadius = 4
         coverNode.shadowColor = UIColor.baseGray2.cgColor
-        coverNode.shadowOffset = CGSize(width: 1, height: 2)
+        coverNode.shadowOffset = CGSize(width: 0, height: 2)
         coverNode.shadowRadius = 3
         coverNode.shadowOpacity = 0.6
-        coverNode.backgroundColor = .clear
-        coverNode.clipsToBounds = false
+        coverNode.clipsToBounds = true        
         
-        coverImageNode = WrapperNode(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
-        
+        coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
         coverImageNode.style.alignSelf = .stretch
         
         addSubnode(titleNode)
@@ -97,8 +95,8 @@ class LessonQuarterlyInfoNode: ASCellNode {
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 15,
-            justifyContent: .end,
-            alignItems: .end,
+            justifyContent: .center,
+            alignItems: .center,
             children: [coverSpec, vSpec2]
         )
         
@@ -116,30 +114,5 @@ class LessonQuarterlyInfoNode: ASCellNode {
     override func layout() {
         super.layout()
         infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-1000, width: calculatedSize.width, height: 1000)
-    }
-    
-    final class WrapperNode: ASDisplayNode {
-        
-        var imageNode = ASNetworkImageNode()
-        
-        init(imageURL: URL, corner: CGFloat) {
-            super.init()
-            
-            imageNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-            imageNode.placeholderEnabled = true
-            imageNode.placeholderFadeDuration = 0.6
-            
-            cornerRadius = corner
-            clipsToBounds = true
-            
-            imageNode.url = imageURL
-            
-            automaticallyManagesSubnodes = true
-        }
-        
-        override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-            imageNode.style.preferredSize = CGSize(width: 125, height: 187)
-            return ASAbsoluteLayoutSpec(children: [imageNode])
-        }
     }
 }
