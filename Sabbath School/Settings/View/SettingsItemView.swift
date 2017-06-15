@@ -39,7 +39,11 @@ final class SettingsItemView: ASCellNode {
             switchNode.style.preferredSize = CGSize(width: 51, height: 31)
         }
         
-        textNode.attributedText = TextStyles.settingsCellStyle(string: text)
+        if !destructive {        
+            textNode.attributedText = TextStyles.settingsCellStyle(string: text)
+        } else {
+            textNode.attributedText = TextStyles.settingsDestructiveCellStyle(string: text)
+        }
         
         imageNode.image = icon
         

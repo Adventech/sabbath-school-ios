@@ -71,7 +71,9 @@ final class QuarterlyController: TableController {
     
     func logoutAction() {
         let settings = SettingsController()
-        self.show(settings, sender: nil)
+        
+        let nc = ASNavigationController(rootViewController: settings)
+        self.present(nc, animated: true)
         
 //        try! Auth.auth().signOut()
 //        presenter?.wireFrame?.presentLoginScreen()

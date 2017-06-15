@@ -218,7 +218,7 @@ struct TextStyles {
         style.alignment = .center
         
         let attributes = [
-            NSFontAttributeName: R.font.latoItalic(size: 11)!,
+            NSFontAttributeName: R.font.latoRegular(size: 11)!,
             NSForegroundColorAttributeName: UIColor.baseGray4,
             NSParagraphStyleAttributeName: style
         ]
@@ -239,13 +239,26 @@ struct TextStyles {
         return NSAttributedString(string: string, attributes: attributes)
     }
     
+    static func settingsDestructiveCellStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes = [
+            NSFontAttributeName: R.font.latoRegular(size: 16)!,
+            NSForegroundColorAttributeName: UIColor.baseRed,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
     static func settingsCellDetailStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
         
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 15)!,
-            NSForegroundColorAttributeName: UIColor.baseGray4,
+            NSForegroundColorAttributeName: UIColor.baseGray2,
             NSParagraphStyleAttributeName: style
         ]
         

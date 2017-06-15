@@ -7,9 +7,9 @@ xcode_workspace: Sabbath Shool.xcworkspace
 xcode_scheme: Sabbath School
 before_install:
 - openssl aes-256-cbc -K $encrypted_142095b63e54_key -iv $encrypted_142095b63e54_iv
-  -in Fabric.apiKey.enc -out Sabbath\ School/Resources/Fabric.apiKey -d
+  -in Fabric.apiKey.enc -out "Sabbath School/Resources/Fabric.apiKey" -d
 - openssl aes-256-cbc -K $encrypted_142095b63e54_key -iv $encrypted_142095b63e54_iv
-  -in Fabric.buildSecret.enc -out Sabbath\ School/Resources/Fabric.buildSecret -d
+  -in Fabric.buildSecret.enc -out "Sabbath School/Resources/Fabric.buildSecret" -d
 - openssl aes-256-cbc -K $encrypted_142095b63e54_key -iv $encrypted_142095b63e54_iv
   -in ss_certs_travis.enc -out ss_certs_travis -d
 - cp ss_certs_travis ~/.ssh/

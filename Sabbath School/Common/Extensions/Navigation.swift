@@ -10,10 +10,10 @@ import UIKit
 
 extension UINavigationController {
     open override var preferredStatusBarStyle: UIStatusBarStyle {
-        if let lastViewController = self.viewControllers.last {
-            return lastViewController.preferredStatusBarStyle
-        }
-        
+//        if let lastViewController = self.viewControllers.last {
+//            return lastViewController.preferredStatusBarStyle
+//        }
+//        
         if let rootViewController = self.viewControllers.first {
             return rootViewController.preferredStatusBarStyle
         }
@@ -43,6 +43,10 @@ extension UIViewController: UIGestureRecognizerDelegate {
     func setBackButton() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popBack))
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
+    }
+    
+    func setCloseButton() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismiss as (Void) -> Void))
     }
     
     func popBack() {

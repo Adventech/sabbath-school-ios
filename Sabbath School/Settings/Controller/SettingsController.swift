@@ -25,7 +25,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         
         titles = [
             ["Reminder", "Time"],
-            ["🐙 Github"],
+            ["🐙 GitHub"],
             ["🤠 About us", "💌 Recommend Sabbath School", "🎉 Rate app"],
             ["Log out"]
         ]
@@ -50,19 +50,19 @@ class SettingsController: ASViewController<ASDisplayNode> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
+        setCloseButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTranslucentNavigation(false, color: .white, tintColor: .baseGray5, titleColor: .baseGray5)
+        setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
         if let selected = tableNode.indexPathForSelectedRow {
             tableNode.view.deselectRow(at: selected, animated: true)
         }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
+        return .lightContent
     }
 }
 
@@ -71,7 +71,22 @@ extension SettingsController: ASTableDataSource {
         let text = titles[indexPath.section][indexPath.row]
         
         let cellNodeBlock: () -> ASCellNode = {
-            return SettingsItemView(text: text, showDisclosure: false)
+            var settingsItem = SettingsItemView(text: text, showDisclosure: false)
+            
+            if indexPath.row == 0 && indexPath.section == 0 {
+                settingsItem = SettingsItemView(text: text, switchState: true)
+            }
+            
+            if indexPath.row == 1 && indexPath.section == 0 {
+                settingsItem = SettingsItemView(text: text, detailText: "8:00 AM")
+                settingsItem.contentStyle = .detailOnRight
+            }
+            
+            if indexPath.section == 3 {
+                settingsItem = SettingsItemView(text: text, destructive: true)
+            }
+            
+            return settingsItem
         }
         return cellNodeBlock
     }
@@ -114,7 +129,7 @@ extension SettingsController: ASTableDelegate {
         if section == sections.count-1 {
             let versionLabel = UILabel(frame: CGRect(x: 0, y: 34, width: view.frame.width, height: 18))
             versionLabel.textAlignment = .center
-            versionLabel.attributedText = TextStyles.settingsFooterCopyrightStyle(string: "Made with \u{2764} by Adventech")
+            versionLabel.attributedText = TextStyles.settingsFooterCopyrightStyle(string: "Made with ❤ by Adventech")
             return versionLabel
         } else {
             if footers[section].isEmpty { return nil }
