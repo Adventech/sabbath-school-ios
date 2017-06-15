@@ -109,10 +109,6 @@
 		7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E511EE07EC200C12A67 /* rangy-highlighter.js */; };
 		7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E521EE07EC200C12A67 /* rangy-serializer.js */; };
 		7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E531EE07EC200C12A67 /* ss-reader.js */; };
-		7AA43BB81EE76B8D00525696 /* Fabric.apiKey in Resources */ = {isa = PBXBuildFile; fileRef = 7AA43BB61EE76B8D00525696 /* Fabric.apiKey */; };
-		7AA43BB91EE76B8D00525696 /* Fabric.buildSecret in Resources */ = {isa = PBXBuildFile; fileRef = 7AA43BB71EE76B8D00525696 /* Fabric.buildSecret */; };
-		7AC26AE41EE48925003F946C /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = 7AC26AE21EE48925003F946C /* Appfile */; };
-		7AC26AE51EE48925003F946C /* Fastfile in Resources */ = {isa = PBXBuildFile; fileRef = 7AC26AE31EE48925003F946C /* Fastfile */; };
 		7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE61EE4FA9E003F946C /* Reader.swift */; };
 		7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE81EE5EB63003F946C /* Preferences.swift */; };
 		7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */; };
@@ -1053,7 +1049,6 @@
 				7A922E601EE07EC200C12A67 /* PT_Sans-Web-BoldItalic.ttf in Resources */,
 				7A922E651EE07EC200C12A67 /* PT_Serif-Web-Italic.ttf in Resources */,
 				7A922E571EE07EC200C12A67 /* Lora-Bold.ttf in Resources */,
-				7AA43BB91EE76B8D00525696 /* Fabric.buildSecret in Resources */,
 				7A280FB61EDA0276003C7458 /* Lato-Medium.ttf in Resources */,
 				7A922E611EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf in Resources */,
 				7A922E5A1EE07EC200C12A67 /* Lora-Regular.ttf in Resources */,
@@ -1062,11 +1057,9 @@
 				7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */,
 				7A922E5F1EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf in Resources */,
 				7A922E671EE07EC200C12A67 /* index.html in Resources */,
-				7AC26AE51EE48925003F946C /* Fastfile in Resources */,
 				7A280FB31EDA0276003C7458 /* Lato-Bold.ttf in Resources */,
 				7A922E631EE07EC200C12A67 /* PT_Serif-Web-Bold.ttf in Resources */,
 				7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */,
-				7AC26AE41EE48925003F946C /* Appfile in Resources */,
 				7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */,
 				7A922E551EE07EC200C12A67 /* fonts.css in Resources */,
 				7A922E691EE07EC200C12A67 /* jsface.min.js in Resources */,
@@ -1076,7 +1069,6 @@
 				7A922E541EE07EC200C12A67 /* base.css in Resources */,
 				7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */,
 				7A922E641EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
-				7AA43BB81EE76B8D00525696 /* Fabric.apiKey in Resources */,
 				7A280FB41EDA0276003C7458 /* Lato-BoldItalic.ttf in Resources */,
 				7A280FB81EDA0276003C7458 /* Lato-Regular.ttf in Resources */,
 				7A922E591EE07EC200C12A67 /* Lora-Italic.ttf in Resources */,
