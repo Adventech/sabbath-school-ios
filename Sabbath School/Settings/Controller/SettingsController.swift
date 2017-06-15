@@ -40,7 +40,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         titles = [
             ["Reminder", "Time"],
             ["🐙 GitHub"],
-            ["🤠 About us", "💌 Recommend Sabbath School", "🎉 Rate app"],
+            ["🙏 About us", "💌 Recommend Sabbath School", "🎉 Rate app"],
             ["Log out"]
         ]
         
