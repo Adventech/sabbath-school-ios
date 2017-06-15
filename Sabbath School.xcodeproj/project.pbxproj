@@ -1143,7 +1143,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FABRIC_APIKEY_FILE=\"${SRCROOT}/Sabbath School/Resources/Fabric.apiKey\"\nFABRIC_BUILDSECRET_FILE=\"${SRCROOT}/Sabbath School/Resources/Fabric.buildSecret\"\n\nFABRIC_APIKEY=$(cat \"$FABRIC_APIKEY_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_APIKEY_FILE\"\nexit 1\nfi\n\nFABRIC_BUILDSECRET=$(cat \"$FABRIC_BUILDSECRET_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_BUILDSECRET_FILE\"\nexit 1\nfi\n\necho \"Uploading dSYM files to Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" \"$FABRIC_APIKEY\" \"$FABRIC_BUILDSECRET\"\n";
+			shellScript = "FABRIC_APIKEY_FILE=\"${SRCROOT}/Fabric.apiKey\"\nFABRIC_BUILDSECRET_FILE=\"${SRCROOT}/Fabric.buildSecret\"\n\nFABRIC_APIKEY=$(cat \"$FABRIC_APIKEY_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_APIKEY_FILE\"\nexit 1\nfi\n\nFABRIC_BUILDSECRET=$(cat \"$FABRIC_BUILDSECRET_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_BUILDSECRET_FILE\"\nexit 1\nfi\n\necho \"Uploading dSYM files to Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" \"$FABRIC_APIKEY\" \"$FABRIC_BUILDSECRET\"\n";
 		};
 		C3EA699729E75B81F7930178 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
