@@ -34,6 +34,11 @@ xcode-select --install
 fastlane travis
 ```
 
+### match_config
+```
+fastlane match_config
+```
+
 ### beta
 ```
 fastlane beta
