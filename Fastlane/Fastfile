@@ -1,0 +1,72 @@
+# More documentation about how to customize your build
+# can be found here:
+# https://docs.fastlane.tools
+fastlane_version "1.109.0"
+
+# This value helps us track success metrics for Fastfiles
+# we automatically generate. Feel free to remove this line
+# once you get things running smoothly!
+generated_fastfile_id "7dd5e07e-9fdb-4a2c-8176-894d433097a4"
+
+default_platform :ios
+
+# Fastfile actions accept additional configuration, but
+# don't worry, fastlane will prompt you for required
+# info which you can add here later
+lane :travis do
+  create_keychain(
+    name: ENV["MATCH_KEYCHAIN_NAME"],
+    password: ENV["MATCH_PASSWORD"],
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    add_to_search_list: true,
+    verbose: true
+  )
+
+  match(
+    type: "adhoc",
+    git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",
+    force_for_new_devices: true,
+    keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+    keychain_password: ENV["MATCH_PASSWORD"],
+    readonly: false
+  )
+
+  beta
+end
+
+lane :match_config do
+  match(
+    git_url: "git@github.com:PostBeyond/postbeyond-ios-cert.git",
+    app_identifier: ["com.postbeyond.postbeyond", "com.postbeyond.postbeyond.PostBeyondSuggest"],
+    type: "development")
+end
+
+lane :beta do
+  increment_build
+
+  # build your iOS app
+  gym(
+    workspace: "./Sabbath School.xcworkspace",
+    scheme: "Sabbath School",
+    export_method: "ad-hoc",
+    clean: true, 
+    include_bitcode: true,
+    configuration: "Release",
+    output_directory: "./Fastlane/build"
+  )
+
+  crashlytics(
+    api_token: File.open("../Fabric.apiKey", "rb").read,
+    build_secret: File.open("../Fabric.buildSecret", "rb").read,
+    groups: "ios-beta-testers",
+    notes: changelog_from_git_commits
+  )
+end
+
+lane :increment_build do
+  date_number = Time.new.strftime("%Y.%m")
+  build_number = "#{date_number}.#{number_of_commits}"
+  increment_build_number(build_number: build_number)
+end
