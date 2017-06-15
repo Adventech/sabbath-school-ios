@@ -59,9 +59,13 @@ class BibleController: ASViewController<ASDisplayNode> {
         UIMenuController.shared.menuItems = []
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.didDismissBibleScreen()
+    }
+    
     func closeAction(sender: UIBarButtonItem) {
         dismiss()
-        delegate?.didDismissBibleScreen()
     }
     
     func changeVersionAction(sender: UIBarButtonItem) {
