@@ -28,7 +28,6 @@ class QuarterlyFeaturedCellNode: ASCellNode {
     var coverImageNode: RoundedCornersImage!
     let titleNode = ASTextNode()
     let humanDateNode = ASTextNode()
-    let descriptionNode = ASTextNode()
     let openButton = OpenButton()
     
     private let infiniteColor = ASDisplayNode()
@@ -46,30 +45,26 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         insertSubnode(infiniteColor, at: 0)
         selectionStyle = .none
         
-        titleNode.attributedText = TextStyles.featuredQuarterlyTitleStyle(string: quarterly.title)
+        titleNode.attributedText = TextStyles.h2(string: quarterly.title)
         titleNode.maximumNumberOfLines = 3
         titleNode.pointSizeScaleFactors = [0.9, 0.8]
         
-        humanDateNode.attributedText = TextStyles.featuredQuarterlyHumanDateStyle(string: quarterly.humanDate)
+        humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate)
         humanDateNode.maximumNumberOfLines = 1
         
-        descriptionNode.attributedText = TextStyles.featuredQuarterlyDescriptionStyle(string: quarterly.description)
-        descriptionNode.maximumNumberOfLines = 3
-        
-        coverNode.cornerRadius = 4
+        coverNode.cornerRadius = 6
         coverNode.clipsToBounds = true
         
         coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
         coverImageNode.style.alignSelf = .stretch
         
-        openButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Open".uppercased()), for: UIControlState())
-        openButton.backgroundColor = UIColor.init(hex: (quarterly.colorPrimaryDark)!)
+        openButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Open".uppercased()), for: .normal)
+        openButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
         openButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
         openButton.cornerRadius = 18
         
         addSubnode(titleNode)
         addSubnode(humanDateNode)
-        addSubnode(descriptionNode)
         addSubnode(coverNode)
         addSubnode(coverImageNode)
         addSubnode(openButton)
@@ -81,11 +76,11 @@ class QuarterlyFeaturedCellNode: ASCellNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: 125, height: 187)
-        openButton.style.spacingBefore = 10
+        openButton.style.spacingBefore = 15
         
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 4,
+            spacing: 0,
             justifyContent: .start,
             alignItems: .start,
             children: [humanDateNode, titleNode, openButton]
@@ -103,7 +98,7 @@ class QuarterlyFeaturedCellNode: ASCellNode {
             children: [coverSpec, vSpec]
         )
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 20, right: 15), child: hSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 30, left: 15, bottom: 30, right: 15), child: hSpec)
     }
     
     override func layout() {

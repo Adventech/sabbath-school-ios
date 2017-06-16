@@ -86,11 +86,11 @@ class ReadView: ASCellNode {
         coverOverlayNode.alpha = 0
         coverTitleNode.alpha = 1
         coverTitleNode.maximumNumberOfLines = 2
-        coverTitleNode.attributedText = TextStyles.readTitleStyle(string: read.title)
+        coverTitleNode.attributedText = TextStyles.h1(string: read.title)
         
         readDateNode.alpha = 1
         readDateNode.maximumNumberOfLines = 1
-        readDateNode.attributedText = TextStyles.readDateStyle(string: read.date.string(custom: "EEEE, MMMM dd"))
+        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.string(custom: "EEEE, MMMM dd"))
         
         automaticallyManagesSubnodes = true
     }
@@ -139,15 +139,15 @@ class ReadView: ASCellNode {
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
         coverTitleNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("90%"), ASDimensionMake(.auto, 0))
         readDateNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("90%"), ASDimensionMake(.auto, 0))
-  
+
         let titleDateSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 10,
-            justifyContent: .center,
-            alignItems: .center,
-            children: [coverTitleNode, readDateNode]
+            spacing: 0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [readDateNode, coverTitleNode]
         )
-        titleDateSpec.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-130)
+        titleDateSpec.style.layoutPosition = CGPoint(x: 15, y: constrainedSize.max.height*0.4-130)
         titleDateSpec.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("100%"), ASDimensionMake(.auto, 0))
         
         let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [titleDateSpec, coverOverlayNode]))

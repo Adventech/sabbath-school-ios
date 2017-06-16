@@ -47,17 +47,17 @@ class LessonQuarterlyInfoNode: ASCellNode {
         }
         
         // Nodes
-        titleNode.attributedText = TextStyles.lessonInfoTitleStyle(string: quarterly.title)
-        humanDateNode.attributedText = TextStyles.lessonInfoHumanDateStyle(string: quarterly.humanDate.uppercased())
+        titleNode.attributedText = TextStyles.h2(string: quarterly.title)
+        humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate)
         detailNode.attributedText = TextStyles.cellDetailStyle(string: quarterly.description, color: .white)
         detailNode.maximumNumberOfLines = 8
         
-        readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".uppercased()), for: UIControlState())
+        readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".uppercased()), for: .normal)
         readButton.backgroundColor = UIColor.init(hex: (quarterly.colorPrimaryDark)!)
         readButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
         readButton.cornerRadius = 18
         
-        coverNode.cornerRadius = 4
+        coverNode.cornerRadius = 6
         coverNode.shadowColor = UIColor.baseGray2.cgColor
         coverNode.shadowOffset = CGSize(width: 0, height: 2)
         coverNode.shadowRadius = 3
@@ -81,13 +81,12 @@ class LessonQuarterlyInfoNode: ASCellNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: 130, height: 192)
-        titleNode.style.spacingAfter = 20
+        titleNode.style.spacingAfter = 28
         readButton.style.spacingBefore = 10
-        humanDateNode.style.spacingAfter = 6
         
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 4,
+            spacing: 0,
             justifyContent: .start,
             alignItems: .start,
             children: [humanDateNode, titleNode]
@@ -122,7 +121,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
             children: [vSpec, hSpec]
         )
     
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 30, right: 15), child: mainSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 35, right: 15), child: mainSpec)
     }
     
     override func layout() {

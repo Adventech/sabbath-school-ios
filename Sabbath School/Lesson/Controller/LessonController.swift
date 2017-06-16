@@ -32,7 +32,6 @@ final class LessonController: TableController {
         super.init()
         
         tableNode.dataSource = self
-        title = "Lesson".uppercased()
     }
     
     required init?(coder aDecoder: NSCoder) {

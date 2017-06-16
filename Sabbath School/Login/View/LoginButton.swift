@@ -56,10 +56,10 @@ class LoginButton: ASButtonNode {
         }
         
         if let image = icon {
-            setImage(image, for: UIControlState())
+            setImage(image, for: .normal)
         }
         
-        setAttributedTitle(attributes, for: UIControlState())
+        setAttributedTitle(attributes, for: .normal)
         contentEdgeInsets = UIEdgeInsets(top: 13, left: 30, bottom: 13, right: 30)
         cornerRadius = 4
     }

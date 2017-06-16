@@ -27,16 +27,17 @@ class QuarterlyCellNode: ASCellNode {
     let coverNode = ASNetworkImageNode()
     let titleNode = ASTextNode()
     let humanDateNode = ASTextNode()
-    let descriptionNode = ASTextNode()
-    
+
     init(quarterly: Quarterly) {
         super.init()
         backgroundColor = UIColor.white
         
-        titleNode.attributedText        = TextStyles.cellTitleStyle(string: quarterly.title)
-        humanDateNode.attributedText    = TextStyles.cellSubtitleStyle(string: quarterly.humanDate)
-        descriptionNode.attributedText  = TextStyles.cellDetailStyle(string: quarterly.description)
-        descriptionNode.maximumNumberOfLines = 3
+        titleNode.attributedText = TextStyles.h3(string: quarterly.title)
+        humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate, color: .baseGray2)
+
+        coverNode.cornerRadius = 6
+        coverNode.clipsToBounds = true
+
         coverNode.url = quarterly.cover
         coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
         coverNode.placeholderEnabled = true
@@ -47,23 +48,23 @@ class QuarterlyCellNode: ASCellNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: 90, height: 135)
-        descriptionNode.style.spacingBefore = 6
-        
+//        descriptionNode.style.spacingBefore = 6
+
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 4,
+            spacing: 0,
             justifyContent: .start,
             alignItems: .start,
-            children: [titleNode, humanDateNode, descriptionNode]
+            children: [humanDateNode, titleNode]
         )
         
         vSpec.style.flexShrink = 1.0
         
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
-            spacing: 10,
+            spacing: 15,
             justifyContent: .start,
-            alignItems: .start,
+            alignItems: .center,
             children: [coverNode, vSpec]
         )
         
