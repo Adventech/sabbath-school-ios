@@ -32,7 +32,6 @@ final class LessonController: TableController {
         super.init()
         
         tableNode.dataSource = self
-        title = "Lesson".uppercased()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -78,7 +77,7 @@ extension LessonController: LessonControllerProtocol {
         self.dataSource = quarterlyInfo
         
         if let colorHex = dataSource?.quarterly.colorPrimary {
-            self.colorPrimary = UIColor.init(hex: colorHex)
+            self.colorPrimary = UIColor(hex: colorHex)
         }
         self.tableNode.allowsSelection = true
         self.tableNode.reloadData()

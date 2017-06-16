@@ -41,28 +41,29 @@ class LessonQuarterlyInfoNode: ASCellNode {
         selectionStyle = .none
         
         if let color = quarterly.colorPrimary {
-            backgroundColor = UIColor.init(hex: color)
+            backgroundColor = UIColor(hex: color)
         } else {
             backgroundColor = .baseGreen
         }
         
         // Nodes
-        titleNode.attributedText = TextStyles.lessonInfoTitleStyle(string: quarterly.title)
-        humanDateNode.attributedText = TextStyles.lessonInfoHumanDateStyle(string: quarterly.humanDate.uppercased())
+        titleNode.attributedText = TextStyles.h2(string: quarterly.title)
+        humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate)
         detailNode.attributedText = TextStyles.cellDetailStyle(string: quarterly.description, color: .white)
         detailNode.maximumNumberOfLines = 8
         
-        readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".uppercased()), for: UIControlState())
-        readButton.backgroundColor = UIColor.init(hex: (quarterly.colorPrimaryDark)!)
+        readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".uppercased()), for: .normal)
+        readButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
         readButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
         readButton.cornerRadius = 18
         
-        coverNode.cornerRadius = 4
-        coverNode.shadowColor = UIColor.baseGray2.cgColor
+        coverNode.cornerRadius = 6
+        coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
         coverNode.shadowOffset = CGSize(width: 0, height: 2)
-        coverNode.shadowRadius = 3
-        coverNode.shadowOpacity = 0.6
-        coverNode.clipsToBounds = true        
+        coverNode.shadowRadius = 10
+        coverNode.shadowOpacity = 0.3
+        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+        coverNode.clipsToBounds = false
         
         coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
         coverImageNode.style.alignSelf = .stretch
@@ -81,13 +82,12 @@ class LessonQuarterlyInfoNode: ASCellNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: 130, height: 192)
-        titleNode.style.spacingAfter = 20
+        titleNode.style.spacingAfter = 28
         readButton.style.spacingBefore = 10
-        humanDateNode.style.spacingAfter = 6
         
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 4,
+            spacing: 0,
             justifyContent: .start,
             alignItems: .start,
             children: [humanDateNode, titleNode]
@@ -122,7 +122,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
             children: [vSpec, hSpec]
         )
     
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 30, right: 15), child: mainSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 35, right: 15), child: mainSpec)
     }
     
     override func layout() {
