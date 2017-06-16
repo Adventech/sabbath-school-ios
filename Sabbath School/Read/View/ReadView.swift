@@ -86,11 +86,12 @@ class ReadView: ASCellNode {
         coverOverlayNode.alpha = 0
         coverTitleNode.alpha = 1
         coverTitleNode.maximumNumberOfLines = 2
-        coverTitleNode.attributedText = TextStyles.readTitleStyle(string: read.title)
+        coverTitleNode.pointSizeScaleFactors = [0.9, 0.8]
+        coverTitleNode.attributedText = TextStyles.h1(string: read.title)
         
         readDateNode.alpha = 1
         readDateNode.maximumNumberOfLines = 1
-        readDateNode.attributedText = TextStyles.readDateStyle(string: read.date.string(custom: "EEEE, MMMM dd"))
+        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.string(custom: "EEEE, MMMM dd"))
         
         automaticallyManagesSubnodes = true
     }
@@ -111,6 +112,7 @@ class ReadView: ASCellNode {
             } else {
                 self.coverOverlayNode.frame.size = CGSize(width: coverOverlayNode.calculatedSize.width, height: parallaxCoverNodeHeight)
                 self.coverNode.frame.size = CGSize(width: coverNode.calculatedSize.width, height: parallaxCoverNodeHeight)
+                
                 self.coverTitleNode.alpha = 1-((self.parallaxCoverNodeHeight - self.coverTitleNode.frame.origin.y) - 101)/self.coverTitleNode.frame.origin.y*1.6
                 self.coverTitleNode.frame.origin.y = self.coverTitleNode.frame.origin.y + (parallaxCoverNodeHeight - self.initialCoverNodeHeight)
                 
@@ -137,18 +139,19 @@ class ReadView: ASCellNode {
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height*0.4)
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
-        coverTitleNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("90%"), ASDimensionMake(.auto, 0))
-        readDateNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("90%"), ASDimensionMake(.auto, 0))
-  
+        coverTitleNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
+        readDateNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
+        
+
         let titleDateSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 10,
-            justifyContent: .center,
+            spacing: 0,
+            justifyContent: .end,
             alignItems: .center,
-            children: [coverTitleNode, readDateNode]
+            children: [readDateNode, coverTitleNode]
         )
-        titleDateSpec.style.layoutPosition = CGPoint(x:0, y:constrainedSize.max.height*0.4-130)
-        titleDateSpec.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake("100%"), ASDimensionMake(.auto, 0))
+
+        titleDateSpec.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width), ASDimensionMake(constrainedSize.max.height*0.4-20))
         
         let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [titleDateSpec, coverOverlayNode]))
         

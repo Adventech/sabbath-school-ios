@@ -54,11 +54,11 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func cellTitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray3,
-            NSFontAttributeName: R.font.latoMedium(size: 17)!
+            NSFontAttributeName: R.font.latoMedium(size: 18)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
@@ -66,7 +66,7 @@ struct TextStyles {
     static func cellSubtitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2,
-            NSFontAttributeName: R.font.latoItalic(size: 16)!
+            NSFontAttributeName: R.font.latoRegular(size: 16)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
@@ -74,7 +74,7 @@ struct TextStyles {
     static func cellDetailStyle(string: String, color: UIColor = .baseGray2) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: color,
-            NSFontAttributeName: R.font.latoMedium(size: 14)!
+            NSFontAttributeName: R.font.latoMedium(size: 15)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
@@ -87,14 +87,6 @@ struct TextStyles {
         return NSAttributedString(string: string, attributes: attributes)
     }
     
-    static func featuredQuarterlyHumanDateStyle(string: String) -> NSAttributedString {
-        let attributes = [
-            NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7),
-            NSFontAttributeName: R.font.latoRegular(size: 12)!
-        ]
-        return NSAttributedString(string: string.uppercased(), attributes: attributes)
-    }
-    
     static func featuredQuarterlyDescriptionStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7),
@@ -103,27 +95,10 @@ struct TextStyles {
         return NSAttributedString(string: string, attributes: attributes)
     }
     
-    static func lessonInfoTitleStyle(string: String) -> NSAttributedString {
-        let attributes = [
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: R.font.latoBold(size: 34)!
-        ]
-        return NSAttributedString(string: string, attributes: attributes)
-    }
-    
-    static func lessonInfoHumanDateStyle(string: String, color: UIColor = .baseGray2) -> NSAttributedString {
-        let attributes = [
-            NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7),
-            NSFontAttributeName: R.font.latoRegular(size: 12)!
-        ]
-        return NSAttributedString(string: string, attributes: attributes)
-
-    }
-    
     static func cellLessonNumberStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2.withAlphaComponent(0.5),
-            NSFontAttributeName: R.font.latoRegular(size: 22)!
+            NSFontAttributeName: R.font.latoBold(size: 22)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
@@ -131,7 +106,7 @@ struct TextStyles {
     static func readButtonStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: R.font.latoRegular(size: 16)!
+            NSFontAttributeName: R.font.latoBold(size: 15)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
@@ -172,30 +147,6 @@ struct TextStyles {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2,
             NSFontAttributeName: R.font.latoRegular(size: 13)!
-        ]
-        return NSAttributedString(string: string, attributes: attributes)
-    }
-    
-    static func readTitleStyle(string: String) -> NSAttributedString {
-        let style = NSMutableParagraphStyle()
-        style.alignment = .center
-        
-        let attributes = [
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: R.font.latoMediumItalic(size: 30)!,
-            NSParagraphStyleAttributeName: style
-        ]
-        return NSAttributedString(string: string, attributes: attributes)
-    }
-    
-    static func readDateStyle(string: String) -> NSAttributedString {
-        let style = NSMutableParagraphStyle()
-        style.alignment = .center
-        
-        let attributes = [
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: R.font.latoItalic(size: 15)!,
-            NSParagraphStyleAttributeName: style
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
@@ -277,5 +228,39 @@ struct TextStyles {
         ]
         
         return NSAttributedString(string: string, attributes: attributes)
+    }
+
+    // MARK: Headers
+
+    static func h1(string: String, color: UIColor = .white) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: R.font.latoBold(size: 36)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+
+    static func h2(string: String, color: UIColor = .white) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: R.font.latoBold(size: 30)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+
+    static func h3(string: String, color: UIColor = .baseGray3) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: R.font.latoBold(size: 24)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+
+    static func uppercaseHeader(string: String, color: UIColor = UIColor.white.withAlphaComponent(0.7)) -> NSAttributedString {
+        let attributes = [
+            NSForegroundColorAttributeName: color,
+            NSFontAttributeName: R.font.latoBold(size: 13)!
+        ]
+        return NSAttributedString(string: string.uppercased(), attributes: attributes)
     }
 }

@@ -99,7 +99,7 @@ extension QuarterlyController: QuarterlyControllerProtocol {
         self.dataSource = quarterlies
         
         if let colorHex = self.dataSource.first?.colorPrimary {
-            self.colorPrimary = UIColor.init(hex: colorHex)
+            self.colorPrimary = UIColor(hex: colorHex)
         }
         
         self.colorize()
@@ -113,7 +113,7 @@ extension QuarterlyController: QuarterlyControllerProtocol {
             let quarterly = dataSource[indexPath.row]
         
             if let colorHex = quarterly.colorPrimary {
-                setTranslucentNavigation(true, color: UIColor.init(hex: colorHex), tintColor: .white, titleColor: .white)
+                setTranslucentNavigation(true, color: UIColor(hex: colorHex), tintColor: .white, titleColor: .white)
             }
         
             presenter?.presentLessonScreen(quarterlyIndex: quarterly.index)

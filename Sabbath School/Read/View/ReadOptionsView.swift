@@ -271,14 +271,14 @@ class ReadOptionsView: ASDisplayNode {
 
 extension UISegmentedControl {
     func removeBorders() {
-        setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: UIControlState(), barMetrics: .default)
+        setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: .normal, barMetrics: .default)
         setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: .selected, barMetrics: .default)
         setBackgroundImage(UIImage.imageWithColor(UIColor(white: 0.5, alpha: 0.1)), for: .highlighted, barMetrics: .default)
         setBackgroundImage(UIImage.imageWithColor(UIColor(white: 0.5, alpha: 0.1)), for: [.highlighted, .selected], barMetrics: .default)
-        setDividerImage(UIImage.imageWithColor(UIColor.baseGray1), forLeftSegmentState: UIControlState(), rightSegmentState: UIControlState(), barMetrics: .default)
+        setDividerImage(UIImage.imageWithColor(UIColor.baseGray1), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     }
     
     func removeDividers(){
-        setDividerImage(UIImage.imageWithColor(UIColor.clear), forLeftSegmentState: UIControlState(), rightSegmentState: UIControlState(), barMetrics: .default)
+        setDividerImage(UIImage.imageWithColor(UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     }
 }

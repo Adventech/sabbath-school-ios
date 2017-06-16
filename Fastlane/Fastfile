@@ -36,11 +36,10 @@ lane :travis do
   beta
 end
 
-lane :match_config do
-  match(
-    git_url: "git@github.com:PostBeyond/postbeyond-ios-cert.git",
-    app_identifier: ["com.postbeyond.postbeyond", "com.postbeyond.postbeyond.PostBeyondSuggest"],
-    type: "development")
+desc "Configure local environment certificates"
+  lane :match_config do
+  match_sync(type: "development")
+  match_sync(type: "adhoc")
 end
 
 lane :beta do
@@ -69,4 +68,15 @@ lane :increment_build do
   date_number = Time.new.strftime("%Y.%m")
   build_number = "#{date_number}.#{number_of_commits}"
   increment_build_number(build_number: build_number)
+end
+
+desc "Sync your certificates and profiles across your team using git"
+private_lane :match_sync do |options|
+  type = options[:type]
+  match(
+    git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",
+    app_identifier: ["com.cryart.SabbathSchool"],
+    type: type,
+    force_for_new_devices: true
+  )
 end
