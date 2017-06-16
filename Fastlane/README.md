@@ -38,7 +38,7 @@ fastlane travis
 ```
 fastlane match_config
 ```
-
+Configure local environment certificates
 ### beta
 ```
 fastlane beta
