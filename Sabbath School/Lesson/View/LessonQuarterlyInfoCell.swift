@@ -41,7 +41,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
         selectionStyle = .none
         
         if let color = quarterly.colorPrimary {
-            backgroundColor = UIColor.init(hex: color)
+            backgroundColor = UIColor(hex: color)
         } else {
             backgroundColor = .baseGreen
         }
@@ -53,16 +53,17 @@ class LessonQuarterlyInfoNode: ASCellNode {
         detailNode.maximumNumberOfLines = 8
         
         readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".uppercased()), for: .normal)
-        readButton.backgroundColor = UIColor.init(hex: (quarterly.colorPrimaryDark)!)
+        readButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
         readButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
         readButton.cornerRadius = 18
         
         coverNode.cornerRadius = 6
-        coverNode.shadowColor = UIColor.baseGray2.cgColor
+        coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
         coverNode.shadowOffset = CGSize(width: 0, height: 2)
-        coverNode.shadowRadius = 3
-        coverNode.shadowOpacity = 0.6
-        coverNode.clipsToBounds = true        
+        coverNode.shadowRadius = 10
+        coverNode.shadowOpacity = 0.3
+        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+        coverNode.clipsToBounds = false
         
         coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
         coverImageNode.style.alignSelf = .stretch

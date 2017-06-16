@@ -25,10 +25,12 @@ import UIKit
 
 final class RoundedCornersImage: ASDisplayNode {    
     var imageNode = ASNetworkImageNode()
+    var size: CGSize!
     
-    init(imageURL: URL, corner: CGFloat) {
+    init(imageURL: URL, corner: CGFloat, size: CGSize = CGSize(width: 125, height: 187)) {
         super.init()
-        
+
+        self.size = size
         imageNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
         imageNode.placeholderEnabled = true
         imageNode.placeholderFadeDuration = 0.6
@@ -42,7 +44,7 @@ final class RoundedCornersImage: ASDisplayNode {
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        imageNode.style.preferredSize = CGSize(width: 125, height: 187)
+        imageNode.style.preferredSize = size
         return ASAbsoluteLayoutSpec(children: [imageNode])
     }
 }

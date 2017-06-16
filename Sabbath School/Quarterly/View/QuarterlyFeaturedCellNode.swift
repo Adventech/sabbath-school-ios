@@ -36,7 +36,7 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         super.init()
         
         if let color = quarterly.colorPrimary {
-            backgroundColor = UIColor.init(hex: color)
+            backgroundColor = UIColor(hex: color)
         } else {
             backgroundColor = UIColor.baseGreen
         }
@@ -53,7 +53,12 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         humanDateNode.maximumNumberOfLines = 1
         
         coverNode.cornerRadius = 6
-        coverNode.clipsToBounds = true
+        coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
+        coverNode.shadowOffset = CGSize(width: 0, height: 2)
+        coverNode.shadowRadius = 10
+        coverNode.shadowOpacity = 0.3
+        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+        coverNode.clipsToBounds = false
         
         coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
         coverImageNode.style.alignSelf = .stretch

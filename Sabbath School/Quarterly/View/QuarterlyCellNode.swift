@@ -24,7 +24,8 @@ import AsyncDisplayKit
 import UIKit
 
 class QuarterlyCellNode: ASCellNode {
-    let coverNode = ASNetworkImageNode()
+    let coverNode = ASDisplayNode()
+    var coverImageNode: RoundedCornersImage!
     let titleNode = ASTextNode()
     let humanDateNode = ASTextNode()
 
@@ -36,19 +37,25 @@ class QuarterlyCellNode: ASCellNode {
         humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate, color: .baseGray2)
 
         coverNode.cornerRadius = 6
-        coverNode.clipsToBounds = true
-
-        coverNode.url = quarterly.cover
+        coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
+        coverNode.shadowOffset = CGSize(width: 0, height: 2)
+        coverNode.shadowRadius = 10
+        coverNode.shadowOpacity = 0.3
         coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-        coverNode.placeholderEnabled = true
-        coverNode.placeholderFadeDuration = 0.6
+        coverNode.clipsToBounds = false
+
+        coverImageNode = RoundedCornersImage(
+            imageURL: quarterly.cover,
+            corner: coverNode.cornerRadius,
+            size: CGSize(width: 90, height: 135)
+        )
+        coverImageNode.style.alignSelf = .stretch
         
         automaticallyManagesSubnodes = true
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: 90, height: 135)
-//        descriptionNode.style.spacingBefore = 6
 
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
@@ -59,16 +66,17 @@ class QuarterlyCellNode: ASCellNode {
         )
         
         vSpec.style.flexShrink = 1.0
-        
+
+        let coverSpec = ASBackgroundLayoutSpec(child: coverImageNode, background: coverNode)
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 15,
             justifyContent: .start,
             alignItems: .center,
-            children: [coverNode, vSpec]
+            children: [coverSpec, vSpec]
         )
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: hSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15), child: hSpec)
     }
 }
 
