@@ -81,3 +81,10 @@ func reminderTime() -> String {
     }
     return time
 }
+
+func latestReaderBundleTimestamp() -> String {
+    guard let timestamp = UserDefaults.standard.value(forKey: Constants.DefaultKey.latestReaderBundleTimestamp) as? String else {
+        return ""
+    }
+    return timestamp
+}

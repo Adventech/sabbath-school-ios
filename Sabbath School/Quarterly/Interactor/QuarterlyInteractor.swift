@@ -20,7 +20,10 @@
  * THE SOFTWARE.
  */
 
+import FirebaseStorage
+import FontBlaster
 import Unbox
+import Zip
 
 class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputProtocol {
     weak var presenter: QuarterlyInteractorOutputProtocol?
@@ -55,6 +58,46 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
         
         let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
         retrieveQuarterliesForLanguage(language: language)
+    }
+    
+    private func checkifReaderBundleNeeded(){
+        let storage = Storage.storage()
+        let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
+        
+        gsReference.getMetadata { metadata, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if String(describing: metadata?.timeCreated?.timeIntervalSince1970) != latestReaderBundleTimestamp() {
+                    self.downloadReaderBundle(metadata: metadata!)
+                }
+            }
+        }
+
+    }
+    
+    private func downloadReaderBundle(metadata: StorageMetadata){
+        let storage = Storage.storage()
+        let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
+        var localURL = Constants.Path.readerBundleZip
+        
+        _ = gsReference.write(toFile: localURL) { url, error in
+            if let error = error {
+                self.presenter?.onError(error)
+            } else {
+                do {
+                    UserDefaults.standard.set(String(describing: metadata.timeCreated?.timeIntervalSince1970), forKey: Constants.DefaultKey.latestReaderBundleTimestamp)
+                    var unzipDirectory = try Zip.quickUnzipFile(localURL)
+                    var resourceValues = URLResourceValues()
+                    resourceValues.isExcludedFromBackup = true
+                    try localURL.setResourceValues(resourceValues)
+                    try unzipDirectory.setResourceValues(resourceValues)
+                    FontBlaster.blast()
+                } catch {
+                    print("unzipping error")
+                }
+            }
+        }
     }
 }
 

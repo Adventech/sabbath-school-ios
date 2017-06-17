@@ -32,6 +32,9 @@ PODS:
   - Firebase/Messaging (4.0.0):
     - Firebase/Core
     - FirebaseMessaging (= 2.0.0)
+  - Firebase/Storage (4.0.0):
+    - Firebase/Core
+    - FirebaseStorage (= 2.0.0)
   - FirebaseAnalytics (4.0.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -52,6 +55,10 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
+  - FirebaseStorage (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FontBlaster (3.0.2)
   - GoogleSignIn (4.0.2):
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
@@ -112,6 +119,7 @@ PODS:
     - Texture/Core
   - Unbox (2.4.0)
   - Wrap (2.1.0)
+  - Zip (0.7.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -121,6 +129,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
+  - Firebase/Storage
   - FontBlaster
   - GoogleSignIn
   - Hue
@@ -134,6 +143,7 @@ DEPENDENCIES:
   - Texture
   - Unbox
   - Wrap
+  - Zip (~> 0.7)
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -150,6 +160,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
+  FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
   FontBlaster: 6a34102ab08e18368683a99c2cee6247341121e0
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
@@ -171,7 +182,8 @@ SPEC CHECKSUMS:
   Texture: 18664254419f35de27af76399b3b265cbad5740a
   Unbox: c8b2ab69d3337597b4a3f47a0538807dc12db670
   Wrap: 731fe4fe3c2429c913a8252a17dbe8bb191e69e1
+  Zip: e34513299ac38c0686d5b24504da7ce343799ab9
 
-PODFILE CHECKSUM: 853c0aaf5cbc3ad4bcc8d335dba899b7dc9979eb
+PODFILE CHECKSUM: bf72721bd8baf7ac5ade2fda37dfb9827932d509
 
 COCOAPODS: 1.2.1

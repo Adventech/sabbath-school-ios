@@ -39,6 +39,7 @@ struct Constants {
             return "io.adventech.preferredBibleVersion." + currentLanguage().code
         }
         static let lastQuarterlyIndex = "io.adventech.lastQuarterlyIndex"
+        static let latestReaderBundleTimestamp = "io.adventech.latestReaderBundleTimestamp"
         
         static let readingOptionsTheme = "io.adventech.readingOptionsTheme"
         static let readingOptionsTypeface = "io.adventech.readingOptionsTypeface"
@@ -53,6 +54,9 @@ struct Constants {
         static let tmp = NSTemporaryDirectory()
         static let bundlePath = Bundle.main.bundlePath
         static let bundle = Bundle.main
+        static let readerBundleZip = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest.zip")
+        static let readerBundle = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest/index.html")
+        static let readerBundleDir = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest/")
     }
     
     struct Firebase {
@@ -62,6 +66,13 @@ struct Constants {
         static let quarterlyInfo = apiPrefix + "/quarterly-info"
         static let lessonInfo = apiPrefix + "/lesson-info"
         static let reads = apiPrefix + "/reads"
+        
+        struct Storage {
+            struct ReaderPath {
+                static let prod = "gs://sabbath-school-stage.appspot.com/sabbath-school-reader-latest.zip"
+                static let stage =  "gs://sabbath-school-stage.appspot.com/sabbath-school-reader-latest.zip"
+            }
+        }
         
         // User created
         static let highlights = "highlights"

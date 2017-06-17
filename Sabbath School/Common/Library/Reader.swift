@@ -169,11 +169,21 @@ open class Reader: UIWebView {
     }
     
     func loadContent(content: String){
-        let indexPath = Bundle.main.path(forResource: "index", ofType: "html")
+        var indexPath = Bundle.main.path(forResource: "index", ofType: "html")
+        
+        let exists = FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
+        
+        if exists {
+            indexPath = Constants.Path.readerBundle.path
+        }
+        
         var index = try? String(contentsOfFile: indexPath!, encoding: String.Encoding.utf8)
         index = index?.replacingOccurrences(of: "{{content}}", with: content)
-        index = index?.replacingOccurrences(of: "css/", with: "")
-        index = index?.replacingOccurrences(of: "js/", with: "")
+        
+        if !exists {
+            index = index?.replacingOccurrences(of: "css/", with: "")
+            index = index?.replacingOccurrences(of: "js/", with: "")
+        }
         
         let theme = currentTheme()
         let typeface = currentTypeface()
@@ -190,8 +200,13 @@ open class Reader: UIWebView {
         if !size.isEmpty {
             index = index?.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size)
         }
+        if exists {
+            print(Constants.Path.readerBundleDir)
+            self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir)
+        } else {
+            self.loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+        }
         
-        self.loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
         self.readerViewDelegate?.didLoadContent(content: index!)
     }
     

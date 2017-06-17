@@ -698,11 +698,7 @@
 			isa = PBXGroup;
 			children = (
 				7A535A731EF0A4F000CBDEAB /* Controller */,
-				7A535A741EF0A4F000CBDEAB /* Interactor */,
-				7A535A751EF0A4F000CBDEAB /* Presenter */,
-				7A535A761EF0A4F000CBDEAB /* Protocols */,
 				7A535A771EF0A4F000CBDEAB /* View */,
-				7A535A781EF0A4F000CBDEAB /* WireFrame */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -717,27 +713,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		7A535A741EF0A4F000CBDEAB /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		7A535A751EF0A4F000CBDEAB /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		7A535A761EF0A4F000CBDEAB /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		7A535A771EF0A4F000CBDEAB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,13 +720,6 @@
 				7A8C68491EF2094300CD3228 /* SettingsItemView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		7A535A781EF0A4F000CBDEAB /* WireFrame */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WireFrame;
 			sourceTree = "<group>";
 		};
 		7A922E0A1EDF88F800C12A67 /* Read */ = {

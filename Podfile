@@ -13,6 +13,7 @@ target 'Sabbath School' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Storage'
   pod 'FontBlaster'
   pod 'GoogleSignIn'
   pod 'Hue'
@@ -26,4 +27,5 @@ target 'Sabbath School' do
   pod 'Texture'
   pod 'Unbox'
   pod 'Wrap'
+  pod 'Zip', '~> 0.7'
 end
