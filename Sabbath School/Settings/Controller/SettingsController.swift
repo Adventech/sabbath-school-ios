@@ -108,9 +108,8 @@ class SettingsController: ASViewController<ASDisplayNode> {
     }
     
     static func setUpLocalNotification() {
+        UIApplication.shared.cancelAllLocalNotifications()
         let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
-        print(time.hour)
-        print(time.minute)
         let hour = time.hour
         let minute = time.minute
         // have to use NSCalendar for the components
@@ -250,7 +249,6 @@ extension SettingsController: ASTableDelegate {
             
             if indexPath.row == 2 {
                 UIApplication.shared.openURL(NSURL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=895272167&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software")! as URL)
-
             }
             break
             
