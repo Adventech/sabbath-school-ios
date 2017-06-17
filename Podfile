@@ -15,6 +15,7 @@ target 'Sabbath School' do
   pod 'FontBlaster'
   pod 'GoogleSignIn'
   pod 'Hue'
+  pod 'JSQWebViewController'
   pod 'MenuItemKit'
   pod 'pop'
   pod 'R.swift', '~> 3.1'

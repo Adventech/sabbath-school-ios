@@ -59,3 +59,25 @@ func currentSize() -> String {
     }
     return size
 }
+
+func firstRun() -> Bool {
+    guard let _ = UserDefaults.standard.value(forKey: Constants.DefaultKey.firstRun) as? Bool else {
+        return true
+    }
+    return false
+}
+
+
+func reminderStatus() -> Bool {
+    guard let status = UserDefaults.standard.value(forKey: Constants.DefaultKey.settingsReminderStatus) as? Bool else {
+        return false
+    }
+    return status
+}
+
+func reminderTime() -> String {
+    guard let time = UserDefaults.standard.value(forKey: Constants.DefaultKey.settingsReminderTime) as? String else {
+        return ""
+    }
+    return time
+}

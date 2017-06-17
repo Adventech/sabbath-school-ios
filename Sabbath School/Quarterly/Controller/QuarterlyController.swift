@@ -88,9 +88,6 @@ final class QuarterlyController: TableController {
         
         let nc = ASNavigationController(rootViewController: settings)
         self.present(nc, animated: true)
-        
-//        try! Auth.auth().signOut()
-//        presenter?.wireFrame?.presentLoginScreen()
     }
 }
 

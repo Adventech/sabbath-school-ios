@@ -20,6 +20,7 @@
  * THE SOFTWARE.
  */
 
+import SwiftDate
 import UIKit
 
 let isPad = UIDevice.current.userInterfaceIdiom == .pad
@@ -41,6 +42,9 @@ struct Constants {
         static let readingOptionsTheme = "io.adventech.readingOptionsTheme"
         static let readingOptionsTypeface = "io.adventech.readingOptionsTypeface"
         static let readingOptionsSize = "io.adventech.readingOptionsSize"
+        static let settingsReminderStatus = "io.adventech.settings.reminderStatus"
+        static let settingsReminderTime = "io.adventech.settings.reminderTime"
+        static let settingsDefaultReminderTime = "08:00"
     }
     
     struct Path {

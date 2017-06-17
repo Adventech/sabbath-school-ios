@@ -21,10 +21,16 @@
  */
 
 import AsyncDisplayKit
+import FirebaseAuth
+import JSQWebViewController
+import SwiftDate
 import UIKit
 
 class SettingsController: ASViewController<ASDisplayNode> {
     var tableNode: SettingsView { return node as! ASTableNode as! SettingsView }
+    
+    fileprivate let pickerView = PickerViewController()
+    fileprivate let popupAnimator = PopupTransitionAnimator()
     
     var titles = [[String]]()
     var sections = [String]()
@@ -38,11 +44,15 @@ class SettingsController: ASViewController<ASDisplayNode> {
         title = "Settings".uppercased()
         
         titles = [
-            ["Reminder", "Time"],
+            ["Reminder"],
             ["🐙 GitHub"],
             ["🙏 About us", "💌 Recommend Sabbath School", "🎉 Rate app"],
             ["Log out"]
         ]
+        
+        if reminderStatus() {
+            titles[0].append("Time")
+        }
         
         sections = [
             "Reminder",
@@ -78,6 +88,20 @@ class SettingsController: ASViewController<ASDisplayNode> {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    func reminderChanged(sender: UISwitch) {
+        let isOn = sender.isOn
+        
+        guard isOn else {
+            titles[0].remove(at: 1)
+            self.tableNode.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            return
+        }
+        
+        titles[0].append("Time")
+        self.tableNode.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+    }
+
 }
 
 extension SettingsController: ASTableDataSource {
@@ -89,6 +113,10 @@ extension SettingsController: ASTableDataSource {
             
             if indexPath.row == 0 && indexPath.section == 0 {
                 settingsItem = SettingsItemView(text: text, switchState: true)
+                settingsItem.selectionStyle = .none
+                DispatchQueue.main.async { [weak self] in
+                    settingsItem.switchView.addTarget(self, action: #selector(self?.reminderChanged(sender:)), for: .valueChanged)
+                }
             }
             
             if indexPath.row == 0 && indexPath.section == 2 {
@@ -96,7 +124,8 @@ extension SettingsController: ASTableDataSource {
             }
             
             if indexPath.row == 1 && indexPath.section == 0 {
-                settingsItem = SettingsItemView(text: text, detailText: "8:00 AM")
+                let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
+                settingsItem = SettingsItemView(text: text, detailText: time.string(dateStyle: .none, timeStyle: .short))
                 settingsItem.contentStyle = .detailOnRight
             }
             
@@ -118,11 +147,72 @@ extension SettingsController: ASTableDataSource {
     }
 }
 
+extension SettingsController: PickerViewControllerDelegate {
+    func pickerView(_ pickerView: PickerViewController, didChangedToDate date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        UserDefaults.standard.set(dateFormatter.string(from: date), forKey: Constants.DefaultKey.settingsReminderTime)
+        self.tableNode.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+    }
+}
+
 extension SettingsController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableNode.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 0:
-            print("YOU")
+            if indexPath.row == 1 {
+                let cell = tableNode.view.nodeForRow(at: indexPath) as! SettingsItemView
+                pickerView.delegate = self
+                pickerView.datePicker.datePickerMode = .time
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat =  "HH:mm"
+                pickerView.datePicker.date = dateFormatter.date(from: reminderTime())!
+                
+                pickerView.modalPresentationStyle = .custom
+                let width: CGFloat = traitCollection.horizontalSizeClass == .compact ? node.bounds.width : 500
+                pickerView.preferredContentSize = CGSize(width: width, height: 200)
+                pickerView.transitioningDelegate = popupAnimator
+                popupAnimator.fromView = cell.textNode.view
+                popupAnimator.overlayColor = UIColor(white: 0, alpha: 0.2)
+                present(pickerView, animated: true, completion: nil)
+            }
+            break
+        case 1:
+            let controller = WebViewController(url: URL(string: "https://github.com/Adventech")!)
+            let nav = UINavigationController(rootViewController: controller)
+            present(nav, animated: true, completion: nil)
+            break
+        case 2:
+            if indexPath.row == 0 {
+                // OPEN NEW VIEW
+            }
+            
+            if indexPath.row == 1 {
+                let objectsToShare = ["I am using Sabbath School app from Adventech! 🎉", "https://adventech.io"]
+                let activityController = UIActivityViewController(
+                    activityItems: objectsToShare,
+                    applicationActivities: nil)
+                
+                activityController.popoverPresentationController?.sourceRect = view.frame
+                activityController.popoverPresentationController?.sourceView = view
+                activityController.popoverPresentationController?.permittedArrowDirections = .any
+                
+                present(activityController, animated: true, completion: nil)
+            }
+            
+            if indexPath.row == 2 {
+                UIApplication.shared.openURL(NSURL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=895272167&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software")! as URL)
+
+            }
+            break
+            
+        case 3:
+            try! Auth.auth().signOut()
+            QuarterlyWireFrame.presentLoginScreen()
+            break
         default:
             break
         }

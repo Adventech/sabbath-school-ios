@@ -69,6 +69,7 @@
 		7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3BCE3D1EE2F209003EC12B /* ReadOptionsController.swift */; };
 		7A3BCE401EE2F27F003EC12B /* ReadOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3BCE3F1EE2F27F003EC12B /* ReadOptionsView.swift */; };
 		7A3BCE421EE37E30003EC12B /* DiscreteSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */; };
+		7A4129091EF4D05C0044D6E8 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4129081EF4D05C0044D6E8 /* PickerViewController.swift */; };
 		7A535A7A1EF0A56D00CBDEAB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A535A791EF0A56D00CBDEAB /* SettingsController.swift */; };
 		7A535A7C1EF0A58A00CBDEAB /* SettingsItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A535A7B1EF0A58A00CBDEAB /* SettingsItemController.swift */; };
 		7A8C68481EF206E100CD3228 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C68471EF206E100CD3228 /* SettingsView.swift */; };
@@ -194,6 +195,7 @@
 		7A3BCE3D1EE2F209003EC12B /* ReadOptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOptionsController.swift; sourceTree = "<group>"; };
 		7A3BCE3F1EE2F27F003EC12B /* ReadOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOptionsView.swift; sourceTree = "<group>"; };
 		7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscreteSlider.swift; sourceTree = "<group>"; };
+		7A4129081EF4D05C0044D6E8 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		7A535A791EF0A56D00CBDEAB /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		7A535A7B1EF0A58A00CBDEAB /* SettingsItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemController.swift; sourceTree = "<group>"; };
 		7A8C68471EF206E100CD3228 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -710,6 +712,7 @@
 			children = (
 				7A535A791EF0A56D00CBDEAB /* SettingsController.swift */,
 				7A535A7B1EF0A58A00CBDEAB /* SettingsItemController.swift */,
+				7A4129081EF4D05C0044D6E8 /* PickerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1244,6 +1247,7 @@
 				7A2810291EDDE41F003C7458 /* ShimmeringNode.swift in Sources */,
 				7A922E051EDE38F400C12A67 /* OpenButton.swift in Sources */,
 				7A28100A1EDD2546003C7458 /* QuarterlyFeaturedCellNode.swift in Sources */,
+				7A4129091EF4D05C0044D6E8 /* PickerViewController.swift in Sources */,
 				7A280FC51EDA04A6003C7458 /* Color.swift in Sources */,
 				7A3BCE301EE275F1003EC12B /* BibleView.swift in Sources */,
 			);

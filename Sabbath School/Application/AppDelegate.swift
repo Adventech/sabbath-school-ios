@@ -49,9 +49,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure(options: fileopts!)
         Database.database().isPersistenceEnabled = true
         
-        FontBlaster.blast() { (fonts) in
-            print(fonts) // fonts is an array of Strings containing font names
+        FontBlaster.blast()
+        
+        if firstRun() {
+            UserDefaults.standard.set(false, forKey: Constants.DefaultKey.firstRun)
+        
+            UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
+            UserDefaults.standard.set(Constants.DefaultKey.settingsDefaultReminderTime, forKey: Constants.DefaultKey.settingsReminderTime)
         }
+        
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white

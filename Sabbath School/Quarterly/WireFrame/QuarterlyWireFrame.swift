@@ -56,7 +56,7 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
         }
     }
     
-    func presentLoginScreen(){
+    static func presentLoginScreen(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let loginScreen = LoginWireFrame.createLoginModule()
