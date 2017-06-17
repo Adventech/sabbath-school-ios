@@ -12,6 +12,7 @@ target 'Sabbath School' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
   pod 'FontBlaster'
   pod 'GoogleSignIn'
   pod 'Hue'

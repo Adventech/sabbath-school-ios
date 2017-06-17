@@ -95,13 +95,55 @@ class SettingsController: ASViewController<ASDisplayNode> {
         guard isOn else {
             titles[0].remove(at: 1)
             self.tableNode.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            UserDefaults.standard.set(false, forKey: Constants.DefaultKey.settingsReminderStatus)
+            UIApplication.shared.cancelAllLocalNotifications()
             return
         }
         
         titles[0].append("Time")
+        UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
+        
+        SettingsController.setUpLocalNotification()
         self.tableNode.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
     }
-
+    
+    static func setUpLocalNotification() {
+        let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
+        print(time.hour)
+        print(time.minute)
+        let hour = time.hour
+        let minute = time.minute
+        // have to use NSCalendar for the components
+        let calendar = NSCalendar(identifier: .gregorian)!;
+        
+        var dateFire = Date()
+        
+        // if today's date is passed, use tomorrow
+        var fireComponents = calendar.components( [NSCalendar.Unit.day, NSCalendar.Unit.month, NSCalendar.Unit.year, NSCalendar.Unit.hour, NSCalendar.Unit.minute], from:dateFire)
+        
+        if (fireComponents.hour! > hour
+            || (fireComponents.hour == hour && fireComponents.minute! >= minute) ) {
+            
+            dateFire = dateFire.addingTimeInterval(86400)  // Use tomorrow's date
+            fireComponents = calendar.components( [NSCalendar.Unit.day, NSCalendar.Unit.month, NSCalendar.Unit.year, NSCalendar.Unit.hour, NSCalendar.Unit.minute], from:dateFire);
+        }
+        
+        // set up the time
+        fireComponents.hour = hour
+        fireComponents.minute = minute
+        
+        // schedule local notification
+        dateFire = calendar.date(from: fireComponents)!
+        
+        let localNotification = UILocalNotification()
+        localNotification.fireDate = dateFire
+        localNotification.alertBody = "Time to study Sabbath School 🙏"
+        localNotification.repeatInterval = NSCalendar.Unit.day
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        
+        UIApplication.shared.scheduleLocalNotification(localNotification);
+        
+    }
 }
 
 extension SettingsController: ASTableDataSource {
@@ -114,7 +156,9 @@ extension SettingsController: ASTableDataSource {
             if indexPath.row == 0 && indexPath.section == 0 {
                 settingsItem = SettingsItemView(text: text, switchState: true)
                 settingsItem.selectionStyle = .none
+                
                 DispatchQueue.main.async { [weak self] in
+                    settingsItem.switchView.setOn(reminderStatus(), animated: false)
                     settingsItem.switchView.addTarget(self, action: #selector(self?.reminderChanged(sender:)), for: .valueChanged)
                 }
             }
@@ -154,6 +198,7 @@ extension SettingsController: PickerViewControllerDelegate {
         
         UserDefaults.standard.set(dateFormatter.string(from: date), forKey: Constants.DefaultKey.settingsReminderTime)
         self.tableNode.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+        SettingsController.setUpLocalNotification()
     }
 }
 

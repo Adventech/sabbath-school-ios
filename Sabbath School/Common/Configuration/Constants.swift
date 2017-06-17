@@ -31,6 +31,7 @@ struct Constants {
     }
     
     struct DefaultKey {
+        static let gcmMessageIDKey = "gcm.message_id"
         static let interfaceLanguage = "io.adventech.interfaceLanguage"
         static let quarterlyLanguage = "io.adventech.interfaceLanguage"
         static let firstRun = "io.adventech.firstRun"
