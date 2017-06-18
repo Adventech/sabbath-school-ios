@@ -113,24 +113,24 @@ open class Reader: UIWebView {
     var contextMenuEnabled = false
     
     func setupContextMenu(){
-        let highlightGreen = UIMenuItem(title: "*", image: R.image.iconHighlightGreen()) { _ in
-            self.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Green)
+        let highlightGreen = UIMenuItem(title: "*", image: R.image.iconHighlightGreen()) { [weak self] _ in
+            self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Green)
         }
         
-        let highlightBlue = UIMenuItem(title: "*", image: R.image.iconHighlightBlue()) { _ in
-            self.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Blue)
+        let highlightBlue = UIMenuItem(title: "*", image: R.image.iconHighlightBlue()) { [weak self] _ in
+            self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Blue)
         }
         
-        let highlightYellow = UIMenuItem(title: "*", image: R.image.iconHighlightYellow()) { _ in
-            self.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Yellow)
+        let highlightYellow = UIMenuItem(title: "*", image: R.image.iconHighlightYellow()) { [weak self] _ in
+            self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Yellow)
         }
         
-        let highlightOrange = UIMenuItem(title: "*", image: R.image.iconHighlightOrange()) { _ in
-            self.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Orange)
+        let highlightOrange = UIMenuItem(title: "*", image: R.image.iconHighlightOrange()) { [weak self] _ in
+            self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Orange)
         }
         
-        let clearHighlight = UIMenuItem(title: "*", image: R.image.iconHighlightClear()) { _ in
-            self.readerViewDelegate?.didTapClearHighlight()
+        let clearHighlight = UIMenuItem(title: "*", image: R.image.iconHighlightClear()) { [weak self] _ in
+            self?.readerViewDelegate?.didTapClearHighlight()
         }
         
         let copy = UIMenuItem(title: "Copy") { [weak self] _ in
