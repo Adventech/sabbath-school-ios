@@ -25,8 +25,8 @@ import UIKit
 
 protocol QuarterlyPresenterProtocol: class {
     var controller: QuarterlyControllerProtocol? { get set }
-    var interactor: QuarterlyInteractorInputProtocol? { get set }
     var wireFrame: QuarterlyWireFrameProtocol? { get set }
+    var interactor: QuarterlyInteractorInputProtocol? { get set }
     
     func configure()
     func presentLanguageScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate)
@@ -54,7 +54,7 @@ protocol QuarterlyInteractorOutputProtocol: class {
 
 protocol QuarterlyInteractorInputProtocol: class {
     var presenter: QuarterlyInteractorOutputProtocol? { get set }
-    var languageInteractor: LanguageInteractor { get set }
+    var languageInteractor: LanguageInteractor? { get set }
     
     func configure()
     func retrieveQuarterlies()

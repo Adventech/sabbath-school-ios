@@ -23,7 +23,7 @@
 import UIKit
 
 class QuarterlyPresenter: QuarterlyPresenterProtocol {
-    var controller: QuarterlyControllerProtocol?
+    weak var controller: QuarterlyControllerProtocol?
     var wireFrame: QuarterlyWireFrameProtocol?
     var interactor: QuarterlyInteractorInputProtocol?
     
@@ -36,8 +36,8 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
     }
     
     func presentLanguageScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate){
-        (controller as! UIViewController).present(LanguageWireFrame.createLanguageModule(size: size, transitioningDelegate: transitioningDelegate, didSelectLanguageHandler: {
-            self.controller?.retrieveQuarterlies()
+        (controller as! UIViewController).present(LanguageWireFrame.createLanguageModule(size: size, transitioningDelegate: transitioningDelegate, didSelectLanguageHandler: { [weak self] _ in
+            self?.controller?.retrieveQuarterlies()
         }), animated: true, completion: nil)
     }
     

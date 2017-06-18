@@ -27,33 +27,34 @@ import Zip
 
 class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputProtocol {
     weak var presenter: QuarterlyInteractorOutputProtocol?
-    var languageInteractor = LanguageInteractor()
+    weak var languageInteractor = LanguageInteractor()
     
     override func configure(){
         super.configure()
+        print("YES")
         
-        languageInteractor.configure()
-        languageInteractor.presenter = self
+        languageInteractor?.configure()
+        languageInteractor?.presenter = self
     }
     
     func retrieveQuarterliesForLanguage(language: QuarterlyLanguage){
-        database.child(Constants.Firebase.quarterlies).child(language.code).observe(.value, with: { (snapshot) in
+        database?.child(Constants.Firebase.quarterlies).child(language.code).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.value as? [[String: AnyObject]] else { return }
             
             do {
                 let items: [Quarterly] = try unbox(dictionaries: json)
-                self.presenter?.didRetrieveQuarterlies(quarterlies: items)
+                self?.presenter?.didRetrieveQuarterlies(quarterlies: items)
             } catch let error {
-                self.presenter?.onError(error)
+                self?.presenter?.onError(error)
             }
-        }) { (error) in
-            self.presenter?.onError(error)
+        }) { [weak self] (error) in
+            self?.presenter?.onError(error)
         }
     }
     
     func retrieveQuarterlies() {
         guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
-            return languageInteractor.retrieveLanguages()
+            return (languageInteractor?.retrieveLanguages())!
         }
         
         let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
@@ -64,12 +65,12 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
         let storage = Storage.storage()
         let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
         
-        gsReference.getMetadata { metadata, error in
+        gsReference.getMetadata { [weak self] (metadata, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
                 if String(describing: metadata?.timeCreated?.timeIntervalSince1970) != latestReaderBundleTimestamp() {
-                    self.downloadReaderBundle(metadata: metadata!)
+                    self?.downloadReaderBundle(metadata: metadata!)
                 }
             }
         }
@@ -81,9 +82,9 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
         let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
         var localURL = Constants.Path.readerBundleZip
         
-        _ = gsReference.write(toFile: localURL) { url, error in
+        _ = gsReference.write(toFile: localURL) { [weak self] (url, error) in
             if let error = error {
-                self.presenter?.onError(error)
+                self?.presenter?.onError(error)
             } else {
                 do {
                     UserDefaults.standard.set(String(describing: metadata.timeCreated?.timeIntervalSince1970), forKey: Constants.DefaultKey.latestReaderBundleTimestamp)
@@ -117,7 +118,7 @@ extension QuarterlyInteractor: LanguageInteractorOutputProtocol {
             }
         }
         
-        languageInteractor.saveLanguage(language: currentLanguage)
+        languageInteractor?.saveLanguage(language: currentLanguage)
         retrieveQuarterliesForLanguage(language: currentLanguage)
     }
     

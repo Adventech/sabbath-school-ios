@@ -25,15 +25,15 @@ import GoogleSignIn
 import UIKit
 
 class LoginController: ASViewController<ASDisplayNode>, LoginControllerProtocol {
-    var loginNode: LoginNode { return node as! LoginNode }
+    weak var loginNode: LoginNode? { return node as? LoginNode }
     var presenter: LoginPresenterProtocol?
     
     init() {
         super.init(node: LoginNode())
         
-        loginNode.anonymousButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
-        loginNode.googleButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
-        loginNode.facebookButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
+        loginNode?.anonymousButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
+        loginNode?.googleButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
+        loginNode?.facebookButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         
         GIDSignIn.sharedInstance().uiDelegate = self
     }

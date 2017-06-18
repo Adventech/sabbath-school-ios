@@ -49,12 +49,12 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
         
         alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
         
-        alertController.addAction(UIAlertAction(title: "Yes", style: .destructive) { (action) in
-            Auth.auth().signInAnonymously(completion: { (user, error) in
+        alertController.addAction(UIAlertAction(title: "Yes", style: .destructive) { [weak self] (action) in
+            Auth.auth().signInAnonymously(completion: { [weak self] (user, error) in
                 if let error = error {
-                    self.presenter?.onError(error)
+                    self?.presenter?.onError(error)
                 } else {
-                    self.presenter?.onSuccess()
+                    self?.presenter?.onSuccess()
                 }
             })
         })
@@ -70,26 +70,26 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
     func loginFacebook(){
         let loginManager = LoginManager()
         
-        loginManager.logIn([ReadPermission.publicProfile, ReadPermission.email], viewController: (self.presenter as? LoginPresenter)?.controller as? UIViewController, completion: { (loginResult) in
+        loginManager.logIn([ReadPermission.publicProfile, ReadPermission.email], viewController: (self.presenter as? LoginPresenter)?.controller as? UIViewController, completion: { [weak self] (loginResult) in
             switch loginResult {
             case .failed(let error):
-                self.presenter?.onError(error)
+                self?.presenter?.onError(error)
             case .cancelled:
-                self.presenter?.onError("Cancelled" as? Error)
+                self?.presenter?.onError("Cancelled" as? Error)
             case .success(_, _, let accessToken):
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-                self.performFirebaseLogin(credential: credential)
+                self?.performFirebaseLogin(credential: credential)
             }
         })
     }
     
     func performFirebaseLogin(credential: AuthCredential){
-        Auth.auth().signIn(with: credential) { (user, error) in
+        Auth.auth().signIn(with: credential) { [weak self] (user, error) in
             if error != nil {
-                self.presenter?.onError(error)
+                self?.presenter?.onError(error)
                 return
             } else {
-                self.presenter?.onSuccess()
+                self?.presenter?.onSuccess()
             }
         }
     }

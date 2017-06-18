@@ -24,7 +24,7 @@ import AsyncDisplayKit
 import FirebaseAuth
 import UIKit
 
-final class QuarterlyController: TableController {
+class QuarterlyController: TableController {
     var presenter: QuarterlyPresenterProtocol?
     let animator = PopupTransitionAnimator()
     
@@ -46,10 +46,10 @@ final class QuarterlyController: TableController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let lastQuarterlyIndex = currentQuarterly()
-        if !lastQuarterlyIndex.isEmpty {
-            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
-        }
+//        let lastQuarterlyIndex = currentQuarterly()
+//        if !lastQuarterlyIndex.isEmpty {
+//            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
+//        }
         
         let logoutButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
         
@@ -120,20 +120,20 @@ extension QuarterlyController: QuarterlyControllerProtocol {
 
 extension QuarterlyController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let cellNodeBlock: () -> ASCellNode = {
-            if self.dataSource.isEmpty {
+        let cellNodeBlock: () -> ASCellNode = { [weak self] _ in
+            if (self?.dataSource.isEmpty)! {
                 return QuarterlyEmptyCell()
             }
             
-            let quarterly = self.dataSource[indexPath.row]
+            let quarterly = self?.dataSource[indexPath.row]
             
             if indexPath.row == 0 {
-                let node = QuarterlyFeaturedCellNode(quarterly: quarterly)
-                node.openButton.addTarget(self, action: #selector(self.openButtonAction(sender:)), forControlEvents: .touchUpInside)
+                let node = QuarterlyFeaturedCellNode(quarterly: quarterly!)
+                node.openButton.addTarget(self, action: #selector(self?.openButtonAction(sender:)), forControlEvents: .touchUpInside)
                 return node
             }
             
-            return QuarterlyCellNode(quarterly: quarterly)
+            return QuarterlyCellNode(quarterly: quarterly!)
         }
         
         return cellNodeBlock

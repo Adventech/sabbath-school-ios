@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 
 class TableController: ThemeController {
-    var tableNode: ASTableNode { return node as! ASTableNode}
+    weak var tableNode: ASTableNode! { return node as! ASTableNode}
     
     init() {
         super.init(node: ASTableNode())

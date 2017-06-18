@@ -27,7 +27,7 @@ import SwiftDate
 import UIKit
 
 class SettingsController: ASViewController<ASDisplayNode> {
-    var tableNode: SettingsView { return node as! ASTableNode as! SettingsView }
+    weak var tableNode: SettingsView? { return node as? SettingsView }
     
     fileprivate let pickerView = PickerViewController()
     fileprivate let popupAnimator = PopupTransitionAnimator()
@@ -38,8 +38,8 @@ class SettingsController: ASViewController<ASDisplayNode> {
     
     init() {
         super.init(node: SettingsView(style: .grouped))
-        tableNode.delegate = self
-        tableNode.dataSource = self
+        tableNode?.delegate = self
+        tableNode?.dataSource = self
         
         title = "Settings".uppercased()
         
@@ -80,8 +80,8 @@ class SettingsController: ASViewController<ASDisplayNode> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
-        if let selected = tableNode.indexPathForSelectedRow {
-            tableNode.view.deselectRow(at: selected, animated: true)
+        if let selected = tableNode?.indexPathForSelectedRow {
+            tableNode?.view.deselectRow(at: selected, animated: true)
         }
     }
     
@@ -94,7 +94,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         
         guard isOn else {
             titles[0].remove(at: 1)
-            self.tableNode.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            self.tableNode?.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             UserDefaults.standard.set(false, forKey: Constants.DefaultKey.settingsReminderStatus)
             UIApplication.shared.cancelAllLocalNotifications()
             return
@@ -104,7 +104,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
         
         SettingsController.setUpLocalNotification()
-        self.tableNode.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+        self.tableNode?.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
     }
     
     static func setUpLocalNotification() {
@@ -149,7 +149,7 @@ extension SettingsController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let text = titles[indexPath.section][indexPath.row]
         
-        let cellNodeBlock: () -> ASCellNode = {
+        let cellNodeBlock: () -> ASCellNode = { [weak self] _ in
             var settingsItem = SettingsItemView(text: text)
             
             if indexPath.row == 0 && indexPath.section == 0 {
@@ -196,18 +196,18 @@ extension SettingsController: PickerViewControllerDelegate {
         dateFormatter.dateFormat = "HH:mm"
         
         UserDefaults.standard.set(dateFormatter.string(from: date), forKey: Constants.DefaultKey.settingsReminderTime)
-        self.tableNode.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+        self.tableNode?.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
         SettingsController.setUpLocalNotification()
     }
 }
 
 extension SettingsController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableNode.deselectRow(at: indexPath, animated: true)
+        tableNode?.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 0:
             if indexPath.row == 1 {
-                let cell = tableNode.view.nodeForRow(at: indexPath) as! SettingsItemView
+                let cell = tableNode?.view.nodeForRow(at: indexPath) as! SettingsItemView
                 pickerView.delegate = self
                 pickerView.datePicker.datePickerMode = .time
                 

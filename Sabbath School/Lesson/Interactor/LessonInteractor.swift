@@ -26,19 +26,19 @@ class LessonInteractor: FirebaseDatabaseInteractor, LessonInteractorInputProtoco
     weak var presenter: LessonInteractorOutputProtocol?
     
     func retrieveQuarterlyInfo(quarterlyIndex: String) {
-        database.child(Constants.Firebase.quarterlyInfo).child(quarterlyIndex).observe(.value, with: { (snapshot) in
+        database?.child(Constants.Firebase.quarterlyInfo).child(quarterlyIndex).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.value as? [String: AnyObject] else { return }
             
             do {
                 let item: QuarterlyInfo = try unbox(dictionary: json)
                 
-                self.saveLastQuarterlyIndex(lastQuarterlyIndex: quarterlyIndex)
-                self.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: item)
+                self?.saveLastQuarterlyIndex(lastQuarterlyIndex: quarterlyIndex)
+                self?.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: item)
             } catch let error {
-                self.presenter?.onError(error)
+                self?.presenter?.onError(error)
             }
-        }) { (error) in
-            self.presenter?.onError(error)
+        }) { [weak self] (error) in
+            self?.presenter?.onError(error)
         }
     }
     

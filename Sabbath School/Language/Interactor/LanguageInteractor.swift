@@ -32,14 +32,14 @@ class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputPro
     }
     
     func retrieveLanguages() {
-        database.child(Constants.Firebase.languages).observeSingleEvent(of: .value, with: { (snapshot) in
+        database?.child(Constants.Firebase.languages).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
             guard let json = snapshot.value as? [[String: AnyObject]] else { return }
             
             do {
                 let items: [QuarterlyLanguage] = try unbox(dictionaries: json)
-                self.presenter?.didRetrieveLanguages(languages: items)
+                self?.presenter?.didRetrieveLanguages(languages: items)
             } catch let error {
-                self.presenter?.onError(error)
+                self?.presenter?.onError(error)
             }
         })
     }

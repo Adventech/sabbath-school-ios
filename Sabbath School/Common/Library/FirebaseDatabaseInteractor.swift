@@ -23,10 +23,10 @@
 import FirebaseDatabase
 
 class FirebaseDatabaseInteractor {
-    var database: DatabaseReference!
+    var database: DatabaseReference?
     
     func configure(){
         database = Database.database().reference()
-        database.keepSynced(true)
+        database?.keepSynced(true)
     }
 }
