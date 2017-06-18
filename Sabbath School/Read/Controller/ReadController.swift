@@ -287,7 +287,7 @@ extension ReadController: ReadOptionsDelegate {
 extension ReadController: BibleControllerOutputProtocol {
     func didDismissBibleScreen() {
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
-            webView.setupContextMenu()
+            webView.createContextMenu()
         }
     }
 }

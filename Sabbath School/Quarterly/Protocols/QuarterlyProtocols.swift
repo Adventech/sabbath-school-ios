@@ -54,7 +54,7 @@ protocol QuarterlyInteractorOutputProtocol: class {
 
 protocol QuarterlyInteractorInputProtocol: class {
     var presenter: QuarterlyInteractorOutputProtocol? { get set }
-    var languageInteractor: LanguageInteractor? { get set }
+    var languageInteractor: LanguageInteractor { get set }
     
     func configure()
     func retrieveQuarterlies()

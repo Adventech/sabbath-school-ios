@@ -27,14 +27,14 @@ import Zip
 
 class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputProtocol {
     weak var presenter: QuarterlyInteractorOutputProtocol?
-    weak var languageInteractor = LanguageInteractor()
+    var languageInteractor = LanguageInteractor()
     
     override func configure(){
         super.configure()
-        print("YES")
         
-        languageInteractor?.configure()
-        languageInteractor?.presenter = self
+        languageInteractor.configure()
+        languageInteractor.presenter = self
+        checkifReaderBundleNeeded()
     }
     
     func retrieveQuarterliesForLanguage(language: QuarterlyLanguage){
@@ -54,7 +54,7 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
     
     func retrieveQuarterlies() {
         guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
-            return (languageInteractor?.retrieveLanguages())!
+            return languageInteractor.retrieveLanguages()
         }
         
         let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
@@ -118,7 +118,7 @@ extension QuarterlyInteractor: LanguageInteractorOutputProtocol {
             }
         }
         
-        languageInteractor?.saveLanguage(language: currentLanguage)
+        languageInteractor.saveLanguage(language: currentLanguage)
         retrieveQuarterliesForLanguage(language: currentLanguage)
     }
     

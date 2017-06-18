@@ -112,7 +112,7 @@ open class Reader: UIWebView {
     var menuVisible = false
     var contextMenuEnabled = false
     
-    func setupContextMenu(){
+    func createContextMenu(){
         let highlightGreen = UIMenuItem(title: "*", image: R.image.iconHighlightGreen()) { [weak self] _ in
             self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.Green)
         }
@@ -134,19 +134,22 @@ open class Reader: UIWebView {
         }
         
         let copy = UIMenuItem(title: "Copy") { [weak self] _ in
-//            self?.readerViewDelegate?.didTapHighlightGreen()
+            //            self?.readerViewDelegate?.didTapHighlightGreen()
         }
         
         let share = UIMenuItem(title: "Share") { [weak self] _ in
-//            self?.readerViewDelegate?.didTapHighlightGreen()
+            //            self?.readerViewDelegate?.didTapHighlightGreen()
         }
-        
         UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, share]
+    }
+    
+    func setupContextMenu(){
+        createContextMenu()
         showContextMenu()
     }
     
     func showContextMenu(){
-        let rect = CGRectFromString("{{0, 0}, {0, 0}}")
+        let rect = CGRectFromString("{{-1000, -1000}, {-1000, -10000}}")
         UIMenuController.shared.setTargetRect(rect, in: self)
         UIMenuController.shared.setMenuVisible(true, animated: false)
     }
