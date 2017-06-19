@@ -67,12 +67,21 @@ struct Constants {
         static let lessonInfo = apiPrefix + "/lesson-info"
         static let reads = apiPrefix + "/reads"
         
+        #if DEBUG
         struct Storage {
             struct ReaderPath {
                 static let prod = "gs://sabbath-school-stage.appspot.com/sabbath-school-reader-latest.zip"
                 static let stage =  "gs://sabbath-school-stage.appspot.com/sabbath-school-reader-latest.zip"
             }
         }
+        #else
+        struct Storage {
+            struct ReaderPath {
+                static let prod = "gs://blistering-inferno-8720.appspot.com/sabbath-school-reader-latest.zip"
+                static let stage =  "gs://blistering-inferno-8720.appspot.com/sabbath-school-reader-latest.zip"
+            }
+        }
+        #endif
         
         // User created
         static let highlights = "highlights"
