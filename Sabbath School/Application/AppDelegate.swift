@@ -42,9 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Fabric.with([Crashlytics.start(withAPIKey: fabricAPIKey ?? "")])
         
-        // TODO: - Configure per envoronment (stage, prod)
+        #if DEBUG
+            let filePath = Bundle.main.path(forResource: "GoogleService-Info-Stage", ofType: "plist")
+        #else
+            let filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")
+        #endif
         
-        let filePath = Bundle.main.path(forResource: "GoogleService-Info-Stage", ofType: "plist")
         let fileopts = FirebaseOptions.init(contentsOfFile: filePath!)
         
         FirebaseApp.configure(options: fileopts!)

@@ -118,6 +118,7 @@
 		7ABB93DA1EF7824800658963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ABB93D11EF7824800658963 /* Localizable.strings */; };
 		7ABB93DB1EF7824800658963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ABB93D41EF7824800658963 /* Localizable.strings */; };
 		7ABB93DF1EF7826E00658963 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7ABB93DD1EF7826E00658963 /* Localizable.strings */; };
+		7ABB93E11EF7888900658963 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */; };
 		7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE61EE4FA9E003F946C /* Reader.swift */; };
 		7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE81EE5EB63003F946C /* Preferences.swift */; };
 		7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */; };
@@ -252,6 +253,7 @@
 		7ABB93D21EF7824800658963 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
 		7ABB93D51EF7824800658963 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
 		7ABB93DE1EF7826E00658963 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Localizable.strings; sourceTree = "<group>"; };
+		7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		7AC26AE21EE48925003F946C /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
 		7AC26AE31EE48925003F946C /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
 		7AC26AE61EE4FA9E003F946C /* Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				7A922E311EE07EC200C12A67 /* sabbath-school-reader */,
 				7A280F901ED7D8B8003C7458 /* LaunchScreen.storyboard */,
 				7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */,
+				7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				7A922E681EE07EC200C12A67 /* jquery-3.1.1.min.js in Resources */,
 				7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */,
 				7A922E541EE07EC200C12A67 /* base.css in Resources */,
+				7ABB93E11EF7888900658963 /* GoogleService-Info-Prod.plist in Resources */,
 				7ABB93DB1EF7824800658963 /* Localizable.strings in Resources */,
 				7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */,
 				7ABB93DA1EF7824800658963 /* Localizable.strings in Resources */,
