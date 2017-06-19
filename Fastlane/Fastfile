@@ -30,7 +30,8 @@ lane :travis do
     force_for_new_devices: true,
     keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
     keychain_password: ENV["MATCH_PASSWORD"],
-    readonly: false
+    readonly: false,
+    force_for_new_devices: true
   )
 
   beta
