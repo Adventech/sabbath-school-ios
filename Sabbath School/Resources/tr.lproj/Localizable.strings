@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Anonim oturum açtığınızda, cihazlar arasında veya uygulamayı kaldırdıktan sonra, yorumlar ve vurgular gibi verilerinizi, eşitlemek mümkün olmayacaktır. Devam etmek istediğinizden emin misiniz?";
+"Continue without login" = "Anonim olarak Devam";
+"Contribute" = "Katkıda bulunmak";
+"Dark" = "Koyü";
+"English" = "Ingilizce";
+"I am using Sabbath School app from Adventech! 🎉" = "Sebt Okulu uygulaması kullanıyorum ";
+"Languages" = "Diller";
+"Lato" = "Lato";
+"Light" = "Açık";
+"Log out" = "Oturumu Kapat";
+"Login anonymously?" = "Anonim Girişi yapılsın mı?";
+"Made with ❤ by Adventech" = "Adventech tarafından ❤ ile yapıldı";
+"More" = "Daha";
+"No" = "Hayır";
+"Open" = "Aç";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Bizim uygulamalarımız Sabbath Okulu da dahil olmak üzere Açık Kaynaktır. Katkıda bulunmak isterseniz GitHub'umuza göz atın.";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Oku";
+"Reminder" = "Günlük Hatırlatma";
+"Sabbath School" = "Sebt Okulu";
+"Sepia" = "Sepya";
+"Set the reminder to be notified daily to study the lesson" = "Günlük Şabat Okulu dersi çalışma hatırlatıcısını etkinleştirmek için kontrol edin";
+"Settings" = "Ayarlar";
+"Sign in with Facebook" = "Facebook ile giriş";
+"Sign in with Google" = "Google ile giriş";
+"There was an error during login" = "Bilinmeyen bir hata oluştu. Lütfen tekrar deneyin";
+"Time" = "Saati";
+"Time to study Sabbath School 🙏" = "Şabat Okulu öğrenim zamanı 🙏";
+"Yes" = "Evet";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Sebt Okulu değerlendirin";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Tavsiye etmek";
+"🙏 About us" = "🙏 Advantech Hakkında";

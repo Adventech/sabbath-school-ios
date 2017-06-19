@@ -108,7 +108,7 @@ extension QuarterlyInteractor: LanguageInteractorOutputProtocol {
     }
     
     func didRetrieveLanguages(languages: [QuarterlyLanguage]){
-        var currentLanguage = QuarterlyLanguage(code: "en", name: "English")
+        var currentLanguage = QuarterlyLanguage(code: "en", name: "English".localized())
         let systemLanguageCode = Locale.current.languageCode
         
         for language in languages {

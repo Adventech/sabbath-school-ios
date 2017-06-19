@@ -32,7 +32,7 @@ final class LanguageController: TableController {
         super.init()
         
         tableNode.dataSource = self
-        title = "Languages".uppercased()
+        title = "Languages".localized().uppercased()
     }
     
     required init?(coder aDecoder: NSCoder) {

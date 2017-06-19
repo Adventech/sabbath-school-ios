@@ -52,8 +52,6 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
     }
     
     func onError(_ error: Error?) {
-        print(error?.localizedDescription ?? "Unknown")
-        
         var config = SwiftMessages.Config()
         config.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
         config.duration = .seconds(seconds: 3)
@@ -62,7 +60,7 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
         messageView.button?.isHidden = true
         messageView.bodyLabel?.font = R.font.latoBold(size: 17)
         messageView.configureTheme(.warning)
-        messageView.configureContent(title: "", body: "There was an error during login")
+        messageView.configureContent(title: "", body: "There was an error during login".localized())
         SwiftMessages.show(config: config, view: messageView)
         
     }

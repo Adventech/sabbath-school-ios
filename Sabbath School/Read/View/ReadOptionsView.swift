@@ -136,8 +136,8 @@ class ReadOptionsView: ASDisplayNode {
             layer.backgroundColor = UIColor.clear.cgColor
         }
         
-        fontSizeSmallNode.image = segmentButtonProvider(text: "Aa", font: R.font.latoRegular(size: 16)!, selected: false)
-        fontSizeLargeNode.image = segmentButtonProvider(text: "Aa", font: R.font.latoBold(size: 24)!, selected: false)
+        fontSizeSmallNode.image = segmentButtonProvider(text: "Aa".localized(), font: R.font.latoRegular(size: 16)!, selected: false)
+        fontSizeLargeNode.image = segmentButtonProvider(text: "Aa".localized(), font: R.font.latoBold(size: 24)!, selected: false)
         
         
         dividerNode1.backgroundColor = .baseGray1
@@ -187,9 +187,9 @@ class ReadOptionsView: ASDisplayNode {
     private func setupThemeSegmentControl() {
         let theme = currentTheme()
         
-        let lightThemeButton = segmentButtonProvider(text: "Light", font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Light || (theme != ReaderStyle.Theme.Sepia && theme != ReaderStyle.Theme.Dark))
-        let sepiaThemeButton = segmentButtonProvider(text: "Sepia", font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Sepia)
-        let darkThemeButton = segmentButtonProvider(text: "Dark", font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Dark)
+        let lightThemeButton = segmentButtonProvider(text: "Light".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Light || (theme != ReaderStyle.Theme.Sepia && theme != ReaderStyle.Theme.Dark))
+        let sepiaThemeButton = segmentButtonProvider(text: "Sepia".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Sepia)
+        let darkThemeButton = segmentButtonProvider(text: "Dark".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Dark)
         
         themeView.removeAllSegments()
         themeView.insertSegment(with: lightThemeButton, at: 0, animated: false)
@@ -201,16 +201,16 @@ class ReadOptionsView: ASDisplayNode {
     private func setupTypefaceSegmentControl(){
         let typeface = currentTypeface()
         
-        let andadaTypefaceButton = segmentButtonProvider(text: "Andada", font: R.font.loraRegular(size: 16)!, selected:
+        let andadaTypefaceButton = segmentButtonProvider(text: "Andada".localized(), font: R.font.loraRegular(size: 16)!, selected:
             (typeface == ReaderStyle.Typeface.Andada) ||
             (typeface != ReaderStyle.Typeface.Lato &&
              typeface != ReaderStyle.Typeface.PTSerif &&
              typeface != ReaderStyle.Typeface.PTSans)
         )
         
-        let latoTypefaceButton = segmentButtonProvider(text: "Lato", font: R.font.latoRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.Lato)
-        let ptSerifTypefaceButton = segmentButtonProvider(text: "PT Serif", font: R.font.pTSerifRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.PTSerif)
-        let ptSansTypefaceButton = segmentButtonProvider(text: "PT Sans", font: R.font.pTSansRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.PTSans)
+        let latoTypefaceButton = segmentButtonProvider(text: "Lato".localized(), font: R.font.latoRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.Lato)
+        let ptSerifTypefaceButton = segmentButtonProvider(text: "PT Serif".localized(), font: R.font.pTSerifRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.PTSerif)
+        let ptSansTypefaceButton = segmentButtonProvider(text: "PT Sans".localized(), font: R.font.pTSansRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.PTSans)
         
         typefaceView.removeAllSegments()
         typefaceView.insertSegment(with: andadaTypefaceButton, at: 0, animated: false)

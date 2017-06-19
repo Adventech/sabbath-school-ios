@@ -42,17 +42,17 @@ class LoginButton: ASButtonNode {
         
         switch type {
         case .facebook:
-            attributes = TextStyles.signInButtonTitleStyle(string: "Sign in with Facebook", color: .white)
+            attributes = TextStyles.signInButtonTitleStyle(string: "Sign in with Facebook".localized(), color: .white)
             backgroundColor = UIColor.facebook
             icon = R.image.loginIconFacebook()
             addShadow()
         case .google:
-            attributes = TextStyles.signInButtonTitleStyle(string: "Sign in with Google")
+            attributes = TextStyles.signInButtonTitleStyle(string: "Sign in with Google".localized())
             backgroundColor = UIColor.white
             icon = R.image.loginIconGoogle()
             addShadow()
         case .anonymous:
-            attributes = TextStyles.signInButtonTitleStyle(string: "Continue without login")
+            attributes = TextStyles.signInButtonTitleStyle(string: "Continue without login".localized())
         }
         
         if let image = icon {

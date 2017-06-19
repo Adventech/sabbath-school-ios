@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Ao iniciar a sessão anonimamente você não será capaz de sincronizar os dados, tais como comentários e destaques, através de dispositivos ou após a desinstalação do aplicativo. Tem certeza de que deseja continuar?";
+"Continue without login" = "Continue anonimamente";
+"Contribute" = "Contribuir";
+"Dark" = "Escuro";
+"English" = "Inglês";
+"I am using Sabbath School app from Adventech! 🎉" = "Confira, estou usando este aplicativo Escola Sabatina 🎉";
+"Languages" = "línguas";
+"Lato" = "Lato";
+"Light" = "Leve";
+"Log out" = "Sair";
+"Login anonymously?" = "Entre anonimamente?";
+"Made with ❤ by Adventech" = "Feito com ❤ por Adventech";
+"More" = "Mais";
+"No" = "Não";
+"Open" = "Aberto";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Nossos aplicativos são Open Source, incluindo a Sabbath School. Confira o nosso GitHub se quiser contribuir";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Ler";
+"Reminder" = "Notificação";
+"Sabbath School" = "Escola Sabatina";
+"Sepia" = "Sépia";
+"Set the reminder to be notified daily to study the lesson" = "Clique para ativar a notificação diária sobre lição da Escola Sabatina";
+"Settings" = "Configurações";
+"Sign in with Facebook" = "Faça login no Facebook";
+"Sign in with Google" = "Faça login no Google";
+"There was an error during login" = "Ocorreu um erro desconhecido. Por favor, tente novamente";
+"Time" = "Tempo";
+"Time to study Sabbath School 🙏" = "Tempo para estudar Escola Sabatina 🙏";
+"Yes" = "Sim";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Avalie o Escola Sabatina";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Recomendar";
+"🙏 About us" = "Sobre";

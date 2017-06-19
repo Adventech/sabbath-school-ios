@@ -36,7 +36,7 @@ class QuarterlyController: TableController {
         tableNode.dataSource = self
         tableNode.allowsSelection = false
         
-        title = "Sabbath School".uppercased()
+        title = "Sabbath School".localized().uppercased()
     }
     
     required init?(coder aDecoder: NSCoder) {

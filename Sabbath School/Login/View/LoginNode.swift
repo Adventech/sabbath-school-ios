@@ -35,7 +35,7 @@ class LoginNode: ASDisplayNode {
         
         logoNode.image = R.image.loginLogo()
         
-        logoTextNode.attributedText = TextStyles.loginLogoTextStyle(string: "Sabbath School")
+        logoTextNode.attributedText = TextStyles.loginLogoTextStyle(string: "Sabbath School".localized())
         backgroundColor = UIColor.baseGray1
         anonymousButton.style.spacingBefore = -8
         automaticallyManagesSubnodes = true

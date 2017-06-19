@@ -23,6 +23,10 @@
 import Foundation
 
 extension String {
+    func localized() -> String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
     func base64Decode() -> String? {
         guard let decodedData = Data(base64Encoded: self, options: Data.Base64DecodingOptions.init(rawValue: 0)) else {
             return nil

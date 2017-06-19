@@ -52,7 +52,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
         detailNode.attributedText = TextStyles.cellDetailStyle(string: quarterly.description, color: .white)
         detailNode.maximumNumberOfLines = 8
         
-        readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".uppercased()), for: .normal)
+        readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".localized().uppercased()), for: .normal)
         readButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
         readButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
         readButton.cornerRadius = 18

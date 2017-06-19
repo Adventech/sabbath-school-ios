@@ -41,29 +41,29 @@ class SettingsController: ASViewController<ASDisplayNode> {
         tableNode?.delegate = self
         tableNode?.dataSource = self
         
-        title = "Settings".uppercased()
+        title = "Settings".localized().uppercased()
         
         titles = [
-            ["Reminder"],
-            ["🐙 GitHub"],
-            ["🙏 About us", "💌 Recommend Sabbath School", "🎉 Rate app"],
-            ["Log out"]
+            ["Reminder".localized()],
+            ["🐙 GitHub".localized()],
+            ["🙏 About us".localized(), "💌 Recommend Sabbath School".localized(), "🎉 Rate app".localized()],
+            ["Log out".localized()]
         ]
         
         if reminderStatus() {
-            titles[0].append("Time")
+            titles[0].append("Time".localized())
         }
         
         sections = [
-            "Reminder",
-            "Contribute",
-            "More",
+            "Reminder".localized(),
+            "Contribute".localized(),
+            "More".localized(),
             ""
         ]
         
         footers = [
-            "Set the reminder to be notified daily to study the lesson",
-            "Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute",
+            "Set the reminder to be notified daily to study the lesson".localized(),
+            "Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute".localized(),
             ""
         ]
     }
@@ -100,7 +100,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
             return
         }
         
-        titles[0].append("Time")
+        titles[0].append("Time".localized())
         UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
         
         SettingsController.setUpLocalNotification()
@@ -136,7 +136,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         
         let localNotification = UILocalNotification()
         localNotification.fireDate = dateFire
-        localNotification.alertBody = "Time to study Sabbath School 🙏"
+        localNotification.alertBody = "Time to study Sabbath School 🙏".localized()
         localNotification.repeatInterval = NSCalendar.Unit.day
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         
@@ -235,7 +235,7 @@ extension SettingsController: ASTableDelegate {
             }
             
             if indexPath.row == 1 {
-                let objectsToShare = ["I am using Sabbath School app from Adventech! 🎉", "https://adventech.io"]
+                let objectsToShare = ["I am using Sabbath School app from Adventech! 🎉".localized(), "https://adventech.io".localized()]
                 let activityController = UIActivityViewController(
                     activityItems: objectsToShare,
                     applicationActivities: nil)
@@ -280,7 +280,7 @@ extension SettingsController: ASTableDelegate {
         if section == sections.count-1 {
             let versionLabel = UILabel(frame: CGRect(x: 0, y: 34, width: view.frame.width, height: 18))
             versionLabel.textAlignment = .center
-            versionLabel.attributedText = TextStyles.settingsFooterCopyrightStyle(string: "Made with ❤ by Adventech")
+            versionLabel.attributedText = TextStyles.settingsFooterCopyrightStyle(string: "Made with ❤ by Adventech".localized())
             return versionLabel
         } else {
             if footers[section].isEmpty { return nil }
@@ -307,13 +307,5 @@ extension SettingsController: ASTableDelegate {
         footerView.addSubview(footerLabel)
         footerView.frame.size.height = footerLabel.frame.size.height
         return footerView
-    }
-    
-    func getAppVersionText() -> String {
-        var versionText = NSLocalizedString("settings.version", comment: "")
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            versionText = "\(versionText) \(version)"
-        }
-        return versionText
     }
 }

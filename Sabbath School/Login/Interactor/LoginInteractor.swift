@@ -43,13 +43,13 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
     
     func loginAnonymous(){
         let alertController = UIAlertController(
-            title: "Login anonymously?",
-            message: "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?",
+            title: "Login anonymously?".localized(),
+            message: "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?".localized(),
             preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "No".localized(), style: .default, handler: nil))
         
-        alertController.addAction(UIAlertAction(title: "Yes", style: .destructive) { [weak self] (action) in
+        alertController.addAction(UIAlertAction(title: "Yes".localized(), style: .destructive) { [weak self] (action) in
             Auth.auth().signInAnonymously(completion: { [weak self] (user, error) in
                 if let error = error {
                     self?.presenter?.onError(error)
