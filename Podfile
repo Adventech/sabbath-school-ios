@@ -1,9 +1,7 @@
 platform :ios, '8.0'
+use_frameworks!
 
 target 'Sabbath School' do
-  use_frameworks!
-
-  # Pods for Sabbath School
   pod 'Crashlytics'
   pod 'Fabric'
   pod 'FacebookLogin'
@@ -26,4 +24,8 @@ target 'Sabbath School' do
   pod 'Unbox'
   pod 'Wrap'
   pod 'Zip', '~> 0.7'
+end
+
+target 'SnapshotUITests' do
+    pod 'SimulatorStatusMagic', :configurations => ['Debug']
 end

@@ -64,6 +64,7 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         coverImageNode.style.alignSelf = .stretch
         
         openButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Open".localized().uppercased()), for: .normal)
+        openButton.accessibilityIdentifier = "openLesson"
         openButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
         openButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
         openButton.cornerRadius = 18

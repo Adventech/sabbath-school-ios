@@ -51,11 +51,13 @@ class QuarterlyController: TableController {
 //            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
 //        }
         
-        let logoutButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
+        let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
+        settingsButton.accessibilityIdentifier = "openSettings"
         
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(rightAction(sender:)))
+        rightButton.accessibilityIdentifier = "openLanguage"
         
-        navigationItem.leftBarButtonItem = logoutButton
+        navigationItem.leftBarButtonItem = settingsButton
         navigationItem.rightBarButtonItem = rightButton
         presenter?.configure()
         retrieveQuarterlies()

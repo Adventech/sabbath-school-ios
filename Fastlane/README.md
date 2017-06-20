@@ -44,6 +44,11 @@ Configure local environment certificates
 fastlane beta
 ```
 
+### screenshots
+```
+fastlane screenshots
+```
+Generate screenshots and upload to the App Store
 ### increment_build
 ```
 fastlane increment_build

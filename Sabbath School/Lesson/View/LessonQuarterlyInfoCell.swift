@@ -53,6 +53,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
         detailNode.maximumNumberOfLines = 8
         
         readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".localized().uppercased()), for: .normal)
+        readButton.accessibilityIdentifier = "readLesson"
         readButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
         readButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
         readButton.cornerRadius = 18

@@ -174,6 +174,7 @@ extension SettingsController: ASTableDataSource {
             
             if indexPath.section == 3 {
                 settingsItem = SettingsItemView(text: text, destructive: true)
+                settingsItem.accessibilityIdentifier = "logOut"
             }
             
             return settingsItem

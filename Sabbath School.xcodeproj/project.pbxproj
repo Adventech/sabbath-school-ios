@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A43D7801EF8BABD00D6A639 /* SnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */; };
+		1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */; };
+		5E82C59D86C5D0067F3C122C /* Pods_SnapshotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D2FA897C7BC2DB383D717 /* Pods_SnapshotUITests.framework */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginNode.swift */; };
 		7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F841ED7D6B6003C7458 /* Assets.xcassets */; };
@@ -146,7 +149,23 @@
 		C6AD5FC4E686836BCB68D63F /* Pods_Sabbath_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA77760489FE123F60F36B6 /* Pods_Sabbath_School.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1A43D7821EF8BABD00D6A639 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AF191A01ED7B89B000CCF0C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AF191A71ED7B89B000CCF0C;
+			remoteInfo = "Sabbath School";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1A43D77D1EF8BABD00D6A639 /* SnapshotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapshotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotUITests.swift; sourceTree = "<group>"; };
+		1A43D7811EF8BABD00D6A639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		3469D4C91E1625A0CA6DD1AE /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3D38C5DA9F660B205805CEFC /* Pods-SnapshotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		462CFE2EEEB08613B21AB017 /* Pods-Sabbath School.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabbath School.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sabbath School/Pods-Sabbath School.debug.xcconfig"; sourceTree = "<group>"; };
 		4CA77760489FE123F60F36B6 /* Pods_Sabbath_School.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabbath_School.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57506EF65FC71A870E0BE99F /* Pods-Sabbath School.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabbath School.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sabbath School/Pods-Sabbath School.release.xcconfig"; sourceTree = "<group>"; };
@@ -290,9 +309,18 @@
 		7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fabric.apiKey; sourceTree = SOURCE_ROOT; };
 		7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fabric.buildSecret; sourceTree = SOURCE_ROOT; };
 		7AF191A81ED7B89B000CCF0C /* Sabbath School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabbath School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB0D2FA897C7BC2DB383D717 /* Pods_SnapshotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapshotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1A43D77A1EF8BABD00D6A639 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E82C59D86C5D0067F3C122C /* Pods_SnapshotUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7AF191A51ED7B89B000CCF0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,6 +332,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A43D77E1EF8BABD00D6A639 /* SnapshotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */,
+				1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */,
+				1A43D7811EF8BABD00D6A639 /* Info.plist */,
+			);
+			path = SnapshotUITests;
+			sourceTree = "<group>";
+		};
 		7A280F701ED7CF05003C7458 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1012,6 +1050,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF191AA1ED7B89B000CCF0C /* Sabbath School */,
+				1A43D77E1EF8BABD00D6A639 /* SnapshotUITests */,
 				7AF191A91ED7B89B000CCF0C /* Products */,
 				C6B7EC586755A52E1EB59B9D /* Pods */,
 				CABEE71BDF95136D0B5A003F /* Frameworks */,
@@ -1022,6 +1061,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF191A81ED7B89B000CCF0C /* Sabbath School.app */,
+				1A43D77D1EF8BABD00D6A639 /* SnapshotUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1049,6 +1089,8 @@
 				7AC26AE11EE48925003F946C /* Fastlane */,
 				462CFE2EEEB08613B21AB017 /* Pods-Sabbath School.debug.xcconfig */,
 				57506EF65FC71A870E0BE99F /* Pods-Sabbath School.release.xcconfig */,
+				3D38C5DA9F660B205805CEFC /* Pods-SnapshotUITests.debug.xcconfig */,
+				3469D4C91E1625A0CA6DD1AE /* Pods-SnapshotUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1057,6 +1099,7 @@
 			isa = PBXGroup;
 			children = (
 				4CA77760489FE123F60F36B6 /* Pods_Sabbath_School.framework */,
+				BB0D2FA897C7BC2DB383D717 /* Pods_SnapshotUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1064,6 +1107,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1A43D77C1EF8BABD00D6A639 /* SnapshotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A43D7861EF8BABD00D6A639 /* Build configuration list for PBXNativeTarget "SnapshotUITests" */;
+			buildPhases = (
+				C5B24C0B3B3C33805F7F27B3 /* [CP] Check Pods Manifest.lock */,
+				1A43D7791EF8BABD00D6A639 /* Sources */,
+				1A43D77A1EF8BABD00D6A639 /* Frameworks */,
+				1A43D77B1EF8BABD00D6A639 /* Resources */,
+				865F79C2D48B21E0A5D9EC9F /* [CP] Embed Pods Frameworks */,
+				0437E74285F46CF344BE20F1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A43D7831EF8BABD00D6A639 /* PBXTargetDependency */,
+			);
+			name = SnapshotUITests;
+			productName = SnapshotUITests;
+			productReference = 1A43D77D1EF8BABD00D6A639 /* SnapshotUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		7AF191A71ED7B89B000CCF0C /* Sabbath School */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7AF191BA1ED7B89B000CCF0C /* Build configuration list for PBXNativeTarget "Sabbath School" */;
@@ -1096,6 +1160,12 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Adventech;
 				TargetAttributes = {
+					1A43D77C1EF8BABD00D6A639 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = BB84388PVM;
+						ProvisioningStyle = Manual;
+						TestTargetID = 7AF191A71ED7B89B000CCF0C;
+					};
 					7AF191A71ED7B89B000CCF0C = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = XVGX5G4YQ9;
@@ -1125,11 +1195,19 @@
 			projectRoot = "";
 			targets = (
 				7AF191A71ED7B89B000CCF0C /* Sabbath School */,
+				1A43D77C1EF8BABD00D6A639 /* SnapshotUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1A43D77B1EF8BABD00D6A639 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7AF191A61ED7B89B000CCF0C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1193,6 +1271,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0437E74285F46CF344BE20F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1B6A00FE81B5E044B0CF66AE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1249,7 +1342,37 @@
 			shellPath = /bin/sh;
 			shellScript = "FABRIC_APIKEY_FILE=\"${SRCROOT}/Fabric.apiKey\"\nFABRIC_BUILDSECRET_FILE=\"${SRCROOT}/Fabric.buildSecret\"\n\nFABRIC_APIKEY=$(cat \"$FABRIC_APIKEY_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_APIKEY_FILE\"\nexit 1\nfi\n\nFABRIC_BUILDSECRET=$(cat \"$FABRIC_BUILDSECRET_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_BUILDSECRET_FILE\"\nexit 1\nfi\n\necho \"Uploading dSYM files to Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" \"$FABRIC_APIKEY\" \"$FABRIC_BUILDSECRET\"\n";
 		};
+		865F79C2D48B21E0A5D9EC9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C3EA699729E75B81F7930178 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C5B24C0B3B3C33805F7F27B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1267,6 +1390,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1A43D7791EF8BABD00D6A639 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A43D7801EF8BABD00D6A639 /* SnapshotUITests.swift in Sources */,
+				1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7AF191A41ED7B89B000CCF0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1358,6 +1490,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A43D7831EF8BABD00D6A639 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7AF191A71ED7B89B000CCF0C /* Sabbath School */;
+			targetProxy = 1A43D7821EF8BABD00D6A639 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7A280F901ED7D8B8003C7458 /* LaunchScreen.storyboard */ = {
@@ -1516,6 +1656,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1A43D7841EF8BABD00D6A639 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D38C5DA9F660B205805CEFC /* Pods-SnapshotUITests.debug.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BB84388PVM;
+				INFOPLIST_FILE = SnapshotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SnapshotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb4b542f-ff27-4ed8-b3b5-520e585eaf3e";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Sabbath School";
+			};
+			name = Debug;
+		};
+		1A43D7851EF8BABD00D6A639 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3469D4C91E1625A0CA6DD1AE /* Pods-SnapshotUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = BB84388PVM;
+				INFOPLIST_FILE = SnapshotUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SnapshotUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cb4b542f-ff27-4ed8-b3b5-520e585eaf3e";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Sabbath School";
+			};
+			name = Release;
+		};
 		7AF191B81ED7B89B000CCF0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1655,6 +1828,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1A43D7861EF8BABD00D6A639 /* Build configuration list for PBXNativeTarget "SnapshotUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A43D7841EF8BABD00D6A639 /* Debug */,
+				1A43D7851EF8BABD00D6A639 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7AF191A31ED7B89B000CCF0C /* Build configuration list for PBXProject "Sabbath School" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
