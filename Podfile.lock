@@ -108,6 +108,7 @@ PODS:
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
   - Shimmer (1.0.2)
+  - SimulatorStatusMagic (1.9.5)
   - SwiftDate (4.0.14)
   - SwiftMessages (3.3.3)
   - Texture (2.3.2):
@@ -138,6 +139,7 @@ DEPENDENCIES:
   - pop
   - R.swift (~> 3.1)
   - Shimmer
+  - SimulatorStatusMagic
   - SwiftDate (~> 4.0.13)
   - SwiftMessages
   - Texture
@@ -177,6 +179,7 @@ SPEC CHECKSUMS:
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
+  SimulatorStatusMagic: b3b4c5c49a07e8b1c452cc0327275e267a865fea
   SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
   SwiftMessages: 09cea3336e3fb63c3578983c8aac65acaa6d884a
   Texture: 18664254419f35de27af76399b3b265cbad5740a
@@ -184,6 +187,6 @@ SPEC CHECKSUMS:
   Wrap: 731fe4fe3c2429c913a8252a17dbe8bb191e69e1
   Zip: e34513299ac38c0686d5b24504da7ce343799ab9
 
-PODFILE CHECKSUM: bf72721bd8baf7ac5ade2fda37dfb9827932d509
+PODFILE CHECKSUM: 82613a7cbc779b3ed8c9c4d8728224b1f7d97024
 
 COCOAPODS: 1.2.1

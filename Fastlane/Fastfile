@@ -64,6 +64,13 @@ lane :beta do
   )
 end
 
+desc "Generate screenshots and upload to the App Store"
+  lane :screenshots do
+    snapshot
+    # frameit(white: true)
+    # deliver
+  end
+
 lane :increment_build do
   date_number = Time.new.strftime("%Y.%m")
   build_number = "#{date_number}.#{number_of_commits}"

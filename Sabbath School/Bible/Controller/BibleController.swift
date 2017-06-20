@@ -54,6 +54,7 @@ class BibleController: ASViewController<ASDisplayNode> {
         }
         
         let closeButton = UIBarButtonItem(image: R.image.iconNavbarClose(), style: .done, target: self, action: #selector(closeAction(sender:)))
+        closeButton.accessibilityIdentifier = "dismissBibleVerse"
         navigationItem.leftBarButtonItem = closeButton
         
         let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? ""
