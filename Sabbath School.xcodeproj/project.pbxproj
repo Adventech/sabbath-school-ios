@@ -174,7 +174,7 @@
 		7A280F841ED7D6B6003C7458 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A280F911ED7D8B8003C7458 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
-		7A280F961ED94964003C7458 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = ../../../R.generated.swift; sourceTree = "<group>"; };
+		7A280F961ED94964003C7458 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = ../../R.generated.swift; sourceTree = "<group>"; };
 		7A280F991EDA015D003C7458 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A280F9A1EDA015D003C7458 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -399,7 +399,6 @@
 		7A280F861ED7D6C8003C7458 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				7A280F961ED94964003C7458 /* R.generated.swift */,
 				7ABB93BD1EF74AF200658963 /* Localizable.strings */,
 				7ABB93E51EF78CCC00658963 /* InfoPlist.strings */,
 			);
@@ -409,6 +408,7 @@
 		7A280F8C1ED7D75E003C7458 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7A280F961ED94964003C7458 /* R.generated.swift */,
 				7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */,
 				7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */,
 				7A280F841ED7D6B6003C7458 /* Assets.xcassets */,
