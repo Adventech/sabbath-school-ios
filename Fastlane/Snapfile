@@ -7,14 +7,17 @@ devices([
 ])
 
 languages([
-  "en-US",
-  # "es-ES",
-  # "fr-CA",
-  # "de-DE",
-  # "it-IT",
-  # ["pt", "pt_BR"] # Portuguese with Brazilian locale
+  "de-DE", # German
+  "en-US", # English
+  "es-ES", # Spanish
+  "fr-CA", # French
+  "ja-JP", # Japanese
+  ["pt", "pt_BR"], # Portuguese with Brazilian locale
+  "ru-RU", # Russian
+  "tr-TR", # Turkish
+  "uk-UA" # Ukranian
 ])
 
 scheme "SnapshotUITests"
 output_directory "./fastlane/screenshots"
-clear_previous_screenshots true
+# clear_previous_screenshots true

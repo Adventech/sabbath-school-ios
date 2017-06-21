@@ -32,6 +32,11 @@ class SnapshotUITests: XCTestCase {
         app.buttons["continueWithoutLogin"].tap()
         app.buttons["loginAnonimousOptionYes"].tap()
 
+        // Select language
+        let language = locale.components(separatedBy: "-")[0]
+        app.buttons["openLanguage"].tap()
+        app.tables.cells.otherElements[language].tap()
+
         // Quarterly
         snapshot("01Quarterly")
 
@@ -40,16 +45,20 @@ class SnapshotUITests: XCTestCase {
         snapshot("02Lesson")
 
         // Read
-        app.buttons["readLesson"].tap()
+        app.tables.cells.element(boundBy: 1).tap()
         snapshot("03Reading")
 
         // Verse
-        let verseRegex = "(?:\\d|I{1,3})?\\s?\\w{2,}\\.?\\s*\\d{1,}\\:\\d{1,}-?,?\\d{0,2}(?:,\\d{0,2}){0,2}"
+        let verseRegex = "(?:\\d|I{1,3})?\\s?\\w{2,}\\.?\\s*\\d{1,}(:|,)\\d{1,}-?,?\\d{0,2}(?:,\\d{0,2}){0,2}"
         let verses = app.collectionViews.webViews.staticTexts.matching(NSPredicate(format: "label MATCHES %@", verseRegex))
-        XCTAssert(verses.count > 0, "No verses match with Regex")
-        verses.element(boundBy: 0).tap()
-        snapshot("04Verse")
-        app.buttons["dismissBibleVerse"].tap()
+
+        if verses.count > 0 {
+            verses.element(boundBy: 0).forceTapElement()
+            snapshot("04Verse")
+            app.buttons["dismissBibleVerse"].tap()
+            app.collectionViews.webViews.element.swipeDown()
+            app.statusBars.element.tap()
+        }
 
         // Theme
         app.buttons["themeSettings"].tap()
@@ -61,5 +70,16 @@ class SnapshotUITests: XCTestCase {
 
         app.buttons["openSettings"].tap()
         app.tables.cells.otherElements.matching(identifier: "logOut").element.tap()
+    }
+}
+
+extension XCUIElement {
+    func forceTapElement() {
+        if isHittable {
+            tap()
+        } else {
+            XCUIApplication().collectionViews.webViews.element.swipeUp()
+            forceTapElement()
+        }
     }
 }

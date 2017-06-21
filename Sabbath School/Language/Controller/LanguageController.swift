@@ -74,12 +74,13 @@ extension LanguageController: ASTableDataSource {
                 title: originalName.capitalized,
                 subtitle: translatedName.capitalized
             )
-            
+
             if let selectedLanguage = savedLanguage {
                 let current: QuarterlyLanguage = try! unbox(dictionary: selectedLanguage)
                 cell.isSelected = language.code == current.code
             }
-            
+
+            cell.accessibilityIdentifier = language.code
             return cell
         }
         
