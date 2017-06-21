@@ -980,8 +980,8 @@
 				7A280F701ED7CF05003C7458 /* Login */,
 				7A280FD11EDCB736003C7458 /* Quarterly */,
 				7A922E0A1EDF88F800C12A67 /* Read */,
-				7A280F8C1ED7D75E003C7458 /* Resources */,
 				7A535A721EF0A4F000CBDEAB /* Settings */,
+				7A280F8C1ED7D75E003C7458 /* Resources */,
 			);
 			path = "Sabbath School";
 			sourceTree = "<group>";
