@@ -229,6 +229,59 @@ struct TextStyles {
         
         return NSAttributedString(string: string, attributes: attributes)
     }
+    
+    static func sloganStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes = [
+            NSFontAttributeName: R.font.latoRegular(size: 15)!,
+            NSForegroundColorAttributeName: UIColor.baseGray3,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func websiteUrlStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        
+        let attributes = [
+            NSFontAttributeName: R.font.latoRegular(size: 18)!,
+            NSForegroundColorAttributeName: UIColor.tintColor,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func descriptionStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .left
+        style.lineSpacing = 6
+        
+        let attributes = [
+            NSFontAttributeName: R.font.latoRegular(size: 18)!,
+            NSForegroundColorAttributeName: UIColor.baseGray3,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func signatureStyle(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .left
+        
+        let attributes = [
+            NSFontAttributeName: R.font.latoBold(size: 18)!,
+            NSForegroundColorAttributeName: UIColor.baseGray3,
+            NSParagraphStyleAttributeName: style
+        ]
+        
+        return NSAttributedString(string: string, attributes: attributes)
+    }
 
     // MARK: Headers
 

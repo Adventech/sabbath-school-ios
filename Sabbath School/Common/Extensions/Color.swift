@@ -92,11 +92,11 @@ extension UIColor {
     }
     
     class var readerDark: UIColor {
-        return UIColor(hex: "#292929")
+        return UIColor(hex: "#212325")
     }
     
     class var readerDarkFont: UIColor {
-        return UIColor(hex: "#efefef")
+        return UIColor(hex: "#949595")
     }
     
     class var readerSepia: UIColor {

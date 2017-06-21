@@ -232,7 +232,8 @@ extension SettingsController: ASTableDelegate {
             break
         case 2:
             if indexPath.row == 0 {
-                // OPEN NEW VIEW
+                let about = AboutController()
+                show(about, sender: nil)
             }
             
             if indexPath.row == 1 {

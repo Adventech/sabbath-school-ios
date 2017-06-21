@@ -92,12 +92,12 @@ html, body {
 }
 
 .ss-wrapper-dark {
-    background-color: #292929;
-    color: #ccc;
+    background-color: #212325;
+    color: #949595;
 }
 
 .ss-wrapper-dark code, .ss-wrapper-dark blockquote {
-    background-color: #525252;
+    background-color: #212325;
 }
 
 .ss-wrapper-dark a.verse {
@@ -109,12 +109,13 @@ html, body {
 }
 
 .ss-wrapper-dark .textarea {
-    background-color: #c4c2c4;
-    background-image: -webkit-linear-gradient(#ccc 1px, rgba(0, 0, 0, 0) 1px);
+    background-color: #232527;
+    color: #949595;
+    background-image: -webkit-linear-gradient(#434343 1px, rgba(0, 0, 0, 0) 1px);
 }
 
 .ss-wrapper-dark .textarea-border {
-    background: #ada6a7;
+    background: #434343;
 }
 
 .ss-wrapper p {
