@@ -89,7 +89,6 @@
 		7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */; };
 		7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */; };
 		7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1F1EDFC61D00C12A67 /* ReadView.swift */; };
-		7A922E541EE07EC200C12A67 /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E331EE07EC200C12A67 /* base.css */; };
 		7A922E551EE07EC200C12A67 /* fonts.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E341EE07EC200C12A67 /* fonts.css */; };
 		7A922E561EE07EC200C12A67 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E351EE07EC200C12A67 /* reset.css */; };
 		7A922E571EE07EC200C12A67 /* Lora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E381EE07EC200C12A67 /* Lora-Bold.ttf */; };
@@ -132,6 +131,7 @@
 		7AF371611EF9CB5A00547916 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */; };
 		7AF3716C1EF9E6EC00547916 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF3716B1EF9E6EC00547916 /* AboutController.swift */; };
 		7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF3716D1EF9E6FF00547916 /* AboutView.swift */; };
+		7AF371701EFA1E6E00547916 /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3716F1EFA1E6E00547916 /* base.css */; };
 		C6AD5FC4E686836BCB68D63F /* Pods_Sabbath_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA77760489FE123F60F36B6 /* Pods_Sabbath_School.framework */; };
 /* End PBXBuildFile section */
 
@@ -235,7 +235,6 @@
 		7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadInteractor.swift; sourceTree = "<group>"; };
 		7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseInteractor.swift; sourceTree = "<group>"; };
 		7A922E1F1EDFC61D00C12A67 /* ReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
-		7A922E331EE07EC200C12A67 /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
 		7A922E341EE07EC200C12A67 /* fonts.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = fonts.css; sourceTree = "<group>"; };
 		7A922E351EE07EC200C12A67 /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
 		7A922E381EE07EC200C12A67 /* Lora-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Bold.ttf"; sourceTree = "<group>"; };
@@ -298,6 +297,7 @@
 		7AF3716A1EF9CB7100547916 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7AF3716B1EF9E6EC00547916 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		7AF3716D1EF9E6FF00547916 /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		7AF3716F1EFA1E6E00547916 /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
 		BB0D2FA897C7BC2DB383D717 /* Pods_SnapshotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapshotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -850,7 +850,7 @@
 		7A922E321EE07EC200C12A67 /* css */ = {
 			isa = PBXGroup;
 			children = (
-				7A922E331EE07EC200C12A67 /* base.css */,
+				7AF3716F1EFA1E6E00547916 /* base.css */,
 				7A922E341EE07EC200C12A67 /* fonts.css */,
 				7A922E351EE07EC200C12A67 /* reset.css */,
 			);
@@ -1131,6 +1131,7 @@
 				7AD973CB1EF35ED0009D9EB3 /* Fabric.apiKey in Resources */,
 				7AF371551EF9CB3400547916 /* Localizable.strings in Resources */,
 				7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */,
+				7AF371701EFA1E6E00547916 /* base.css in Resources */,
 				7A922E5F1EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf in Resources */,
 				7A922E671EE07EC200C12A67 /* index.html in Resources */,
 				7A280FB31EDA0276003C7458 /* Lato-Bold.ttf in Resources */,
@@ -1142,7 +1143,6 @@
 				7A922E6B1EE07EC200C12A67 /* rangy-core.js in Resources */,
 				7A922E681EE07EC200C12A67 /* jquery-3.1.1.min.js in Resources */,
 				7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */,
-				7A922E541EE07EC200C12A67 /* base.css in Resources */,
 				7ABB93E11EF7888900658963 /* GoogleService-Info-Prod.plist in Resources */,
 				7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */,
 				7A922E641EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf in Resources */,

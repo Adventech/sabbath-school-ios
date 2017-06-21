@@ -31,12 +31,12 @@ class AboutView: ASCellNode {
         super.init()
         
         adventechLogo.image = R.image.logoAdventech()
-        slogan.attributedText = TextStyles.sloganStyle(string: "God’s Ministry through technology".localized())
+        slogan.attributedText = TextStyles.sloganStyle(string: "God's Ministry through Technology".localized())
         instagramLogo.image = R.image.iconInstagram()
         facebookLogo.image = R.image.iconFacebook()
         githubLogo.image = R.image.iconGithub()
         websiteUrl.attributedText = TextStyles.websiteUrlStyle(string: "adventech.io".localized())
-        descriptionText.attributedText = TextStyles.descriptionStyle(string: "Our mission is to glorify the Ancient of Days by helping official Adventist ministries and churches in technology. By empowering passionate and technologically advanced believers we want to up the bar of existing resources that support Adventist initiatives in this digitally connected world.\n\nOur mission is to glorify the Ancient of Days by helping official Adventist ministries and churches in technology. By empowering passionate and technologically advanced believers we want to up the bar of existing resources that support Adventist initiatives in this digitally connected world.".localized())
+        descriptionText.attributedText = TextStyles.descriptionStyle(string: "Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!".localized())
         signatureText.attributedText = TextStyles.signatureStyle(string: "Your friends at Adventech")
         
         instagramLogo.addTarget(self, action: #selector(tapInstagram(_:)), forControlEvents: .touchUpInside)
