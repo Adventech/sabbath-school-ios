@@ -12,7 +12,7 @@ languages([
   "es-ES", # Spanish
   "fr-CA", # French
   "ja-JP", # Japanese
-  ["pt", "pt_BR"], # Portuguese with Brazilian locale
+  "pt-BR", # Portuguese
   "ru-RU", # Russian
   "tr-TR", # Turkish
   "uk-UA" # Ukranian
