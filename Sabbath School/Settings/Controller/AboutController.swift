@@ -1,12 +1,27 @@
-//
-//  AboutController.swift
-//  Sabbath School
-//
-//  Created by Vitaliy Lim on 2017-06-20.
-//  Copyright © 2017 Adventech. All rights reserved.
-//
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 import AsyncDisplayKit
+import SafariServices
 import JSQWebViewController
 import UIKit
 
@@ -35,9 +50,16 @@ class AboutController: ThemeController {
     }
     
     func openUrl(url: String){
-        let controller = WebViewController(url: URL(string: url)!)
-        let nav = UINavigationController(rootViewController: controller)
-        present(nav, animated: true, completion: nil)
+        if #available(iOS 9.0, *) {
+            let safariVC = SFSafariViewController(url: URL(string: url)!)
+            safariVC.view.tintColor = .tintColor
+            safariVC.modalPresentationStyle = .currentContext
+            present(safariVC, animated: true, completion: nil)
+        } else {
+            let controller = WebViewController(url: URL(string: url)!)
+            let nav = UINavigationController(rootViewController: controller)
+            present(nav, animated: true, completion: nil)
+        }
     }
 }
 

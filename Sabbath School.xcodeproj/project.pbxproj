@@ -286,7 +286,6 @@
 		7AF3715D1EF9CB4D00547916 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7AF3715E1EF9CB4F00547916 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7AF371601EF9CB5A00547916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7AF371621EF9CB5F00547916 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7AF371631EF9CB6400547916 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7AF371641EF9CB6600547916 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7AF371651EF9CB6700547916 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1418,7 +1417,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				7AF371601EF9CB5A00547916 /* Base */,
-				7AF371621EF9CB5F00547916 /* en */,
 				7AF371631EF9CB6400547916 /* ja */,
 				7AF371641EF9CB6600547916 /* ru */,
 				7AF371651EF9CB6700547916 /* fr */,

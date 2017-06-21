@@ -204,7 +204,6 @@ open class Reader: UIWebView {
             index = index?.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size)
         }
         if exists {
-            print(Constants.Path.readerBundleDir)
             self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir)
         } else {
             self.loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))

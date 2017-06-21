@@ -201,14 +201,14 @@ class ReadOptionsView: ASDisplayNode {
     private func setupTypefaceSegmentControl(){
         let typeface = currentTypeface()
         
-        let andadaTypefaceButton = segmentButtonProvider(text: "Andada".localized(), font: R.font.loraRegular(size: 16)!, selected:
-            (typeface == ReaderStyle.Typeface.Andada) ||
-            (typeface != ReaderStyle.Typeface.Lato &&
+        let andadaTypefaceButton = segmentButtonProvider(text: "Andada".localized(), font: R.font.loraRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.Andada)
+        
+        let latoTypefaceButton = segmentButtonProvider(text: "Lato".localized(), font: R.font.latoRegular(size: 16)!, selected:
+            (typeface == ReaderStyle.Typeface.Lato) ||
+            (typeface != ReaderStyle.Typeface.Andada &&
              typeface != ReaderStyle.Typeface.PTSerif &&
              typeface != ReaderStyle.Typeface.PTSans)
         )
-        
-        let latoTypefaceButton = segmentButtonProvider(text: "Lato".localized(), font: R.font.latoRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.Lato)
         let ptSerifTypefaceButton = segmentButtonProvider(text: "PT Serif".localized(), font: R.font.pTSerifRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.PTSerif)
         let ptSansTypefaceButton = segmentButtonProvider(text: "PT Sans".localized(), font: R.font.pTSansRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.PTSans)
         

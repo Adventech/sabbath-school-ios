@@ -23,6 +23,7 @@
 import AsyncDisplayKit
 import FirebaseAuth
 import JSQWebViewController
+import SafariServices
 import SwiftDate
 import UIKit
 
@@ -226,9 +227,19 @@ extension SettingsController: ASTableDelegate {
             }
             break
         case 1:
-            let controller = WebViewController(url: URL(string: "https://github.com/Adventech")!)
-            let nav = UINavigationController(rootViewController: controller)
-            present(nav, animated: true, completion: nil)
+            let url = "https://github.com/Adventech"
+            
+            if #available(iOS 9.0, *) {
+                let safariVC = SFSafariViewController(url: URL(string: url)!)
+                safariVC.view.tintColor = .tintColor
+                safariVC.modalPresentationStyle = .currentContext
+                present(safariVC, animated: true, completion: nil)
+            } else {
+                let controller = WebViewController(url: URL(string: url)!)
+                let nav = UINavigationController(rootViewController: controller)
+                present(nav, animated: true, completion: nil)
+            }
+            
             break
         case 2:
             if indexPath.row == 0 {
