@@ -1,46 +1,23 @@
-/*
- * Copyright (c) 2017 Adventech <info@adventech.io>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 
+/*Localizable.strings
+  Sabbath School
+
+  Created by Vitaliy Lim on 2017-06-18.
+  Copyright © 2017 Adventech. All rights reserved.*/
 "Aa" = "Aa";
 "Andada" = "Andada";
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Ao iniciar a sessão anonimamente você não será capaz de sincronizar os dados, tais como comentários e destaques, através de dispositivos ou após a desinstalação do aplicativo. Tem certeza de que deseja continuar?";
-"I am using Sabbath School app from Adventech! 🎉" = "Dá uma olhada nesse aplicativo da Escola Sabatina feito pelo Adventech! 🎉";
 "Continue without login" = "Continue sem login";
 "Contribute" = "Contribuir";
-"Languages" = "Idiomas";
-"Lato" = "Lato";
 "Dark" = "Escuro";
 "English" = "Inglês";
-"God's Ministry through Technology" = "Ministério de Deus através da tecnologia";
 "I am using Sabbath School app from Adventech! 🎉" = "Confira, estou usando este aplicativo Escola Sabatina 🎉";
 "Languages" = "línguas";
 "Lato" = "Lato";
 "Light" = "Claro";
 "Log out" = "Sair";
-"More" = "Mais";
 "Login anonymously?" = "Entre anonimamente?";
 "Made with ❤ by Adventech" = "Feito com ❤ por Adventech";
-"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "A Missão de Adventech é antes de tudo - dar glória ao nosso Lᴏʀᴅ, o Antigo dos Dias. Estamos dedicados a fazer o nosso ministério através da tecnologia. Nosso objetivo é unir nossa Igreja Adventista do Sétimo Dia. Nosso objetivo é proclamar Boas Novidades a este mundo por meio da tecnologia e avanços nas comunicações. Nosso objetivo é testemunhar a Segunda Vinda de Jesus.\n\nEstamos inspirados pelo exemplo e métodos de Jesus, quando Ele ministrou aqui na Terra. Portanto, estamos empenhados em oferecer um alto grau de qualidade de todos os nossos projetos com absolutamente nenhum custo com amor e dedicação. Estamos empenhados em dar glória ao nosso Pai, porque Ele é digno do maior louvor.\n\nNós realmente acreditamos que Deus aumentou o conhecimento do mundo moderno e quer que nós o usemos para que Sua glória proclame Seu retorno em breve!";
-
 "More" = "Mais";
 "No" = "Não";
 "Open" = "Abrir";
@@ -49,19 +26,23 @@
 "PT Serif" = "PT Serif";
 "Read" = "Ler";
 "Reminder" = "Lembrete";
-"Sepia" = "Sépia";
 "Sabbath School" = "Escola Sabatina";
+"Sepia" = "Sépia";
 "Set the reminder to be notified daily to study the lesson" = "Defina o lembrete para ser notificado diariamente para estudar a lição";
 "Settings" = "Configurações";
 "Sign in with Facebook" = "Login com Facebook";
 "Sign in with Google" = "Login com Google";
 "There was an error during login" = "Ocorreu um erro durante o login";
 "Time" = "Hora";
-"Yes" = "Sim";
-"Your friends at Adventech" = "Seus amigos no Adventech";
 "Time to study Sabbath School 🙏" = "Hora de estudar a Lição da Escola Sabatina 🙏";
-"🎉 Rate app" = "🎉 Avalie o app";
+"Yes" = "Sim";
 "https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Avalie o app";
 "🐙 GitHub" = "🐙 GitHub";
 "💌 Recommend Sabbath School" = "💌 Envie o app para um amigo";
 "🙏 About us" = "🙏 Sobre nós";
+"God's Ministry through Technology" = "Ministério de Deus através da tecnologia";
+
+/*This*/
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "A Missão do Adventech é antes de tudo - dar glória ao nosso Senhor, o Ancião de Dias. Estamos dedicados a fazer o nosso ministério através da tecnologia. Nosso objetivo é unir nossa Igreja Adventista do Sétimo Dia. Nosso objetivo é proclamar Boas Novidades a este mundo por meio da tecnologia e avanços nas comunicações. Nosso objetivo é testemunhar a Segunda Vinda de Jesus.\n\nEstamos inspirados pelo exemplo e métodos de Jesus, quando Ele ministrou aqui na Terra. Portanto, estamos empenhados em oferecer um alto grau de qualidade de todos os nossos projetos com absolutamente nenhum custo com amor e dedicação. Estamos empenhados em dar glória ao nosso Pai, porque Ele é digno do maior louvor.\n\nNós realmente acreditamos que Deus aumentou o conhecimento do mundo moderno e quer que nós o usemos para que Sua glória proclame Seu retorno em breve!";
+"Your friends at Adventech" = "Seus amigos do Adventech";
