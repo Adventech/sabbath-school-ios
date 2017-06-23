@@ -1,0 +1,48 @@
+{
+  "default": {
+    "keyword": {
+      "font": "./fonts/Lato-Bold.ttf"
+    },
+    "title": {
+      "font": "./fonts/Lato-Bold.ttf",
+      "color": "#303E55"
+    },
+    "background": "./background.jpg",
+    "padding": 90,
+    "show_complete_frame": false,
+    "stack_title": false,
+    "font_scale_factor": 0.06
+  },
+  "data": [
+    {
+      "filter": "Quarterly",
+      "keyword": {
+        "color": "#4ebc87"
+      }
+    },
+    {
+      "filter": "Lesson",
+      "keyword": {
+        "color": "#4ebc87"
+      }
+    },
+    {
+      "filter": "Reading",
+      "keyword": {
+        "color": "#4ebc87"
+      }
+    },
+    {
+      "filter": "Verse",
+      "keyword": {
+        "color": "#4ebc87"
+      }
+    },
+    {
+      "filter": "Theme",
+      "keyword": {
+        "color": "#4ebc87"
+      }
+    }
+  ]
+}

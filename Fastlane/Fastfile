@@ -67,7 +67,7 @@ end
 desc "Generate screenshots and upload to the App Store"
   lane :screenshots do
     snapshot
-    # frameit(white: true)
+    frameit(white: true)
     # deliver
   end
 

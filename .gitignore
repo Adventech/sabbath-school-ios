@@ -53,7 +53,6 @@ Pods/
 # https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
 
 Fastlane/report.xml
-Fastlane/screenshots
 
 # Private stuff
 Fabric.apiKey
