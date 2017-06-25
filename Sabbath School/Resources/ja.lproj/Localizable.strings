@@ -25,6 +25,7 @@
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "無名でログインすると、コメントやハイライトの同期が出来ません。本当に続きますか？";
 "Continue without login" = "無名でログイン";
 "Contribute" = "寄稿";
+"Copy" = "コピー";
 "Dark" = "暗色";
 "English" = "英語";
 "God's Ministry through Technology" = "技術を通じて神の使命";
@@ -49,6 +50,7 @@
 "Sepia" = "セピア色";
 "Set the reminder to be notified daily to study the lesson" = "タップして日々通知を可能にする";
 "Settings" = "設定";
+"Share" = "共有";
 "Sign in with Facebook" = "Facebookでログイン";
 "Sign in with Google" = "Googleアカウントでログイン";
 "There was an error during login" = "不明なエラーが起こしました。再試行してください。";

@@ -25,6 +25,8 @@ import SwiftDate
 import UIKit
 
 protocol ReadViewOutputProtocol {
+    func didTapCopy()
+    func didTapShare()
     func didTapClearHighlight()
     func didTapHighlight(color: String)
     func didClickVerse(read: Read, verse: String)
@@ -32,6 +34,8 @@ protocol ReadViewOutputProtocol {
     func didLoadWebView(webView: UIWebView)
     func didReceiveHighlights(readHighlights: ReadHighlights)
     func didReceiveComment(readComments: ReadComments)
+    func didReceiveCopy(text: String)
+    func didReceiveShare(text: String)
 }
 
 class ReadView: ASCellNode {
@@ -200,10 +204,19 @@ extension ReadView: ReaderOutputProtocol {
         }
     }
     
+    
     func didLoadContent(content: String) {}
     
     func didTapClearHighlight() {
         self.delegate.didTapClearHighlight()
+    }
+    
+    func didTapCopy(){
+        self.delegate.didTapCopy()
+    }
+    
+    func didTapShare(){
+        self.delegate.didTapShare()
     }
     
     func didTapHighlight(color: String) {
@@ -233,5 +246,13 @@ extension ReadView: ReaderOutputProtocol {
         }
         
         self.delegate.didReceiveComment(readComments: self.comments!)
+    }
+    
+    func didReceiveCopy(text: String) {
+        self.delegate.didReceiveCopy(text: text)
+    }
+    
+    func didReceiveShare(text: String) {
+        self.delegate.didReceiveShare(text: text)
     }
 }

@@ -52,6 +52,8 @@ extension QuarterlyPresenter: QuarterlyInteractorOutputProtocol {
     }
     
     func didRetrieveQuarterlies(quarterlies: [Quarterly]){
-        controller?.showQuarterlies(quarterlies: quarterlies)
+        if currentLanguage().code == quarterlies.first?.lang {
+            controller?.showQuarterlies(quarterlies: quarterlies)
+        }
     }
 }

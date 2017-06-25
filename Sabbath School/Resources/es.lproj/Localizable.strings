@@ -25,6 +25,7 @@
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Al iniciar la sesión en forma anónima que no será capaz de sincronizar los datos, tales como comentarios y pone de relieve, a través de dispositivos o después de la desinstalación de la aplicación. ¿Seguro que desea continuar?";
 "Continue without login" = "Continuar anónimamente";
 "Contribute" = "Contribuir";
+"Copy" = "Copiar";
 "Dark" = "Oscuro";
 "English" = "Inglés";
 "God's Ministry through Technology" = "El ministerio de Dios a través de la tecnología";
@@ -49,6 +50,7 @@
 "Sepia" = "Sepia";
 "Set the reminder to be notified daily to study the lesson" = "Haga clic para activar el envío de todos los días acerca de la lección de la Escuela Sabática";
 "Settings" = "Ajustes";
+"Share" = "Compartir";
 "Sign in with Facebook" = "Inicia sesión con Facebook";
 "Sign in with Google" = "Inicia sesión con Google";
 "There was an error during login" = "Se produjo un error desconocido. Por favor, inténtelo de nuevo";

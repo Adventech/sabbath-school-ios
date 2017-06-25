@@ -25,6 +25,7 @@
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Anonim oturum açtığınızda, cihazlar arasında veya uygulamayı kaldırdıktan sonra, yorumlar ve vurgular gibi verilerinizi, eşitlemek mümkün olmayacaktır. Devam etmek istediğinizden emin misiniz?";
 "Continue without login" = "Anonim olarak Devam";
 "Contribute" = "Katkıda bulunmak";
+"Copy" = "Kopya";
 "Dark" = "Koyü";
 "English" = "Ingilizce";
 "God's Ministry through Technology" = "Teknolojiyle Tanrı'nın Bakanlığı";
@@ -49,6 +50,7 @@
 "Sepia" = "Sepya";
 "Set the reminder to be notified daily to study the lesson" = "Günlük Şabat Okulu dersi çalışma hatırlatıcısını etkinleştirmek için kontrol edin";
 "Settings" = "Ayarlar";
+"Share" = "Paylaş";
 "Sign in with Facebook" = "Facebook ile giriş";
 "Sign in with Google" = "Google ile giriş";
 "There was an error during login" = "Bilinmeyen bir hata oluştu. Lütfen tekrar deneyin";

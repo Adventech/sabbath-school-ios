@@ -38,7 +38,7 @@ protocol ReadControllerProtocol: class {
     var presenter: ReadPresenterProtocol? { get set }
     
     func loadLessonInfo(lessonInfo: LessonInfo)
-    func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments)
+    func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool)
 }
 
 protocol ReadWireFrameProtocol: class {
@@ -47,7 +47,7 @@ protocol ReadWireFrameProtocol: class {
 
 protocol ReadInteractorOutputProtocol: class {
     func onError(_ error: Error?)
-    func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments)
+    func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int)
     func didRetrieveLessonInfo(lessonInfo: LessonInfo)
 }
 

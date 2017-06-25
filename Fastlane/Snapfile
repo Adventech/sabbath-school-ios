@@ -8,14 +8,14 @@ devices([
 
 languages([
   "de-DE", # German
-  "en-US", # English
-  "es-ES", # Spanish
-  "fr-CA", # French
-  "ja-JP", # Japanese
-  "pt-BR", # Portuguese
-  "ru-RU", # Russian
-  "tr-TR", # Turkish
-  "uk-UA" # Ukranian
+  #"en-US", # English
+  #"es-ES", # Spanish
+  #"fr-FR", # French
+  #"ja-JP", # Japanese
+  #"pt-BR", # Portuguese
+  #"ru-RU", # Russian
+  #"tr-TR", # Turkish
+  #"uk-UA" # Ukranian
 ])
 
 scheme "SnapshotUITests"

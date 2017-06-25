@@ -25,6 +25,7 @@
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Входя анонимно вы не сможете синхронизировать данные, такие как комментарии и выделения, на разных устройствах или после удаления приложения. Вы уверены, что хотите продолжить?";
 "Continue without login" = "Продолжить анонимно";
 "Contribute" = "Помочь в разработке";
+"Copy" = "Скопировать";
 "Dark" = "Темная";
 "English" = "Английский";
 "God's Ministry through Technology" = "Божье служение используя Технологии";
@@ -49,6 +50,7 @@
 "Sepia" = "Сепия";
 "Set the reminder to be notified daily to study the lesson" = "Установите напоминание чтобы ежедневно получать оповещение о уроке Субботней Школы";
 "Settings" = "Настройки";
+"Share" = "Поделиться";
 "Sign in with Facebook" = "Войти с Facebook";
 "Sign in with Google" = "Войти с Google";
 "There was an error during login" = "Произошла ошибка во время входа";

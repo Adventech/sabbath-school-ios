@@ -127,6 +127,8 @@
 		7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */; };
 		7AD973CB1EF35ED0009D9EB3 /* Fabric.apiKey in Resources */ = {isa = PBXBuildFile; fileRef = 7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */; };
 		7AD973CC1EF35ED0009D9EB3 /* Fabric.buildSecret in Resources */ = {isa = PBXBuildFile; fileRef = 7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */; };
+		7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF326171EFF92C700A04568 /* ReadEmptyView.swift */; };
+		7AF3261A1EFF998D00A04568 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF326191EFF998D00A04568 /* Range.swift */; };
 		7AF371551EF9CB3400547916 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF371531EF9CB3400547916 /* Localizable.strings */; };
 		7AF371611EF9CB5A00547916 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */; };
 		7AF3716C1EF9E6EC00547916 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF3716B1EF9E6EC00547916 /* AboutController.swift */; };
@@ -276,6 +278,8 @@
 		7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fabric.apiKey; sourceTree = SOURCE_ROOT; };
 		7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fabric.buildSecret; sourceTree = SOURCE_ROOT; };
 		7AF191A81ED7B89B000CCF0C /* Sabbath School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabbath School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AF326171EFF92C700A04568 /* ReadEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadEmptyView.swift; sourceTree = "<group>"; };
+		7AF326191EFF998D00A04568 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		7AF371541EF9CB3400547916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7AF371571EF9CB4000547916 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7AF371581EF9CB4200547916 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -465,6 +469,7 @@
 				7A3BCE1E1EE0EC28003EC12B /* URL.swift */,
 				7A3BCE201EE0EC60003EC12B /* String.swift */,
 				7A3BCE3B1EE29605003EC12B /* Button.swift */,
+				7AF326191EFF998D00A04568 /* Range.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -823,6 +828,7 @@
 			children = (
 				7A922E1F1EDFC61D00C12A67 /* ReadView.swift */,
 				7A3BCE3F1EE2F27F003EC12B /* ReadOptionsView.swift */,
+				7AF326171EFF92C700A04568 /* ReadEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1307,6 +1313,7 @@
 				7A280FD01EDA23F0003C7458 /* LoginInteractor.swift in Sources */,
 				7A922E091EDF623500C12A67 /* TableController.swift in Sources */,
 				7A280FCE1EDA10ED003C7458 /* LoginProtocols.swift in Sources */,
+				7AF3261A1EFF998D00A04568 /* Range.swift in Sources */,
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,
 				7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */,
 				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
@@ -1353,6 +1360,7 @@
 				7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */,
 				7A280FEB1EDCEAD2003C7458 /* Constants.swift in Sources */,
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
+				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageCellNode.swift in Sources */,
 				7A280F971ED94964003C7458 /* R.generated.swift in Sources */,
 				7A922E071EDEDEA700C12A67 /* ButtonStyle.swift in Sources */,
@@ -1469,6 +1477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1520,6 +1529,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

@@ -46,10 +46,10 @@ class QuarterlyController: TableController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let lastQuarterlyIndex = currentQuarterly()
-//        if !lastQuarterlyIndex.isEmpty {
-//            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
-//        }
+        let lastQuarterlyIndex = currentQuarterly()
+        if !lastQuarterlyIndex.isEmpty {
+            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
+        }
         
         let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
         settingsButton.accessibilityIdentifier = "openSettings"

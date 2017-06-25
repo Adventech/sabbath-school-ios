@@ -34,6 +34,7 @@ class ReadController: ThemeController {
     var reads = [Read]()
     var highlights = [ReadHighlights]()
     var comments = [ReadComments]()
+    var finished: Bool = false
     
     var shouldHideStatusBar = false
     var lastContentOffset: CGFloat = 0
@@ -112,7 +113,7 @@ class ReadController: ThemeController {
     }
     
     func scrollBehavior(){
-        if reads.isEmpty {
+        if !finished || reads.isEmpty {
             return
         }
         
@@ -180,40 +181,47 @@ extension ReadController: ReadControllerProtocol {
         self.lessonInfo = lessonInfo
     }
     
-    func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments) {
+    func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool) {
         self.reads.append(read)
         self.highlights.append(highlights)
         self.comments.append(comments)
-        self.collectionNode.reloadData()
+        if (finish) {
+            self.finished = true
+            self.collectionNode.reloadData()
+        }
     }
 }
 
 extension ReadController: ASPagerDataSource {
     func pagerNode(_ pagerNode: ASPagerNode, nodeBlockAt index: Int) -> ASCellNodeBlock {
-        let read = reads[index]
-        let readHighlights = highlights[index]
-        let readComments = comments[index]
-        let today = Date()
-        
-        let cellNodeBlock: () -> ASCellNode = {
+        let cellNodeBlock: () -> ASCellNode = { [weak self] in
+            
+            if !(self?.finished)! {
+                return ReadEmptyView()
+            }
+            
+            let read = (self?.reads[index])!
+            let readHighlights = (self?.highlights[index])!
+            let readComments = (self?.comments[index])!
+            let today = Date()
             
             if today.isInSameDayOf(date: read.date){
                 DispatchQueue.main.async {
-                    self.collectionNode.scrollToPage(at: index, animated: false)
+                    self?.collectionNode.scrollToPage(at: index, animated: false)
                 }
             }
             
-            return ReadView(lessonInfo: self.lessonInfo!, read: read, highlights: readHighlights, comments: readComments, delegate: self)
+            return ReadView(lessonInfo: (self?.lessonInfo!)!, read: read, highlights: readHighlights, comments: readComments, delegate: self!)
         }
         
         return cellNodeBlock
     }
     
     func numberOfPages(in pagerNode: ASPagerNode) -> Int {
-        if lessonInfo != nil && !reads.isEmpty {
+        if finished && (lessonInfo != nil && !reads.isEmpty) {
             return reads.count
         }
-        return 0
+        return 1
     }
 }
 
@@ -227,6 +235,14 @@ extension ReadController: ASCollectionDelegate {
 }
 
 extension ReadController: ReadViewOutputProtocol {
+    func didTapCopy(){
+        (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.copyText()
+    }
+    
+    func didTapShare(){
+        (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.shareText()
+    }
+    
     func didTapClearHighlight(){
         (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.clearHighlight()
     }
@@ -259,6 +275,23 @@ extension ReadController: ReadViewOutputProtocol {
     
     func didReceiveComment(readComments: ReadComments){
         presenter?.interactor?.saveComments(comments: readComments)
+    }
+    
+    func didReceiveCopy(text: String){
+        UIPasteboard.general.string = text
+    }
+    
+    func didReceiveShare(text: String){
+        let objectsToShare = [text, "https://adventech.io".localized()]
+        let activityController = UIActivityViewController(
+            activityItems: objectsToShare,
+            applicationActivities: nil)
+        
+        activityController.popoverPresentationController?.sourceRect = view.frame
+        activityController.popoverPresentationController?.sourceView = view
+        activityController.popoverPresentationController?.permittedArrowDirections = .any
+        
+        present(activityController, animated: true, completion: nil)
     }
 }
 

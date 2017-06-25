@@ -59,8 +59,8 @@ extension ReadPresenter: ReadInteractorOutputProtocol {
         print(error?.localizedDescription ?? "Unknown")
     }
     
-    func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments){
-        controller?.showRead(read: read, highlights: highlights, comments: comments)
+    func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int = 0){
+        controller?.showRead(read: read, highlights: highlights, comments: comments, finish: ticker == 0)
     }
     
     func didRetrieveLessonInfo(lessonInfo: LessonInfo) {

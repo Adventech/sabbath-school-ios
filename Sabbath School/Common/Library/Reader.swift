@@ -101,10 +101,14 @@ protocol ReaderOutputProtocol {
     func ready()
     func didTapClearHighlight()
     func didTapHighlight(color: String)
+    func didTapCopy()
+    func didTapShare()
     func didLoadContent(content: String)
     func didClickVerse(verse: String)
     func didReceiveHighlights(highlights: String)
     func didReceiveComment(comment: String, elementId: String)
+    func didReceiveCopy(text: String)
+    func didReceiveShare(text: String)
 }
 
 open class Reader: UIWebView {
@@ -133,12 +137,12 @@ open class Reader: UIWebView {
             self?.readerViewDelegate?.didTapClearHighlight()
         }
         
-        let copy = UIMenuItem(title: "Copy") { [weak self] _ in
-            //            self?.readerViewDelegate?.didTapHighlightGreen()
+        let copy = UIMenuItem(title: "Copy".localized()) { [weak self] _ in
+            self?.readerViewDelegate?.didTapCopy()
         }
         
-        let share = UIMenuItem(title: "Share") { [weak self] _ in
-            //            self?.readerViewDelegate?.didTapHighlightGreen()
+        let share = UIMenuItem(title: "Share".localized()) { [weak self] _ in
+            self?.readerViewDelegate?.didTapShare()
         }
         UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, share]
     }
@@ -156,6 +160,18 @@ open class Reader: UIWebView {
     
     func highlight(color: String){
         self.stringByEvaluatingJavaScript(from: "ssReader.highlightSelection('"+color+"');")
+        self.isUserInteractionEnabled = false
+        self.isUserInteractionEnabled = true
+    }
+    
+    func copyText(){
+        self.stringByEvaluatingJavaScript(from: "ssReader.copy()")
+        self.isUserInteractionEnabled = false
+        self.isUserInteractionEnabled = true
+    }
+    
+    func shareText(){
+        self.stringByEvaluatingJavaScript(from: "ssReader.share()")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
@@ -217,6 +233,16 @@ open class Reader: UIWebView {
         
         if let _ = url.valueForParameter(key: "ready") {
             self.readerViewDelegate?.ready()
+            return false
+        }
+        
+        if let text = url.valueForParameter(key: "copy") {
+            self.readerViewDelegate?.didReceiveCopy(text: text)
+            return false
+        }
+        
+        if let text = url.valueForParameter(key: "share") {
+            self.readerViewDelegate?.didReceiveShare(text: text)
             return false
         }
         

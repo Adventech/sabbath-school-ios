@@ -26,6 +26,7 @@ import Wrap
 
 class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
     weak var presenter: ReadInteractorOutputProtocol?
+    var ticker: Int = -1
     
     func retrieveLessonInfo(lessonIndex: String){
         database?.child(Constants.Firebase.lessonInfo).child(lessonIndex).observe(.value, with: { [weak self] (snapshot) in
@@ -44,6 +45,8 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
     }
     
     private func retrieveReads(lessonInfo: LessonInfo){
+        self.ticker = lessonInfo.days.count
+        
         lessonInfo.days.forEach { (day) in
             retrieveRead(readIndex: day.index)
         }
@@ -91,14 +94,16 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
             .child(Constants.Firebase.comments)
             .child((Auth.auth().currentUser?.uid)!)
             .child(read.index).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+                self?.ticker = (self?.ticker)!-1
                 guard let json = snapshot.value as? [String: AnyObject] else {
-                    self?.presenter?.didRetrieveRead(read: read, highlights: highlights, comments: ReadComments(readIndex: read.index, comments: [Comment]()))
+                    self?.presenter?.didRetrieveRead(read: read, highlights: highlights, comments: ReadComments(readIndex: read.index, comments: [Comment]()), ticker: (self?.ticker)!)
                     return
                 }
                 
                 do {
                     let comments: ReadComments = try unbox(dictionary: json)
-                    self?.presenter?.didRetrieveRead(read: read, highlights: highlights, comments: comments)
+                    
+                    self?.presenter?.didRetrieveRead(read: read, highlights: highlights, comments: comments, ticker: (self?.ticker)!)
                 } catch let error {
                     self?.presenter?.onError(error)
                 }
