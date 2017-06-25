@@ -44,6 +44,16 @@ Configure local environment certificates
 fastlane beta
 ```
 
+### release
+```
+fastlane release
+```
+
+### build
+```
+fastlane build
+```
+
 ### screenshots
 ```
 fastlane screenshots

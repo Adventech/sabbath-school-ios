@@ -44,17 +44,7 @@ end
 
 lane :beta do
   increment_build
-
-  # build your iOS app
-  gym(
-    workspace: "./Sabbath School.xcworkspace",
-    scheme: "Sabbath School",
-    export_method: "ad-hoc",
-    clean: true, 
-    include_bitcode: true,
-    configuration: "Release",
-    output_directory: "./Fastlane/build"
-  )
+  build
 
   crashlytics(
     api_token: File.open("../Fabric.apiKey", "rb").read,
@@ -64,12 +54,35 @@ lane :beta do
   )
 end
 
+lane :release do
+  match_sync(type: "appstore")
+  increment_build
+  build
+
+  deliver(
+    submit_for_review: true,
+    force: true,
+    automatic_release: false,
+    skip_screenshots: true
+  )
+end
+
+lane :build do
+  gym(
+    workspace: "./Sabbath School.xcworkspace",
+    scheme: "Sabbath School",
+    clean: true,
+    include_bitcode: true,
+    configuration: "Release",
+    output_directory: "./Fastlane/build"
+  )
+end
+
 desc "Generate screenshots and upload to the App Store"
-  lane :screenshots do
-    snapshot
-    frameit(white: true)
-    # deliver
-  end
+lane :screenshots do
+  snapshot
+  frameit(white: true)
+end
 
 lane :increment_build do
   date_number = Time.new.strftime("%Y.%m")
