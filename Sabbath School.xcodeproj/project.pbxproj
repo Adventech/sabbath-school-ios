@@ -282,7 +282,7 @@
 		7AF191A81ED7B89B000CCF0C /* Sabbath School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabbath School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF326171EFF92C700A04568 /* ReadEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadEmptyView.swift; sourceTree = "<group>"; };
 		7AF326191EFF998D00A04568 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
-		7AF3261B1F00709800A04568 /* Sabbath School.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sabbath School.entitlements"; sourceTree = "<group>"; };
+		7AF3261C1F007ACB00A04568 /* Sabbath School.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sabbath School.entitlements"; sourceTree = "<group>"; };
 		7AF371541EF9CB3400547916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7AF371571EF9CB4000547916 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7AF371581EF9CB4200547916 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -394,6 +394,7 @@
 		7A280F8C1ED7D75E003C7458 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7AF3261C1F007ACB00A04568 /* Sabbath School.entitlements */,
 				7A280F841ED7D6B6003C7458 /* Assets.xcassets */,
 				7A280FAB1EDA0276003C7458 /* Fonts */,
 				7A922E311EE07EC200C12A67 /* sabbath-school-reader */,
@@ -981,7 +982,6 @@
 		7AF191AA1ED7B89B000CCF0C /* Sabbath School */ = {
 			isa = PBXGroup;
 			children = (
-				7AF3261B1F00709800A04568 /* Sabbath School.entitlements */,
 				7A280F981EDA015D003C7458 /* Application */,
 				7A3BCE241EE2715E003EC12B /* Bible */,
 				7A280FBF1EDA03C0003C7458 /* Common */,
@@ -1586,7 +1586,7 @@
 			baseConfigurationReference = 462CFE2EEEB08613B21AB017 /* Pods-Sabbath School.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Sabbath School.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 2017.06.156;
@@ -1609,7 +1609,7 @@
 			baseConfigurationReference = 57506EF65FC71A870E0BE99F /* Pods-Sabbath School.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Sabbath School.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 2017.06.156;
