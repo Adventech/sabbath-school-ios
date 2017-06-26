@@ -57,10 +57,14 @@ end
 lane :release do
   match_sync(type: "appstore")
   increment_build
-  build
+  build(submit: true)
+  deliver
+end
 
+lane :deliver do |options|
+  submit_for_review = options[:submit]
   deliver(
-    submit_for_review: true,
+    submit_for_review: submit_for_review,
     force: true,
     automatic_release: false
   )
