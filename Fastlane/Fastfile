@@ -62,8 +62,7 @@ lane :release do
   deliver(
     submit_for_review: true,
     force: true,
-    automatic_release: false,
-    skip_screenshots: true
+    automatic_release: false
   )
 end
 
