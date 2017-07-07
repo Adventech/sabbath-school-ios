@@ -261,6 +261,10 @@
 		7A922E511EE07EC200C12A67 /* rangy-highlighter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-highlighter.js"; sourceTree = "<group>"; };
 		7A922E521EE07EC200C12A67 /* rangy-serializer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-serializer.js"; sourceTree = "<group>"; };
 		7A922E531EE07EC200C12A67 /* ss-reader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ss-reader.js"; sourceTree = "<group>"; };
+		7A955F251F103EE100AA5DE4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A955F261F103EE100AA5DE4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7A955F271F103EF500AA5DE4 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A955F281F103EF500AA5DE4 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		7AC26AE21EE48925003F946C /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
 		7AC26AE31EE48925003F946C /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
@@ -1107,6 +1111,8 @@
 				uk,
 				tr,
 				ja,
+				ro,
+				bg,
 			);
 			mainGroup = 7AF1919F1ED7B89B000CCF0C;
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
@@ -1428,6 +1434,8 @@
 				7AF3715C1EF9CB4A00547916 /* uk */,
 				7AF3715D1EF9CB4D00547916 /* tr */,
 				7AF3715E1EF9CB4F00547916 /* ja */,
+				7A955F261F103EE100AA5DE4 /* ro */,
+				7A955F281F103EF500AA5DE4 /* bg */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1444,6 +1452,8 @@
 				7AF371681EF9CB6D00547916 /* pt-BR */,
 				7AF371691EF9CB6F00547916 /* uk */,
 				7AF3716A1EF9CB7100547916 /* tr */,
+				7A955F251F103EE100AA5DE4 /* ro */,
+				7A955F271F103EF500AA5DE4 /* bg */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

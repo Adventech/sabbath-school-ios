@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Аа";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "При анонимно влизане няма да можете да синхронизирате данните си, като например коментари и акценти, на различни устройства или след деинсталиране на приложението. Наистина ли искате да продължите?";
+"Continue without login" = "Продължете без да влезете";
+"Contribute" = "Принос";
+"Dark" = "Тъмен";
+"English" = "Английски";
+"I am using Sabbath School app from Adventech! 🎉" = "Аз използвам Съботно Училище app от Adventech! 🎉";
+"Languages" = "Езици";
+"Lato" = "Lato";
+"Light" = "Светлина";
+"Log out" = "Излез от профила си";
+"Login anonymously?" = "Анонимно влизате ли?";
+"Made with ❤ by Adventech" = "Направено с ❤ от Adventech";
+"More" = "Повече";
+"No" = "Не";
+"Open" = "Отворено";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Нашите приложения са Open Source, включително Sabbath School. Разгледайте нашия GitHub, ако искате да допринесете";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Прочети";
+"Reminder" = "Напомняне";
+"Sabbath School" = "Съботно Училище";
+"Sepia" = "Сепия";
+"Set the reminder to be notified daily to study the lesson" = "Задайте напомнянето, което трябва да бъде известно всеки ден, за да учите урока";
+"Settings" = "Настройки";
+"Sign in with Facebook" = "Влезте във Facebook";
+"Sign in with Google" = "Влезте в профила си в Google";
+"There was an error during login" = "При влизането в профила се установи грешка";
+"Time" = "Път";
+"Time to study Sabbath School 🙏" = "Време е да учите Ссъботно Училище 🙏";
+"Yes" = "Да";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Оценка на приложението";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "Препоръчваме Съботно Училище";
+"🙏 About us" = "🙏 За нас";
+"God's Ministry through Technology" = "Божието министерство чрез технологиите";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Мисията на Адвенте е преди всичко - дайте слава на нашия Господа, древен на дните. Ние сме посветени да вършим своето служение чрез технологии. Нашата цел е да обединим църквата на адвентистите от седмия ден. Нашата цел е да обявяваме добри новини на този свят чрез технологии и напредък в комуникациите. Нашата цел е да свидетелстваме за второто идване на Исус.\n\nНие сме вдъхновени от примера и методите на Исус, когато Той служи тук на Земята. Ето защо ние се ангажираме да предоставяме висока степен на качество на всички наши проекти без никакви разходи с любов и всеотдайност. Ние сме посветени да отдадем слава на нашия Отец, защото Той е достоен за най-високото хваление.\n\nНаистина вярваме, че Бог е увеличил познанието за съвременния свят и иска от нас да го използваме за Неговата слава, за да провъзгласи скорошното Му завръщане!";
+"Your friends at Adventech" = "Приятелите ви от Adventech";
+"Copy" = "Копие";
+"Share" = "Дял";

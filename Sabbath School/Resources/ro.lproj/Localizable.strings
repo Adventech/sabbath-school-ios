@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Dacă vă autentificați în mod anonim, nu veți putea să vă sincronizați datele, cum ar fi comentariile și evidențierile, pe dispozitive sau după dezinstalarea aplicației. Sunteți sigur că doriți să continuați?";
+"Continue without login" = "Continuați fără conectare";
+"Contribute" = "A contribui";
+"Dark" = "Întuneric";
+"English" = "Engleză";
+"I am using Sabbath School app from Adventech! 🎉" = "Folosesc aplicația Școală de Sabat din Adventech! 🎉";
+"Languages" = "Limbile";
+"Lato" = "lato";
+"Light" = "Ușoară";
+"Log out" = "Deconectați-vă";
+"Login anonymously?" = "Autentificare anonimă?";
+"Made with ❤ by Adventech" = "Realizat cu ❤ de Adventech";
+"More" = "Mai Mult";
+"No" = "Nu";
+"Open" = "Deschis";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Aplicațiile noastre sunt Open Source, inclusiv Școala de Sabat. Consultați GitHub-ul nostru dacă doriți să contribuiți";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Citit";
+"Reminder" = "Aducere aminte";
+"Sabbath School" = "Școala de Sabat";
+"Sepia" = "Sepia";
+"Set the reminder to be notified daily to study the lesson" = "Setați mementoul pentru a fi anunțat zilnic pentru a studia lecția";
+"Settings" = "Setări";
+"Sign in with Facebook" = "Conectați-vă la Facebook";
+"Sign in with Google" = "Conectați-vă la Google";
+"There was an error during login" = "A apărut o eroare în timpul conectării";
+"Time" = "Timp";
+"Time to study Sabbath School 🙏" = "Timp pentru a studia Școala de Sabat 🙏";
+"Yes" = "da";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "Evaluați aplicația";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Recomanda Școala de Sabat";
+"🙏 About us" = "🙏 Despre noi";
+"God's Ministry through Technology" = "Ministerul lui Dumnezeu prin tehnologie";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Misiunea Adventistului este în primul rând - dăruiește-ne gloria Lgh, anticul zilelor noastre. Suntem dedicați lucrării noastre prin tehnologie. Scopul nostru este să ne unim Biserica Adventistă de Ziua a Șaptea. Scopul nostru este de a proclama Știri bune acestei lumi prin intermediul tehnologiei și progreselor în comunicare. Scopul nostru este să mărturisim a doua venire a lui Isus.\n\nSuntem inspirați de exemplul și metodele lui Isus, când El a slujit aici pe Pământ. Prin urmare, ne angajăm să oferim un grad ridicat de calitate a tuturor proiectelor noastre, fără nici un cost, cu dragoste și dedicație. Suntem hotărâți să dăm slavă Tatălui nostru, pentru că El este vrednic de cea mai înaltă laudă.\n\nCredem cu adevărat că Dumnezeu a mărit cunoașterea lumii moderne și dorește ca noi să-l folosim pentru gloria Lui pentru a proclama revenirea Lui curând!";
+"Your friends at Adventech" = "Prietenii tăi de la Adventech";
+"Copy" = "Copie";
+"Share" = "Acțiune";
