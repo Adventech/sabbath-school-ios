@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Dengan masuk tanpa login, kamu tidak dapat mensinkronisasikan datamu, seperti komentar dan penanda di berbagai perangkat atau juga setelah uninstall aplikasi. Apakah kamu yakin untuk melanjutkan?";
+"Continue without login" = "Lanjutkan tanpa login";
+"Contribute" = "Kontribusi";
+"Dark" = "Gelap";
+"English" = "Inggris";
+"I am using Sabbath School app from Adventech! 🎉" = "Saya menggunakan aplikasi Sekolah Sabat dari Adventech! 🎉";
+"Languages" = "Bahasa";
+"Lato" = "Lato";
+"Light" = "Terang";
+"Log out" = "Keluar";
+"Login anonymously?" = "Tanpa login ?";
+"Made with ❤ by Adventech" = "Dibuat dengan ❤ oleh Adventech";
+"More" = "Lagi";
+"No" = "Tidak";
+"Open" = "Buka";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Aplikasi kami adalah Open Source, termasuk Sekolah Sabat. Silahkan cek Github kami jika anda ingin berkontribusi";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Baca";
+"Reminder" = "Pengingat";
+"Sabbath School" = "Sekolah Sabat";
+"Sepia" = "Sepia";
+"Set the reminder to be notified daily to study the lesson" = "Atur pengingat harian untuk belajar";
+"Settings" = "Pengaturan";
+"Sign in with Facebook" = "Masuk dengan Facebook";
+"Sign in with Google" = "Masuk dengan Google";
+"There was an error during login" = "Ada masalah dalam login";
+"Time" = "Waktu";
+"Time to study Sabbath School 🙏" = "Waktu untuk belajar Sekolah Sabat";
+"Yes" = "Ya";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Berikan penilaian";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Rekomendasikan Sabbath School";
+"🙏 About us" = "🙏 Tentang kmai";
+"God's Ministry through Technology" = "Melayani Tuhan lewat teknologi";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Misi dari Adventech yang pertama dan terutama adalah memberikan pujian kepada Tuhan kita. Kami mendedikasikan untuk melakukan pelayanan melalui teknologi. Tujuan kami adalah menyatukan Gereja Masehi Advent Hari Ketujuh. Tujuan kami adalah menyatakan Kabar Baik kepada dunia ini yang berarti teknologi dan kemajuan dalam berkomunikasi. Tujuan kami adalah menjadi saksi kedatangan Yesus yang kedua kali.\n\nKami terinspirasi oleh contoh dan metode Yesus, ketika Dia melakukan pelayanan di dunia ini. Karena itu, kami berkomitmen untuk memberikan kualitas yang baik untuk semua proyek kami dan yang pasti gratis dan dengan kasih dan dedikasi. Kami berkomitmen untuk memberikan pujian kepada Bapa kita, karena Dia layak mendapatkan pujian tertinggi.\n\nKami percaya bahwa Tuhan menambahkan pengetahuan tentang dunia modern dan ingin kita untuk menggunakannya untuk kepujianNya untuk menyatakan kedatanganNya kembali!";
+"Your friends at Adventech" = "Sahabat anda di Adventech";
+"Copy" = "Salin";
+"Share" = "Bagikan";

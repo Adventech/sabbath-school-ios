@@ -20,6 +20,7 @@
  * THE SOFTWARE.
  */
 
+import Armchair
 import AsyncDisplayKit
 import Crashlytics
 import Fabric
@@ -36,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        Armchair.appID("895272167")
         
         let fabricAPIKeyPath = Bundle.main.path(forResource: "Fabric", ofType: "apiKey")
         let fabricAPIKey = try? String(contentsOfFile: fabricAPIKeyPath!, encoding: String.Encoding.utf8)

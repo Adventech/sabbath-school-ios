@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "על ידי כניסה באופן אנונימי לא תוכל לסנכרן את הנתונים שלך, כגון הערות ומדגיש, בכל המכשירים או לאחר הסרת ההתקנה של היישום. האם אתה בטוח שברצונך להמשיך?";
+"Continue without login" = "המשך ללא כניסה";
+"Contribute" = "תרום";
+"Dark" = "כהה";
+"English" = "אנגלית";
+"I am using Sabbath School app from Adventech! 🎉" = "אני משתמש באפליקציית בית הספר שבת מ Adventech! 🎉";
+"Languages" = "שפות";
+"Lato" = "לאטו";
+"Light" = "בהיר";
+"Log out" = "התנתק";
+"Login anonymously?" = "להתחבר באופן אנונימי?";
+"Made with ❤ by Adventech" = "נעשה ב ❤ על ידי Adventech";
+"More" = "עוד";
+"No" = "לא";
+"Open" = "פתח";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "היישומים שלנו הם קוד פתוח, כולל בית הספר שבת. בדוק את GitHub שלנו אם אתה רוצה לתרום";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "קרא";
+"Reminder" = "תִזכּוֹרֶת";
+"Sabbath School" = "בית ספר שבת";
+"Sepia" = "חוּם כֵּהֶה";
+"Set the reminder to be notified daily to study the lesson" = "הגדר את התזכורת כדי לקבל הודעה מדי יום כדי ללמוד את השיעור";
+"Settings" = "הגדרות";
+"Sign in with Facebook" = "התחבר עם פייסבוק";
+"Sign in with Google" = "היכנס באמצעות Google";
+"There was an error during login" = "אירעה שגיאה במהלך ההתחברות";
+"Time" = "זְמַן";
+"Time to study Sabbath School 🙏" = "הגיע הזמן ללמוד בית ספר שבת";
+"Yes" = "כן";
+"https://adventech.io" = "Https://adventech.io";
+"🎉 Rate app" = "🎉 לדרג את האפליקציה";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "המלצתי על שבת בית הספר";
+"🙏 About us" = "🙏 אודותינו";
+"God's Ministry through Technology" = "משרד של אלוהים באמצעות טכנולוגיה";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "המשימה של Adventech היא בראש ובראשונה - לתת תהילה L our שלנו, העתיק של ימים. אנו מחויבים לעשות את המשרד שלנו באמצעות הטכנולוגיה. המטרה שלנו היא לאחד את הכנסייה השביעית שלנו Adventist. המטרה שלנו היא להכריז על חדשות טובות לעולם הזה באמצעות טכנולוגיה והתקדמות בתחום התקשורת. מטרתנו היא לחזות בבואו השני של ישוע.\n\nאנו מקבלים השראה מהדוגמה והשיטות של ישו, כאשר הוא כיהן כאן על כדור הארץ. לכן, אנו מחויבים לספק רמה גבוהה של איכות של כל הפרויקטים שלנו ללא שום עלות עם אהבה ומסירות. אנו מחויבים לתת כבוד לאבא שלנו, כי הוא ראוי לשבח הגבוה ביותר.\n\nאנחנו באמת מאמינים כי אלוהים הגדיל את הידע של העולם המודרני ורוצה אותנו להשתמש בו לתהילה שלו להכריז בקרוב שלו לחזור!";
+"Your friends at Adventech" = "החברים שלך ב- Adventech";
+"Copy" = "העתק";
+"Share" = "שתף";

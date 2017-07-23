@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Ved å logge inn anonymt vil du ikke kunne synkronisere dataene dine, for eksempel kommentarer og høydepunkter, på tvers av enheter eller etter avinstallering av programmet. Er du sikker på at du vil fortsette?";
+"Continue without login" = "Fortsett uten å logge inn";
+"Contribute" = "Bidra";
+"Dark" = "Mørk";
+"English" = "Engelsk";
+"I am using Sabbath School app from Adventech! 🎉" = "Jeg bruker Sabbath School app fra Adventech! 🎉";
+"Languages" = "språk";
+"Lato" = "Lato";
+"Light" = "Lett";
+"Log out" = "Logg ut";
+"Login anonymously?" = "Logg inn anonymt?";
+"Made with ❤ by Adventech" = "Laget med ❤ av Adventech";
+"More" = "Mer";
+"No" = "Nei";
+"Open" = "Åpen";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Våre apper er åpen kildekode, inkludert sabbatsskole. Sjekk ut vår GitHub hvis du vil bidra";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Lese";
+"Reminder" = "Påminnelse";
+"Sabbath School" = "Sabbatsskole";
+"Sepia" = "Sepia";
+"Set the reminder to be notified daily to study the lesson" = "Sett påminnelsen om å bli varslet daglig for å studere leksjonen";
+"Settings" = "Innstillinger";
+"Sign in with Facebook" = "Logg inn med Facebook";
+"Sign in with Google" = "Logg på med Google";
+"There was an error during login" = "Det oppsto en feil under innlogging";
+"Time" = "Tid";
+"Time to study Sabbath School 🙏" = "Tid til å studere sabbatsskolen 🙏";
+"Yes" = "Ja";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Vurder app";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "Anbefal sabbatsskolen";
+"🙏 About us" = "🙏 Om oss";
+"God's Ministry through Technology" = "Guds departement ved hjelp av teknologi";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Adventechs oppdrag er først og fremst - gi vår herlighet, den gamle dager. Vi er dedikert til å gjøre vårt departement gjennom teknologi. Vårt mål er å forene vår syvende dag adventistkirke. Vårt mål er å forkynne gode nyheter til denne verden ved hjelp av teknologi og fremskritt innen kommunikasjon. Vårt mål er å være vitne til Jesu annet komme.\n\nVi er inspirert av Jesu eksempel og metoder, da han tjente her på jorden. Derfor er vi forpliktet til å levere høy grad av kvalitet på alle våre prosjekter til absolutt uten kostnad med kjærlighet og engasjement. Vi er forpliktet til å gi ære vår Fader, fordi han er den høyeste av roshetens verdighet.\n\nVi tror virkelig at Gud har økt kunnskapen om den moderne verden og vil at vi skal bruke den til Hans herlighet for å forkynne hans snart tilbake!";
+"Your friends at Adventech" = "Dine venner på Adventech";
+"Copy" = "Kopiere";
+"Share" = "Dele";

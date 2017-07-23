@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "با ورود به صورت مخفی شما نمی خواهد قادر به همگام سازی داده های خود را، از جمله نظرات و برجسته، در سراسر دستگاه و یا بعد از پاک کردن نرم افزار. آیا مطمئن هستید که می خواهید ادامه دهید؟";
+"Continue without login" = "ادامه بدون ورود به سیستم";
+"Contribute" = "مشارکت";
+"Dark" = "تاریک";
+"English" = "انگلیسی";
+"I am using Sabbath School app from Adventech! 🎉" = "من با استفاده از برنامه مدرسه سبت از Adventech! 🎉";
+"Languages" = "زبان ها";
+"Lato" = "Lato";
+"Light" = "سبک";
+"Log out" = "خروج از سیستم";
+"Login anonymously?" = "ورود ناشناس؟";
+"Made with ❤ by Adventech" = "ساخته شده با ❤ توسط Adventech";
+"More" = "بیش";
+"No" = "خیر";
+"Open" = "باز کن";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "برنامه های ما هستند منبع باز، از جمله دانشکده سبت. اتمام گیتهاب ما، اگر شما می خواهم به کمک";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "خواندن";
+"Reminder" = "یادآور";
+"Sabbath School" = "دانشکده سبت";
+"Sepia" = "رنگ سوبیایی";
+"Set the reminder to be notified daily to study the lesson" = "تنظیم یادآوری برای روزانه اطلاع داده شود به مطالعه درس";
+"Settings" = "تنظیمات";
+"Sign in with Facebook" = "ورود به سیستم با فیس بوک";
+"Sign in with Google" = "ورود به سیستم با گوگل";
+"There was an error during login" = "در هنگام ورود خطایی رخ";
+"Time" = "زمان";
+"Time to study Sabbath School 🙏" = "زمان برای مطالعه دانشکده سبت 🙏";
+"Yes" = "بله";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 برنامه نرخ";
+"🐙 GitHub" = "🐙 گیتهاب";
+"💌 Recommend Sabbath School" = "💌 توصیه دانشکده سبت";
+"🙏 About us" = "🙏 درباره ما";
+"God's Ministry through Technology" = "وزارت خدا را از طریق فناوری";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "ماموریت Adventech در درجه اول است - شکوه و عظمت را به Lᴏʀᴅ ما، باستانی روز. ما اختصاص داده شده به انجام وزارت ما را از طریق فن آوری است. هدف ما این است که برای متحد روز هفتم کلیسای ظهور ما است. هدف ما این است که اعلام خبر خوب به این جهان با استفاده از تکنولوژی و پیشرفت در ارتباطات است. هدف ما این است تا شاهد عیسی دوم آینده.\n\nما را با مثال و روش عیسی مسیح، زمانی که او بر روی زمین خدمت الهام گرفته است. بنابراین، ما متعهد به ارائه درجه بالایی از کیفیت همه پروژه های ما در مطلقا هیچ هزینه با عشق و فداکاری. ما متعهد به شکوه و عظمت را به پدر ما، چرا که او شایسته بالاترین ستایش است.\n\nما واقعا بر این باورند که خدا دانش از جهان مدرن افزایش یافته است و می خواهد ما را به استفاده از آن برای جلال او اعلام او به زودی بازگشت!";
+"Your friends at Adventech" = "دوستان خود را در Adventech";
+"Copy" = "نسخه";
+"Share" = "اشتراک گذاری";

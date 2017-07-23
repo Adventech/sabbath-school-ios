@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Logides sisse anonüümselt siis ei saa sünkroonida andmeid, nt kommentaarid ja tõstab esile kõikides seadmetes või pärast eemaldaks taotlus. Kas soovite kindlasti jätkata?";
+"Continue without login" = "Jätka ilma login";
+"Contribute" = "Panustama";
+"Dark" = "Tume";
+"English" = "Inglise";
+"I am using Sabbath School app from Adventech! 🎉" = "Ma kasutan hingamispäevakooli rakendus Adventech! 🎉";
+"Languages" = "Keeled";
+"Lato" = "Lato";
+"Light" = "Valgus";
+"Log out" = "Logi välja";
+"Login anonymously?" = "Logi sisse anonüümselt?";
+"Made with ❤ by Adventech" = "Tehtud ❤ poolt Adventech";
+"More" = "Rohkem";
+"No" = "Ei";
+"Open" = "Avatud";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Meie apps on Open Source, sealhulgas hingamispäevakooli. Vaadake meie GitHub kui soovid aidata";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Lugenud";
+"Reminder" = "Meeldetuletus";
+"Sabbath School" = "Hingamispäevakooli";
+"Sepia" = "Seepia";
+"Set the reminder to be notified daily to study the lesson" = "Seadke meeldetuletus teatatakse iga päev õppida õppetund";
+"Settings" = "Seaded";
+"Sign in with Facebook" = "Logi sisse Facebook";
+"Sign in with Google" = "Logi sisse Google";
+"There was an error during login" = "Tekkis viga ajal login";
+"Time" = "Aeg";
+"Time to study Sabbath School 🙏" = "Aeg õppida hingamispäevakooli 🙏";
+"Yes" = "Jah";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Hinda app";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Soovitab hingamispäevakooli";
+"🙏 About us" = "🙏 Firmast";
+"God's Ministry through Technology" = "Jumala ministeerium läbi Technology";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Missioon Adventech on ennekõike - au andma meie Lᴏʀᴅ, Elatanu. Oleme pühendunud tegema meie ministeeriumi kaudu tehnoloogia. Meie eesmärk on ühendada meie Seitsmenda Päeva Adventistide kogudus. Meie eesmärk on kuulutada rõõmusõnumit selles maailmas tehnoloogia abil ja edusammud side. Meie eesmärgiks on tunnistajaks Jeesuse teine ​​tulemine.\n\nOleme eeskujul ja meetodeid Jeesuse, kui ta teenis siin maa peal. Seetõttu oleme pühendunud pakkuda kõrge kvaliteedi kõik meie projektid on täiesti tasuta armastust ja pühendumist. Me oleme pühendunud au andma meie Isa, sest Ta on väärt kõrgeimat kiitust.\n\nMe usume, et Jumal on suurendanud teadmisi kaasaegse maailma ja tahab, et me seda kasutada Tema auks kuulutama Tema varsti tagasi!";
+"Your friends at Adventech" = "Sõprade juures Adventech";
+"Copy" = "Koopia";
+"Share" = "Osa";

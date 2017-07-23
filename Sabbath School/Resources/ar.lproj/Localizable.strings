@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "من خلال تسجيل الدخول مجهول لن تكون قادرة على مزامنة البيانات الخاصة بك، مثل التعليقات والضوء، عبر الأجهزة أو بعد إلغاء تثبيت التطبيق. هل انت متأكد انك تريد المتابعة؟";
+"Continue without login" = "المتابعة دون تسجيل الدخول";
+"Contribute" = "تساهم";
+"Dark" = "داكن";
+"English" = "الإنجليزية";
+"I am using Sabbath School app from Adventech! 🎉" = "أنا باستخدام السبت مدرسة التطبيق من أدفنتيش! 🎉";
+"Languages" = "اللغات";
+"Lato" = "Lato";
+"Light" = "ضوء";
+"Log out" = "الخروج";
+"Login anonymously?" = "تسجيل الدخول مجهول؟";
+"Made with ❤ by Adventech" = "مصنوعة من ❤ من قبل أدفنتيش";
+"More" = "أكثر من";
+"No" = "لا";
+"Open" = "فتح";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "تطبيقات لدينا هي المصدر المفتوح، بما في ذلك مدرسة السبت. تحقق من جيثب لدينا إذا كنت ترغب في المساهمة";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "اقرأ";
+"Reminder" = "تذكير";
+"Sabbath School" = "مدرسة السبت";
+"Sepia" = "بني داكن";
+"Set the reminder to be notified daily to study the lesson" = "تعيين تذكير ليتم إعلامك يوميا لدراسة الدرس";
+"Settings" = "إعدادات";
+"Sign in with Facebook" = "قم بتسجيل الدخول باستخدام الفيسبوك";
+"Sign in with Google" = "الدخول مع جوجل";
+"There was an error during login" = "حدث خطأ أثناء تسجيل الدخول";
+"Time" = "زمن";
+"Time to study Sabbath School 🙏" = "الوقت لدراسة مدرسة السبت 🙏";
+"Yes" = "نعم فعلا";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 معدل التطبيق";
+"🐙 GitHub" = "🐙 جيثب";
+"💌 Recommend Sabbath School" = "💌 يوصي مدرسة السبت";
+"🙏 About us" = "🙏 عنا";
+"God's Ministry through Technology" = "وزارة الله من خلال التكنولوجيا";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "مهمة أدفنتيش هو أولا وقبل كل شيء - إعطاء المجد لدينا Lᴏʀᴅ، القديمة من الأيام. ونحن حريصون على القيام خدمتنا من خلال التكنولوجيا. هدفنا هو توحيد الكنيسة السبتيين اليوم. هدفنا هو أن نعلن أخبار جيدة لهذا العالم عن طريق التكنولوجيا والتقدم في مجال الاتصالات. هدفنا هو أن نشهد مجيء يسوع الثاني.\n\nنحن مستوحون من مثال وأساليب يسوع، عندما كان هنا على الأرض. لذلك، نحن ملتزمون بتقديم درجة عالية من الجودة لجميع مشاريعنا على الإطلاق أي تكلفة مع الحب والتفاني. نحن ملتزمون بإعطاء المجد لأبنا، لأنه يستحق أعلى الثناء.\n\nنحن نؤمن حقا بأن الله قد زاد من معرفة العالم الحديث ويريد منا أن نستخدمه لمجده ليعلن عودته قريبا!";
+"Your friends at Adventech" = "أصدقائك في أدفنتيش";
+"Copy" = "نسخ";
+"Share" = "شارك";

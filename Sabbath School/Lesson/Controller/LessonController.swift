@@ -20,6 +20,7 @@
  * THE SOFTWARE.
  */
 
+import Armchair
 import AsyncDisplayKit
 import SwiftDate
 import UIKit
@@ -42,6 +43,7 @@ final class LessonController: TableController {
         super.viewDidLoad()
         setBackButton()
         presenter?.configure()
+        Armchair.showPrompt()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
