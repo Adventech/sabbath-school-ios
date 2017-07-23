@@ -248,7 +248,7 @@ extension SettingsController: ASTableDelegate {
             }
             
             if indexPath.row == 1 {
-                let objectsToShare = ["I am using Sabbath School app from Adventech! 🎉".localized(), "https://adventech.io".localized()]
+                let objectsToShare = ["I am using Sabbath School app from Adventech! 🎉".localized(), "https://itunes.apple.com/ca/app/sabbath-school/id895272167?mt=8"]
                 let activityController = UIActivityViewController(
                     activityItems: objectsToShare,
                     applicationActivities: nil)
