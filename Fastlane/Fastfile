@@ -58,7 +58,7 @@ lane :release do
   match_sync(type: "appstore")
   increment_build
   build(submit: true)
-  deliver
+  deliverApp
 end
 
 lane :deliverApp do |options|
