@@ -82,6 +82,11 @@ class ReadController: ThemeController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return shouldHideStatusBar
     }
