@@ -109,6 +109,7 @@ protocol ReaderOutputProtocol {
     func didReceiveComment(comment: String, elementId: String)
     func didReceiveCopy(text: String)
     func didReceiveShare(text: String)
+    func didTapExternalUrl(url: URL)
 }
 
 open class Reader: UIWebView {
@@ -266,7 +267,8 @@ open class Reader: UIWebView {
         }
         
         if let scheme = url.scheme, (scheme == "http" || scheme == "https"), navigationType == .linkClicked {
-            // TODO: open external SafariVC or external browser
+            self.readerViewDelegate?.didTapExternalUrl(url: url)
+            return false
         }
         
         return true

@@ -36,6 +36,7 @@ protocol ReadViewOutputProtocol {
     func didReceiveComment(readComments: ReadComments)
     func didReceiveCopy(text: String)
     func didReceiveShare(text: String)
+    func didTapExternalUrl(url: URL)
 }
 
 class ReadView: ASCellNode {
@@ -254,5 +255,9 @@ extension ReadView: ReaderOutputProtocol {
     
     func didReceiveShare(text: String) {
         self.delegate.didReceiveShare(text: text)
+    }
+    
+    func didTapExternalUrl(url: URL) {
+        self.delegate.didTapExternalUrl(url: url)
     }
 }

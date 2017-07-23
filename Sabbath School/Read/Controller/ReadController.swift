@@ -21,7 +21,9 @@
  */
 
 import AsyncDisplayKit
+import JSQWebViewController
 import SwiftDate
+import SafariServices
 import UIKit
 
 class ReadController: ThemeController {
@@ -292,6 +294,19 @@ extension ReadController: ReadViewOutputProtocol {
         activityController.popoverPresentationController?.permittedArrowDirections = .any
         
         present(activityController, animated: true, completion: nil)
+    }
+    
+    func didTapExternalUrl(url: URL) {
+        if #available(iOS 9.0, *) {
+            let safariVC = SFSafariViewController(url: url)
+            safariVC.view.tintColor = .tintColor
+            safariVC.modalPresentationStyle = .currentContext
+            present(safariVC, animated: true, completion: nil)
+        } else {
+            let controller = WebViewController(url: url)
+            let nav = UINavigationController(rootViewController: controller)
+            present(nav, animated: true, completion: nil)
+        }
     }
 }
 
