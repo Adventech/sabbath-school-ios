@@ -69,7 +69,7 @@ class ReadController: ThemeController {
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
         rightButton.accessibilityIdentifier = "themeSettings"
         navigationItem.rightBarButtonItem = rightButton
-        
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
