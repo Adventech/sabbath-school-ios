@@ -1644,7 +1644,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2017.06.159;
+				CURRENT_PROJECT_VERSION = 2017.07.183;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -1667,7 +1667,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 2017.06.159;
+				CURRENT_PROJECT_VERSION = 2017.07.183;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
