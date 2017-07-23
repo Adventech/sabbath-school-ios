@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.0</string>
+	<string>2.0.1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -43,8 +43,8 @@
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
-        <string>fb</string>
-        <string>instagram</string>
+		<string>fb</string>
+		<string>instagram</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

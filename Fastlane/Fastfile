@@ -61,7 +61,7 @@ lane :release do
   deliver
 end
 
-lane :deliver do |options|
+lane :deliverApp do |options|
   submit_for_review = options[:submit]
   deliver(
     submit_for_review: submit_for_review,
@@ -83,6 +83,9 @@ end
 
 desc "Generate screenshots and upload to the App Store"
 lane :screenshots do
+  sh "export LC_ALL=en_US.UTF-8"
+  sh "export LANG=en_US.UTF-8"
+  # sh "xcrun simctl list devices | grep -v '^[-=]' | cut -d \"(\" -f2 | cut -d \")\" -f1 | xargs -I {} xcrun simctl erase \"{}\""
   snapshot
   frameit(white: true)
 end

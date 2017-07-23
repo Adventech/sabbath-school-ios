@@ -207,6 +207,8 @@
 		7A2810241EDDE2AA003C7458 /* QuarterlyEmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyEmptyCell.swift; sourceTree = "<group>"; };
 		7A2810261EDDE3D3003C7458 /* DisplayNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayNode.swift; sourceTree = "<group>"; };
 		7A2810281EDDE41F003C7458 /* ShimmeringNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmeringNode.swift; sourceTree = "<group>"; };
+		7A34E8F11F2519BC00760A7B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		7A34E8F21F2519BC00760A7B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7A3BCE1E1EE0EC28003EC12B /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		7A3BCE201EE0EC60003EC12B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7A3BCE221EE262C7003EC12B /* LessonEmptyCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonEmptyCellNode.swift; sourceTree = "<group>"; };
@@ -1137,6 +1139,7 @@
 				fa,
 				sk,
 				id,
+				"zh-Hans",
 			);
 			mainGroup = 7AF1919F1ED7B89B000CCF0C;
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
@@ -1468,6 +1471,7 @@
 				7A94DFDC1F16D789005A0321 /* fa */,
 				7A94DFDE1F16D79A005A0321 /* sk */,
 				7A94DFE01F16DA48005A0321 /* id */,
+				7A34E8F21F2519BC00760A7B /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1494,6 +1498,7 @@
 				7A94DFDB1F16D789005A0321 /* fa */,
 				7A94DFDD1F16D79A005A0321 /* sk */,
 				7A94DFDF1F16DA48005A0321 /* id */,
+				7A34E8F11F2519BC00760A7B /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

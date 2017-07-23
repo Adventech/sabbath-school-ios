@@ -33,8 +33,25 @@ class SnapshotUITests: XCTestCase {
         app.buttons["loginAnonimousOptionYes"].tap()
 
         // Select language
-        let language = locale.components(separatedBy: "-")[0]
+        var language = locale.components(separatedBy: "-")[0]
         app.buttons["openLanguage"].tap()
+        
+        if language == "da" {
+            language = "en"
+        }
+        
+        if language == "no" {
+            language = "en"
+        }
+        
+        if language == "nb" {
+            language = "en"
+        }
+        
+        if language == "id" {
+            language = "in"
+        }
+        
         app.tables.cells.otherElements[language].tap()
 
         // Quarterly

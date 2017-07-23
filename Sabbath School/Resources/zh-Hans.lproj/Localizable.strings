@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "通过匿名登录，您将无法在设备之间或卸载应用程序之后同步数据，例如注释和突出显示。你确定要继续吗？";
+"Continue without login" = "继续而不登录";
+"Contribute" = "有助于";
+"Dark" = "黑暗";
+"English" = "英语";
+"I am using Sabbath School app from Adventech! 🎉" = "我正在使用来自Adventech的安息日学校应用程序！ 🎉";
+"Languages" = "语言";
+"Lato" = "Lato";
+"Light" = "光";
+"Log out" = "登出";
+"Login anonymously?" = "匿名登录？";
+"Made with ❤ by Adventech" = "由Adventech与❤制作";
+"More" = "更多";
+"No" = "没有";
+"Open" = "打开";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "我们的应用程序是开源软件，包括安息日学校。查看我们的GitHub，如果你愿意贡献";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "读";
+"Reminder" = "提醒";
+"Sabbath School" = "安息日学校";
+"Sepia" = "乌贼";
+"Set the reminder to be notified daily to study the lesson" = "将提醒设置为每天通知以学习该课程";
+"Settings" = "设置";
+"Sign in with Facebook" = "用Facebook登录";
+"Sign in with Google" = "使用Google登录";
+"There was an error during login" = "登录时出错";
+"Time" = "时间";
+"Time to study Sabbath School 🙏" = "安息日学习的时间";
+"Yes" = "是";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉评价应用程式";
+"🐙 GitHub" = "🐙GitHub";
+"💌 Recommend Sabbath School" = "💌推荐安息日学校";
+"🙏 About us" = "🙏关于我们";
+"God's Ministry through Technology" = "上帝的部通过技术";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "亚历山大的使命首先是荣耀我们的天，古代的天。我们致力于通过技术来做我们的事工。我们的目标是团结我们的基督复临安息日会。我们的目标是通过技术和通信进步宣传好消息给这个世界。我们的目标是见证耶稣的第二次来临。\n\n当他在地球上投身时，我们受到耶稣的榜样和方法的启发。因此，我们致力于通过爱与奉献，绝对没有任何成本提供我们所有项目的高品质。我们致力于荣耀我们的父，因为他值得赞美的最高。\n\n我们真的相信神已经增加了现代世界的知识，并希望我们用他的荣耀来宣告他即将回归！";
+"Your friends at Adventech" = "你在Adventech的朋友";
+"Copy" = "复制";
+"Share" = "分享";
