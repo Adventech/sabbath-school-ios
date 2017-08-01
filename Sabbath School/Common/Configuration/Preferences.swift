@@ -33,57 +33,53 @@ func currentLanguage() -> QuarterlyLanguage {
 }
 
 func currentQuarterly() -> String {
-    guard let lastQuarterlyIndex = UserDefaults.standard.value(forKey: Constants.DefaultKey.lastQuarterlyIndex) as? String else {
+    guard let lastQuarterlyIndex = UserDefaults.standard.string(forKey: Constants.DefaultKey.lastQuarterlyIndex) else {
         return ""
     }
     return lastQuarterlyIndex
 }
 
-func currentTheme() -> String {
-    guard let theme = UserDefaults.standard.value(forKey: Constants.DefaultKey.readingOptionsTheme) as? String else {
-        return ""
+func currentTheme() -> ReaderStyle.Theme {
+    guard let rawTheme = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsTheme),
+        let theme = ReaderStyle.Theme(rawValue: rawTheme) else {
+        return .light
     }
     return theme
 }
 
-func currentTypeface() -> String {
-    guard let typeface = UserDefaults.standard.value(forKey: Constants.DefaultKey.readingOptionsTypeface) as? String else {
-        return ""
+func currentTypeface() -> ReaderStyle.Typeface {
+    guard let rawTypeface = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsTypeface),
+        let typeface = ReaderStyle.Typeface(rawValue: rawTypeface)  else {
+        return .lato
     }
     return typeface
 }
 
-func currentSize() -> String {
-    guard let size = UserDefaults.standard.value(forKey: Constants.DefaultKey.readingOptionsSize) as? String else {
-        return ""
+func currentSize() -> ReaderStyle.Size {
+    guard let rawSize = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsSize),
+        let size = ReaderStyle.Size(rawValue: rawSize) else {
+        return .medium
     }
     return size
 }
 
 func firstRun() -> Bool {
-    guard let _ = UserDefaults.standard.value(forKey: Constants.DefaultKey.firstRun) as? Bool else {
-        return true
-    }
-    return false
+    return UserDefaults.standard.bool(forKey: Constants.DefaultKey.firstRun)
 }
 
-
 func reminderStatus() -> Bool {
-    guard let status = UserDefaults.standard.value(forKey: Constants.DefaultKey.settingsReminderStatus) as? Bool else {
-        return false
-    }
-    return status
+    return UserDefaults.standard.bool(forKey: Constants.DefaultKey.settingsReminderStatus)
 }
 
 func reminderTime() -> String {
-    guard let time = UserDefaults.standard.value(forKey: Constants.DefaultKey.settingsReminderTime) as? String else {
+    guard let time = UserDefaults.standard.string(forKey: Constants.DefaultKey.settingsReminderTime) else {
         return ""
     }
     return time
 }
 
 func latestReaderBundleTimestamp() -> String {
-    guard let timestamp = UserDefaults.standard.value(forKey: Constants.DefaultKey.latestReaderBundleTimestamp) as? String else {
+    guard let timestamp = UserDefaults.standard.string(forKey: Constants.DefaultKey.latestReaderBundleTimestamp) else {
         return ""
     }
     return timestamp

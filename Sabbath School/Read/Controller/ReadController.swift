@@ -130,7 +130,7 @@ class ReadController: ThemeController {
             
             if (-scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight){
                 title = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.read?.title.uppercased()
-                readNavigationBarStyle(color: .tintColor, titleColor: UIColor.white.withAlphaComponent(1-(-scrollView.contentOffset.y-navigationBarHeight)/navigationBarHeight))
+                readNavigationBarStyle(titleColor: UIColor.white.withAlphaComponent(1-(-scrollView.contentOffset.y-navigationBarHeight)/navigationBarHeight))
             } else {
                 title = ""
                 setTransparentNavigation()
@@ -157,28 +157,20 @@ class ReadController: ThemeController {
         
         lastContentOffset = -scrollView.contentOffset.y
     }
-    
-    // TODO: - Refactor
-    func readNavigationBarStyle(color: UIColor = .tintColor, titleColor: UIColor = .white){
+
+    func readNavigationBarStyle(titleColor: UIColor = .white) {
         let theme = currentTheme()
-        var colorPrimary = color
-        if theme == ReaderStyle.Theme.Dark {
-            setTranslucentNavigation(true, color: .readerDark, tintColor: .readerDarkFont, titleColor: .readerDarkFont)
-            self.collectionNode.backgroundColor = .readerDark
-            (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverOverlayNode.backgroundColor = .readerDark
-            (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverNode.backgroundColor = .readerDark
-            colorPrimary = .readerDark
-        } else {
-            setTranslucentNavigation(true, color: color, tintColor: .white, titleColor: titleColor)
-            self.collectionNode.backgroundColor = .baseGray1
-            (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverOverlayNode.backgroundColor = .tintColor
-            (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.coverNode.backgroundColor = .tintColor
-        }
-        
+        setTranslucentNavigation(
+            color: theme.navBarColor,
+            tintColor: theme.navBarTextColor,
+            titleColor: theme == .dark ? theme.navBarTextColor : titleColor
+        )
+        collectionNode.backgroundColor = theme.backgroundColor
+
         for webViewIndex in 0...self.reads.count {
-            if self.collectionNode.currentPageIndex == webViewIndex { continue }
-            (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.coverOverlayNode.backgroundColor = colorPrimary
-            (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.coverNode.backgroundColor = colorPrimary
+            guard let readView = collectionNode.nodeForPage(at: webViewIndex) as? ReadView else { return }
+            readView.coverOverlayNode.backgroundColor = theme.navBarColor
+            readView.coverNode.backgroundColor = theme.navBarColor
         }
     }
 }
@@ -316,7 +308,7 @@ extension ReadController: ReadViewOutputProtocol {
 }
 
 extension ReadController: ReadOptionsDelegate {
-    func didSelectTheme(theme: String) {
+    func didSelectTheme(theme: ReaderStyle.Theme) {
         readNavigationBarStyle()
         for webViewIndex in 0...self.reads.count {
             (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.webView.setTheme(theme)
@@ -325,13 +317,13 @@ extension ReadController: ReadOptionsDelegate {
         scrollBehavior()
     }
     
-    func didSelectTypeface(typeface: String){
+    func didSelectTypeface(typeface: ReaderStyle.Typeface) {
         for webViewIndex in 0...self.reads.count {
             (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.webView.setTypeface(typeface)
         }
     }
     
-    func didSelectSize(size: String){
+    func didSelectSize(size: ReaderStyle.Size) {
         for webViewIndex in 0...self.reads.count {
             (self.collectionNode.nodeForPage(at: webViewIndex) as? ReadView)?.webView.setSize(size)
         }

@@ -47,12 +47,8 @@ class BibleController: ASViewController<ASDisplayNode> {
         super.viewDidLoad()
         
         let theme = currentTheme()
-        if theme == ReaderStyle.Theme.Dark {
-            setTranslucentNavigation(true, color: .readerDark, tintColor: .readerDarkFont, titleColor: .readerDarkFont)
-        } else {
-            setTranslucentNavigation(true, color: .tintColor, tintColor: .white, titleColor: .white)
-        }
-        
+        setTranslucentNavigation(color: theme.navBarColor, tintColor: theme.navBarTextColor, titleColor: theme.navBarTextColor)
+
         let closeButton = UIBarButtonItem(image: R.image.iconNavbarClose(), style: .done, target: self, action: #selector(closeAction(sender:)))
         closeButton.accessibilityIdentifier = "dismissBibleVerse"
         navigationItem.leftBarButtonItem = closeButton

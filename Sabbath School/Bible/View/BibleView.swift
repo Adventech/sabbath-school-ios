@@ -34,12 +34,7 @@ class BibleView: ASDisplayNode {
     
     override func didLoad() {
         let theme = currentTheme()
-        
-        if theme == ReaderStyle.Theme.Dark {
-            webView.backgroundColor = .readerDark
-        } else {
-            webView.backgroundColor = .baseGray1
-        }
+        webView.backgroundColor = theme.backgroundColor
     }
     
     func loadContent(content: String){

@@ -63,41 +63,27 @@ class ReadView: ASCellNode {
         self.highlights = highlights
         self.comments = comments
         
-        coverNode.contentMode = .scaleAspectFill
-        
         let theme = currentTheme()
-        
-        if !(lessonInfo.lesson.cover?.absoluteString ?? "").isEmpty {
-            coverNode.url = lessonInfo.lesson.cover
-            coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-            coverNode.placeholderEnabled = true
-            coverNode.placeholderFadeDuration = 0.6
-        } else {
-            if theme == ReaderStyle.Theme.Dark {
-                coverNode.backgroundColor = .readerDark
-            } else {
-                coverNode.backgroundColor = .tintColor
-            }
-        }
-        
-        if theme == ReaderStyle.Theme.Dark {
-            coverOverlayNode.backgroundColor = .readerDark
-        } else {
-            coverOverlayNode.backgroundColor = .tintColor
-        }
-        
+
+        coverNode.url = lessonInfo.lesson.cover
+        coverNode.placeholderEnabled = true
+        coverNode.placeholderFadeDuration = 0.6
+        coverNode.contentMode = .scaleAspectFill
+        coverNode.backgroundColor = theme.navBarColor
         coverNode.clipsToBounds = true
-        
+
+        coverOverlayNode.backgroundColor = theme.navBarColor
         coverOverlayNode.alpha = 0
+
         coverTitleNode.alpha = 1
         coverTitleNode.maximumNumberOfLines = 2
         coverTitleNode.pointSizeScaleFactors = [0.9, 0.8]
         coverTitleNode.attributedText = TextStyles.h1(string: read.title)
-        
+
         readDateNode.alpha = 1
         readDateNode.maximumNumberOfLines = 1
         readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.string(custom: "EEEE, MMMM dd"))
-        
+
         automaticallyManagesSubnodes = true
     }
     

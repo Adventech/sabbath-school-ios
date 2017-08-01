@@ -24,56 +24,10 @@ import AsyncDisplayKit
 import UIKit
 
 protocol ReadOptionsDelegate {
-    func didSelectTheme(theme: String)
-    func didSelectTypeface(typeface: String)
-    func didSelectSize(size: String)
+    func didSelectTheme(theme: ReaderStyle.Theme)
+    func didSelectTypeface(typeface: ReaderStyle.Typeface)
+    func didSelectSize(size: ReaderStyle.Size)
 }
-
-struct ReaderOptionsMapper {
-    struct Theme {
-        static var Mapper: [Int: String] {
-            return [
-                0: ReaderStyle.Theme.Light,
-                1: ReaderStyle.Theme.Sepia,
-                2: ReaderStyle.Theme.Dark
-            ]
-        }
-    }
-    
-    struct Typeface {
-        static var Mapper: [Int: String]{
-            return [
-                0: ReaderStyle.Typeface.Andada,
-                1: ReaderStyle.Typeface.Lato,
-                2: ReaderStyle.Typeface.PTSerif,
-                3: ReaderStyle.Typeface.PTSans
-            ]
-        }
-    }
-    
-    struct Size {
-        static var Mapper: [Int: String]{
-            return [
-                0: ReaderStyle.Size.Tiny,
-                1: ReaderStyle.Size.Small,
-                2: ReaderStyle.Size.Medium,
-                3: ReaderStyle.Size.Large,
-                4: ReaderStyle.Size.Huge
-            ]
-        }
-        
-        static var MapperReverse: [String: Int]{
-            return [
-                ReaderStyle.Size.Tiny: 0,
-                ReaderStyle.Size.Small: 1,
-                ReaderStyle.Size.Medium: 2,
-                ReaderStyle.Size.Large: 3,
-                ReaderStyle.Size.Huge: 4
-            ]
-        }
-    }
-}
-
 
 class ReadOptionsView: ASDisplayNode {
     var delegate: ReadOptionsDelegate?
@@ -107,14 +61,8 @@ class ReadOptionsView: ASDisplayNode {
         setupTypefaceSegmentControl()
         typefaceView.addTarget(self, action: #selector(typefaceValueChanged(_:)), for: UIControlEvents.valueChanged)
         
-        var size = currentSize()
-        if !size.isEmpty {
-            
-        } else {
-            size = ReaderStyle.Size.Medium
-        }
-        
-        fontSizeView.value = CGFloat(ReaderOptionsMapper.Size.MapperReverse[size]!)
+        let size = currentSize()
+        fontSizeView.value = CGFloat(size.hashValue)
         
         fontSizeView.tickStyle = .rounded
         fontSizeView.tickCount = 5
@@ -186,11 +134,10 @@ class ReadOptionsView: ASDisplayNode {
     
     private func setupThemeSegmentControl() {
         let theme = currentTheme()
-        
-        let lightThemeButton = segmentButtonProvider(text: "Light".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Light || (theme != ReaderStyle.Theme.Sepia && theme != ReaderStyle.Theme.Dark))
-        let sepiaThemeButton = segmentButtonProvider(text: "Sepia".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Sepia)
-        let darkThemeButton = segmentButtonProvider(text: "Dark".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == ReaderStyle.Theme.Dark)
-        
+        let lightThemeButton = segmentButtonProvider(text: "Light".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == .light)
+        let sepiaThemeButton = segmentButtonProvider(text: "Sepia".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == .sepia)
+        let darkThemeButton = segmentButtonProvider(text: "Dark".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == .dark)
+
         themeView.removeAllSegments()
         themeView.insertSegment(with: lightThemeButton, at: 0, animated: false)
         themeView.insertSegment(with: sepiaThemeButton, at: 1, animated: false)
@@ -198,19 +145,27 @@ class ReadOptionsView: ASDisplayNode {
         themeView.removeBorders()
     }
     
-    private func setupTypefaceSegmentControl(){
+    private func setupTypefaceSegmentControl() {
         let typeface = currentTypeface()
         
-        let andadaTypefaceButton = segmentButtonProvider(text: "Andada".localized(), font: R.font.loraRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.Andada)
+        let andadaTypefaceButton = segmentButtonProvider(text: "Andada".localized(), font: R.font.loraRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.andada)
         
-        let latoTypefaceButton = segmentButtonProvider(text: "Lato".localized(), font: R.font.latoRegular(size: 16)!, selected:
-            (typeface == ReaderStyle.Typeface.Lato) ||
-            (typeface != ReaderStyle.Typeface.Andada &&
-             typeface != ReaderStyle.Typeface.PTSerif &&
-             typeface != ReaderStyle.Typeface.PTSans)
+        let latoTypefaceButton = segmentButtonProvider(
+            text: "Lato".localized(),
+            font: R.font.latoRegular(size: 16)!,
+            selected: (typeface == .lato) || (typeface != .andada && typeface != .ptSerif && typeface != .ptSans)
         )
-        let ptSerifTypefaceButton = segmentButtonProvider(text: "PT Serif".localized(), font: R.font.pTSerifRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.PTSerif)
-        let ptSansTypefaceButton = segmentButtonProvider(text: "PT Sans".localized(), font: R.font.pTSansRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.PTSans)
+
+        let ptSerifTypefaceButton = segmentButtonProvider(
+            text: "PT Serif".localized(),
+            font: R.font.pTSerifRegular(size: 16)!,
+            selected: typeface == .ptSerif
+        )
+
+        let ptSansTypefaceButton = segmentButtonProvider(
+            text: "PT Sans".localized(),
+            font: R.font.pTSansRegular(size: 16)!,
+            selected: typeface == .ptSans)
         
         typefaceView.removeAllSegments()
         typefaceView.insertSegment(with: andadaTypefaceButton, at: 0, animated: false)
@@ -243,29 +198,28 @@ class ReadOptionsView: ASDisplayNode {
     
     func themeValueChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
-        let theme = ReaderOptionsMapper.Theme.Mapper[selectedIndex]
-        
-        UserDefaults.standard.set(theme, forKey: Constants.DefaultKey.readingOptionsTheme)
+        let theme = ReaderStyle.Theme.items[selectedIndex]
+
+        UserDefaults.standard.set(theme.rawValue, forKey: Constants.DefaultKey.readingOptionsTheme)
         setupThemeSegmentControl()
-        delegate?.didSelectTheme(theme: theme!)
+        delegate?.didSelectTheme(theme: theme)
     }
     
-    func typefaceValueChanged(_ sender: UISegmentedControl){
+    func typefaceValueChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
-        let typeface = ReaderOptionsMapper.Typeface.Mapper[selectedIndex]
-        
-        UserDefaults.standard.set(typeface, forKey: Constants.DefaultKey.readingOptionsTypeface)
+        let typeface = ReaderStyle.Typeface.items[selectedIndex]
+
+        UserDefaults.standard.set(typeface.rawValue, forKey: Constants.DefaultKey.readingOptionsTypeface)
         setupTypefaceSegmentControl()
-        delegate?.didSelectTypeface(typeface: typeface!)
+        delegate?.didSelectTypeface(typeface: typeface)
     }
     
-    func fontsizeValueChanged(_ sender: DiscreteSlider){
+    func fontsizeValueChanged(_ sender: DiscreteSlider) {
         let selectedIndex = Int(sender.value)
-        let size = ReaderOptionsMapper.Size.Mapper[selectedIndex]
-        
-        UserDefaults.standard.set(size, forKey: Constants.DefaultKey.readingOptionsSize)
-        
-        delegate?.didSelectSize(size: size!)
+        let size = ReaderStyle.Size.items[selectedIndex]
+
+        UserDefaults.standard.set(size.rawValue, forKey: Constants.DefaultKey.readingOptionsSize)
+        delegate?.didSelectSize(size: size)
     }
 }
 
@@ -278,7 +232,7 @@ extension UISegmentedControl {
         setDividerImage(UIImage.imageWithColor(UIColor.baseGray1), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     }
     
-    func removeDividers(){
+    func removeDividers() {
         setDividerImage(UIImage.imageWithColor(UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     }
 }
