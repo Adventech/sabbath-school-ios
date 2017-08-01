@@ -112,4 +112,9 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         super.layout()
         infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-1000, width: calculatedSize.width, height: 1000)
     }
+
+    override func layoutDidFinish() {
+        super.layoutDidFinish()
+        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: 6).cgPath
+    }
 }

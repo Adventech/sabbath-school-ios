@@ -78,5 +78,10 @@ class QuarterlyCellNode: ASCellNode {
         
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15), child: hSpec)
     }
+
+    override func layoutDidFinish() {
+        super.layoutDidFinish()
+        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: 6).cgPath
+    }
 }
 

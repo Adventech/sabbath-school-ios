@@ -74,8 +74,7 @@ class LoginButton: ASButtonNode {
         shadowOpacity = 1
         clipsToBounds = false
     }
-    
-    
+
     override func sendActions(forControlEvents controlEvents: ASControlNodeEvent, with touchEvent: UIEvent?) {
         if controlEvents == .touchDown {
             let anim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
