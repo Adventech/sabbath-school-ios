@@ -113,8 +113,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
         let hour = time.hour
         let minute = time.minute
-        // have to use NSCalendar for the components
-        let calendar = NSCalendar(identifier: .gregorian)!;
+        let calendar = NSCalendar(identifier: .gregorian)! // have to use NSCalendar for the components
         
         var dateFire = Date()
         
@@ -214,7 +213,7 @@ extension SettingsController: ASTableDelegate {
                 pickerView.datePicker.datePickerMode = .time
                 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat =  "HH:mm"
+                dateFormatter.dateFormat = "HH:mm"
                 pickerView.datePicker.date = dateFormatter.date(from: reminderTime())!
                 
                 pickerView.modalPresentationStyle = .custom

@@ -73,7 +73,7 @@ func reminderStatus() -> Bool {
 
 func reminderTime() -> String {
     guard let time = UserDefaults.standard.string(forKey: Constants.DefaultKey.settingsReminderTime) else {
-        return ""
+        return Constants.DefaultKey.settingsDefaultReminderTime
     }
     return time
 }
