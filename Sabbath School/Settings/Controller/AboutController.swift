@@ -95,7 +95,7 @@ extension AboutController: AboutViewDelegate {
 
 extension AboutController: ASCollectionDataSource {
     func collectionView(_ collectionView: ASCollectionView, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let cellNodeBlock: () -> ASCellNode =  { [weak self] in
+        let cellNodeBlock: () -> ASCellNode =  {
             let view = AboutView()
             view.delegate = self
             return view

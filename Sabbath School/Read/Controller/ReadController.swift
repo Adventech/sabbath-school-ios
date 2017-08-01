@@ -119,7 +119,7 @@ class ReadController: ThemeController {
         })
     }
     
-    func scrollBehavior(){
+    func scrollBehavior() {
         if !finished || reads.isEmpty {
             return
         }
@@ -176,7 +176,7 @@ class ReadController: ThemeController {
 }
 
 extension ReadController: ReadControllerProtocol {
-    func loadLessonInfo(lessonInfo: LessonInfo){
+    func loadLessonInfo(lessonInfo: LessonInfo) {
         self.lessonInfo = lessonInfo
     }
     
@@ -193,26 +193,26 @@ extension ReadController: ReadControllerProtocol {
 
 extension ReadController: ASPagerDataSource {
     func pagerNode(_ pagerNode: ASPagerNode, nodeBlockAt index: Int) -> ASCellNodeBlock {
-        let cellNodeBlock: () -> ASCellNode = { [weak self] in
+        let cellNodeBlock: () -> ASCellNode = {
             
-            if !(self?.finished)! {
+            if !self.finished {
                 return ReadEmptyView()
             }
             
-            let read = (self?.reads[index])!
-            let readHighlights = (self?.highlights[index])!
-            let readComments = (self?.comments[index])!
+            let read = self.reads[index]
+            let readHighlights = self.highlights[index]
+            let readComments = self.comments[index]
             let today = Date()
             
-            if today.isInSameDayOf(date: read.date){
+            if today.isInSameDayOf(date: read.date) {
                 DispatchQueue.main.async {
-                    self?.collectionNode.scrollToPage(at: index, animated: false)
+                    self.collectionNode.scrollToPage(at: index, animated: false)
                 }
             }
-            
-            return ReadView(lessonInfo: (self?.lessonInfo!)!, read: read, highlights: readHighlights, comments: readComments, delegate: self!)
+
+            return ReadView(lessonInfo: self.lessonInfo!, read: read, highlights: readHighlights, comments: readComments, delegate: self)
         }
-        
+
         return cellNodeBlock
     }
     

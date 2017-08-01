@@ -122,22 +122,22 @@ extension QuarterlyController: QuarterlyControllerProtocol {
 
 extension QuarterlyController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let cellNodeBlock: () -> ASCellNode = { [weak self] _ in
-            if (self?.dataSource.isEmpty)! {
+        let cellNodeBlock: () -> ASCellNode = {
+            if self.dataSource.isEmpty {
                 return QuarterlyEmptyCell()
             }
-            
-            let quarterly = self?.dataSource[indexPath.row]
-            
+
+            let quarterly = self.dataSource[indexPath.row]
+
             if indexPath.row == 0 {
-                let node = QuarterlyFeaturedCellNode(quarterly: quarterly!)
-                node.openButton.addTarget(self, action: #selector(self?.openButtonAction(sender:)), forControlEvents: .touchUpInside)
+                let node = QuarterlyFeaturedCellNode(quarterly: quarterly)
+                node.openButton.addTarget(self, action: #selector(self.openButtonAction(sender:)), forControlEvents: .touchUpInside)
                 return node
             }
-            
-            return QuarterlyCellNode(quarterly: quarterly!)
+
+            return QuarterlyCellNode(quarterly: quarterly)
         }
-        
+
         return cellNodeBlock
     }
     

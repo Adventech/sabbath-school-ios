@@ -149,7 +149,7 @@ extension SettingsController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let text = titles[indexPath.section][indexPath.row]
         
-        let cellNodeBlock: () -> ASCellNode = { [weak self] _ in
+        let cellNodeBlock: () -> ASCellNode = {
             var settingsItem = SettingsItemView(text: text)
             
             if indexPath.row == 0 && indexPath.section == 0 {
