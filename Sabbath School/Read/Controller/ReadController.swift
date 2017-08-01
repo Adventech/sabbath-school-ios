@@ -120,16 +120,13 @@ class ReadController: ThemeController {
     }
     
     func scrollBehavior() {
-        if !finished || reads.isEmpty {
-            return
-        }
-        
-        let scrollView = (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.scrollView
-        
+        guard finished || !reads.isEmpty else { return }
+        guard let readView = collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as? ReadView else { return }
+        let scrollView = readView.webView.scrollView
+
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height {
-            
-            if (-scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight){
-                title = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.read?.title.uppercased()
+            if -scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight {
+                title = readView.read?.title.uppercased()
                 readNavigationBarStyle(titleColor: UIColor.white.withAlphaComponent(1-(-scrollView.contentOffset.y-navigationBarHeight)/navigationBarHeight))
             } else {
                 title = ""
@@ -137,12 +134,12 @@ class ReadController: ThemeController {
             }
         }
         
-        if (scrollView.contentOffset.y + UIScreen.main.bounds.height >= scrollView.contentSize.height){
+        if scrollView.contentOffset.y + UIScreen.main.bounds.height >= scrollView.contentSize.height {
             if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                 toggleBars()
             }
         } else {
-            if (-scrollView.contentOffset.y > 0 || lastContentOffset < -scrollView.contentOffset.y){
+            if -scrollView.contentOffset.y > 0 || lastContentOffset < -scrollView.contentOffset.y {
                 if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                     toggleBars()
                 }
