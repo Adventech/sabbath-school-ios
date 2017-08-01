@@ -25,7 +25,7 @@ import UIKit
 extension UINavigationController {
 
     open override var preferredStatusBarStyle: UIStatusBarStyle {
-        return visibleViewController?.preferredStatusBarStyle ?? .default
+        return viewControllers.first?.preferredStatusBarStyle ?? .lightContent
     }
     
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
