@@ -25,6 +25,7 @@ target 'Sabbath School' do
   pod 'Unbox'
   pod 'Wrap'
   pod 'Zip', '~> 0.7'
+  pod 'SwiftLint'
 end
 
 post_install do |installer|

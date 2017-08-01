@@ -29,19 +29,19 @@ protocol PickerViewControllerDelegate: class {
 final class PickerViewController: UIViewController {
     weak var delegate: PickerViewControllerDelegate?
     var datePicker = UIDatePicker()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = UIColor.white
-        
+
         datePicker.frame = CGRect(origin: CGPoint.zero, size: preferredContentSize)
         datePicker.addTarget(self, action: #selector(PickerViewController.datePickerChanged(_:)), for: .valueChanged)
         view.addSubview(datePicker)
     }
-    
+
     // MARK: Functions
-    
+
     func datePickerChanged(_ sender: UIDatePicker) {
         delegate?.pickerView(self, didChangedToDate: sender.date)
     }

@@ -11,7 +11,7 @@ import SimulatorStatusMagic
 
 class SnapshotUITests: XCTestCase {
     fileprivate let app = XCUIApplication()
-        
+
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
@@ -35,23 +35,23 @@ class SnapshotUITests: XCTestCase {
         // Select language
         var language = locale.components(separatedBy: "-")[0]
         app.buttons["openLanguage"].tap()
-        
+
         if language == "da" {
             language = "en"
         }
-        
+
         if language == "no" {
             language = "en"
         }
-        
+
         if language == "nb" {
             language = "en"
         }
-        
+
         if language == "id" {
             language = "in"
         }
-        
+
         app.tables.cells.otherElements[language].tap()
 
         // Quarterly

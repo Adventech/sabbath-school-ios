@@ -26,21 +26,21 @@ import UIKit
 class BibleView: ASDisplayNode {
     let webNode = ASDisplayNode { Reader() }
     var webView: Reader { return webNode.view as! Reader }
-    
+
     override init() {
         super.init()
         automaticallyManagesSubnodes = true
     }
-    
+
     override func didLoad() {
         let theme = currentTheme()
         webView.backgroundColor = theme.backgroundColor
     }
-    
-    func loadContent(content: String){
+
+    func loadContent(content: String) {
         webView.loadContent(content: content)
     }
-    
+
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: webNode)
     }

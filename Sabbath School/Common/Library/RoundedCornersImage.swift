@@ -23,10 +23,10 @@
 import AsyncDisplayKit
 import UIKit
 
-final class RoundedCornersImage: ASDisplayNode {    
+final class RoundedCornersImage: ASDisplayNode {
     var imageNode = ASNetworkImageNode()
     var size: CGSize!
-    
+
     init(imageURL: URL, corner: CGFloat, size: CGSize = CGSize(width: 125, height: 187)) {
         super.init()
 
@@ -34,15 +34,15 @@ final class RoundedCornersImage: ASDisplayNode {
         imageNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
         imageNode.placeholderEnabled = true
         imageNode.placeholderFadeDuration = 0.6
-        
+
         cornerRadius = corner
         clipsToBounds = true
-        
+
         imageNode.url = imageURL
-        
+
         automaticallyManagesSubnodes = true
     }
-    
+
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         imageNode.style.preferredSize = size
         return ASAbsoluteLayoutSpec(children: [imageNode])

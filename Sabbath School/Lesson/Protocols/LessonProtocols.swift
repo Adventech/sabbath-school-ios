@@ -28,7 +28,7 @@ protocol LessonPresenterProtocol: class {
     var interactor: LessonInteractorInputProtocol? { get set }
     var wireFrame: LessonWireFrameProtocol? { get set }
     var quarterlyIndex: String? { get set }
-    
+
     func configure()
     func presentReadScreen(lessonIndex: String)
 }
@@ -50,7 +50,7 @@ protocol LessonInteractorOutputProtocol: class {
 
 protocol LessonInteractorInputProtocol: class {
     var presenter: LessonInteractorOutputProtocol? { get set }
-    
+
     func configure()
     func retrieveQuarterlyInfo(quarterlyIndex: String)
 }

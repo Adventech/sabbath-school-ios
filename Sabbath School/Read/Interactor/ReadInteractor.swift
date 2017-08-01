@@ -27,11 +27,11 @@ import Wrap
 class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
     weak var presenter: ReadInteractorOutputProtocol?
     var ticker: Int = -1
-    
-    func retrieveLessonInfo(lessonIndex: String){
+
+    func retrieveLessonInfo(lessonIndex: String) {
         database?.child(Constants.Firebase.lessonInfo).child(lessonIndex).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.value as? [String: AnyObject] else { return }
-            
+
             do {
                 let item: LessonInfo = try unbox(dictionary: json)
                 self?.presenter?.didRetrieveLessonInfo(lessonInfo: item)
@@ -43,19 +43,19 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
             self?.presenter?.onError(error)
         }
     }
-    
-    private func retrieveReads(lessonInfo: LessonInfo){
+
+    private func retrieveReads(lessonInfo: LessonInfo) {
         self.ticker = lessonInfo.days.count
-        
+
         lessonInfo.days.forEach { (day) in
             retrieveRead(readIndex: day.index)
         }
     }
-    
+
     func retrieveRead(readIndex: String) {
         database?.child(Constants.Firebase.reads).child(readIndex).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.value as? [String: AnyObject] else { return }
-                
+
             do {
                 let item: Read = try unbox(dictionary: json)
                 self?.retrieveHighlights(read: item)
@@ -66,8 +66,8 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
             self?.presenter?.onError(error)
         }
     }
-    
-    func retrieveHighlights(read: Read){
+
+    func retrieveHighlights(read: Read) {
         database?
             .child(Constants.Firebase.highlights)
             .child((Auth.auth().currentUser?.uid)!)
@@ -76,20 +76,20 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
                     self?.retrieveComments(read: read, highlights: ReadHighlights(readIndex: read.index, highlights: ""))
                     return
                 }
-                
+
                 do {
                     let readHighlights: ReadHighlights = try unbox(dictionary: json)
                     self?.retrieveComments(read: read, highlights: readHighlights)
                 } catch let error {
                     self?.presenter?.onError(error)
                 }
-                
+
             }) { [weak self] (error) in
                 self?.presenter?.onError(error)
             }
     }
-    
-    func retrieveComments(read: Read, highlights: ReadHighlights){
+
+    func retrieveComments(read: Read, highlights: ReadHighlights) {
         database?
             .child(Constants.Firebase.comments)
             .child((Auth.auth().currentUser?.uid)!)
@@ -99,10 +99,10 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
                     self?.presenter?.didRetrieveRead(read: read, highlights: highlights, comments: ReadComments(readIndex: read.index, comments: [Comment]()), ticker: (self?.ticker)!)
                     return
                 }
-                
+
                 do {
                     let comments: ReadComments = try unbox(dictionary: json)
-                    
+
                     self?.presenter?.didRetrieveRead(read: read, highlights: highlights, comments: comments, ticker: (self?.ticker)!)
                 } catch let error {
                     self?.presenter?.onError(error)
@@ -111,8 +111,8 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
                 self?.presenter?.onError(error)
         }
     }
-    
-    func saveHighlights(highlights: ReadHighlights){
+
+    func saveHighlights(highlights: ReadHighlights) {
         do {
             let wrappedHighlights: WrappedDictionary = try wrap(highlights)
             database?.child(Constants.Firebase.highlights)
@@ -123,8 +123,8 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
             self.presenter?.onError(error)
         }
     }
-    
-    func saveComments(comments: ReadComments){
+
+    func saveComments(comments: ReadComments) {
         do {
             let wrappedComments: WrappedDictionary = try wrap(comments)
             database?.child(Constants.Firebase.comments)

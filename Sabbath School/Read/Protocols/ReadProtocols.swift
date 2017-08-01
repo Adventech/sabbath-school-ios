@@ -28,7 +28,7 @@ protocol ReadPresenterProtocol: class {
     var interactor: ReadInteractorInputProtocol? { get set }
     var wireFrame: ReadWireFrameProtocol? { get set }
     var lessonIndex: String? { get set }
-    
+
     func configure()
     func presentBibleScreen(read: Read, verse: String, size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate)
     func presentReadOptionsScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate)
@@ -36,7 +36,7 @@ protocol ReadPresenterProtocol: class {
 
 protocol ReadControllerProtocol: class {
     var presenter: ReadPresenterProtocol? { get set }
-    
+
     func loadLessonInfo(lessonInfo: LessonInfo)
     func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool)
 }
@@ -53,7 +53,7 @@ protocol ReadInteractorOutputProtocol: class {
 
 protocol ReadInteractorInputProtocol: class {
     var presenter: ReadInteractorOutputProtocol? { get set }
-    
+
     func configure()
     func retrieveRead(readIndex: String)
     func retrieveLessonInfo(lessonIndex: String)

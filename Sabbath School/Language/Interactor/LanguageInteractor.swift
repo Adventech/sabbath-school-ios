@@ -26,15 +26,15 @@ import Wrap
 
 class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputProtocol {
     weak var presenter: LanguageInteractorOutputProtocol?
-    
-    override func configure(){
+
+    override func configure() {
         database = Database.database().reference()
     }
-    
+
     func retrieveLanguages() {
         database?.child(Constants.Firebase.languages).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
             guard let json = snapshot.value as? [[String: AnyObject]] else { return }
-            
+
             do {
                 let items: [QuarterlyLanguage] = try unbox(dictionaries: json)
                 self?.presenter?.didRetrieveLanguages(languages: items)
@@ -43,8 +43,8 @@ class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputPro
             }
         })
     }
-    
-    func saveLanguage(language: QuarterlyLanguage){
+
+    func saveLanguage(language: QuarterlyLanguage) {
         let dictionary: [String: Any] = try! wrap(language)
         UserDefaults.standard.set(dictionary, forKey: Constants.DefaultKey.quarterlyLanguage)
     }

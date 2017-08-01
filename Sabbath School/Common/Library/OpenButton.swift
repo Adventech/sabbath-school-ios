@@ -31,7 +31,7 @@ class OpenButton: ASButtonNode {
             anim?.toValue = NSValue(cgSize: CGSize(width: 0.95, height: 0.95))
             self.layer.pop_add(anim, forKey: anim?.property.name)
         }
-        
+
         if controlEvents == .touchUpInside {
             let anim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
             anim?.dynamicsTension = 300
@@ -41,14 +41,14 @@ class OpenButton: ASButtonNode {
             anim?.toValue = NSValue(cgSize: CGSize(width: 1, height: 1))
             layer.pop_add(anim, forKey: anim?.property.name)
         }
-        
+
         if controlEvents == .touchDragOutside || controlEvents == .touchCancel {
             let anim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
             anim?.duration = 0.2
             anim?.toValue = NSValue(cgSize: CGSize(width: 1, height: 1))
             self.layer.pop_add(anim, forKey: anim?.property.name)
         }
-        
+
         super.sendActions(forControlEvents: controlEvents, with: touchEvent)
     }
 }

@@ -26,12 +26,12 @@ class BiblePresenter: BiblePresenterProtocol {
     var controller: BibleControllerProtocol?
     var wireFrame: BibleWireFrameProtocol?
     var interactor: BibleInteractorInputProtocol?
-    
-    func configure(){
+
+    func configure() {
         interactor?.configure()
     }
-    
-    func presentBibleVerse(read: Read, verse: String){
+
+    func presentBibleVerse(read: Read, verse: String) {
         interactor?.retrieveBibleVerse(read: read, verse: verse)
     }
 }
@@ -40,8 +40,8 @@ extension BiblePresenter: BibleInteractorOutputProtocol {
     func onError(_ error: Error?) {
         print(error?.localizedDescription ?? "Unknown")
     }
-    
-    func didRetrieveBibleVerse(content: String){
+
+    func didRetrieveBibleVerse(content: String) {
         controller?.showBibleVerse(content: content)
     }
 }

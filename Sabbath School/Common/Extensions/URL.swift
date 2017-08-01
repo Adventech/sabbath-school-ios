@@ -23,7 +23,7 @@
 import Foundation
 
 extension URL {
-    
+
     /**
      Get the value for a paramter key from URL.
      
@@ -32,22 +32,18 @@ extension URL {
      */
     func valueForParameter(key: String) -> String? {
         if let components = URLComponents(string: absoluteString), let queryItems = components.queryItems {
-            for item in queryItems {
-                if item.name == key {
-                    return item.value
-                }
+            for item in queryItems where item.name == key {
+                return item.value
             }
         }
-        
+
         guard let fragment = fragment else { return nil }
         if let components = URLComponents(string: fragment), let queryItems = components.queryItems {
-            for item in queryItems {
-                if item.name == key {
-                    return item.value
-                }
+            for item in queryItems where item.name == key {
+                return item.value
             }
         }
-        
+
         return nil
     }
 }

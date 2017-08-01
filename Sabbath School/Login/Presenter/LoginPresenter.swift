@@ -26,42 +26,42 @@ class LoginPresenter: LoginPresenterProtocol {
     var controller: LoginControllerProtocol?
     var wireFrame: LoginWireFrameProtocol?
     var interactor: LoginInteractorInputProtocol?
-    
-    func configure(){
+
+    func configure() {
         interactor?.configure()
     }
-    
+
     func loginActionAnonymous() {
         interactor?.loginAnonymous()
     }
-    
-    func loginActionFacebook(){
+
+    func loginActionFacebook() {
         interactor?.loginFacebook()
     }
-    
+
     func loginActionGoogle() {
         // TODO: - Show loading indicator
-        
+
         interactor?.loginGoogle()
     }
 }
 
 extension LoginPresenter: LoginInteractorOutputProtocol {
-    func onSuccess(){
+    func onSuccess() {
         wireFrame?.presentQuarterlyScreen()
     }
-    
+
     func onError(_ error: Error?) {
         var config = SwiftMessages.Config()
         config.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
         config.duration = .seconds(seconds: 3)
-        
+
         let messageView = MessageView.viewFromNib(layout: .CardView)
         messageView.button?.isHidden = true
         messageView.bodyLabel?.font = R.font.latoBold(size: 17)
         messageView.configureTheme(.warning)
         messageView.configureContent(title: "", body: "There was an error during login".localized())
         SwiftMessages.show(config: config, view: messageView)
-        
+
     }
 }

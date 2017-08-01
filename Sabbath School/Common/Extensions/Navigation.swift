@@ -27,15 +27,15 @@ extension UINavigationController {
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return viewControllers.first?.preferredStatusBarStyle ?? .lightContent
     }
-    
+
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return visibleViewController?.supportedInterfaceOrientations ?? .portrait
     }
-    
+
     open override var shouldAutorotate: Bool {
         return visibleViewController?.shouldAutorotate ?? false
     }
-    
+
     // MARK: Fix the broken back gesture when using custom back button
     // http://stackoverflow.com/a/38532720/517707
 
@@ -57,7 +57,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
     }
 
     func setCloseButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismiss as (Void) -> Void))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismiss as () -> Void))
     }
 
     func popBack() {
@@ -82,7 +82,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
         let topView = UIView(frame: CGRect(x: 0, y: -size, width: view.frame.width, height: size))
         topView.autoresizingMask = .flexibleWidth
         topView.backgroundColor = color
-        
+
         if let below = belowView {
             view.insertSubview(topView, belowSubview: below)
         } else {
@@ -96,24 +96,24 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navBar?.hideBottomHairline()
         navBar?.isTranslucent = true
     }
-    
+
     func setTranslucentNavigation(_ translucent: Bool = true, color: UIColor, tintColor: UIColor = UIColor.white, titleColor: UIColor = UIColor.black, andFont font: UIFont = R.font.latoBold(size: 15)!) {
         let navBar = self.navigationController?.navigationBar
-        
+
         navBar?.setBackgroundImage(UIImage.imageWithColor(color), for: UIBarMetrics.default)
         navBar?.showBottomHairline()
         navBar?.isTranslucent = translucent
         navBar?.tintColor = tintColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: titleColor, NSFontAttributeName: font]
     }
-    
+
     func setNavigationBarColor(color: UIColor) {
         let navBar = self.navigationController?.navigationBar
         navBar?.setBackgroundImage(UIImage.imageWithColor(color), for: UIBarMetrics.default)
         navBar?.showBottomHairline()
         navBar?.isTranslucent = false
     }
-    
+
     public func setOrientationToRotate(_ orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
     }
@@ -135,7 +135,7 @@ extension UINavigationBar {
         if view.isKind(of: UIImageView.self) && view.bounds.height <= 1.0 {
             return (view as! UIImageView)
         }
-        
+
         let subviews = (view.subviews )
         for subview: UIView in subviews {
             if let imageView: UIImageView = hairlineImageViewInNavigationBar(subview) {

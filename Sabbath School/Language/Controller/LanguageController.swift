@@ -27,27 +27,27 @@ import Unbox
 final class LanguageController: TableController {
     var presenter: LanguagePresenterProtocol & LanguageInteractorOutputProtocol = LanguagePresenter()
     var dataSource = [QuarterlyLanguage]()
-    
+
     override init() {
         super.init()
-        
+
         tableNode.dataSource = self
         title = "Languages".localized().uppercased()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.configure()
         setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let language = dataSource[indexPath.row]
-        
+
         presenter.didSelectLanguage(language: language)
     }
 }
@@ -68,7 +68,7 @@ extension LanguageController: ASTableDataSource {
         let originalName = locale.localizedString(forLanguageCode: language.code) ?? ""
         let translatedName = currentLocale.localizedString(forLanguageCode: language.code) ?? ""
         let savedLanguage = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any]
-        
+
         let cellNodeBlock: () -> ASCellNode = {
             let cell = LanguageCellNode(
                 title: originalName.capitalized,
@@ -83,10 +83,10 @@ extension LanguageController: ASTableDataSource {
             cell.accessibilityIdentifier = language.code
             return cell
         }
-        
+
         return cellNodeBlock
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }

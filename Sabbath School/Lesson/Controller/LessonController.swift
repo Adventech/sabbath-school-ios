@@ -28,48 +28,48 @@ import UIKit
 final class LessonController: TableController {
     var presenter: LessonPresenterProtocol?
     var dataSource: QuarterlyInfo?
-    
+
     override init() {
         super.init()
-        
+
         tableNode.dataSource = self
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButton()
         presenter?.configure()
         Armchair.showPrompt()
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let lesson = dataSource?.lessons[indexPath.row] else { return }
-        
-        if (indexPath.section == 0){
+
+        if indexPath.section == 0 {
             openToday()
         } else {
             presenter?.presentReadScreen(lessonIndex: lesson.index)
         }
     }
-    
-    func openToday(){
+
+    func openToday() {
         guard let lesson = dataSource?.lessons[0] else { return }
         let today = Date()
         for lesson in (dataSource?.lessons)! {
             if today.isAfter(date: lesson.startDate, orEqual: true, granularity: Calendar.Component.day) &&
-                today.isBefore(date: lesson.endDate, orEqual: true, granularity: Calendar.Component.day){
+                today.isBefore(date: lesson.endDate, orEqual: true, granularity: Calendar.Component.day) {
                 presenter?.presentReadScreen(lessonIndex: lesson.index)
                 return
             }
         }
         presenter?.presentReadScreen(lessonIndex: lesson.index)
     }
-    
-    func readButtonAction(sender: OpenButton){
+
+    func readButtonAction(sender: OpenButton) {
         openToday()
     }
 }
@@ -77,7 +77,7 @@ final class LessonController: TableController {
 extension LessonController: LessonControllerProtocol {
     func showLessons(quarterlyInfo: QuarterlyInfo) {
         self.dataSource = quarterlyInfo
-        
+
         if let colorHex = dataSource?.quarterly.colorPrimary {
             self.colorPrimary = UIColor(hex: colorHex)
         }
@@ -90,42 +90,38 @@ extension LessonController: LessonControllerProtocol {
 
 extension LessonController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        
-        guard let _ = dataSource?.lessons[indexPath.row] else {
+
+        guard let lesson = dataSource?.lessons[indexPath.row] else {
             let cellNodeBlock: () -> ASCellNode = {
-                
+
                 if indexPath.section == 0 {
                     return QuarterlyEmptyCell()
                 }
-                
                 return LessonEmptyCellNode()
             }
-            
             return cellNodeBlock
         }
-        
-        let lesson = dataSource?.lessons[indexPath.row]
-        
+
         let cellNodeBlock: () -> ASCellNode = {
             if indexPath.section == 0 {
                 let node = LessonQuarterlyInfoNode(quarterly: (self.dataSource?.quarterly)!)
                 node.readButton.addTarget(self, action: #selector(self.readButtonAction(sender:)), forControlEvents: .touchUpInside)
                 return node
             }
-            
-            return LessonCellNode(lesson: lesson!, number: "\(indexPath.row+1)")
+
+            return LessonCellNode(lesson: lesson, number: "\(indexPath.row+1)")
         }
-        
+
         return cellNodeBlock
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let lessons = dataSource?.lessons else {
             return section == 0 ? 1 : 13
         }
         return section == 0 ? 1 : lessons.count
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

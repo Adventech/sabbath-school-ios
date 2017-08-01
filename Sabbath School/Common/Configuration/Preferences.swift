@@ -27,7 +27,7 @@ func currentLanguage() -> QuarterlyLanguage {
     guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
         return QuarterlyLanguage(code: "en", name: "English")
     }
-    
+
     let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
     return language
 }

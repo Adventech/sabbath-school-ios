@@ -1,0 +1,25 @@
+disabled_rules: # rule identifiers to exclude from running
+  - line_length
+  - force_cast
+  - variable_name
+  - nesting
+  - force_try
+  - type_name
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - Fastlane
+  - Genstrings.swift
+  - R.generated.swift
+file_length:
+  warning: 800
+  error: 1400
+type_body_length:
+  warning: 500
+  error: 600
+function_body_length:
+  warning: 100
+  error: 120
+function_parameter_count:
+  warning: 7
+  error: 8
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit)

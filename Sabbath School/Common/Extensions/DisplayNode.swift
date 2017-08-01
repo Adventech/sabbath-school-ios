@@ -25,7 +25,7 @@ import AsyncDisplayKit
 private var shimmeringNodeKey: UInt = 1
 
 extension ASDisplayNode {
-    
+
     var shimmeringNode: ShimmeringNode? {
         get {
             return objc_getAssociatedObject(self, &shimmeringNodeKey) as? ShimmeringNode
@@ -34,7 +34,7 @@ extension ASDisplayNode {
             objc_setAssociatedObject(self, &shimmeringNodeKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
+
     func addShimmerToNode(node: ASDisplayNode) {
         if node.shimmeringNode == nil {
             let frame = node.frame

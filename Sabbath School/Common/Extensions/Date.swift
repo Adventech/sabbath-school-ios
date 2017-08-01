@@ -23,7 +23,7 @@
 import UIKit
 
 extension Date {
-    
+
     /**
      Convert date from server Format
      */
@@ -34,7 +34,7 @@ extension Date {
         format.calendar = Calendar.ReferenceType.current
         return format
     }
-    
+
     func stringLessonDate() -> String {
         let format = DateFormatter()
         format.dateFormat = "MMM dd"

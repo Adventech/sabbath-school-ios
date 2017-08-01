@@ -24,12 +24,12 @@ import AsyncDisplayKit
 import UIKit
 
 class ThemeController: ASViewController<ASDisplayNode> {
-    var colorPrimary: UIColor? = nil
-    
+    var colorPrimary: UIColor?
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+
     func colorize() {
         if colorPrimary != nil {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -28,19 +28,19 @@ import Zip
 class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputProtocol {
     weak var presenter: QuarterlyInteractorOutputProtocol?
     var languageInteractor = LanguageInteractor()
-    
-    override func configure(){
+
+    override func configure() {
         super.configure()
-        
+
         languageInteractor.configure()
         languageInteractor.presenter = self
         checkifReaderBundleNeeded()
     }
-    
-    func retrieveQuarterliesForLanguage(language: QuarterlyLanguage){
+
+    func retrieveQuarterliesForLanguage(language: QuarterlyLanguage) {
         database?.child(Constants.Firebase.quarterlies).child(language.code).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.value as? [[String: AnyObject]] else { return }
-            
+
             do {
                 let items: [Quarterly] = try unbox(dictionaries: json)
                 self?.presenter?.didRetrieveQuarterlies(quarterlies: items)
@@ -51,20 +51,20 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
             self?.presenter?.onError(error)
         }
     }
-    
+
     func retrieveQuarterlies() {
         guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
             return languageInteractor.retrieveLanguages()
         }
-        
+
         let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
         retrieveQuarterliesForLanguage(language: language)
     }
-    
-    private func checkifReaderBundleNeeded(){
+
+    private func checkifReaderBundleNeeded() {
         let storage = Storage.storage()
         let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
-        
+
         gsReference.getMetadata { [weak self] (metadata, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -76,13 +76,13 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
         }
 
     }
-    
-    private func downloadReaderBundle(metadata: StorageMetadata){
+
+    private func downloadReaderBundle(metadata: StorageMetadata) {
         let storage = Storage.storage()
         let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
         var localURL = Constants.Path.readerBundleZip
-        
-        _ = gsReference.write(toFile: localURL) { [weak self] (url, error) in
+
+        _ = gsReference.write(toFile: localURL) { [weak self] (_, error) in
             if let error = error {
                 self?.presenter?.onError(error)
             } else {
@@ -106,21 +106,19 @@ extension QuarterlyInteractor: LanguageInteractorOutputProtocol {
     func onError(_ error: Error?) {
         print(error?.localizedDescription ?? "Unknown")
     }
-    
-    func didRetrieveLanguages(languages: [QuarterlyLanguage]){
+
+    func didRetrieveLanguages(languages: [QuarterlyLanguage]) {
         var currentLanguage = QuarterlyLanguage(code: "en", name: "English".localized())
         let systemLanguageCode = Locale.current.languageCode
-        
-        for language in languages {
-            if language.code == systemLanguageCode {
-                currentLanguage = language
-                break
-            }
+
+        for language in languages where language.code == systemLanguageCode {
+            currentLanguage = language
+            break
         }
-        
+
         languageInteractor.saveLanguage(language: currentLanguage)
         retrieveQuarterliesForLanguage(language: currentLanguage)
     }
-    
+
     func didSelectLanguage(language: QuarterlyLanguage) { }
 }

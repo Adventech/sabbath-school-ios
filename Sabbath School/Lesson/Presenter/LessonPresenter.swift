@@ -27,12 +27,12 @@ class LessonPresenter: LessonPresenterProtocol {
     var wireFrame: LessonWireFrameProtocol?
     var interactor: LessonInteractorInputProtocol?
     var quarterlyIndex: String?
-    
-    func configure(){
+
+    func configure() {
         interactor?.configure()
         interactor?.retrieveQuarterlyInfo(quarterlyIndex: quarterlyIndex!)
     }
-    
+
     func presentReadScreen(lessonIndex: String) {
         wireFrame?.presentReadScreen(view: controller!, lessonIndex: lessonIndex)
     }
@@ -42,7 +42,7 @@ extension LessonPresenter: LessonInteractorOutputProtocol {
     func onError(_ error: Error?) {
         print(error?.localizedDescription ?? "Unknown")
     }
-    
+
     func didRetrieveQuarterlyInfo(quarterlyInfo: QuarterlyInfo) {
         controller?.showLessons(quarterlyInfo: quarterlyInfo)
     }

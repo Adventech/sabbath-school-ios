@@ -25,16 +25,16 @@ import UIKit
 
 class ReadOptionsController: ASViewController<ASDisplayNode> {
     var readOptionsView = ReadOptionsView()
-    
+
     init(delegate: ReadOptionsDelegate) {
         readOptionsView.delegate = delegate
         super.init(node: readOptionsView)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }

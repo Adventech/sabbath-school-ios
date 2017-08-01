@@ -23,7 +23,7 @@
 import UIKit
 
 extension UIButton {
-    
+
     /**
      Add a space between the text and image
      http://stackoverflow.com/a/25559946/517707
@@ -34,8 +34,7 @@ extension UIButton {
         titleEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: -insetAmount)
         contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
     }
-    
-    
+
     /**
      Invert image position
      http://stackoverflow.com/a/32174204/517707
