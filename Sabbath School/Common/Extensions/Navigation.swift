@@ -23,50 +23,51 @@
 import UIKit
 
 extension UINavigationController {
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
-      if let rootViewController = self.viewControllers.first {
-            return rootViewController.preferredStatusBarStyle
-        }
 
-        return self.preferredStatusBarStyle
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return visibleViewController?.preferredStatusBarStyle ?? .default
     }
     
-    open override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        return visibleViewController!.supportedInterfaceOrientations
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return visibleViewController?.supportedInterfaceOrientations ?? .portrait
     }
     
-    open override var shouldAutorotate : Bool {
-        return visibleViewController!.shouldAutorotate
+    open override var shouldAutorotate: Bool {
+        return visibleViewController?.shouldAutorotate ?? false
     }
     
+    // MARK: Fix the broken back gesture when using custom back button
+    // http://stackoverflow.com/a/38532720/517707
+
     open override func viewDidLoad() {
         super.viewDidLoad()
         interactivePopGestureRecognizer?.delegate = self
     }
-    
+
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return viewControllers.count > 1
     }
 }
 
 extension UIViewController: UIGestureRecognizerDelegate {
+
     func setBackButton() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popBack))
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
     }
-    
+
     func setCloseButton() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismiss as (Void) -> Void))
     }
-    
+
     func popBack() {
         _ = self.navigationController?.popViewController(animated: true)
     }
-    
+
     func dismiss() {
         dismiss(animated: true, completion: nil)
     }
-    
+
     func dismiss(completion: (() -> Void)?) {
         DispatchQueue.main.async {
             self.dismiss(animated: true, completion: {
@@ -119,16 +120,17 @@ extension UIViewController: UIGestureRecognizerDelegate {
 }
 
 extension UINavigationBar {
+
     func hideBottomHairline() {
         let navigationBarImageView = hairlineImageViewInNavigationBar(self)
         navigationBarImageView!.isHidden = true
     }
-    
+
     func showBottomHairline() {
         let navigationBarImageView = hairlineImageViewInNavigationBar(self)
         navigationBarImageView!.isHidden = false
     }
-    
+
     fileprivate func hairlineImageViewInNavigationBar(_ view: UIView) -> UIImageView? {
         if view.isKind(of: UIImageView.self) && view.bounds.height <= 1.0 {
             return (view as! UIImageView)
@@ -140,7 +142,6 @@ extension UINavigationBar {
                 return imageView
             }
         }
-        
         return nil
     }
 }
