@@ -46,11 +46,6 @@ class QuarterlyController: TableController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let lastQuarterlyIndex = currentQuarterly()
-        if !lastQuarterlyIndex.isEmpty {
-            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
-        }
-
         let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
         settingsButton.accessibilityIdentifier = "openSettings"
 
@@ -61,6 +56,12 @@ class QuarterlyController: TableController {
         navigationItem.rightBarButtonItem = rightButton
         presenter?.configure()
         retrieveQuarterlies()
+
+        let lastQuarterlyIndex = currentQuarterly()
+        let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
+        if let code = languageCode.first, currentLanguage().code == code {
+            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
+        }
     }
 
     func retrieveQuarterlies() {

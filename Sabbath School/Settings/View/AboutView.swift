@@ -66,7 +66,6 @@ class AboutView: ASCellNode {
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        adventechLogo.style.preferredSize = CGSize(width: 213, height: 108)
         slogan.style.spacingBefore = 9
 
         let socialIcons = ASStackLayoutSpec(
@@ -90,9 +89,8 @@ class AboutView: ASCellNode {
             children: [adventechLogo, slogan, socialIcons, websiteUrl, descriptionText, signatureText]
         )
 
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 37, left: 20, bottom: 20, right: 20), child: mainLayout)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 20), child: mainLayout)
     }
-
     func tapInstagram(_ sender: UIView) {
         delegate?.didTapInstagram()
     }

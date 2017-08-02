@@ -57,7 +57,7 @@ struct ReaderStyle {
             switch self {
             case .light: return .white
             case .sepia: return .white
-            case .dark: return .readerDarkFont
+            case .dark: return .white
             }
         }
     }
