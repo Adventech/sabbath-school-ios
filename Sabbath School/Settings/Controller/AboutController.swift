@@ -28,28 +28,28 @@ import UIKit
 class AboutController: ThemeController {
     var collectionNode: ASCollectionNode { return node as! ASCollectionNode }
     let collectionViewLayout = UICollectionViewFlowLayout()
-    
+
     init() {
         super.init(node: ASCollectionNode(collectionViewLayout: collectionViewLayout))
         collectionNode.dataSource = self
         title = "About us".localized().uppercased()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setBackButton()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
     }
-    
-    func openUrl(url: String){
+
+    func openUrl(url: String) {
         if #available(iOS 9.0, *) {
             let safariVC = SFSafariViewController(url: URL(string: url)!)
             safariVC.view.tintColor = .tintColor
@@ -65,7 +65,7 @@ class AboutController: ThemeController {
 
 extension AboutController: AboutViewDelegate {
     func didTapInstagram() {
-        let instagramURL:URL = URL(string: "instagram://user?username=adventech")!
+        let instagramURL: URL = URL(string: "instagram://user?username=adventech")!
 
         if UIApplication.shared.canOpenURL(instagramURL) {
             UIApplication.shared.openURL(instagramURL)
@@ -73,21 +73,21 @@ extension AboutController: AboutViewDelegate {
             self.openUrl(url: "https://instagram.com/adventech")
         }
     }
-    
+
     func didTapFacebook() {
-        let facebookURL:URL = URL(string: "fb://profile/1374916669500596")!
-        
+        let facebookURL: URL = URL(string: "fb://profile/1374916669500596")!
+
         if UIApplication.shared.canOpenURL(facebookURL) {
             UIApplication.shared.openURL(facebookURL)
         } else {
             self.openUrl(url: "https://www.facebook.com/shabbatschool/")
         }
     }
-    
+
     func didTapGitHub() {
         self.openUrl(url: "https://github.com/Adventech")
     }
-    
+
     func didTapWebsite() {
         self.openUrl(url: "http://www.adventech.io")
     }
@@ -95,15 +95,15 @@ extension AboutController: AboutViewDelegate {
 
 extension AboutController: ASCollectionDataSource {
     func collectionView(_ collectionView: ASCollectionView, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let cellNodeBlock: () -> ASCellNode =  { [weak self] in
+        let cellNodeBlock: () -> ASCellNode = {
             let view = AboutView()
             view.delegate = self
             return view
         }
-        
+
         return cellNodeBlock
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }

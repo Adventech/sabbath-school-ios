@@ -29,7 +29,7 @@ let isPhone = UIDevice.current.userInterfaceIdiom == .phone
 struct Constants {
     struct NotificationKey {
     }
-    
+
     struct DefaultKey {
         static let gcmMessageIDKey = "gcm.message_id"
         static let interfaceLanguage = "io.adventech.interfaceLanguage"
@@ -40,7 +40,7 @@ struct Constants {
         }
         static let lastQuarterlyIndex = "io.adventech.lastQuarterlyIndex"
         static let latestReaderBundleTimestamp = "io.adventech.latestReaderBundleTimestamp"
-        
+
         static let readingOptionsTheme = "io.adventech.readingOptionsTheme"
         static let readingOptionsTypeface = "io.adventech.readingOptionsTypeface"
         static let readingOptionsSize = "io.adventech.readingOptionsSize"
@@ -48,7 +48,7 @@ struct Constants {
         static let settingsReminderTime = "io.adventech.settings.reminderTime"
         static let settingsDefaultReminderTime = "08:00"
     }
-    
+
     struct Path {
         static let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         static let tmp = NSTemporaryDirectory()
@@ -58,7 +58,7 @@ struct Constants {
         static let readerBundle = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest/index.html")
         static let readerBundleDir = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest/")
     }
-    
+
     struct Firebase {
         static let apiPrefix = "/api/v1"
         static let languages = apiPrefix + "/languages"
@@ -66,7 +66,7 @@ struct Constants {
         static let quarterlyInfo = apiPrefix + "/quarterly-info"
         static let lessonInfo = apiPrefix + "/lesson-info"
         static let reads = apiPrefix + "/reads"
-        
+
         #if DEBUG
         struct Storage {
             struct ReaderPath {
@@ -82,7 +82,7 @@ struct Constants {
             }
         }
         #endif
-        
+
         // User created
         static let highlights = "highlights"
         static let comments = "comments"

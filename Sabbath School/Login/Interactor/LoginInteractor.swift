@@ -27,21 +27,21 @@ import GoogleSignIn
 
 class LoginInteractor: NSObject, LoginInteractorInputProtocol {
     weak var presenter: LoginInteractorOutputProtocol?
-    
-    func configure(){
+
+    func configure() {
         setupGoogleLogin()
     }
-    
-    func setupGoogleLogin(){
+
+    func setupGoogleLogin() {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
     }
 
-    func setupFacebookLogin(){
-        
+    func setupFacebookLogin() {
+
     }
-    
-    func loginAnonymous(){
+
+    func loginAnonymous() {
         let alertController = UIAlertController(
             title: "Login anonymously?".localized(),
             message: "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?".localized(),
@@ -51,8 +51,8 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
         let no = UIAlertAction(title: "No".localized(), style: .default, handler: nil)
         no.accessibilityLabel = "loginAnonimousOptionNo"
 
-        let yes = UIAlertAction(title: "Yes".localized(), style: .destructive) { [weak self] (action) in
-            Auth.auth().signInAnonymously(completion: { [weak self] (user, error) in
+        let yes = UIAlertAction(title: "Yes".localized(), style: .destructive) { [weak self] (_) in
+            Auth.auth().signInAnonymously(completion: { [weak self] (_, error) in
                 if let error = error {
                     self?.presenter?.onError(error)
                 } else {
@@ -65,18 +65,18 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
         alertController.addAction(no)
         alertController.addAction(yes)
         alertController.accessibilityLabel = "loginAnonimous"
-        
+
         ((self.presenter as? LoginPresenter)?.controller as? UIViewController)?.present(alertController, animated: true, completion: nil)
-        
+
     }
-    
-    func loginGoogle(){
+
+    func loginGoogle() {
         GIDSignIn.sharedInstance().signIn()
     }
-    
-    func loginFacebook(){
+
+    func loginFacebook() {
         let loginManager = LoginManager()
-        
+
         loginManager.logIn([ReadPermission.publicProfile, ReadPermission.email], viewController: (self.presenter as? LoginPresenter)?.controller as? UIViewController, completion: { [weak self] (loginResult) in
             switch loginResult {
             case .failed(let error):
@@ -89,9 +89,9 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
             }
         })
     }
-    
-    func performFirebaseLogin(credential: AuthCredential){
-        Auth.auth().signIn(with: credential) { [weak self] (user, error) in
+
+    func performFirebaseLogin(credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { [weak self] (_, error) in
             if error != nil {
                 self?.presenter?.onError(error)
                 return
@@ -108,13 +108,13 @@ extension LoginInteractor: GIDSignInDelegate {
             self.presenter?.onError(error)
             return
         }
-        
+
         let authentication = user.authentication
         let credential = GoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,
                                                        accessToken: (authentication?.accessToken)!)
         performFirebaseLogin(credential: credential)
     }
-    
+
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
     }

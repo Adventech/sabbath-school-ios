@@ -23,50 +23,51 @@
 import UIKit
 
 extension UINavigationController {
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
-      if let rootViewController = self.viewControllers.first {
-            return rootViewController.preferredStatusBarStyle
-        }
 
-        return self.preferredStatusBarStyle
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return viewControllers.first?.preferredStatusBarStyle ?? .lightContent
     }
-    
-    open override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        return visibleViewController!.supportedInterfaceOrientations
+
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return visibleViewController?.supportedInterfaceOrientations ?? .portrait
     }
-    
-    open override var shouldAutorotate : Bool {
-        return visibleViewController!.shouldAutorotate
+
+    open override var shouldAutorotate: Bool {
+        return visibleViewController?.shouldAutorotate ?? false
     }
-    
+
+    // MARK: Fix the broken back gesture when using custom back button
+    // http://stackoverflow.com/a/38532720/517707
+
     open override func viewDidLoad() {
         super.viewDidLoad()
         interactivePopGestureRecognizer?.delegate = self
     }
-    
+
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return viewControllers.count > 1
     }
 }
 
 extension UIViewController: UIGestureRecognizerDelegate {
+
     func setBackButton() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popBack))
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
     }
-    
+
     func setCloseButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismiss as (Void) -> Void))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismiss as () -> Void))
     }
-    
+
     func popBack() {
         _ = self.navigationController?.popViewController(animated: true)
     }
-    
+
     func dismiss() {
         dismiss(animated: true, completion: nil)
     }
-    
+
     func dismiss(completion: (() -> Void)?) {
         DispatchQueue.main.async {
             self.dismiss(animated: true, completion: {
@@ -81,7 +82,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
         let topView = UIView(frame: CGRect(x: 0, y: -size, width: view.frame.width, height: size))
         topView.autoresizingMask = .flexibleWidth
         topView.backgroundColor = color
-        
+
         if let below = belowView {
             view.insertSubview(topView, belowSubview: below)
         } else {
@@ -95,52 +96,65 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navBar?.hideBottomHairline()
         navBar?.isTranslucent = true
     }
-    
+
     func setTranslucentNavigation(_ translucent: Bool = true, color: UIColor, tintColor: UIColor = UIColor.white, titleColor: UIColor = UIColor.black, andFont font: UIFont = R.font.latoBold(size: 15)!) {
         let navBar = self.navigationController?.navigationBar
-        
+
         navBar?.setBackgroundImage(UIImage.imageWithColor(color), for: UIBarMetrics.default)
         navBar?.showBottomHairline()
         navBar?.isTranslucent = translucent
         navBar?.tintColor = tintColor
         navBar?.titleTextAttributes = [NSForegroundColorAttributeName: titleColor, NSFontAttributeName: font]
     }
-    
+
     func setNavigationBarColor(color: UIColor) {
         let navBar = self.navigationController?.navigationBar
         navBar?.setBackgroundImage(UIImage.imageWithColor(color), for: UIBarMetrics.default)
         navBar?.showBottomHairline()
         navBar?.isTranslucent = false
     }
-    
+
     public func setOrientationToRotate(_ orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
     }
 }
 
 extension UINavigationBar {
+
     func hideBottomHairline() {
         let navigationBarImageView = hairlineImageViewInNavigationBar(self)
         navigationBarImageView!.isHidden = true
     }
-    
+
     func showBottomHairline() {
         let navigationBarImageView = hairlineImageViewInNavigationBar(self)
         navigationBarImageView!.isHidden = false
     }
-    
+
     fileprivate func hairlineImageViewInNavigationBar(_ view: UIView) -> UIImageView? {
         if view.isKind(of: UIImageView.self) && view.bounds.height <= 1.0 {
             return (view as! UIImageView)
         }
-        
+
         let subviews = (view.subviews )
         for subview: UIView in subviews {
             if let imageView: UIImageView = hairlineImageViewInNavigationBar(subview) {
                 return imageView
             }
         }
-        
         return nil
+    }
+}
+
+// MARK: - Fix iOS 9 crash https://stackoverflow.com/a/32010520/517707
+
+extension UIAlertController {
+
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+
+    open override var shouldAutorotate: Bool {
+        return false
     }
 }

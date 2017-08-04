@@ -27,7 +27,7 @@ protocol LoginPresenterProtocol: class {
     var controller: LoginControllerProtocol? { get set }
     var interactor: LoginInteractorInputProtocol? { get set }
     var wireFrame: LoginWireFrameProtocol? { get set }
-    
+
     func configure()
     func loginActionAnonymous()
     func loginActionGoogle()
@@ -50,7 +50,7 @@ protocol LoginInteractorOutputProtocol: class {
 
 protocol LoginInteractorInputProtocol: class {
     weak var presenter: LoginInteractorOutputProtocol? { get set }
-    
+
     func configure()
     func setupGoogleLogin()
     func setupFacebookLogin()

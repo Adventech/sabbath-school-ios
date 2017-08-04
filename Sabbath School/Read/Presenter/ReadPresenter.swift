@@ -28,24 +28,24 @@ class ReadPresenter: ReadPresenterProtocol {
     var wireFrame: ReadWireFrameProtocol?
     var interactor: ReadInteractorInputProtocol?
     var lessonIndex: String?
-    
-    func configure(){
+
+    func configure() {
         interactor?.configure()
         interactor?.retrieveLessonInfo(lessonIndex: lessonIndex!)
     }
-    
-    func presentBibleScreen(read: Read, verse: String, size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate){
-        
+
+    func presentBibleScreen(read: Read, verse: String, size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate) {
+
         let bibleScreen = BibleWireFrame.createBibleModule(read: read, verse: verse)
         (bibleScreen as! BibleController).delegate = (controller as! BibleControllerOutputProtocol)
         let navigation = ASNavigationController(rootViewController: bibleScreen)
         navigation.transitioningDelegate = transitioningDelegate
         navigation.modalPresentationStyle = .custom
         navigation.preferredContentSize = size
-        (controller as! UIViewController).present(navigation, animated: true, completion: nil)        
+        (controller as! UIViewController).present(navigation, animated: true, completion: nil)
     }
-    
-    func presentReadOptionsScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate){
+
+    func presentReadOptionsScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate) {
         let readOptionsScreen = ReadOptionsController(delegate: self.controller as! ReadOptionsDelegate)
         readOptionsScreen.transitioningDelegate = transitioningDelegate
         readOptionsScreen.modalPresentationStyle = .custom
@@ -58,11 +58,11 @@ extension ReadPresenter: ReadInteractorOutputProtocol {
     func onError(_ error: Error?) {
         print(error?.localizedDescription ?? "Unknown")
     }
-    
-    func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int = 0){
+
+    func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int = 0) {
         controller?.showRead(read: read, highlights: highlights, comments: comments, finish: ticker == 0)
     }
-    
+
     func didRetrieveLessonInfo(lessonInfo: LessonInfo) {
         controller?.loadLessonInfo(lessonInfo: lessonInfo)
     }

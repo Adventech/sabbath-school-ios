@@ -27,8 +27,8 @@ protocol LanguagePresenterProtocol: class {
     var controller: LanguageControllerProtocol? { get set }
     var interactor: LanguageInteractorInputProtocol? { get set }
     var wireFrame: LanguageWireFrameProtocol? { get set }
-    var didSelectLanguageHandler: ()-> Void? { get set }
-    
+    var didSelectLanguageHandler: () -> Void? { get set }
+
     func configure()
 }
 
@@ -38,7 +38,7 @@ protocol LanguageControllerProtocol: class {
 }
 
 protocol LanguageWireFrameProtocol: class {
-    static func createLanguageModule(size: CGSize?, transitioningDelegate: UIViewControllerTransitioningDelegate?, didSelectLanguageHandler: @escaping ()-> Void?) -> ASNavigationController
+    static func createLanguageModule(size: CGSize?, transitioningDelegate: UIViewControllerTransitioningDelegate?, didSelectLanguageHandler: @escaping () -> Void?) -> ASNavigationController
 }
 
 protocol LanguageInteractorOutputProtocol: class {
@@ -49,7 +49,7 @@ protocol LanguageInteractorOutputProtocol: class {
 
 protocol LanguageInteractorInputProtocol: class {
     var presenter: LanguageInteractorOutputProtocol? { get set }
-    
+
     func configure()
     func retrieveLanguages()
     func saveLanguage(language: QuarterlyLanguage)

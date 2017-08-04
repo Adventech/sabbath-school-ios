@@ -26,22 +26,22 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
     weak var controller: QuarterlyControllerProtocol?
     var wireFrame: QuarterlyWireFrameProtocol?
     var interactor: QuarterlyInteractorInputProtocol?
-    
-    func configure(){
+
+    func configure() {
         interactor?.configure()
     }
-    
-    func presentQuarterlies(){
+
+    func presentQuarterlies() {
         interactor?.retrieveQuarterlies()
     }
-    
-    func presentLanguageScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate){
+
+    func presentLanguageScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate) {
         (controller as! UIViewController).present(LanguageWireFrame.createLanguageModule(size: size, transitioningDelegate: transitioningDelegate, didSelectLanguageHandler: { [weak self] _ in
             self?.controller?.retrieveQuarterlies()
         }), animated: true, completion: nil)
     }
-    
-    func presentLessonScreen(quarterlyIndex: String){
+
+    func presentLessonScreen(quarterlyIndex: String) {
         wireFrame?.presentLessonScreen(view: controller!, quarterlyIndex: quarterlyIndex)
     }
 }
@@ -50,8 +50,8 @@ extension QuarterlyPresenter: QuarterlyInteractorOutputProtocol {
     func onError(_ error: Error?) {
         print(error?.localizedDescription ?? "Unknown")
     }
-    
-    func didRetrieveQuarterlies(quarterlies: [Quarterly]){
+
+    func didRetrieveQuarterlies(quarterlies: [Quarterly]) {
         if currentLanguage().code == quarterlies.first?.lang {
             controller?.showQuarterlies(quarterlies: quarterlies)
         }

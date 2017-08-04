@@ -24,20 +24,20 @@ import Foundation
 
 class BibleInteractor: BibleInteractorInputProtocol {
     weak var presenter: BibleInteractorOutputProtocol?
-    
+
     func configure() {}
-    
+
     func preferredBibleVersionFor(bibleVerses: [BibleVerses]) -> String? {
         if let bibleVersion = UserDefaults.standard.value(forKey: Constants.DefaultKey.preferredBibleVersion) as? String {
             return bibleVersion
         }
-        
+
         guard let versionName = bibleVerses.first?.name else { return nil }
         UserDefaults.standard.set(versionName, forKey: Constants.DefaultKey.preferredBibleVersion)
         return versionName
     }
-    
-    func retrieveBibleVerse(read: Read, verse: String){
+
+    func retrieveBibleVerse(read: Read, verse: String) {
         if let versionName = preferredBibleVersionFor(bibleVerses: read.bible),
             let bibleVersion = read.bible.filter({$0.name == versionName}).first,
             let openVerse = bibleVersion.verses[verse] {

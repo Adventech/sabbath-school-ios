@@ -34,16 +34,16 @@ let iOSThumbShadowRadius: CGFloat = 4.0
 let iosThumbShadowOffset = CGSize(width: 0, height: 3)
 
 class DiscreteSlider: UIControl {
-    
+
     func ticksDistanceChanged(_ ticksDistance: CGFloat, sender: AnyObject) { }
     func valueChanged(_ value: CGFloat) { }
-    
+
     // MARK: properties
-    
+
     var tickStyle: ComponentStyle =  ComponentStyle.rectangular {
         didSet { self.layoutTrack() }
     }
-    
+
     var tickSize: CGSize = CGSize(width: 1.0, height: 4.0) {
         willSet (value) {
             self.tickSize.width = max(0, value.width)
@@ -51,14 +51,14 @@ class DiscreteSlider: UIControl {
             self.layoutTrack()
         }
     }
-    
+
     var tickCount: Int = 11 {
         willSet (value) {
             self.tickCount = max(2, value)
             self.layoutTrack()
         }
     }
-    
+
     var ticksDistance: CGFloat {
         //swiftlint:disable implicit_getter
         get {
@@ -67,30 +67,30 @@ class DiscreteSlider: UIControl {
             return (self.trackRectangle!.size.width/segments)
         }
     }
-    
+
     var tickImage: String? {
         didSet { self.layoutTrack() }
     }
-    
+
     var trackStyle: ComponentStyle = ComponentStyle.ios {
         didSet { self.layoutTrack() }
     }
-    
+
     var trackThickness: CGFloat = 2.0 {
         willSet (value) {
             self.trackThickness = max(0, value)
             self.layoutTrack()
         }
     }
-    
+
     var trackImage: String? {
         didSet { self.layoutTrack() }
     }
-    
+
     var thumbStyle: ComponentStyle = ComponentStyle.ios {
         didSet { self.layoutTrack() }
     }
-    
+
     var thumbSize: CGSize = CGSize(width: 10.0, height: 10.0) {
         willSet (value) {
             self.thumbSize.width = max(1, value.width)
@@ -98,11 +98,11 @@ class DiscreteSlider: UIControl {
             self.layoutTrack()
         }
     }
-    
+
     var thumbShadowRadius: CGFloat = 0.0 {
         didSet { self.layoutTrack() }
     }
-    
+
     var thumbImage: String? {
         willSet (value) {
             self.thumbImage = value
@@ -114,7 +114,7 @@ class DiscreteSlider: UIControl {
             self.layoutTrack()
         }
     }
-    
+
     // AKA: UISlider value (as CGFloat for compatibility with UISlider API, but expected to contain integers)
     var minimumValue: CGFloat {
         get { return CGFloat(self._intMinimumValue!) } // calculated property, with a float-to-int adapter
@@ -123,7 +123,7 @@ class DiscreteSlider: UIControl {
             self.layoutTrack()
         }
     }
-    
+
     var value: CGFloat {
         get { return CGFloat(self._intValue!) }
         set (value) {
@@ -132,7 +132,7 @@ class DiscreteSlider: UIControl {
             self.layoutTrack()
         }
     }
-    
+
     var incrementValue: CGFloat = 1 {
         willSet (value) {
             self.incrementValue = value
@@ -142,7 +142,7 @@ class DiscreteSlider: UIControl {
             self.layoutTrack()
         }
     }
-    
+
     var thumbColor: UIColor?
     var thumbShadowOffset: CGSize?
     var _intValue: Int?
@@ -152,34 +152,34 @@ class DiscreteSlider: UIControl {
     var thumbLayer: CALayer?
     var colorTrackLayer: CALayer?
     var trackRectangle: CGRect!
-    
+
     // When bounds change, recalculate layout
     //    func setBounds(bounds: CGRect) {
     //		super.bounds = bounds
     //		self.layoutTrack()
     //		self.setNeedsDisplay()
     //	}
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initProperties()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func draw(_ rect: CGRect) {
         self.drawTrack()
         self.drawThumb()
     }
-    
+
     func sendActionsForControlEvents() {
         self.sendActions(for: UIControlEvents.valueChanged)
     }
-    
+
     // MARK: DiscreteSlider
-    
+
     func initProperties() {
         self.thumbColor = UIColor.lightGray
         self.thumbShadowOffset = CGSize.zero
@@ -200,7 +200,7 @@ class DiscreteSlider: UIControl {
         self.isMultipleTouchEnabled = false
         self.layoutTrack()
     }
-    
+
     //swiftlint:disable cyclomatic_complexity
     func drawTrack() {
         let ctx = UIGraphicsGetCurrentContext()
@@ -210,7 +210,7 @@ class DiscreteSlider: UIControl {
             ctx!.addRect(self.trackRectangle)
             break
         case .image:
-            
+
             // Draw image if exists
             if let imageName = self.trackImage {
                 let image = UIImage(named:imageName)!
@@ -218,13 +218,13 @@ class DiscreteSlider: UIControl {
                 ctx!.draw(image.cgImage!, in: centered)
             }
             break
-            
+
         case .invisible, .rounded, .ios:
             let path: UIBezierPath = UIBezierPath(roundedRect: self.trackRectangle, cornerRadius: self.trackRectangle.size.height/2)
             ctx!.addPath(path.cgPath)
             break
         }
-        
+
         // Ticks
         if .ios != self.tickStyle {
             for originValue in self.ticksAbscisses {
@@ -240,20 +240,20 @@ class DiscreteSlider: UIControl {
                     break
                 case .image:
                     // Draw image if exists
-                    
+
                     if let imageName = self.tickImage {
                         let image = UIImage(named: imageName)!
                         let centered = CGRect(x: rectangle.origin.x+(rectangle.size.width/2)-(image.size.width/2), y: rectangle.origin.y+(rectangle.size.height/2)-(image.size.height/2), width: image.size.width, height: image.size.height)
                         ctx!.draw(image.cgImage!, in: centered)
                     }
                     break
-                    
+
                 case .invisible: break
                 case .ios: break
                 }
             }
         }
-        
+
         // iOS UISlider aka .IOS does not have ticks
         ctx!.setFillColor(self.tintColor.cgColor)
         ctx!.fillPath()
@@ -266,7 +266,7 @@ class DiscreteSlider: UIControl {
             self.colorTrackLayer!.frame = CGRect.zero
         }
     }
-    
+
     func drawThumb() {
         if self.value >= self.minimumValue {
             // Feature: hide the thumb when below range
@@ -287,7 +287,7 @@ class DiscreteSlider: UIControl {
                 self.thumbLayer!.cornerRadius = self.thumbLayer!.frame.size.width/2
                 self.thumbLayer!.allowsEdgeAntialiasing = true
                 break
-                
+
             case .image:
                 // image is set using layer.contents
                 self.thumbLayer!.backgroundColor = UIColor.clear.cgColor
@@ -296,7 +296,7 @@ class DiscreteSlider: UIControl {
                 self.thumbLayer!.cornerRadius = 0.0
                 self.thumbLayer!.allowsEdgeAntialiasing = false
                 break
-                
+
             case .rectangular:
                 self.thumbLayer!.backgroundColor = self.thumbColor!.cgColor
                 self.thumbLayer!.borderColor = UIColor.clear.cgColor
@@ -304,12 +304,12 @@ class DiscreteSlider: UIControl {
                 self.thumbLayer!.cornerRadius = 0.0
                 self.thumbLayer!.allowsEdgeAntialiasing = false
                 break
-                
+
             case .invisible:
                 self.thumbLayer!.backgroundColor = UIColor.clear.cgColor
                 self.thumbLayer!.cornerRadius = 0.0
                 break
-                
+
             case .ios:
                 self.thumbLayer!.backgroundColor = UIColor.white.cgColor
                 self.thumbLayer!.borderColor = UIColor(hue: 0, saturation: 0, brightness: 0.8, alpha: 1).cgColor
@@ -318,7 +318,7 @@ class DiscreteSlider: UIControl {
                 self.thumbLayer!.allowsEdgeAntialiasing = true
                 break
             }
-            
+
             // Shadow
             if shadowRadius != 0.0 {
                 self.thumbLayer!.shadowOffset = shadowOffset!
@@ -333,12 +333,12 @@ class DiscreteSlider: UIControl {
             }
         }
     }
-    
+
     func layoutTrack() {
         assert(self.tickCount > 1, "2 ticks minimum \(self.tickCount)")
         let segments = max(1, self.tickCount-1)
         let thumbWidth = self.thumbSizeIncludingShadow().width
-        
+
         // Calculate the track ticks positions
         let trackHeight = ((.ios == self.trackStyle) ? 2.0 : self.trackThickness)
         var trackSize = CGSize(width: self.frame.size.width-thumbWidth, height: trackHeight)
@@ -350,19 +350,19 @@ class DiscreteSlider: UIControl {
         }
         self.trackRectangle = CGRect(x: (self.frame.size.width-trackSize.width)/2, y: (self.frame.size.height-trackSize.height)/2, width: trackSize.width, height: trackSize.height)
         let trackY = self.frame.size.height/2
-        
+
         self.ticksAbscisses.removeAll()
-        
+
         for i in 0...segments {
             let ratio = Double(i) / Double(segments)
             let originX = self.trackRectangle.origin.x+(trackSize.width * CGFloat(ratio))
             let point = CGPoint(x:originX, y:trackY)
             self.ticksAbscisses.append(point)
         }
-        
+
         self.layoutThumb()
     }
-    
+
     func layoutThumb() {
         assert(self.tickCount > 1, "2 ticks minimum \(self.tickCount)")
         let segments = max(1, self.tickCount-1)
@@ -372,7 +372,7 @@ class DiscreteSlider: UIControl {
         // Normalized
         self.thumbAbscisse = self.trackRectangle.origin.x+(self.trackRectangle.size.width*thumbRatio)
     }
-    
+
     func thumbSizeIncludingShadow() -> CGSize {
         switch self.thumbStyle {
         case .invisible: break
@@ -388,40 +388,40 @@ class DiscreteSlider: UIControl {
         }
         return CGSize(width: 33.0, height: 33.0)
     }
-    
+
     // MARK: Touches
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touchDown(touches, duration: 0.1)
     }
-    
+
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touchDown(touches, duration: 0.0)
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touchUp(touches)
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.touchUp(touches)
     }
-    
+
     func touchDown(_ touches: Set<UITouch>, duration: TimeInterval) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: touch.view)
         self.moveThumbTo(location.x, duration: duration)
     }
-    
+
     func touchUp(_ touches: Set<UITouch>) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: touch.view)
         let tick = self.pickTickFromSliderPosition(location.x)
         self.moveThumbToTick(tick)
     }
-    
+
     // MARK: Notifications
-    
+
     func moveThumbToTick(_ tick: Int) {
         let intValue = Int(self.minimumValue)+(tick * Int(self.incrementValue))
         if intValue != _intValue {
@@ -431,7 +431,7 @@ class DiscreteSlider: UIControl {
         self.layoutThumb()
         self.setNeedsDisplay()
     }
-    
+
     func moveThumbTo(_ abscisse: CGFloat, duration: CFTimeInterval) {
         let leftMost = self.trackRectangle.minX
         let rightMost = self.trackRectangle.maxX
@@ -445,7 +445,7 @@ class DiscreteSlider: UIControl {
         }
         self.setNeedsDisplay()
     }
-    
+
     func pickTickFromSliderPosition(_ abscisse: CGFloat) -> Int {
         let leftMost = self.trackRectangle.minX
         let rightMost = self.trackRectangle.maxX
@@ -454,5 +454,5 @@ class DiscreteSlider: UIControl {
         let segments = Double(max(1, self.tickCount-1))
         return Int(round(segments*ratio))
     }
-    
+
 }

@@ -56,13 +56,13 @@ final class ReadEmptyView: ASCellNode {
         lineNode12.backgroundColor = UIColor.baseGray7
         lineNode13.backgroundColor = UIColor.baseGray7
         lineNode14.backgroundColor = UIColor.baseGray7
-        
+
         automaticallyManagesSubnodes = true
     }
-    
+
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverEmptyNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height * 0.4)
-        
+
         lineNode1.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
         lineNode2.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
         lineNode3.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
@@ -77,7 +77,7 @@ final class ReadEmptyView: ASCellNode {
         lineNode12.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
         lineNode13.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
         lineNode14.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        
+
         let readSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 10,
@@ -100,7 +100,7 @@ final class ReadEmptyView: ASCellNode {
                 lineNode14
             ]
         )
-        
+
         return ASStackLayoutSpec(
             direction: .vertical,
             spacing: 10,
@@ -110,10 +110,10 @@ final class ReadEmptyView: ASCellNode {
                        ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: readSpec)]
         )
     }
-    
+
     override func layout() {
         super.layout()
-        
+
         addShimmerToNode(node: coverEmptyNode)
         addShimmerToNode(node: lineNode1)
         addShimmerToNode(node: lineNode2)

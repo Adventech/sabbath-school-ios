@@ -30,7 +30,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func navBarButtonStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white,
@@ -38,7 +38,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func menuTitleStyle(string: String, color: UIColor = .baseGray4) -> NSAttributedString {
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 16)!,
@@ -46,7 +46,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func menuSubtitleStyle(string: String, color: UIColor = .baseGray3) -> NSAttributedString {
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 13)!,
@@ -62,7 +62,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func cellSubtitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2,
@@ -70,7 +70,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func cellDetailStyle(string: String, color: UIColor = .baseGray2) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: color,
@@ -78,7 +78,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func featuredQuarterlyTitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white,
@@ -86,7 +86,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func featuredQuarterlyDescriptionStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.7),
@@ -94,7 +94,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func cellLessonNumberStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2.withAlphaComponent(0.5),
@@ -102,7 +102,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func readButtonStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.white,
@@ -110,7 +110,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func signInButtonTitleStyle(string: String, color: UIColor = .baseGray3) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: color,
@@ -118,7 +118,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func loginLogoTextStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGreen,
@@ -126,7 +126,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func profileUserNameStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray4,
@@ -134,7 +134,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func languageTitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray4,
@@ -142,7 +142,7 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func languageSubtitleStyle(string: String) -> NSAttributedString {
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2,
@@ -150,136 +150,135 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func settingsHeaderStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .left
-        
+
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2,
             NSFontAttributeName: R.font.latoMedium(size: 12)!,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string.uppercased(), attributes: attributes)
     }
-    
+
     static func settingsFooterStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .left
-        
+
         let attributes = [
             NSForegroundColorAttributeName: UIColor.baseGray2,
             NSFontAttributeName: R.font.latoMedium(size: 12)!,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
-    
+
     static func settingsFooterCopyrightStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        
+
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 11)!,
             NSForegroundColorAttributeName: UIColor.baseGray2,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func settingsCellStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        
+
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 16)!,
             NSForegroundColorAttributeName: UIColor.baseGray5,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func settingsDestructiveCellStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        
+
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 16)!,
             NSForegroundColorAttributeName: UIColor.baseRed,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func settingsCellDetailStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        
+
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 15)!,
             NSForegroundColorAttributeName: UIColor.baseGray2,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func sloganStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        
+
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 15)!,
             NSForegroundColorAttributeName: UIColor.baseGray3,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func websiteUrlStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        
+
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 18)!,
             NSForegroundColorAttributeName: UIColor.tintColor,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func descriptionStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .left
         style.lineSpacing = 6
-        
+
         let attributes = [
             NSFontAttributeName: R.font.latoRegular(size: 18)!,
             NSForegroundColorAttributeName: UIColor.baseGray3,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
-    
+
     static func signatureStyle(string: String) -> NSAttributedString {
         let style = NSMutableParagraphStyle()
         style.alignment = .left
-        
+
         let attributes = [
             NSFontAttributeName: R.font.latoBold(size: 18)!,
             NSForegroundColorAttributeName: UIColor.baseGray3,
             NSParagraphStyleAttributeName: style
         ]
-        
+
         return NSAttributedString(string: string, attributes: attributes)
     }
 

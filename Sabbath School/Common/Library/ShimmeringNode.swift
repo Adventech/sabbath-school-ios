@@ -24,7 +24,7 @@ import AsyncDisplayKit
 import Shimmer
 
 final class ShimmeringNode: ASDisplayNode {
-    
+
     init(didLoadBlock: ((ShimmeringNode) -> Void)? = nil) {
         super.init()
         setViewBlock({FBShimmeringView()})
@@ -33,7 +33,7 @@ final class ShimmeringNode: ASDisplayNode {
         }
         isOpaque = false
     }
-    
+
     var contentNode: ASDisplayNode? {
         didSet {
             if contentNode != nil {
@@ -43,16 +43,16 @@ final class ShimmeringNode: ASDisplayNode {
             }
         }
     }
-    
+
     override var view: FBShimmeringView {
         return super.view as! FBShimmeringView
     }
-    
+
     override func didLoad() {
         super.didLoad()
         applyContentNode()
     }
-    
+
     private func applyContentNode() {
         guard let contentNode = self.contentNode else { return }
         addSubnode(contentNode)

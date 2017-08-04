@@ -34,7 +34,7 @@ protocol PopupTransitionAnimatorDelegate: NSObjectProtocol {
      Called on the delegate when the user has taken action to dismiss the popup.
      */
     @objc optional func popupWillDismiss(popup: PopupTransitionAnimator)
-    
+
     /*
      Called on the delegate when the dismiss action block did finished.
      */
@@ -58,7 +58,7 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
     var arrowHeight: CGFloat = 8
     var arrowColor: UIColor?
     var contentScrollView: UIScrollView?
-    
+
     fileprivate var arrowView: ArrowView!
     fileprivate var modalController: UIViewController!
     fileprivate var containerView: UIView!
@@ -68,32 +68,32 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
     fileprivate var transitionInProgress = false
     fileprivate var initialOrigin: CGRect!
     fileprivate var keyboardVisible: Bool = false
-    
+
     // MARK: Init
-    
+
     override init() {
         super.init()
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(sender:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(sender:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     // MARK: Keyboard Observe
-    
+
     func keyboardDidShow(sender: NSNotification) {
         keyboardVisible = true
     }
-    
+
     func keyboardDidHide(sender: NSNotification) {
         keyboardVisible = false
     }
-    
+
     //
-    
+
     func updateArrowColor(color: UIColor, animated: Bool = false, duration: TimeInterval = 0.4) {
         arrowView.arrowColor = color
         arrowView.setNeedsDisplay()
@@ -101,20 +101,20 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
             self.arrowView.layer.displayIfNeeded()
         }, completion: nil)
     }
-    
+
     // MARK: Gestures
-    
+
     fileprivate func prepareGestureRecognizerInView(view: UIView) {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(gesture:)))
         panGesture.delegate = self
         //        panGesture.scrollView = contentScrollView
         view.addGestureRecognizer(panGesture)
     }
-    
+
     func didPan(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: gesture.view)
         let velocity = gesture.velocity(in: gesture.view)
-        
+
         switch gesture.state {
         case .began:
             transitionInProgress = true
@@ -123,11 +123,11 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
             let offsetMax: CGFloat = 80
             let inputSensitivity: CGFloat = 200
             let movingRange = offsetMax * tanh(translation.y / inputSensitivity)
-            
+
             shouldCompleteTransition = movingRange > offsetMax/2 || -movingRange > offsetMax/2
             let const = movingRange > 0 ? movingRange*1/offsetMax : -movingRange*1/offsetMax
             let percentage = CGFloat(fminf(fmaxf(Float(const), 0.0), 1.0))
-            
+
             // Move view
             var modifiedOrigin = initialOrigin.origin
             modifiedOrigin.y += movingRange
@@ -136,7 +136,7 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
             break
         case .cancelled, .ended:
             transitionInProgress = false
-            
+
             if shouldCompleteTransition {
                 dismissModal()
             } else {
@@ -145,7 +145,7 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
                 positionYAnimation?.springBounciness = 10
                 positionYAnimation?.velocity = velocity.y
                 wrapperView.layer.pop_add(positionYAnimation, forKey: "positionYAnimation")
-                
+
                 let overlayAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
                 overlayAnimation?.toValue = 1
                 containerView.layer.pop_add(overlayAnimation, forKey: "blockAnimation")
@@ -155,7 +155,7 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
             print("Swift switch must be exhaustive, thus the default")
         }
     }
-    
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if gestureRecognizer is UITapGestureRecognizer {
             if let view = touch.view, view.isDescendant(of: wrapperView) {
@@ -164,47 +164,46 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
         }
         return true
     }
-    
+
     // MARK: Dismiss
-    
+
     func dismissModal() {
         if keyboardVisible {
             wrapperView.endEditing(true)
         } else {
             delegate?.popupWillDismiss?(popup: self)
-            
+
             modalController.dismiss(animated: true, completion: {
                 self.delegate?.popupDidDismiss?(popup: self)
             })
         }
     }
-    
+
     // MARK: Complementary functions
-    
+
     func bestXPosition() -> CGFloat {
         var halfRect = targetRect.origin.x + (targetRect.width/2)
         let halfModal = contentSize.width/2
         let halfScreen = containerView.frame.width/2
         let leftToRight = halfRect < halfScreen
-        
+
         if style == .square {
             return halfScreen-halfModal
         }
-        
+
         // Define rect calc direction
         halfRect = leftToRight ? halfRect : containerView.frame.width - halfRect
-        
-        
+
         // Center on screen
         if contentSize.width >= containerView.frame.width {
             return containerView.center.x-halfModal
         }
-        
+
         // Center on Rect
         if halfRect > halfModal {
             return halfRect-halfModal
         }
-        
+
         // Left or Right align
         if leftToRight {
             return spaceFromSide
@@ -212,12 +211,12 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
             return containerView.frame.width - contentSize.width - spaceFromSide
         }
     }
-    
+
     // MARK: Draw arrow view
-    
+
     class ArrowView: UIView {
         var arrowColor: UIColor!
-        
+
         init(frame: CGRect, rotated: Bool, backgroundColor: UIColor) {
             super.init(frame: frame)
             self.arrowColor = backgroundColor
@@ -226,11 +225,11 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
                 self.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)
             }
         }
-        
+
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-        
+
         override func draw(_ rect: CGRect) {
             let polygonPath = UIBezierPath()
             polygonPath.move(to: CGPoint(x: rect.width/2, y: 0))
@@ -247,7 +246,7 @@ extension PopupTransitionAnimator: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
-    
+
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
@@ -257,7 +256,7 @@ extension PopupTransitionAnimator: UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0
     }
-    
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let fromController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
         let toController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
@@ -265,55 +264,55 @@ extension PopupTransitionAnimator: UIViewControllerAnimatedTransitioning {
         containerView = transitionContext.containerView
         presentFromTop = targetRect.origin.y < containerView.bounds.height/2
         contentSize = toController.preferredContentSize
-        
+
         let isUnwinding = toController.presentedViewController == fromController
         let isPresenting = !isUnwinding
-        
+
         // Tap gesture on container to dismiss
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(PopupTransitionAnimator.dismissModal))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.cancelsTouchesInView = false
         tapGesture.delegate = self
         containerView.addGestureRecognizer(tapGesture)
-        
+
         // Defines the presentation origin
         var positionY: CGFloat!
         var positionX: CGFloat!
-        
+
         if style == .arrow {
             positionX = targetRect.origin.x + (targetRect.size.width/2)
-            
+
             if presentFromTop {
                 positionY = targetRect.origin.y + targetRect.height + spaceFromRect + arrowHeight
             } else {
                 positionY = targetRect.origin.y - contentSize.height - spaceFromRect - arrowHeight
             }
         }
-        
+
         if style == .square {
             positionY = containerView.center.y - (contentSize.height/2)
             positionX = containerView.center.x
         }
-        
+
         // Check if presenting or dismissing
         if isPresenting {
             modalController = toController
             wrapperView = UIView(frame: CGRect(x: bestXPosition(), y: positionY, width: contentSize.width, height: contentSize.height))
             wrapperView.alpha = 0
-            
+
             toView.frame = CGRect(x: 0, y: 0, width: wrapperView.frame.width, height: wrapperView.frame.height)
             toView.layer.cornerRadius = cornerRadius
             toView.clipsToBounds = true
             wrapperView.addSubview(toView)
             containerView.addSubview(wrapperView)
-            
+
             initialOrigin = wrapperView.frame
-            
+
             // Pan gesture
             if interactive {
                 prepareGestureRecognizerInView(view: toView)
             }
-            
+
             // Arrow
             if style == .arrow {
                 if arrowColor == nil {
@@ -323,55 +322,55 @@ extension PopupTransitionAnimator: UIViewControllerAnimatedTransitioning {
                         arrowColor = UIColor.white
                     }
                 }
-                
+
                 let arrowYpos = presentFromTop ? -arrowHeight+1 : contentSize.height-1
                 var arrowFrame = CGRect(x: positionX-(arrowWidth/2), y: arrowYpos, width: arrowWidth, height: arrowHeight)
                 arrowView = ArrowView(frame: arrowFrame, rotated: !presentFromTop, backgroundColor: arrowColor!)
-                
+
                 // Adjust arrow frame
                 arrowFrame = arrowView.convert(arrowView.bounds, to: wrapperView)
                 arrowFrame.origin.y = arrowYpos
                 arrowView.frame = arrowFrame
-                
+
                 wrapperView.addSubview(arrowView)
             }
-            
+
             // Container
             let overlayAnimation = POPBasicAnimation(propertyNamed: kPOPLayerBackgroundColor)
             overlayAnimation?.toValue = overlayColor
             containerView.layer.pop_add(overlayAnimation, forKey: "overlayAnimation")
-            
+
             // Modal Animations
             let alphaAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
             alphaAnimation?.toValue = 1
             wrapperView.layer.pop_add(alphaAnimation, forKey: "alphaAnimation")
-            
+
             if style == .arrow {
                 let positionYAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
                 positionYAnimation?.fromValue = presentFromTop ? positionY : positionY+contentSize.height
                 positionYAnimation?.springBounciness = 8
                 wrapperView.layer.pop_add(positionYAnimation, forKey: "positionYAnimation")
             }
-            
+
             let positionXAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
             positionXAnimation?.fromValue = positionX
             positionXAnimation?.springBounciness = 8
             wrapperView.layer.pop_add(positionXAnimation, forKey: "positionXAnimation")
-            
+
             let scaleAnimation = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
             scaleAnimation?.springBounciness = 8
             scaleAnimation?.fromValue = NSValue(cgPoint: CGPoint(x: 0, y: 0))
             wrapperView.layer.pop_add(scaleAnimation, forKey: "scaleAnimation")
-            
+
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            
+
         } else {
-            
+
             // Container
             let overlayAnimation = POPBasicAnimation(propertyNamed: kPOPLayerBackgroundColor)
             overlayAnimation?.toValue = UIColor.clear
             containerView.layer.pop_add(overlayAnimation, forKey: "overlayAnimation")
-            
+
             // Modal Animations
             let alphaAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
             alphaAnimation?.toValue = 0
@@ -379,21 +378,21 @@ extension PopupTransitionAnimator: UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             }
             wrapperView.layer.pop_add(alphaAnimation, forKey: "alphaAnimation")
-            
+
             if style == .arrow {
                 let positionYAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionY)
                 positionYAnimation?.toValue = presentFromTop ? positionY : positionY+contentSize.height
                 positionYAnimation?.springBounciness = 5
                 wrapperView.layer.pop_add(positionYAnimation, forKey: "positionYAnimation")
-                
+
                 arrowColor = nil
             }
-            
+
             let positionXAnimation = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
             positionXAnimation?.toValue = positionX
             positionXAnimation?.springBounciness = 5
             wrapperView.layer.pop_add(positionXAnimation, forKey: "positionXAnimation")
-            
+
             let scaleAnimation = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
             scaleAnimation?.springBounciness = 5
             scaleAnimation?.toValue = NSValue(cgPoint: CGPoint(x: 0, y: 0))

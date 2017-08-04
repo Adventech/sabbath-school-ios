@@ -32,7 +32,7 @@ class QuarterlyCellNode: ASCellNode {
     init(quarterly: Quarterly) {
         super.init()
         backgroundColor = UIColor.white
-        
+
         titleNode.attributedText = TextStyles.h3(string: quarterly.title)
         humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate, color: .baseGray2)
 
@@ -50,10 +50,10 @@ class QuarterlyCellNode: ASCellNode {
             size: CGSize(width: 90, height: 135)
         )
         coverImageNode.style.alignSelf = .stretch
-        
+
         automaticallyManagesSubnodes = true
     }
-    
+
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverNode.style.preferredSize = CGSize(width: 90, height: 135)
 
@@ -64,7 +64,7 @@ class QuarterlyCellNode: ASCellNode {
             alignItems: .start,
             children: [humanDateNode, titleNode]
         )
-        
+
         vSpec.style.flexShrink = 1.0
 
         let coverSpec = ASBackgroundLayoutSpec(child: coverImageNode, background: coverNode)
@@ -75,8 +75,12 @@ class QuarterlyCellNode: ASCellNode {
             alignItems: .center,
             children: [coverSpec, vSpec]
         )
-        
+
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15), child: hSpec)
     }
-}
 
+    override func layoutDidFinish() {
+        super.layoutDidFinish()
+        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: 6).cgPath
+    }
+}

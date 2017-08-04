@@ -117,6 +117,7 @@ PODS:
   - Shimmer (1.0.2)
   - SimulatorStatusMagic (1.9.5)
   - SwiftDate (4.0.14)
+  - SwiftLint (0.20.1)
   - SwiftMessages (3.4.0)
   - Texture (2.3.4):
     - Texture/PINRemoteImage (= 2.3.4)
@@ -149,6 +150,7 @@ DEPENDENCIES:
   - Shimmer
   - SimulatorStatusMagic
   - SwiftDate (~> 4.0.13)
+  - SwiftLint
   - SwiftMessages
   - Texture
   - Unbox
@@ -191,12 +193,13 @@ SPEC CHECKSUMS:
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimulatorStatusMagic: b3b4c5c49a07e8b1c452cc0327275e267a865fea
   SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
   SwiftMessages: e20aa1557fde1525ea369361bec4943cc0d08e7c
   Texture: 8cf0872fe33328c20d7e6c1fcbf1f23a82162f2f
   Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
   Wrap: 9cc7da7551bb81d0846cb3df9fb624c6c32d267d
   Zip: e34513299ac38c0686d5b24504da7ce343799ab9
 
-PODFILE CHECKSUM: 813cc2cb7c16c4e0203f170ca978abb9b6578136
+PODFILE CHECKSUM: 2aaeac5fd895c776f3dc6976be04741722940668
 
 COCOAPODS: 1.2.1

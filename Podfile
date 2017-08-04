@@ -18,13 +18,14 @@ target 'Sabbath School' do
   pod 'MenuItemKit'
   pod 'pop'
   pod 'R.swift', '~> 3.1'
-  pod 'Shimmer'
+  pod 'Shimmer', :inhibit_warnings => true
   pod 'SwiftMessages'
   pod 'SwiftDate', '~> 4.0.13'
   pod 'Texture'
   pod 'Unbox'
   pod 'Wrap'
   pod 'Zip', '~> 0.7'
+  pod 'SwiftLint'
 end
 
 post_install do |installer|

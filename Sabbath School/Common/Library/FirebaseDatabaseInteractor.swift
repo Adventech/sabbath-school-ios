@@ -24,8 +24,8 @@ import FirebaseDatabase
 
 class FirebaseDatabaseInteractor {
     var database: DatabaseReference?
-    
-    func configure(){
+
+    func configure() {
         database = Database.database().reference()
         database?.keepSynced(true)
     }
