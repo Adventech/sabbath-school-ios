@@ -90,6 +90,13 @@ lane :screenshots do
   frameit(white: true)
 end
 
+desc "Download dSYM files from iTC, upload them to Crashlytics and delete the local dSYM files"
+lane :refresh_dsyms do
+  download_dsyms
+  upload_symbols_to_crashlytics(api_token: File.open("../Fabric.apiKey", "rb").read)
+  clean_build_artifacts
+end
+
 lane :increment_build do
   date_number = Time.new.strftime("%Y.%m")
   build_number = "#{date_number}.#{number_of_commits}"

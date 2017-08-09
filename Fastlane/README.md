@@ -64,6 +64,11 @@ fastlane build
 fastlane screenshots
 ```
 Generate screenshots and upload to the App Store
+### refresh_dsyms
+```
+fastlane refresh_dsyms
+```
+Download dSYM files from iTC, upload them to Crashlytics and delete the local dSYM files
 ### increment_build
 ```
 fastlane increment_build
