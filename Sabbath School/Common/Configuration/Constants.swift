@@ -56,7 +56,7 @@ struct Constants {
         static let bundle = Bundle.main
         static let readerBundleZip = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest.zip")
         static let readerBundle = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest/index.html")
-        static let readerBundleDir = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest/")
+        static let readerBundleDir = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest")
     }
 
     struct Firebase {

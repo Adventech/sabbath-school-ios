@@ -213,7 +213,7 @@ open class Reader: UIWebView {
             indexPath = Constants.Path.readerBundle.path
         }
 
-        var index = try? String(contentsOfFile: indexPath!, encoding: String.Encoding.utf8)
+        var index = try? String(contentsOfFile: indexPath!, encoding: .utf8)
         index = index?.replacingOccurrences(of: "{{content}}", with: content)
 
         if !exists {
