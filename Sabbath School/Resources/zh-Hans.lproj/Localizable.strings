@@ -22,7 +22,7 @@
 
 "Aa" = "Aa";
 "Andada" = "Andada";
-"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "通过匿名登录，您将无法在设备之间或卸载应用程序之后同步数据，例如注释和突出显示。你确定要继续吗？";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "如果您以匿名方式登录，则无法在设备之间或卸载应用程序之后同步数据（如注释和突出显示）。 你确定你要继续吗？";
 "Continue without login" = "继续而不登录";
 "Contribute" = "有助于";
 "Dark" = "黑暗";
@@ -33,7 +33,7 @@
 "Light" = "光";
 "Log out" = "登出";
 "Login anonymously?" = "匿名登录？";
-"Made with ❤ by Adventech" = "由Adventech与❤制作";
+"Made with ❤ by Adventech" = "用Adventech的❤做出来";
 "More" = "更多";
 "No" = "没有";
 "Open" = "打开";
@@ -41,14 +41,14 @@
 "PT Sans" = "PT Sans";
 "PT Serif" = "PT Serif";
 "Read" = "读";
-"Reminder" = "提醒";
+"Reminder" = "每日提醒";
 "Sabbath School" = "安息日学校";
 "Sepia" = "乌贼";
 "Set the reminder to be notified daily to study the lesson" = "将提醒设置为每天通知以学习该课程";
 "Settings" = "设置";
-"Sign in with Facebook" = "用Facebook登录";
-"Sign in with Google" = "使用Google登录";
-"There was an error during login" = "登录时出错";
+"Sign in with Facebook" = "用Facebook登入";
+"Sign in with Google" = "用Google登入";
+"There was an error during login" = "登录失败，请再次尝试。";
 "Time" = "时间";
 "Time to study Sabbath School 🙏" = "安息日学习的时间";
 "Yes" = "是";
