@@ -1,10 +1,52 @@
 {
   "default": {
     "keyword": {
-      "font": "./fonts/Lato-Bold.ttf"
+      "fonts": [
+        {
+          "font": "./fonts/Lato-Bold.ttf",
+          "supported": ["da", "de-DE", "en-US", "es-ES", "fr-FR", "no", "pt-BR", "tr"]
+        },
+        {
+          "font": "./fonts/Lato-Bold.ttf",
+          "supported": ["id"]
+        },
+        {
+          "font": "./fonts/NotoSansCJKjp-Regular.otf",
+          "supported": ["ja"]
+        },
+        {
+          "font": "./fonts/Lato-Bold.ttf",
+          "supported": ["ru"]
+        },
+        {
+          "font": "./fonts/NotoSansCJKsc-Regular.otf",
+          "supported": ["zh-Hans"]
+        }
+      ]
     },
     "title": {
-      "font": "./fonts/Lato-Bold.ttf",
+      "fonts": [
+        {
+          "font": "./fonts/Lato-Bold.ttf",
+          "supported": ["da", "de-DE", "en-US", "es-ES", "fr-FR", "no", "pt-BR", "tr"]
+        },
+        {
+          "font": "./fonts/Lato-Bold.ttf",
+          "supported": ["id"]
+        },
+        {
+          "font": "./fonts/NotoSansCJKjp-Regular.otf",
+          "supported": ["ja"]
+        },
+        {
+          "font": "./fonts/Lato-Bold.ttf",
+          "supported": ["ru"]
+        },
+        {
+          "font": "./fonts/NotoSansCJKsc-Regular.otf",
+          "supported": ["zh-Hans"]
+        }
+      ],
       "color": "#303E55"
     },
     "background": "./background.jpg",
