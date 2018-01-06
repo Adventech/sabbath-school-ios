@@ -43,6 +43,12 @@ desc "Configure local environment certificates"
 end
 
 lane :beta do
+  match(
+    type: "adhoc",
+    git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",
+    force_for_new_devices: true,
+    readonly: false
+  )
   increment_build
   sync_code_signing(type: "appstore")
   build
