@@ -30,6 +30,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
     let humanDateNode = ASTextNode()
     var detailNode = ASTextNode()
     let readButton = OpenButton()
+    let imageCornerRadius = CGFloat(6)
 
     private let infiniteColor = ASDisplayNode()
 
@@ -59,7 +60,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
         readButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
         readButton.cornerRadius = 18
 
-        coverNode.cornerRadius = 6
+        coverNode.cornerRadius = imageCornerRadius
         coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
         coverNode.shadowOffset = CGSize(width: 0, height: 2)
         coverNode.shadowRadius = 10
@@ -67,7 +68,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
         coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
         coverNode.clipsToBounds = false
 
-        coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
+        coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: imageCornerRadius)
         coverImageNode.style.alignSelf = .stretch
 
         addSubnode(titleNode)
@@ -134,6 +135,6 @@ class LessonQuarterlyInfoNode: ASCellNode {
 
     override func layoutDidFinish() {
         super.layoutDidFinish()
-        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: 6).cgPath
+        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: imageCornerRadius).cgPath
     }
 }

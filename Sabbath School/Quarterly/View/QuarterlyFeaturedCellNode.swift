@@ -29,21 +29,22 @@ class QuarterlyFeaturedCellNode: ASCellNode {
     let titleNode = ASTextNode()
     let humanDateNode = ASTextNode()
     let openButton = OpenButton()
+    let imageCornerRadius = CGFloat(6)
 
     private let infiniteColor = ASDisplayNode()
 
     init(quarterly: Quarterly) {
         super.init()
 
+        clipsToBounds = false
+        insertSubnode(infiniteColor, at: 0)
+        selectionStyle = .none
+
         if let color = quarterly.colorPrimary {
             backgroundColor = UIColor(hex: color)
         } else {
             backgroundColor = UIColor.baseGreen
         }
-
-        clipsToBounds = false
-        insertSubnode(infiniteColor, at: 0)
-        selectionStyle = .none
 
         titleNode.attributedText = TextStyles.h2(string: quarterly.title)
         titleNode.maximumNumberOfLines = 3
@@ -52,15 +53,14 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate)
         humanDateNode.maximumNumberOfLines = 1
 
-        coverNode.cornerRadius = 6
         coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
         coverNode.shadowOffset = CGSize(width: 0, height: 2)
         coverNode.shadowRadius = 10
         coverNode.shadowOpacity = 0.3
         coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-        coverNode.clipsToBounds = false
+        coverNode.cornerRadius = imageCornerRadius
 
-        coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverNode.cornerRadius)
+        coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: imageCornerRadius)
         coverImageNode.style.alignSelf = .stretch
 
         openButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Open".localized().uppercased()), for: .normal)
@@ -115,6 +115,6 @@ class QuarterlyFeaturedCellNode: ASCellNode {
 
     override func layoutDidFinish() {
         super.layoutDidFinish()
-        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: 6).cgPath
+        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: imageCornerRadius).cgPath
     }
 }

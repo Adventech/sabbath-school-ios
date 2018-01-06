@@ -28,6 +28,7 @@ class QuarterlyCellNode: ASCellNode {
     var coverImageNode: RoundedCornersImage!
     let titleNode = ASTextNode()
     let humanDateNode = ASTextNode()
+    let imageCornerRadius = CGFloat(6)
 
     init(quarterly: Quarterly) {
         super.init()
@@ -36,7 +37,7 @@ class QuarterlyCellNode: ASCellNode {
         titleNode.attributedText = TextStyles.h3(string: quarterly.title)
         humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate, color: .baseGray2)
 
-        coverNode.cornerRadius = 6
+        coverNode.cornerRadius = imageCornerRadius
         coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
         coverNode.shadowOffset = CGSize(width: 0, height: 2)
         coverNode.shadowRadius = 10
@@ -46,7 +47,7 @@ class QuarterlyCellNode: ASCellNode {
 
         coverImageNode = RoundedCornersImage(
             imageURL: quarterly.cover,
-            corner: coverNode.cornerRadius,
+            corner: imageCornerRadius,
             size: CGSize(width: 90, height: 135)
         )
         coverImageNode.style.alignSelf = .stretch
@@ -81,6 +82,6 @@ class QuarterlyCellNode: ASCellNode {
 
     override func layoutDidFinish() {
         super.layoutDidFinish()
-        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: 6).cgPath
+        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: imageCornerRadius).cgPath
     }
 }
