@@ -21,7 +21,7 @@ target 'Sabbath School' do
   pod 'Shimmer', :inhibit_warnings => true
   pod 'SwiftMessages'
   pod 'SwiftDate', '~> 4.0.13'
-  pod 'Texture'
+  pod 'Texture', :git => 'https://github.com/TextureGroup/Texture.git', :branch => 'master'
   pod 'Unbox'
   pod 'Wrap'
   pod 'Zip', '~> 0.7'

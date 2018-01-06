@@ -40,8 +40,6 @@ class LoginPresenter: LoginPresenterProtocol {
     }
 
     func loginActionGoogle() {
-        // TODO: - Show loading indicator
-
         interactor?.loginGoogle()
     }
 }

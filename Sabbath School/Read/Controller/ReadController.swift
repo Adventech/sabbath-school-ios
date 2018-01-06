@@ -64,8 +64,6 @@ class ReadController: ThemeController {
             scrollGestureRecognizer.require(toFail: (self.navigationController?.interactivePopGestureRecognizer)!)
         }
 
-        automaticallyAdjustsScrollViewInsets = false
-
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
         rightButton.accessibilityIdentifier = "themeSettings"
         navigationItem.rightBarButtonItem = rightButton
@@ -75,6 +73,7 @@ class ReadController: ThemeController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.hideBottomHairline()
+        self.automaticallyAdjustsScrollViewInsets = false
         scrollBehavior()
 
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
@@ -109,8 +108,11 @@ class ReadController: ThemeController {
     func toggleBars() {
         let shouldHide = !navigationController!.isNavigationBarHidden
         shouldHideStatusBar = shouldHide
-        updateAnimatedStatusBar()
-        navigationController?.setNavigationBarHidden(shouldHide, animated: true)
+
+        DispatchQueue.main.async(execute: {() -> Void in
+            self.updateAnimatedStatusBar()
+            self.navigationController?.setNavigationBarHidden(shouldHide, animated: true)
+        })
     }
 
     func updateAnimatedStatusBar() {
@@ -123,6 +125,7 @@ class ReadController: ThemeController {
         guard finished || !reads.isEmpty else { return }
         guard let readView = collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as? ReadView else { return }
         let scrollView = readView.webView.scrollView
+        collectionNode.allowsAutomaticInsetsAdjustment = false
 
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height {
             if -scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight {
@@ -139,7 +142,7 @@ class ReadController: ThemeController {
                 toggleBars()
             }
         } else {
-            if -scrollView.contentOffset.y > 0 || lastContentOffset < -scrollView.contentOffset.y {
+            if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
                 if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                     toggleBars()
                 }

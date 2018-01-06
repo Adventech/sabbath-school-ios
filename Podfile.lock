@@ -94,20 +94,20 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - PINCache (3.0.1-beta.5):
-    - PINCache/Arc-exception-safe (= 3.0.1-beta.5)
-    - PINCache/Core (= 3.0.1-beta.5)
-  - PINCache/Arc-exception-safe (3.0.1-beta.5):
+  - PINCache (3.0.1-beta.6):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.6)
+    - PINCache/Core (= 3.0.1-beta.6)
+  - PINCache/Arc-exception-safe (3.0.1-beta.6):
     - PINCache/Core
-  - PINCache/Core (3.0.1-beta.5):
-    - PINOperation (= 1.0.3)
-  - PINOperation (1.0.3)
-  - PINRemoteImage/Core (3.0.0-beta.11):
+  - PINCache/Core (3.0.1-beta.6):
+    - PINOperation (~> 1.1.0)
+  - PINOperation (1.1)
+  - PINRemoteImage/Core (3.0.0-beta.13):
     - PINOperation
-  - PINRemoteImage/iOS (3.0.0-beta.11):
+  - PINRemoteImage/iOS (3.0.0-beta.13):
     - PINRemoteImage/Core
-  - PINRemoteImage/PINCache (3.0.0-beta.11):
-    - PINCache (= 3.0.1-beta.5)
+  - PINRemoteImage/PINCache (3.0.0-beta.13):
+    - PINCache (= 3.0.1-beta.6)
     - PINRemoteImage/Core
   - pop (1.0.10)
   - Protobuf (3.3.0)
@@ -119,11 +119,11 @@ PODS:
   - SwiftDate (4.0.14)
   - SwiftLint (0.20.1)
   - SwiftMessages (3.4.0)
-  - Texture (2.3.4):
-    - Texture/PINRemoteImage (= 2.3.4)
-  - Texture/Core (2.3.4)
-  - Texture/PINRemoteImage (2.3.4):
-    - PINRemoteImage/iOS (= 3.0.0-beta.11)
+  - Texture (2.6):
+    - Texture/PINRemoteImage (= 2.6)
+  - Texture/Core (2.6)
+  - Texture/PINRemoteImage (2.6):
+    - PINRemoteImage/iOS (= 3.0.0-beta.13)
     - PINRemoteImage/PINCache
     - Texture/Core
   - Unbox (2.5.0)
@@ -152,10 +152,20 @@ DEPENDENCIES:
   - SwiftDate (~> 4.0.13)
   - SwiftLint
   - SwiftMessages
-  - Texture
+  - Texture (from `https://github.com/TextureGroup/Texture.git`, branch `master`)
   - Unbox
   - Wrap
   - Zip (~> 0.7)
+
+EXTERNAL SOURCES:
+  Texture:
+    :branch: master
+    :git: https://github.com/TextureGroup/Texture.git
+
+CHECKOUT OPTIONS:
+  Texture:
+    :commit: 131619de96190415aec89987d4493220c6d0305d
+    :git: https://github.com/TextureGroup/Texture.git
 
 SPEC CHECKSUMS:
   Armchair: c8eca9bdca868fd6f7155eee73ba70a1278b0655
@@ -182,10 +192,10 @@ SPEC CHECKSUMS:
   Hue: 354caec055fdc9d38b5ef33ca2e7224721843baf
   JSQWebViewController: 0461aa42612b221571556df61d9c09f080cb2eef
   MenuItemKit: bd07a0804b057d32e71289bc512ad8b3c3f97b83
-  nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
-  PINCache: 98e7b1ef782824ad231ade51987c218b758c30d8
-  PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
-  PINRemoteImage: d71988f11914a050d6d4cf51efc4ad1de8c0a9d8
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
+  PINOperation: 7f042fa6df5b606deb4bd5997654cf7033d5be1d
+  PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   R.swift: bde9704d50ff36820f49e266bc88ef545e1e9b36
@@ -195,11 +205,11 @@ SPEC CHECKSUMS:
   SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
   SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
   SwiftMessages: e20aa1557fde1525ea369361bec4943cc0d08e7c
-  Texture: 8cf0872fe33328c20d7e6c1fcbf1f23a82162f2f
+  Texture: 7249074582daf75e524e59df5428b66b8e8db0e4
   Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
   Wrap: 9cc7da7551bb81d0846cb3df9fb624c6c32d267d
   Zip: e34513299ac38c0686d5b24504da7ce343799ab9
 
-PODFILE CHECKSUM: 2aaeac5fd895c776f3dc6976be04741722940668
+PODFILE CHECKSUM: 0577fcdeebf1fff41de9ffa7a7b9e0e9270e9885
 
 COCOAPODS: 1.3.1

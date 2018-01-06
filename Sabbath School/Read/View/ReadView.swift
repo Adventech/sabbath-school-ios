@@ -63,16 +63,11 @@ class ReadView: ASCellNode {
         self.highlights = highlights
         self.comments = comments
 
-        let theme = currentTheme()
-
         coverNode.url = lessonInfo.lesson.cover
         coverNode.placeholderEnabled = true
         coverNode.placeholderFadeDuration = 0.6
         coverNode.contentMode = .scaleAspectFill
-        coverNode.backgroundColor = theme.navBarColor
         coverNode.clipsToBounds = true
-
-        coverOverlayNode.backgroundColor = theme.navBarColor
         coverOverlayNode.alpha = 0
 
         coverTitleNode.alpha = 1
@@ -116,10 +111,25 @@ class ReadView: ASCellNode {
     override func didLoad() {
         super.didLoad()
 
+        let theme = currentTheme()
+        coverNode.backgroundColor = theme.navBarColor
+        coverOverlayNode.backgroundColor = theme.navBarColor
+
         initialCoverNodeHeight = coverNode.calculatedSize.height
 
+        let bottomSafe = CGFloat(20.0)
+        var topPadding = CGFloat(44.0) + bottomSafe
+
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            let safeAreaTop = (window?.safeAreaInsets.top)!
+            if safeAreaTop > 0 {
+                topPadding += (window?.safeAreaInsets.top)! - bottomSafe
+            }
+        }
+
         webView.backgroundColor = .clear
-        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
+        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight-CGFloat(topPadding), left: 0, bottom: 0, right: 0)
         webView.scrollView.delegate = self
         webView.delegate = self
         webView.alpha = 0

@@ -89,7 +89,7 @@ extension AboutController: AboutViewDelegate {
     }
 
     func didTapWebsite() {
-        self.openUrl(url: "http://www.adventech.io")
+        self.openUrl(url: "https://adventech.io")
     }
 }
 
