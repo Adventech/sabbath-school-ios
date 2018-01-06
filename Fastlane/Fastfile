@@ -44,6 +44,7 @@ end
 
 lane :beta do
   increment_build
+  sync_code_signing(type: "appstore")
   build
 
   crashlytics(
