@@ -21,6 +21,10 @@
         {
           "font": "./fonts/NotoSansCJKsc-Regular.otf",
           "supported": ["zh-Hans"]
+        },
+        {
+          "font": "./fonts/NotoSansCJKtc-Regular.otf",
+          "supported": ["zh-Hant"]
         }
       ]
     },
@@ -45,6 +49,10 @@
         {
           "font": "./fonts/NotoSansCJKsc-Regular.otf",
           "supported": ["zh-Hans"]
+        },
+        {
+          "font": "./fonts/NotoSansCJKtc-Regular.otf",
+          "supported": ["zh-Hant"]
         }
       ],
       "color": "#303E55"
