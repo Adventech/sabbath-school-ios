@@ -327,6 +327,10 @@
 		7AF3716D1EF9E6FF00547916 /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		7AF3716F1EFA1E6E00547916 /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
 		BB0D2FA897C7BC2DB383D717 /* Pods_SnapshotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapshotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEB9C73C20058B4C00C5BD5E /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = sr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FEB9C73D20058B4C00C5BD5E /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = sr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FEB9C73E20058B5300C5BD5E /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FEB9C73F20058B5300C5BD5E /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1140,6 +1144,8 @@
 				sk,
 				id,
 				"zh-Hans",
+				sr,
+				ms,
 			);
 			mainGroup = 7AF1919F1ED7B89B000CCF0C;
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
@@ -1539,6 +1545,8 @@
 				7A94DFDE1F16D79A005A0321 /* sk */,
 				7A94DFE01F16DA48005A0321 /* id */,
 				7A34E8F21F2519BC00760A7B /* zh-Hans */,
+				FEB9C73D20058B4C00C5BD5E /* sr */,
+				FEB9C73F20058B5300C5BD5E /* ms */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1566,6 +1574,8 @@
 				7A94DFDD1F16D79A005A0321 /* sk */,
 				7A94DFDF1F16DA48005A0321 /* id */,
 				7A34E8F11F2519BC00760A7B /* zh-Hans */,
+				FEB9C73C20058B4C00C5BD5E /* sr */,
+				FEB9C73E20058B5300C5BD5E /* ms */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1711,7 +1721,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2018.01.221;
+				CURRENT_PROJECT_VERSION = 2018.01.230;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -1734,7 +1744,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 2018.01.221;
+				CURRENT_PROJECT_VERSION = 2018.01.230;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

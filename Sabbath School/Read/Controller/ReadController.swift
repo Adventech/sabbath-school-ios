@@ -37,6 +37,7 @@ class ReadController: ThemeController {
     var highlights = [ReadHighlights]()
     var comments = [ReadComments]()
     var finished: Bool = false
+    var processing: Bool = false
 
     var shouldHideStatusBar = false
     var lastContentOffset: CGFloat = 0
@@ -45,9 +46,11 @@ class ReadController: ThemeController {
 
     init() {
         super.init(node: ASPagerNode())
+        
         self.collectionNode.backgroundColor = .baseGray1
         self.collectionNode.setDataSource(self)
         self.collectionNode.delegate = self
+        self.collectionNode.allowsAutomaticInsetsAdjustment = false
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -59,6 +62,8 @@ class ReadController: ThemeController {
         setBackButton()
         presenter?.configure()
         setTransparentNavigation()
+        
+        if #available(iOS 11.0, *) {}
 
         for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
             scrollGestureRecognizer.require(toFail: (self.navigationController?.interactivePopGestureRecognizer)!)
@@ -68,16 +73,33 @@ class ReadController: ThemeController {
         rightButton.accessibilityIdentifier = "themeSettings"
         navigationItem.rightBarButtonItem = rightButton
         UIApplication.shared.isIdleTimerDisabled = true
+        
+        if #available(iOS 11.0, *) {
+            self.collectionNode.view.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }        
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.hideBottomHairline()
-        self.automaticallyAdjustsScrollViewInsets = false
+        
         scrollBehavior()
 
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
             webView.setupContextMenu()
+        }
+        
+        
+        for (readIndex, read) in self.reads.enumerated() {
+            let today = Date()
+            
+            if today.isInSameDayOf(date: read.date) {
+                DispatchQueue.main.async {
+                    self.collectionNode.scrollToPage(at: readIndex, animated: true)
+                }
+            }
         }
     }
 
@@ -108,11 +130,9 @@ class ReadController: ThemeController {
     func toggleBars() {
         let shouldHide = !navigationController!.isNavigationBarHidden
         shouldHideStatusBar = shouldHide
-
-        DispatchQueue.main.async(execute: {() -> Void in
-            self.updateAnimatedStatusBar()
-            self.navigationController?.setNavigationBarHidden(shouldHide, animated: true)
-        })
+        
+        self.updateAnimatedStatusBar()
+        self.navigationController?.setNavigationBarHidden(shouldHide, animated: true)
     }
 
     func updateAnimatedStatusBar() {
@@ -125,7 +145,6 @@ class ReadController: ThemeController {
         guard finished || !reads.isEmpty else { return }
         guard let readView = collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as? ReadView else { return }
         let scrollView = readView.webView.scrollView
-        collectionNode.allowsAutomaticInsetsAdjustment = false
 
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height {
             if -scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight {
@@ -202,14 +221,7 @@ extension ReadController: ASPagerDataSource {
             let read = self.reads[index]
             let readHighlights = self.highlights[index]
             let readComments = self.comments[index]
-            let today = Date()
-
-            if today.isInSameDayOf(date: read.date) {
-                DispatchQueue.main.async {
-                    self.collectionNode.scrollToPage(at: index, animated: false)
-                }
-            }
-
+            
             return ReadView(lessonInfo: self.lessonInfo!, read: read, highlights: readHighlights, comments: readComments, delegate: self)
         }
 

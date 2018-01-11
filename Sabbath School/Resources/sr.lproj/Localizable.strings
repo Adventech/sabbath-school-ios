@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Ukoliko se prijavite kao anonimni korisnik, nećete biti u mogućnosti da sinhronizujete vaše podatke kao što su komentari i podvlačenja između uređaja ili nakon deinstaliranja aplikacije. Da li ste sigurni da želite da nastavite?";
+"Continue without login" = "Nastavite bez prijavljivanja";
+"Contribute" = "Doprinesite";
+"Copy" = "Kopiranje";
+"Dark" = "Tamno";
+"English" = "Engleski";
+"God's Ministry through Technology" = "God's Ministry through Technology";
+"I am using Sabbath School app from Adventech! 🎉" = "Koristim Adventech aplikaciju Subotna škola! 🎉";
+"Languages" = "Jezici";
+"Lato" = "Lato";
+"Light" = "Svetlo";
+"Log out" = "Odjavite se";
+"Login anonymously?" = "Anonimno prijavljivanje?";
+"Made with ❤ by Adventech" = "Napravio ❤ Adventech";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Misija Adventech-a je, na prvom i najvažnijem mestu, dati slavu Gospodu. Mi smo posvećeni našoj službi kroz korišćenje tehnologije. Naš cilj je da ovim putem ujedinimo Adventističku crkvu. Naš cilj je da propovedamo Dobru vest ovom svetu koristeći tehnologiju i mogućnosti komunikacije. Naš cilj je da svedočimo o Drugom Hristovom dolasku.\n\nMi smo inspirisani Isusovim primerom i metodama koje je koristio dok je bio na Zemlji. Radi toga smo posvećeni izradi projekata visokog kvaliteta, besplatno ali sa ljubavlju i posvećenjem. Želimo da damo slavu Ocu nebeskom, jer je On dostojan najveće hvale.\n\nMi iskreno verujemo da je Bog povećao znanje u savremenom dobu i želi da ga koristimo Njemu na slavu i da objavljujemo Njegov skori dolazak!";
+"More" = "Više";
+"No" = "Ne";
+"Open" = "Otvorite";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Naše aplikacije, uključujući i Subotnu školu, su otvorenog koda. Posetite nas na GitHub-u ukoliko želite da date svoj doprinos.";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Čitajte";
+"Reminder" = "Podsetnik";
+"Sabbath School" = "Subotna škola";
+"Share" = "Podelite";
+"Sepia" = "Sepia";
+"Set the reminder to be notified daily to study the lesson" = "Podesite podsetnik za dnevno proučavanje lekcije";
+"Settings" = "Podešavanja";
+"Sign in with Facebook" = "Prijavite se sa Facebook nalogom";
+"Sign in with Google" = "Prijavite se sa Google nalogom";
+"There was an error during login" = "Došlo je do greške prilikom prijavljivanja";
+"Time" = "Vreme";
+"Time to study Sabbath School 🙏" = "Vreme ja za proučavanje subotnoškolske pouke 🙏";
+"Yes" = "Yes";
+"Your friends at Adventech" = "Vaši prijatelji iz Adventech-a";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Ocenite aplikaciju";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Preporučite aplikaciju Subotna škola";
+"🙏 About us" = "🙏 O nama";

@@ -78,7 +78,7 @@ class ReadView: ASCellNode {
         readDateNode.alpha = 1
         readDateNode.maximumNumberOfLines = 1
         readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.string(custom: "EEEE, MMMM dd"))
-
+        
         automaticallyManagesSubnodes = true
     }
 
@@ -117,23 +117,16 @@ class ReadView: ASCellNode {
 
         initialCoverNodeHeight = coverNode.calculatedSize.height
 
-        let bottomSafe = CGFloat(20.0)
-        var topPadding = CGFloat(44.0) + bottomSafe
-
-        if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.keyWindow
-            let safeAreaTop = (window?.safeAreaInsets.top)!
-            if safeAreaTop > 0 {
-                topPadding += (window?.safeAreaInsets.top)! - bottomSafe
-            }
-        }
-
         webView.backgroundColor = .clear
-        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight-CGFloat(topPadding), left: 0, bottom: 0, right: 0)
         webView.scrollView.delegate = self
         webView.delegate = self
         webView.alpha = 0
+        if #available(iOS 11.0, *) {
+            webView.scrollView.contentInsetAdjustmentBehavior = .never
+        }
+        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
         webView.readerViewDelegate = self
+        
         webView.loadContent(content: read!.content)
     }
 
