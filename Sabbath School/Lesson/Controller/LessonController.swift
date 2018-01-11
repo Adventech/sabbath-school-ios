@@ -24,6 +24,7 @@ import Armchair
 import AsyncDisplayKit
 import SwiftDate
 import UIKit
+import StoreKit
 
 final class LessonController: TableController {
     var presenter: LessonPresenterProtocol?
@@ -43,7 +44,7 @@ final class LessonController: TableController {
         super.viewDidLoad()
         setBackButton()
         presenter?.configure()
-        Armchair.showPrompt()
+        Armchair.userDidSignificantEvent(true)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

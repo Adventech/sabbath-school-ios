@@ -31,6 +31,7 @@ import UserNotifications
 import FontBlaster
 import GoogleSignIn
 import UIKit
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,6 +40,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         Armchair.appID("895272167")
+
+        Armchair.shouldPromptClosure { info -> Bool in
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+                return false
+            } else {
+                return true
+            }
+        }
 
         let fabricAPIKeyPath = Bundle.main.path(forResource: "Fabric", ofType: "apiKey")
         let fabricAPIKey = try? String(contentsOfFile: fabricAPIKeyPath!, encoding: String.Encoding.utf8)

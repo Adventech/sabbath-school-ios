@@ -62,8 +62,6 @@ class ReadController: ThemeController {
         setBackButton()
         presenter?.configure()
         setTransparentNavigation()
-        
-        if #available(iOS 11.0, *) {}
 
         for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
             scrollGestureRecognizer.require(toFail: (self.navigationController?.interactivePopGestureRecognizer)!)
