@@ -88,17 +88,6 @@ class ReadController: ThemeController {
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
             webView.setupContextMenu()
         }
-        
-        
-        for (readIndex, read) in self.reads.enumerated() {
-            let today = Date()
-            
-            if today.isInSameDayOf(date: read.date) {
-                DispatchQueue.main.async {
-                    self.collectionNode.scrollToPage(at: readIndex, animated: true)
-                }
-            }
-        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -201,9 +190,17 @@ extension ReadController: ReadControllerProtocol {
         self.reads.append(read)
         self.highlights.append(highlights)
         self.comments.append(comments)
-        if finish {
-            self.finished = true
-            self.collectionNode.reloadData()
+
+        guard finish else { return }
+        self.finished = finish
+        self.collectionNode.reloadData()
+
+        // Scrolls to the current day
+        let today = Date()
+        for (readIndex, read) in reads.enumerated() where today.isInSameDayOf(date: read.date) {
+            DispatchQueue.main.async {
+                self.collectionNode.scrollToPage(at: readIndex, animated: false)
+            }
         }
     }
 }
