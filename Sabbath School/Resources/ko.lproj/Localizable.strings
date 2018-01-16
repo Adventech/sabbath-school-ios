@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2018 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "익명으로 로그인하면 댓글이나 하이라이트, 기기 간 또는 애플리케이션 제거 후 데이터를 동기화 할 수 없습니다. 계속 하시겠습니까?";
+"Continue without login" = "로그인없이 계속하기";
+"Contribute" = "기부";
+"Dark" = "어두운";
+"English" = "영어";
+"I am using Sabbath School app from Adventech! 🎉" = "Adventech의 안식일 학교 앱을 사용하고 있습니다! 🎉";
+"Languages" = "언어";
+"Lato" = "라토";
+"Light" = "빛";
+"Log out" = "로그 아웃";
+"Login anonymously?" = "익명으로 로그인 하시겠습니까?";
+"Made with ❤ by Adventech" = "❤ Adventech 제작";
+"More" = "더";
+"No" = "아니";
+"Open" = "열다";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "우리의 앱은 안식일 학교 을 포함한 오픈 소스입니다. 당신이 기부하고 싶다면 우리의 GitHub를 확인하십시오.";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "독서";
+"Reminder" = "조언";
+"Sabbath School" = "안식일 학교";
+"Sepia" = "세피아";
+"Set the reminder to be notified daily to study the lesson" = "매일 알림을 받도록 알림을 설정하여 수업을 공부합니다.";
+"Settings" = "설정";
+"Sign in with Facebook" = "페이스 북으로 로그인";
+"Sign in with Google" = "Google로 로그인";
+"There was an error during login" = "로그인 중에 오류가 발생했습니다.";
+"Time" = "시각";
+"Time to study Sabbath School 🙏" = "안식일 학교를 공부할 시간 🙏";
+"Yes" = "예";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 요금제";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 권하다 안식일 학교";
+"🙏 About us" = "🙏 회사 소개";
+"God's Ministry through Technology" = "기술을 통한 하나님의 사역";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Adventech의 선교가 최우선입니다 - 고대의 시대 인 L to에게 영광을 돌리십시오. 우리는 기술을 통해 사역을 수행하기 위해 헌신하고 있습니다. 우리의 목표는 제 칠일 안식일 예수 재림 교회를 연합하는 것입니다. 우리의 목표는 커뮤니케이션 및 기술 발전을 통해이 세상에 복음을 선포하는 것입니다. 우리의 목표는 예수님의 재림을 목격하는 것입니다.\n\n우리는 예수님 께서 지상에서 사역하신 예수님의 본보기와 방법에 고무되어 있습니다. 따라서 우리는 사랑과 헌신으로 절대적으로 비용없이 모든 프로젝트의 높은 수준의 품질을 제공하기 위해 노력합니다. 우리는 하나님 아버지 께 영광을 돌리려고 헌신합니다. 그분은 최고의 찬양을 받으시기에 합당한 분이기 때문입니다.\n\n우리는 하나님 께서 현대 세계에 대한 지식을 높여 주셨고, 하나님의 영광을 위해 그것을 사용하여 그분의 곧 돌아 오라는 것을 선포하기를 원합니다!";
+"Your friends at Adventech" = "Adventech의 친구들";
+"Copy" = "부";
+"Share" = "몫";

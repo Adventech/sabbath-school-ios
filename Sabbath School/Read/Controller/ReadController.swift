@@ -82,7 +82,6 @@ class ReadController: ThemeController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.hideBottomHairline()
-        
         scrollBehavior()
 
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {

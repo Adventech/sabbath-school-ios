@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2018 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "เมื่อลงชื่อเข้าใช้โดยไม่ระบุตัวตนคุณจะไม่สามารถซิงโครไนซ์ข้อมูลเช่นความคิดเห็นและไฮไลต์ระหว่างอุปกรณ์หรือหลังจากถอนการติดตั้งแอ็พพลิเคชัน คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ";
+"Continue without login" = "ดำเนินการต่อโดยไม่ต้องเข้าสู่ระบบ";
+"Contribute" = "สนับสนุน";
+"Dark" = "มืด";
+"English" = "อังกฤษ";
+"I am using Sabbath School app from Adventech! 🎉" = "ฉันกำลังใช้แอพฯ โรงเรียนวันสะบาโตจาก Adventech! 🎉";
+"Languages" = "ภาษา";
+"Lato" = "Lato";
+"Light" = "เบา";
+"Log out" = "ออกจากระบบ";
+"Login anonymously?" = "ลงชื่อเข้าใช้โดยไม่ระบุชื่อหรือไม่";
+"Made with ❤ by Adventech" = "ทำด้วย❤โดย Adventech";
+"More" = "มากกว่า";
+"No" = "ไม่";
+"Open" = "เปิด";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "แอปของเราคือ Open Source รวมถึงโรงเรียนวันสะบาโต ไปที่ GitHub ถ้าคุณต้องการบริจาค";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "อ่าน";
+"Reminder" = "การแจ้งเตือน";
+"Sabbath School" = "โรงเรียนวันสะบาโต";
+"Sepia" = "สีซีเปีย";
+"Set the reminder to be notified daily to study the lesson" = "ตั้งค่าการแจ้งเตือนเพื่อรับการแจ้งเตือนทุกวันเพื่อเรียนรู้บทเรียน";
+"Settings" = "การตั้งค่า";
+"Sign in with Facebook" = "ลงชื่อเข้าใช้ด้วย Facebook";
+"Sign in with Google" = "ลงชื่อเข้าใช้ด้วย Google";
+"There was an error during login" = "เกิดข้อผิดพลาดระหว่างการเข้าสู่ระบบ";
+"Time" = "เวลา";
+"Time to study Sabbath School 🙏" = "เวลาเรียน บทเรียนวันสะบาโต 🙏";
+"Yes" = "ใช่";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 ให้คะแนนแอป";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 แนะนำแอป";
+"🙏 About us" = "🙏 เกี่ยวกับเรา";
+"God's Ministry through Technology" = "กระทรวงพระเจ้าผ่านเทคโนโลยี";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "พันธกิจของ Adventech เป็นสิ่งแรกและสำคัญที่สุด - ให้เกียรติแก่Lᴏʀᴅ, Ancient of Days ของเรา เราทุ่มเทเพื่อทำพันธกิจของเราผ่านทางเทคโนโลยี เป้าหมายของเราคือการรวมกันของโบสถ์คริสตจักรวันที่เจ็ดของเรา เป้าหมายของเราคือการประกาศข่าวดีให้โลกนี้โดยใช้เทคโนโลยีและความก้าวหน้าทางด้านการสื่อสาร เป้าหมายของเราคือการเป็นพยานถึงการเสด็จมาครั้งที่สองของพระเยซู\n\nเราได้รับแรงบันดาลใจจากตัวอย่างและวิธีการของพระเยซูเมื่อพระองค์ทรงปรนนิบัติอยู่ที่นี่บนโลก ดังนั้นเราจึงมุ่งมั่นที่จะมอบคุณภาพที่ดีให้กับทุกโครงการของเราโดยไม่มีค่าใช้จ่ายใด ๆ กับความรักและความทุ่มเท เรามีความมุ่งมั่นที่จะถวายพระเกียรติแด่พระบิดาของเราเพราะพระองค์ทรงเป็นผู้สรรเสริญสูงสุด\n\nแท้จริงเราเชื่อว่าพระเจ้าได้เพิ่มพูนความรู้เกี่ยวกับโลกสมัยใหม่และต้องการให้เราใช้มันเพื่อพระสิริของพระองค์เพื่อประกาศให้พระองค์เสด็จกลับมาเร็ว ๆ นี้!";
+"Your friends at Adventech" = "เพื่อนของคุณที่ Adventech";
+"Copy" = "สำเนา";
+"Share" = "หุ้น";
