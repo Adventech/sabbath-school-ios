@@ -45,6 +45,12 @@ final class LessonController: TableController {
         setBackButton()
         presenter?.configure()
         Armchair.userDidSignificantEvent(true)
+        
+        if #available(iOS 9.0, *) {
+            if self.traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: tableNode.view)
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -86,6 +92,28 @@ extension LessonController: LessonControllerProtocol {
         self.tableNode.reloadData()
         self.colorize()
         self.correctHairline()
+    }
+}
+
+@available(iOS 9.0, *)
+extension LessonController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        guard let readController = viewControllerToCommit as? ReadController else { return }
+        guard let index = readController.lessonInfo?.lesson.index else { return }
+        
+        readController.previewingContext = previewingContext
+        //TODO: Change in the future – Not efficient to do this all over again.
+        presenter?.presentReadScreen(lessonIndex: index)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        
+        guard let indexPath = tableNode.indexPathForRow(at: location) else { return nil }
+        guard let lesson = self.dataSource?.lessons[indexPath.row] else { return  nil }
+        guard let readController = ReadWireFrame.createReadModule(lessonIndex: lesson.index) as? ReadController else {  return nil }
+        readController.previewingContext = previewingContext
+        
+        return readController
     }
 }
 

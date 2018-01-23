@@ -31,6 +31,8 @@ class ReadController: ThemeController {
 
     var presenter: ReadPresenterProtocol?
     var collectionNode: ASPagerNode { return node as! ASPagerNode }
+    
+    var previewingContext: UIViewControllerPreviewing? = nil
 
     var lessonInfo: LessonInfo?
     var reads = [Read]()
@@ -64,6 +66,8 @@ class ReadController: ThemeController {
         setTransparentNavigation()
 
         for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
+            guard previewingContext == nil else { continue }
+            
             scrollGestureRecognizer.require(toFail: (self.navigationController?.interactivePopGestureRecognizer)!)
         }
 
