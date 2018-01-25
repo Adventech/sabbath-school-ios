@@ -111,12 +111,10 @@ extension LessonController: UIViewControllerPreviewingDelegate {
         guard let index = readController.lessonInfo?.lesson.index else { return }
         
         readController.previewingContext = previewingContext
-        //TODO: Change in the future – Not efficient to do this all over again.
         presenter?.presentReadScreen(lessonIndex: index)
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        
         guard let indexPath = tableNode.indexPathForRow(at: location) else { return nil }
         guard let lesson = self.dataSource?.lessons[indexPath.row] else { return  nil }
         guard let readController = ReadWireFrame.createReadModule(lessonIndex: lesson.index) as? ReadController else {  return nil }
