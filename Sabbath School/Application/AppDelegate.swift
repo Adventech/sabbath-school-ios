@@ -86,7 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(false, forKey: Constants.DefaultKey.firstRun)
 
             UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
-            UserDefaults.standard.set(Constants.DefaultKey.settingDefaultQuarterlyType, forKey: Constants.DefaultKey.settingQuarterlyType)
             UserDefaults.standard.set(Constants.DefaultKey.settingsDefaultReminderTime, forKey: Constants.DefaultKey.settingsReminderTime)
             SettingsController.setUpLocalNotification()
         }

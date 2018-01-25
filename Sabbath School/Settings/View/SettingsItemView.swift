@@ -40,11 +40,10 @@ final class SettingsItemView: ASCellNode {
     fileprivate var showSwitch = false
     fileprivate var switchState = false
 
-    init(text: String, icon: UIImage? = nil, detailText: String = "", showDisclosure: Bool = false, destructive: Bool = false, actionButton: Bool = false, switchState: Bool? = nil, accessoryType: UITableViewCellAccessoryType = .none) {
+    init(text: String, icon: UIImage? = nil, detailText: String = "", showDisclosure: Bool = false, destructive: Bool = false, actionButton: Bool = false, switchState: Bool? = nil) {
         super.init()
 
         self.showDisclosure = showDisclosure
-        self.accessoryType = accessoryType
         self.backgroundColor = .white
 
         if let switchState = switchState {

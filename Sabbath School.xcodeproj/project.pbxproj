@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01845EA32019FE80003EDFC0 /* QuarterlySettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01845EA22019FE80003EDFC0 /* QuarterlySettingsController.swift */; };
 		1A43D7801EF8BABD00D6A639 /* SnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */; };
 		1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */; };
 		5E82C59D86C5D0067F3C122C /* Pods_SnapshotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D2FA897C7BC2DB383D717 /* Pods_SnapshotUITests.framework */; };
@@ -149,7 +148,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01845EA22019FE80003EDFC0 /* QuarterlySettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlySettingsController.swift; sourceTree = "<group>"; };
 		1A43D77D1EF8BABD00D6A639 /* SnapshotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapshotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotUITests.swift; sourceTree = "<group>"; };
 		1A43D7811EF8BABD00D6A639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -810,7 +808,6 @@
 		7A535A731EF0A4F000CBDEAB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				01845EA22019FE80003EDFC0 /* QuarterlySettingsController.swift */,
 				7AF3716B1EF9E6EC00547916 /* AboutController.swift */,
 				7A535A791EF0A56D00CBDEAB /* SettingsController.swift */,
 				7A4129081EF4D05C0044D6E8 /* PickerViewController.swift */,
@@ -1448,7 +1445,6 @@
 				7A2810021EDD060F003C7458 /* LanguagePresenter.swift in Sources */,
 				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
 				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
-				01845EA32019FE80003EDFC0 /* QuarterlySettingsController.swift in Sources */,
 				7A3BCE361EE27776003EC12B /* BiblePresenter.swift in Sources */,
 				7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */,
 				7A280FEE1EDCFB4E003C7458 /* PopupTransitionAnimation.swift in Sources */,

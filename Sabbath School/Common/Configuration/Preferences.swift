@@ -63,14 +63,6 @@ func currentSize() -> ReaderStyle.Size {
     return size
 }
 
-func currentQuarterlyType() -> QuarterlyType {
-    let rawType = UserDefaults.standard.integer(forKey: Constants.DefaultKey.settingQuarterlyType)
-    guard rawType != 0 else { return Constants.DefaultKey.settingDefaultQuarterlyType }
-    let type = QuarterlyType(rawValue: rawType)
-
-    return type!
-}
-
 func firstRun() -> Bool {
     return UserDefaults.standard.bool(forKey: Constants.DefaultKey.firstRun)
 }

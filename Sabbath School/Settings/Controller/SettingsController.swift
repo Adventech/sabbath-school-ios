@@ -47,7 +47,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         titles = [
             ["Reminder".localized()],
             ["🐙 GitHub".localized()],
-            ["🙏 About us".localized(),"📘 Quarterly", "💌 Recommend Sabbath School".localized(), "🎉 Rate app".localized()],
+            ["🙏 About us".localized(), "💌 Recommend Sabbath School".localized(), "🎉 Rate app".localized()],
             ["Log out".localized()]
         ]
 
@@ -163,10 +163,6 @@ extension SettingsController: ASTableDataSource {
             if indexPath.row == 0 && indexPath.section == 2 {
                 settingsItem = SettingsItemView(text: text, showDisclosure: true)
             }
-            
-            if indexPath.row == 1 && indexPath.section == 2 {
-                settingsItem = SettingsItemView(text: text, showDisclosure: true)
-            }
 
             if indexPath.row == 1 && indexPath.section == 0 {
                 let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
@@ -249,12 +245,6 @@ extension SettingsController: ASTableDelegate {
             }
 
             if indexPath.row == 1 {
-                let quarterlySetting = QuarterlySettingsController()
-                show(quarterlySetting, sender: nil)
-                
-            }
-
-            if indexPath.row == 2 {
                 let objectsToShare = ["I am using Sabbath School app from Adventech! 🎉".localized(), "https://itunes.apple.com/ca/app/sabbath-school/id895272167?mt=8"]
                 let activityController = UIActivityViewController(
                     activityItems: objectsToShare,
@@ -267,7 +257,7 @@ extension SettingsController: ASTableDelegate {
                 present(activityController, animated: true, completion: nil)
             }
 
-            if indexPath.row == 3 {
+            if indexPath.row == 2 {
                 UIApplication.shared.openURL(NSURL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=895272167&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software")! as URL)
             }
             break
