@@ -27,7 +27,6 @@ import UIKit
 class QuarterlyController: TableController {
     var presenter: QuarterlyPresenterProtocol?
     let animator = PopupTransitionAnimator()
-    fileprivate var currentFeaturedQuarterlyType: QuarterlyType?
 
     var dataSource = [Quarterly]()
 
@@ -59,19 +58,9 @@ class QuarterlyController: TableController {
         retrieveQuarterlies()
 
         let lastQuarterlyIndex = currentQuarterly()
-        self.currentFeaturedQuarterlyType = currentQuarterlyType()
-        
         let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
         if let code = languageCode.first, currentLanguage().code == code {
             presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    
-        if currentFeaturedQuarterlyType != currentQuarterlyType() {
-            retrieveQuarterlies()
         }
     }
 
@@ -116,33 +105,12 @@ class QuarterlyController: TableController {
 
 extension QuarterlyController: QuarterlyControllerProtocol {
     func showQuarterlies(quarterlies: [Quarterly]) {
-        guard currentQuarterlyType() == .collegiate else {
-            self.dataSource = quarterlies
-            reloadView()
-            return
-        }
-        
-        var mutableQuarterlies = quarterlies
-        
-        for quarterly in mutableQuarterlies {
-            if quarterly.id.contains("cq") {
-                let index = mutableQuarterlies.index(where: {$0 == quarterly})
-                mutableQuarterlies.remove(at: index!)
-                mutableQuarterlies.insert(quarterly, at: 0)
-                break
-            }
-        }
-        
-        self.dataSource = mutableQuarterlies
-        reloadView()
-    }
-    
-    func reloadView() {
+        self.dataSource = quarterlies
+
         if let colorHex = self.dataSource.first?.colorPrimary {
             self.colorPrimary = UIColor(hex: colorHex)
         }
-        
-        currentFeaturedQuarterlyType = currentQuarterlyType()
+
         self.colorize()
         self.tableNode.allowsSelection = true
         self.tableNode.reloadData()
