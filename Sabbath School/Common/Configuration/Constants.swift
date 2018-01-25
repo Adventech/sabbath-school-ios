@@ -26,6 +26,11 @@ import UIKit
 let isPad = UIDevice.current.userInterfaceIdiom == .pad
 let isPhone = UIDevice.current.userInterfaceIdiom == .phone
 
+enum QuarterlyType: Int {
+    case adult = 1
+    case collegiate = 2
+}
+
 struct Constants {
     struct NotificationKey {
     }
@@ -49,6 +54,8 @@ struct Constants {
         static let settingsReminderStatus = "io.adventech.settings.reminderStatus"
         static let settingsReminderTime = "io.adventech.settings.reminderTime"
         static let settingsDefaultReminderTime = "08:00"
+        static let settingQuarterlyType = "io.adventech.settings.QuarterlyType"
+        static let settingDefaultQuarterlyType = QuarterlyType.adult
     }
 
     struct Path {
