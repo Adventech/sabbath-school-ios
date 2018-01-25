@@ -37,8 +37,12 @@ class QuarterlySettingsController: ASViewController<ASDisplayNode> {
         tableNode?.dataSource = self
         
         title = "Quarterly".uppercased().localized()
-        
-        titles = [["Adult".localized(), "Collegiate".localized()]]
+       
+        if currentLanguage().code == "en" {
+            titles = [["Adult".localized(), "Collegiate".localized()]]
+        } else {
+            titles = [["Adult".localized()]]
+        }
         sections = [
             "Preferred Quarterly".localized(),
         ]
