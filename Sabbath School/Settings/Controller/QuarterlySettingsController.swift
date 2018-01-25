@@ -50,15 +50,12 @@ class QuarterlySettingsController: ASViewController<ASDisplayNode> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setBackButton()
     }
 }
 
 extension QuarterlySettingsController: ASTableDelegate {
-    
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-        
         if indexPath.row == 0 {
             UserDefaults.standard.set(QuarterlyType.adult.rawValue, forKey: Constants.DefaultKey.settingQuarterlyType)
         } else {
@@ -83,7 +80,6 @@ extension QuarterlySettingsController: ASTableDelegate {
 }
 
 extension QuarterlySettingsController: ASTableDataSource {
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
