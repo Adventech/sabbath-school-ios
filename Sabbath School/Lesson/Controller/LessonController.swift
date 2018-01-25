@@ -29,6 +29,9 @@ import StoreKit
 final class LessonController: TableController {
     var presenter: LessonPresenterProtocol?
     var dataSource: QuarterlyInfo?
+    
+    var shouldSkipToReader = false
+    
 
     override init() {
         super.init()
@@ -92,6 +95,12 @@ extension LessonController: LessonControllerProtocol {
         self.tableNode.reloadData()
         self.colorize()
         self.correctHairline()
+        
+        if shouldSkipToReader {
+            openToday()
+            //Revert back to default value
+            shouldSkipToReader = false
+        }
     }
 }
 
