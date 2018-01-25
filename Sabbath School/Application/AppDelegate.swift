@@ -98,8 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (Auth.auth().currentUser) != nil {
             window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule()
         
-            if #available(iOS 9.1, *) {
-                UIApplication.shared.shortcutItems = [UIApplicationShortcutItem.init(type: Constants.openTodayLessonShortcutItemType, localizedTitle: "Today's Lesson".localized(), localizedSubtitle: nil, icon: UIApplicationShortcutIcon.init(type: .bookmark), userInfo: nil)]
+            if #available(iOS 9.0, *) {
+                UIApplication.shared.shortcutItems = [UIApplicationShortcutItem.init(type: Constants.openTodayLessonShortcutItemType, localizedTitle: "Today's Lesson", localizedSubtitle: nil, icon: UIApplicationShortcutIcon.init(templateImageName: "icon-lesson"), userInfo: nil)]
             }
             
         } else {
