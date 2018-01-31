@@ -92,6 +92,15 @@ class QuarterlyController: TableController {
         let nc = ASNavigationController(rootViewController: settings)
         self.present(nc, animated: true)
     }
+    
+    func showLessonScreen(quarterly: Quarterly) {
+        guard dataSource.contains( where: { $0 == quarterly } )  else { return }
+        
+        let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterly.index) as! LessonController
+        
+        lessonController.shouldSkipToReader = true
+        self.show(lessonController, sender: nil)
+    }
 }
 
 extension QuarterlyController: QuarterlyControllerProtocol {
