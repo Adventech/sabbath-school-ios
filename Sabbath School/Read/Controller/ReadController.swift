@@ -46,11 +46,10 @@ class ReadController: ThemeController {
 
     init() {
         super.init(node: ASPagerNode())
-        
-        self.collectionNode.backgroundColor = .baseGray1
-        self.collectionNode.setDataSource(self)
-        self.collectionNode.delegate = self
-        self.collectionNode.allowsAutomaticInsetsAdjustment = false
+        collectionNode.backgroundColor = .baseGray1
+        collectionNode.setDataSource(self)
+        collectionNode.delegate = self
+        collectionNode.allowsAutomaticInsetsAdjustment = false
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -71,12 +70,12 @@ class ReadController: ThemeController {
         rightButton.accessibilityIdentifier = "themeSettings"
         navigationItem.rightBarButtonItem = rightButton
         UIApplication.shared.isIdleTimerDisabled = true
-        
+
         if #available(iOS 11.0, *) {
             self.collectionNode.view.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
-        }        
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -117,9 +116,8 @@ class ReadController: ThemeController {
     func toggleBars() {
         let shouldHide = !navigationController!.isNavigationBarHidden
         shouldHideStatusBar = shouldHide
-        
-        self.updateAnimatedStatusBar()
-        self.navigationController?.setNavigationBarHidden(shouldHide, animated: true)
+        updateAnimatedStatusBar()
+        navigationController?.setNavigationBarHidden(shouldHide, animated: true)
     }
 
     func updateAnimatedStatusBar() {
@@ -143,24 +141,30 @@ class ReadController: ThemeController {
             }
         }
 
-        if scrollView.contentOffset.y + UIScreen.main.bounds.height >= scrollView.contentSize.height {
+        let offset = scrollView.contentOffset.y + UIScreen.main.bounds.height
+        if offset >= scrollView.contentSize.height {
             if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                 toggleBars()
             }
         } else {
-            if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
-                if let navigationController = navigationController, navigationController.isNavigationBarHidden {
-                    toggleBars()
-                }
-            } else {
-                if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
-                    if scrollView.panGestureRecognizer.state != .possible {
+            guard #available(iOS 11.0, *) else {
+                if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
+                    if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                         toggleBars()
+                        debugPrint("&&&&& toggle 1 &&&&&")
+                    }
+                } else {
+                    if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
+                        if scrollView.panGestureRecognizer.state != .possible {
+                            toggleBars()
+                            debugPrint("&&&&& toggle 2 &&&&&")
+                        }
                     }
                 }
+                lastContentOffset = -scrollView.contentOffset.y
+                return
             }
         }
-
         lastContentOffset = -scrollView.contentOffset.y
     }
 
