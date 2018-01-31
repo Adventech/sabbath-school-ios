@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2018 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "A névtelen bejelentkezéssel nem tudja szinkronizálni az adatokat, például a megjegyzéseket és a kiemelkedéseket, az eszközökön vagy az alkalmazás eltávolítása után. Biztosan folytatja?";
+"Continue without login" = "Folytatás bejelentkezés nélkül";
+"Contribute" = "Hozzájárul";
+"Dark" = "Sötét";
+"English" = "angol";
+"I am using Sabbath School app from Adventech! 🎉" = "Az Adventech Szombatiskola alkalmazást használom! 🎉";
+"Languages" = "Nyelvek";
+"Lato" = "Lato";
+"Light" = "Fény";
+"Log out" = "Kijelentkezés";
+"Login anonymously?" = "Névtelen bejelentkezés?";
+"Made with ❤ by Adventech" = "Az Adventech által készített ❤";
+"More" = "Több";
+"No" = "Nem";
+"Open" = "Nyisd ki";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Alkalmazásaink a nyílt forráskódúak, beleértve a szombati iskolát is. Tekintse meg GitHubunkat, ha szeretné hozzájárulni";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Olvas";
+"Reminder" = "Emlékeztető";
+"Sabbath School" = "Szombatiskola";
+"Sepia" = "Szépia";
+"Set the reminder to be notified daily to study the lesson" = "Állítsa be az emlékeztetőt, hogy naponta értesítse a leckét";
+"Settings" = "Beállítások";
+"Sign in with Facebook" = "Jelentkezzen be a Facebook-on";
+"Sign in with Google" = "Jelentkezzen be a Google-lal";
+"There was an error during login" = "Hiba történt bejelentkezéskor";
+"Time" = "Idő";
+"Time to study Sabbath School 🙏" = "A Szombatiskola tanulmányozása ideje";
+"Yes" = "Igen";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Értékelje app";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Ajánlja a Szombatiskola";
+"🙏 About us" = "🙏 Rólunk";
+"God's Ministry through Technology" = "Isten minisztériuma a technikával";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Az Adventech küldetése mindenekelőtt - dicsőséget ad az Lᴏʀᴅ, az ókori napoknak. Elkötelezettek vagyunk, hogy a minisztériumunkat a technológia segítségével végezzük. Célunk, hogy egyesítsük a hetednapi adventista egyházunkat. Célunk, hogy a hírújság és a kommunikáció fejlesztése révén hirdessük ezt a világhírét. Célunk Jézus második eljövetele.\n\nJézus példája és módszerei inspiráltak minket, amikor a Földön szolgált. Ezért elkötelezettek vagyunk, hogy minden projektünk magas színvonalát a szeretet és elkötelezettség nélkül terheljük. Elkötelezettek vagyunk, hogy dicsõséget adunk Atyánknak, mert méltó a dicséret legmagasabb szintjére.\n\nIgazán hiszünk abban, hogy Isten megnövelte a modern világ tudását, és azt akarja, hogy az Ő dicsőségére használjuk, hogy hirdesse hamarosan visszatérését!";
+"Your friends at Adventech" = "Barátai az Adventech-nél";
+"Copy" = "Másolat";
+"Share" = "Ossza meg";

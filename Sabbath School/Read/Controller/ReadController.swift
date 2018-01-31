@@ -31,6 +31,8 @@ class ReadController: ThemeController {
 
     var presenter: ReadPresenterProtocol?
     var collectionNode: ASPagerNode { return node as! ASPagerNode }
+    
+    var previewingContext: UIViewControllerPreviewing? = nil
 
     var lessonInfo: LessonInfo?
     var reads = [Read]()
@@ -63,6 +65,8 @@ class ReadController: ThemeController {
         setTransparentNavigation()
 
         for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
+            guard previewingContext == nil else { continue }
+            
             scrollGestureRecognizer.require(toFail: (self.navigationController?.interactivePopGestureRecognizer)!)
         }
 
@@ -81,7 +85,6 @@ class ReadController: ThemeController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.hideBottomHairline()
-        
         scrollBehavior()
 
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
@@ -151,13 +154,11 @@ class ReadController: ThemeController {
                 if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
                     if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                         toggleBars()
-                        debugPrint("&&&&& toggle 1 &&&&&")
                     }
                 } else {
                     if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
                         if scrollView.panGestureRecognizer.state != .possible {
                             toggleBars()
-                            debugPrint("&&&&& toggle 2 &&&&&")
                         }
                     }
                 }

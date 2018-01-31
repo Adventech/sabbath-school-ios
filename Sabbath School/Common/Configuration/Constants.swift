@@ -29,7 +29,9 @@ let isPhone = UIDevice.current.userInterfaceIdiom == .phone
 struct Constants {
     struct NotificationKey {
     }
-
+    
+    static let openTodayLessonShortcutItemType = "openTodayLessonShortcutItemType"
+    
     struct DefaultKey {
         static let gcmMessageIDKey = "gcm.message_id"
         static let interfaceLanguage = "io.adventech.interfaceLanguage"

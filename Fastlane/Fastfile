@@ -73,7 +73,8 @@ lane :deliverApp do |options|
   deliver(
     submit_for_review: submit_for_review,
     force: true,
-    automatic_release: false
+    automatic_release: false,
+    skip_screenshots: true
   )
 end
 

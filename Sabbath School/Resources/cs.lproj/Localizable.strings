@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2018 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Tím, že se anonymně přihlásíte, nebudete moci synchronizovat data, například komentáře a upozornění, po zařízeních nebo po odinstalování aplikace. Opravdu chcete pokračovat?";
+"Continue without login" = "Pokračujte bez přihlášení";
+"Contribute" = "Přispět";
+"Dark" = "Temný";
+"English" = "Angličtina";
+"I am using Sabbath School app from Adventech! 🎉" = "Používám Sobotní škola od Adventech! 🎉";
+"Languages" = "Jazyky";
+"Lato" = "Lato";
+"Light" = "Světlo";
+"Log out" = "Odhlásit se";
+"Login anonymously?" = "Přihlásit se anonymní?";
+"Made with ❤ by Adventech" = "Vyrobeno z ❤ od Adventech";
+"More" = "Více";
+"No" = "Ne";
+"Open" = "Otevřeno";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Naše aplikace jsou Open Source, včetně Sobotní škola. Podívejte se na náš GitHub, pokud chcete přispět";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Číst";
+"Reminder" = "Připomínka";
+"Sabbath School" = "Sobotní škola";
+"Sepia" = "Sépie";
+"Set the reminder to be notified daily to study the lesson" = "Nastavte připomenutí, které budete každodenně informovat o studiu lekce";
+"Settings" = "Nastavení";
+"Sign in with Facebook" = "Přihlásit se pomocí Facebooku";
+"Sign in with Google" = "Přihlaste se pomocí služby Google";
+"There was an error during login" = "Během přihlášení došlo k chybě";
+"Time" = "Čas";
+"Time to study Sabbath School 🙏" = "Čas studovat Sobotní škola 🙏";
+"Yes" = "Ano";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Hodnotit aplikaci";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Doporučit Sabbath School";
+"🙏 About us" = "🙏 O nás";
+"God's Ministry through Technology" = "Boží ministerstvo prostřednictvím technologie";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Poslání Adventech je především a nejdůležitější - dáme slávu našemu Lᴏʀᴅ, Starověku dnů. Jsme odhodláni dělat naše ministerstvo prostřednictvím technologie. Naším cílem je sjednotit církev adventistů sedmého dne. Naším cílem je hlásit dobré zprávy tomuto světu pomocí technologií a pokroků v komunikaci. Naším cílem je svědčit o Ježíšově druhém příchodu.\n\nJsme inspirováni příkladem a metodami Ježíše, když zde působil na Zemi. Proto jsme se zavázali poskytovat vysoký stupeň kvality všech našich projektů v absolutně bez nákladů s láskou a věnováním. Jsme odhodláni dát slávu našemu Otci, protože je hoden nejvyššího chvály.\n\nOpravdu věříme, že Bůh rozšířil znalosti o moderním světě a chce, abychom ji využili k Jeho slávě, aby prohlásili, že se brzy vrátí!";
+"Your friends at Adventech" = "Tví přátelé z Adventech";
+"Copy" = "Kopírovat";
+"Share" = "Podíl";
