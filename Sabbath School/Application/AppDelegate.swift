@@ -82,11 +82,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
         }
 
+        // Register initial defaults
+        UserDefaults.standard.register(defaults: [
+            Constants.DefaultKey.tintColor: UIColor.baseGreen.hex(),
+            Constants.DefaultKey.settingsReminderStatus: true,
+            Constants.DefaultKey.settingsDefaultReminderTime: Constants.DefaultKey.settingsReminderTime
+        ])
+
         if firstRun() {
             UserDefaults.standard.set(false, forKey: Constants.DefaultKey.firstRun)
-
-            UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
-            UserDefaults.standard.set(Constants.DefaultKey.settingsDefaultReminderTime, forKey: Constants.DefaultKey.settingsReminderTime)
             SettingsController.setUpLocalNotification()
         }
 
