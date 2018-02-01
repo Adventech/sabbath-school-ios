@@ -59,7 +59,7 @@ class TableController: ThemeController {
 
     func correctHairline() {
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
-            if self.tableNode.view.contentOffset.y >= -navigationBarHeight {
+            if self.tableNode.contentOffset.y >= -navigationBarHeight {
                 navigationController?.navigationBar.showBottomHairline()
             } else {
                 navigationController?.navigationBar.hideBottomHairline()
