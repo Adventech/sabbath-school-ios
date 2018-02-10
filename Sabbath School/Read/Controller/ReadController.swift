@@ -48,11 +48,10 @@ class ReadController: ThemeController {
 
     init() {
         super.init(node: ASPagerNode())
-        
-        self.collectionNode.backgroundColor = .baseGray1
-        self.collectionNode.setDataSource(self)
-        self.collectionNode.delegate = self
-        self.collectionNode.allowsAutomaticInsetsAdjustment = false
+        collectionNode.backgroundColor = .baseGray1
+        collectionNode.setDataSource(self)
+        collectionNode.delegate = self
+        collectionNode.allowsAutomaticInsetsAdjustment = false
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -75,12 +74,12 @@ class ReadController: ThemeController {
         rightButton.accessibilityIdentifier = "themeSettings"
         navigationItem.rightBarButtonItem = rightButton
         UIApplication.shared.isIdleTimerDisabled = true
-        
+
         if #available(iOS 11.0, *) {
             self.collectionNode.view.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
-        }        
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -90,17 +89,6 @@ class ReadController: ThemeController {
 
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
             webView.setupContextMenu()
-        }
-        
-        
-        for (readIndex, read) in self.reads.enumerated() {
-            let today = Date()
-            
-            if today.isInSameDayOf(date: read.date) {
-                DispatchQueue.main.async {
-                    self.collectionNode.scrollToPage(at: readIndex, animated: true)
-                }
-            }
         }
     }
 
@@ -131,9 +119,8 @@ class ReadController: ThemeController {
     func toggleBars() {
         let shouldHide = !navigationController!.isNavigationBarHidden
         shouldHideStatusBar = shouldHide
-        
-        self.updateAnimatedStatusBar()
-        self.navigationController?.setNavigationBarHidden(shouldHide, animated: true)
+        updateAnimatedStatusBar()
+        navigationController?.setNavigationBarHidden(shouldHide, animated: true)
     }
 
     func updateAnimatedStatusBar() {
@@ -157,24 +144,28 @@ class ReadController: ThemeController {
             }
         }
 
-        if scrollView.contentOffset.y + UIScreen.main.bounds.height >= scrollView.contentSize.height {
+        let offset = scrollView.contentOffset.y + UIScreen.main.bounds.height
+        if offset >= scrollView.contentSize.height {
             if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                 toggleBars()
             }
         } else {
-            if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
-                if let navigationController = navigationController, navigationController.isNavigationBarHidden {
-                    toggleBars()
-                }
-            } else {
-                if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
-                    if scrollView.panGestureRecognizer.state != .possible {
+            guard #available(iOS 11.0, *) else {
+                if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
+                    if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                         toggleBars()
                     }
+                } else {
+                    if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
+                        if scrollView.panGestureRecognizer.state != .possible {
+                            toggleBars()
+                        }
+                    }
                 }
+                lastContentOffset = -scrollView.contentOffset.y
+                return
             }
         }
-
         lastContentOffset = -scrollView.contentOffset.y
     }
 
@@ -204,9 +195,17 @@ extension ReadController: ReadControllerProtocol {
         self.reads.append(read)
         self.highlights.append(highlights)
         self.comments.append(comments)
-        if finish {
-            self.finished = true
-            self.collectionNode.reloadData()
+
+        guard finish else { return }
+        self.finished = finish
+        self.collectionNode.reloadData()
+
+        // Scrolls to the current day
+        let today = Date()
+        for (readIndex, read) in reads.enumerated() where today.isInSameDayOf(date: read.date) {
+            DispatchQueue.main.async {
+                self.collectionNode.scrollToPage(at: readIndex, animated: false)
+            }
         }
     }
 }
