@@ -158,3 +158,11 @@ extension UIAlertController {
         return false
     }
 }
+
+extension UIWindow {
+    open override var tintColor: UIColor! {
+        didSet {
+            UserDefaults.standard.set(tintColor.hex(), forKey: Constants.DefaultKey.tintColor)
+        }
+    }
+}
