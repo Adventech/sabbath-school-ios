@@ -49,7 +49,7 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
         )
 
         let no = UIAlertAction(title: "No".localized(), style: .default, handler: nil)
-        no.accessibilityLabel = "loginAnonimousOptionNo"
+        no.accessibilityLabel = "loginAnonymousOptionNo"
 
         let yes = UIAlertAction(title: "Yes".localized(), style: .destructive) { [weak self] (_) in
             Auth.auth().signInAnonymously(completion: { [weak self] (_, error) in
@@ -60,11 +60,11 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
                 }
             })
         }
-        yes.accessibilityLabel = "loginAnonimousOptionYes"
+        yes.accessibilityLabel = "loginAnonymousOptionYes"
 
         alertController.addAction(no)
         alertController.addAction(yes)
-        alertController.accessibilityLabel = "loginAnonimous"
+        alertController.accessibilityLabel = "loginAnonymous"
 
         ((self.presenter as? LoginPresenter)?.controller as? UIViewController)?.present(alertController, animated: true, completion: nil)
 
