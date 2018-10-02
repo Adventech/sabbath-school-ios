@@ -54,7 +54,7 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
         config.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
         config.duration = .seconds(seconds: 3)
 
-        let messageView = MessageView.viewFromNib(layout: .CardView)
+        let messageView = MessageView.viewFromNib(layout: .cardView)
         messageView.button?.isHidden = true
         messageView.bodyLabel?.font = R.font.latoBold(size: 17)
         messageView.configureTheme(.warning)

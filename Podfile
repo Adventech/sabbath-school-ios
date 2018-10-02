@@ -1,4 +1,4 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 inhibit_all_warnings!
 
@@ -15,14 +15,14 @@ target 'Sabbath School' do
   pod 'FontBlaster'
   pod 'GoogleSignIn'
   pod 'Hue'
-  pod 'JSQWebViewController'
+  pod 'JSQWebViewController', '~> 5.0.0'
   pod 'MenuItemKit'
   pod 'pop'
   pod 'R.swift', '~> 3.1'
   pod 'Shimmer'
-  pod 'SwiftMessages'
+  pod 'SwiftMessages', '~> 5.0'
   pod 'SwiftDate', '~> 4.0.13'
-  pod 'Texture', :git => 'https://github.com/TextureGroup/Texture.git', :branch => 'master'
+  pod 'Texture'
   pod 'Unbox'
   pod 'Wrap'
   pod 'Zip', '~> 0.7'

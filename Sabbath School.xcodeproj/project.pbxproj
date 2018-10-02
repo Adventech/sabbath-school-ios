@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1A43D7801EF8BABD00D6A639 /* SnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */; };
 		1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */; };
+		340E06152163DF440002442B /* Fabric.apiKey in Resources */ = {isa = PBXBuildFile; fileRef = 7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */; };
+		340E06162163DF460002442B /* Fabric.buildSecret in Resources */ = {isa = PBXBuildFile; fileRef = 7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */; };
 		5E82C59D86C5D0067F3C122C /* Pods_SnapshotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0D2FA897C7BC2DB383D717 /* Pods_SnapshotUITests.framework */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginNode.swift */; };
@@ -125,8 +127,6 @@
 		7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF31EE5EBDE003F946C /* Read.swift */; };
 		7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF41EE5EBDE003F946C /* ReadComments.swift */; };
 		7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */; };
-		7AD973CB1EF35ED0009D9EB3 /* Fabric.apiKey in Resources */ = {isa = PBXBuildFile; fileRef = 7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */; };
-		7AD973CC1EF35ED0009D9EB3 /* Fabric.buildSecret in Resources */ = {isa = PBXBuildFile; fileRef = 7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */; };
 		7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF326171EFF92C700A04568 /* ReadEmptyView.swift */; };
 		7AF3261A1EFF998D00A04568 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF326191EFF998D00A04568 /* Range.swift */; };
 		7AF371551EF9CB3400547916 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF371531EF9CB3400547916 /* Localizable.strings */; };
@@ -1074,7 +1074,6 @@
 				1A43D77A1EF8BABD00D6A639 /* Frameworks */,
 				1A43D77B1EF8BABD00D6A639 /* Resources */,
 				865F79C2D48B21E0A5D9EC9F /* [CP] Embed Pods Frameworks */,
-				0437E74285F46CF344BE20F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1203,14 +1202,13 @@
 				7A922E601EE07EC200C12A67 /* PT_Sans-Web-BoldItalic.ttf in Resources */,
 				7A922E651EE07EC200C12A67 /* PT_Serif-Web-Italic.ttf in Resources */,
 				7AF371611EF9CB5A00547916 /* InfoPlist.strings in Resources */,
+				340E06162163DF460002442B /* Fabric.buildSecret in Resources */,
 				7A922E571EE07EC200C12A67 /* Lora-Bold.ttf in Resources */,
 				7A280FB61EDA0276003C7458 /* Lato-Medium.ttf in Resources */,
 				7A922E611EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf in Resources */,
 				7A922E5A1EE07EC200C12A67 /* Lora-Regular.ttf in Resources */,
-				7AD973CC1EF35ED0009D9EB3 /* Fabric.buildSecret in Resources */,
 				7A922E661EE07EC200C12A67 /* PT_Serif-Web-Regular.ttf in Resources */,
 				7A280FB51EDA0276003C7458 /* Lato-Italic.ttf in Resources */,
-				7AD973CB1EF35ED0009D9EB3 /* Fabric.apiKey in Resources */,
 				7AF371551EF9CB3400547916 /* Localizable.strings in Resources */,
 				7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */,
 				7AF371701EFA1E6E00547916 /* base.css in Resources */,
@@ -1228,6 +1226,7 @@
 				7ABB93E11EF7888900658963 /* GoogleService-Info-Prod.plist in Resources */,
 				7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */,
 				7A922E641EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
+				340E06152163DF440002442B /* Fabric.apiKey in Resources */,
 				7A280FB41EDA0276003C7458 /* Lato-BoldItalic.ttf in Resources */,
 				7A280FB81EDA0276003C7458 /* Lato-Regular.ttf in Resources */,
 				7A922E591EE07EC200C12A67 /* Lora-Italic.ttf in Resources */,
@@ -1240,21 +1239,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0437E74285F46CF344BE20F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1B6A00FE81B5E044B0CF66AE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1272,6 +1256,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQWebViewController/JSQWebViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/MenuItemKit/MenuItemKit.framework",
@@ -1287,6 +1272,7 @@
 				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
 				"${BUILT_PRODUCTS_DIR}/Wrap/Wrap.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
@@ -1302,6 +1288,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQWebViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MenuItemKit.framework",
@@ -1317,6 +1304,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wrap.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
@@ -1354,11 +1342,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"\n";
 		};
 		7AC26AE01EE46BF0003F946C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -1782,7 +1770,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1804,7 +1792,7 @@
 				CURRENT_PROJECT_VERSION = 2018.01.232;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
