@@ -69,12 +69,21 @@ final class LessonController: TableController {
     func openToday() {
         guard let lesson = dataSource?.lessons[0] else { return }
         let today = Date()
+        let weekday = Calendar.current.component(.weekday, from: today)
+        var prevLessonIndex: String? = nil
+        let hour = Calendar.current.component(.hour, from: today)
         for lesson in (dataSource?.lessons)! {
             if today.isAfter(date: lesson.startDate, orEqual: true, granularity: Calendar.Component.day) &&
                 today.isBefore(date: lesson.endDate, orEqual: true, granularity: Calendar.Component.day) {
-                presenter?.presentReadScreen(lessonIndex: lesson.index)
+                
+                if (weekday == 7 && hour < 12 && prevLessonIndex != nil) {
+                    presenter?.presentReadScreen(lessonIndex: prevLessonIndex!)
+                } else {
+                    presenter?.presentReadScreen(lessonIndex: lesson.index)
+                }
                 return
             }
+            prevLessonIndex = lesson.index
         }
         presenter?.presentReadScreen(lessonIndex: lesson.index)
     }
