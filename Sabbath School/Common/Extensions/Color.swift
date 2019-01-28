@@ -77,10 +77,10 @@ extension UIColor {
     }
 
     class var tintColor: UIColor {
-        guard let appDelegate = UIApplication.shared.delegate,
-            let window = appDelegate.window,
-            let tintColor = window?.tintColor else { return UIColor.baseGreen }
-        return tintColor
+        guard let color = UserDefaults.standard.string(forKey: Constants.DefaultKey.tintColor) else {
+            return .baseGreen
+        }
+        return UIColor(hex: color)
     }
 
     class var readerWhite: UIColor {

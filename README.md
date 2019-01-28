@@ -27,6 +27,14 @@ This is Sabbath School for iOS by Adventech. Humble attempt to make difference w
 - [ ] Push notifications 🔔
 - [ ] Spotlight search 🔎
 
+## Special thanks
+
+- [TestObject](http://testobject.com) for supporting with awesome on-demand real device testing
+- [Stoplight](http://stoplight.io) for supporting with amazing API platform
+- [Textografo](http://textografo.com) for supporting with incredible diagram-as-a-code tool
+- [POEditor](http://poeditor.com) for supporting with versatile translation platform
+- [JetBrains](http://jetbrains.com) for supporting with all their IDEs for free
+- [Appfollow.io](http://appfollow.io) for supporting us with the *best* app rating and review monitoring app!
 
 ## Installation
 
@@ -34,9 +42,9 @@ Make sure you have the latest version of the Xcode command line tools installed:
 
 `xcode-select --install`
 
-`bundle install`
+`bundle install` ([Bundler](https://bundler.io/))
 
-`pod install`
+`pod install` ([CocoaPods](https://cocoapods.org/))
 
 In case you are contributor and you have been added to repository with certificates, please use
 

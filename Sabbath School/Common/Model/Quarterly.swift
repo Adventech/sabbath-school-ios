@@ -23,6 +23,11 @@
 import Unbox
 
 struct Quarterly {
+    
+    static func ==(lhs: Quarterly, rhs: Quarterly) -> Bool {
+        return lhs.id == rhs.id && lhs.index == rhs.index
+    }
+    
     let id: String
     let title: String
     let description: String

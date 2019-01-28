@@ -30,7 +30,7 @@ class SnapshotUITests: XCTestCase {
 
     func testScreenshots() {
         app.buttons["continueWithoutLogin"].tap()
-        app.buttons["loginAnonimousOptionYes"].tap()
+        app.buttons["loginAnonymousOptionYes"].tap()
 
         // Select language
         var language = locale.components(separatedBy: "-")[0]

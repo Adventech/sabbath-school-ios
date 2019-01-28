@@ -82,11 +82,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
         }
 
+        // Register initial defaults
+        UserDefaults.standard.register(defaults: [
+            Constants.DefaultKey.tintColor: UIColor.baseGreen.hex(),
+            Constants.DefaultKey.settingsReminderStatus: true,
+            Constants.DefaultKey.settingsDefaultReminderTime: Constants.DefaultKey.settingsReminderTime
+        ])
+
         if firstRun() {
             UserDefaults.standard.set(false, forKey: Constants.DefaultKey.firstRun)
-
-            UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
-            UserDefaults.standard.set(Constants.DefaultKey.settingsDefaultReminderTime, forKey: Constants.DefaultKey.settingsReminderTime)
             SettingsController.setUpLocalNotification()
         }
 
@@ -97,6 +101,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if (Auth.auth().currentUser) != nil {
             window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule()
+        
+            if #available(iOS 9.0, *) {
+                UIApplication.shared.shortcutItems = [UIApplicationShortcutItem.init(type: Constants.openTodayLessonShortcutItemType, localizedTitle: "Today's Lesson".localized(), localizedSubtitle: nil, icon: UIApplicationShortcutIcon.init(templateImageName: "icon-lesson"), userInfo: nil)]
+            }
+            
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
@@ -170,6 +179,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // With swizzling disabled you must set the APNs token here.
         // Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        
+        if shortcutItem.type == Constants.openTodayLessonShortcutItemType {
+            guard let navigationController = UIApplication.shared.delegate?.window??.rootViewController as? ASNavigationController else { return }
+            
+            var quarterlyController: QuarterlyController?
+            
+            for controller in navigationController.viewControllers {
+                guard ((controller as? QuarterlyController) != nil) else { continue }
+                
+                quarterlyController = controller as? QuarterlyController
+                break
+            }
+            
+            guard quarterlyController != nil else { return }
+            guard ((quarterlyController?.dataSource.first) != nil) else { return }
+            quarterlyController?.showLessonScreen(quarterly: quarterlyController!.dataSource.first!)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {}

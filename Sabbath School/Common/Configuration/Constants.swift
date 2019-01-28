@@ -29,12 +29,15 @@ let isPhone = UIDevice.current.userInterfaceIdiom == .phone
 struct Constants {
     struct NotificationKey {
     }
-
+    
+    static let openTodayLessonShortcutItemType = "openTodayLessonShortcutItemType"
+    
     struct DefaultKey {
         static let gcmMessageIDKey = "gcm.message_id"
         static let interfaceLanguage = "io.adventech.interfaceLanguage"
         static let quarterlyLanguage = "io.adventech.interfaceLanguage"
         static let firstRun = "io.adventech.firstRun"
+        static let tintColor = "io.adventech.tintColor"
         static var preferredBibleVersion: String {
             return "io.adventech.preferredBibleVersion." + currentLanguage().code
         }
