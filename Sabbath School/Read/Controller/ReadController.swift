@@ -202,7 +202,7 @@ extension ReadController: ReadControllerProtocol {
 
         // Scrolls to the current day
         let today = Date()
-        for (readIndex, read) in reads.enumerated() where today.isInSameDayOf(date: read.date) {
+        for (readIndex, read) in reads.enumerated().prefix(7) where today.isInSameDayOf(date: read.date) {
             DispatchQueue.main.async {
                 self.collectionNode.scrollToPage(at: readIndex, animated: false)
             }
