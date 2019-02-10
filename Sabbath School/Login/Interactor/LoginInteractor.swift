@@ -76,8 +76,9 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
 
     func loginFacebook() {
         let loginManager = LoginManager()
+        
 
-        loginManager.logIn([ReadPermission.publicProfile, ReadPermission.email], viewController: (self.presenter as? LoginPresenter)?.controller as? UIViewController, completion: { [weak self] (loginResult) in
+        loginManager.logIn(readPermissions: [ReadPermission.publicProfile, ReadPermission.email], viewController: (self.presenter as? LoginPresenter)?.controller as? UIViewController) { [weak self] (loginResult) in
             switch loginResult {
             case .failed(let error):
                 self?.presenter?.onError(error)
@@ -87,7 +88,7 @@ class LoginInteractor: NSObject, LoginInteractorInputProtocol {
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
                 self?.performFirebaseLogin(credential: credential)
             }
-        })
+        }
     }
 
     func performFirebaseLogin(credential: AuthCredential) {

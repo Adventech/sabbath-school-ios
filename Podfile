@@ -1,4 +1,4 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 inhibit_all_warnings!
 
@@ -6,7 +6,9 @@ target 'Sabbath School' do
   pod 'Armchair', '>= 0.3'
   pod 'Crashlytics'
   pod 'Fabric'
+  pod 'FacebookCore'
   pod 'FacebookLogin'
+  pod 'FacebookShare'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Database'

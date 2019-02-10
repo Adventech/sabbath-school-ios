@@ -1,0 +1,48 @@
+
+/*Localizable.strings
+  Sabbath School
+
+  Created by Vitaliy Lim on 2017-06-18.
+  Copyright © 2017 Adventech. All rights reserved.*/
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Со анонимно најавување, нема да можете да ги синхронизирате вашите податоци, како што се коментари и нагласува, низ уреди или по деинсталирање на апликацијата. Дали сте сигурни дека сакате да продолжите?";
+"Continue without login" = "Продолжи без најава";
+"Contribute" = "Придонесете";
+"Dark" = "Темно";
+"English" = "Англиски";
+"I am using Sabbath School app from Adventech! 🎉" = "Ја користам апликацијата за сабатска школа од Adventech! 🎉";
+"Languages" = "Јазици";
+"Lato" = "Lato";
+"Light" = "Светлина";
+"Log out" = "Одјавете се";
+"Login anonymously?" = "Најави анонимно?";
+"Made with ❤ by Adventech" = "Направени со ❤ од Adventech";
+"More" = "Повеќе";
+"No" = "Не";
+"Open" = "Отвори";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Нашите апликации се софтвер со отворен код, вклучувајќи ја сабатската школа. Проверете го нашиот GitHub ако сакате да придонесете";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Прочитајте";
+"Reminder" = "Потсетник";
+"Sabbath School" = "Сабат училиште";
+"Sepia" = "Сепија";
+"Set the reminder to be notified daily to study the lesson" = "Поставете го потсетникот за да бидете известени секојдневно за да ја проучите лекцијата";
+"Settings" = "Подесувања";
+"Sign in with Facebook" = "Пријавете се со Фејсбук";
+"Sign in with Google" = "Пријавете се со Google";
+"There was an error during login" = "Имаше грешка при најавувањето";
+"Time" = "Време";
+"Time to study Sabbath School 🙏" = "Време е да го проучувате саботата";
+"Yes" = "Да";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Оцени ја апликацијата";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Препорачај сабота училиште";
+"🙏 About us" = "🙏 За нас";
+"God's Ministry through Technology" = "Божјето министерство преку технологијата";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Мисијата на Adventech е прво и основно - даде слава на нашиот Lᴏʀᴅ, Античка на денови. Ние сме посветени да го извршуваме нашето министерство преку технологија. Нашата цел е да ја обединиме нашата адвентистичка црква од седмиот ден. Нашата цел е да проповедаме добра вест во овој свет со помош на технологија и достигнувања во комуникациите. Нашата цел е да го следиме Исусовото второ доаѓање.\n\nНие сме инспирирани од примерот и методите на Исус, кога Тој служел овде на Земјата. Затоа, ние сме посветени да испорачаме висок степен на квалитет на сите наши проекти со апсолутно без трошоци со љубов и посветеност. Ние сме посветени да му оддадеме слава на нашиот Отец, зашто тој е достоен за највисоката фалба.\n\nНие навистина веруваме дека Бог го зголеми познавањето на современиот свет и сака да го искористиме за Неговата слава за да го објавиме неговото брзо враќање!";
+"Your friends at Adventech" = "Вашите пријатели во Adventech";
+"Copy" = "Копирај";
+"Share" = "Сподели";

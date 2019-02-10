@@ -1,0 +1,52 @@
+
+/*Localizable.strings
+  Sabbath School
+
+  Created by Vitaliy Lim on 2017-06-18.
+  Copyright © 2017 Adventech. All rights reserved.*/
+"Aa" = "Αα";
+
+/*What is it?*/
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Εάν συνδεθείτε ανώνυμα, δεν θα μπορείτε να συγχρονίσετε τα δεδομένα σας (όπως σχόλια και υπογραμμίσεις) ανάμεσα στις συσκευές σας ή μετά την απεγκατάσταση της εφαρμογής. Είστε βέβαιως ότι θέλετε να προχωρήσετε;";
+"Continue without login" = "Συνέχεια χωρίς σύνδεση";
+"Contribute" = "Σύμβαλε";
+"Dark" = "Σκοτεινό";
+"English" = "Αγγλικά";
+"I am using Sabbath School app from Adventech! 🎉" = "Χρησιμοποιώ την εφαρμογή Sabbath School από την Adventech! 🎉";
+"Languages" = "Γλώσσες";
+
+/*What is it?*/
+"Lato" = "Lato";
+"Light" = "Φωτεινό";
+"Log out" = "Αποσυνδέση";
+"Login anonymously?" = "Ανώνυμη σύνδεση;";
+"Made with ❤ by Adventech" = "Κατασκευάστηκε με ❤ από την Adventech";
+"More" = "Περισσότερα";
+"No" = "Όχι";
+"Open" = "Άνοιξε";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Οι εφαρμογές μας είναι Open Source, συμπεριλαμβανομένης και της Sabbath School. Ελέγξτε το GitHub εάν θέλετε να συνεισφέρετε.";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Διαβάστε";
+"Reminder" = "Υπενθύμιση";
+"Sabbath School" = "Σχολή Σαββάτου";
+"Sepia" = "Καστανόχρους";
+"Set the reminder to be notified daily to study the lesson" = "Ορίστε μια υπενθύμιση καθημερινής μελέτης";
+"Settings" = "Ρυθμίσεις";
+"Sign in with Facebook" = "Σύνδεση μέσω Facebook";
+"Sign in with Google" = "Σύνδεση μέσω Google";
+"There was an error during login" = "Παρουσιάστηκε σφάλμα κατά τη σύνδεση";
+"Time" = "Ώρα";
+"Time to study Sabbath School 🙏" = "Ώρα να μελετήσετε το μάθημα της Σχολής Σαββάτου 🙏";
+"Yes" = "Ναι";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Αξιολογήστε την εφαρμογή";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Προτείνετε την εφαρμογή";
+"🙏 About us" = "🙏 Σχετικά με εμάς";
+"God's Ministry through Technology" = "Το Έργο του Θεού μέσω της Τεχνολογίας";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Η αποστολή της Adventech είναι πρώτα απ΄ όλα να δώσει δόξα στον Κύριό μας, Ιησού Χριστό. Είμαστε αφιερωμένοι στο να κάνουμε το έργο μας για Εκείνον με τη χρήση της τεχνολογίας. Στόχος μας είναι να ενώσουμε όλους τους Αντβεντιστές της Εβδόμης Ημέρας. Στόχος μας είναι να διακηρύξουμε τα καλά νέα σε αυτόν τον κόσμο μέσω της τεχνολογίας και των νέων δυνατοτήτων που μας προσφέρει για επικοινωνία. Στόχος μας είναι να γίνουμε μάρτυρες της Δευτέρας Έλευσης του Ιησού Χριστού.\n\nΕίμαστε εμπνευσμένοι από το παράδειγμα και τις μεθόδους του Ιησού Χριστού, όταν εργάστηκε εδώ στη Γη. Ως εκ τούτου, δεσμευόμαστε να προσφέρουμε εφαρμογές υψηλής ποιότητας, απολύτως δωρεάν, με αγάπη και αφοσίωση. Δεσμευόμαστε να δώσουμε δόξα στον Ουράνιο Πατέρα μας, επειδή είναι ο μόνος άξιος.\n\nΠιστεύουμε αληθινά ότι ο Θεός έχει αυξήσει τη γνώση του σύγχρονου κόσμου και θέλει να τη χρησιμοποιήσουμε για τη δόξα Του για να διακηρύξουμε ότι επιστρέφει σύντομα!";
+"Your friends at Adventech" = "Οι φίλοι σου στο Adventech";
+"Copy" = "Αντιγραφή";
+"Share" = "Κοινοποίηση";

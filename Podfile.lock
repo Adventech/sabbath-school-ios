@@ -1,25 +1,32 @@
 PODS:
   - Armchair (0.3.0)
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
+  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.8.5):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.12)
-  - FacebookCore (0.2.0):
-    - Bolts (~> 1.8)
-    - FBSDKCoreKit (~> 4.15)
-  - FacebookLogin (0.2.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.2)
-    - FBSDKCoreKit (~> 4.15)
-    - FBSDKLoginKit (~> 4.15)
-  - FBSDKCoreKit (4.24.0):
-    - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.24.0):
+  - FacebookCore (0.5.0):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.37)
+  - FacebookLogin (0.5.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.5)
+    - FBSDKCoreKit (~> 4.37)
+    - FBSDKLoginKit (~> 4.37)
+  - FacebookShare (0.5.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.5)
+    - FBSDKCoreKit (~> 4.37)
+    - FBSDKShareKit (~> 4.37)
+  - FBSDKCoreKit (4.40.0):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.40.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.40.0):
     - FBSDKCoreKit
   - Firebase/Auth (4.0.4):
     - Firebase/Core
@@ -39,13 +46,13 @@ PODS:
   - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseAuth (4.0.0):
     - FirebaseAnalytics (~> 4.0)
-    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (4.0.4):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseDatabase (4.0.0):
     - FirebaseAnalytics (~> 4.0)
@@ -63,8 +70,8 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.1)
   - FontBlaster (3.0.3)
   - GoogleSignIn (4.0.2):
-    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
-    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
     - GTMOAuth2 (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
@@ -72,13 +79,13 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/Logger (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+  - "GoogleToolboxForMac/NSData+zlib (2.1.1)":
     - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1)":
     - GoogleToolboxForMac/DebugUtils (= 2.1.1)
     - GoogleToolboxForMac/Defines (= 2.1.1)
-    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
-  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.1.1)"
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.11):
@@ -101,7 +108,7 @@ PODS:
     - PINCache/Core
   - PINCache/Core (3.0.1-beta.6):
     - PINOperation (~> 1.1.0)
-  - PINOperation (1.1)
+  - PINOperation (1.1.1)
   - PINRemoteImage/Core (3.0.0-beta.13):
     - PINOperation
   - PINRemoteImage/iOS (3.0.0-beta.13):
@@ -119,12 +126,25 @@ PODS:
   - SwiftDate (4.0.14)
   - SwiftLint (0.20.1)
   - SwiftMessages (3.4.0)
-  - Texture (2.6):
-    - Texture/PINRemoteImage (= 2.6)
-  - Texture/Core (2.6)
-  - Texture/PINRemoteImage (2.6):
+  - Texture (2.7):
+    - Texture/AssetsLibrary (= 2.7)
+    - Texture/Core (= 2.7)
+    - Texture/MapKit (= 2.7)
+    - Texture/Photos (= 2.7)
+    - Texture/PINRemoteImage (= 2.7)
+    - Texture/Video (= 2.7)
+  - Texture/AssetsLibrary (2.7):
+    - Texture/Core
+  - Texture/Core (2.7)
+  - Texture/MapKit (2.7):
+    - Texture/Core
+  - Texture/Photos (2.7):
+    - Texture/Core
+  - Texture/PINRemoteImage (2.7):
     - PINRemoteImage/iOS (= 3.0.0-beta.13)
     - PINRemoteImage/PINCache
+    - Texture/Core
+  - Texture/Video (2.7):
     - Texture/Core
   - Unbox (2.5.0)
   - Wrap (2.1.1)
@@ -134,7 +154,9 @@ DEPENDENCIES:
   - Armchair (>= 0.3)
   - Crashlytics
   - Fabric
+  - FacebookCore
   - FacebookLogin
+  - FacebookShare
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -157,6 +179,51 @@ DEPENDENCIES:
   - Wrap
   - Zip (~> 0.7)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Armchair
+    - Bolts
+    - Crashlytics
+    - Fabric
+    - FacebookCore
+    - FacebookLogin
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FirebaseStorage
+    - FontBlaster
+    - GoogleSignIn
+    - GoogleToolboxForMac
+    - GTMOAuth2
+    - GTMSessionFetcher
+    - Hue
+    - JSQWebViewController
+    - MenuItemKit
+    - nanopb
+    - PINCache
+    - PINOperation
+    - PINRemoteImage
+    - pop
+    - Protobuf
+    - R.swift
+    - R.swift.Library
+    - Shimmer
+    - SimulatorStatusMagic
+    - SwiftDate
+    - SwiftLint
+    - SwiftMessages
+    - Unbox
+    - Wrap
+    - Zip
+
 EXTERNAL SOURCES:
   Texture:
     :branch: master
@@ -164,18 +231,20 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Texture:
-    :commit: 131619de96190415aec89987d4493220c6d0305d
+    :commit: e76272470d7c9170cf22e0f724f207fd077e9f69
     :git: https://github.com/TextureGroup/Texture.git
 
 SPEC CHECKSUMS:
   Armchair: c8eca9bdca868fd6f7155eee73ba70a1278b0655
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
-  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
-  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
-  FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
+  FacebookCore: 74288d0add931d361b1596beae787ab72c438249
+  FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
+  FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
+  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
+  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
+  FBSDKShareKit: 0e45916f4150da485928ae2a17ca021950b194f5
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -187,14 +256,14 @@ SPEC CHECKSUMS:
   FontBlaster: bec9e80f72f683c9ed591460ec582efd612c977e
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
+  GTMOAuth2: 4eb69243935d2ca2650f8b18026770de5dc19e87
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   Hue: 354caec055fdc9d38b5ef33ca2e7224721843baf
   JSQWebViewController: 0461aa42612b221571556df61d9c09f080cb2eef
   MenuItemKit: bd07a0804b057d32e71289bc512ad8b3c3f97b83
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
-  PINOperation: 7f042fa6df5b606deb4bd5997654cf7033d5be1d
+  PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
   PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
@@ -205,11 +274,11 @@ SPEC CHECKSUMS:
   SwiftDate: 4ef029fd3117cc287fe642658b9aca2217628976
   SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
   SwiftMessages: e20aa1557fde1525ea369361bec4943cc0d08e7c
-  Texture: 7249074582daf75e524e59df5428b66b8e8db0e4
+  Texture: f6078ef421abe2a15225c846206287343bee0b1c
   Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
   Wrap: 9cc7da7551bb81d0846cb3df9fb624c6c32d267d
   Zip: e34513299ac38c0686d5b24504da7ce343799ab9
 
-PODFILE CHECKSUM: eb3d239028732c30479cbc0803a0d23f61a49fc2
+PODFILE CHECKSUM: cb6d9199b03f0ebc3debb0977c134b4409a9fba1
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.0

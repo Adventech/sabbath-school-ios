@@ -75,7 +75,6 @@ final class LessonController: TableController {
         for lesson in (dataSource?.lessons)! {
             if today.isAfter(date: lesson.startDate, orEqual: true, granularity: Calendar.Component.day) &&
                 today.isBefore(date: lesson.endDate, orEqual: true, granularity: Calendar.Component.day) {
-                
                 if (weekday == 7 && hour < 12 && prevLessonIndex != nil) {
                     presenter?.presentReadScreen(lessonIndex: prevLessonIndex!)
                 } else {

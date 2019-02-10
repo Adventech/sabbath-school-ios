@@ -1,0 +1,48 @@
+
+/*Localizable.strings
+  Sabbath School
+
+  Created by Vitaliy Lim on 2017-06-18.
+  Copyright © 2017 Adventech. All rights reserved.*/
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Ngokungena ngokungaziwa ngeke ukwazi ukuvumelanisa idatha yakho, njengamazwana namaphuzu avelele, kuwo wonke amadivaysi noma ngemuva kokukhipha uhlelo lokusebenza. Uqinisekile ukuthi ufuna ukuqhubeka?";
+"Continue without login" = "Qhubeka ngaphandle kokungena ngemvume";
+"Contribute" = "Nika isandla";
+"Dark" = "Umnyama";
+"English" = "IsiNgisi";
+"I am using Sabbath School app from Adventech! 🎉" = "Ngisebenzisa uhlelo lokusebenza lweSabatha School kusuka ku-Adventech! 🎉";
+"Languages" = "Izilimi";
+"Lato" = "Lato";
+"Light" = "Ukukhanya";
+"Log out" = "Phuma";
+"Login anonymously?" = "Ngena ngemvume ngokungaziwa?";
+"Made with ❤ by Adventech" = "Yenziwe nge-❤ ngu-Adventech";
+"More" = "Okuningi";
+"No" = "Cha";
+"Open" = "Vula";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Izinhlelo zethu ziwumthombo ovulekile, kufaka phakathi iSikole SeSabatha. Hlola i-GitHub yethu uma ungathanda ukufaka isandla";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Funda";
+"Reminder" = "Isikhumbuzi";
+"Sabbath School" = "Isikole seSabatha";
+"Sepia" = "Sepia";
+"Set the reminder to be notified daily to study the lesson" = "Setha isikhumbuzi ukuze waziswe nsuku zonke ukuze ufunde isifundo";
+"Settings" = "Izilungiselelo";
+"Sign in with Facebook" = "Ngena ngemvume nge-Facebook";
+"Sign in with Google" = "Ngena ngemvume nge-Google";
+"There was an error during login" = "Kube nephutha ngesikhathi sokungena ngemvume";
+"Time" = "Isikhathi";
+"Time to study Sabbath School 🙏" = "Isikhathi sokufunda iSabatha Isikole 🙏";
+"Yes" = "Yebo";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Linganisa uhlelo lokusebenza";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Ncoma iSikoleni SeSabatha";
+"🙏 About us" = "🙏 Mayelana nathi";
+"God's Ministry through Technology" = "Ministry of God ngokusebenzisa Technology";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "I-Mission of Adventech iyona yokuqala futhi iyinhloko - inika inkazimulo kuLikezwi wethu, uMdala Wezinsuku. Sizinikezele ukwenza inkonzo yethu ngokusebenzisa ubuchwepheshe. Umgomo wethu ukuhlanganisa iSonto lethu le-Seventh-Day Adventist. Umgomo wethu ukumemezela Izindaba Ezinhle kuleli zwe ngokusebenzisa ubuchwepheshe kanye nentuthuko yokuxhumana. Umgomo wethu ukubona ukuza kukaJesu kwesibili.\n\nSiphefumulelwe yisibonelo nezindlela zikaJesu, lapho ekhonza lapha eMhlabeni. Ngakho-ke, sizibophezele ukuletha izinga eliphakeme lekhwalithi yazo yonke imiklamo yethu ngaphandle kwezindleko ngothando nokuzinikezela. Sizibophezele ukukhazimulisa uBaba wethu, ngoba ufanelwe ukudumisa kakhulu.\n\nSiyakholwa ngempela ukuthi uNkulunkulu ukwandise ulwazi lwezwe lwanamuhla futhi ufuna ukuthi silisebenzise ngenkazimulo Yakhe ukumemezela ukubuya kwakhe maduze!";
+"Your friends at Adventech" = "Abangani bakho ku-Adventech";
+"Copy" = "Kopisha";
+"Share" = "Yabelana";

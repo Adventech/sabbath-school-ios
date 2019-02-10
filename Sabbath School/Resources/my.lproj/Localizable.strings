@@ -1,0 +1,48 @@
+
+/*Localizable.strings
+  Sabbath School
+
+  Created by Vitaliy Lim on 2017-06-18.
+  Copyright © 2017 Adventech. All rights reserved.*/
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "အမည်ဝှက်ဝင်ရောက်ခြင်းဖြင့်သင်မျိုးစုံဖုန်းများဖြတ်ပြီးသို့မဟုတ် program ကိုဖယ်ရှားပြီးနောက်, ထိုကဲ့သို့သောမှတ်ချက်နှင့်ပျေါလှငျအဖြစ်, သင့်ရဲ့ဒေတာတွေကိုတပြိုင်တည်းအလုပ်လုပ်နိုင်လိမ့်မည်မဟုတ်။ သငျသညျဆက်လက်ဆောင်ရွက်လိုသောသေချာလား?";
+"Continue without login" = "ရဲ့ login မပါဘဲ Continue";
+"Contribute" = "ထောက်ပံ့";
+"Dark" = "မှောငျမိုကျသော";
+"English" = "အင်္ဂလိပ်";
+"I am using Sabbath School app from Adventech! 🎉" = "ငါ Adventech ထံမှဥပုသျနေ့ကျောင်း app ကို အသုံးပြု. ငါ! 🎉";
+"Languages" = "ဘာသာစကားများ";
+"Lato" = "Lato";
+"Light" = "အလင်း";
+"Log out" = "လော့ဂ်အော့ဖ်လုပ်ထွက်ခြင်း";
+"Login anonymously?" = "အမည်ဝှက်?";
+"Made with ❤ by Adventech" = "Adventech အားဖြင့်❤နှင့်ဖွဲ့";
+"More" = "နောက်ထပ်";
+"No" = "အဘယ်သူမျှမ";
+"Open" = "ဖွင့်လှစ်";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "ကျွန်ုပ်တို့၏ apps များဥပုသျနေ့ကျောင်းအပါအဝင်ပွင့်လင်းတဲ့အရင်းအမြစ်ဖြစ်ပါတယ်။ သငျသညျအထောက်အကူပြုချင်ပါတယ်လျှင်ကျွန်ုပ်တို့၏ GitHub ထုတ်စစ်ဆေး";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "ဖတ်";
+"Reminder" = "သတိပေးချက်";
+"Sabbath School" = "ဥပုသျနေ့ကျောင်း";
+"Sepia" = "နီညိုရောင်";
+"Set the reminder to be notified daily to study the lesson" = "သင်ခန်းစာလေ့လာဖို့နေ့စဉ်အကြောင်းကြားဖို့သတိပေးချက် Set";
+"Settings" = "နှစ်သက်မှုများ";
+"Sign in with Facebook" = "Facebook  ဖြင့်မှတ်ပုံတင်ရန်";
+"Sign in with Google" = "Google ဖြင့်မှတ်ပုံတင်ရန်";
+"There was an error during login" = "မှားယွင်းမှုတစ်ခုရဲ့ login ကာလအတွင်းရှိခဲ့သည်";
+"Time" = "အချိန်";
+"Time to study Sabbath School 🙏" = "ဥပုသျနေ့ကျောင်းလေ့လာဖို့အချိန်🙏";
+"Yes" = "ဟုတ်ကဲ့";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉နှုန်း app ကို";
+"🐙 GitHub" = "GitHub 🐙";
+"💌 Recommend Sabbath School" = "ဥပုသျနေ့ကျောင်းအကြံပြု💌";
+"🙏 About us" = "🙏ကြှနျုပျတို့အကွောငျး";
+"God's Ministry through Technology" = "နည်းပညာအားဖြင့်ဘုရားသခင်ရဲ့န်ကြီးဌာန";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Adventech ၏မစ်ရှင်ပထမနှင့်ဗွေဆော်ဖြစ်ပါသည် - ကျွန်တော်တို့ရဲ့Lᴏʀᴅ, နေ့ရက်များ၏ရှေးဂုဏ်တော်ကိုချီးမွမ်း။ ကျနော်တို့နည်းပညာမှတဆင့်တို့၏ဓမ်မအမှုလုပ်ဖို့အပျနှံနေကြတယ်။ ကျွန်ုပ်တို့၏ရည်မှန်းချက်ကျနော်တို့ရဲ့သတ္တမ-Day ကို Adventist ခရစ်ယာန်ဘုရားကျောင်းစည်းလုံးရန်ဖြစ်ပါသည်။ ကျွန်ုပ်တို့၏ရည်မှန်းချက်ဆက်သွယ်ရေးအတွက်နည်းပညာ၏နည်းလမ်းနှင့်တိုးတက်မှုအားဖြင့်ဒီလောကမှဧဝံဂေလိကြွေးကြော်ရန်ဖြစ်ပါသည်။ ကျွန်ုပ်တို့၏ရည်မှန်းချက်သည်ယေရှု၏ဒုတိယအလာသက်သေခံရန်ဖြစ်ပါသည်။\n\nသူကကမ္ဘာမြေပေါ်တွင်ဤနေရာတွင်အမှုတော်ကိုဆောင်ရွက်ရသောအခါကျွန်တော်တို့သည်သခင်ယေရှု၏ဥပမာများနှင့်နည်းလမ်းများအားဖြင့်မှုတ်သွင်းနေကြတယ်။ ထို့ကွောငျ့ကြှနျုပျတို့သမေတ္တာနှင့်အပျနှံနှင့်အတူလုံးဝကုန်ကျစရိတ်မှာအားလုံးကျွန်တော်တို့ရဲ့စီမံကိန်းများ၏အရည်အသွေးမြင့်မားတဲ့ဒီဂရီကယ်လွှတ်ခြင်းငှါကျူးလွန်နေကြသည်။ ကျနော်တို့သူကိုချီးမွမ်းခြင်းအကြောင်း၏အမြင့်ဆုံးခံထိုက်ပေ၏အကြောင်းမူကား, ငါတို့အဘတည်းဟူသောကိုချီးမွမ်းလိုသောငှါကျူးလွန်နေကြသည်။\n\nကြှနျုပျတို့သညျအမှနျတကယျဘုရားသခငျသညျခေတ်သစ်ကမ္ဘာ၏အသိပညာတိုးပွားလာခြင်းနှင့်ကျွန်တော်တို့ကိုသူ၏မကြာမီပြန်လာကြွေးကြော်သူ၏ဘုန်းအသရေဘို့အသုံးပြုလိုလားလျက်ရှိသည်ဟုယုံကြည်ကြသည်!";
+"Your friends at Adventech" = "Adventech မှာသင်၏မိတ်ဆွေများ";
+"Copy" = "မိတ္တူ";
+"Share" = "ဝေစု";

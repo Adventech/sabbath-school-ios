@@ -1,0 +1,48 @@
+
+/*Localizable.strings
+  Sabbath School
+
+  Created by Vitaliy Lim on 2017-06-18.
+  Copyright © 2017 Adventech. All rights reserved.*/
+"Aa" = "Aa";
+"Andada" = "Andada";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Bằng cách đăng nhập ẩn danh, bạn sẽ không thể đồng bộ hóa dữ liệu của mình, như nhận xét và đánh dấu, trên các thiết bị hoặc sau khi gỡ cài đặt ứng dụng. Bạn có chắc muốn tiếp tục?";
+"Continue without login" = "Tiếp tục mà không cần đăng nhập";
+"Contribute" = "Góp phần";
+"Dark" = "Tối";
+"English" = "Anh";
+"I am using Sabbath School app from Adventech! 🎉" = "Tôi đang sử dụng ứng dụng Sabbath School từ Adventech! 🎉";
+"Languages" = "Ngôn ngữ";
+"Lato" = "Lato";
+"Light" = "Ánh sáng";
+"Log out" = "Đăng xuất";
+"Login anonymously?" = "Đăng nhập nặc danh?";
+"Made with ❤ by Adventech" = "Được làm bằng bởi Adventech";
+"More" = "Hơn";
+"No" = "Không";
+"Open" = "Mở";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Các ứng dụng của chúng tôi là Nguồn mở, bao gồm Trường Sabbath. Hãy xem GitHub của chúng tôi nếu bạn muốn đóng góp";
+"PT Sans" = "PT Sans";
+"PT Serif" = "PT Serif";
+"Read" = "Đọc";
+"Reminder" = "Nhắc nhở";
+"Sabbath School" = "Trường Sa-bát";
+"Sepia" = "Nâu đỏ";
+"Set the reminder to be notified daily to study the lesson" = "Đặt lời nhắc sẽ được thông báo hàng ngày để nghiên cứu bài học";
+"Settings" = "Cài đặt";
+"Sign in with Facebook" = "Đăng nhập vao facebook";
+"Sign in with Google" = "Đăng nhập bằng Google";
+"There was an error during login" = "Có lỗi trong quá trình đăng nhập";
+"Time" = "Thời gian";
+"Time to study Sabbath School 🙏" = "Thời gian học trường Sabbath";
+"Yes" = "Vâng";
+"https://adventech.io" = "https://adventech.io";
+"🎉 Rate app" = "🎉 Đánh giá ứng dụng";
+"🐙 GitHub" = "🐙 GitHub";
+"💌 Recommend Sabbath School" = "💌 Đề nghị trường Sabbath";
+"🙏 About us" = "🙏 Giới thiệu về chúng tôi";
+"God's Ministry through Technology" = "Bộ Chúa thông qua công nghệ";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Sứ mệnh của Adventech là trên hết và trước hết - hãy mang lại vinh quang cho Lᴏʀᴅ của chúng ta, Ancient of Days. Chúng tôi được dành riêng để làm bộ của chúng tôi thông qua công nghệ. Mục tiêu của chúng tôi là hợp nhất Giáo hội Cơ Đốc Phục Lâm của chúng tôi. Mục tiêu của chúng tôi là loan báo Tin mừng cho thế giới này bằng công nghệ và những tiến bộ trong truyền thông. Mục tiêu của chúng tôi là chứng kiến Chúa Jesus Lần thứ hai đến.\n\nChúng ta được truyền cảm hứng bởi tấm gương và phương pháp của Chúa Giêsu, khi Ngài khai thác ở đây trên Trái đất. Do đó, chúng tôi cam kết cung cấp mức độ cao về chất lượng của tất cả các dự án của chúng tôi hoàn toàn miễn phí với tình yêu và sự cống hiến. Chúng tôi cam kết ban vinh quang cho Cha của chúng tôi, bởi vì Ngài xứng đáng được ca ngợi cao nhất.\n\nChúng tôi thực sự tin rằng Chúa đã gia tăng kiến thức về thế giới hiện đại và muốn chúng tôi sử dụng nó cho vinh quang của Ngài để tuyên bố sự trở lại sớm của Ngài!";
+"Your friends at Adventech" = "Bạn bè của bạn tại Adventech";
+"Copy" = "Sao chép";
+"Share" = "Chia sẻ";
