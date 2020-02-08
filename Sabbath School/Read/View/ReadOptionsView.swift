@@ -154,13 +154,13 @@ class ReadOptionsView: ASDisplayNode {
 
         let ptSerifTypefaceButton = segmentButtonProvider(
             text: "PT Serif".localized(),
-            font: R.font.pTSerifRegular(size: 16)!,
+            font: R.font.ptSerifRegular(size: 16)!,
             selected: typeface == .ptSerif
         )
 
         let ptSansTypefaceButton = segmentButtonProvider(
             text: "PT Sans".localized(),
-            font: R.font.pTSansRegular(size: 16)!,
+            font: R.font.ptSansRegular(size: 16)!,
             selected: typeface == .ptSans)
 
         typefaceView.removeAllSegments()

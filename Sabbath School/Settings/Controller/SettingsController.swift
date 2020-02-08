@@ -22,7 +22,6 @@
 
 import AsyncDisplayKit
 import FirebaseAuth
-import JSQWebViewController
 import SafariServices
 import SwiftDate
 import UIKit
@@ -110,9 +109,9 @@ class SettingsController: ASViewController<ASDisplayNode> {
 
     static func setUpLocalNotification() {
         UIApplication.shared.cancelAllLocalNotifications()
-        let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
-        let hour = time.hour
-        let minute = time.minute
+        let time = DateInRegion(reminderTime(), format: "HH:mm")
+        let hour = time?.hour ?? 0
+        let minute = time?.minute ?? 0
         let calendar = NSCalendar(identifier: .gregorian)! // have to use NSCalendar for the components
 
         var dateFire = Date()
@@ -165,8 +164,8 @@ extension SettingsController: ASTableDataSource {
             }
 
             if indexPath.row == 1 && indexPath.section == 0 {
-                let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
-                settingsItem = SettingsItemView(text: text, detailText: time.string(dateStyle: .none, timeStyle: .short))
+                let time = DateInRegion(reminderTime(), format: "HH:mm")
+                settingsItem = SettingsItemView(text: text, detailText: time?.toString(.time(.short)) ?? "")
                 settingsItem.contentStyle = .detailOnRight
             }
 
@@ -225,17 +224,10 @@ extension SettingsController: ASTableDelegate {
             break
         case 1:
             let url = "https://github.com/Adventech"
-
-            if #available(iOS 9.0, *) {
-                let safariVC = SFSafariViewController(url: URL(string: url)!)
-                safariVC.view.tintColor = .tintColor
-                safariVC.modalPresentationStyle = .currentContext
-                present(safariVC, animated: true, completion: nil)
-            } else {
-                let controller = WebViewController(url: URL(string: url)!)
-                let nav = UINavigationController(rootViewController: controller)
-                present(nav, animated: true, completion: nil)
-            }
+            let safariVC = SFSafariViewController(url: URL(string: url)!)
+            safariVC.view.tintColor = .tintColor
+            safariVC.modalPresentationStyle = .currentContext
+            present(safariVC, animated: true, completion: nil)
 
             break
         case 2:

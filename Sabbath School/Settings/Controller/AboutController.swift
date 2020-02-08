@@ -22,7 +22,6 @@
 
 import AsyncDisplayKit
 import SafariServices
-import JSQWebViewController
 import UIKit
 
 class AboutController: ThemeController {
@@ -50,16 +49,10 @@ class AboutController: ThemeController {
     }
 
     func openUrl(url: String) {
-        if #available(iOS 9.0, *) {
-            let safariVC = SFSafariViewController(url: URL(string: url)!)
-            safariVC.view.tintColor = .tintColor
-            safariVC.modalPresentationStyle = .currentContext
-            present(safariVC, animated: true, completion: nil)
-        } else {
-            let controller = WebViewController(url: URL(string: url)!)
-            let nav = UINavigationController(rootViewController: controller)
-            present(nav, animated: true, completion: nil)
-        }
+        let safariVC = SFSafariViewController(url: URL(string: url)!)
+        safariVC.view.tintColor = .tintColor
+        safariVC.modalPresentationStyle = .currentContext
+        present(safariVC, animated: true, completion: nil)
     }
 }
 

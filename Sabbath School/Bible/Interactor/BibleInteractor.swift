@@ -40,7 +40,7 @@ class BibleInteractor: BibleInteractorInputProtocol {
     func retrieveBibleVerse(read: Read, verse: String) {
         if let versionName = preferredBibleVersionFor(bibleVerses: read.bible),
             let bibleVersion = read.bible.filter({$0.name == versionName}).first,
-            let openVerse = bibleVersion.verses[verse] {
+            let openVerse = bibleVersion.verses?[verse] {
             presenter?.didRetrieveBibleVerse(content: openVerse)
         }
     }

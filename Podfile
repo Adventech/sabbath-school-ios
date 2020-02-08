@@ -3,7 +3,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'Sabbath School' do
-  pod 'Armchair', '>= 0.3'
+  pod 'Armchair'
   pod 'Crashlytics'
   pod 'Fabric'
   pod 'FacebookCore'
@@ -17,32 +17,31 @@ target 'Sabbath School' do
   pod 'FontBlaster'
   pod 'GoogleSignIn'
   pod 'Hue'
-  pod 'JSQWebViewController'
   pod 'MenuItemKit'
   pod 'pop'
-  pod 'R.swift', '~> 3.1'
+  pod 'R.swift'
   pod 'Shimmer'
   pod 'SwiftMessages'
-  pod 'SwiftDate', '~> 4.0.13'
-  pod 'Texture', :git => 'https://github.com/TextureGroup/Texture.git', :branch => 'master'
+  pod 'SwiftDate'
+  pod 'Texture'
   pod 'Unbox'
   pod 'Wrap'
-  pod 'Zip', '~> 0.7'
+  pod 'Zip'
   pod 'SwiftLint'
 end
 
 post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        if target.name == 'Armchair'
-            target.build_configurations.each do |config|
-                if config.name == 'Debug'
-                    config.build_settings['OTHER_SWIFT_FLAGS'] = '-DDebug'
-                    else
-                    config.build_settings['OTHER_SWIFT_FLAGS'] = ''
-                end
-            end
+  installer.pods_project.targets.each do |target|
+    if target.name == 'Armchair'
+      target.build_configurations.each do |config|
+        if config.name == 'Debug'
+          config.build_settings['OTHER_SWIFT_FLAGS'] = '-DDebug'
+        else
+          config.build_settings['OTHER_SWIFT_FLAGS'] = ''
         end
+      end
     end
+  end
 end
 
 target 'SnapshotUITests' do

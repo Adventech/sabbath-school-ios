@@ -51,10 +51,10 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
 
     func onError(_ error: Error?) {
         var config = SwiftMessages.Config()
-        config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar.rawValue)
+        config.presentationContext = .window(windowLevel: .statusBar)
         config.duration = .seconds(seconds: 3)
 
-        let messageView = MessageView.viewFromNib(layout: .CardView)
+        let messageView = MessageView.viewFromNib(layout: .cardView)
         messageView.button?.isHidden = true
         messageView.bodyLabel?.font = R.font.latoBold(size: 17)
         messageView.configureTheme(.warning)

@@ -77,7 +77,7 @@ class ReadView: ASCellNode {
 
         readDateNode.alpha = 1
         readDateNode.maximumNumberOfLines = 1
-        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.string(custom: "EEEE, MMMM dd"))
+        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.toString(.custom("EEEE, MMMM dd")))
         
         automaticallyManagesSubnodes = true
     }
