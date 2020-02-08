@@ -1387,7 +1387,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"\n";
 		};
 		7AC26AE01EE46BF0003F946C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
