@@ -104,7 +104,10 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navBar?.showBottomHairline()
         navBar?.isTranslucent = translucent
         navBar?.tintColor = tintColor
-        navBar?.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: titleColor, NSAttributedString.Key.font.rawValue: font])
+        navBar?.titleTextAttributes = [
+            .foregroundColor: titleColor,
+            .font: font
+        ]
     }
 
     func setNavigationBarColor(color: UIColor) {
@@ -165,10 +168,4 @@ extension UIWindow {
             UserDefaults.standard.set(tintColor.hex(), forKey: Constants.DefaultKey.tintColor)
         }
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }
