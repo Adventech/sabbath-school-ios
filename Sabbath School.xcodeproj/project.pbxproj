@@ -1150,14 +1150,14 @@
 					1A43D77C1EF8BABD00D6A639 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = BB84388PVM;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Manual;
 						TestTargetID = 7AF191A71ED7B89B000CCF0C;
 					};
 					7AF191A71ED7B89B000CCF0C = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = XVGX5G4YQ9;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1712,7 +1712,7 @@
 				PROVISIONING_PROFILE = "cb4b542f-ff27-4ed8-b3b5-520e585eaf3e";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "Sabbath School";
 			};
 			name = Debug;
@@ -1730,7 +1730,7 @@
 				PROVISIONING_PROFILE = "cb4b542f-ff27-4ed8-b3b5-520e585eaf3e";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "Sabbath School";
 			};
 			name = Release;
@@ -1867,7 +1867,7 @@
 				PROVISIONING_PROFILE = "29d99fff-a72e-4c42-9ceb-b8c5c4176926";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1890,7 +1890,7 @@
 				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.cryart.SabbathSchool";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
