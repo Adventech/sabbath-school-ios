@@ -47,7 +47,7 @@ class LoginController: ASViewController<ASDisplayNode>, LoginControllerProtocol 
         presenter?.configure()
     }
 
-    func loginAction(sender: LoginButton) {
+    @objc func loginAction(sender: LoginButton) {
         switch sender.type {
         case .facebook:
             presenter?.loginActionFacebook()

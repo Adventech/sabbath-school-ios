@@ -91,19 +91,19 @@ class AboutView: ASCellNode {
 
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 20), child: mainLayout)
     }
-    func tapInstagram(_ sender: UIView) {
+    @objc func tapInstagram(_ sender: UIView) {
         delegate?.didTapInstagram()
     }
 
-    func tapFacebook(_ sender: UIView) {
+    @objc func tapFacebook(_ sender: UIView) {
         delegate?.didTapFacebook()
     }
 
-    func tapGitHub(_ sender: UIView) {
+    @objc func tapGitHub(_ sender: UIView) {
         delegate?.didTapGitHub()
     }
 
-    func tapWebsite(_ sender: UIView) {
+    @objc func tapWebsite(_ sender: UIView) {
         delegate?.didTapWebsite()
     }
 }

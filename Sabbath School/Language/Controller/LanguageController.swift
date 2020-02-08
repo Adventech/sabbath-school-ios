@@ -31,7 +31,7 @@ final class LanguageController: TableController {
     override init() {
         super.init()
 
-        tableNode.dataSource = self
+        tableNode?.dataSource = self
         title = "Languages".localized().uppercased()
     }
 
@@ -55,8 +55,8 @@ final class LanguageController: TableController {
 extension LanguageController: LanguageControllerProtocol {
     func showLanguages(languages: [QuarterlyLanguage]) {
         self.dataSource = languages
-        self.tableNode.reloadData()
-        self.tableNode.allowsSelection = true
+        self.tableNode?.reloadData()
+        self.tableNode?.allowsSelection = true
     }
 }
 

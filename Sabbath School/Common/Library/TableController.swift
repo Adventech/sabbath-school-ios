@@ -23,12 +23,12 @@
 import AsyncDisplayKit
 
 class TableController: ThemeController {
-    weak var tableNode: ASTableNode! { return node as! ASTableNode}
+    weak var tableNode: ASTableNode? { return node as? ASTableNode }
 
     init() {
         super.init(node: ASTableNode())
 
-        tableNode.delegate = self
+        tableNode?.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +37,7 @@ class TableController: ThemeController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableNode.allowsSelection = false
+        self.tableNode?.allowsSelection = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -49,8 +49,8 @@ class TableController: ThemeController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let selected = tableNode.indexPathForSelectedRow {
-            tableNode.view.deselectRow(at: selected, animated: true)
+        if let selected = tableNode?.indexPathForSelectedRow {
+            tableNode?.view.deselectRow(at: selected, animated: true)
         }
 
         correctHairline()
@@ -58,13 +58,19 @@ class TableController: ThemeController {
     }
 
     func correctHairline() {
-        if let navigationBarHeight = self.navigationController?.navigationBar.frame.height {
-            if self.tableNode.contentOffset.y >= -navigationBarHeight {
-                navigationController?.navigationBar.showBottomHairline()
-            } else {
-                navigationController?.navigationBar.hideBottomHairline()
-            }
+        guard
+            let navigationBarHeight = self.navigationController?.navigationBar.frame.height,
+            let tableNode = self.tableNode
+        else {
+            return
         }
+
+        if tableNode.contentOffset.y >= -navigationBarHeight {
+            navigationController?.navigationBar.showBottomHairline()
+        } else {
+            navigationController?.navigationBar.hideBottomHairline()
+        }
+
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }

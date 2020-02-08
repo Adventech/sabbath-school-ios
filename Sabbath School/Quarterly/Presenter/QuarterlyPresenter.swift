@@ -36,9 +36,11 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
     }
 
     func presentLanguageScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate) {
-        (controller as! UIViewController).present(LanguageWireFrame.createLanguageModule(size: size, transitioningDelegate: transitioningDelegate, didSelectLanguageHandler: { [weak self] _ in
+        let module = LanguageWireFrame.createLanguageModule(size: size, transitioningDelegate: transitioningDelegate) { [weak self] () -> Void? in
             self?.controller?.retrieveQuarterlies()
-        }), animated: true, completion: nil)
+        }
+
+        (controller as? UIViewController)?.present(module, animated: true)
     }
 
     func presentLessonScreen(quarterlyIndex: String) {

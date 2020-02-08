@@ -51,7 +51,7 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
 
     func onError(_ error: Error?) {
         var config = SwiftMessages.Config()
-        config.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+        config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar.rawValue)
         config.duration = .seconds(seconds: 3)
 
         let messageView = MessageView.viewFromNib(layout: .CardView)

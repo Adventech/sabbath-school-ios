@@ -90,7 +90,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         return .lightContent
     }
 
-    func reminderChanged(sender: UISwitch) {
+    @objc func reminderChanged(sender: UISwitch) {
         let isOn = sender.isOn
 
         guard isOn else {

@@ -36,7 +36,7 @@ final class LessonController: TableController {
     override init() {
         super.init()
 
-        tableNode.dataSource = self
+        tableNode?.dataSource = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -50,8 +50,8 @@ final class LessonController: TableController {
         Armchair.userDidSignificantEvent(true)
         
         if #available(iOS 9.0, *) {
-            if self.traitCollection.forceTouchCapability == .available {
-                registerForPreviewing(with: self, sourceView: tableNode.view)
+            if self.traitCollection.forceTouchCapability == .available, let view = tableNode?.view {
+                registerForPreviewing(with: self, sourceView: view)
             }
         }
     }
@@ -87,7 +87,7 @@ final class LessonController: TableController {
         presenter?.presentReadScreen(lessonIndex: lesson.index)
     }
 
-    func readButtonAction(sender: OpenButton) {
+    @objc func readButtonAction(sender: OpenButton) {
         openToday()
     }
 }
@@ -99,8 +99,8 @@ extension LessonController: LessonControllerProtocol {
         if let colorHex = dataSource?.quarterly.colorPrimary {
             self.colorPrimary = UIColor(hex: colorHex)
         }
-        self.tableNode.allowsSelection = true
-        self.tableNode.reloadData()
+        self.tableNode?.allowsSelection = true
+        self.tableNode?.reloadData()
         self.colorize()
         self.correctHairline()
         
@@ -123,7 +123,7 @@ extension LessonController: UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = tableNode.indexPathForRow(at: location) else { return nil }
+        guard let indexPath = tableNode?.indexPathForRow(at: location) else { return nil }
         guard let lesson = self.dataSource?.lessons[indexPath.row] else { return  nil }
         guard let readController = ReadWireFrame.createReadModule(lessonIndex: lesson.index) as? ReadController else {  return nil }
         readController.previewingContext = previewingContext

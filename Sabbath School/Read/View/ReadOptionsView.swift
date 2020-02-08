@@ -54,10 +54,10 @@ class ReadOptionsView: ASDisplayNode {
         backgroundColor = .white
 
         setupThemeSegmentControl()
-        themeView.addTarget(self, action: #selector(themeValueChanged(_:)), for: UIControlEvents.valueChanged)
+        themeView.addTarget(self, action: #selector(themeValueChanged(_:)), for: UIControl.Event.valueChanged)
 
         setupTypefaceSegmentControl()
-        typefaceView.addTarget(self, action: #selector(typefaceValueChanged(_:)), for: UIControlEvents.valueChanged)
+        typefaceView.addTarget(self, action: #selector(typefaceValueChanged(_:)), for: UIControl.Event.valueChanged)
 
         let size = currentSize()
         fontSizeView.value = CGFloat(size.hashValue)
@@ -76,7 +76,7 @@ class ReadOptionsView: ASDisplayNode {
         fontSizeView.tintColor = .baseGray1
         fontSizeView.minimumValue = 0
 
-        fontSizeView.addTarget(self, action: #selector(fontsizeValueChanged(_:)), for: UIControlEvents.valueChanged)
+        fontSizeView.addTarget(self, action: #selector(fontsizeValueChanged(_:)), for: UIControl.Event.valueChanged)
 
         for layer in fontSizeView.layer.sublayers! {
             layer.backgroundColor = UIColor.clear.cgColor
@@ -192,7 +192,7 @@ class ReadOptionsView: ASDisplayNode {
         return UIImage.imageWithView(wrapperView).withRenderingMode(.alwaysOriginal)
     }
 
-    func themeValueChanged(_ sender: UISegmentedControl) {
+    @objc func themeValueChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
         let theme = ReaderStyle.Theme.items[selectedIndex]
 
@@ -201,7 +201,7 @@ class ReadOptionsView: ASDisplayNode {
         delegate?.didSelectTheme(theme: theme)
     }
 
-    func typefaceValueChanged(_ sender: UISegmentedControl) {
+    @objc func typefaceValueChanged(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
         let typeface = ReaderStyle.Typeface.items[selectedIndex]
 
@@ -210,7 +210,7 @@ class ReadOptionsView: ASDisplayNode {
         delegate?.didSelectTypeface(typeface: typeface)
     }
 
-    func fontsizeValueChanged(_ sender: DiscreteSlider) {
+    @objc func fontsizeValueChanged(_ sender: DiscreteSlider) {
         let selectedIndex = Int(sender.value)
         let size = ReaderStyle.Size.items[selectedIndex]
 

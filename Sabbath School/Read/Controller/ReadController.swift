@@ -105,7 +105,7 @@ class ReadController: ThemeController {
         return .slide
     }
 
-    func readingOptions(sender: UIBarButtonItem) {
+    @objc func readingOptions(sender: UIBarButtonItem) {
         let buttonView = sender.value(forKey: "view") as! UIView
         let size = CGSize(width: round(node.frame.width)-10, height: 167)
 

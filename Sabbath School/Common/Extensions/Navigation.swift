@@ -52,19 +52,19 @@ extension UINavigationController {
 extension UIViewController: UIGestureRecognizerDelegate {
 
     func setBackButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popBack))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItem.Style.plain, target: self, action: #selector(popBack))
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
     }
 
     func setCloseButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismiss as () -> Void))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItem.Style.plain, target: self, action: #selector(dismiss as () -> Void))
     }
 
-    func popBack() {
+    @objc func popBack() {
         _ = self.navigationController?.popViewController(animated: true)
     }
 
-    func dismiss() {
+    @objc func dismiss() {
         dismiss(animated: true, completion: nil)
     }
 
@@ -104,7 +104,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navBar?.showBottomHairline()
         navBar?.isTranslucent = translucent
         navBar?.tintColor = tintColor
-        navBar?.titleTextAttributes = [NSForegroundColorAttributeName: titleColor, NSFontAttributeName: font]
+        navBar?.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: titleColor, NSAttributedString.Key.font.rawValue: font])
     }
 
     func setNavigationBarColor(color: UIColor) {
@@ -165,4 +165,10 @@ extension UIWindow {
             UserDefaults.standard.set(tintColor.hex(), forKey: Constants.DefaultKey.tintColor)
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }
