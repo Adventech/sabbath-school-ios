@@ -41,8 +41,8 @@ lane :beta do
   match(
     type: "adhoc",
     git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",
-    force_for_new_devices: true,
-    readonly: false
+    force_for_new_devices: false,
+    readonly: true
   )
   increment_build
   sync_code_signing(type: "appstore")
