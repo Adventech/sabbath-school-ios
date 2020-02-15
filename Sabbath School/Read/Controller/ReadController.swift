@@ -21,7 +21,6 @@
  */
 
 import AsyncDisplayKit
-import SwiftDate
 import SafariServices
 import UIKit
 
@@ -201,7 +200,8 @@ extension ReadController: ReadControllerProtocol {
 
         // Scrolls to the current day
         let today = Date()
-        for (readIndex, read) in reads.enumerated().prefix(7) where today.compare(.isSameDay(read.date)) {
+        let cal = Calendar.current
+        for (readIndex, read) in reads.enumerated().prefix(7) where cal.compare(today, to: read.date, toGranularity: .day) == .orderedSame {
             DispatchQueue.main.async {
                 self.collectionNode.scrollToPage(at: readIndex, animated: false)
             }

@@ -20,7 +20,6 @@
  * THE SOFTWARE.
  */
 
-import SwiftDate
 import UIKit
 
 let isPad = UIDevice.current.userInterfaceIdiom == .pad

@@ -22,7 +22,6 @@
 
 import Armchair
 import AsyncDisplayKit
-import SwiftDate
 import UIKit
 import StoreKit
 
@@ -74,8 +73,11 @@ final class LessonController: TableController {
         var prevLessonIndex: String? = nil
 
         for lesson in lessons {
-            if today.isAfterDate(lesson.startDate, orEqual: true, granularity: .day) &&
-                today.isBeforeDate(lesson.endDate, orEqual: true, granularity: .day) {
+            let start = Calendar.current.compare(lesson.startDate, to: today, toGranularity: .day)
+            let end = Calendar.current.compare(lesson.endDate, to: today, toGranularity: .day)
+            let fallsBetween = ((start == .orderedAscending) || (start == .orderedSame)) && ((end == .orderedDescending) || (end == .orderedSame))
+
+            if fallsBetween {
                 if (weekday == 7 && hour < 12 && prevLessonIndex != nil) {
                     presenter?.presentReadScreen(lessonIndex: prevLessonIndex!)
                 } else {

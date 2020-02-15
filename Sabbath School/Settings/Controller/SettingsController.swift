@@ -117,11 +117,11 @@ class SettingsController: ASViewController<ASDisplayNode> {
         var dateFire = Date()
 
         // if today's date is passed, use tomorrow
-        var fireComponents = calendar.components( [NSCalendar.Unit.day, NSCalendar.Unit.month, NSCalendar.Unit.year, NSCalendar.Unit.hour, NSCalendar.Unit.minute], from:dateFire)
+        var fireComponents = calendar.components( [.day, .month, .year, .hour, .minute], from:dateFire)
 
         if fireComponents.hour! > hour || (fireComponents.hour == hour && fireComponents.minute! >= minute) {
             dateFire = dateFire.addingTimeInterval(86400)  // Use tomorrow's date
-            fireComponents = calendar.components( [NSCalendar.Unit.day, NSCalendar.Unit.month, NSCalendar.Unit.year, NSCalendar.Unit.hour, NSCalendar.Unit.minute], from:dateFire)
+            fireComponents = calendar.components( [.day, .month, .year, .hour, .minute], from:dateFire)
         }
 
         // set up the time
@@ -134,7 +134,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         let localNotification = UILocalNotification()
         localNotification.fireDate = dateFire
         localNotification.alertBody = "Time to study Sabbath School 🙏".localized()
-        localNotification.repeatInterval = NSCalendar.Unit.day
+        localNotification.repeatInterval = .day
         localNotification.soundName = UILocalNotificationDefaultSoundName
 
         UIApplication.shared.scheduleLocalNotification(localNotification)
