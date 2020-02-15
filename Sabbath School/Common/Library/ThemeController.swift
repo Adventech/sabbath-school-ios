@@ -31,6 +31,8 @@ class ThemeController: ASViewController<ASDisplayNode> {
     }
 
     func colorize() {
+        navigationController?.navigationBar.barStyle = .black
+
         if colorPrimary != nil {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.tintColor = colorPrimary!

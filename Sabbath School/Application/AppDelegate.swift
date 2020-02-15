@@ -95,17 +95,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.white
+        window?.backgroundColor = .black
         window?.layer.cornerRadius = 6
         window?.clipsToBounds = true
 
         if (Auth.auth().currentUser) != nil {
             window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule()
-        
-            if #available(iOS 9.0, *) {
-                UIApplication.shared.shortcutItems = [UIApplicationShortcutItem.init(type: Constants.openTodayLessonShortcutItemType, localizedTitle: "Today's Lesson".localized(), localizedSubtitle: nil, icon: UIApplicationShortcutIcon.init(templateImageName: "icon-lesson"), userInfo: nil)]
-            }
-            
+
+            UIApplication.shared.shortcutItems = [
+                .init(
+                    type: Constants.openTodayLessonShortcutItemType,
+                    localizedTitle: "Today's Lesson".localized(),
+                    localizedSubtitle: nil,
+                    icon: .init(templateImageName: "icon-lesson"),
+                    userInfo: nil
+                )
+            ]
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
@@ -190,16 +195,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             quarterlyController?.showLessonScreen(quarterly: quarterlyController!.dataSource.first!)
         }
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {}
-
-    func applicationDidEnterBackground(_ application: UIApplication) {}
-
-    func applicationWillEnterForeground(_ application: UIApplication) {}
-
-    func applicationDidBecomeActive(_ application: UIApplication) {}
-
-    func applicationWillTerminate(_ application: UIApplication) {}
 }
 
 @available(iOS 10, *)
