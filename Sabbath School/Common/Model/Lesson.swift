@@ -40,7 +40,7 @@ extension Lesson: Unboxable {
         startDate = try unboxer.unbox(key: "start_date", formatter: Date.serverDateFormatter())
         endDate = try unboxer.unbox(key: "end_date", formatter: Date.serverDateFormatter())
         index = try unboxer.unbox(key: "index")
-        cover = unboxer.unbox(key: "cover")
+        cover = try? unboxer.unbox(key: "cover")
         path = try unboxer.unbox(key: "path")
         fullPath = try unboxer.unbox(key: "full_path")
     }

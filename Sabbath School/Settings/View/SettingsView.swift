@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 
 class SettingsView: ASTableNode {
-    override public init(style: UITableViewStyle) {
+    override public init(style: UITableView.Style) {
         super.init(style: style)
         self.view.separatorColor = .baseGray7
         self.view.backgroundColor = .baseGray6

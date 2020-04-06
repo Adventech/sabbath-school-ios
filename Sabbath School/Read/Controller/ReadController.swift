@@ -21,8 +21,6 @@
  */
 
 import AsyncDisplayKit
-import JSQWebViewController
-import SwiftDate
 import SafariServices
 import UIKit
 
@@ -105,7 +103,7 @@ class ReadController: ThemeController {
         return .slide
     }
 
-    func readingOptions(sender: UIBarButtonItem) {
+    @objc func readingOptions(sender: UIBarButtonItem) {
         let buttonView = sender.value(forKey: "view") as! UIView
         let size = CGSize(width: round(node.frame.width)-10, height: 167)
 
@@ -202,7 +200,8 @@ extension ReadController: ReadControllerProtocol {
 
         // Scrolls to the current day
         let today = Date()
-        for (readIndex, read) in reads.enumerated().prefix(7) where today.isInSameDayOf(date: read.date) {
+        let cal = Calendar.current
+        for (readIndex, read) in reads.enumerated().prefix(7) where cal.compare(today, to: read.date, toGranularity: .day) == .orderedSame {
             DispatchQueue.main.async {
                 self.collectionNode.scrollToPage(at: readIndex, animated: false)
             }
@@ -306,16 +305,10 @@ extension ReadController: ReadViewOutputProtocol {
     }
 
     func didTapExternalUrl(url: URL) {
-        if #available(iOS 9.0, *) {
-            let safariVC = SFSafariViewController(url: url)
-            safariVC.view.tintColor = .tintColor
-            safariVC.modalPresentationStyle = .currentContext
-            present(safariVC, animated: true, completion: nil)
-        } else {
-            let controller = WebViewController(url: url)
-            let nav = UINavigationController(rootViewController: controller)
-            present(nav, animated: true, completion: nil)
-        }
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.view.tintColor = .tintColor
+        safariVC.modalPresentationStyle = .currentContext
+        present(safariVC, animated: true, completion: nil)
     }
 }
 

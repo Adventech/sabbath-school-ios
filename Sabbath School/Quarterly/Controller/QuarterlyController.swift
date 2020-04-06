@@ -33,8 +33,8 @@ class QuarterlyController: TableController {
     override init() {
         super.init()
 
-        tableNode.dataSource = self
-        tableNode.allowsSelection = false
+        tableNode?.dataSource = self
+        tableNode?.allowsSelection = false
 
         title = "Sabbath School".localized().uppercased()
     }
@@ -66,12 +66,12 @@ class QuarterlyController: TableController {
 
     func retrieveQuarterlies() {
         self.dataSource = [Quarterly]()
-        self.tableNode.allowsSelection = false
-        self.tableNode.reloadData()
+        self.tableNode?.allowsSelection = false
+        self.tableNode?.reloadData()
         presenter?.presentQuarterlies()
     }
 
-    func rightAction(sender: UIBarButtonItem) {
+    @objc func rightAction(sender: UIBarButtonItem) {
         let buttonView = sender.value(forKey: "view") as! UIView
         let size = CGSize(width: node.frame.width, height: round(node.frame.height*0.8))
 
@@ -82,11 +82,11 @@ class QuarterlyController: TableController {
         presenter?.presentLanguageScreen(size: size, transitioningDelegate: animator)
     }
 
-    func openButtonAction(sender: OpenButton) {
+    @objc func openButtonAction(sender: OpenButton) {
         presenter?.presentLessonScreen(quarterlyIndex: dataSource[0].index)
     }
 
-    func logoutAction() {
+    @objc func logoutAction() {
         let settings = SettingsController()
 
         let nc = ASNavigationController(rootViewController: settings)
@@ -112,8 +112,8 @@ extension QuarterlyController: QuarterlyControllerProtocol {
         }
 
         self.colorize()
-        self.tableNode.allowsSelection = true
-        self.tableNode.reloadData()
+        self.tableNode?.allowsSelection = true
+        self.tableNode?.reloadData()
         self.correctHairline()
     }
 

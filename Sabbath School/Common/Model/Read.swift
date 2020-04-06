@@ -38,6 +38,6 @@ extension Read: Unboxable {
         index = try unboxer.unbox(key: "index")
         title = try unboxer.unbox(key: "title")
         content = try unboxer.unbox(key: "content")
-        bible = unboxer.unbox(key: "bible") ?? []
+        bible = try unboxer.unbox(key: "bible")
     }
 }

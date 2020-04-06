@@ -170,7 +170,7 @@ open class Reader: UIWebView {
     }
 
     func showContextMenu() {
-        let rect = CGRectFromString("{{-1000, -1000}, {-1000, -10000}}")
+        let rect = NSCoder.cgRect(for: "{{-1000, -1000}, {-1000, -10000}}")
         UIMenuController.shared.setTargetRect(rect, in: self)
         UIMenuController.shared.setMenuVisible(true, animated: false)
     }
@@ -238,7 +238,7 @@ open class Reader: UIWebView {
         self.readerViewDelegate?.didLoadContent(content: index!)
     }
 
-    func shouldStartLoad(request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func shouldStartLoad(request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         guard let url = request.url else { return false }
 
         if url.valueForParameter(key: "ready") != nil {

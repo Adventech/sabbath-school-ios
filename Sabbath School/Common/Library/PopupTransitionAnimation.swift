@@ -74,8 +74,8 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
     override init() {
         super.init()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(sender:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(sender:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(sender:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(sender:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
 
     deinit {
@@ -84,11 +84,11 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
 
     // MARK: Keyboard Observe
 
-    func keyboardDidShow(sender: NSNotification) {
+    @objc func keyboardDidShow(sender: NSNotification) {
         keyboardVisible = true
     }
 
-    func keyboardDidHide(sender: NSNotification) {
+    @objc func keyboardDidHide(sender: NSNotification) {
         keyboardVisible = false
     }
 
@@ -111,7 +111,7 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
         view.addGestureRecognizer(panGesture)
     }
 
-    func didPan(gesture: UIPanGestureRecognizer) {
+    @objc func didPan(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: gesture.view)
         let velocity = gesture.velocity(in: gesture.view)
 
@@ -167,7 +167,7 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
 
     // MARK: Dismiss
 
-    func dismissModal() {
+    @objc func dismissModal() {
         if keyboardVisible {
             wrapperView.endEditing(true)
         } else {

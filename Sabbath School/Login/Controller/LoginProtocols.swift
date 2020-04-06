@@ -35,7 +35,7 @@ protocol LoginPresenterProtocol: class {
 }
 
 protocol LoginControllerProtocol: class {
-    weak var presenter: LoginPresenterProtocol? { get set }
+    var presenter: LoginPresenterProtocol? { get set }
 }
 
 protocol LoginWireFrameProtocol: class {
@@ -49,7 +49,7 @@ protocol LoginInteractorOutputProtocol: class {
 }
 
 protocol LoginInteractorInputProtocol: class {
-    weak var presenter: LoginInteractorOutputProtocol? { get set }
+    var presenter: LoginInteractorOutputProtocol? { get set }
 
     func configure()
     func setupGoogleLogin()

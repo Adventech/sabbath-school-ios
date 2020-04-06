@@ -60,6 +60,11 @@ Download dSYM files from iTC, upload them to Crashlytics and delete the local dS
 fastlane increment_build
 ```
 
+### match_sync
+```
+fastlane match_sync
+```
+Sync your certificates and profiles across your team using git
 
 ----
 

@@ -52,19 +52,19 @@ extension UINavigationController {
 extension UIViewController: UIGestureRecognizerDelegate {
 
     func setBackButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popBack))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItem.Style.plain, target: self, action: #selector(popBack))
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
     }
 
     func setCloseButton() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismiss as () -> Void))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarClose(), style: UIBarButtonItem.Style.plain, target: self, action: #selector(dismiss as () -> Void))
     }
 
-    func popBack() {
+    @objc func popBack() {
         _ = self.navigationController?.popViewController(animated: true)
     }
 
-    func dismiss() {
+    @objc func dismiss() {
         dismiss(animated: true, completion: nil)
     }
 
@@ -104,7 +104,10 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navBar?.showBottomHairline()
         navBar?.isTranslucent = translucent
         navBar?.tintColor = tintColor
-        navBar?.titleTextAttributes = [NSForegroundColorAttributeName: titleColor, NSFontAttributeName: font]
+        navBar?.titleTextAttributes = [
+            .foregroundColor: titleColor,
+            .font: font
+        ]
     }
 
     func setNavigationBarColor(color: UIColor) {

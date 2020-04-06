@@ -22,7 +22,6 @@
 
 import AsyncDisplayKit
 import FirebaseAuth
-import JSQWebViewController
 import SafariServices
 import SwiftDate
 import UIKit
@@ -90,7 +89,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         return .lightContent
     }
 
-    func reminderChanged(sender: UISwitch) {
+    @objc func reminderChanged(sender: UISwitch) {
         let isOn = sender.isOn
 
         guard isOn else {
@@ -110,19 +109,19 @@ class SettingsController: ASViewController<ASDisplayNode> {
 
     static func setUpLocalNotification() {
         UIApplication.shared.cancelAllLocalNotifications()
-        let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
-        let hour = time.hour
-        let minute = time.minute
+        let time = DateInRegion(reminderTime(), format: "HH:mm")
+        let hour = time?.hour ?? 0
+        let minute = time?.minute ?? 0
         let calendar = NSCalendar(identifier: .gregorian)! // have to use NSCalendar for the components
 
         var dateFire = Date()
 
         // if today's date is passed, use tomorrow
-        var fireComponents = calendar.components( [NSCalendar.Unit.day, NSCalendar.Unit.month, NSCalendar.Unit.year, NSCalendar.Unit.hour, NSCalendar.Unit.minute], from:dateFire)
+        var fireComponents = calendar.components( [.day, .month, .year, .hour, .minute], from:dateFire)
 
         if fireComponents.hour! > hour || (fireComponents.hour == hour && fireComponents.minute! >= minute) {
             dateFire = dateFire.addingTimeInterval(86400)  // Use tomorrow's date
-            fireComponents = calendar.components( [NSCalendar.Unit.day, NSCalendar.Unit.month, NSCalendar.Unit.year, NSCalendar.Unit.hour, NSCalendar.Unit.minute], from:dateFire)
+            fireComponents = calendar.components( [.day, .month, .year, .hour, .minute], from:dateFire)
         }
 
         // set up the time
@@ -135,7 +134,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
         let localNotification = UILocalNotification()
         localNotification.fireDate = dateFire
         localNotification.alertBody = "Time to study Sabbath School 🙏".localized()
-        localNotification.repeatInterval = NSCalendar.Unit.day
+        localNotification.repeatInterval = .day
         localNotification.soundName = UILocalNotificationDefaultSoundName
 
         UIApplication.shared.scheduleLocalNotification(localNotification)
@@ -165,8 +164,8 @@ extension SettingsController: ASTableDataSource {
             }
 
             if indexPath.row == 1 && indexPath.section == 0 {
-                let time = try! DateInRegion(string: reminderTime(), format: .custom("HH:mm"))
-                settingsItem = SettingsItemView(text: text, detailText: time.string(dateStyle: .none, timeStyle: .short))
+                let time = DateInRegion(reminderTime(), format: "HH:mm")
+                settingsItem = SettingsItemView(text: text, detailText: time?.toString(.time(.short)) ?? "")
                 settingsItem.contentStyle = .detailOnRight
             }
 
@@ -225,17 +224,10 @@ extension SettingsController: ASTableDelegate {
             break
         case 1:
             let url = "https://github.com/Adventech"
-
-            if #available(iOS 9.0, *) {
-                let safariVC = SFSafariViewController(url: URL(string: url)!)
-                safariVC.view.tintColor = .tintColor
-                safariVC.modalPresentationStyle = .currentContext
-                present(safariVC, animated: true, completion: nil)
-            } else {
-                let controller = WebViewController(url: URL(string: url)!)
-                let nav = UINavigationController(rootViewController: controller)
-                present(nav, animated: true, completion: nil)
-            }
+            let safariVC = SFSafariViewController(url: URL(string: url)!)
+            safariVC.view.tintColor = .tintColor
+            safariVC.modalPresentationStyle = .currentContext
+            present(safariVC, animated: true, completion: nil)
 
             break
         case 2:

@@ -3,11 +3,6 @@
 # https://docs.fastlane.tools
 fastlane_version "1.109.0"
 
-# This value helps us track success metrics for Fastfiles
-# we automatically generate. Feel free to remove this line
-# once you get things running smoothly!
-generated_fastfile_id "7dd5e07e-9fdb-4a2c-8176-894d433097a4"
-
 default_platform :ios
 
 # Fastfile actions accept additional configuration, but
@@ -27,10 +22,10 @@ lane :travis do
   match(
     type: "adhoc",
     git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",
-    force_for_new_devices: true,
+    force_for_new_devices: false,
     keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
     keychain_password: ENV["MATCH_PASSWORD"],
-    readonly: false
+    readonly: true
   )
 
   beta
@@ -112,7 +107,7 @@ lane :increment_build do
 end
 
 desc "Sync your certificates and profiles across your team using git"
-private_lane :match_sync do |options|
+lane :match_sync do |options|
   type = options[:type]
   match(
     git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",

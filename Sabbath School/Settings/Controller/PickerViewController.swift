@@ -42,7 +42,7 @@ final class PickerViewController: UIViewController {
 
     // MARK: Functions
 
-    func datePickerChanged(_ sender: UIDatePicker) {
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
         delegate?.pickerView(self, didChangedToDate: sender.date)
     }
 }

@@ -75,11 +75,11 @@ class BibleController: ASViewController<ASDisplayNode> {
         delegate?.didDismissBibleScreen()
     }
 
-    func closeAction(sender: UIBarButtonItem) {
+    @objc func closeAction(sender: UIBarButtonItem) {
         dismiss()
     }
 
-    func changeVersionAction(sender: UIBarButtonItem) {
+    @objc func changeVersionAction(sender: UIBarButtonItem) {
         let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? ""
         var menuitems = [MenuItem]()
 

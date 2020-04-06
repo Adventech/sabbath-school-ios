@@ -175,7 +175,7 @@ class DiscreteSlider: UIControl {
     }
 
     func sendActionsForControlEvents() {
-        self.sendActions(for: UIControlEvents.valueChanged)
+        self.sendActions(for: .valueChanged)
     }
 
     // MARK: DiscreteSlider

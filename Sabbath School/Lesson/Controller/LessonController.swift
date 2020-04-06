@@ -22,7 +22,6 @@
 
 import Armchair
 import AsyncDisplayKit
-import SwiftDate
 import UIKit
 import StoreKit
 
@@ -36,7 +35,7 @@ final class LessonController: TableController {
     override init() {
         super.init()
 
-        tableNode.dataSource = self
+        tableNode?.dataSource = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -50,8 +49,8 @@ final class LessonController: TableController {
         Armchair.userDidSignificantEvent(true)
         
         if #available(iOS 9.0, *) {
-            if self.traitCollection.forceTouchCapability == .available {
-                registerForPreviewing(with: self, sourceView: tableNode.view)
+            if self.traitCollection.forceTouchCapability == .available, let view = tableNode?.view {
+                registerForPreviewing(with: self, sourceView: view)
             }
         }
     }
@@ -67,14 +66,18 @@ final class LessonController: TableController {
     }
 
     func openToday() {
-        guard let lesson = dataSource?.lessons[0] else { return }
+        guard let lessons = dataSource?.lessons else { return }
         let today = Date()
         let weekday = Calendar.current.component(.weekday, from: today)
-        var prevLessonIndex: String? = nil
         let hour = Calendar.current.component(.hour, from: today)
-        for lesson in (dataSource?.lessons)! {
-            if today.isAfter(date: lesson.startDate, orEqual: true, granularity: Calendar.Component.day) &&
-                today.isBefore(date: lesson.endDate, orEqual: true, granularity: Calendar.Component.day) {
+        var prevLessonIndex: String? = nil
+
+        for lesson in lessons {
+            let start = Calendar.current.compare(lesson.startDate, to: today, toGranularity: .day)
+            let end = Calendar.current.compare(lesson.endDate, to: today, toGranularity: .day)
+            let fallsBetween = ((start == .orderedAscending) || (start == .orderedSame)) && ((end == .orderedDescending) || (end == .orderedSame))
+
+            if fallsBetween {
                 if (weekday == 7 && hour < 12 && prevLessonIndex != nil) {
                     presenter?.presentReadScreen(lessonIndex: prevLessonIndex!)
                 } else {
@@ -84,10 +87,13 @@ final class LessonController: TableController {
             }
             prevLessonIndex = lesson.index
         }
-        presenter?.presentReadScreen(lessonIndex: lesson.index)
+
+        if let firstLesson = lessons.first {
+            presenter?.presentReadScreen(lessonIndex: firstLesson.index)
+        }
     }
 
-    func readButtonAction(sender: OpenButton) {
+    @objc func readButtonAction(sender: OpenButton) {
         openToday()
     }
 }
@@ -99,8 +105,8 @@ extension LessonController: LessonControllerProtocol {
         if let colorHex = dataSource?.quarterly.colorPrimary {
             self.colorPrimary = UIColor(hex: colorHex)
         }
-        self.tableNode.allowsSelection = true
-        self.tableNode.reloadData()
+        self.tableNode?.allowsSelection = true
+        self.tableNode?.reloadData()
         self.colorize()
         self.correctHairline()
         
@@ -123,7 +129,7 @@ extension LessonController: UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = tableNode.indexPathForRow(at: location) else { return nil }
+        guard let indexPath = tableNode?.indexPathForRow(at: location) else { return nil }
         guard let lesson = self.dataSource?.lessons[indexPath.row] else { return  nil }
         guard let readController = ReadWireFrame.createReadModule(lessonIndex: lesson.index) as? ReadController else {  return nil }
         readController.previewingContext = previewingContext

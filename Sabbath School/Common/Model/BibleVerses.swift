@@ -24,12 +24,12 @@ import Unbox
 
 struct BibleVerses {
     let name: String
-    let verses: [String: String]
+    let verses: [String: String]?
 }
 
 extension BibleVerses: Unboxable {
     init(unboxer: Unboxer) throws {
         name = try unboxer.unbox(key: "name")
-        verses = try unboxer.unbox(key: "verses")
+        verses = try? unboxer.unbox(key: "verses")
     }
 }

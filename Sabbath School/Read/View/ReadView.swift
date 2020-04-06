@@ -77,7 +77,7 @@ class ReadView: ASCellNode {
 
         readDateNode.alpha = 1
         readDateNode.maximumNumberOfLines = 1
-        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.string(custom: "EEEE, MMMM dd"))
+        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.toString(.custom("EEEE, MMMM dd")))
         
         automaticallyManagesSubnodes = true
     }
@@ -167,7 +167,7 @@ extension ReadView: UIScrollViewDelegate {
 }
 
 extension ReadView: UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         return (webView as! Reader).shouldStartLoad(request: request, navigationType: navigationType)
     }
 

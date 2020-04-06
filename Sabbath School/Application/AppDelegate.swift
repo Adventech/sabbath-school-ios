@@ -37,7 +37,7 @@ import StoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         Armchair.appID("895272167")
 
@@ -95,17 +95,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.white
+        window?.backgroundColor = .black
         window?.layer.cornerRadius = 6
         window?.clipsToBounds = true
 
         if (Auth.auth().currentUser) != nil {
             window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule()
-        
-            if #available(iOS 9.0, *) {
-                UIApplication.shared.shortcutItems = [UIApplicationShortcutItem.init(type: Constants.openTodayLessonShortcutItemType, localizedTitle: "Today's Lesson".localized(), localizedSubtitle: nil, icon: UIApplicationShortcutIcon.init(templateImageName: "icon-lesson"), userInfo: nil)]
-            }
-            
+
+            UIApplication.shared.shortcutItems = [
+                .init(
+                    type: Constants.openTodayLessonShortcutItemType,
+                    localizedTitle: "Today's Lesson".localized(),
+                    localizedSubtitle: nil,
+                    icon: .init(templateImageName: "icon-lesson"),
+                    userInfo: nil
+                )
+            ]
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
@@ -115,25 +120,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        let facebookHandle = SDKApplicationDelegate.shared.application(application, open: url, options: options)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        let facebookHandle = ApplicationDelegate.shared.application(application, open: url, options: options)
 
         if facebookHandle {
             return facebookHandle
         }
 
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
-    }
-
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        let facebookHandle = SDKApplicationDelegate.shared.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-
-        if facebookHandle {
-            return facebookHandle
-        }
-
-        return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
+        return GIDSignIn.sharedInstance().handle(url)
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
@@ -201,16 +195,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             quarterlyController?.showLessonScreen(quarterly: quarterlyController!.dataSource.first!)
         }
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {}
-
-    func applicationDidEnterBackground(_ application: UIApplication) {}
-
-    func applicationWillEnterForeground(_ application: UIApplication) {}
-
-    func applicationDidBecomeActive(_ application: UIApplication) {}
-
-    func applicationWillTerminate(_ application: UIApplication) {}
 }
 
 @available(iOS 10, *)
@@ -255,7 +239,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
 extension AppDelegate : MessagingDelegate {
     // [START refresh_token]
-    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
     }
     // [END refresh_token]
