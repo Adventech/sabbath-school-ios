@@ -2,6 +2,12 @@ Sabbath School for iOS
 ============
 [![Travis](https://img.shields.io/travis/Adventech/sabbath-school-ios.svg)](https://travis-ci.org/Adventech/sabbath-school-ios) [![GitHub Stars](https://img.shields.io/github/stars/Adventech/sabbath-school-ios.svg)](https://github.com/Adventech/sabbath-school-ios/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/Adventech/sabbath-school-ios.svg)](https://github.com/Adventech/sabbath-school-ios/issues) [![Itunes App Store](https://img.shields.io/itunes/v/895272167.svg)](https://itunes.apple.com/us/app/sabbath-school/id895272167?mt=8) [![license](https://img.shields.io/github/license/Adventech/sabbath-school-ios.svg)](https://github.com/Adventech/sabbath-school-ios/blob/master/LICENSE.md)
 
+## Your support is important for us
+
+100% of all contributions and donations will be used for covering existing server costs and supporting new and exciting projects!
+
+<a href="https://www.buymeacoffee.com/adventech" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
 ![](https://raw.githubusercontent.com/Adventech/sabbath-school-ios/master/Sabbath%20School/Resources/Assets.xcassets/AppIcon.appiconset/Icon-76%402x.png)
 
 This is Sabbath School for iOS by Adventech. Humble attempt to make difference with respect to Sabbath School as entity of Seventh-day Adventist Church!
