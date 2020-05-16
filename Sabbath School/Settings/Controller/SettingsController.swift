@@ -237,13 +237,16 @@ extension SettingsController: ASTableDelegate {
             }
 
             if indexPath.row == 1 {
-                let objectsToShare = ["I am using Sabbath School app from Adventech! 🎉".localized(), "https://itunes.apple.com/ca/app/sabbath-school/id895272167?mt=8"]
+                guard let itunesUrl = URL(string: "https://itunes.apple.com/ca/app/sabbath-school/id895272167?mt=8") else {return}
+                let objectsToShare : [Any] = ["I am using Sabbath School app from Adventech! 🎉".localized(), itunesUrl]
                 let activityController = UIActivityViewController(
                     activityItems: objectsToShare,
                     applicationActivities: nil)
 
-                activityController.popoverPresentationController?.sourceRect = view.frame
-                activityController.popoverPresentationController?.sourceView = view
+               if let activityFrame = tableView.cellForRow(at: indexPath)?.frame {
+                    activityController.popoverPresentationController?.sourceRect = activityFrame
+                }
+                activityController.popoverPresentationController?.sourceView = tableView
                 activityController.popoverPresentationController?.permittedArrowDirections = .any
 
                 present(activityController, animated: true, completion: nil)
