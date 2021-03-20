@@ -38,7 +38,7 @@ protocol BibleVersionControllerDelegate: class {
     func didSelectVersion(versionName: String)
 }
 
-class BibleVersionController: ASViewController<ASDisplayNode>, ASTableDataSource, ASTableDelegate {
+class BibleVersionController: ASDKViewController<ASDisplayNode>, ASTableDataSource, ASTableDelegate {
     weak var delegate: BibleVersionControllerDelegate?
     var tableNode: ASTableNode { return node as! ASTableNode }
     var items = [MenuItem]()
@@ -49,6 +49,7 @@ class BibleVersionController: ASViewController<ASDisplayNode>, ASTableDataSource
         tableNode.dataSource = self
         tableNode.view.separatorColor = UIColor.baseSeparator
         tableNode.view.isScrollEnabled = false
+        tableNode.view.backgroundColor = currentTheme().backgroundColor
         self.items = items
     }
 
@@ -60,7 +61,9 @@ class BibleVersionController: ASViewController<ASDisplayNode>, ASTableDataSource
         let menuItem = items[indexPath.row]
 
         let cellNodeBlock: () -> ASCellNode = {
-            return BibleVersionView(title: menuItem.name, isSelected: menuItem.selected ?? false)
+            let cell = BibleVersionView(title: menuItem.name, isSelected: menuItem.selected ?? false)
+            cell.backgroundColor = currentTheme().backgroundColor
+            return cell
         }
         return cellNodeBlock
     }

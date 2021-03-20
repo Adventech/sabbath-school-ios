@@ -28,7 +28,7 @@ class AboutController: ThemeController {
     var collectionNode: ASCollectionNode { return node as! ASCollectionNode }
     let collectionViewLayout = UICollectionViewFlowLayout()
 
-    init() {
+    override init() {
         super.init(node: ASCollectionNode(collectionViewLayout: collectionViewLayout))
         collectionNode.dataSource = self
         title = "About us".localized().uppercased()
@@ -40,6 +40,7 @@ class AboutController: ThemeController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         self.setBackButton()
     }
 

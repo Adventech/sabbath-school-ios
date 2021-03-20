@@ -24,11 +24,11 @@ import AsyncDisplayKit
 import GoogleSignIn
 import UIKit
 
-class LoginController: ASViewController<ASDisplayNode>, LoginControllerProtocol {
+class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtocol {
     weak var loginNode: LoginNode? { return node as? LoginNode }
     var presenter: LoginPresenterProtocol?
 
-    init() {
+    override init() {
         super.init(node: LoginNode())
 
         loginNode?.anonymousButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)

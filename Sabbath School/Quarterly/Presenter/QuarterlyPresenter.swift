@@ -36,6 +36,10 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
     }
 
     func presentLanguageScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate) {
+        if #available(iOS 10.0, *) {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
         let module = LanguageWireFrame.createLanguageModule(size: size, transitioningDelegate: transitioningDelegate) { [weak self] () -> Void? in
             self?.controller?.retrieveQuarterlies()
         }

@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-class ThemeController: ASViewController<ASDisplayNode> {
+class ThemeController: ASDKViewController<ASDisplayNode> {
     var colorPrimary: UIColor?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

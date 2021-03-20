@@ -26,7 +26,7 @@ import SafariServices
 import SwiftDate
 import UIKit
 
-class SettingsController: ASViewController<ASDisplayNode> {
+class SettingsController: ASDKViewController<ASDisplayNode> {
     weak var tableNode: SettingsView? { return node as? SettingsView }
 
     fileprivate let pickerView = PickerViewController()
@@ -36,7 +36,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
     var sections = [String]()
     var footers = [String]()
 
-    init() {
+    override init() {
         super.init(node: SettingsView(style: .grouped))
         tableNode?.delegate = self
         tableNode?.dataSource = self
@@ -74,6 +74,7 @@ class SettingsController: ASViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableNode?.backgroundColor = .white
         setCloseButton()
     }
 

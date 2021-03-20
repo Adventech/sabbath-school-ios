@@ -39,7 +39,7 @@ protocol LessonControllerProtocol: class {
 }
 
 protocol LessonWireFrameProtocol: class {
-    static func createLessonModule(quarterlyIndex: String) -> ASViewController<ASDisplayNode>
+    static func createLessonModule(quarterlyIndex: String) -> ASDKViewController<ASDisplayNode>
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String)
 }
 

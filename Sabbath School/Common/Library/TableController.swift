@@ -25,7 +25,7 @@ import AsyncDisplayKit
 class TableController: ThemeController {
     weak var tableNode: ASTableNode? { return node as? ASTableNode }
 
-    init() {
+    override init() {
         super.init(node: ASTableNode())
 
         tableNode?.delegate = self

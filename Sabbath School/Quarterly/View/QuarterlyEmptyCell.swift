@@ -35,7 +35,7 @@ final class QuarterlyEmptyCell: ASCellNode {
 
     override init() {
         super.init()
-
+        self.backgroundColor = .white
         coverEmptyNode.style.preferredSize = CGSize(width: 90, height: 135)
 
         coverEmptyNode.backgroundColor = UIColor.baseGray1

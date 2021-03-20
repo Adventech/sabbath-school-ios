@@ -31,7 +31,7 @@ final class LessonEmptyCellNode: ASCellNode {
 
     override init() {
         super.init()
-
+        self.backgroundColor = .white
         titleEmptyNode.backgroundColor = UIColor.baseGray1
         humanDateEmptyNode.backgroundColor = UIColor.baseGray1
 

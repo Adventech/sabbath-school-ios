@@ -22,7 +22,7 @@
 
 import AsyncDisplayKit
 
-class BibleController: ASViewController<ASDisplayNode> {
+class BibleController: ASDKViewController<ASDisplayNode> {
     var presenter: BiblePresenterProtocol?
     var bibleView = BibleView()
     var versionButton: UIButton!
@@ -45,8 +45,11 @@ class BibleController: ASViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         let theme = currentTheme()
+        self.view.backgroundColor = theme.backgroundColor
         setTranslucentNavigation(color: theme.navBarColor, tintColor: theme.navBarTextColor, titleColor: theme.navBarTextColor)
 
         let closeButton = UIBarButtonItem(image: R.image.iconNavbarClose(), style: .done, target: self, action: #selector(closeAction(sender:)))

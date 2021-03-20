@@ -44,7 +44,7 @@ class ReadController: ThemeController {
 
     var menuItems = [UIMenuItem]()
 
-    init() {
+    override init() {
         super.init(node: ASPagerNode())
         collectionNode.backgroundColor = .baseGray1
         collectionNode.setDataSource(self)

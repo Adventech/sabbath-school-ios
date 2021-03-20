@@ -45,7 +45,7 @@ class QuarterlyController: TableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableNode?.backgroundColor = .white
         let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
         settingsButton.accessibilityIdentifier = "openSettings"
 

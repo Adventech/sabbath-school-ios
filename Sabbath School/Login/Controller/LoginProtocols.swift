@@ -39,7 +39,7 @@ protocol LoginControllerProtocol: class {
 }
 
 protocol LoginWireFrameProtocol: class {
-    static func createLoginModule() -> ASViewController<ASDisplayNode>
+    static func createLoginModule() -> ASDKViewController<ASDisplayNode>
     func presentQuarterlyScreen()
 }
 

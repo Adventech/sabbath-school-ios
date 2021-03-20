@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 
 class LessonWireFrame: LessonWireFrameProtocol {
-    class func createLessonModule(quarterlyIndex: String) -> ASViewController<ASDisplayNode> {
+    class func createLessonModule(quarterlyIndex: String) -> ASDKViewController<ASDisplayNode> {
         let controller: LessonControllerProtocol = LessonController()
         let presenter: LessonPresenterProtocol & LessonInteractorOutputProtocol = LessonPresenter()
         let wireFrame: LessonWireFrameProtocol = LessonWireFrame()
@@ -36,11 +36,16 @@ class LessonWireFrame: LessonWireFrameProtocol {
         presenter.quarterlyIndex = quarterlyIndex
         interactor.presenter = presenter
 
-        return controller as! ASViewController<ASDisplayNode>
+        return controller as! ASDKViewController<ASDisplayNode>
     }
 
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String) {
         let readScreen = ReadWireFrame.createReadModule(lessonIndex: lessonIndex)
+        
+        if #available(iOS 10.0, *) {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
 
         if let sourceView = view as? UIViewController {
             sourceView.show(readScreen, sender: nil)

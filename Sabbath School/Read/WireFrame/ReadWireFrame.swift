@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 
 class ReadWireFrame: ReadWireFrameProtocol {
-    class func createReadModule(lessonIndex: String) -> ASViewController<ASDisplayNode> {
+    class func createReadModule(lessonIndex: String) -> ASDKViewController<ASDisplayNode> {
         let controller: ReadControllerProtocol = ReadController()
         let presenter: ReadPresenterProtocol & ReadInteractorOutputProtocol = ReadPresenter()
         let wireFrame: ReadWireFrameProtocol = ReadWireFrame()
@@ -35,8 +35,8 @@ class ReadWireFrame: ReadWireFrameProtocol {
         presenter.interactor = interactor
         presenter.lessonIndex = lessonIndex
         interactor.presenter = presenter
-
-        return controller as! ASViewController<ASDisplayNode>
+        
+        return controller as! ASDKViewController<ASDisplayNode>
     }
 
     func presentBibleScreen(view: ReadControllerProtocol, read: Read, verse: String) {

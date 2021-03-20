@@ -42,7 +42,7 @@ protocol ReadControllerProtocol: class {
 }
 
 protocol ReadWireFrameProtocol: class {
-    static func createReadModule(lessonIndex: String) -> ASViewController<ASDisplayNode>
+    static func createReadModule(lessonIndex: String) -> ASDKViewController<ASDisplayNode>
 }
 
 protocol ReadInteractorOutputProtocol: class {

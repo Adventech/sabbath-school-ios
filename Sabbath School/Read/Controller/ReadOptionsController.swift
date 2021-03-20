@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-class ReadOptionsController: ASViewController<ASDisplayNode> {
+class ReadOptionsController: ASDKViewController<ASDisplayNode> {
     var readOptionsView = ReadOptionsView()
 
     init(delegate: ReadOptionsDelegate) {

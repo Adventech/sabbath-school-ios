@@ -50,6 +50,11 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
 
     func presentLessonScreen(view: QuarterlyControllerProtocol, quarterlyIndex: String) {
         let lessonScreen = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex)
+        
+        if #available(iOS 10.0, *) {
+            let generator = UIImpactFeedbackGenerator(style: .medium)
+            generator.impactOccurred()
+        }
 
         if let sourceView = view as? UIViewController {
             sourceView.show(lessonScreen, sender: nil)

@@ -44,6 +44,7 @@ final class LessonController: TableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableNode?.backgroundColor = .white
         setBackButton()
         presenter?.configure()
         Armchair.userDidSignificantEvent(true)
