@@ -78,7 +78,7 @@ struct ReaderStyle {
         }
     }
 
-    enum Size: String {
+    enum Size: String, CaseIterable {
         case tiny
         case small
         case medium
@@ -110,6 +110,12 @@ struct ReaderStyle {
                 .yellow
             ]
         }
+    }
+}
+
+extension CaseIterable where Self: Equatable {
+    var index: Self.AllCases.Index? {
+        return Self.allCases.firstIndex { self == $0 }
     }
 }
 

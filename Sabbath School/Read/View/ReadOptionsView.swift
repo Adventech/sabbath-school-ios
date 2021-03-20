@@ -60,7 +60,9 @@ class ReadOptionsView: ASDisplayNode {
         typefaceView.addTarget(self, action: #selector(typefaceValueChanged(_:)), for: UIControl.Event.valueChanged)
 
         let size = currentSize()
-        fontSizeView.value = CGFloat(size.hashValue)
+        guard let sizeIndex = size.index else { return }
+        fontSizeView.value = CGFloat(sizeIndex)
+        
 
         fontSizeView.tickStyle = .rounded
         fontSizeView.tickCount = 5

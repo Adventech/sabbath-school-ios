@@ -49,7 +49,7 @@ func currentTheme() -> ReaderStyle.Theme {
 
 func currentTypeface() -> ReaderStyle.Typeface {
     guard let rawTypeface = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsTypeface),
-        let typeface = ReaderStyle.Typeface(rawValue: rawTypeface)  else {
+        let typeface = ReaderStyle.Typeface(rawValue: rawTypeface) else {
         return .lato
     }
     return typeface
