@@ -32,6 +32,7 @@ protocol LoginPresenterProtocol: class {
     func loginActionAnonymous()
     func loginActionGoogle()
     func loginActionFacebook()
+    func performFirebaseLogin(credential: AuthCredential)
 }
 
 protocol LoginControllerProtocol: class {
@@ -52,10 +53,4 @@ protocol LoginInteractorInputProtocol: class {
     var presenter: LoginInteractorOutputProtocol? { get set }
 
     func configure()
-    func setupGoogleLogin()
-    func setupFacebookLogin()
-    func loginAnonymous()
-    func loginGoogle()
-    func loginFacebook()
-    func performFirebaseLogin(credential: AuthCredential)
 }

@@ -47,4 +47,8 @@ class LoginWireFrame: LoginWireFrameProtocol {
                           animations: { appDelegate.window!.rootViewController = QuarterlyWireFrame.createQuarterlyModule() },
                           completion: nil)
     }
+    
+    func presentAnonymousLoginAlert () {
+        
+    }
 }
