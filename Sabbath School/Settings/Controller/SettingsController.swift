@@ -245,6 +245,9 @@ extension SettingsController: ASTableDelegate {
 
                 activityController.popoverPresentationController?.sourceRect = view.frame
                 activityController.popoverPresentationController?.sourceView = view
+                if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+                    activityController.popoverPresentationController?.sourceRect = tableView.rectForRow(at: indexPath)
+                }
                 activityController.popoverPresentationController?.permittedArrowDirections = .any
 
                 present(activityController, animated: true, completion: nil)
