@@ -4,8 +4,7 @@ inhibit_all_warnings!
 
 target 'Sabbath School' do
   pod 'Armchair'
-  pod 'Crashlytics'
-  pod 'Fabric'
+  pod 'Firebase/Crashlytics'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'

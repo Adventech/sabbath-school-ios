@@ -43,10 +43,12 @@ class ReadController: ThemeController {
     var lastContentOffset: CGFloat = 0
 
     var menuItems = [UIMenuItem]()
+    
+    var isLandscape: Bool = false
 
     override init() {
         super.init(node: ASPagerNode())
-        collectionNode.backgroundColor = .baseGray1
+        collectionNode.backgroundColor = .baseBackgroundLogin
         collectionNode.setDataSource(self)
         collectionNode.delegate = self
         collectionNode.allowsAutomaticInsetsAdjustment = false
@@ -61,6 +63,7 @@ class ReadController: ThemeController {
         setBackButton()
         presenter?.configure()
         setTransparentNavigation()
+        isLandscape = UIDevice.current.orientation.isLandscape
 
         for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
             guard previewingContext == nil else { continue }
@@ -182,6 +185,19 @@ class ReadController: ThemeController {
             readView.coverNode.backgroundColor = theme.navBarColor
         }
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let currentPageIndex = collectionNode.currentPageIndex
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        if (isLandscape != UIDevice.current.orientation.isLandscape) {
+            isLandscape = UIDevice.current.orientation.isLandscape
+        } else {
+            collectionNode.frame.size = size
+            collectionNode.relayoutItems()
+            collectionNode.scrollToPage(at: currentPageIndex, animated: true)
+        }
+    }
 }
 
 extension ReadController: ReadControllerProtocol {
@@ -216,7 +232,7 @@ extension ReadController: ASPagerDataSource {
             if !self.finished {
                 return ReadEmptyView()
             }
-
+            
             let read = self.reads[index]
             let readHighlights = self.highlights[index]
             let readComments = self.comments[index]

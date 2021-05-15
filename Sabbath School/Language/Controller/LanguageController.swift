@@ -41,11 +41,10 @@ final class LanguageController: TableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableNode?.backgroundColor = .white
         presenter.configure()
         setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let language = dataSource[indexPath.row]
 
@@ -82,7 +81,6 @@ extension LanguageController: ASTableDataSource {
             }
 
             cell.accessibilityIdentifier = language.code
-            cell.backgroundColor = .white
             return cell
         }
 

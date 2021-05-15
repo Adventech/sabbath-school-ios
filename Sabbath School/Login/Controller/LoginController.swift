@@ -46,6 +46,12 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
         super.viewDidLoad()
         presenter?.configure()
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.view.backgroundColor = .baseBackground
+        self.loginNode?.configureStyles()
+    }
 
     @objc func loginAction(sender: LoginButton) {
         switch sender.type {

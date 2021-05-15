@@ -106,6 +106,9 @@ class ReadView: ASCellNode {
                 self.readDateNode.frame.origin.y += (parallaxCoverNodeHeight - self.initialCoverNodeHeight)
             }
         }
+        
+        initialCoverNodeHeight = coverNode.calculatedSize.height
+        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
     }
 
     override func didLoad() {

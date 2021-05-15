@@ -36,10 +36,20 @@ class LoginButton: ASButtonNode {
     init(type: LoginButtonType) {
         self.type = type
         super.init()
+        self.configureStyles(type: type)
+    }
 
+    func addShadow() {
+        shadowColor = UIColor(white: 0, alpha: 0.25).cgColor
+        shadowOffset = CGSize(width: 0, height: 1)
+        shadowRadius = 0.6
+        shadowOpacity = 1
+        clipsToBounds = false
+    }
+    
+    func configureStyles (type: LoginButtonType) {
         var attributes: NSAttributedString!
         var icon: UIImage?
-
         switch type {
         case .facebook:
             attributes = TextStyles.signInButtonTitleStyle(string: "Sign in with Facebook".localized(), color: .white)
@@ -54,10 +64,9 @@ class LoginButton: ASButtonNode {
             accessibilityIdentifier = "signInWithGoogle"
             addShadow()
         case .anonymous:
-            attributes = TextStyles.signInButtonTitleStyle(string: "Continue without login".localized())
+            attributes = TextStyles.signInButtonAnonymousTitleStyle(string: "Continue without login".localized())
             accessibilityIdentifier = "continueWithoutLogin"
         }
-
         if let image = icon {
             setImage(image, for: .normal)
         }
@@ -65,14 +74,6 @@ class LoginButton: ASButtonNode {
         setAttributedTitle(attributes, for: .normal)
         contentEdgeInsets = UIEdgeInsets(top: 13, left: 30, bottom: 13, right: 30)
         cornerRadius = 4
-    }
-
-    func addShadow() {
-        shadowColor = UIColor(white: 0, alpha: 0.25).cgColor
-        shadowOffset = CGSize(width: 0, height: 1)
-        shadowRadius = 0.6
-        shadowOpacity = 1
-        clipsToBounds = false
     }
 
     override func sendActions(forControlEvents controlEvents: ASControlNodeEvent, with touchEvent: UIEvent?) {

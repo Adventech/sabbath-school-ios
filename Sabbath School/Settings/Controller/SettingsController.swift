@@ -31,6 +31,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
 
     fileprivate let pickerView = PickerViewController()
     fileprivate let popupAnimator = PopupTransitionAnimator()
+    fileprivate let dateFormatter = DateFormatter()
 
     var titles = [[String]]()
     var sections = [String]()
@@ -38,8 +39,10 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
 
     override init() {
         super.init(node: SettingsView(style: .grouped))
+        dateFormatter.dateFormat = "HH:mm"
         tableNode?.delegate = self
         tableNode?.dataSource = self
+        tableNode?.backgroundColor = .baseBackground
 
         title = "Settings".localized().uppercased()
 
@@ -74,8 +77,18 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableNode?.backgroundColor = .white
         setCloseButton()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.tableNode?.view.separatorColor = UIColor.separatorColor()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableNode?.backgroundColor = .baseBackground
+        tableNode?.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -165,9 +178,21 @@ extension SettingsController: ASTableDataSource {
             }
 
             if indexPath.row == 1 && indexPath.section == 0 {
-                let time = DateInRegion(reminderTime(), format: "HH:mm")
-                settingsItem = SettingsItemView(text: text, detailText: time?.toString(.time(.short)) ?? "")
-                settingsItem.contentStyle = .detailOnRight
+                // reminder
+                if #available(iOS 13.4, *) {
+                    let datePickerTime = reminderTime()
+                    settingsItem = SettingsItemView(text: text, datePicker: true)
+                    
+                    DispatchQueue.main.async { [self] in
+                        settingsItem.datePickerView.datePickerMode = .time
+                        settingsItem.datePickerView.date = self.dateFormatter.date(from: datePickerTime)!
+                        settingsItem.datePickerView.addTarget(self, action: #selector(self.datePickerChanged(_:)), for: .valueChanged)
+                    }
+                } else {
+                    let time = DateInRegion(reminderTime(), format: "HH:mm")
+                    settingsItem = SettingsItemView(text: text, detailText: time?.toString(.time(.short)) ?? "")
+                    settingsItem.contentStyle = .detailOnRight
+                }
             }
 
             if indexPath.section == 3 {
@@ -187,16 +212,21 @@ extension SettingsController: ASTableDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles[section].count
     }
+    
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
+        self.saveReminderTime(date: sender.date)
+    }
+    
+    func saveReminderTime(date: Date) {
+        UserDefaults.standard.set(dateFormatter.string(from: date), forKey: Constants.DefaultKey.settingsReminderTime)
+        SettingsController.setUpLocalNotification()
+    }
 }
 
 extension SettingsController: PickerViewControllerDelegate {
     func pickerView(_ pickerView: PickerViewController, didChangedToDate date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-
-        UserDefaults.standard.set(dateFormatter.string(from: date), forKey: Constants.DefaultKey.settingsReminderTime)
+        self.saveReminderTime(date: date)
         self.tableNode?.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
-        SettingsController.setUpLocalNotification()
     }
 }
 
@@ -206,21 +236,23 @@ extension SettingsController: ASTableDelegate {
         switch indexPath.section {
         case 0:
             if indexPath.row == 1 {
-                let cell = tableNode?.view.nodeForRow(at: indexPath) as! SettingsItemView
-                pickerView.delegate = self
-                pickerView.datePicker.datePickerMode = .time
+                if #available(iOS 13.4, *) {} else {
+                    let cell = tableNode?.view.nodeForRow(at: indexPath) as! SettingsItemView
+                    pickerView.delegate = self
+                    pickerView.datePicker.datePickerMode = .time
 
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "HH:mm"
-                pickerView.datePicker.date = dateFormatter.date(from: reminderTime())!
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "HH:mm"
+                    pickerView.datePicker.date = dateFormatter.date(from: reminderTime())!
 
-                pickerView.modalPresentationStyle = .custom
-                let width: CGFloat = traitCollection.horizontalSizeClass == .compact ? node.bounds.width : 500
-                pickerView.preferredContentSize = CGSize(width: width, height: 200)
-                pickerView.transitioningDelegate = popupAnimator
-                popupAnimator.fromView = cell.textNode.view
-                popupAnimator.overlayColor = UIColor(white: 0, alpha: 0.2)
-                present(pickerView, animated: true, completion: nil)
+                    pickerView.modalPresentationStyle = .custom
+                    let width: CGFloat = traitCollection.horizontalSizeClass == .compact ? node.bounds.width : 500
+                    pickerView.preferredContentSize = CGSize(width: width, height: 200)
+                    pickerView.transitioningDelegate = popupAnimator
+                    popupAnimator.fromView = cell.detailTextNode.view
+                    popupAnimator.overlayColor = UIColor(white: 0, alpha: 0.2)
+                    present(pickerView, animated: true, completion: nil)
+                }
             }
             break
         case 1:

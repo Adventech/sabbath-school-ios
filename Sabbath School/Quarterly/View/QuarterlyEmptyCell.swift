@@ -35,18 +35,16 @@ final class QuarterlyEmptyCell: ASCellNode {
 
     override init() {
         super.init()
-        self.backgroundColor = .white
         coverEmptyNode.style.preferredSize = CGSize(width: 90, height: 135)
-
-        coverEmptyNode.backgroundColor = UIColor.baseGray1
-        titleEmptyNode.backgroundColor = UIColor.baseGray1
-        humanDateEmptyNode.backgroundColor = UIColor.baseGray1
-        descriptionEmptyNode.backgroundColor = UIColor.baseGray1
-        descriptionEmptyNode2.backgroundColor = UIColor.baseGray1
-        descriptionEmptyNode3.backgroundColor = UIColor.baseGray1
-
-        // Cell divider
-        divider.backgroundColor = UIColor.baseGray1
+        
+        self.backgroundColor = .baseBackground
+        coverEmptyNode.backgroundColor = .shimmerringColor
+        titleEmptyNode.backgroundColor = .shimmerringColor
+        humanDateEmptyNode.backgroundColor = .shimmerringColor
+        descriptionEmptyNode.backgroundColor = .shimmerringColor
+        descriptionEmptyNode2.backgroundColor = .shimmerringColor
+        descriptionEmptyNode3.backgroundColor = .shimmerringColor
+        divider.backgroundColor = .shimmerringColor
 
         addSubnode(divider)
         automaticallyManagesSubnodes = true

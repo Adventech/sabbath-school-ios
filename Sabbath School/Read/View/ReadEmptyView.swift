@@ -41,21 +41,21 @@ final class ReadEmptyView: ASCellNode {
 
     override init() {
         super.init()
-        coverEmptyNode.backgroundColor = UIColor.baseGray7
-        lineNode1.backgroundColor = UIColor.baseGray7
-        lineNode2.backgroundColor = UIColor.baseGray7
-        lineNode3.backgroundColor = UIColor.baseGray7
-        lineNode4.backgroundColor = UIColor.baseGray7
-        lineNode5.backgroundColor = UIColor.baseGray7
-        lineNode6.backgroundColor = UIColor.baseGray7
-        lineNode7.backgroundColor = UIColor.baseGray7
-        lineNode8.backgroundColor = UIColor.baseGray7
-        lineNode9.backgroundColor = UIColor.baseGray7
-        lineNode10.backgroundColor = UIColor.baseGray7
-        lineNode11.backgroundColor = UIColor.baseGray7
-        lineNode12.backgroundColor = UIColor.baseGray7
-        lineNode13.backgroundColor = UIColor.baseGray7
-        lineNode14.backgroundColor = UIColor.baseGray7
+        coverEmptyNode.backgroundColor = .baseBackgroundReader
+        lineNode1.backgroundColor = .baseBackgroundReader
+        lineNode2.backgroundColor = .baseBackgroundReader
+        lineNode3.backgroundColor = .baseBackgroundReader
+        lineNode4.backgroundColor = .baseBackgroundReader
+        lineNode5.backgroundColor = .baseBackgroundReader
+        lineNode6.backgroundColor = .baseBackgroundReader
+        lineNode7.backgroundColor = .baseBackgroundReader
+        lineNode8.backgroundColor = .baseBackgroundReader
+        lineNode9.backgroundColor = .baseBackgroundReader
+        lineNode10.backgroundColor = .baseBackgroundReader
+        lineNode11.backgroundColor = .baseBackgroundReader
+        lineNode12.backgroundColor = .baseBackgroundReader
+        lineNode13.backgroundColor = .baseBackgroundReader
+        lineNode14.backgroundColor = .baseBackgroundReader
 
         automaticallyManagesSubnodes = true
     }

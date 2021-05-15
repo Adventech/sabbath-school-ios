@@ -43,7 +43,7 @@ class QuarterlyFeaturedCellNode: ASCellNode {
         if let color = quarterly.colorPrimary {
             backgroundColor = UIColor(hex: color)
         } else {
-            backgroundColor = UIColor.baseGreen
+            backgroundColor = UIColor.baseBlue
         }
 
         titleNode.attributedText = TextStyles.h2(string: quarterly.title)

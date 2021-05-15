@@ -44,7 +44,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
         if let color = quarterly.colorPrimary {
             backgroundColor = UIColor(hex: color)
         } else {
-            backgroundColor = .baseGreen
+            backgroundColor = .baseBlue
         }
 
         // Nodes

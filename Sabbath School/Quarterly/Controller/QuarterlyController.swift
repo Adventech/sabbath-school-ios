@@ -45,7 +45,7 @@ class QuarterlyController: TableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableNode?.backgroundColor = .white
+
         let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
         settingsButton.accessibilityIdentifier = "openSettings"
 
@@ -57,11 +57,29 @@ class QuarterlyController: TableController {
         presenter?.configure()
         retrieveQuarterlies()
 
-        let lastQuarterlyIndex = currentQuarterly()
-        let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
-        if let code = languageCode.first, currentLanguage().code == code {
-            presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
+        if !gcPopupStatus() {
+            UserDefaults.standard.set(true, forKey: Constants.DefaultKey.gcPopup)
+            showGCPopup()
+        } else {
+            let lastQuarterlyIndex = currentQuarterly()
+            let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
+            if let code = languageCode.first, currentLanguage().code == code {
+                presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
+            }
         }
+    }
+    
+    func showGCPopup() {
+        var size = CGSize(width: round(node.frame.width*0.9), height: round(node.frame.height*0.8))
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            size = CGSize(width: round(node.frame.width*0.6), height: round(node.frame.height*0.5))
+        }
+        
+        animator.style = .square
+        animator.cornerRadius = 7
+        animator.interactive = false
+        presenter?.presentGCScreen(size: size, transitioningDelegate: animator)
     }
 
     func retrieveQuarterlies() {

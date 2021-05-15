@@ -23,9 +23,18 @@
 import UIKit
 import Hue
 
+enum Theme: String {
+  case Dark
+  case Light
+}
+
 extension UIColor {
     class var baseGreen: UIColor {
         return UIColor(hex: "#16A365")
+    }
+    
+    class var baseBlue: UIColor {
+        return UIColor(hex: "#2E5797")
     }
 
     class var baseSeparator: UIColor {
@@ -78,13 +87,13 @@ extension UIColor {
 
     class var tintColor: UIColor {
         guard let color = UserDefaults.standard.string(forKey: Constants.DefaultKey.tintColor) else {
-            return .baseGreen
+            return .baseBlue
         }
         return UIColor(hex: color)
     }
 
     class var readerWhite: UIColor {
-        return UIColor.white
+        return UIColor(hex: "#FDFDFD")
     }
 
     class var readerWhiteFont: UIColor {
@@ -113,5 +122,65 @@ extension UIColor {
 
     class var readerNormal: UIColor {
         return UIColor(white: 0.5, alpha: 0.7)
+    }
+    
+    class var baseDark: UIColor {
+        return UIColor(hex: "#1A1A1A")
+    }
+    
+    static func separatorColor() -> UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .baseGray5
+        }
+        return .baseSeparator
+    }
+    
+    class var titleColor: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .baseGray1
+        }
+        return .baseGray3
+    }
+    
+    class var bodyGrayColor: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .baseGray1
+        }
+        return .baseGray3
+    }
+    
+    class var shimmerringColor: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .baseDark
+        }
+        return .baseGray1
+    }
+    
+    class var baseBackground: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .black
+        }
+        return .white
+    }
+    
+    class var baseBackgroundLogin: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .black
+        }
+        return .baseGray1
+    }
+    
+    class var baseBackgroundReader: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .baseDark
+        }
+        return .baseGray7
+    }
+    
+    class var baseForegroundLogin: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .white
+        }
+        return .baseBlue
     }
 }

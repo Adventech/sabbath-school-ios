@@ -125,8 +125,6 @@
 		7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF31EE5EBDE003F946C /* Read.swift */; };
 		7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF41EE5EBDE003F946C /* ReadComments.swift */; };
 		7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */; };
-		7AD973CB1EF35ED0009D9EB3 /* Fabric.apiKey in Resources */ = {isa = PBXBuildFile; fileRef = 7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */; };
-		7AD973CC1EF35ED0009D9EB3 /* Fabric.buildSecret in Resources */ = {isa = PBXBuildFile; fileRef = 7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */; };
 		7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF326171EFF92C700A04568 /* ReadEmptyView.swift */; };
 		7AF3261A1EFF998D00A04568 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF326191EFF998D00A04568 /* Range.swift */; };
 		7AF371551EF9CB3400547916 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF371531EF9CB3400547916 /* Localizable.strings */; };
@@ -135,6 +133,8 @@
 		7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF3716D1EF9E6FF00547916 /* AboutView.swift */; };
 		7AF371701EFA1E6E00547916 /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3716F1EFA1E6E00547916 /* base.css */; };
 		C6AD5FC4E686836BCB68D63F /* Pods_Sabbath_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA77760489FE123F60F36B6 /* Pods_Sabbath_School.framework */; };
+		FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */; };
+		FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,8 +299,6 @@
 		7AC26AF31EE5EBDE003F946C /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
 		7AC26AF41EE5EBDE003F946C /* ReadComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadComments.swift; sourceTree = "<group>"; };
 		7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadHighlights.swift; sourceTree = "<group>"; };
-		7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fabric.apiKey; sourceTree = SOURCE_ROOT; };
-		7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fabric.buildSecret; sourceTree = SOURCE_ROOT; };
 		7AF191A81ED7B89B000CCF0C /* Sabbath School.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sabbath School.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF326171EFF92C700A04568 /* ReadEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadEmptyView.swift; sourceTree = "<group>"; };
 		7AF326191EFF998D00A04568 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
@@ -345,6 +343,8 @@
 		FE002A6A200C8A22009CE4DF /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FE002A6B200C8A27009CE4DF /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FE002A6C200C8A27009CE4DF /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupController.swift; sourceTree = "<group>"; };
+		FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupView.swift; sourceTree = "<group>"; };
 		FE6FAA0B2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FE6FAA0C2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FE6FAA0D2210904B00B0C002 /* my */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = my; path = my.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -475,8 +475,6 @@
 				7A922E311EE07EC200C12A67 /* sabbath-school-reader */,
 				7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */,
 				7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */,
-				7AD973C91EF35ED0009D9EB3 /* Fabric.apiKey */,
-				7AD973CA1EF35ED0009D9EB3 /* Fabric.buildSecret */,
 				7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */,
 				7AF371531EF9CB3400547916 /* Localizable.strings */,
 				7A280F901ED7D8B8003C7458 /* LaunchScreen.storyboard */,
@@ -578,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				7A280FE01EDCBA16003C7458 /* QuarterlyController.swift */,
+				FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -612,6 +611,7 @@
 				7A280FE21EDCBA7D003C7458 /* QuarterlyCellNode.swift */,
 				7A2810091EDD2546003C7458 /* QuarterlyFeaturedCellNode.swift */,
 				7A2810241EDDE2AA003C7458 /* QuarterlyEmptyCell.swift */,
+				FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1128,7 +1128,7 @@
 				7AF191A61ED7B89B000CCF0C /* Resources */,
 				1B6A00FE81B5E044B0CF66AE /* [CP] Embed Pods Frameworks */,
 				361CDFACACA3413B1C861855 /* [CP] Copy Pods Resources */,
-				7AC26AE01EE46BF0003F946C /* Fabric Keys */,
+				FE4224A7264F5B1C0036F5D2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1255,10 +1255,8 @@
 				7A280FB61EDA0276003C7458 /* Lato-Medium.ttf in Resources */,
 				7A922E611EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf in Resources */,
 				7A922E5A1EE07EC200C12A67 /* Lora-Regular.ttf in Resources */,
-				7AD973CC1EF35ED0009D9EB3 /* Fabric.buildSecret in Resources */,
 				7A922E661EE07EC200C12A67 /* PT_Serif-Web-Regular.ttf in Resources */,
 				7A280FB51EDA0276003C7458 /* Lato-Italic.ttf in Resources */,
-				7AD973CB1EF35ED0009D9EB3 /* Fabric.apiKey in Resources */,
 				7AF371551EF9CB3400547916 /* Localizable.strings in Resources */,
 				7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */,
 				7AF371701EFA1E6E00547916 /* base.css in Resources */,
@@ -1398,20 +1396,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		7AC26AE01EE46BF0003F946C /* Fabric Keys */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Fabric Keys";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "FABRIC_APIKEY_FILE=\"${SRCROOT}/Fabric.apiKey\"\nFABRIC_BUILDSECRET_FILE=\"${SRCROOT}/Fabric.buildSecret\"\n\nFABRIC_APIKEY=$(cat \"$FABRIC_APIKEY_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_APIKEY_FILE\"\nexit 1\nfi\n\nFABRIC_BUILDSECRET=$(cat \"$FABRIC_BUILDSECRET_FILE\")\nif test $? -ne 0; then\necho \"Cannot read $FABRIC_BUILDSECRET_FILE\"\nexit 1\nfi\n\necho \"Uploading dSYM files to Crashlytics\"\n\"${PODS_ROOT}/Fabric/run\" \"$FABRIC_APIKEY\" \"$FABRIC_BUILDSECRET\"\n";
-		};
 		865F79C2D48B21E0A5D9EC9F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1466,6 +1450,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FE4224A7264F5B1C0036F5D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n${PODS_ROOT}/FirebaseCrashlytics/run -gsp \"${PROJECT_DIR}/Sabbath\\ School/Resources/GoogleService-Info-Prod.plist\"\nelse\n${PODS_ROOT}/FirebaseCrashlytics/run -gsp \"${PROJECT_DIR}/Sabbath\\ School/Resources/GoogleService-Info-Stage.plist\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1511,6 +1512,7 @@
 				7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */,
 				7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */,
 				7A2810141EDDCB1D003C7458 /* LessonProtocols.swift in Sources */,
+				FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */,
 				7A3BCE321EE27717003EC12B /* BibleWireFrame.swift in Sources */,
 				7A280F9B1EDA015D003C7458 /* AppDelegate.swift in Sources */,
 				7A280FC71EDA06F9003C7458 /* LoginButton.swift in Sources */,
@@ -1542,6 +1544,7 @@
 				7A2810001EDD051D003C7458 /* Image.swift in Sources */,
 				7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */,
 				7A2810251EDDE2AA003C7458 /* QuarterlyEmptyCell.swift in Sources */,
+				FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */,
 				7A2810271EDDE3D3003C7458 /* DisplayNode.swift in Sources */,
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
 				7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */,
@@ -1857,12 +1860,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2018.01.232;
+				CURRENT_PROJECT_VERSION = 2021.05.298;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "29d99fff-a72e-4c42-9ceb-b8c5c4176926";
@@ -1879,17 +1883,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 2018.01.232;
+				CURRENT_PROJECT_VERSION = 2021.05.298;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.cryart.SabbathSchool";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

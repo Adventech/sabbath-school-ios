@@ -22,8 +22,6 @@
 
 import Armchair
 import AsyncDisplayKit
-import Crashlytics
-import Fabric
 import FacebookCore
 import Firebase
 import FirebaseDatabase
@@ -49,12 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
             }
         }
-
-        let fabricAPIKeyPath = Bundle.main.path(forResource: "Fabric", ofType: "apiKey")
-        let fabricAPIKey = try? String(contentsOfFile: fabricAPIKeyPath!, encoding: String.Encoding.utf8)
-
-        Fabric.with([Crashlytics.start(withAPIKey: fabricAPIKey ?? "")])
-
+        
         #if DEBUG
             let filePath = Bundle.main.path(forResource: "GoogleService-Info-Stage", ofType: "plist")
         #else
@@ -84,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Register initial defaults
         UserDefaults.standard.register(defaults: [
-            Constants.DefaultKey.tintColor: UIColor.baseGreen.hex(),
+            Constants.DefaultKey.tintColor: UIColor.baseBlue.hex(),
             Constants.DefaultKey.settingsReminderStatus: true,
             Constants.DefaultKey.settingsDefaultReminderTime: Constants.DefaultKey.settingsReminderTime
         ])

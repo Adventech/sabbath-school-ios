@@ -32,25 +32,34 @@ final class SettingsItemView: ASCellNode {
     let textNode = ASTextNode()
     let detailTextNode = ASTextNode()
     let switchNode = ASDisplayNode { UISwitch() }
+    let datePickerNode = ASDisplayNode { UIDatePicker() }
     var switchView: UISwitch { return switchNode.view as! UISwitch }
+    var datePickerView: UIDatePicker { return datePickerNode.view as! UIDatePicker }
     var contentStyle: SettingsCellNodeStyle = .detailOnBottom
     fileprivate let disclosureIndicator = ASImageNode()
     fileprivate var showDisclosure = false
     fileprivate var showDetailText = false
     fileprivate var showSwitch = false
+    fileprivate var showDatePicker = false
     fileprivate var switchState = false
 
-    init(text: String, icon: UIImage? = nil, detailText: String = "", showDisclosure: Bool = false, destructive: Bool = false, actionButton: Bool = false, switchState: Bool? = nil) {
+    init(text: String, icon: UIImage? = nil, detailText: String = "", showDisclosure: Bool = false, destructive: Bool = false, actionButton: Bool = false, switchState: Bool? = nil, datePicker: Bool = false) {
         super.init()
 
         self.showDisclosure = showDisclosure
-        self.backgroundColor = .white
-
+        self.backgroundColor = .baseBackground
+        
+        
         if let switchState = switchState {
             self.showSwitch = true
             self.switchState = switchState
             switchNode.backgroundColor = .clear
             switchNode.style.preferredSize = CGSize(width: 51, height: 31)
+        }
+        
+        if datePicker {
+            self.showDatePicker = true
+            datePickerNode.style.preferredSize = CGSize(width: 90, height: 31)
         }
 
         if !destructive {
@@ -85,6 +94,7 @@ final class SettingsItemView: ASCellNode {
 
         if showDisclosure { rightStackChildren.insert(disclosureIndicator, at: 0) }
         if showSwitch { rightStackChildren.append(switchNode) }
+        if showDatePicker { rightStackChildren.append(datePickerNode) }
         if showDetailText && contentStyle == .detailOnRight { rightStackChildren.insert(detailTextNode, at: 0) }
         if showDetailText && contentStyle == .detailOnBottom { leftStackChildren.append(detailTextNode) }
 
@@ -92,7 +102,7 @@ final class SettingsItemView: ASCellNode {
             direction: .horizontal,
             spacing: 10,
             justifyContent: .end,
-            alignItems: .center,
+            alignItems: .end,
             children: rightStackChildren)
 
         let leftSpec = ASStackLayoutSpec(

@@ -5,9 +5,6 @@ PODS:
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
   - Armchair (0.3.7)
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
-  - Fabric (1.10.2)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
   - FacebookLogin (0.9.0):
@@ -40,6 +37,9 @@ PODS:
     - FirebaseAnalytics (= 6.9.0)
   - Firebase/CoreOnly (6.34.0):
     - FirebaseCore (= 6.10.4)
+  - Firebase/Crashlytics (6.34.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.6.2)
   - Firebase/Database (6.34.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 6.6.0)
@@ -72,6 +72,12 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Logger (~> 6.7)
     - nanopb (~> 1.30906.0)
+  - FirebaseCrashlytics (4.6.2):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
+    - GoogleDataTransport (~> 7.2)
+    - nanopb (~> 1.30906.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseDatabase (6.6.0):
     - FirebaseCore (~> 6.10)
     - leveldb-library (~> 1.22)
@@ -137,7 +143,7 @@ PODS:
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
   - Hue (5.0.0)
-  - leveldb-library (1.22)
+  - leveldb-library (1.22.1)
   - MenuItemKit (4.0.1)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -160,18 +166,18 @@ PODS:
     - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
   - pop (1.0.12)
-  - PromisesObjC (1.2.11)
-  - Protobuf (3.13.0)
-  - R.swift (5.2.2):
-    - R.swift.Library (~> 5.2.0)
-  - R.swift.Library (5.2.0)
+  - PromisesObjC (1.2.12)
+  - Protobuf (3.14.0)
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
   - Shimmer (1.0.2)
-  - SimulatorStatusMagic (2.4.1)
-  - SwiftDate (6.2.0)
-  - SwiftLint (0.40.3)
-  - SwiftMessages (8.0.3):
-    - SwiftMessages/App (= 8.0.3)
-  - SwiftMessages/App (8.0.3)
+  - SimulatorStatusMagic (2.5)
+  - SwiftDate (6.3.1)
+  - SwiftLint (0.43.1)
+  - SwiftMessages (9.0.1):
+    - SwiftMessages/App (= 9.0.1)
+  - SwiftMessages/App (9.0.1)
   - Texture (3.0.0):
     - Texture/AssetsLibrary (= 3.0.0)
     - Texture/Core (= 3.0.0)
@@ -198,13 +204,12 @@ PODS:
 
 DEPENDENCIES:
   - Armchair
-  - Crashlytics
-  - Fabric
   - FacebookCore
   - FacebookLogin
   - FacebookShare
   - Firebase/Auth
   - Firebase/Core
+  - Firebase/Crashlytics
   - Firebase/Database
   - Firebase/Messaging
   - Firebase/Storage
@@ -228,8 +233,6 @@ SPEC REPOS:
   trunk:
     - AppAuth
     - Armchair
-    - Crashlytics
-    - Fabric
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -241,6 +244,7 @@ SPEC REPOS:
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseDatabase
     - FirebaseInstallations
     - FirebaseInstanceID
@@ -278,8 +282,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Armchair: ea2da13f78515da627bd63d9540bd58a50e71562
-  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
-  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
@@ -291,6 +293,7 @@ SPEC CHECKSUMS:
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
   FirebaseCore: d3a978a3cfa3240bf7e4ba7d137fdf5b22b628ec
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
+  FirebaseCrashlytics: 1a747c9cc084a24dc6d9511c991db1cd078154eb
   FirebaseDatabase: 13a865a4b85897462b930eb683bda8f52583713f
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   FirebaseInstanceID: bd3ffc24367f901a43c063b36c640b345a4a5dd1
@@ -304,27 +307,27 @@ SPEC CHECKSUMS:
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
-  leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
-  PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
-  Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
-  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
-  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Protobuf: 0cde852566359049847168e51bd1c690e0f70056
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
-  SwiftDate: d117c3eb6beed72e47d3f4d1e3bc63fa1e66d7c3
-  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
-  SwiftMessages: 063ec9ffea3ffa7d17ba595157a9ec78e4fe045f
+  SimulatorStatusMagic: 71cfcea1df017e8f0fa8e48bc182d86976376f84
+  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  SwiftMessages: b71f53eb919887c0273bf43cbc002bd4f0cfb3d6
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Unbox: d2677af8fde59a30141e02981b11cb6a0e3b6bc5
   Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: bf551c596a590a2764f2f1bf425d9e18c2997b7a
+PODFILE CHECKSUM: 5cb0f5564d8b1fd409b5b992d55830cb32fc5f96
 
 COCOAPODS: 1.10.0

@@ -35,13 +35,19 @@ class LoginNode: ASDisplayNode {
 
         logoNode.image = R.image.loginLogo()
 
-        logoTextNode.attributedText = TextStyles.loginLogoTextStyle(string: "Sabbath School".localized())
-        backgroundColor = UIColor.baseGray1
+        self.configureStyles()
+        backgroundColor = .baseBackgroundLogin
         anonymousButton.style.spacingBefore = -8
         automaticallyManagesSubnodes = true
     }
+    
+    func configureStyles () {
+        logoTextNode.attributedText = TextStyles.loginLogoTextStyle(string: "Sabbath School".localized())
+        anonymousButton.configureStyles(type: .anonymous)
+    }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+        logoNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(.auto, 0), height: ASDimensionMakeWithPoints(120))
         let logoSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 8,

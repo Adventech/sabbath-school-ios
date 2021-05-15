@@ -49,6 +49,9 @@ struct Constants {
         static let settingsReminderStatus = "io.adventech.settings.reminderStatus"
         static let settingsReminderTime = "io.adventech.settings.reminderTime"
         static let settingsDefaultReminderTime = "08:00"
+        static let settingsTheme = "io.adventech.settings.theme"
+        
+        static let gcPopup = "io.adventech.gcpopup"
     }
 
     struct Path {

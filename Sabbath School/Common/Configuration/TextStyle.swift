@@ -57,7 +57,7 @@ struct TextStyles {
 
     static func cellTitleStyle(string: String) -> NSAttributedString {
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.baseGray3,
+            .foregroundColor: UIColor.titleColor,
             .font: R.font.latoMedium(size: 18)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
@@ -118,10 +118,18 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
+    
+    static func signInButtonAnonymousTitleStyle(string: String, color: UIColor = .titleColor) -> NSAttributedString {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: color,
+            .font: R.font.latoBold(size: 16)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
 
     static func loginLogoTextStyle(string: String) -> NSAttributedString {
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.baseGreen,
+            .foregroundColor: UIColor.baseForegroundLogin,
             .font: R.font.latoBold(size: 26)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
@@ -137,7 +145,7 @@ struct TextStyles {
 
     static func languageTitleStyle(string: String) -> NSAttributedString {
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.baseGray4,
+            .foregroundColor: UIColor.titleColor,
             .font: R.font.latoRegular(size: 17)!
         ]
         return NSAttributedString(string: string, attributes: attributes)
@@ -196,7 +204,7 @@ struct TextStyles {
 
         let attributes: [NSAttributedString.Key: Any] = [
             .font: R.font.latoRegular(size: 16)!,
-            .foregroundColor: UIColor.baseGray5,
+            .foregroundColor: UIColor.titleColor,
             .paragraphStyle: style
         ]
 
@@ -262,7 +270,7 @@ struct TextStyles {
 
         let attributes: [NSAttributedString.Key: Any] = [
             .font: R.font.latoRegular(size: 18)!,
-            .foregroundColor: UIColor.baseGray3,
+            .foregroundColor: UIColor.bodyGrayColor,
             .paragraphStyle: style
         ]
 
@@ -275,7 +283,7 @@ struct TextStyles {
 
         let attributes: [NSAttributedString.Key: Any] = [
             .font: R.font.latoBold(size: 18)!,
-            .foregroundColor: UIColor.baseGray3,
+            .foregroundColor: UIColor.bodyGrayColor,
             .paragraphStyle: style
         ]
 
@@ -300,7 +308,7 @@ struct TextStyles {
         return NSAttributedString(string: string, attributes: attributes)
     }
 
-    static func h3(string: String, color: UIColor = .baseGray3) -> NSAttributedString {
+    static func h3(string: String, color: UIColor = .titleColor) -> NSAttributedString {
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: color,
             .font: R.font.latoBold(size: 24)!

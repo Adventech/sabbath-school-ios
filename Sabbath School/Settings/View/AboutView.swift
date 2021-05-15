@@ -32,25 +32,30 @@ protocol AboutViewDelegate: class {
 
 class AboutView: ASCellNode {
     weak var delegate: AboutViewDelegate?
+    let sspmLogo = ASImageNode()
     let adventechLogo = ASImageNode()
     let slogan = ASTextNode()
     let instagramLogo = ASImageNode()
     let facebookLogo = ASImageNode()
     let githubLogo = ASImageNode()
     let websiteUrl = ASTextNode()
+    let sspmText = ASTextNode()
     let descriptionText = ASTextNode()
     let signatureText = ASTextNode()
 
     override init() {
         super.init()
 
+        sspmLogo.image = R.image.sspmLogo()
         adventechLogo.image = R.image.logoAdventech()
         slogan.attributedText = TextStyles.sloganStyle(string: "God's Ministry through Technology".localized())
         instagramLogo.image = R.image.iconInstagram()
         facebookLogo.image = R.image.iconFacebook()
         githubLogo.image = R.image.iconGithub()
         websiteUrl.attributedText = TextStyles.websiteUrlStyle(string: "adventech.io".localized())
-        descriptionText.attributedText = TextStyles.descriptionStyle(string: "Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!".localized())
+        
+        sspmText.attributedText = TextStyles.descriptionStyle(string: "The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.".localized())
+        descriptionText.attributedText = TextStyles.descriptionStyle(string: "Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.".localized())
         signatureText.attributedText = TextStyles.signatureStyle(string: "Your friends at Adventech".localized())
 
         instagramLogo.addTarget(self, action: #selector(tapInstagram(_:)), forControlEvents: .touchUpInside)
@@ -75,18 +80,21 @@ class AboutView: ASCellNode {
             alignItems: .center,
             children: [instagramLogo, facebookLogo, githubLogo])
 
+        adventechLogo.style.spacingBefore = 30
         socialIcons.style.spacingBefore = 31
         websiteUrl.style.spacingBefore = 27
         descriptionText.style.spacingBefore = 20
         signatureText.style.spacingBefore = 20
         signatureText.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(.auto, 0))
+        sspmText.style.spacingBefore = 30
+        sspmLogo.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMakeWithPoints(200), height: ASDimensionMakeWithPoints(44))
 
         let mainLayout = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 0,
             justifyContent: .center,
             alignItems: .center,
-            children: [adventechLogo, slogan, socialIcons, websiteUrl, descriptionText, signatureText]
+            children: [sspmLogo, sspmText, adventechLogo, slogan, socialIcons, websiteUrl, descriptionText, signatureText]
         )
 
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 40, left: 20, bottom: 40, right: 20), child: mainLayout)

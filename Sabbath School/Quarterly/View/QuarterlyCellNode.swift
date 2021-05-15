@@ -32,7 +32,7 @@ class QuarterlyCellNode: ASCellNode {
 
     init(quarterly: Quarterly) {
         super.init()
-        backgroundColor = UIColor.white
+        self.selectionStyle = .none
 
         titleNode.attributedText = TextStyles.h3(string: quarterly.title)
         humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate, color: .baseGray2)
@@ -83,5 +83,21 @@ class QuarterlyCellNode: ASCellNode {
     override func layoutDidFinish() {
         super.layoutDidFinish()
         coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: imageCornerRadius).cgPath
+    }
+    
+    override var isHighlighted: Bool {
+        didSet { bounce(isHighlighted) }
+    }
+
+    func bounce(_ bounce: Bool) {
+        UIView.animate(
+            withDuration: 0.8,
+            delay: 0,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 0.8,
+            options: [.allowUserInteraction, .beginFromCurrentState],
+            animations: { self.transform = bounce ? CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.988, y: 0.988)) : CATransform3DMakeAffineTransform(CGAffineTransform.identity) },
+            completion: nil)
+
     }
 }

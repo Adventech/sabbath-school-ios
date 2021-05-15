@@ -42,6 +42,9 @@ func currentQuarterly() -> String {
 func currentTheme() -> ReaderStyle.Theme {
     guard let rawTheme = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsTheme),
         let theme = ReaderStyle.Theme(rawValue: rawTheme) else {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .dark
+        }
         return .light
     }
     return theme
@@ -83,4 +86,25 @@ func latestReaderBundleTimestamp() -> String {
         return ""
     }
     return timestamp
+}
+
+func getSettingsTheme() -> String {
+    guard let theme = UserDefaults.standard.string(forKey: Constants.DefaultKey.settingsTheme) else {
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                return Theme.Dark.rawValue
+            }
+        }
+        return Theme.Light.rawValue
+    }
+    return theme
+}
+
+func saveSettingsTheme(theme: Theme) {
+    UserDefaults.standard.set(theme.rawValue, forKey: Constants.DefaultKey.settingsTheme)
+    UserDefaults.standard.synchronize()
+}
+
+func gcPopupStatus() -> Bool {
+    return UserDefaults.standard.bool(forKey: Constants.DefaultKey.gcPopup)
 }

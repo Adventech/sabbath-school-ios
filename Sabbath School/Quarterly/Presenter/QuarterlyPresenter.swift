@@ -20,6 +20,7 @@
  * THE SOFTWARE.
  */
 
+import AsyncDisplayKit
 import UIKit
 
 class QuarterlyPresenter: QuarterlyPresenterProtocol {
@@ -49,6 +50,14 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
 
     func presentLessonScreen(quarterlyIndex: String) {
         wireFrame?.presentLessonScreen(view: controller!, quarterlyIndex: quarterlyIndex)
+    }
+    
+    func presentGCScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate) {
+        let readOptionsScreen = GCPopupController()
+        readOptionsScreen.transitioningDelegate = transitioningDelegate
+        readOptionsScreen.modalPresentationStyle = .custom
+        readOptionsScreen.preferredContentSize = size
+        (controller as! UIViewController).present(readOptionsScreen, animated: true, completion: nil)
     }
 }
 

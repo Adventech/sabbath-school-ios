@@ -40,13 +40,18 @@ class AboutController: ThemeController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         self.setBackButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.view.backgroundColor = .baseBackground
+        self.collectionNode.reloadData()
     }
 
     func openUrl(url: String) {

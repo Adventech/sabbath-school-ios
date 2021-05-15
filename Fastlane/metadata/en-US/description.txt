@@ -1,13 +1,20 @@
-Sabbath School by Adventech. Studying Sabbath School has never been easier brothers and sisters! Please meet the new experience with redesigned and updated app.
+Welcome to the official Sabbath School and Personal Ministries app of the General Conference of Seventh-day Adventists, powered by Adventech. The perfect app for studying and sharing God’s Word!
 
-Just as our Seventh-day Adventist Church, this application is global and available in multiple languages.
+Studying Sabbath School has never been easier. Now you can take your Sabbath School Bible study guide with you wherever you go. App content and features include:
+-	Adult Sabbath School Bible study guide, in both standard and easy reading editions, and the new InVerse Bible study guide for young adults
+-	Ellen White notes under each day’s reading
+-	Teacher notes and the Hope Sabbath School Outline for teachers
+-	Multiple language support
+-	Links to Bible references in 5 different Bible versions
+-	Type notes and highlight text 
+-	Simple and easy to use interface
+-	Dark mode option
+-	Social sign-in using Google and Facebook
 
-Social sign-in using Google and Facebook brings the data synchronization for your notes, highlights and comments.
-
-Studying Sabbath School requires Bible at hand or just tap away.
-
-With highlighting and commenting you can always remember your thoughts.
-
-Prefer to study during the night? Try our Dark mode.
-
-Adventech 2017 ®
+The General Conference is partnering with Adventech to develop all new content and features COMING SOON. Future upgrades will include:
+-	Sabbath School lessons for all ages of children and youth
+-	Sabbath School resources for leaders and teachers
+-	Personal Ministries resources to aid in soul-winning and discipleship
+-	Increased language support
+-	Teaching and training on video/audio
+-	Ability to accept handwritten notes using a stylus

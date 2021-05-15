@@ -32,9 +32,7 @@ final class PickerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor.white
-
+        view.backgroundColor = .white
         datePicker.frame = CGRect(origin: CGPoint.zero, size: preferredContentSize)
         datePicker.addTarget(self, action: #selector(PickerViewController.datePickerChanged(_:)), for: .valueChanged)
         view.addSubview(datePicker)

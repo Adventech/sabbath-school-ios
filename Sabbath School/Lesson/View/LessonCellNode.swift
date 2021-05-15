@@ -31,8 +31,6 @@ class LessonCellNode: ASCellNode {
     init(lesson: Lesson, number: String) {
         super.init()
 
-        backgroundColor = UIColor.white
-
         titleNode.attributedText = TextStyles.cellTitleStyle(string: lesson.title)
         subtitleNode.attributedText = TextStyles.cellSubtitleStyle(string: "\(lesson.startDate.stringLessonDate()) - \(lesson.endDate.stringLessonDate())")
         numberNode.attributedText = TextStyles.cellLessonNumberStyle(string: number)

@@ -73,6 +73,16 @@ class TableController: ThemeController {
 
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.tableNode?.view.separatorColor = UIColor.separatorColor()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        tableNode?.reloadData()
+    }
 }
 
 extension TableController: ASTableDelegate {

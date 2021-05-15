@@ -30,7 +30,7 @@ class LanguageCellNode: ASCellNode {
 
     init(title: String, subtitle: String) {
         super.init()
-
+        self.backgroundColor = .baseBackground
         titleNode.attributedText = TextStyles.languageTitleStyle(string: title)
         subtitleNode.attributedText = TextStyles.languageSubtitleStyle(string: subtitle)
         selectedNode.image = R.image.iconCheckmark()?.imageTintColor(.tintColor)

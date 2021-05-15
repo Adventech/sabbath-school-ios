@@ -1,24 +1,25 @@
 devices([
-  "iPhone 6",
-  "iPhone 6 Plus",
-  "iPhone 5",
-  "iPad Pro (12.9-inch)",
-  "iPad Pro (9.7-inch)"
+  # "iPhone 6",
+  # "iPhone 6 Plus",
+  # "iPhone 5",
+  # "iPad Pro (12.9-inch)",
+  # "iPad Pro (9.7-inch)"
+  "iPad Pro (12.9-inch) (3rd generation)"
 ])
 
 languages([
-  "da", # Danish
-  "de-DE", # German
+  # "da", # Danish
+  # "de-DE", # German
   "en-US", # English
-  "es-ES", # Spanish
-  "fr-FR", # French
-  "ja-JP", # Japanese
-  "id", # Indonesian
-  "no", # Norwegian
-  "pt-BR", # Portuguese
-  "ru-RU", # Russian
-  "tr-TR", # Turkish
-  "zh-Hans" # Chinese
+  # "es-ES", # Spanish
+  # "fr-FR", # French
+  # "ja-JP", # Japanese
+  # "id", # Indonesian
+  # "no", # Norwegian
+  # "pt-BR", # Portuguese
+  # "ru-RU", # Russian
+  # "tr-TR", # Turkish
+  # "zh-Hans" # Chinese
 ])
 
 scheme "SnapshotUITests"
