@@ -1,4 +1,0 @@
-Host bitbucket.org
-     StrictHostKeyChecking no
-     UseKeychain yes
-     IdentityFile ~/.ssh/ss_certs_travis
