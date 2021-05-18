@@ -1,1 +1,1 @@
-We have completely rebuilt Sabbath School app. From the design to content. From reading experience to notes & highlights, synchronization across devices! Multiple languages and Bible translations.
+We have added support for the Dark Mode, made significant improvements with regards to the stability of the application on iPad, fixed numerous issues and bugs.

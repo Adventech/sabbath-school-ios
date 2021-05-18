@@ -2,7 +2,7 @@ Escuela Sabática por Adventech. ¡El estudio de la Escuela Sabática nunca ha s
 
 Al igual que nuestra Iglesia Adventista del Séptimo Día, esta aplicación es global y está disponible en múltiples idiomas.
 
-El inicio de sesión social con Google y Facebook ofrece la sincronización de datos para sus notas, resúmenes y comentarios.
+El inicio de sesión social ofrece la sincronización de datos para sus notas, resúmenes y comentarios.
 
 Estudiar la Escuela Sabática requiere la Biblia a mano o simplemente tocar.
 

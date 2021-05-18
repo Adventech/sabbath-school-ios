@@ -2,7 +2,7 @@ Ecole du Sabbat par Adventech. Étudier l'école du Sabbat n'a jamais été auss
 
 Tout comme notre Église adventiste du septième jour, cette application est globale et disponible en plusieurs langues.
 
-La connexion sociale utilisant Google et Facebook apporte la synchronisation des données pour vos notes, points forts et commentaires.
+La connexion sociale utilisant apporte la synchronisation des données pour vos notes, points forts et commentaires.
 
 Étudier l'école sabbatique nécessite la Bible en main ou tout simplement à l'écart.
 

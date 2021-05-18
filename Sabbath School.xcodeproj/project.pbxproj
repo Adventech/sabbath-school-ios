@@ -135,6 +135,7 @@
 		C6AD5FC4E686836BCB68D63F /* Pods_Sabbath_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA77760489FE123F60F36B6 /* Pods_Sabbath_School.framework */; };
 		FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */; };
 		FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */; };
+		FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -345,6 +346,7 @@
 		FE002A6C200C8A27009CE4DF /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupController.swift; sourceTree = "<group>"; };
 		FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupView.swift; sourceTree = "<group>"; };
+		FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleNode.swift; sourceTree = "<group>"; };
 		FE6FAA0B2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FE6FAA0C2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FE6FAA0D2210904B00B0C002 /* my */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = my; path = my.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			children = (
 				7A280F791ED7CF2C003C7458 /* LoginNode.swift */,
 				7A280FC61EDA06F9003C7458 /* LoginButton.swift */,
+				FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1489,6 +1492,7 @@
 				7A2810021EDD060F003C7458 /* LanguagePresenter.swift in Sources */,
 				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
 				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
+				FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */,
 				7A3BCE361EE27776003EC12B /* BiblePresenter.swift in Sources */,
 				7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */,
 				7A280FEE1EDCFB4E003C7458 /* PopupTransitionAnimation.swift in Sources */,
@@ -1866,7 +1870,7 @@
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.7.1;
+				MARKETING_VERSION = 2.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "29d99fff-a72e-4c42-9ceb-b8c5c4176926";
@@ -1890,7 +1894,7 @@
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.7.1;
+				MARKETING_VERSION = 2.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";

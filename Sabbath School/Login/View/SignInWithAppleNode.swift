@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Adventech <info@adventech.io>
+ * Copyright (c) 2021 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,39 +20,12 @@
  * THE SOFTWARE.
  */
 
+import UIKit
 import AsyncDisplayKit
-import Firebase
+import AuthenticationServices
 
-protocol LoginPresenterProtocol: class {
-    var controller: LoginControllerProtocol? { get set }
-    var interactor: LoginInteractorInputProtocol? { get set }
-    var wireFrame: LoginWireFrameProtocol? { get set }
-
-    func configure()
-    func loginActionAnonymous()
-    func loginActionGoogle()
-    func loginActionFacebook()
-    func performFirebaseLogin(credential: AuthCredential)
-    
-    @available(iOS 13, *) func loginActionApple()
-}
-
-protocol LoginControllerProtocol: class {
-    var presenter: LoginPresenterProtocol? { get set }
-}
-
-protocol LoginWireFrameProtocol: class {
-    static func createLoginModule() -> ASDKViewController<ASDisplayNode>
-    func presentQuarterlyScreen()
-}
-
-protocol LoginInteractorOutputProtocol: class {
-    func onError(_ error: Error?)
-    func onSuccess()
-}
-
-protocol LoginInteractorInputProtocol: class {
-    var presenter: LoginInteractorOutputProtocol? { get set }
-
-    func configure()
+class SignInWithAppleNode: ASDisplayNode {
+    override init () {
+        super.init()
+    }
 }

@@ -20,16 +20,19 @@
  * THE SOFTWARE.
  */
 
-import Firebase
-import SwiftMessages
+import AuthenticationServices
+import CryptoKit
 import FacebookCore
 import FacebookLogin
+import Firebase
 import GoogleSignIn
+import SwiftMessages
 
 class LoginPresenter: NSObject, LoginPresenterProtocol {
     var controller: LoginControllerProtocol?
     var wireFrame: LoginWireFrameProtocol?
     var interactor: LoginInteractorInputProtocol?
+    var currentNonce: String?
 
     func configure() {
         // interactor?.configure()
@@ -67,7 +70,6 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
     }
 
     func loginActionFacebook() {
-        // interactor?.loginFacebook()
         let loginManager = LoginManager()
         let viewController = controller as? UIViewController
 
@@ -85,8 +87,23 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
     }
 
     func loginActionGoogle() {
-        // interactor?.loginGoogle()
         GIDSignIn.sharedInstance().signIn()
+    }
+    
+    @available(iOS 13, *)
+    func loginActionApple() {
+        print("SSDEBUG", "SWIA tapped")
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        self.currentNonce = randomNonceString()
+        request.nonce = sha256(currentNonce!)
+        
+        let authController = ASAuthorizationController(authorizationRequests: [request])
+        authController.presentationContextProvider = self
+        authController.delegate = self
+        authController.performRequests()
     }
 
     func performFirebaseLogin(credential: AuthCredential) {
@@ -98,6 +115,50 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
                 self?.onSuccess()
             }
         }
+    }
+    
+    @available(iOS 13, *)
+    private func randomNonceString(length: Int = 32) -> String {
+        precondition(length > 0)
+        let charset: Array<Character> =
+            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        var result = ""
+        var remainingLength = length
+        
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+                }
+                return random
+            }
+            
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+                
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
+        }
+        
+        return result
+    }
+
+    @available(iOS 13, *)
+    private func sha256(_ input: String) -> String {
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            return String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
     }
 }
 
@@ -136,5 +197,55 @@ extension LoginPresenter: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
+    }
+}
+
+extension LoginPresenter: ASAuthorizationControllerPresentationContextProviding {
+    @available(iOS 13, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        // return the current view window
+        return (self.controller as! LoginController).view.window!
+    }
+}
+
+extension LoginPresenter: ASAuthorizationControllerDelegate {
+    @available(iOS 13, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("authorization error")
+        guard let error = error as? ASAuthorizationError else {
+            return
+        }
+        
+        self.onError(error)
+    }
+    
+    @available(iOS 13, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            UserDefaults.standard.set(appleIDCredential.user, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
+            
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Failed to fetch identity token")
+                return
+            }
+
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Failed to decode identity token")
+                return
+            }
+
+            let firebaseCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            Auth.auth().signIn(with: firebaseCredential) { [weak self] (authResult, error) in
+                if let error = error {
+                    self?.onError(error)
+                } else {
+                    self?.onSuccess()
+                }
+            }
+        }
     }
 }

@@ -22,6 +22,7 @@
 
 import Armchair
 import AsyncDisplayKit
+import AuthenticationServices
 import FacebookCore
 import Firebase
 import FirebaseDatabase
@@ -74,6 +75,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
+        
+        if #available(iOS 13, *) {
+            NotificationCenter.default.addObserver(self, selector: #selector(appleIDStateDidRevoked(_:)), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
+            // NotificationCenter.default.removeObserver(self, name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
+        }
 
         // Register initial defaults
         UserDefaults.standard.register(defaults: [
@@ -91,6 +97,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .black
         window?.layer.cornerRadius = 6
         window?.clipsToBounds = true
+        
+        if #available(iOS 13, *) {
+            if let userID = UserDefaults.standard.string(forKey: Constants.DefaultKey.appleAuthorizedUserIdKey) {
+                ASAuthorizationAppleIDProvider().getCredentialState(forUserID: userID, completion: { []
+                    credentialState, error in
+                    
+                    switch(credentialState) {
+                    case .authorized:
+                        break
+                    case .notFound,
+                         .transferred,
+                         .revoked:
+                        SettingsController.logOut(presentLoginScreen: false)
+                        break
+                    @unknown default:
+                        break
+                    }
+                })
+            }
+        }
 
         if (Auth.auth().currentUser) != nil {
             window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule()
@@ -186,6 +212,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard quarterlyController != nil else { return }
             guard ((quarterlyController?.dataSource.first) != nil) else { return }
             quarterlyController?.showLessonScreen(quarterly: quarterlyController!.dataSource.first!)
+        }
+    }
+    
+    @objc func appleIDStateDidRevoked(_ notification: Notification) {
+        if let providerId = Auth.auth().currentUser?.providerData.first?.providerID, providerId == "apple.com" {
+            SettingsController.logOut()
         }
     }
 }

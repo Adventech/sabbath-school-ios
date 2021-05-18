@@ -108,7 +108,11 @@ class ReadController: ThemeController {
 
     @objc func readingOptions(sender: UIBarButtonItem) {
         let buttonView = sender.value(forKey: "view") as! UIView
-        let size = CGSize(width: round(node.frame.width)-10, height: 167)
+        var size = CGSize(width: round(node.frame.width)-10, height: 167)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            size.width = round(node.frame.width*0.5)
+        }
 
         animator.style = .arrow
         animator.fromView = buttonView

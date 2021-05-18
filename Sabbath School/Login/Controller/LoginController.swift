@@ -21,6 +21,7 @@
  */
 
 import AsyncDisplayKit
+import AuthenticationServices
 import GoogleSignIn
 import UIKit
 
@@ -34,12 +35,19 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
         loginNode?.anonymousButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         loginNode?.googleButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         loginNode?.facebookButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
+        self.addAppleSignInButtonTarget()
 
         GIDSignIn.sharedInstance()?.presentingViewController = self
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
+    }
+    
+    func addAppleSignInButtonTarget() {
+        if #available(iOS 13.0, *) {
+            (loginNode?.signInWithAppleButtonNode?.view as? ASAuthorizationAppleIDButton)?.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+        }
     }
 
     override func viewDidLoad() {
@@ -49,8 +57,15 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        self.view.backgroundColor = .baseBackground
-        self.loginNode?.configureStyles()
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                self.view.backgroundColor = .baseBackground
+                self.loginNode?.configureStyles()
+                self.loginNode?.invalidateCalculatedLayout()
+                self.loginNode?.setNeedsLayout()
+                self.addAppleSignInButtonTarget()
+            }
+        }
     }
 
     @objc func loginAction(sender: LoginButton) {
@@ -62,5 +77,10 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
         case .anonymous:
             presenter?.loginActionAnonymous()
         }
+    }
+    
+    @available(iOS 13, *)
+    @objc func appleSignInTapped() {
+        presenter?.loginActionApple()
     }
 }

@@ -2,7 +2,7 @@ Adventech tarafından Sebt Okulu. Sebt Okulu'nu okumak hiç bu kadar kolay olmam
 
 Tıpkı Yedinci Günümüz Adventist Kilisemiz gibi, bu uygulama küresel ve çok dilde mevcuttur.
 
-Google ve Facebook'u kullanarak sosyal oturum açma, notlarınız, vurgulamalarınız ve yorumlarınız için veri senkronizasyonunu getirir.
+Social login brings data synchronization for your notes, highlights and comments.
 
 Sabbath Okulu'nu incelemek, İncil'i el altında bulundurmak ya da uzaklaşmak gerekiyor.
 

@@ -2,7 +2,7 @@ Trường Sa-bát của Adventech. Học trường Sabbath chưa bao giờ là a
 
 Giống như Giáo hội Cơ Đốc Phục Lâm của chúng tôi, ứng dụng này mang tính toàn cầu và có sẵn bằng nhiều ngôn ngữ.
 
-Đăng nhập xã hội bằng Google và Facebook mang lại sự đồng bộ hóa dữ liệu cho ghi chú, nội dung nổi bật và nhận xét của bạn.
+Sử dụng đăng nhập xã hội để đồng bộ hóa dữ liệu giữa các thiết bị.
 
 Học trường Sabbath đòi hỏi Kinh Thánh trong tầm tay hoặc chỉ cần gõ nhẹ.
 

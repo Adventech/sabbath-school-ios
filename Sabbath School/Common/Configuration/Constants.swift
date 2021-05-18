@@ -52,6 +52,7 @@ struct Constants {
         static let settingsTheme = "io.adventech.settings.theme"
         
         static let gcPopup = "io.adventech.gcpopup"
+        static let appleAuthorizedUserIdKey = "io.adventech.appleAuthorizedUserIdKey"
     }
 
     struct Path {

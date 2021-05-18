@@ -20,6 +20,7 @@
  * THE SOFTWARE.
  */
 
+import AuthenticationServices
 import AsyncDisplayKit
 import FirebaseAuth
 import SafariServices
@@ -87,8 +88,12 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        tableNode?.backgroundColor = .baseBackground
-        tableNode?.reloadData()
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                tableNode?.backgroundColor = .baseBackground
+                tableNode?.reloadData()
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +106,19 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    static func logOut(presentLoginScreen: Bool = true) {
+        if let providerId = Auth.auth().currentUser?.providerData.first?.providerID, providerId == "apple.com" {
+            UserDefaults.standard.set(nil, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
+        }
+        
+        try! Auth.auth().signOut()
+        if presentLoginScreen {
+            DispatchQueue.main.async {
+                QuarterlyWireFrame.presentLoginScreen()
+            }
+        }
     }
 
     @objc func reminderChanged(sender: UISwitch) {
@@ -152,7 +170,6 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
         localNotification.soundName = UILocalNotificationDefaultSoundName
 
         UIApplication.shared.scheduleLocalNotification(localNotification)
-
     }
 }
 
@@ -291,8 +308,7 @@ extension SettingsController: ASTableDelegate {
             break
 
         case 3:
-            try! Auth.auth().signOut()
-            QuarterlyWireFrame.presentLoginScreen()
+            SettingsController.logOut()
             break
         default:
             break

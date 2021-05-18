@@ -81,7 +81,11 @@ class TableController: ThemeController {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        tableNode?.reloadData()
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                tableNode?.reloadData()
+            }
+        }
     }
 }
 

@@ -22,6 +22,7 @@
 
 import UIKit
 import AsyncDisplayKit
+import AuthenticationServices
 
 class LoginNode: ASDisplayNode {
     let logoNode = ASNetworkImageNode()
@@ -29,12 +30,12 @@ class LoginNode: ASDisplayNode {
     let facebookButton = LoginButton(type: .facebook)
     let googleButton = LoginButton(type: .google)
     let anonymousButton = LoginButton(type: .anonymous)
-
+    var signInWithAppleButtonNode: ASDisplayNode?
+    
     override init() {
         super.init()
-
         logoNode.image = R.image.loginLogo()
-
+        logoNode.contentMode = .scaleAspectFit
         self.configureStyles()
         backgroundColor = .baseBackgroundLogin
         anonymousButton.style.spacingBefore = -8
@@ -43,11 +44,26 @@ class LoginNode: ASDisplayNode {
     
     func configureStyles () {
         logoTextNode.attributedText = TextStyles.loginLogoTextStyle(string: "Sabbath School".localized())
+        if #available(iOS 13.0, *) {
+            self.signInWithAppleButtonNode = ASDisplayNode { () -> UIView in
+                let signInWithAppleButton = ASAuthorizationAppleIDButton(
+                    authorizationButtonType: .signIn,
+                    authorizationButtonStyle: getSettingsTheme() == Theme.Dark.rawValue ? .white : .black
+                )
+                signInWithAppleButton.cornerRadius = 5
+                signInWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
+                
+                print("SSDEBUG", "fdsfdsds")
+
+                return signInWithAppleButton
+            }
+        }
         anonymousButton.configureStyles(type: .anonymous)
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         logoNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(.auto, 0), height: ASDimensionMakeWithPoints(120))
+        
         let logoSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 8,
@@ -55,14 +71,20 @@ class LoginNode: ASDisplayNode {
             alignItems: .center,
             children: [logoNode, logoTextNode])
 
-        logoSpec.style.spacingBefore = 120
-
-        let buttonsSpec = ASStackLayoutSpec(
-            direction: .vertical,
-            spacing: 15,
-            justifyContent: .center,
-            alignItems: .stretch,
-            children: [facebookButton, googleButton, anonymousButton])
+        logoSpec.style.spacingBefore = 80
+        
+        let buttonsSpec = ASStackLayoutSpec()
+        buttonsSpec.direction = .vertical
+        buttonsSpec.spacing = 15
+        buttonsSpec.justifyContent = .center
+        buttonsSpec.alignItems = .stretch
+        
+        if #available(iOS 13.0, *) {
+            signInWithAppleButtonNode?.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMakeWithPoints(240), height: ASDimensionMakeWithPoints(45))
+            buttonsSpec.children = [signInWithAppleButtonNode!, facebookButton, googleButton, anonymousButton]
+        } else {
+            buttonsSpec.children = [facebookButton, googleButton, anonymousButton]
+        }
 
         buttonsSpec.style.spacingAfter = 30
 
