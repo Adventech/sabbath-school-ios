@@ -52,9 +52,6 @@ class LoginNode: ASDisplayNode {
                 )
                 signInWithAppleButton.cornerRadius = 5
                 signInWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
-                
-                print("SSDEBUG", "fdsfdsds")
-
                 return signInWithAppleButton
             }
         }

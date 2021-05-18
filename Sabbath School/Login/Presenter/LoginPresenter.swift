@@ -92,7 +92,6 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
     
     @available(iOS 13, *)
     func loginActionApple() {
-        print("SSDEBUG", "SWIA tapped")
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
