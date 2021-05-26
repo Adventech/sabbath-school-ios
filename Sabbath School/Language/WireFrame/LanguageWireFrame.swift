@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 
 class LanguageWireFrame: LanguageWireFrameProtocol {
-    class func createLanguageModule(size: CGSize?, transitioningDelegate: UIViewControllerTransitioningDelegate?, didSelectLanguageHandler: @escaping () -> Void?) -> ASNavigationController {
+    class func createLanguageModule(didSelectLanguageHandler: @escaping () -> Void?) -> ASNavigationController {
         let controller: LanguageControllerProtocol = LanguageController()
         let presenter: LanguagePresenterProtocol & LanguageInteractorOutputProtocol = LanguagePresenter()
         let wireFrame: LanguageWireFrameProtocol = LanguageWireFrame()
@@ -38,10 +38,6 @@ class LanguageWireFrame: LanguageWireFrameProtocol {
         interactor.presenter = presenter
 
         let navigation = ASNavigationController(rootViewController: controller as! UIViewController)
-
-        navigation.transitioningDelegate = transitioningDelegate
-        navigation.modalPresentationStyle = .custom
-        navigation.preferredContentSize = size!
 
         return navigation
     }

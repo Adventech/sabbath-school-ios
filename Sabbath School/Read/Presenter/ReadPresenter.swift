@@ -52,6 +52,11 @@ class ReadPresenter: ReadPresenterProtocol {
         readOptionsScreen.preferredContentSize = size
         (controller as! UIViewController).present(readOptionsScreen, animated: true, completion: nil)
     }
+    
+    func presentDictionary(word: String) {
+        let referenceVC = UIReferenceLibraryViewController(term: word)
+        (controller as! UIViewController).present(referenceVC, animated: true)
+    }
 }
 
 extension ReadPresenter: ReadInteractorOutputProtocol {

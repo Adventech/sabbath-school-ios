@@ -42,7 +42,7 @@ class LoginNode: ASDisplayNode {
         automaticallyManagesSubnodes = true
     }
     
-    func configureStyles () {
+    func configureStyles() {
         logoTextNode.attributedText = TextStyles.loginLogoTextStyle(string: "Sabbath School".localized())
         if #available(iOS 13.0, *) {
             self.signInWithAppleButtonNode = ASDisplayNode { () -> UIView in

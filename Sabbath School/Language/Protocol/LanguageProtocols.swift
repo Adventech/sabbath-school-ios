@@ -38,7 +38,7 @@ protocol LanguageControllerProtocol: class {
 }
 
 protocol LanguageWireFrameProtocol: class {
-    static func createLanguageModule(size: CGSize?, transitioningDelegate: UIViewControllerTransitioningDelegate?, didSelectLanguageHandler: @escaping () -> Void?) -> ASNavigationController
+    static func createLanguageModule(didSelectLanguageHandler: @escaping () -> Void?) -> ASNavigationController
 }
 
 protocol LanguageInteractorOutputProtocol: class {

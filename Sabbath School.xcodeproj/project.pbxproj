@@ -136,6 +136,7 @@
 		FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */; };
 		FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */; };
 		FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */; };
+		FE420255265D93840061C589 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420254265D93840061C589 /* LanguageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,6 +348,7 @@
 		FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupController.swift; sourceTree = "<group>"; };
 		FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupView.swift; sourceTree = "<group>"; };
 		FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleNode.swift; sourceTree = "<group>"; };
+		FE420254265D93840061C589 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		FE6FAA0B2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FE6FAA0C2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FE6FAA0D2210904B00B0C002 /* my */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = my; path = my.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 			isa = PBXGroup;
 			children = (
 				7A280FFD1EDD039C003C7458 /* LanguageCellNode.swift */,
+				FE420254265D93840061C589 /* LanguageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1131,7 +1134,8 @@
 				7AF191A61ED7B89B000CCF0C /* Resources */,
 				1B6A00FE81B5E044B0CF66AE /* [CP] Embed Pods Frameworks */,
 				361CDFACACA3413B1C861855 /* [CP] Copy Pods Resources */,
-				FE4224A7264F5B1C0036F5D2 /* ShellScript */,
+				FE4224A7264F5B1C0036F5D2 /* Run Crashlytics */,
+				FE8A39EE26543023007D26D7 /* Upload Symbols */,
 			);
 			buildRules = (
 			);
@@ -1453,7 +1457,27 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE4224A7264F5B1C0036F5D2 /* ShellScript */ = {
+		FE4224A7264F5B1C0036F5D2 /* Run Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n${PODS_ROOT}/FirebaseCrashlytics/run -gsp \"${PROJECT_DIR}/Sabbath\\ School/Resources/GoogleService-Info-Prod.plist\"\nelse\n${PODS_ROOT}/FirebaseCrashlytics/run -gsp \"${PROJECT_DIR}/Sabbath\\ School/Resources/GoogleService-Info-Stage.plist\"\nfi\n\n\n";
+		};
+		FE8A39EE26543023007D26D7 /* Upload Symbols */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1462,13 +1486,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Upload Symbols";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n${PODS_ROOT}/FirebaseCrashlytics/run -gsp \"${PROJECT_DIR}/Sabbath\\ School/Resources/GoogleService-Info-Prod.plist\"\nelse\n${PODS_ROOT}/FirebaseCrashlytics/run -gsp \"${PROJECT_DIR}/Sabbath\\ School/Resources/GoogleService-Info-Stage.plist\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n${PODS_ROOT}/FirebaseCrashlytics/upload-symbols -gsp \"${PROJECT_DIR}/Sabbath School/Resources/GoogleService-Info-Prod.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nelse\n${PODS_ROOT}/FirebaseCrashlytics/upload-symbols -gsp \"${PROJECT_DIR}/Sabbath School/Resources/GoogleService-Info-Stage.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1534,6 +1559,7 @@
 				7A280FF81EDD0246003C7458 /* LanguageProtocols.swift in Sources */,
 				7A280FCC1EDA0F9D003C7458 /* LoginController.swift in Sources */,
 				7A280FDD1EDCB936003C7458 /* QuarterlyPresenter.swift in Sources */,
+				FE420255265D93840061C589 /* LanguageView.swift in Sources */,
 				7A280F7A1ED7CF2C003C7458 /* LoginNode.swift in Sources */,
 				7A3BCE3C1EE29605003EC12B /* Button.swift in Sources */,
 				7AC26AFD1EE5EBDE003F946C /* QuarterlyLanguage.swift in Sources */,

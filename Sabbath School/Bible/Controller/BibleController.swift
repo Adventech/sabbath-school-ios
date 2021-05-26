@@ -46,8 +46,6 @@ class BibleController: ASDKViewController<ASDisplayNode> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
         let theme = currentTheme()
         self.view.backgroundColor = theme.backgroundColor
         setTranslucentNavigation(color: theme.navBarColor, tintColor: theme.navBarTextColor, titleColor: theme.navBarTextColor)
@@ -101,7 +99,11 @@ class BibleController: ASDKViewController<ASDisplayNode> {
 
         let menu = BibleVersionController(withItems: menuitems)
         menu.delegate = self
-        menu.preferredContentSize = CGSize(width: view.window!.frame.width, height: CGFloat((self.read?.bible)!.count) * MenuItem.height)
+        var size = CGSize(width: view.window!.frame.width*0.8, height: CGFloat((self.read?.bible)!.count) * MenuItem.height)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            size.width = round(node.frame.width*0.3)
+        }
+        menu.preferredContentSize = size
         menu.transitioningDelegate = animator
         menu.modalPresentationStyle = .custom
         present(menu, animated: true, completion: nil)

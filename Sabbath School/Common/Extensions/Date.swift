@@ -42,4 +42,12 @@ extension Date {
         format.calendar = Calendar.ReferenceType.current
         return format.string(from: self)
     }
+    
+    func stringReadDate() -> String {
+        let format = DateFormatter()
+        format.dateFormat = "EEEE, MMMM dd"
+        format.locale = Locale.ReferenceType.current
+        format.calendar = Calendar.ReferenceType.current
+        return format.string(from: self)
+    }
 }

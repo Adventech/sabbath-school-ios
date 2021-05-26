@@ -41,17 +41,20 @@ class ReadController: ThemeController {
 
     var shouldHideStatusBar = false
     var lastContentOffset: CGFloat = 0
+    var lastPage: Int?
+    var isTransitionInProgress: Bool = false
 
     var menuItems = [UIMenuItem]()
-    
-    var isLandscape: Bool = false
 
     override init() {
         super.init(node: ASPagerNode())
         collectionNode.backgroundColor = .baseBackgroundLogin
         collectionNode.setDataSource(self)
         collectionNode.delegate = self
-        collectionNode.allowsAutomaticInsetsAdjustment = false
+        collectionNode.allowsAutomaticInsetsAdjustment = true
+        collectionNode.autoresizesSubviews = true
+        collectionNode.automaticallyRelayoutOnLayoutMarginsChanges = true
+        collectionNode.automaticallyRelayoutOnSafeAreaChanges = true
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -63,7 +66,6 @@ class ReadController: ThemeController {
         setBackButton()
         presenter?.configure()
         setTransparentNavigation()
-        isLandscape = UIDevice.current.orientation.isLandscape
 
         for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
             guard previewingContext == nil else { continue }
@@ -191,15 +193,16 @@ class ReadController: ThemeController {
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        let currentPageIndex = collectionNode.currentPageIndex
+        self.isTransitionInProgress = true
         super.viewWillTransition(to: size, with: coordinator)
-        
-        if (isLandscape != UIDevice.current.orientation.isLandscape) {
-            isLandscape = UIDevice.current.orientation.isLandscape
-        } else {
-            collectionNode.frame.size = size
-            collectionNode.relayoutItems()
-            collectionNode.scrollToPage(at: currentPageIndex, animated: true)
+        collectionNode.frame.size = size
+        collectionNode.relayoutItems()
+        collectionNode.waitUntilAllUpdatesAreProcessed()
+        collectionNode.reloadData()
+    
+        DispatchQueue.main.async {
+            self.collectionNode.scrollToPage(at: self.lastPage!, animated: false)
+            self.isTransitionInProgress = false
         }
     }
 }
@@ -224,6 +227,7 @@ extension ReadController: ReadControllerProtocol {
         for (readIndex, read) in reads.enumerated().prefix(7) where cal.compare(today, to: read.date, toGranularity: .day) == .orderedSame {
             DispatchQueue.main.async {
                 self.collectionNode.scrollToPage(at: readIndex, animated: false)
+                self.lastPage = readIndex
             }
         }
     }
@@ -256,6 +260,11 @@ extension ReadController: ASPagerDataSource {
 }
 
 extension ReadController: ASCollectionDelegate {
+    func collectionNode(_ collectionNode: ASCollectionNode, willDisplayItemWith node: ASCellNode) {
+        if !isTransitionInProgress {
+            lastPage = self.collectionNode.indexOfPage(with: node)
+        }
+    }
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         scrollBehavior()
     }
@@ -271,6 +280,10 @@ extension ReadController: ReadViewOutputProtocol {
 
     func didTapShare() {
         (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.shareText()
+    }
+    
+    func didTapLookup() {
+        (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.lookupText()
     }
 
     func didTapClearHighlight() {
@@ -312,16 +325,25 @@ extension ReadController: ReadViewOutputProtocol {
     }
 
     func didReceiveShare(text: String) {
-        let objectsToShare = [text, "https://adventech.io".localized()]
+        let objectsToShare = [text]
         let activityController = UIActivityViewController(
             activityItems: objectsToShare,
             applicationActivities: nil)
 
-        activityController.popoverPresentationController?.sourceRect = view.frame
-        activityController.popoverPresentationController?.sourceView = view
+        activityController.popoverPresentationController?.sourceRect = self.view.frame
+        activityController.popoverPresentationController?.sourceView = self.view
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+            activityController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.maxY, width: 0, height: 0)
+        }
         activityController.popoverPresentationController?.permittedArrowDirections = .any
 
-        present(activityController, animated: true, completion: nil)
+        self.present(activityController, animated: true, completion: nil)
+    }
+    
+    func didReceiveLookup(text: String) {
+        DispatchQueue.main.async {
+            self.presenter?.presentDictionary(word: text)
+        }
     }
 
     func didTapExternalUrl(url: URL) {

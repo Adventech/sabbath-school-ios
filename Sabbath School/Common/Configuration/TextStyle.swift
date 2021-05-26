@@ -150,6 +150,22 @@ struct TextStyles {
         ]
         return NSAttributedString(string: string, attributes: attributes)
     }
+    
+    static func languageSearchStyle() -> [String: Any] {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.titleColor,
+            .font: R.font.latoRegular(size: 17)!
+        ]
+        return self.convertTypingAttribute(attributes)
+    }
+    
+    static func languageSearchPlaceholderStyle(string: String) -> NSAttributedString {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.baseGray2,
+            .font: R.font.latoRegular(size: 17)!
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
 
     static func languageSubtitleStyle(string: String) -> NSAttributedString {
         let attributes: [NSAttributedString.Key: Any] = [
@@ -322,5 +338,16 @@ struct TextStyles {
             .font: R.font.latoBold(size: 13)!
         ]
         return NSAttributedString(string: string.uppercased(), attributes: attributes)
+    }
+    
+    static func convertTypingAttribute(_ attributes: [NSAttributedString.Key: Any]) -> [String: Any] {
+        var typingAttribute: [String: Any] = [:]
+        
+        for key in attributes.keys {
+            guard let attr = attributes[key] else { continue }
+            typingAttribute[key.rawValue] = attr
+        }
+        
+        return typingAttribute
     }
 }

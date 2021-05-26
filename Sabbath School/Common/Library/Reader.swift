@@ -125,12 +125,14 @@ protocol ReaderOutputProtocol: class {
     func didTapHighlight(color: String)
     func didTapCopy()
     func didTapShare()
+    func didTapLookup()
     func didLoadContent(content: String)
     func didClickVerse(verse: String)
     func didReceiveHighlights(highlights: String)
     func didReceiveComment(comment: String, elementId: String)
     func didReceiveCopy(text: String)
     func didReceiveShare(text: String)
+    func didReceiveLookup(text: String)
     func didTapExternalUrl(url: URL)
 }
 
@@ -140,23 +142,23 @@ open class Reader: UIWebView {
     var contextMenuEnabled = false
 
     func createContextMenu() {
-        let highlightGreen = UIMenuItem(title: "*", image: R.image.iconHighlightGreen()) { [weak self] _ in
+        let highlightGreen = UIMenuItem(title: "Green", image: R.image.iconHighlightGreen()) { [weak self] _ in
             self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.green.rawValue)
         }
 
-        let highlightBlue = UIMenuItem(title: "*", image: R.image.iconHighlightBlue()) { [weak self] _ in
+        let highlightBlue = UIMenuItem(title: "Blue", image: R.image.iconHighlightBlue()) { [weak self] _ in
             self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.blue.rawValue)
         }
 
-        let highlightYellow = UIMenuItem(title: "*", image: R.image.iconHighlightYellow()) { [weak self] _ in
+        let highlightYellow = UIMenuItem(title: "Yellow", image: R.image.iconHighlightYellow()) { [weak self] _ in
             self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.yellow.rawValue)
         }
 
-        let highlightOrange = UIMenuItem(title: "*", image: R.image.iconHighlightOrange()) { [weak self] _ in
+        let highlightOrange = UIMenuItem(title: "Orange", image: R.image.iconHighlightOrange()) { [weak self] _ in
             self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.orange.rawValue)
         }
 
-        let clearHighlight = UIMenuItem(title: "*", image: R.image.iconHighlightClear()) { [weak self] _ in
+        let clearHighlight = UIMenuItem(title: "Clear", image: R.image.iconHighlightClear()) { [weak self] _ in
             self?.readerViewDelegate?.didTapClearHighlight()
         }
 
@@ -167,7 +169,12 @@ open class Reader: UIWebView {
         let share = UIMenuItem(title: "Share".localized()) { [weak self] _ in
             self?.readerViewDelegate?.didTapShare()
         }
-        UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, share]
+        
+        let lookup = UIMenuItem(title: "Look Up".localized()) { [weak self] _ in
+            self?.readerViewDelegate?.didTapLookup()
+        }
+        
+        UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, lookup, share]
     }
 
     func setupContextMenu() {
@@ -176,7 +183,7 @@ open class Reader: UIWebView {
     }
 
     func showContextMenu() {
-        let rect = NSCoder.cgRect(for: "{{-1000, -1000}, {-1000, -10000}}")
+        let rect = NSCoder.cgRect(for: "{{-1000, -1000}, {-1000, -1000}}")
         UIMenuController.shared.setTargetRect(rect, in: self)
         UIMenuController.shared.setMenuVisible(true, animated: false)
     }
@@ -198,7 +205,13 @@ open class Reader: UIWebView {
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
-
+    
+    func lookupText() {
+        self.stringByEvaluatingJavaScript(from: "ssReader.search()")
+        self.isUserInteractionEnabled = false
+        self.isUserInteractionEnabled = true
+    }
+    
     func clearHighlight() {
         self.stringByEvaluatingJavaScript(from: "ssReader.unHighlightSelection()")
         self.isUserInteractionEnabled = false
@@ -259,6 +272,11 @@ open class Reader: UIWebView {
 
         if let text = url.valueForParameter(key: "share") {
             self.readerViewDelegate?.didReceiveShare(text: text)
+            return false
+        }
+        
+        if let text = url.valueForParameter(key: "search") {
+            self.readerViewDelegate?.didReceiveLookup(text: text)
             return false
         }
 

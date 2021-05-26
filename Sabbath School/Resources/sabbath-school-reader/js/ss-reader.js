@@ -12,25 +12,38 @@ $(function(){
 
       this.highlighter = rangy.createHighlighter();
 
-      this.highlighter.addClassApplier(rangy.createClassApplier("highlight_orange", {
-        ignoreWhiteSpace: true,
-        tagNames: ["span", "a"]
-      }));
+      this.appliers = {
+        "orange": rangy.createClassApplier("highlight_orange", {
+          ignoreWhiteSpace: true,
+          tagNames: ["span", "a"]
+        }),
 
-      this.highlighter.addClassApplier(rangy.createClassApplier("highlight_yellow", {
-        ignoreWhiteSpace: true,
-        tagNames: ["span", "a"]
-      }));
+        "yellow": rangy.createClassApplier("highlight_yellow", {
+          ignoreWhiteSpace: true,
+          tagNames: ["span", "a"]
+        }),
 
-      this.highlighter.addClassApplier(rangy.createClassApplier("highlight_green", {
-        ignoreWhiteSpace: true,
-        tagNames: ["span", "a"]
-      }));
+        "green": rangy.createClassApplier("highlight_green", {
+          ignoreWhiteSpace: true,
+          tagNames: ["span", "a"]
+        }),
 
-      this.highlighter.addClassApplier(rangy.createClassApplier("highlight_blue", {
-        ignoreWhiteSpace: true,
-        tagNames: ["span", "a"]
-      }));
+        "blue": rangy.createClassApplier("highlight_blue", {
+          ignoreWhiteSpace: true,
+          tagNames: ["span", "a"]
+        }),
+
+        "underline": rangy.createClassApplier("highlight_underline", {
+          ignoreWhiteSpace: true,
+          tagNames: ["span", "a"]
+        })
+      };
+
+      this.highlighter.addClassApplier(this.appliers["orange"]);
+      this.highlighter.addClassApplier(this.appliers["yellow"]);
+      this.highlighter.addClassApplier(this.appliers["green"]);
+      this.highlighter.addClassApplier(this.appliers["blue"]);
+      this.highlighter.addClassApplier(this.appliers["underline"]);
     },
 
     setFontAndada: function(){
@@ -88,17 +101,41 @@ $(function(){
       $("#"+inputId).trigger("input", ["true"]);
     },
 
-    highlightSelection: function(color){
+    highlightSelection: function(color, highlightId){
       try {
-        this.highlighter.highlightSelection("highlight_" + color);
-        this.clearSelection();
+        if (highlightId !== undefined) {
+          for (var i = 0; i < this.highlighter.highlights.length; i++){
+            var highlight = this.highlighter.highlights[i];
+            if (highlight.id == highlightId){
+              highlight.unapply();
+              highlight.classApplier = this.appliers[color];
+              highlight.apply();
+              break;
+            }
+          }
+        } else {
+          this.highlighter.highlightSelection("highlight_" + color);
+          this.clearSelection();
+        }
         SSBridge.onReceiveHighlights(this.getHighlights());
       } catch(err){}
     },
 
-    unHighlightSelection: function(){
+    unHighlightSelection: function(highlightId){
       try {
-        this.highlighter.unhighlightSelection();
+        if (highlightId !== undefined) {
+          for (var i = 0; i < this.highlighter.highlights.length; i++){
+            var highlight = this.highlighter.highlights[i];
+            if (highlight.id == highlightId){
+              var highlightsToRemove = [];
+              highlightsToRemove.push(highlight);
+              this.highlighter.removeHighlights(highlightsToRemove);
+              break;
+            }
+          }
+        } else {
+          this.highlighter.unhighlightSelection();
+        }
         SSBridge.onReceiveHighlights(this.getHighlights());
       } catch(err){}
     },
@@ -157,6 +194,10 @@ $(function(){
         this.request("?comment=" + comments + "&elementId=" + elementId);
       },
 
+      onHighlightClicked: function(highlightId){
+        this.request("?highlightId=" + highlightId);
+      },
+
       onCopy: function(text){
         this.request("?copy=" + text);
       },
@@ -167,7 +208,10 @@ $(function(){
 
       onSearch: function(text){
         this.request("?search=" + text);
-      }
+      },
+
+      focusin: function(){},
+      focusout: function(){}
     });
     SSBridge.onReady();
   }
@@ -178,6 +222,21 @@ $(function(){
 
   $(".verse").click(function(){
     SSBridge.onVerseClick(ssReader.base64encode($(this).attr("verse")));
+  });
+
+  $("div.ss-donation-appeal-title").click(function (){
+    if ($(".ss-donation-appeal-text").is(":visible")) {
+      $(".ss-donation-appeal-title").removeClass("ss-donation-appeal-title-expanded");
+      $(".ss-donation-appeal-text").hide();
+    } else {
+      $(".ss-donation-appeal-title").addClass("ss-donation-appeal-title-expanded");
+      $(".ss-donation-appeal-text").show();
+    }
+  });
+
+  $(document).on('click', 'span.highlight_blue, span.highlight_orange, span.highlight_yellow, span.highlight_green, span.highlight_underline', function(){
+    var selectedHighlight = ssReader.highlighter.getHighlightForElement(this);
+    SSBridge.onHighlightClicked(parseInt(selectedHighlight.id));
   });
 
   $("code").each(function(i){
@@ -197,6 +256,10 @@ $(function(){
           );
         }, 1000);
       }
+    }).focusin(function(){
+      SSBridge.focusin();
+    }).focusout(function(){
+      SSBridge.focusout();
     });
     var border = $("<div class='textarea-border' />");
     var container = $("<div class='textarea-container' />");

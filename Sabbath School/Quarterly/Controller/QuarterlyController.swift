@@ -90,14 +90,7 @@ class QuarterlyController: TableController {
     }
 
     @objc func rightAction(sender: UIBarButtonItem) {
-        let buttonView = sender.value(forKey: "view") as! UIView
-        let size = CGSize(width: node.frame.width, height: round(node.frame.height*0.8))
-
-        animator.style = .arrow
-        animator.fromView = buttonView
-        animator.arrowColor = .tintColor
-
-        presenter?.presentLanguageScreen(size: size, transitioningDelegate: animator)
+        presenter?.presentLanguageScreen()
     }
 
     @objc func openButtonAction(sender: OpenButton) {

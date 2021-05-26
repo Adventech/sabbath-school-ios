@@ -24,14 +24,19 @@ import AsyncDisplayKit
 import UIKit
 import Unbox
 
-final class LanguageController: TableController {
+final class LanguageController: ASDKViewController<ASDisplayNode> {
     var presenter: LanguagePresenterProtocol & LanguageInteractorOutputProtocol = LanguagePresenter()
     var dataSource = [QuarterlyLanguage]()
+    var filtered = [QuarterlyLanguage]()
+    var languageView = LanguageView()
+    
+    weak var languageViewNode: ASDisplayNode? { return node as? ASDisplayNode }
 
     override init() {
-        super.init()
-
-        tableNode?.dataSource = self
+        super.init(node: languageView)
+        self.languageView.searchNode.delegate = self
+        self.languageView.tableNode.delegate = self
+        self.languageView.tableNode.dataSource = self
         title = "Languages".localized().uppercased()
     }
 
@@ -41,38 +46,72 @@ final class LanguageController: TableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setCloseButton()
         presenter.configure()
         setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let language = dataSource[indexPath.row]
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        languageView.searchNode.becomeFirstResponder()
+    }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
-        presenter.didSelectLanguage(language: language)
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            self.languageView.tableNode.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.languageView.searchNode.calculatedSize.height, right: 0 )
+        } else {
+            var contentInset: UIEdgeInsets = self.languageView.tableNode.contentInset
+            contentInset.bottom = keyboardViewEndFrame.size.height + self.languageView.searchNode.calculatedSize.height
+            if #available(iOS 11.0, *) {
+                contentInset.bottom = contentInset.bottom - view.safeAreaInsets.bottom
+            }
+            self.languageView.tableNode.contentInset = contentInset
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                self.languageView.tableNode.reloadData()
+                self.languageView.configureStyles()
+            }
+        }
     }
 }
 
 extension LanguageController: LanguageControllerProtocol {
     func showLanguages(languages: [QuarterlyLanguage]) {
         self.dataSource = languages
-        self.tableNode?.reloadData()
-        self.tableNode?.allowsSelection = true
+        self.filtered = self.dataSource
+        self.languageView.tableNode.reloadData()
+    }
+}
+
+extension LanguageController: ASTableDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let language = filtered[indexPath.row]
+        presenter.didSelectLanguage(language: language)
     }
 }
 
 extension LanguageController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let language = dataSource[indexPath.row]
-        let locale = Locale(identifier: language.code)
-        let currentLocale = Locale.current
-        let originalName = locale.localizedString(forLanguageCode: language.code) ?? ""
-        let translatedName = currentLocale.localizedString(forLanguageCode: language.code) ?? ""
-        let savedLanguage = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any]
-
         let cellNodeBlock: () -> ASCellNode = {
+            let language = self.filtered[indexPath.row]
+            
+            let savedLanguage = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any]
+
             let cell = LanguageCellNode(
-                title: originalName.capitalized,
-                subtitle: translatedName.capitalized
+                title: language.name,
+                subtitle: language.translatedName!
             )
 
             if let selectedLanguage = savedLanguage {
@@ -88,6 +127,22 @@ extension LanguageController: ASTableDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return filtered.count
     }
+}
+
+extension LanguageController: ASEditableTextNodeDelegate {
+    func editableTextNodeDidUpdateText(_ editableTextNode: ASEditableTextNode) {
+        let searchText = editableTextNode.textView.text.lowercased()
+        self.filtered = searchText.isEmpty ? self.dataSource : self.dataSource.filter({ $0.name.lowercased().contains(searchText) || ($0.translatedName ?? $0.name).lowercased().contains(searchText) })
+        self.languageView.tableNode.reloadData()
+    }
+    
+    func editableTextNode(_ editableTextNode: ASEditableTextNode, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard text.rangeOfCharacter(from: CharacterSet.newlines) == nil else {
+            return false
+        }
+        return true
+    }
+
 }

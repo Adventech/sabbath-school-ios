@@ -27,6 +27,7 @@ import UIKit
 protocol ReadViewOutputProtocol: class {
     func didTapCopy()
     func didTapShare()
+    func didTapLookup()
     func didTapClearHighlight()
     func didTapHighlight(color: String)
     func didClickVerse(read: Read, verse: String)
@@ -36,6 +37,7 @@ protocol ReadViewOutputProtocol: class {
     func didReceiveComment(readComments: ReadComments)
     func didReceiveCopy(text: String)
     func didReceiveShare(text: String)
+    func didReceiveLookup(text: String)
     func didTapExternalUrl(url: URL)
 }
 
@@ -77,7 +79,7 @@ class ReadView: ASCellNode {
 
         readDateNode.alpha = 1
         readDateNode.maximumNumberOfLines = 1
-        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.toString(.custom("EEEE, MMMM dd")))
+        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.stringReadDate())
         
         automaticallyManagesSubnodes = true
     }
@@ -99,18 +101,14 @@ class ReadView: ASCellNode {
                 self.coverOverlayNode.frame.size = CGSize(width: coverOverlayNode.calculatedSize.width, height: parallaxCoverNodeHeight)
                 self.coverNode.frame.size = CGSize(width: coverNode.calculatedSize.width, height: parallaxCoverNodeHeight)
 
-                self.coverTitleNode.alpha = 1-((self.parallaxCoverNodeHeight - self.coverTitleNode.frame.origin.y) - 101)/self.coverTitleNode.frame.origin.y*1.6
+                self.coverTitleNode.alpha = 1-((self.parallaxCoverNodeHeight - self.coverTitleNode.frame.origin.y) - 200)/self.coverTitleNode.frame.origin.y*1.6
                 self.coverTitleNode.frame.origin.y += (parallaxCoverNodeHeight - self.initialCoverNodeHeight)
 
                 self.readDateNode.alpha = self.coverTitleNode.alpha
                 self.readDateNode.frame.origin.y += (parallaxCoverNodeHeight - self.initialCoverNodeHeight)
             }
         }
-        
-        initialCoverNodeHeight = coverNode.calculatedSize.height
-        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
     }
-
     override func didLoad() {
         super.didLoad()
 
@@ -124,9 +122,6 @@ class ReadView: ASCellNode {
         webView.scrollView.delegate = self
         webView.delegate = self
         webView.alpha = 0
-        if #available(iOS 11.0, *) {
-            webView.scrollView.contentInsetAdjustmentBehavior = .never
-        }
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
         webView.readerViewDelegate = self
         
@@ -209,6 +204,10 @@ extension ReadView: ReaderOutputProtocol {
     func didTapShare() {
         self.delegate?.didTapShare()
     }
+    
+    func didTapLookup() {
+        self.delegate?.didTapLookup()
+    }
 
     func didTapHighlight(color: String) {
         self.delegate?.didTapHighlight(color: color)
@@ -244,6 +243,10 @@ extension ReadView: ReaderOutputProtocol {
 
     func didReceiveShare(text: String) {
         self.delegate?.didReceiveShare(text: text)
+    }
+    
+    func didReceiveLookup(text: String) {
+        self.delegate?.didReceiveLookup(text: text)
     }
 
     func didTapExternalUrl(url: URL) {

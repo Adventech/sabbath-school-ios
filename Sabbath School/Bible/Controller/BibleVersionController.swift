@@ -47,7 +47,7 @@ class BibleVersionController: ASDKViewController<ASDisplayNode>, ASTableDataSour
         super.init(node: ASTableNode())
         tableNode.delegate = self
         tableNode.dataSource = self
-        tableNode.view.separatorColor = UIColor.baseSeparator
+        tableNode.view.separatorColor = UIColor.separatorColor()
         tableNode.view.isScrollEnabled = false
         tableNode.view.backgroundColor = currentTheme().backgroundColor
         self.items = items

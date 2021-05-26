@@ -25,11 +25,17 @@ import Unbox
 struct QuarterlyLanguage {
     let code: String
     let name: String
+    var translatedName: String? = ""
 }
 
 extension QuarterlyLanguage: Unboxable {
     init(unboxer: Unboxer) throws {
-        code = try unboxer.unbox(key: "code")
-        name = try unboxer.unbox(key: "name")
+        let code: String = try unboxer.unbox(key: "code")
+        let name: String = try unboxer.unbox(key: "name")
+        let locale = Locale(identifier: code)
+        let currentLocale = Locale.current
+        self.code = code
+        self.name = locale.localizedString(forLanguageCode: code)?.capitalized ?? name.capitalized
+        self.translatedName = currentLocale.localizedString(forLanguageCode: code)?.capitalized ?? name.capitalized
     }
 }
