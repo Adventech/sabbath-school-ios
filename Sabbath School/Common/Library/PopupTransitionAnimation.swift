@@ -58,6 +58,7 @@ class PopupTransitionAnimator: NSObject, UIGestureRecognizerDelegate {
     var arrowHeight: CGFloat = 8
     var arrowColor: UIColor?
     var contentScrollView: UIScrollView?
+    var selfTransitionContext: UIViewControllerContextTransitioning?
 
     fileprivate var arrowView: ArrowView!
     fileprivate var modalController: UIViewController!
@@ -253,17 +254,69 @@ extension PopupTransitionAnimator: UIViewControllerTransitioningDelegate {
 }
 
 extension PopupTransitionAnimator: UIViewControllerAnimatedTransitioning {
+    func redrawWrapper(size: CGSize, containerSize: CGSize) {
+        var positionY: CGFloat!
+        var positionX: CGFloat!
+//        self.containerView.contentMode = .redraw
+//
+        self.contentSize = size
+        
+        self.containerView.frame = CGRect(x: 0, y: 0, width: containerSize.width, height: containerSize.height)
+        
+        
+        let overlayAnimation = POPBasicAnimation(propertyNamed: kPOPLayerBackgroundColor)
+        overlayAnimation?.toValue = overlayColor
+        containerView.layer.pop_add(overlayAnimation, forKey: "overlayAnimation")
+        
+////
+//        self.containerView.layer.setNeedsLayout()
+//        self.containerView.layer.setNeedsDisplay()
+//        self.containerView.setNeedsLayout()
+//        self.containerView.setNeedsDisplay()
+        
+        
+        
+        positionX = targetRect.origin.x + (targetRect.size.width/2)
+        
+        if style == .arrow {
+            self.targetRect = fromView.convert(fromView.bounds, to: containerView)
+            if presentFromTop {
+                positionY = targetRect.origin.y + targetRect.height + spaceFromRect + arrowHeight
+            } else {
+                positionY = targetRect.origin.y - contentSize.height - spaceFromRect - arrowHeight
+            }
+            let arrowYpos = presentFromTop ? -arrowHeight+1 : contentSize.height-1
+            arrowView.frame = CGRect(x: positionX-(arrowWidth/2), y: arrowYpos, width: arrowWidth, height: arrowHeight)
+        }
+        
+        if style == .square {
+            positionY = containerView.center.y - (contentSize.height/2)
+            positionX = containerView.center.x
+        }
+        
+        
+        wrapperView.frame = CGRect(x: bestXPosition(), y: positionY, width: contentSize.width, height: contentSize.height)
+        modalController.view.bounds = CGRect(x: 0, y: 0, width: wrapperView.frame.width, height: wrapperView.frame.height)
+        
+        print("SSDEBUG", "set containerView", containerView.frame)
+        print("SSDEBUG", "set wrapperView", wrapperView.frame)
+        print("SSDEBUG", "set contentSize", contentSize)
+    }
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        self.selfTransitionContext = transitionContext
         let fromController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
         let toController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
         guard let toView = toController.view else { return }
         containerView = transitionContext.containerView
         presentFromTop = targetRect.origin.y < containerView.bounds.height/2
         contentSize = toController.preferredContentSize
+        
+        
 
         let isUnwinding = toController.presentedViewController == fromController
         let isPresenting = !isUnwinding
@@ -305,6 +358,10 @@ extension PopupTransitionAnimator: UIViewControllerAnimatedTransitioning {
             toView.clipsToBounds = true
             wrapperView.addSubview(toView)
             containerView.addSubview(wrapperView)
+            
+            print("SSDEBUG", "containerView", containerView.frame)
+            print("SSDEBUG", "wrapperView", wrapperView.frame)
+            print("SSDEBUG", "contentSize", contentSize)
 
             initialOrigin = wrapperView.frame
 
@@ -336,9 +393,9 @@ extension PopupTransitionAnimator: UIViewControllerAnimatedTransitioning {
             }
 
             // Container
-            let overlayAnimation = POPBasicAnimation(propertyNamed: kPOPLayerBackgroundColor)
-            overlayAnimation?.toValue = overlayColor
-            containerView.layer.pop_add(overlayAnimation, forKey: "overlayAnimation")
+//            let overlayAnimation = POPBasicAnimation(propertyNamed: kPOPLayerBackgroundColor)
+//            overlayAnimation?.toValue = overlayColor
+//            containerView.layer.pop_add(overlayAnimation, forKey: "overlayAnimation")
 
             // Modal Animations
             let alphaAnimation = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)

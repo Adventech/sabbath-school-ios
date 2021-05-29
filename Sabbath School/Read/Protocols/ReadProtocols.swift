@@ -30,8 +30,8 @@ protocol ReadPresenterProtocol: class {
     var lessonIndex: String? { get set }
 
     func configure()
-    func presentBibleScreen(read: Read, verse: String, size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate)
-    func presentReadOptionsScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate)
+    func presentBibleScreen(read: Read, verse: String, size: CGSize)
+    func presentReadOptionsScreen(size: CGSize, sourceView: UIBarButtonItem)
     func presentDictionary(word: String)
 }
 

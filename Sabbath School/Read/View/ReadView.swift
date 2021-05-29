@@ -39,6 +39,8 @@ protocol ReadViewOutputProtocol: class {
     func didReceiveShare(text: String)
     func didReceiveLookup(text: String)
     func didTapExternalUrl(url: URL)
+    func didReceiveContextMenuRect(rect: DOMRect)
+    func didReceiveContextMenuDismiss()
 }
 
 class ReadView: ASCellNode {
@@ -124,7 +126,11 @@ class ReadView: ASCellNode {
         webView.alpha = 0
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
         webView.readerViewDelegate = self
-        
+        if #available(iOS 13.0, *) {
+            webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
+        } else if #available(iOS 11.0, *){
+            webView.scrollView.contentInsetAdjustmentBehavior = .never
+        }
         webView.loadContent(content: read!.content)
     }
 
@@ -170,7 +176,7 @@ extension ReadView: UIWebViewDelegate {
     }
 
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        (webView as! Reader).contextMenuEnabled = true
+        (webView as! Reader).contextMenuEnabled = false
 
         if !webView.isLoading {
             self.delegate?.didLoadWebView(webView: webView)
@@ -251,5 +257,13 @@ extension ReadView: ReaderOutputProtocol {
 
     func didTapExternalUrl(url: URL) {
         self.delegate?.didTapExternalUrl(url: url)
+    }
+    
+    func didReceiveContextMenuRect(rect: DOMRect) {
+        self.delegate?.didReceiveContextMenuRect(rect: rect)
+    }
+    
+    func didReceiveContextMenuDismiss() {
+        self.delegate?.didReceiveContextMenuDismiss()
     }
 }

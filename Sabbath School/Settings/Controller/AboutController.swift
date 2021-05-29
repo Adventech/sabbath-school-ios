@@ -111,3 +111,9 @@ extension AboutController: ASCollectionDataSource {
         return 1
     }
 }
+
+extension AboutController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}

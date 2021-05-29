@@ -23,6 +23,10 @@
 import MenuItemKit
 import UIKit
 
+struct DOMRect: Codable {
+    let x, y, width, height, top, right, left, bottom: CGFloat
+}
+
 struct ReaderStyle {
     enum Theme: String {
         case light
@@ -134,6 +138,8 @@ protocol ReaderOutputProtocol: class {
     func didReceiveShare(text: String)
     func didReceiveLookup(text: String)
     func didTapExternalUrl(url: URL)
+    func didReceiveContextMenuRect(rect: DOMRect)
+    func didReceiveContextMenuDismiss()
 }
 
 open class Reader: UIWebView {
@@ -178,8 +184,8 @@ open class Reader: UIWebView {
     }
 
     func setupContextMenu() {
-        createContextMenu()
-        showContextMenu()
+        // createContextMenu()
+        // showContextMenu()
     }
 
     func showContextMenu() {
@@ -219,6 +225,8 @@ open class Reader: UIWebView {
     }
 
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        self.stringByEvaluatingJavaScript(from: "ssReader.showContextMenu()")
+        return false
         if !contextMenuEnabled { return super.canPerformAction(action, withSender: sender) }
         return false
     }
@@ -226,7 +234,7 @@ open class Reader: UIWebView {
     func loadContent(content: String) {
         var indexPath = Bundle.main.path(forResource: "index", ofType: "html")
 
-        let exists = FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
+        let exists = false // FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
 
         if exists {
             indexPath = Constants.Path.readerBundle.path
@@ -296,6 +304,23 @@ open class Reader: UIWebView {
                 return false
             }
 
+            return false
+        }
+
+        if let rect = url.valueForParameter(key: "contextMenu"), let decodedRect = rect.base64Decode() {
+            if (decodedRect == "dismiss") {
+                self.readerViewDelegate?.didReceiveContextMenuDismiss()
+                return false
+            }
+            do {
+                let data = decodedRect.data(using: .utf8)!
+                let json = try JSONDecoder().decode(DOMRect.self, from: data)
+                self.readerViewDelegate?.didReceiveContextMenuRect(rect: json)
+            } catch let error as NSError {
+                print("SSDEBUG", rect)
+                print("SSDEBUG", decodedRect)
+                print("SSDEBUG", error)
+            }
             return false
         }
 

@@ -168,12 +168,15 @@ PODS:
   - pop (1.0.12)
   - PromisesObjC (1.2.12)
   - Protobuf (3.14.0)
+  - QuickLayout (3.0.0)
   - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
   - Shimmer (1.0.2)
   - SimulatorStatusMagic (2.5)
   - SwiftDate (6.3.1)
+  - SwiftEntryKit (1.2.7):
+    - QuickLayout (= 3.0.0)
   - SwiftLint (0.43.1)
   - SwiftMessages (9.0.1):
     - SwiftMessages/App (= 9.0.1)
@@ -222,6 +225,7 @@ DEPENDENCIES:
   - Shimmer
   - SimulatorStatusMagic
   - SwiftDate
+  - SwiftEntryKit
   - SwiftLint
   - SwiftMessages
   - Texture
@@ -267,11 +271,13 @@ SPEC REPOS:
     - pop
     - PromisesObjC
     - Protobuf
+    - QuickLayout
     - R.swift
     - R.swift.Library
     - Shimmer
     - SimulatorStatusMagic
     - SwiftDate
+    - SwiftEntryKit
     - SwiftLint
     - SwiftMessages
     - Texture
@@ -316,11 +322,13 @@ SPEC CHECKSUMS:
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Protobuf: 0cde852566359049847168e51bd1c690e0f70056
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimulatorStatusMagic: 71cfcea1df017e8f0fa8e48bc182d86976376f84
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
+  SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   SwiftMessages: b71f53eb919887c0273bf43cbc002bd4f0cfb3d6
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
@@ -328,6 +336,6 @@ SPEC CHECKSUMS:
   Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 5cb0f5564d8b1fd409b5b992d55830cb32fc5f96
+PODFILE CHECKSUM: 902cbd726be0ad459b1753f1a165b1065f180bf4
 
 COCOAPODS: 1.10.0

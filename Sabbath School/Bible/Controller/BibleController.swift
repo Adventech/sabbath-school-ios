@@ -21,12 +21,12 @@
  */
 
 import AsyncDisplayKit
+import SwiftEntryKit
 
 class BibleController: ASDKViewController<ASDisplayNode> {
     var presenter: BiblePresenterProtocol?
     var bibleView = BibleView()
     var versionButton: UIButton!
-    let animator = PopupTransitionAnimator()
 
     var read: Read?
     var verse: String?
@@ -47,13 +47,27 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         super.viewDidLoad()
         
         let theme = currentTheme()
+        setTranslucentNavigation(false, color: theme.navBarColor, tintColor: theme.navBarTextColor, titleColor: theme.navBarTextColor)
+        
+        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.clipsToBounds = true
+        
+        let path = UIBezierPath(roundedRect: (navigationController?.navigationBar.bounds)!, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 6, height: 6))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        self.navigationController?.navigationBar.layer.mask = maskLayer
+        
+        self.view.layer.cornerRadius = 6
+        self.view.clipsToBounds = true
         self.view.backgroundColor = theme.backgroundColor
-        setTranslucentNavigation(color: theme.navBarColor, tintColor: theme.navBarTextColor, titleColor: theme.navBarTextColor)
-
+        self.bibleView.webView.isOpaque = false
+        
         let closeButton = UIBarButtonItem(image: R.image.iconNavbarClose(), style: .done, target: self, action: #selector(closeAction(sender:)))
         closeButton.accessibilityIdentifier = "dismissBibleVerse"
         navigationItem.leftBarButtonItem = closeButton
 
+        print("SSDEBUG", presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? "")
+        
         let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? ""
 
         versionButton = UIButton(type: .custom)
@@ -77,7 +91,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
     }
 
     @objc func closeAction(sender: UIBarButtonItem) {
-        dismiss()
+        SwiftEntryKit.dismiss()
     }
 
     @objc func changeVersionAction(sender: UIBarButtonItem) {
@@ -94,18 +108,20 @@ class BibleController: ASDKViewController<ASDisplayNode> {
             menuitems.append(menuItem)
         }
 
-        animator.style = .arrow
-        animator.fromView = versionButton
-
         let menu = BibleVersionController(withItems: menuitems)
         menu.delegate = self
-        var size = CGSize(width: view.window!.frame.width*0.8, height: CGFloat((self.read?.bible)!.count) * MenuItem.height)
+        var size = CGSize(width: view.window!.frame.width*0.8, height: CGFloat((self.read?.bible)!.count) * MenuItem.height + CGFloat((self.read?.bible)!.count))
         if UIDevice.current.userInterfaceIdiom == .pad {
             size.width = round(node.frame.width*0.3)
         }
         menu.preferredContentSize = size
-        menu.transitioningDelegate = animator
-        menu.modalPresentationStyle = .custom
+        menu.modalPresentationStyle = .popover
+        menu.modalTransitionStyle = .crossDissolve
+        menu.popoverPresentationController?.sourceView = versionButton!
+        menu.popoverPresentationController?.sourceRect = CGRect.init(x: 0, y: 0, width: versionButton.frame.size.width, height: versionButton.frame.size.height)
+        menu.popoverPresentationController?.delegate = menu
+        menu.popoverPresentationController?.backgroundColor = .baseBackground
+        menu.popoverPresentationController?.permittedArrowDirections = .up
         present(menu, animated: true, completion: nil)
     }
 }

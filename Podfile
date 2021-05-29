@@ -20,6 +20,7 @@ target 'Sabbath School' do
   pod 'pop'
   pod 'R.swift'
   pod 'Shimmer'
+  pod 'SwiftEntryKit'
   pod 'SwiftMessages'
   pod 'SwiftDate'
   pod 'Texture'

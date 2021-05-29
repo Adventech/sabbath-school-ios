@@ -31,9 +31,8 @@ class BibleVersionView: ASCellNode {
         super.init()
 
         self.isSelected = isSelected
-
         titleNode.attributedText = TextStyles.languageTitleStyle(string: title)
-        selectedNode.image = R.image.iconCheckmark()?.imageTintColor(.tintColor)
+        selectedNode.image = R.image.iconCheckmark()?.imageTintColor(.readOptionsSelectedButtonColor)
         automaticallyManagesSubnodes = true
     }
 
@@ -48,7 +47,9 @@ class BibleVersionView: ASCellNode {
 
         var hSpecChildren: [ASLayoutElement] = [vSpec]
 
-        if isSelected { hSpecChildren.append(selectedNode) }
+        if isSelected {
+            hSpecChildren.append(selectedNode)
+        }
 
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,

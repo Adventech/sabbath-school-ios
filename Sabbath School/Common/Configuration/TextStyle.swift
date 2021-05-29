@@ -305,6 +305,42 @@ struct TextStyles {
 
         return NSAttributedString(string: string, attributes: attributes)
     }
+    
+    static func readOptionsButtonStyle() -> [NSAttributedString.Key: Any] {
+        return [
+            .font: R.font.latoRegular(size: 16)!,
+            .foregroundColor: UIColor.readOptionsButtonColor
+        ]
+    }
+    
+    static func readOptionsSelectedButtonStyle() -> [NSAttributedString.Key: Any] {
+        return [
+            .font: R.font.latoRegular(size: 16)!,
+            .foregroundColor: UIColor.readOptionsSelectedButtonColor
+        ]
+    }
+    
+    static func readOptionsFontSizeSmallest(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: R.font.latoRegular(size: 16)!,
+            .foregroundColor: UIColor.readOptionsButtonColor,
+            .paragraphStyle: style
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
+    
+    static func readOptionsFontSizeLargest(string: String) -> NSAttributedString {
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: R.font.latoBold(size: 24)!,
+            .foregroundColor: UIColor.readOptionsButtonColor,
+            .paragraphStyle: style
+        ]
+        return NSAttributedString(string: string, attributes: attributes)
+    }
 
     // MARK: Headers
 

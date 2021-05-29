@@ -48,8 +48,7 @@ class BibleVersionController: ASDKViewController<ASDisplayNode>, ASTableDataSour
         tableNode.delegate = self
         tableNode.dataSource = self
         tableNode.view.separatorColor = UIColor.separatorColor()
-        tableNode.view.isScrollEnabled = false
-        tableNode.view.backgroundColor = currentTheme().backgroundColor
+        tableNode.view.backgroundColor = .baseBackground
         self.items = items
     }
 
@@ -62,7 +61,7 @@ class BibleVersionController: ASDKViewController<ASDisplayNode>, ASTableDataSour
 
         let cellNodeBlock: () -> ASCellNode = {
             let cell = BibleVersionView(title: menuItem.name, isSelected: menuItem.selected ?? false)
-            cell.backgroundColor = currentTheme().backgroundColor
+            cell.backgroundColor = .baseBackground
             return cell
         }
         return cellNodeBlock
@@ -76,5 +75,37 @@ class BibleVersionController: ASDKViewController<ASDisplayNode>, ASTableDataSour
         dismiss {
             self.delegate?.didSelectVersion(versionName: self.items[indexPath.row].name)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func didTapView(_ sender: UITapGestureRecognizer) {
+        print("did tap view", sender)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.tableNode.view.separatorColor = UIColor.separatorColor()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                tableNode.reloadData()
+                self.popoverPresentationController?.backgroundColor = .baseBackground
+            }
+        }
+    }
+}
+
+extension BibleVersionController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

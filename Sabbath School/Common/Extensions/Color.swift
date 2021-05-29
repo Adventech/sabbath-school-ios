@@ -130,9 +130,9 @@ extension UIColor {
     
     static func separatorColor() -> UIColor {
         if getSettingsTheme() == Theme.Dark.rawValue {
-            return .baseGray5
+            return .baseDark
         }
-        return .baseSeparator
+        return .baseGray1
     }
     
     class var titleColor: UIColor {
@@ -182,5 +182,20 @@ extension UIColor {
             return .white
         }
         return .baseBlue
+    }
+    class var readOptionsButtonColor: UIColor {
+        return .baseGray2
+    }
+    class var readOptionsSelectedButtonColor: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .white
+        }
+        return .tintColor
+    }
+    class var readOptionsTickColor: UIColor {
+        if getSettingsTheme() == Theme.Dark.rawValue {
+            return .baseGray7
+        }
+        return .tintColor
     }
 }

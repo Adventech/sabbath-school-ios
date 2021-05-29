@@ -25,8 +25,6 @@ import SafariServices
 import UIKit
 
 class ReadController: ThemeController {
-    let animator = PopupTransitionAnimator()
-
     var presenter: ReadPresenterProtocol?
     var collectionNode: ASPagerNode { return node as! ASPagerNode }
     
@@ -41,8 +39,11 @@ class ReadController: ThemeController {
 
     var shouldHideStatusBar = false
     var lastContentOffset: CGFloat = 0
+    var initialContentOffset: CGFloat = 0
     var lastPage: Int?
     var isTransitionInProgress: Bool = false
+    
+    var isMenuShown: Bool = false
 
     var menuItems = [UIMenuItem]()
 
@@ -83,6 +84,7 @@ class ReadController: ThemeController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
+        self.isModalInPopover = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -113,14 +115,10 @@ class ReadController: ThemeController {
         var size = CGSize(width: round(node.frame.width)-10, height: 167)
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            size.width = round(node.frame.width*0.5)
+            size.width = round(node.frame.width*0.3)
         }
 
-        animator.style = .arrow
-        animator.fromView = buttonView
-        animator.interactive = false
-
-        presenter?.presentReadOptionsScreen(size: size, transitioningDelegate: animator)
+        presenter?.presentReadOptionsScreen(size: size, sourceView: sender)
     }
 
     func toggleBars() {
@@ -300,13 +298,14 @@ extension ReadController: ReadViewOutputProtocol {
 
     func didClickVerse(read: Read, verse: String) {
         let size = CGSize(width: round(node.frame.width*0.9), height: round(node.frame.height*0.8))
-
-        animator.style = .square
-        presenter?.presentBibleScreen(read: read, verse: verse, size: size, transitioningDelegate: animator)
+        presenter?.presentBibleScreen(read: read, verse: verse, size: size)
         UIMenuController.shared.menuItems = []
     }
 
     func didLoadWebView(webView: UIWebView) {
+        if abs(webView.scrollView.contentOffset.y) > 0 {
+            initialContentOffset = -webView.scrollView.contentOffset.y
+        }
         UIView.animate(withDuration: 0.3) {
             webView.alpha = 1
         }
@@ -352,6 +351,64 @@ extension ReadController: ReadViewOutputProtocol {
         safariVC.modalPresentationStyle = .currentContext
         present(safariVC, animated: true, completion: nil)
     }
+    
+    func didReceiveContextMenuRect(rect: DOMRect) {
+        
+        if isMenuShown {
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
+        }
+        let read = self.reads[0]
+        let versionName = "NKJV"
+        var menuitems = [MenuItem]()
+
+        read.bible.forEach { item in
+            let menuItem = MenuItem(
+                name: item.name,
+                subtitle: nil,
+                image: nil,
+                selected: versionName == item.name
+            )
+            menuitems.append(menuItem)
+        }
+        
+        let menu = BibleVersionController(withItems: [])
+        
+        var size = CGSize(width: 200, height: 60)
+        menu.preferredContentSize = size
+        menu.modalPresentationStyle = .popover
+        
+        let readView = (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView)
+        
+        print("SSDEBUG rect y", rect.y)
+        print("SSDEBUG rect height", rect.height)
+        print("SSDEBUG lastContentOffset", lastContentOffset)
+        print("SSDEBUG initialCoverHeight", readView.initialCoverNodeHeight)
+        print("SSDEBUG scrollView.contentOffset.y", readView.webView.scrollView.contentOffset.y)
+        print("SSDEBUG final", initialContentOffset + readView.webView.scrollView.contentOffset.y + rect.y)
+        
+        menu.popoverPresentationController?.sourceView = readView.webView.scrollView
+        var yPos = initialContentOffset + readView.webView.scrollView.contentOffset.y + rect.y - 10
+        var xPos = rect.x
+        if (rect.height > self.view.frame.size.height*0.7) {
+            yPos = 100
+            xPos = rect.x / 2
+        }
+        
+        menu.popoverPresentationController?.sourceRect = CGRect(x: xPos, y: yPos, width: rect.width, height: rect.height + 10)
+        menu.popoverPresentationController?.delegate = self
+        menu.popoverPresentationController?.backgroundColor = .baseBackground
+        menu.popoverPresentationController?.permittedArrowDirections = [.down, .up]
+        menu.popoverPresentationController?.passthroughViews = [self.collectionNode.view] as! [UIView]
+
+        self.isMenuShown = true
+        present(menu, animated: false, completion: nil)
+    }
+    
+    func didReceiveContextMenuDismiss() {
+        self.presentedViewController?.dismiss(animated: true, completion: { () -> Void in
+            self.isMenuShown = false
+        })
+    }
 }
 
 extension ReadController: ReadOptionsDelegate {
@@ -382,5 +439,27 @@ extension ReadController: BibleControllerOutputProtocol {
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
             webView.createContextMenu()
         }
+    }
+}
+
+extension ReadController: UIPopoverPresentationControllerDelegate {
+    func popoverPresentationControllerDidDismissPopover(_ controller: UIPopoverPresentationController) {
+        print("SSDEBUG", "dismissed")
+        if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
+            //print("SSDEBUG", webView.stringByEvaluatingJavaScript(from: "ssReader.shouldDeselectContextMenu()"))
+//            webView.isUserInteractionEnabled = false
+//            webView.isUserInteractionEnabled = true
+        }
+        
+        
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        self.isMenuShown = false
+        return true
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
     }
 }

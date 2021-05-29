@@ -42,8 +42,8 @@ class ReadOptionsView: ASDisplayNode {
         DiscreteSlider(frame: CGRect(x: 0, y: 0, width: 375, height: 55))
     }
     var fontSizeView: DiscreteSlider { return fontSizeNode.view as! DiscreteSlider }
-    let fontSizeSmallNode = ASImageNode()
-    let fontSizeLargeNode = ASImageNode()
+    let fontSizeSmallNode = ASTextNode()
+    let fontSizeLargeNode = ASTextNode()
 
     let dividerNode1 = ASDisplayNode()
     let dividerNode2 = ASDisplayNode()
@@ -51,31 +51,21 @@ class ReadOptionsView: ASDisplayNode {
     override init() {
         super.init()
 
-        backgroundColor = .white
-
-        setupThemeSegmentControl()
+        configureStyles()
         themeView.addTarget(self, action: #selector(themeValueChanged(_:)), for: UIControl.Event.valueChanged)
-
-        setupTypefaceSegmentControl()
         typefaceView.addTarget(self, action: #selector(typefaceValueChanged(_:)), for: UIControl.Event.valueChanged)
 
         let size = currentSize()
         guard let sizeIndex = size.index else { return }
         fontSizeView.value = CGFloat(sizeIndex)
-        
-
         fontSizeView.tickStyle = .rounded
         fontSizeView.tickCount = 5
         fontSizeView.tickSize = CGSize(width: 8, height: 8)
-
         fontSizeView.thumbStyle = .rounded
         fontSizeView.thumbSize = CGSize(width: 20, height: 20)
         fontSizeView.thumbShadowOffset = CGSize(width: 0, height: 2)
         fontSizeView.thumbShadowRadius = 3
-        fontSizeView.thumbColor = .tintColor
-
         fontSizeView.backgroundColor = UIColor.clear
-        fontSizeView.tintColor = .baseGray1
         fontSizeView.minimumValue = 0
 
         fontSizeView.addTarget(self, action: #selector(fontsizeValueChanged(_:)), for: UIControl.Event.valueChanged)
@@ -83,29 +73,21 @@ class ReadOptionsView: ASDisplayNode {
         for layer in fontSizeView.layer.sublayers! {
             layer.backgroundColor = UIColor.clear.cgColor
         }
+        
+        fontSizeSmallNode.attributedText = TextStyles.readOptionsFontSizeSmallest(string: "Aa".localized())
+        fontSizeLargeNode.attributedText = TextStyles.readOptionsFontSizeLargest(string: "Aa".localized())
 
-        fontSizeSmallNode.image = segmentButtonProvider(text: "Aa".localized(), font: R.font.latoRegular(size: 16)!, selected: false)
-        fontSizeLargeNode.image = segmentButtonProvider(text: "Aa".localized(), font: R.font.latoBold(size: 24)!, selected: false)
-
-        dividerNode1.backgroundColor = .baseGray1
-        dividerNode2.backgroundColor = .baseGray1
-
-        addSubnode(themeNode)
-        addSubnode(typefaceNode)
-        addSubnode(fontSizeNode)
-        addSubnode(fontSizeSmallNode)
-        addSubnode(fontSizeLargeNode)
-        addSubnode(dividerNode1)
-        addSubnode(dividerNode2)
+        automaticallyManagesSubnodes = true
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        themeNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 55)
-        typefaceNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 55)
-        dividerNode1.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 1)
-        dividerNode2.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 1)
-
-        fontSizeNode.style.preferredSize = CGSize(width: constrainedSize.max.width-120, height: 55)
+        themeNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(55))
+        typefaceNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(55))
+        dividerNode1.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(1))
+        dividerNode2.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(1))
+        fontSizeSmallNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(60), height: ASDimensionMake(.auto, 0))
+        fontSizeLargeNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(60), height: ASDimensionMake(.auto, 0))
+        fontSizeNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width-120), height: ASDimensionMake(55))
 
         let sliderSpec = ASStackLayoutSpec(
             direction: .horizontal,
@@ -114,12 +96,19 @@ class ReadOptionsView: ASDisplayNode {
             alignItems: .center,
             children: [fontSizeSmallNode, fontSizeNode, fontSizeLargeNode])
 
-        return ASStackLayoutSpec(
+        let mainLayout = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 0,
             justifyContent: .start,
             alignItems: .center,
             children: [themeNode, dividerNode1, typefaceNode, dividerNode2, sliderSpec])
+        
+        var topMargin: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            topMargin = 10
+        }
+        
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: topMargin, left: 0, bottom: 0, right: 0), child: mainLayout)
     }
 
     override func layout() {
@@ -131,67 +120,70 @@ class ReadOptionsView: ASDisplayNode {
     }
 
     private func setupThemeSegmentControl() {
-        let theme = currentTheme()
-        let lightThemeButton = segmentButtonProvider(text: "Light".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == .light)
-        let sepiaThemeButton = segmentButtonProvider(text: "Sepia".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == .sepia)
-        let darkThemeButton = segmentButtonProvider(text: "Dark".localized(), font: R.font.latoRegular(size: 16)!, selected: theme == .dark)
-
         themeView.removeAllSegments()
-        themeView.insertSegment(with: lightThemeButton, at: 0, animated: false)
-        themeView.insertSegment(with: sepiaThemeButton, at: 1, animated: false)
-        themeView.insertSegment(with: darkThemeButton, at: 2, animated: false)
+        
+        themeView.insertSegment(withTitle: "Light".localized(), at: 0, animated: false)
+        themeView.insertSegment(withTitle: "Sepia".localized(), at: 1, animated: false)
+        themeView.insertSegment(withTitle: "Dark".localized(), at: 2, animated: false)
+        
+        themeView.setTitleTextAttributes(TextStyles.readOptionsButtonStyle(), for: .normal)
+        themeView.setTitleTextAttributes(TextStyles.readOptionsSelectedButtonStyle(), for: .selected)
+        themeView.setTitleTextAttributes(TextStyles.readOptionsSelectedButtonStyle(), for: .highlighted)
+        
+        switch currentTheme() {
+        case .light:
+            themeView.selectedSegmentIndex = 0
+            break
+        case .sepia:
+            themeView.selectedSegmentIndex = 1
+            break
+        case .dark:
+            themeView.selectedSegmentIndex = 2
+            break
+        }
+        
         themeView.removeBorders()
     }
 
     private func setupTypefaceSegmentControl() {
-        let typeface = currentTypeface()
-
-        let andadaTypefaceButton = segmentButtonProvider(text: "Andada".localized(), font: R.font.loraRegular(size: 16)!, selected: typeface == ReaderStyle.Typeface.andada)
-
-        let latoTypefaceButton = segmentButtonProvider(
-            text: "Lato".localized(),
-            font: R.font.latoRegular(size: 16)!,
-            selected: (typeface == .lato) || (typeface != .andada && typeface != .ptSerif && typeface != .ptSans)
-        )
-
-        let ptSerifTypefaceButton = segmentButtonProvider(
-            text: "PT Serif".localized(),
-            font: R.font.ptSerifRegular(size: 16)!,
-            selected: typeface == .ptSerif
-        )
-
-        let ptSansTypefaceButton = segmentButtonProvider(
-            text: "PT Sans".localized(),
-            font: R.font.ptSansRegular(size: 16)!,
-            selected: typeface == .ptSans)
-
         typefaceView.removeAllSegments()
-        typefaceView.insertSegment(with: andadaTypefaceButton, at: 0, animated: false)
-        typefaceView.insertSegment(with: latoTypefaceButton, at: 1, animated: false)
-        typefaceView.insertSegment(with: ptSerifTypefaceButton, at: 2, animated: false)
-        typefaceView.insertSegment(with: ptSansTypefaceButton, at: 3, animated: false)
+
+        typefaceView.insertSegment(withTitle: "Andada".localized(), at: 0, animated: false)
+        typefaceView.insertSegment(withTitle: "Lato".localized(), at: 1, animated: false)
+        typefaceView.insertSegment(withTitle: "PT Serif".localized(), at: 2, animated: false)
+        typefaceView.insertSegment(withTitle: "PT Sans".localized(), at: 3, animated: false)
+        
+        typefaceView.setTitleTextAttributes(TextStyles.readOptionsButtonStyle(), for: .normal)
+        typefaceView.setTitleTextAttributes(TextStyles.readOptionsSelectedButtonStyle(), for: .selected)
+        typefaceView.setTitleTextAttributes(TextStyles.readOptionsSelectedButtonStyle(), for: .highlighted)
+        
+        switch currentTypeface() {
+        case .andada:
+            typefaceView.selectedSegmentIndex = 0
+            break
+        case .lato:
+            typefaceView.selectedSegmentIndex = 1
+            break
+        case .ptSerif:
+            typefaceView.selectedSegmentIndex = 2
+            break
+        case .ptSans:
+            typefaceView.selectedSegmentIndex = 3
+            break
+        }
 
         typefaceView.removeBorders()
         typefaceView.removeDividers()
     }
-
-    func segmentButtonProvider(text: String, font: UIFont, size: CGFloat = 16, selected: Bool = false) -> UIImage {
-        let fontLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
-
-        fontLabel.font = font
-        fontLabel.text = text
-        fontLabel.textAlignment = .center
-
-        fontLabel.textColor = selected ? .tintColor : .baseGray2
-
-        let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: 65, height: 45))
-        wrapperView.addSubview(fontLabel)
-        fontLabel.center = wrapperView.center
-
-        wrapperView.isOpaque = false
-        fontLabel.isOpaque = false
-
-        return UIImage.imageWithView(wrapperView).withRenderingMode(.alwaysOriginal)
+    
+    func configureStyles() {
+        backgroundColor = .baseBackground
+        dividerNode1.backgroundColor = .shimmerringColor
+        dividerNode2.backgroundColor = .shimmerringColor
+        fontSizeView.thumbColor = .readOptionsTickColor
+        fontSizeView.tintColor = .shimmerringColor
+        setupThemeSegmentControl()
+        setupTypefaceSegmentControl()
     }
 
     @objc func themeValueChanged(_ sender: UISegmentedControl) {
@@ -199,7 +191,6 @@ class ReadOptionsView: ASDisplayNode {
         let theme = ReaderStyle.Theme.items[selectedIndex]
 
         UserDefaults.standard.set(theme.rawValue, forKey: Constants.DefaultKey.readingOptionsTheme)
-        setupThemeSegmentControl()
         delegate?.didSelectTheme(theme: theme)
     }
 
@@ -208,7 +199,6 @@ class ReadOptionsView: ASDisplayNode {
         let typeface = ReaderStyle.Typeface.items[selectedIndex]
 
         UserDefaults.standard.set(typeface.rawValue, forKey: Constants.DefaultKey.readingOptionsTypeface)
-        setupTypefaceSegmentControl()
         delegate?.didSelectTypeface(typeface: typeface)
     }
 
@@ -225,9 +215,10 @@ extension UISegmentedControl {
     func removeBorders() {
         setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: .normal, barMetrics: .default)
         setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: .selected, barMetrics: .default)
-        setBackgroundImage(UIImage.imageWithColor(UIColor(white: 0.5, alpha: 0.1)), for: .highlighted, barMetrics: .default)
-        setBackgroundImage(UIImage.imageWithColor(UIColor(white: 0.5, alpha: 0.1)), for: [.highlighted, .selected], barMetrics: .default)
-        setDividerImage(UIImage.imageWithColor(UIColor.baseGray1), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: .highlighted, barMetrics: .default)
+        setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: .highlighted, barMetrics: .default)
+        setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: [.highlighted, .selected], barMetrics: .default)
+        setDividerImage(UIImage.imageWithColor(.shimmerringColor), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     }
 
     func removeDividers() {
