@@ -101,7 +101,6 @@ extension UIViewController: UIGestureRecognizerDelegate {
         let navBar = self.navigationController?.navigationBar
 
         navBar?.setBackgroundImage(UIImage.imageWithColor(color), for: UIBarMetrics.default)
-        //navBar?.showBottomHairline()
         navBar?.isTranslucent = translucent
         navBar?.tintColor = tintColor
         navBar?.titleTextAttributes = [
@@ -113,7 +112,6 @@ extension UIViewController: UIGestureRecognizerDelegate {
     func setNavigationBarColor(color: UIColor) {
         let navBar = self.navigationController?.navigationBar
         navBar?.setBackgroundImage(UIImage.imageWithColor(color), for: UIBarMetrics.default)
-        //navBar?.showBottomHairline()
         navBar?.isTranslucent = false
     }
 

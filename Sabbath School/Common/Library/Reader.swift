@@ -23,10 +23,6 @@
 import MenuItemKit
 import UIKit
 
-struct DOMRect: Codable {
-    let x, y, width, height, top, right, left, bottom: CGFloat
-}
-
 struct ReaderStyle {
     enum Theme: String {
         case light
@@ -230,7 +226,7 @@ open class Reader: UIWebView {
     func loadContent(content: String) {
         var indexPath = Bundle.main.path(forResource: "index", ofType: "html")
 
-        let exists = false //FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
+        let exists = FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
 
         if exists {
             indexPath = Constants.Path.readerBundle.path
