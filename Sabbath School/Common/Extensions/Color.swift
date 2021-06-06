@@ -23,22 +23,22 @@
 import UIKit
 import Hue
 
+infix operator |: AdditionPrecedence
+
 enum Theme: String {
   case Dark
   case Light
 }
 
-extension UIColor {
-    class var baseGreen: UIColor {
-        return UIColor(hex: "#16A365")
-    }
-    
+public extension UIColor {
+    // Base UI color scheme
     class var baseBlue: UIColor {
         return UIColor(hex: "#2E5797")
     }
-
-    class var baseSeparator: UIColor {
-        return UIColor(hex: "#D7D7D7")
+    
+    // TODO: rename to baseGray1
+    class var baseWhite1: UIColor {
+        return UIColor(hex: "#E2E2E5")
     }
 
     class var baseGray1: UIColor {
@@ -56,146 +56,20 @@ extension UIColor {
     class var baseGray4: UIColor {
         return UIColor(hex: "#383838")
     }
-
+    
+    // TODO: consider deprecating
     class var baseGray5: UIColor {
-        return UIColor(hex: "#3B3F3F")
-    }
-
-    class var baseGray6: UIColor {
-        return UIColor(hex: "#FAFAFA")
-    }
-
-    class var baseGray7: UIColor {
-        return UIColor(hex: "#E2E2E5")
+        return UIColor(hex: "#1A1A1A")
     }
 
     class var baseRed: UIColor {
         return UIColor(hex: "#F1706B")
     }
-
-    class var baseGrayToolbar: UIColor {
-        return UIColor.black
-    }
-
-    class var baseSuperLightBlue: UIColor {
-        return UIColor(hex: "#F3FAF9")
-    }
-
-    class var facebook: UIColor {
-        return UIColor(hex: "#3B529A")
-    }
-
-    class var tintColor: UIColor {
-        guard let color = UserDefaults.standard.string(forKey: Constants.DefaultKey.tintColor) else {
-            return .baseBlue
-        }
-        return UIColor(hex: color)
-    }
-
-    class var readerWhite: UIColor {
-        return UIColor(hex: "#FDFDFD")
-    }
-
-    class var readerWhiteFont: UIColor {
-        return UIColor.baseGray4
-    }
-
-    class var readerDark: UIColor {
-        return UIColor(hex: "#212325")
-    }
-
-    class var readerDarkFont: UIColor {
-        return UIColor(hex: "#949595")
-    }
-
-    class var readerSepia: UIColor {
-        return UIColor(hex: "#FBF0D9")
-    }
-
-    class var readerSepiaFont: UIColor {
-        return UIColor(hex: "#5b4636")
-    }
-
-    class var readerSeparator: UIColor {
-        return UIColor(white: 0.5, alpha: 0.2)
-    }
-
-    class var readerNormal: UIColor {
-        return UIColor(white: 0.5, alpha: 0.7)
-    }
     
-    class var baseDark: UIColor {
-        return UIColor(hex: "#1A1A1A")
-    }
-    
-    static func separatorColor() -> UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .baseDark
+    static func | (lightMode: UIColor, darkMode: UIColor) -> UIColor {
+        guard #available(iOS 13.0, *) else { return lightMode }
+        return UIColor { (traitCollection) -> UIColor in
+            return traitCollection.userInterfaceStyle == .light ? lightMode : darkMode
         }
-        return .baseGray1
-    }
-    
-    class var titleColor: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .baseGray1
-        }
-        return .baseGray3
-    }
-    
-    class var bodyGrayColor: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .baseGray1
-        }
-        return .baseGray3
-    }
-    
-    class var shimmerringColor: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .baseDark
-        }
-        return .baseGray1
-    }
-    
-    class var baseBackground: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .black
-        }
-        return .white
-    }
-    
-    class var baseBackgroundLogin: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .black
-        }
-        return .baseGray1
-    }
-    
-    class var baseBackgroundReader: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .baseDark
-        }
-        return .baseGray7
-    }
-    
-    class var baseForegroundLogin: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .white
-        }
-        return .baseBlue
-    }
-    class var readOptionsButtonColor: UIColor {
-        return .baseGray2
-    }
-    class var readOptionsSelectedButtonColor: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .white
-        }
-        return .tintColor
-    }
-    class var readOptionsTickColor: UIColor {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .baseGray7
-        }
-        return .tintColor
     }
 }

@@ -29,14 +29,15 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
     var dataSource = [QuarterlyLanguage]()
     var filtered = [QuarterlyLanguage]()
     var languageView = LanguageView()
+    var loading: Bool = false
     
     weak var languageViewNode: ASDisplayNode? { return node as? ASDisplayNode }
 
     override init() {
         super.init(node: languageView)
-        self.languageView.searchNode.delegate = self
-        self.languageView.tableNode.delegate = self
-        self.languageView.tableNode.dataSource = self
+        self.languageView.search.delegate = self
+        self.languageView.table.delegate = self
+        self.languageView.table.dataSource = self
         title = "Languages".localized().uppercased()
     }
 
@@ -48,14 +49,24 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
         super.viewDidLoad()
         self.setCloseButton()
         presenter.configure()
-        setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
+        setTranslucentNavigation(false, color: AppStyle.Base.Color.tint, tintColor: .white, titleColor: .white)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        languageView.searchNode.becomeFirstResponder()
+        languageView.search.becomeFirstResponder()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                self.languageView.table.reloadData()
+                self.languageView.configureStyles()
+            }
+        }
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
@@ -65,24 +76,14 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
         if notification.name == UIResponder.keyboardWillHideNotification {
-            self.languageView.tableNode.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.languageView.searchNode.calculatedSize.height, right: 0 )
+            self.languageView.table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.languageView.search.calculatedSize.height, right: 0 )
         } else {
-            var contentInset: UIEdgeInsets = self.languageView.tableNode.contentInset
-            contentInset.bottom = keyboardViewEndFrame.size.height + self.languageView.searchNode.calculatedSize.height
+            var contentInset: UIEdgeInsets = self.languageView.table.contentInset
+            contentInset.bottom = keyboardViewEndFrame.size.height + self.languageView.search.calculatedSize.height
             if #available(iOS 11.0, *) {
                 contentInset.bottom = contentInset.bottom - view.safeAreaInsets.bottom
             }
-            self.languageView.tableNode.contentInset = contentInset
-        }
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        if #available(iOS 13.0, *) {
-            if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                self.languageView.tableNode.reloadData()
-                self.languageView.configureStyles()
-            }
+            self.languageView.table.contentInset = contentInset
         }
     }
 }
@@ -91,7 +92,7 @@ extension LanguageController: LanguageControllerProtocol {
     func showLanguages(languages: [QuarterlyLanguage]) {
         self.dataSource = languages
         self.filtered = self.dataSource
-        self.languageView.tableNode.reloadData()
+        self.languageView.table.reloadData()
     }
 }
 
@@ -109,9 +110,9 @@ extension LanguageController: ASTableDataSource {
             
             let savedLanguage = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any]
 
-            let cell = LanguageCellNode(
-                title: language.name,
-                subtitle: language.translatedName!
+            let cell = LanguageItemView(
+                name: language.name,
+                translated: language.translatedName!
             )
 
             if let selectedLanguage = savedLanguage {
@@ -133,9 +134,15 @@ extension LanguageController: ASTableDataSource {
 
 extension LanguageController: ASEditableTextNodeDelegate {
     func editableTextNodeDidUpdateText(_ editableTextNode: ASEditableTextNode) {
+        if (self.loading) {
+            return
+        }
+        self.loading = true
         let searchText = editableTextNode.textView.text.lowercased()
         self.filtered = searchText.isEmpty ? self.dataSource : self.dataSource.filter({ $0.name.lowercased().contains(searchText) || ($0.translatedName ?? $0.name).lowercased().contains(searchText) })
-        self.languageView.tableNode.reloadData()
+        self.languageView.table.reloadData {
+            self.loading = false
+        }
     }
     
     func editableTextNode(_ editableTextNode: ASEditableTextNode, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -144,5 +151,4 @@ extension LanguageController: ASEditableTextNodeDelegate {
         }
         return true
     }
-
 }

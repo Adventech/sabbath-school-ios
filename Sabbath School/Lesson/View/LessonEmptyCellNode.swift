@@ -31,10 +31,10 @@ final class LessonEmptyCellNode: ASCellNode {
 
     override init() {
         super.init()
-        self.backgroundColor = .baseBackground
-        titleEmptyNode.backgroundColor = .shimmerringColor
-        humanDateEmptyNode.backgroundColor = .shimmerringColor
-        divider.backgroundColor = .shimmerringColor
+        self.backgroundColor = AppStyle.Base.Color.background
+        titleEmptyNode.backgroundColor = AppStyle.Base.Color.shimmering
+        humanDateEmptyNode.backgroundColor = AppStyle.Base.Color.shimmering
+        divider.backgroundColor = AppStyle.Base.Color.shimmering
 
         addSubnode(divider)
         automaticallyManagesSubnodes = true

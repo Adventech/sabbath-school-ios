@@ -39,24 +39,22 @@ protocol ReadViewOutputProtocol: class {
     func didReceiveShare(text: String)
     func didReceiveLookup(text: String)
     func didTapExternalUrl(url: URL)
-    func didReceiveContextMenuRect(rect: DOMRect)
-    func didReceiveContextMenuDismiss()
 }
 
 class ReadView: ASCellNode {
     weak var delegate: ReadViewOutputProtocol?
-    let coverNode = ASNetworkImageNode()
-    let coverOverlayNode = ASDisplayNode()
-    let coverTitleNode = ASTextNode()
-    let readDateNode = ASTextNode()
+    let cover = ASNetworkImageNode()
+    let coverOverlay = ASDisplayNode()
+    let title = ASTextNode()
+    let date = ASTextNode()
 
     let webNode = ASDisplayNode { Reader() }
     var read: Read?
     var highlights: ReadHighlights?
     var comments: ReadComments?
 
-    var initialCoverNodeHeight: CGFloat = 0
-    var parallaxCoverNodeHeight: CGFloat = 0
+    var initialCoverHeight: CGFloat = 0
+    var parallaxCoverHeight: CGFloat = 0
 
     var webView: Reader { return webNode.view as! Reader }
 
@@ -67,21 +65,21 @@ class ReadView: ASCellNode {
         self.highlights = highlights
         self.comments = comments
 
-        coverNode.url = lessonInfo.lesson.cover
-        coverNode.placeholderEnabled = true
-        coverNode.placeholderFadeDuration = 0.6
-        coverNode.contentMode = .scaleAspectFill
-        coverNode.clipsToBounds = true
-        coverOverlayNode.alpha = 0
+        cover.url = lessonInfo.lesson.cover
+        cover.placeholderEnabled = true
+        cover.placeholderFadeDuration = 0.6
+        cover.contentMode = .scaleAspectFill
+        cover.clipsToBounds = true
+        coverOverlay.alpha = 0
 
-        coverTitleNode.alpha = 1
-        coverTitleNode.maximumNumberOfLines = 2
-        coverTitleNode.pointSizeScaleFactors = [0.9, 0.8]
-        coverTitleNode.attributedText = TextStyles.h1(string: read.title)
+        title.alpha = 1
+        title.maximumNumberOfLines = 2
+        title.pointSizeScaleFactors = [0.9, 0.8]
+        title.attributedText = AppStyle.Read.Text.title(string: read.title)
 
-        readDateNode.alpha = 1
-        readDateNode.maximumNumberOfLines = 1
-        readDateNode.attributedText = TextStyles.uppercaseHeader(string: read.date.stringReadDate())
+        date.alpha = 1
+        date.maximumNumberOfLines = 1
+        date.attributedText = AppStyle.Read.Text.date(string: read.date.stringReadDate())
         
         automaticallyManagesSubnodes = true
     }
@@ -89,72 +87,74 @@ class ReadView: ASCellNode {
     override func layout() {
         super.layout()
 
-        if self.parallaxCoverNodeHeight >= 0 {
-            self.coverOverlayNode.alpha = 1 - ((self.parallaxCoverNodeHeight-80) * (1/(self.initialCoverNodeHeight-80)))
+        if self.parallaxCoverHeight >= 0 {
+            self.coverOverlay.alpha = 1 - ((self.parallaxCoverHeight-80) * (1/(self.initialCoverHeight-80)))
 
-            if self.parallaxCoverNodeHeight <= self.initialCoverNodeHeight {
-                self.coverNode.frame.origin.y -= (self.initialCoverNodeHeight - parallaxCoverNodeHeight) / 2
-                self.coverTitleNode.frame.origin.y -= (self.initialCoverNodeHeight - parallaxCoverNodeHeight) / 1.3
-                self.coverTitleNode.alpha = self.parallaxCoverNodeHeight * (1/self.initialCoverNodeHeight)
+            if self.parallaxCoverHeight <= self.initialCoverHeight {
+                self.cover.frame.origin.y -= (self.initialCoverHeight - parallaxCoverHeight) / 2
+                self.title.frame.origin.y -= (self.initialCoverHeight - parallaxCoverHeight) / 1.3
+                self.title.alpha = self.parallaxCoverHeight * (1/self.initialCoverHeight)
 
-                self.readDateNode.frame.origin.y -= (self.initialCoverNodeHeight - parallaxCoverNodeHeight) / 1.3
-                self.readDateNode.alpha = self.parallaxCoverNodeHeight * (1/self.initialCoverNodeHeight)
+                self.date.frame.origin.y -= (self.initialCoverHeight - parallaxCoverHeight) / 1.3
+                self.date.alpha = self.parallaxCoverHeight * (1/self.initialCoverHeight)
             } else {
-                self.coverOverlayNode.frame.size = CGSize(width: coverOverlayNode.calculatedSize.width, height: parallaxCoverNodeHeight)
-                self.coverNode.frame.size = CGSize(width: coverNode.calculatedSize.width, height: parallaxCoverNodeHeight)
+                self.coverOverlay.frame.size = CGSize(width: coverOverlay.calculatedSize.width, height: parallaxCoverHeight)
+                self.cover.frame.size = CGSize(width: cover.calculatedSize.width, height: parallaxCoverHeight)
 
-                self.coverTitleNode.alpha = 1-((self.parallaxCoverNodeHeight - self.coverTitleNode.frame.origin.y) - 200)/self.coverTitleNode.frame.origin.y*1.6
-                self.coverTitleNode.frame.origin.y += (parallaxCoverNodeHeight - self.initialCoverNodeHeight)
+                self.title.alpha = 1-((self.parallaxCoverHeight - self.title.frame.origin.y) - 200)/self.title.frame.origin.y*1.6
+                self.title.frame.origin.y += (parallaxCoverHeight - self.initialCoverHeight)
 
-                self.readDateNode.alpha = self.coverTitleNode.alpha
-                self.readDateNode.frame.origin.y += (parallaxCoverNodeHeight - self.initialCoverNodeHeight)
+                self.date.alpha = self.title.alpha
+                self.date.frame.origin.y += (parallaxCoverHeight - self.initialCoverHeight)
             }
         }
     }
     override func didLoad() {
         super.didLoad()
 
-        let theme = currentTheme()
-        coverNode.backgroundColor = theme.navBarColor
-        coverOverlayNode.backgroundColor = theme.navBarColor
+        let theme = Preferences.currentTheme()
+        cover.backgroundColor = theme.navBarColor
+        coverOverlay.backgroundColor = theme.navBarColor
 
-        initialCoverNodeHeight = coverNode.calculatedSize.height
+        initialCoverHeight = cover.calculatedSize.height
 
         webView.backgroundColor = .clear
         webView.scrollView.delegate = self
         webView.delegate = self
         webView.alpha = 0
-        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverNodeHeight, left: 0, bottom: 0, right: 0)
+        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
         webView.readerViewDelegate = self
+        
         if #available(iOS 13.0, *) {
             webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
         } else if #available(iOS 11.0, *){
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
+        
         webView.loadContent(content: read!.content)
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        coverNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height*0.4)
+        cover.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height*0.4)
         webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
-        coverTitleNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
-        readDateNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
+        title.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
+        date.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
 
         let titleDateSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 0,
             justifyContent: .end,
             alignItems: .center,
-            children: [readDateNode, coverTitleNode]
+            children: [date, title]
         )
 
         titleDateSpec.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width), ASDimensionMake(constrainedSize.max.height*0.4-20))
 
-        let coverNodeOverlaySpec = ASOverlayLayoutSpec(child: coverNode, overlay: ASAbsoluteLayoutSpec(children: [titleDateSpec, coverOverlayNode]))
+        let coverOverlaySpec = ASOverlayLayoutSpec(child: cover, overlay: ASAbsoluteLayoutSpec(children: [titleDateSpec, coverOverlay]))
 
         let layoutSpec = ASAbsoluteLayoutSpec(
             sizing: .sizeToFit,
-            children: [coverNodeOverlaySpec, webNode]
+            children: [coverOverlaySpec, webNode]
         )
 
         return layoutSpec
@@ -165,7 +165,7 @@ extension ReadView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.delegate?.didScrollView(readCellNode: self, scrollView: scrollView)
 
-        self.parallaxCoverNodeHeight = -scrollView.contentOffset.y
+        self.parallaxCoverHeight = -scrollView.contentOffset.y
         self.setNeedsLayout()
     }
 }
@@ -176,7 +176,7 @@ extension ReadView: UIWebViewDelegate {
     }
 
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        (webView as! Reader).contextMenuEnabled = false
+        (webView as! Reader).contextMenuEnabled = true
 
         if !webView.isLoading {
             self.delegate?.didLoadWebView(webView: webView)
@@ -257,13 +257,5 @@ extension ReadView: ReaderOutputProtocol {
 
     func didTapExternalUrl(url: URL) {
         self.delegate?.didTapExternalUrl(url: url)
-    }
-    
-    func didReceiveContextMenuRect(rect: DOMRect) {
-        self.delegate?.didReceiveContextMenuRect(rect: rect)
-    }
-    
-    func didReceiveContextMenuDismiss() {
-        self.delegate?.didReceiveContextMenuDismiss()
     }
 }

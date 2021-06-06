@@ -31,7 +31,6 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
     weak var tableNode: SettingsView? { return node as? SettingsView }
 
     fileprivate let pickerView = PickerViewController()
-    fileprivate let popupAnimator = PopupTransitionAnimator()
     fileprivate let dateFormatter = DateFormatter()
 
     var titles = [[String]]()
@@ -43,7 +42,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
         dateFormatter.dateFormat = "HH:mm"
         tableNode?.delegate = self
         tableNode?.dataSource = self
-        tableNode?.backgroundColor = .baseBackground
+        tableNode?.backgroundColor = AppStyle.Base.Color.background
 
         title = "Settings".localized().uppercased()
 
@@ -54,7 +53,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
             ["Log out".localized()]
         ]
 
-        if reminderStatus() {
+        if Preferences.reminderStatus() {
             titles[0].append("Time".localized())
         }
 
@@ -83,14 +82,14 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.tableNode?.view.separatorColor = UIColor.separatorColor()
+        self.tableNode?.view.separatorColor = AppStyle.Base.Color.tableSeparator
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
             if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                tableNode?.backgroundColor = .baseBackground
+                tableNode?.backgroundColor = AppStyle.Base.Color.background
                 tableNode?.reloadData()
             }
         }
@@ -98,7 +97,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
+        setTranslucentNavigation(false, color: AppStyle.Base.Color.tint, tintColor: .white, titleColor: .white)
         if let selected = tableNode?.indexPathForSelectedRow {
             tableNode?.view.deselectRow(at: selected, animated: true)
         }
@@ -125,45 +124,48 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
         let isOn = sender.isOn
 
         guard isOn else {
-            titles[0].remove(at: 1)
-            self.tableNode?.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
-            UserDefaults.standard.set(false, forKey: Constants.DefaultKey.settingsReminderStatus)
-            UIApplication.shared.cancelAllLocalNotifications()
+            // iOS 9 crashes during press hold /drag of the switch, therefore double-checking before removing time row
+            if titles[0].indices.contains(1) {
+                titles[0].remove(at: 1)
+                self.tableNode?.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+                UserDefaults.standard.set(false, forKey: Constants.DefaultKey.settingsReminderStatus)
+                UIApplication.shared.cancelAllLocalNotifications()
+            }
             return
         }
 
-        titles[0].append("Time".localized())
-        UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
+        // iOS 9 crashes during press hold /drag of the switch, therefore double-checking before adding time row
+        if (titles[0].count < 2) {
+            titles[0].append("Time".localized())
+            UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
 
-        SettingsController.setUpLocalNotification()
-        self.tableNode?.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            SettingsController.setUpLocalNotification()
+            self.tableNode?.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+        }
     }
 
     static func setUpLocalNotification() {
         UIApplication.shared.cancelAllLocalNotifications()
-        let time = DateInRegion(reminderTime(), format: "HH:mm")
+        let time = DateInRegion(Preferences.reminderTime(), format: "HH:mm")
         let hour = time?.hour ?? 0
         let minute = time?.minute ?? 0
-        let calendar = NSCalendar(identifier: .gregorian)! // have to use NSCalendar for the components
+        let calendar = NSCalendar(identifier: .gregorian)!
 
         var dateFire = Date()
-
-        // if today's date is passed, use tomorrow
         var fireComponents = calendar.components( [.day, .month, .year, .hour, .minute], from:dateFire)
 
         if fireComponents.hour! > hour || (fireComponents.hour == hour && fireComponents.minute! >= minute) {
-            dateFire = dateFire.addingTimeInterval(86400)  // Use tomorrow's date
+            dateFire = dateFire.addingTimeInterval(86400)
             fireComponents = calendar.components( [.day, .month, .year, .hour, .minute], from:dateFire)
         }
 
-        // set up the time
         fireComponents.hour = hour
         fireComponents.minute = minute
 
-        // schedule local notification
         dateFire = calendar.date(from: fireComponents)!
 
         let localNotification = UILocalNotification()
+        
         localNotification.fireDate = dateFire
         localNotification.alertBody = "Time to study Sabbath School 🙏".localized()
         localNotification.repeatInterval = .day
@@ -175,30 +177,29 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
 
 extension SettingsController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let text = titles[indexPath.section][indexPath.row]
+        let title = titles[indexPath.section][indexPath.row]
 
         let cellNodeBlock: () -> ASCellNode = {
-            var settingsItem = SettingsItemView(text: text)
+            var settingsItem = SettingsItemView(title: title)
 
             if indexPath.row == 0 && indexPath.section == 0 {
-                settingsItem = SettingsItemView(text: text, switchState: true)
+                settingsItem = SettingsItemView(title: title, switchState: true)
                 settingsItem.selectionStyle = .none
 
                 DispatchQueue.main.async { [weak self] in
-                    settingsItem.switchView.setOn(reminderStatus(), animated: false)
+                    settingsItem.switchView.setOn(Preferences.reminderStatus(), animated: false)
                     settingsItem.switchView.addTarget(self, action: #selector(self?.reminderChanged(sender:)), for: .valueChanged)
                 }
             }
 
             if indexPath.row == 0 && indexPath.section == 2 {
-                settingsItem = SettingsItemView(text: text, showDisclosure: true)
+                settingsItem = SettingsItemView(title: title, showDisclosure: true)
             }
 
             if indexPath.row == 1 && indexPath.section == 0 {
-                // reminder
                 if #available(iOS 13.4, *) {
-                    let datePickerTime = reminderTime()
-                    settingsItem = SettingsItemView(text: text, datePicker: true)
+                    let datePickerTime = Preferences.reminderTime()
+                    settingsItem = SettingsItemView(title: title, datePicker: true)
                     
                     DispatchQueue.main.async { [self] in
                         settingsItem.datePickerView.datePickerMode = .time
@@ -206,14 +207,14 @@ extension SettingsController: ASTableDataSource {
                         settingsItem.datePickerView.addTarget(self, action: #selector(self.datePickerChanged(_:)), for: .valueChanged)
                     }
                 } else {
-                    let time = DateInRegion(reminderTime(), format: "HH:mm")
-                    settingsItem = SettingsItemView(text: text, detailText: time?.toString(.time(.short)) ?? "")
-                    settingsItem.contentStyle = .detailOnRight
+                    let time = DateInRegion(Preferences.reminderTime(), format: "HH:mm")
+                    settingsItem = SettingsItemView(title: title, detail: time?.toString(.time(.short)) ?? "")
+                    settingsItem.contentStyle = .right
                 }
             }
 
             if indexPath.section == 3 {
-                settingsItem = SettingsItemView(text: text, destructive: true)
+                settingsItem = SettingsItemView(title: title, danger: true)
                 settingsItem.accessibilityIdentifier = "logOut"
             }
 
@@ -254,20 +255,26 @@ extension SettingsController: ASTableDelegate {
         case 0:
             if indexPath.row == 1 {
                 if #available(iOS 13.4, *) {} else {
-                    let cell = tableNode?.view.nodeForRow(at: indexPath) as! SettingsItemView
+                    let settingsItemView = tableNode?.view.nodeForRow(at: indexPath) as! SettingsItemView
                     pickerView.delegate = self
                     pickerView.datePicker.datePickerMode = .time
 
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "HH:mm"
-                    pickerView.datePicker.date = dateFormatter.date(from: reminderTime())!
+                    pickerView.datePicker.date = dateFormatter.date(from: Preferences.reminderTime())!
 
                     pickerView.modalPresentationStyle = .custom
                     let width: CGFloat = traitCollection.horizontalSizeClass == .compact ? node.bounds.width : 500
                     pickerView.preferredContentSize = CGSize(width: width, height: 200)
-                    pickerView.transitioningDelegate = popupAnimator
-                    popupAnimator.fromView = cell.detailTextNode.view
-                    popupAnimator.overlayColor = UIColor(white: 0, alpha: 0.2)
+                    
+                    
+                    pickerView.modalPresentationStyle = .popover
+                    pickerView.modalTransitionStyle = .crossDissolve
+                    pickerView.popoverPresentationController?.sourceView = settingsItemView.detail.view
+                    pickerView.popoverPresentationController?.sourceRect = CGRect.init(x: 0, y: 0, width: settingsItemView.detail.view.frame.size.width, height: settingsItemView.detail.view.frame.size.height)
+                    pickerView.popoverPresentationController?.delegate = pickerView
+                    pickerView.popoverPresentationController?.backgroundColor = AppStyle.Base.Color.background
+                    pickerView.popoverPresentationController?.permittedArrowDirections = .up
                     present(pickerView, animated: true, completion: nil)
                 }
             }
@@ -275,7 +282,7 @@ extension SettingsController: ASTableDelegate {
         case 1:
             let url = "https://github.com/Adventech"
             let safariVC = SFSafariViewController(url: URL(string: url)!)
-            safariVC.view.tintColor = .tintColor
+            safariVC.view.tintColor = AppStyle.Base.Color.tint
             safariVC.modalPresentationStyle = .currentContext
             present(safariVC, animated: true, completion: nil)
 
@@ -294,7 +301,7 @@ extension SettingsController: ASTableDelegate {
 
                 activityController.popoverPresentationController?.sourceRect = view.frame
                 activityController.popoverPresentationController?.sourceView = view
-                if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+                if Helper.isPad {
                     activityController.popoverPresentationController?.sourceRect = tableView.rectForRow(at: indexPath)
                 }
                 activityController.popoverPresentationController?.permittedArrowDirections = .any
@@ -322,7 +329,7 @@ extension SettingsController: ASTableDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerLabel = UILabel(frame: CGRect(x: 15, y: section == 0 ?32:14, width: view.frame.width, height: 20))
 
-        headerLabel.attributedText = TextStyles.settingsHeaderStyle(string: sections[section])
+        headerLabel.attributedText = AppStyle.Settings.Text.header(string: sections[section])
 
         let header = UIView()
 
@@ -334,7 +341,7 @@ extension SettingsController: ASTableDelegate {
         if section == sections.count-1 {
             let versionLabel = UILabel(frame: CGRect(x: 0, y: 34, width: view.frame.width, height: 18))
             versionLabel.textAlignment = .center
-            versionLabel.attributedText = TextStyles.settingsFooterCopyrightStyle(string: "Made with ❤ by Adventech".localized())
+            versionLabel.attributedText = AppStyle.Settings.Text.copyright(string: "Made with ❤ by Adventech".localized())
             return versionLabel
         } else {
             if footers[section].isEmpty { return nil }
@@ -355,7 +362,7 @@ extension SettingsController: ASTableDelegate {
         let footerView = UIView()
         let footerLabel = UILabel(frame: CGRect(x: 15, y: 10, width: view.frame.width-20, height: 0))
         footerLabel.numberOfLines = 0
-        footerLabel.attributedText = TextStyles.settingsFooterStyle(string: footers[section])
+        footerLabel.attributedText = AppStyle.Settings.Text.footer(string: footers[section])
         footerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         footerLabel.sizeToFit()
         footerView.addSubview(footerLabel)

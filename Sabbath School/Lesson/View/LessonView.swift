@@ -23,40 +23,44 @@
 import AsyncDisplayKit
 import UIKit
 
-class LanguageCellNode: ASCellNode {
-    let titleNode = ASTextNode()
-    let subtitleNode = ASTextNode()
-    let selectedNode = ASImageNode()
+class LessonView: ASCellNode {
+    let title = ASTextNode()
+    let dateRange = ASTextNode()
+    let index = ASTextNode()
 
-    init(title: String, subtitle: String) {
+    init(lesson: Lesson, number: String) {
         super.init()
-        self.backgroundColor = .baseBackground
-        titleNode.attributedText = TextStyles.languageTitleStyle(string: title)
-        subtitleNode.attributedText = TextStyles.languageSubtitleStyle(string: subtitle)
-        selectedNode.image = R.image.iconCheckmark()?.imageTintColor(.tintColor)
+
+        title.attributedText = AppStyle.Lesson.Text.title(string: lesson.title)
+        dateRange.attributedText = AppStyle.Lesson.Text.dateRange(string: "\(lesson.startDate.stringLessonDate()) - \(lesson.endDate.stringLessonDate())")
+        index.attributedText = AppStyle.Lesson.Text.index(string: number)
+
         automaticallyManagesSubnodes = true
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 2,
+            spacing: 4,
             justifyContent: .start,
             alignItems: .start,
-            children: [titleNode, subtitleNode]
+            children: [title, dateRange]
         )
 
-        var hSpecChildren: [ASLayoutElement] = [vSpec]
-        if isSelected { hSpecChildren.append(selectedNode) }
+        vSpec.style.flexShrink = 1.0
 
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
-            spacing: 4,
-            justifyContent: .spaceBetween,
+            spacing: 15,
+            justifyContent: .start,
             alignItems: .center,
-            children: hSpecChildren
+            children: [index, vSpec]
         )
 
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 15), child: hSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: hSpec)
+    }
+    
+    override var isHighlighted: Bool {
+        didSet { backgroundColor = isHighlighted ? AppStyle.Lesson.Color.backgroundHighlighted : AppStyle.Lesson.Color.background }
     }
 }

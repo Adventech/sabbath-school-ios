@@ -23,88 +23,81 @@
 import Foundation
 import Unbox
 
-func currentLanguage() -> QuarterlyLanguage {
-    guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
-        return QuarterlyLanguage(code: "en", name: "English")
-    }
-
-    let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
-    return language
-}
-
-func currentQuarterly() -> String {
-    guard let lastQuarterlyIndex = UserDefaults.standard.string(forKey: Constants.DefaultKey.lastQuarterlyIndex) else {
-        return ""
-    }
-    return lastQuarterlyIndex
-}
-
-func currentTheme() -> ReaderStyle.Theme {
-    guard let rawTheme = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsTheme),
-        let theme = ReaderStyle.Theme(rawValue: rawTheme) else {
-        if getSettingsTheme() == Theme.Dark.rawValue {
-            return .dark
+struct Preferences {
+    static func currentLanguage() -> QuarterlyLanguage {
+        guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
+            return QuarterlyLanguage(code: "en", name: "English")
         }
-        return .light
+
+        let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
+        return language
     }
-    return theme
-}
-
-func currentTypeface() -> ReaderStyle.Typeface {
-    guard let rawTypeface = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsTypeface),
-        let typeface = ReaderStyle.Typeface(rawValue: rawTypeface) else {
-        return .lato
+    
+    static func currentQuarterly() -> String {
+        guard let lastQuarterlyIndex = UserDefaults.standard.string(forKey: Constants.DefaultKey.lastQuarterlyIndex) else {
+            return ""
+        }
+        return lastQuarterlyIndex
     }
-    return typeface
-}
-
-func currentSize() -> ReaderStyle.Size {
-    guard let rawSize = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsSize),
-        let size = ReaderStyle.Size(rawValue: rawSize) else {
-        return .medium
-    }
-    return size
-}
-
-func firstRun() -> Bool {
-    return UserDefaults.standard.bool(forKey: Constants.DefaultKey.firstRun)
-}
-
-func reminderStatus() -> Bool {
-    return UserDefaults.standard.bool(forKey: Constants.DefaultKey.settingsReminderStatus)
-}
-
-func reminderTime() -> String {
-    guard let time = UserDefaults.standard.string(forKey: Constants.DefaultKey.settingsReminderTime) else {
-        return Constants.DefaultKey.settingsDefaultReminderTime
-    }
-    return time
-}
-
-func latestReaderBundleTimestamp() -> String {
-    guard let timestamp = UserDefaults.standard.string(forKey: Constants.DefaultKey.latestReaderBundleTimestamp) else {
-        return ""
-    }
-    return timestamp
-}
-
-func getSettingsTheme() -> String {
-    guard let theme = UserDefaults.standard.string(forKey: Constants.DefaultKey.settingsTheme) else {
-        if #available(iOS 13.0, *) {
-            if UITraitCollection.current.userInterfaceStyle == .dark {
-                return Theme.Dark.rawValue
+    
+    static func currentTheme() -> ReaderStyle.Theme {
+        guard let rawTheme = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsTheme),
+            let theme = ReaderStyle.Theme(rawValue: rawTheme) else {
+            if Preferences.getSettingsTheme() == Theme.Dark.rawValue {
+                return .dark
             }
+            return .light
         }
-        return Theme.Light.rawValue
+        return theme
     }
-    return theme
-}
+    
+    static func currentTypeface() -> ReaderStyle.Typeface {
+        guard let rawTypeface = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsTypeface),
+            let typeface = ReaderStyle.Typeface(rawValue: rawTypeface) else {
+            return .lato
+        }
+        return typeface
+    }
+    
+    static func currentSize() -> ReaderStyle.Size {
+        guard let rawSize = UserDefaults.standard.string(forKey: Constants.DefaultKey.readingOptionsSize),
+            let size = ReaderStyle.Size(rawValue: rawSize) else {
+            return .medium
+        }
+        return size
+    }
+    
+    static func reminderStatus() -> Bool {
+        return UserDefaults.standard.bool(forKey: Constants.DefaultKey.settingsReminderStatus)
+    }
 
-func saveSettingsTheme(theme: Theme) {
-    UserDefaults.standard.set(theme.rawValue, forKey: Constants.DefaultKey.settingsTheme)
-    UserDefaults.standard.synchronize()
-}
+    static func reminderTime() -> String {
+        guard let time = UserDefaults.standard.string(forKey: Constants.DefaultKey.settingsReminderTime) else {
+            return Constants.DefaultKey.settingsDefaultReminderTime
+        }
+        return time
+    }
+    
+    static func latestReaderBundleTimestamp() -> String {
+        guard let timestamp = UserDefaults.standard.string(forKey: Constants.DefaultKey.latestReaderBundleTimestamp) else {
+            return ""
+        }
+        return timestamp
+    }
 
-func gcPopupStatus() -> Bool {
-    return UserDefaults.standard.bool(forKey: Constants.DefaultKey.gcPopup)
+    static func getSettingsTheme() -> String {
+        guard let theme = UserDefaults.standard.string(forKey: Constants.DefaultKey.settingsTheme) else {
+            if #available(iOS 13.0, *) {
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    return Theme.Dark.rawValue
+                }
+            }
+            return Theme.Light.rawValue
+        }
+        return theme
+    }
+
+    static func gcPopupStatus() -> Bool {
+        return UserDefaults.standard.bool(forKey: Constants.DefaultKey.gcPopup)
+    }
 }

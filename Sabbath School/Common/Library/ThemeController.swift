@@ -34,8 +34,7 @@ class ThemeController: ASDKViewController<ASDisplayNode> {
         navigationController?.navigationBar.barStyle = .black
 
         if colorPrimary != nil {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.tintColor = colorPrimary!
+            Configuration.window!.tintColor = colorPrimary!
             setTranslucentNavigation(true, color: colorPrimary!, tintColor: .white, titleColor: .white)
         }
     }

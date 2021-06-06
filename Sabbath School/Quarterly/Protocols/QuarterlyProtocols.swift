@@ -30,7 +30,7 @@ protocol QuarterlyPresenterProtocol: class {
 
     func configure()
     func presentLanguageScreen()
-    func presentGCScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate)
+    func presentGCScreen()
     func presentLessonScreen(quarterlyIndex: String)
     func presentQuarterlies()
 }

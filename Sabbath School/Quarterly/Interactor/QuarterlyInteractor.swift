@@ -69,7 +69,7 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                if String(describing: metadata?.timeCreated?.timeIntervalSince1970) != latestReaderBundleTimestamp() {
+                if String(describing: metadata?.timeCreated?.timeIntervalSince1970) != Preferences.latestReaderBundleTimestamp() {
                     self?.downloadReaderBundle(metadata: metadata!)
                 }
             }

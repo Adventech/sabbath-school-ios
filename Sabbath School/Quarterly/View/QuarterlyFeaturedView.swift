@@ -23,14 +23,13 @@
 import UIKit
 import AsyncDisplayKit
 
-class QuarterlyFeaturedCellNode: ASCellNode {
-    let coverNode = ASNetworkImageNode()
-    var coverImageNode: RoundedCornersImage!
-    let titleNode = ASTextNode()
-    let humanDateNode = ASTextNode()
-    let openButton = OpenButton()
-    let imageCornerRadius = CGFloat(6)
-
+class QuarterlyFeaturedView: ASCellNode {
+    let cover = ASNetworkImageNode()
+    var coverImage: RoundedCornersImage!
+    let title = ASTextNode()
+    let humanDate = ASTextNode()
+    let openButton = ASButtonNode()
+    private let coverCornerRadius = CGFloat(6)
     private let infiniteColor = ASDisplayNode()
 
     init(quarterly: Quarterly) {
@@ -46,34 +45,33 @@ class QuarterlyFeaturedCellNode: ASCellNode {
             backgroundColor = UIColor.baseBlue
         }
 
-        titleNode.attributedText = TextStyles.h2(string: quarterly.title)
-        titleNode.maximumNumberOfLines = 3
-        titleNode.pointSizeScaleFactors = [0.9, 0.8]
+        title.attributedText = AppStyle.Quarterly.Text.featuredTitle(string: quarterly.title)
+        title.maximumNumberOfLines = 3
+        title.pointSizeScaleFactors = [0.9, 0.8]
 
-        humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate)
-        humanDateNode.maximumNumberOfLines = 1
+        humanDate.attributedText = AppStyle.Quarterly.Text.humanDate(string: quarterly.humanDate)
+        humanDate.maximumNumberOfLines = 1
 
-        coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
-        coverNode.shadowOffset = CGSize(width: 0, height: 2)
-        coverNode.shadowRadius = 10
-        coverNode.shadowOpacity = 0.3
-        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-        coverNode.cornerRadius = imageCornerRadius
+        cover.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
+        cover.shadowOffset = CGSize(width: 0, height: 2)
+        cover.shadowRadius = 10
+        cover.shadowOpacity = 0.3
+        cover.cornerRadius = coverCornerRadius
 
-        coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: imageCornerRadius)
-        coverImageNode.style.alignSelf = .stretch
+        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
+        coverImage.style.alignSelf = .stretch
 
-        openButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Open".localized().uppercased()), for: .normal)
+        openButton.setAttributedTitle(AppStyle.Quarterly.Text.openButton(string: "Open".localized().uppercased()), for: .normal)
         openButton.accessibilityIdentifier = "openLesson"
         openButton.titleNode.pointSizeScaleFactors = [0.9, 0.8]
-        openButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
-        openButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
+        openButton.backgroundColor = UIColor(hex: quarterly.colorPrimaryDark!)
+        openButton.contentEdgeInsets = AppStyle.Quarterly.Button.openButtonUIEdgeInsets()
         openButton.cornerRadius = 18
 
-        addSubnode(titleNode)
-        addSubnode(humanDateNode)
-        addSubnode(coverNode)
-        addSubnode(coverImageNode)
+        addSubnode(title)
+        addSubnode(humanDate)
+        addSubnode(cover)
+        addSubnode(coverImage)
         addSubnode(openButton)
     }
 
@@ -82,7 +80,7 @@ class QuarterlyFeaturedCellNode: ASCellNode {
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        coverNode.style.preferredSize = CGSize(width: 125, height: 187)
+        cover.style.preferredSize = CGSize(width: 125, height: 187)
         openButton.style.spacingBefore = 15
 
         let vSpec = ASStackLayoutSpec(
@@ -90,12 +88,12 @@ class QuarterlyFeaturedCellNode: ASCellNode {
             spacing: 0,
             justifyContent: .start,
             alignItems: .start,
-            children: [humanDateNode, titleNode, openButton]
+            children: [humanDate, title, openButton]
         )
 
         vSpec.style.flexShrink = 1.0
 
-        let coverSpec = ASBackgroundLayoutSpec(child: coverImageNode, background: coverNode)
+        let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
 
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
@@ -115,6 +113,6 @@ class QuarterlyFeaturedCellNode: ASCellNode {
 
     override func layoutDidFinish() {
         super.layoutDidFinish()
-        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: imageCornerRadius).cgPath
+        cover.layer.shadowPath = UIBezierPath(roundedRect: cover.bounds, cornerRadius: coverCornerRadius).cgPath
     }
 }

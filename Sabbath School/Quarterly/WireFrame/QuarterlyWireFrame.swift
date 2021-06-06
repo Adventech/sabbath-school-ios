@@ -41,10 +41,10 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
     func reloadQuarterlyModule() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-        UIView.transition(with: appDelegate.window!,
+        UIView.transition(with: Configuration.window!,
                           duration: 0.5,
                           options: .transitionCrossDissolve,
-                          animations: { appDelegate.window!.rootViewController = QuarterlyWireFrame.createQuarterlyModule() },
+                          animations: { Configuration.window!.rootViewController = QuarterlyWireFrame.createQuarterlyModule() },
                           completion: nil)
     }
 
@@ -52,8 +52,7 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
         let lessonScreen = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex)
         
         if #available(iOS 10.0, *) {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
 
         if let sourceView = view as? UIViewController {
@@ -66,10 +65,10 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
 
         let loginScreen = LoginWireFrame.createLoginModule()
 
-        UIView.transition(with: appDelegate.window!,
+        UIView.transition(with: Configuration.window!,
                           duration: 0.5,
                           options: .transitionFlipFromLeft,
-                          animations: { appDelegate.window!.rootViewController = loginScreen },
+                          animations: { Configuration.window!.rootViewController = loginScreen },
                           completion: nil)
     }
 }

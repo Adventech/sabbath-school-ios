@@ -40,15 +40,15 @@ protocol BibleVersionControllerDelegate: class {
 
 class BibleVersionController: ASDKViewController<ASDisplayNode>, ASTableDataSource, ASTableDelegate {
     weak var delegate: BibleVersionControllerDelegate?
-    var tableNode: ASTableNode { return node as! ASTableNode }
+    var table: ASTableNode { return node as! ASTableNode }
     var items = [MenuItem]()
 
     init(withItems items: [MenuItem]) {
         super.init(node: ASTableNode())
-        tableNode.delegate = self
-        tableNode.dataSource = self
-        tableNode.view.separatorColor = UIColor.separatorColor()
-        tableNode.view.backgroundColor = .baseBackground
+        table.delegate = self
+        table.dataSource = self
+        table.view.separatorColor = AppStyle.Base.Color.tableSeparator
+        table.view.backgroundColor = AppStyle.Base.Color.background
         self.items = items
     }
 
@@ -59,12 +59,10 @@ class BibleVersionController: ASDKViewController<ASDisplayNode>, ASTableDataSour
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let menuItem = items[indexPath.row]
 
-        let cellNodeBlock: () -> ASCellNode = {
-            let cell = BibleVersionView(title: menuItem.name, isSelected: menuItem.selected ?? false)
-            cell.backgroundColor = .baseBackground
-            return cell
+        let cellBlock: () -> ASCellNode = {
+            return BibleVersionView(name: menuItem.name, isSelected: menuItem.selected ?? false)
         }
-        return cellNodeBlock
+        return cellBlock
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,28 +75,17 @@ class BibleVersionController: ASDKViewController<ASDisplayNode>, ASTableDataSour
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-        self.view.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    @objc func didTapView(_ sender: UITapGestureRecognizer) {
-        print("did tap view", sender)
-    }
-    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.tableNode.view.separatorColor = UIColor.separatorColor()
+        self.table.view.separatorColor = AppStyle.Base.Color.tableSeparator
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
             if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                tableNode.reloadData()
-                self.popoverPresentationController?.backgroundColor = .baseBackground
+                table.reloadData()
+                self.popoverPresentationController?.backgroundColor = AppStyle.Base.Color.background
             }
         }
     }

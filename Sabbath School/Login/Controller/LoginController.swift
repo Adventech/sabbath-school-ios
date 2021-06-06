@@ -26,15 +26,15 @@ import GoogleSignIn
 import UIKit
 
 class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtocol {
-    weak var loginNode: LoginNode? { return node as? LoginNode }
+    weak var loginView: LoginView? { return node as? LoginView }
     var presenter: LoginPresenterProtocol?
 
     override init() {
-        super.init(node: LoginNode())
+        super.init(node: LoginView())
 
-        loginNode?.anonymousButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
-        loginNode?.googleButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
-        loginNode?.facebookButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
+        loginView?.anonymousButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
+        loginView?.googleButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
+        loginView?.facebookButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         self.addAppleSignInButtonTarget()
 
         GIDSignIn.sharedInstance()?.presentingViewController = self
@@ -46,7 +46,7 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
     
     func addAppleSignInButtonTarget() {
         if #available(iOS 13.0, *) {
-            (loginNode?.signInWithAppleButtonNode?.view as? ASAuthorizationAppleIDButton)?.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
+            (loginView?.signInWithAppleButton?.view as? ASAuthorizationAppleIDButton)?.addTarget(self, action: #selector(appleSignInTapped), for: .touchUpInside)
         }
     }
 
@@ -59,10 +59,9 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
             if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                self.view.backgroundColor = .baseBackground
-                self.loginNode?.configureStyles()
-                self.loginNode?.invalidateCalculatedLayout()
-                self.loginNode?.setNeedsLayout()
+                self.view.backgroundColor = AppStyle.Base.Color.background
+                self.loginView?.configureStyles()
+                self.loginView?.setNeedsLayout()
                 self.addAppleSignInButtonTarget()
             }
         }

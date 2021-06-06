@@ -22,6 +22,7 @@
 
 import AsyncDisplayKit
 import UIKit
+import SwiftEntryKit
 
 class QuarterlyPresenter: QuarterlyPresenterProtocol {
     weak var controller: QuarterlyControllerProtocol?
@@ -38,8 +39,7 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
 
     func presentLanguageScreen() {
         if #available(iOS 10.0, *) {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
         let module = LanguageWireFrame.createLanguageModule() { [weak self] () -> Void? in
             self?.controller?.retrieveQuarterlies()
@@ -52,12 +52,12 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
         wireFrame?.presentLessonScreen(view: controller!, quarterlyIndex: quarterlyIndex)
     }
     
-    func presentGCScreen(size: CGSize, transitioningDelegate: UIViewControllerTransitioningDelegate) {
-        let readOptionsScreen = GCPopupController()
-        readOptionsScreen.transitioningDelegate = transitioningDelegate
-        readOptionsScreen.modalPresentationStyle = .custom
-        readOptionsScreen.preferredContentSize = size
-        (controller as! UIViewController).present(readOptionsScreen, animated: true, completion: nil)
+    func presentGCScreen() {
+        let gcPopupController = GCPopupController()
+        let width: CGFloat = Helper.isPad ? 0.6 : 0.9
+        let height: CGFloat = Helper.isPad ? 0.5 : 0.8
+        
+        SwiftEntryKit.display(entry: gcPopupController, using: Animation.modalAnimationAttributes(widthRatio: width, heightRatio: height))
     }
 }
 
@@ -67,7 +67,7 @@ extension QuarterlyPresenter: QuarterlyInteractorOutputProtocol {
     }
 
     func didRetrieveQuarterlies(quarterlies: [Quarterly]) {
-        if currentLanguage().code == quarterlies.first?.lang {
+        if Preferences.currentLanguage().code == quarterlies.first?.lang {
             controller?.showQuarterlies(quarterlies: quarterlies)
         }
     }

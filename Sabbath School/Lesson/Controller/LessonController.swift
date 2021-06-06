@@ -30,7 +30,6 @@ final class LessonController: TableController {
     var dataSource: QuarterlyInfo?
     
     var shouldSkipToReader = false
-    
 
     override init() {
         super.init()
@@ -93,7 +92,7 @@ final class LessonController: TableController {
         }
     }
 
-    @objc func readButtonAction(sender: OpenButton) {
+    @objc func readButtonAction(sender: ASButtonNode) {
         openToday()
     }
 }
@@ -108,7 +107,7 @@ extension LessonController: LessonControllerProtocol {
         self.tableNode?.allowsSelection = true
         self.tableNode?.reloadData()
         self.colorize()
-        self.correctHairline()
+        // self.correctHairline()
         
         if shouldSkipToReader {
             openToday()
@@ -145,7 +144,7 @@ extension LessonController: ASTableDataSource {
             let cellNodeBlock: () -> ASCellNode = {
 
                 if indexPath.section == 0 {
-                    return QuarterlyEmptyCell()
+                    return QuarterlyEmptyView()
                 }
                 return LessonEmptyCellNode()
             }
@@ -154,12 +153,12 @@ extension LessonController: ASTableDataSource {
 
         let cellNodeBlock: () -> ASCellNode = {
             if indexPath.section == 0 {
-                let node = LessonQuarterlyInfoNode(quarterly: (self.dataSource?.quarterly)!)
+                let node = LessonQuarterlyInfoView(quarterly: (self.dataSource?.quarterly)!)
                 node.readButton.addTarget(self, action: #selector(self.readButtonAction(sender:)), forControlEvents: .touchUpInside)
                 return node
             }
 
-            return LessonCellNode(lesson: lesson, number: "\(indexPath.row+1)")
+            return LessonView(lesson: lesson, number: "\(indexPath.row+1)")
         }
 
         return cellNodeBlock

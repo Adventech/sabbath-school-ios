@@ -45,14 +45,14 @@ class AboutController: ThemeController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTranslucentNavigation(false, color: .tintColor, tintColor: .white, titleColor: .white)
+        setTranslucentNavigation(false, color: AppStyle.Base.Color.tint, tintColor: .white, titleColor: .white)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
             if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                self.view.backgroundColor = .baseBackground
+                self.view.backgroundColor = AppStyle.Base.Color.background
                 self.collectionNode.reloadData()
             }
         }
@@ -60,7 +60,7 @@ class AboutController: ThemeController {
 
     func openUrl(url: String) {
         let safariVC = SFSafariViewController(url: URL(string: url)!)
-        safariVC.view.tintColor = .tintColor
+        safariVC.view.tintColor = AppStyle.Base.Color.tint
         safariVC.modalPresentationStyle = .currentContext
         present(safariVC, animated: true, completion: nil)
     }
@@ -109,11 +109,5 @@ extension AboutController: ASCollectionDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
-    }
-}
-
-extension AboutController: UIPopoverPresentationControllerDelegate {
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
     }
 }

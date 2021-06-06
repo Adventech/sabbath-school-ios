@@ -43,13 +43,11 @@ class ReadController: ThemeController {
     var lastPage: Int?
     var isTransitionInProgress: Bool = false
     
-    var isMenuShown: Bool = false
-
     var menuItems = [UIMenuItem]()
 
     override init() {
         super.init(node: ASPagerNode())
-        collectionNode.backgroundColor = .baseBackgroundLogin
+        collectionNode.backgroundColor = AppStyle.Base.Color.background
         collectionNode.setDataSource(self)
         collectionNode.delegate = self
         collectionNode.allowsAutomaticInsetsAdjustment = true
@@ -84,7 +82,6 @@ class ReadController: ThemeController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        self.isModalInPopover = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -111,11 +108,10 @@ class ReadController: ThemeController {
     }
 
     @objc func readingOptions(sender: UIBarButtonItem) {
-        let buttonView = sender.value(forKey: "view") as! UIView
         var size = CGSize(width: round(node.frame.width)-10, height: 167)
         
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            size.width = round(node.frame.width*0.3)
+        if Helper.isPad {
+            size.width = round(node.frame.width*0.4) < 400 ? 400 : round(node.frame.width*0.4)
         }
 
         presenter?.presentReadOptionsScreen(size: size, sourceView: sender)
@@ -175,7 +171,7 @@ class ReadController: ThemeController {
     }
 
     func readNavigationBarStyle(titleColor: UIColor = .white) {
-        let theme = currentTheme()
+        let theme = Preferences.currentTheme()
         setTranslucentNavigation(
             color: theme.navBarColor,
             tintColor: theme.navBarTextColor,
@@ -185,8 +181,8 @@ class ReadController: ThemeController {
 
         for webViewIndex in 0...self.reads.count {
             guard let readView = collectionNode.nodeForPage(at: webViewIndex) as? ReadView else { return }
-            readView.coverOverlayNode.backgroundColor = theme.navBarColor
-            readView.coverNode.backgroundColor = theme.navBarColor
+            readView.coverOverlay.backgroundColor = theme.navBarColor
+            readView.cover.backgroundColor = theme.navBarColor
         }
     }
 
@@ -324,14 +320,14 @@ extension ReadController: ReadViewOutputProtocol {
     }
 
     func didReceiveShare(text: String) {
-        let objectsToShare = [text]
+        let objectsToShare: [Any] = [text, self.lessonInfo?.lesson.fullPath ?? ""]
         let activityController = UIActivityViewController(
             activityItems: objectsToShare,
             applicationActivities: nil)
 
         activityController.popoverPresentationController?.sourceRect = self.view.frame
         activityController.popoverPresentationController?.sourceView = self.view
-        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+        if Helper.isPad {
             activityController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.maxY, width: 0, height: 0)
         }
         activityController.popoverPresentationController?.permittedArrowDirections = .any
@@ -347,67 +343,9 @@ extension ReadController: ReadViewOutputProtocol {
 
     func didTapExternalUrl(url: URL) {
         let safariVC = SFSafariViewController(url: url)
-        safariVC.view.tintColor = .tintColor
+        safariVC.view.tintColor = AppStyle.Base.Color.tint
         safariVC.modalPresentationStyle = .currentContext
         present(safariVC, animated: true, completion: nil)
-    }
-    
-    func didReceiveContextMenuRect(rect: DOMRect) {
-        
-        if isMenuShown {
-            self.presentedViewController?.dismiss(animated: false, completion: nil)
-        }
-        let read = self.reads[0]
-        let versionName = "NKJV"
-        var menuitems = [MenuItem]()
-
-        read.bible.forEach { item in
-            let menuItem = MenuItem(
-                name: item.name,
-                subtitle: nil,
-                image: nil,
-                selected: versionName == item.name
-            )
-            menuitems.append(menuItem)
-        }
-        
-        let menu = BibleVersionController(withItems: [])
-        
-        var size = CGSize(width: 200, height: 60)
-        menu.preferredContentSize = size
-        menu.modalPresentationStyle = .popover
-        
-        let readView = (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView)
-        
-        print("SSDEBUG rect y", rect.y)
-        print("SSDEBUG rect height", rect.height)
-        print("SSDEBUG lastContentOffset", lastContentOffset)
-        print("SSDEBUG initialCoverHeight", readView.initialCoverNodeHeight)
-        print("SSDEBUG scrollView.contentOffset.y", readView.webView.scrollView.contentOffset.y)
-        print("SSDEBUG final", initialContentOffset + readView.webView.scrollView.contentOffset.y + rect.y)
-        
-        menu.popoverPresentationController?.sourceView = readView.webView.scrollView
-        var yPos = initialContentOffset + readView.webView.scrollView.contentOffset.y + rect.y - 10
-        var xPos = rect.x
-        if (rect.height > self.view.frame.size.height*0.7) {
-            yPos = 100
-            xPos = rect.x / 2
-        }
-        
-        menu.popoverPresentationController?.sourceRect = CGRect(x: xPos, y: yPos, width: rect.width, height: rect.height + 10)
-        menu.popoverPresentationController?.delegate = self
-        menu.popoverPresentationController?.backgroundColor = .baseBackground
-        menu.popoverPresentationController?.permittedArrowDirections = [.down, .up]
-        menu.popoverPresentationController?.passthroughViews = [self.collectionNode.view] as! [UIView]
-
-        self.isMenuShown = true
-        present(menu, animated: false, completion: nil)
-    }
-    
-    func didReceiveContextMenuDismiss() {
-        self.presentedViewController?.dismiss(animated: true, completion: { () -> Void in
-            self.isMenuShown = false
-        })
     }
 }
 
@@ -439,27 +377,5 @@ extension ReadController: BibleControllerOutputProtocol {
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
             webView.createContextMenu()
         }
-    }
-}
-
-extension ReadController: UIPopoverPresentationControllerDelegate {
-    func popoverPresentationControllerDidDismissPopover(_ controller: UIPopoverPresentationController) {
-        print("SSDEBUG", "dismissed")
-        if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
-            //print("SSDEBUG", webView.stringByEvaluatingJavaScript(from: "ssReader.shouldDeselectContextMenu()"))
-//            webView.isUserInteractionEnabled = false
-//            webView.isUserInteractionEnabled = true
-        }
-        
-        
-    }
-    
-    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        self.isMenuShown = false
-        return true
-    }
-
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
     }
 }

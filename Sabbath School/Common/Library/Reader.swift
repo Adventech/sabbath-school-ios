@@ -43,17 +43,17 @@ struct ReaderStyle {
 
         var backgroundColor: UIColor {
             switch self {
-            case .light: return .readerWhite
-            case .sepia: return .readerSepia
-            case .dark: return .readerDark
+            case .light: return AppStyle.Reader.Color.white
+            case .sepia: return AppStyle.Reader.Color.sepia
+            case .dark: return AppStyle.Reader.Color.dark
             }
         }
 
         var navBarColor: UIColor {
             switch self {
-            case .light: return .tintColor
-            case .sepia: return .tintColor
-            case .dark: return .readerDark
+            case .light: return AppStyle.Base.Color.tint
+            case .sepia: return AppStyle.Base.Color.tint
+            case .dark: return AppStyle.Reader.Color.dark
             }
         }
 
@@ -138,8 +138,6 @@ protocol ReaderOutputProtocol: class {
     func didReceiveShare(text: String)
     func didReceiveLookup(text: String)
     func didTapExternalUrl(url: URL)
-    func didReceiveContextMenuRect(rect: DOMRect)
-    func didReceiveContextMenuDismiss()
 }
 
 open class Reader: UIWebView {
@@ -184,12 +182,12 @@ open class Reader: UIWebView {
     }
 
     func setupContextMenu() {
-        // createContextMenu()
-        // showContextMenu()
+        createContextMenu()
+        showContextMenu()
     }
 
     func showContextMenu() {
-        let rect = NSCoder.cgRect(for: "{{-1000, -1000}, {-1000, -1000}}")
+        let rect = NSCoder.cgRect(for: "{{-1000, -1000}, {-1000, -10000}}")
         UIMenuController.shared.setTargetRect(rect, in: self)
         UIMenuController.shared.setMenuVisible(true, animated: false)
     }
@@ -225,8 +223,6 @@ open class Reader: UIWebView {
     }
 
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        self.stringByEvaluatingJavaScript(from: "ssReader.showContextMenu()")
-        return false
         if !contextMenuEnabled { return super.canPerformAction(action, withSender: sender) }
         return false
     }
@@ -234,7 +230,7 @@ open class Reader: UIWebView {
     func loadContent(content: String) {
         var indexPath = Bundle.main.path(forResource: "index", ofType: "html")
 
-        let exists = false // FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
+        let exists = false //FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
 
         if exists {
             indexPath = Constants.Path.readerBundle.path
@@ -248,9 +244,9 @@ open class Reader: UIWebView {
             index = index?.replacingOccurrences(of: "js/", with: "")
         }
 
-        let theme = currentTheme()
-        let typeface = currentTypeface()
-        let size = currentSize()
+        let theme = Preferences.currentTheme()
+        let typeface = Preferences.currentTypeface()
+        let size = Preferences.currentSize()
 
         index = index?.replacingOccurrences(of: "ss-wrapper-light", with: "ss-wrapper-"+theme.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-andada", with: "ss-wrapper-"+typeface.rawValue)
@@ -302,24 +298,6 @@ open class Reader: UIWebView {
             if let elementId = url.valueForParameter(key: "elementId") {
                 self.readerViewDelegate?.didReceiveComment(comment: decodedComment, elementId: elementId)
                 return false
-            }
-
-            return false
-        }
-
-        if let rect = url.valueForParameter(key: "contextMenu"), let decodedRect = rect.base64Decode() {
-            if (decodedRect == "dismiss") {
-                self.readerViewDelegate?.didReceiveContextMenuDismiss()
-                return false
-            }
-            do {
-                let data = decodedRect.data(using: .utf8)!
-                let json = try JSONDecoder().decode(DOMRect.self, from: data)
-                self.readerViewDelegate?.didReceiveContextMenuRect(rect: json)
-            } catch let error as NSError {
-                print("SSDEBUG", rect)
-                print("SSDEBUG", decodedRect)
-                print("SSDEBUG", error)
             }
             return false
         }

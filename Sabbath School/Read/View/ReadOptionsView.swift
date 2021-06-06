@@ -32,21 +32,21 @@ protocol ReadOptionsDelegate: class {
 class ReadOptionsView: ASDisplayNode {
     weak var delegate: ReadOptionsDelegate?
 
-    let themeNode = ASDisplayNode { UISegmentedControl(frame: CGRect.zero) }
-    var themeView: UISegmentedControl { return themeNode.view as! UISegmentedControl }
+    let theme = ASDisplayNode { UISegmentedControl(frame: CGRect.zero) }
+    var themeView: UISegmentedControl { return theme.view as! UISegmentedControl }
 
-    let typefaceNode = ASDisplayNode { UISegmentedControl(frame: CGRect.zero) }
-    var typefaceView: UISegmentedControl { return typefaceNode.view as! UISegmentedControl }
+    let typeface = ASDisplayNode { UISegmentedControl(frame: CGRect.zero) }
+    var typefaceView: UISegmentedControl { return typeface.view as! UISegmentedControl }
 
-    let fontSizeNode = ASDisplayNode {
+    let fontSize = ASDisplayNode {
         DiscreteSlider(frame: CGRect(x: 0, y: 0, width: 375, height: 55))
     }
-    var fontSizeView: DiscreteSlider { return fontSizeNode.view as! DiscreteSlider }
-    let fontSizeSmallNode = ASTextNode()
-    let fontSizeLargeNode = ASTextNode()
+    var fontSizeView: DiscreteSlider { return fontSize.view as! DiscreteSlider }
+    let fontSizeSmallest = ASTextNode()
+    let fontSizeLargest = ASTextNode()
 
-    let dividerNode1 = ASDisplayNode()
-    let dividerNode2 = ASDisplayNode()
+    let divider1 = ASDisplayNode()
+    let divider2 = ASDisplayNode()
 
     override init() {
         super.init()
@@ -55,7 +55,7 @@ class ReadOptionsView: ASDisplayNode {
         themeView.addTarget(self, action: #selector(themeValueChanged(_:)), for: UIControl.Event.valueChanged)
         typefaceView.addTarget(self, action: #selector(typefaceValueChanged(_:)), for: UIControl.Event.valueChanged)
 
-        let size = currentSize()
+        let size = Preferences.currentSize()
         guard let sizeIndex = size.index else { return }
         fontSizeView.value = CGFloat(sizeIndex)
         fontSizeView.tickStyle = .rounded
@@ -74,36 +74,38 @@ class ReadOptionsView: ASDisplayNode {
             layer.backgroundColor = UIColor.clear.cgColor
         }
         
-        fontSizeSmallNode.attributedText = TextStyles.readOptionsFontSizeSmallest(string: "Aa".localized())
-        fontSizeLargeNode.attributedText = TextStyles.readOptionsFontSizeLargest(string: "Aa".localized())
+        fontSizeSmallest.attributedText = AppStyle.ReadOptions.Text.fontSizeSmallest(string: "Aa".localized())
+        fontSizeLargest.attributedText = AppStyle.ReadOptions.Text.fontSizeLargest(string: "Aa".localized())
 
         automaticallyManagesSubnodes = true
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        themeNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(55))
-        typefaceNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(55))
-        dividerNode1.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(1))
-        dividerNode2.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(1))
-        fontSizeSmallNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(60), height: ASDimensionMake(.auto, 0))
-        fontSizeLargeNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(60), height: ASDimensionMake(.auto, 0))
-        fontSizeNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width-120), height: ASDimensionMake(55))
+        theme.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(55))
+        typeface.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(55))
+        fontSize.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width-120), height: ASDimensionMake(55))
+        fontSizeSmallest.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(60), height: ASDimensionMake(.auto, 0))
+        fontSizeLargest.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(60), height: ASDimensionMake(.auto, 0))
+        divider1.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(1))
+        divider2.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(1))
+        
 
         let sliderSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 0,
             justifyContent: .center,
             alignItems: .center,
-            children: [fontSizeSmallNode, fontSizeNode, fontSizeLargeNode])
+            children: [fontSizeSmallest, fontSize, fontSizeLargest])
 
         let mainLayout = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 0,
             justifyContent: .start,
             alignItems: .center,
-            children: [themeNode, dividerNode1, typefaceNode, dividerNode2, sliderSpec])
+            children: [theme, divider1, typeface, divider2, sliderSpec])
         
         var topMargin: CGFloat = 0
+        
         if #available(iOS 11.0, *) {
             topMargin = 10
         }
@@ -113,9 +115,9 @@ class ReadOptionsView: ASDisplayNode {
 
     override func layout() {
         super.layout()
-        var frame = fontSizeNode.frame
+        var frame = fontSize.frame
         frame.size = CGSize(width: calculatedSize.width-120, height: 55)
-        fontSizeNode.frame = frame
+        fontSize.frame = frame
         fontSizeView.layoutTrack()
     }
 
@@ -126,11 +128,11 @@ class ReadOptionsView: ASDisplayNode {
         themeView.insertSegment(withTitle: "Sepia".localized(), at: 1, animated: false)
         themeView.insertSegment(withTitle: "Dark".localized(), at: 2, animated: false)
         
-        themeView.setTitleTextAttributes(TextStyles.readOptionsButtonStyle(), for: .normal)
-        themeView.setTitleTextAttributes(TextStyles.readOptionsSelectedButtonStyle(), for: .selected)
-        themeView.setTitleTextAttributes(TextStyles.readOptionsSelectedButtonStyle(), for: .highlighted)
+        themeView.setTitleTextAttributes(AppStyle.ReadOptions.Text.button(), for: .normal)
+        themeView.setTitleTextAttributes(AppStyle.ReadOptions.Text.buttonSelected(), for: .selected)
+        themeView.setTitleTextAttributes(AppStyle.ReadOptions.Text.buttonSelected(), for: .highlighted)
         
-        switch currentTheme() {
+        switch Preferences.currentTheme() {
         case .light:
             themeView.selectedSegmentIndex = 0
             break
@@ -153,11 +155,11 @@ class ReadOptionsView: ASDisplayNode {
         typefaceView.insertSegment(withTitle: "PT Serif".localized(), at: 2, animated: false)
         typefaceView.insertSegment(withTitle: "PT Sans".localized(), at: 3, animated: false)
         
-        typefaceView.setTitleTextAttributes(TextStyles.readOptionsButtonStyle(), for: .normal)
-        typefaceView.setTitleTextAttributes(TextStyles.readOptionsSelectedButtonStyle(), for: .selected)
-        typefaceView.setTitleTextAttributes(TextStyles.readOptionsSelectedButtonStyle(), for: .highlighted)
+        typefaceView.setTitleTextAttributes(AppStyle.ReadOptions.Text.button(), for: .normal)
+        typefaceView.setTitleTextAttributes(AppStyle.ReadOptions.Text.buttonSelected(), for: .selected)
+        typefaceView.setTitleTextAttributes(AppStyle.ReadOptions.Text.buttonSelected(), for: .highlighted)
         
-        switch currentTypeface() {
+        switch Preferences.currentTypeface() {
         case .andada:
             typefaceView.selectedSegmentIndex = 0
             break
@@ -177,11 +179,11 @@ class ReadOptionsView: ASDisplayNode {
     }
     
     func configureStyles() {
-        backgroundColor = .baseBackground
-        dividerNode1.backgroundColor = .shimmerringColor
-        dividerNode2.backgroundColor = .shimmerringColor
-        fontSizeView.thumbColor = .readOptionsTickColor
-        fontSizeView.tintColor = .shimmerringColor
+        backgroundColor = AppStyle.Base.Color.background
+        divider1.backgroundColor = AppStyle.Base.Color.control
+        divider2.backgroundColor = AppStyle.Base.Color.control
+        fontSizeView.thumbColor = AppStyle.Base.Color.controlActive
+        fontSizeView.tintColor = AppStyle.Base.Color.control
         setupThemeSegmentControl()
         setupTypefaceSegmentControl()
     }
@@ -218,7 +220,7 @@ extension UISegmentedControl {
         setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: .highlighted, barMetrics: .default)
         setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: .highlighted, barMetrics: .default)
         setBackgroundImage(UIImage.imageWithColor(UIColor.clear), for: [.highlighted, .selected], barMetrics: .default)
-        setDividerImage(UIImage.imageWithColor(.shimmerringColor), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        setDividerImage(UIImage.imageWithColor(AppStyle.Base.Color.control), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
     }
 
     func removeDividers() {

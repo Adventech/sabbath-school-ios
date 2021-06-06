@@ -25,7 +25,7 @@ import AsyncDisplayKit
 class SettingsView: ASTableNode {
     override public init(style: UITableView.Style) {
         super.init(style: style)
-        self.view.separatorColor = .baseSeparator
+        self.view.separatorColor = AppStyle.Base.Color.tableSeparator
         self.view.separatorInset = UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 0)
     }
 }

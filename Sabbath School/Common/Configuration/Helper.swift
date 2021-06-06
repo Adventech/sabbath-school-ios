@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Adventech <info@adventech.io>
+ * Copyright (c) 2021 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,9 +21,28 @@
  */
 
 import UIKit
+import Foundation
 
-struct ButtonStyle {
-    static func openButtonUIEdgeInsets() -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 40, bottom: 8, right: 40)
+struct Helper {
+    static var isPad: Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
+    static var isPhone: Bool {
+        return UIDevice.current.userInterfaceIdiom == .phone
+    }
+    
+    static func is24hr() -> Bool {
+        let dateFormat = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)!
+        return dateFormat.firstIndex(of: "a") == nil
+    }
+    
+    static func firstRun() -> Bool {
+        return UserDefaults.standard.bool(forKey: Constants.DefaultKey.firstRun)
+    }
+    
+    static func isDarkMode() -> Bool {
+        guard #available(iOS 13.0, *) else { return false }
+        return UITraitCollection.current.userInterfaceStyle == .dark
     }
 }

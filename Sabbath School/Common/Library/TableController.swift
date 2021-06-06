@@ -43,10 +43,10 @@ class TableController: ThemeController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         correctHairline()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.hideBottomHairline()
         super.viewWillAppear(animated)
 
         if let selected = tableNode?.indexPathForSelectedRow {
@@ -76,7 +76,7 @@ class TableController: ThemeController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.tableNode?.view.separatorColor = UIColor.separatorColor()
+        self.tableNode?.view.separatorColor = AppStyle.Base.Color.tableSeparator
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

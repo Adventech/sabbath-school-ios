@@ -41,10 +41,10 @@ class LoginWireFrame: LoginWireFrameProtocol {
     func presentQuarterlyScreen() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-        UIView.transition(with: appDelegate.window!,
+        UIView.transition(with: Configuration.window!,
                           duration: 0.5,
                           options: .transitionFlipFromLeft,
-                          animations: { appDelegate.window!.rootViewController = QuarterlyWireFrame.createQuarterlyModule() },
+                          animations: { Configuration.window!.rootViewController = QuarterlyWireFrame.createQuarterlyModule() },
                           completion: nil)
     }
     

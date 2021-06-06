@@ -33,7 +33,7 @@ class BibleView: ASDisplayNode {
     }
 
     override func didLoad() {
-        let theme = currentTheme()
+        let theme = Preferences.currentTheme()
         webView.backgroundColor = theme.backgroundColor
     }
 

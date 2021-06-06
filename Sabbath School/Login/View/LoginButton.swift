@@ -22,7 +22,6 @@
 
 import UIKit
 import AsyncDisplayKit
-import pop
 
 enum LoginButtonType {
     case facebook
@@ -52,19 +51,19 @@ class LoginButton: ASButtonNode {
         var icon: UIImage?
         switch type {
         case .facebook:
-            attributes = TextStyles.signInButtonTitleStyle(string: "Sign in with Facebook".localized(), color: .white)
-            backgroundColor = UIColor.facebook
+            attributes = AppStyle.Login.Text.signInButton(string: "Sign in with Facebook".localized(), color: .white)
+            backgroundColor = AppStyle.Login.Color.facebookBlue
             icon = R.image.loginIconFacebook()
             accessibilityIdentifier = "signInWithFacebook"
             addShadow()
         case .google:
-            attributes = TextStyles.signInButtonTitleStyle(string: "Sign in with Google".localized())
-            backgroundColor = UIColor.white
+            attributes = AppStyle.Login.Text.signInButton(string: "Sign in with Google".localized())
+            backgroundColor = .white
             icon = R.image.loginIconGoogle()
             accessibilityIdentifier = "signInWithGoogle"
             addShadow()
         case .anonymous:
-            attributes = TextStyles.signInButtonAnonymousTitleStyle(string: "Continue without login".localized())
+            attributes = AppStyle.Login.Text.signInButtonAnonymous(string: "Continue without login".localized())
             accessibilityIdentifier = "continueWithoutLogin"
         }
         if let image = icon {
@@ -74,33 +73,5 @@ class LoginButton: ASButtonNode {
         setAttributedTitle(attributes, for: .normal)
         contentEdgeInsets = UIEdgeInsets(top: 13, left: 30, bottom: 13, right: 30)
         cornerRadius = 4
-    }
-
-    override func sendActions(forControlEvents controlEvents: ASControlNodeEvent, with touchEvent: UIEvent?) {
-        if controlEvents == .touchDown {
-            let anim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
-            anim?.duration = 0.2
-            anim?.toValue = NSValue(cgSize: CGSize(width: 0.95, height: 0.95))
-            self.layer.pop_add(anim, forKey: anim?.property.name)
-        }
-
-        if controlEvents == .touchUpInside {
-            let anim = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
-            anim?.dynamicsTension = 300
-            anim?.dynamicsFriction = 16
-            anim?.dynamicsMass = 1
-            anim?.velocity = NSValue(cgSize: CGSize(width: 2, height: 2))
-            anim?.toValue = NSValue(cgSize: CGSize(width: 1, height: 1))
-            layer.pop_add(anim, forKey: anim?.property.name)
-        }
-
-        if controlEvents == .touchDragOutside || controlEvents == .touchCancel {
-            let anim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
-            anim?.duration = 0.2
-            anim?.toValue = NSValue(cgSize: CGSize(width: 1, height: 1))
-            self.layer.pop_add(anim, forKey: anim?.property.name)
-        }
-
-        super.sendActions(forControlEvents: controlEvents, with: touchEvent)
     }
 }

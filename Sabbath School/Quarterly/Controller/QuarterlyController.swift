@@ -26,7 +26,6 @@ import UIKit
 
 class QuarterlyController: TableController {
     var presenter: QuarterlyPresenterProtocol?
-    let animator = PopupTransitionAnimator()
 
     var dataSource = [Quarterly]()
 
@@ -35,6 +34,7 @@ class QuarterlyController: TableController {
 
         tableNode?.dataSource = self
         tableNode?.allowsSelection = false
+        tableNode?.backgroundColor = AppStyle.Base.Color.background
 
         title = "Sabbath School".localized().uppercased()
     }
@@ -46,42 +46,30 @@ class QuarterlyController: TableController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logoutAction))
+        let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logout))
         settingsButton.accessibilityIdentifier = "openSettings"
 
-        let rightButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(rightAction(sender:)))
-        rightButton.accessibilityIdentifier = "openLanguage"
+        let languagesButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(showLanguages(sender:)))
+        languagesButton.accessibilityIdentifier = "openLanguage"
 
         navigationItem.leftBarButtonItem = settingsButton
-        navigationItem.rightBarButtonItem = rightButton
+        navigationItem.rightBarButtonItem = languagesButton
+        
         presenter?.configure()
         retrieveQuarterlies()
 
-        if !gcPopupStatus() {
+        if !Preferences.gcPopupStatus() {
             UserDefaults.standard.set(true, forKey: Constants.DefaultKey.gcPopup)
             showGCPopup()
         } else {
-            let lastQuarterlyIndex = currentQuarterly()
+            let lastQuarterlyIndex = Preferences.currentQuarterly()
             let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
-            if let code = languageCode.first, currentLanguage().code == code {
+            if let code = languageCode.first, Preferences.currentLanguage().code == code {
                 presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
             }
         }
     }
     
-    func showGCPopup() {
-        var size = CGSize(width: round(node.frame.width*0.9), height: round(node.frame.height*0.8))
-        
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            size = CGSize(width: round(node.frame.width*0.6), height: round(node.frame.height*0.5))
-        }
-        
-        animator.style = .square
-        animator.cornerRadius = 7
-        animator.interactive = false
-        presenter?.presentGCScreen(size: size, transitioningDelegate: animator)
-    }
-
     func retrieveQuarterlies() {
         self.dataSource = [Quarterly]()
         self.tableNode?.allowsSelection = false
@@ -89,21 +77,6 @@ class QuarterlyController: TableController {
         presenter?.presentQuarterlies()
     }
 
-    @objc func rightAction(sender: UIBarButtonItem) {
-        presenter?.presentLanguageScreen()
-    }
-
-    @objc func openButtonAction(sender: OpenButton) {
-        presenter?.presentLessonScreen(quarterlyIndex: dataSource[0].index)
-    }
-
-    @objc func logoutAction() {
-        let settings = SettingsController()
-
-        let nc = ASNavigationController(rootViewController: settings)
-        self.present(nc, animated: true)
-    }
-    
     func showLessonScreen(quarterly: Quarterly) {
         guard dataSource.contains( where: { $0 == quarterly } )  else { return }
         
@@ -111,6 +84,25 @@ class QuarterlyController: TableController {
         
         lessonController.shouldSkipToReader = true
         self.show(lessonController, sender: nil)
+    }
+    
+    func showGCPopup() {
+        presenter?.presentGCScreen()
+    }
+    
+    @objc func openButtonAction(sender: ASButtonNode) {
+        presenter?.presentLessonScreen(quarterlyIndex: dataSource[0].index)
+    }
+    
+    @objc func showLanguages(sender: UIBarButtonItem) {
+        presenter?.presentLanguageScreen()
+    }
+
+    @objc func logout() {
+        let settings = SettingsController()
+
+        let nc = ASNavigationController(rootViewController: settings)
+        self.present(nc, animated: true)
     }
 }
 
@@ -125,7 +117,7 @@ extension QuarterlyController: QuarterlyControllerProtocol {
         self.colorize()
         self.tableNode?.allowsSelection = true
         self.tableNode?.reloadData()
-        self.correctHairline()
+        // self.correctHairline()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -145,18 +137,18 @@ extension QuarterlyController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let cellNodeBlock: () -> ASCellNode = {
             if self.dataSource.isEmpty {
-                return QuarterlyEmptyCell()
+                return QuarterlyEmptyView()
             }
 
             let quarterly = self.dataSource[indexPath.row]
 
             if indexPath.row == 0 {
-                let node = QuarterlyFeaturedCellNode(quarterly: quarterly)
+                let node = QuarterlyFeaturedView(quarterly: quarterly)
                 node.openButton.addTarget(self, action: #selector(self.openButtonAction(sender:)), forControlEvents: .touchUpInside)
                 return node
             }
 
-            return QuarterlyCellNode(quarterly: quarterly)
+            return QuarterlyView(quarterly: quarterly)
         }
 
         return cellNodeBlock

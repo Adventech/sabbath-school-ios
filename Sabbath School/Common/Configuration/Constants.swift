@@ -22,13 +22,7 @@
 
 import UIKit
 
-let isPad = UIDevice.current.userInterfaceIdiom == .pad
-let isPhone = UIDevice.current.userInterfaceIdiom == .phone
-
 struct Constants {
-    struct NotificationKey {
-    }
-    
     static let openTodayLessonShortcutItemType = "openTodayLessonShortcutItemType"
     
     struct DefaultKey {
@@ -38,7 +32,7 @@ struct Constants {
         static let firstRun = "io.adventech.firstRun"
         static let tintColor = "io.adventech.tintColor"
         static var preferredBibleVersion: String {
-            return "io.adventech.preferredBibleVersion." + currentLanguage().code
+            return "io.adventech.preferredBibleVersion." + Preferences.currentLanguage().code
         }
         static let lastQuarterlyIndex = "io.adventech.lastQuarterlyIndex"
         static let latestReaderBundleTimestamp = "io.adventech.latestReaderBundleTimestamp"
@@ -94,4 +88,14 @@ struct Constants {
         static let comments = "comments"
         static let suggestions = "suggestions"
     }
+    
+    struct URLs {
+        #if DEBUG
+        static let web = "https://sabbath-school-stage.adventech.io/"
+        #else
+        static let web = "https://sabbath-school.adventech.io/"
+        #endif
+    }
+    
+    struct NotificationKey {}
 }

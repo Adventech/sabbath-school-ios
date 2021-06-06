@@ -24,38 +24,38 @@ import AsyncDisplayKit
 
 final class ReadEmptyView: ASCellNode {
     let coverEmptyNode = ASDisplayNode()
-    let lineNode1 = ASDisplayNode()
-    let lineNode2 = ASDisplayNode()
-    let lineNode3 = ASDisplayNode()
-    let lineNode4 = ASDisplayNode()
-    let lineNode5 = ASDisplayNode()
-    let lineNode6 = ASDisplayNode()
-    let lineNode7 = ASDisplayNode()
-    let lineNode8 = ASDisplayNode()
-    let lineNode9 = ASDisplayNode()
-    let lineNode10 = ASDisplayNode()
-    let lineNode11 = ASDisplayNode()
-    let lineNode12 = ASDisplayNode()
-    let lineNode13 = ASDisplayNode()
-    let lineNode14 = ASDisplayNode()
+    let line1 = ASDisplayNode()
+    let line2 = ASDisplayNode()
+    let line3 = ASDisplayNode()
+    let line4 = ASDisplayNode()
+    let line5 = ASDisplayNode()
+    let line6 = ASDisplayNode()
+    let line7 = ASDisplayNode()
+    let line8 = ASDisplayNode()
+    let line9 = ASDisplayNode()
+    let line10 = ASDisplayNode()
+    let line11 = ASDisplayNode()
+    let line12 = ASDisplayNode()
+    let line13 = ASDisplayNode()
+    let line14 = ASDisplayNode()
 
     override init() {
         super.init()
-        coverEmptyNode.backgroundColor = .baseBackgroundReader
-        lineNode1.backgroundColor = .baseBackgroundReader
-        lineNode2.backgroundColor = .baseBackgroundReader
-        lineNode3.backgroundColor = .baseBackgroundReader
-        lineNode4.backgroundColor = .baseBackgroundReader
-        lineNode5.backgroundColor = .baseBackgroundReader
-        lineNode6.backgroundColor = .baseBackgroundReader
-        lineNode7.backgroundColor = .baseBackgroundReader
-        lineNode8.backgroundColor = .baseBackgroundReader
-        lineNode9.backgroundColor = .baseBackgroundReader
-        lineNode10.backgroundColor = .baseBackgroundReader
-        lineNode11.backgroundColor = .baseBackgroundReader
-        lineNode12.backgroundColor = .baseBackgroundReader
-        lineNode13.backgroundColor = .baseBackgroundReader
-        lineNode14.backgroundColor = .baseBackgroundReader
+        coverEmptyNode.backgroundColor = AppStyle.Read.Color.background
+        line1.backgroundColor = AppStyle.Read.Color.background
+        line2.backgroundColor = AppStyle.Read.Color.background
+        line3.backgroundColor = AppStyle.Read.Color.background
+        line4.backgroundColor = AppStyle.Read.Color.background
+        line5.backgroundColor = AppStyle.Read.Color.background
+        line6.backgroundColor = AppStyle.Read.Color.background
+        line7.backgroundColor = AppStyle.Read.Color.background
+        line8.backgroundColor = AppStyle.Read.Color.background
+        line9.backgroundColor = AppStyle.Read.Color.background
+        line10.backgroundColor = AppStyle.Read.Color.background
+        line11.backgroundColor = AppStyle.Read.Color.background
+        line12.backgroundColor = AppStyle.Read.Color.background
+        line13.backgroundColor = AppStyle.Read.Color.background
+        line14.backgroundColor = AppStyle.Read.Color.background
 
         automaticallyManagesSubnodes = true
     }
@@ -63,20 +63,20 @@ final class ReadEmptyView: ASCellNode {
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverEmptyNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height * 0.4)
 
-        lineNode1.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode2.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode3.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode4.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode5.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode6.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode7.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode8.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode9.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode10.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode11.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode12.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode13.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
-        lineNode14.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line1.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line2.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line3.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line4.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line5.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line6.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line7.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line8.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line9.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line10.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line11.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line12.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line13.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
+        line14.style.preferredSize = CGSize(width: constrainedSize.max.width*(0.5...1).random(), height: 18)
 
         let readSpec = ASStackLayoutSpec(
             direction: .vertical,
@@ -84,20 +84,20 @@ final class ReadEmptyView: ASCellNode {
             justifyContent: .start,
             alignItems: .start,
             children: [
-                lineNode1,
-                lineNode2,
-                lineNode3,
-                lineNode4,
-                lineNode5,
-                lineNode6,
-                lineNode7,
-                lineNode8,
-                lineNode9,
-                lineNode10,
-                lineNode11,
-                lineNode12,
-                lineNode13,
-                lineNode14
+                line1,
+                line2,
+                line3,
+                line4,
+                line5,
+                line6,
+                line7,
+                line8,
+                line9,
+                line10,
+                line11,
+                line12,
+                line13,
+                line14
             ]
         )
 
@@ -115,19 +115,19 @@ final class ReadEmptyView: ASCellNode {
         super.layout()
 
         addShimmerToNode(node: coverEmptyNode)
-        addShimmerToNode(node: lineNode1)
-        addShimmerToNode(node: lineNode2)
-        addShimmerToNode(node: lineNode3)
-        addShimmerToNode(node: lineNode4)
-        addShimmerToNode(node: lineNode5)
-        addShimmerToNode(node: lineNode6)
-        addShimmerToNode(node: lineNode7)
-        addShimmerToNode(node: lineNode8)
-        addShimmerToNode(node: lineNode9)
-        addShimmerToNode(node: lineNode10)
-        addShimmerToNode(node: lineNode11)
-        addShimmerToNode(node: lineNode12)
-        addShimmerToNode(node: lineNode13)
-        addShimmerToNode(node: lineNode14)
+        addShimmerToNode(node: line1)
+        addShimmerToNode(node: line2)
+        addShimmerToNode(node: line3)
+        addShimmerToNode(node: line4)
+        addShimmerToNode(node: line5)
+        addShimmerToNode(node: line6)
+        addShimmerToNode(node: line7)
+        addShimmerToNode(node: line8)
+        addShimmerToNode(node: line9)
+        addShimmerToNode(node: line10)
+        addShimmerToNode(node: line11)
+        addShimmerToNode(node: line12)
+        addShimmerToNode(node: line13)
+        addShimmerToNode(node: line14)
     }
 }

@@ -43,8 +43,7 @@ class LessonWireFrame: LessonWireFrameProtocol {
         let readScreen = ReadWireFrame.createReadModule(lessonIndex: lessonIndex)
         
         if #available(iOS 10.0, *) {
-            let generator = UIImpactFeedbackGenerator(style: .medium)
-            generator.impactOccurred()
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
 
         if let sourceView = view as? UIViewController {

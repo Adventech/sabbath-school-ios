@@ -44,3 +44,9 @@ final class PickerViewController: UIViewController {
         delegate?.pickerView(self, didChangedToDate: sender.date)
     }
 }
+
+extension PickerViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}

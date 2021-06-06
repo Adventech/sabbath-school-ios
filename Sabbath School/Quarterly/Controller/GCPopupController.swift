@@ -22,6 +22,7 @@
 
 import AsyncDisplayKit
 import UIKit
+import SwiftEntryKit
 
 class GCPopupController: ASDKViewController<ASDisplayNode> {
     var collectionNode: ASCollectionNode { return node as! ASCollectionNode }
@@ -38,13 +39,15 @@ class GCPopupController: ASDKViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layer.cornerRadius = 6
+        self.view.clipsToBounds = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
             if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                self.view.backgroundColor = .baseBackground
+                self.view.backgroundColor = AppStyle.Base.Color.background
                 self.collectionNode.reloadData()
             }
         }
@@ -53,7 +56,7 @@ class GCPopupController: ASDKViewController<ASDisplayNode> {
 
 extension GCPopupController: GCPopupViewDelegate {
     func didTapClose() {
-        self.dismiss()
+        SwiftEntryKit.dismiss()
     }
 }
 

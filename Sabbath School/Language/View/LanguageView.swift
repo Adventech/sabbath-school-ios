@@ -24,40 +24,40 @@ import AsyncDisplayKit
 import UIKit
 
 class LanguageView: ASDisplayNode {
-    let searchNode = ASEditableTextNode()
-    let searchNodeBorder = ASDisplayNode()
-    let tableNode = ASTableNode()
+    let search = ASEditableTextNode()
+    let searchBorder = ASDisplayNode()
+    let table = ASTableNode()
     
     override init() {
         super.init()
-        self.backgroundColor = .baseBackground
         self.configureStyles()
         
-        searchNode.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        searchNode.textView.textContainer.maximumNumberOfLines = 1
-        searchNode.maximumLinesToDisplay = 1
-        searchNode.scrollEnabled = false
+        search.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        search.textView.textContainer.maximumNumberOfLines = 1
+        search.maximumLinesToDisplay = 1
+        search.scrollEnabled = false
         automaticallyManagesSubnodes = true
     }
     
     func configureStyles() {
-        searchNode.typingAttributes = TextStyles.languageSearchStyle()
-        searchNode.attributedPlaceholderText = TextStyles.languageSearchPlaceholderStyle(string: "Search…".localized())
-        searchNode.backgroundColor = .baseBackground
-        searchNodeBorder.backgroundColor = UIColor.separatorColor()
-        tableNode.view.separatorColor = UIColor.separatorColor()
+        backgroundColor = AppStyle.Base.Color.background
+        search.typingAttributes = AppStyle.Language.Text.search()
+        search.attributedPlaceholderText = AppStyle.Language.Text.searchPlaceholder(string: "Search…".localized())
+        search.backgroundColor = AppStyle.Base.Color.background
+        searchBorder.backgroundColor = AppStyle.Base.Color.tableSeparator
+        table.view.separatorColor = AppStyle.Base.Color.tableSeparator
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        self.searchNode.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(.auto, 0))
-        self.searchNodeBorder.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(0.3))
-        self.tableNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
-        self.tableNode.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.searchNode.calculatedSize.height, right: 0)
+        self.search.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(.auto, 0))
+        self.searchBorder.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(0.3))
+        self.table.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
+        self.table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.search.calculatedSize.height, right: 0)
         return ASStackLayoutSpec(
             direction: .vertical,
             spacing: 0,
             justifyContent: .start,
             alignItems: .start,
-            children: [searchNode, searchNodeBorder, tableNode])
+            children: [search, searchBorder, table])
     }
 }

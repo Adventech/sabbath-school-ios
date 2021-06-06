@@ -20,10 +20,11 @@
  * THE SOFTWARE.
  */
 
+import AsyncDisplayKit
+import AuthenticationServices
 import UIKit
 
 extension UIButton {
-
     /**
      Add a space between the text and image
      http://stackoverflow.com/a/25559946/517707
@@ -43,5 +44,28 @@ extension UIButton {
         transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    }
+}
+
+extension ASButtonNode {
+    open override func sendActions(forControlEvents controlEvents: ASControlNodeEvent, with touchEvent: UIEvent?) {
+        if controlEvents == .touchDown {
+            bounce(true)
+        }
+        if controlEvents == .touchUpInside || controlEvents == .touchUpOutside || controlEvents == .touchDragOutside {
+            bounce(false)
+        }
+        super.sendActions(forControlEvents: controlEvents, with: touchEvent)
+    }
+    
+    func bounce(_ bounce: Bool) {
+        UIView.animate(
+            withDuration: bounce ? 0.8 : 0.6,
+            delay: 0,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 0.8,
+            options: [.beginFromCurrentState, .curveEaseInOut],
+            animations: { self.transform = bounce ? CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.95, y: 0.95)) : CATransform3DMakeAffineTransform(CGAffineTransform.identity) },
+            completion: nil)
     }
 }

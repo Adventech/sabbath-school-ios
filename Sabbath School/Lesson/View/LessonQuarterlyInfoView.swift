@@ -23,14 +23,14 @@
 import UIKit
 import AsyncDisplayKit
 
-class LessonQuarterlyInfoNode: ASCellNode {
-    let coverNode = ASDisplayNode()
-    var coverImageNode: RoundedCornersImage!
-    let titleNode = ASTextNode()
-    let humanDateNode = ASTextNode()
-    var detailNode = ASTextNode()
-    let readButton = OpenButton()
-    let imageCornerRadius = CGFloat(6)
+class LessonQuarterlyInfoView: ASCellNode {
+    let cover = ASDisplayNode()
+    var coverImage: RoundedCornersImage!
+    let title = ASTextNode()
+    let humanDate = ASTextNode()
+    let introduction = ASTextNode()
+    let readButton = ASButtonNode()
+    let coverCornerRadius = CGFloat(6)
 
     private let infiniteColor = ASDisplayNode()
 
@@ -48,34 +48,33 @@ class LessonQuarterlyInfoNode: ASCellNode {
         }
 
         // Nodes
-        titleNode.attributedText = TextStyles.h2(string: quarterly.title)
-        humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate)
-        detailNode.attributedText = TextStyles.cellDetailStyle(string: quarterly.description, color: .white)
-        detailNode.maximumNumberOfLines = 8
+        title.attributedText = AppStyle.Quarterly.Text.featuredTitle(string: quarterly.title)
+        humanDate.attributedText = AppStyle.Quarterly.Text.humanDate(string: quarterly.humanDate)
+        introduction.attributedText = AppStyle.Lesson.Text.introduction(string: quarterly.description, color: .white)
+        introduction.maximumNumberOfLines = 8
 
-        readButton.setAttributedTitle(TextStyles.readButtonStyle(string: "Read".localized().uppercased()), for: .normal)
+        readButton.setAttributedTitle(AppStyle.Lesson.Text.readButton(string: "Read".localized().uppercased()), for: .normal)
         readButton.accessibilityIdentifier = "readLesson"
         readButton.titleNode.pointSizeScaleFactors = [0.9, 0.8]
         readButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
-        readButton.contentEdgeInsets = ButtonStyle.openButtonUIEdgeInsets()
+        readButton.contentEdgeInsets = AppStyle.Lesson.Button.readButtonUIEdgeInsets()
         readButton.cornerRadius = 18
 
-        coverNode.cornerRadius = imageCornerRadius
-        coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
-        coverNode.shadowOffset = CGSize(width: 0, height: 2)
-        coverNode.shadowRadius = 10
-        coverNode.shadowOpacity = 0.3
-        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-        coverNode.clipsToBounds = false
+        cover.cornerRadius = coverCornerRadius
+        cover.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
+        cover.shadowOffset = CGSize(width: 0, height: 2)
+        cover.shadowRadius = 10
+        cover.shadowOpacity = 0.3
+        cover.clipsToBounds = false
 
-        coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: imageCornerRadius)
-        coverImageNode.style.alignSelf = .stretch
+        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
+        coverImage.style.alignSelf = .stretch
 
-        addSubnode(titleNode)
-        addSubnode(humanDateNode)
-        addSubnode(detailNode)
-        addSubnode(coverNode)
-        addSubnode(coverImageNode)
+        addSubnode(title)
+        addSubnode(humanDate)
+        addSubnode(introduction)
+        addSubnode(cover)
+        addSubnode(coverImage)
         addSubnode(readButton)
     }
 
@@ -84,8 +83,8 @@ class LessonQuarterlyInfoNode: ASCellNode {
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        coverNode.style.preferredSize = CGSize(width: 130, height: 192)
-        titleNode.style.spacingAfter = 28
+        cover.style.preferredSize = CGSize(width: 130, height: 192)
+        title.style.spacingAfter = 28
         readButton.style.spacingBefore = 10
 
         let vSpec = ASStackLayoutSpec(
@@ -93,7 +92,7 @@ class LessonQuarterlyInfoNode: ASCellNode {
             spacing: 0,
             justifyContent: .start,
             alignItems: .start,
-            children: [humanDateNode, titleNode]
+            children: [humanDate, title]
         )
 
         let vSpec2 = ASStackLayoutSpec(
@@ -101,13 +100,13 @@ class LessonQuarterlyInfoNode: ASCellNode {
             spacing: 4,
             justifyContent: .start,
             alignItems: .start,
-            children: [detailNode, readButton]
+            children: [introduction, readButton]
         )
 
         vSpec.style.flexShrink = 1.0
         vSpec2.style.flexShrink = 1.0
 
-        let coverSpec = ASBackgroundLayoutSpec(child: coverImageNode, background: coverNode)
+        let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
 
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
@@ -135,6 +134,6 @@ class LessonQuarterlyInfoNode: ASCellNode {
 
     override func layoutDidFinish() {
         super.layoutDidFinish()
-        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: imageCornerRadius).cgPath
+        cover.layer.shadowPath = UIBezierPath(roundedRect: cover.bounds, cornerRadius: coverCornerRadius).cgPath
     }
 }

@@ -166,44 +166,12 @@ $(function(){
     search: function(){
       SSBridge.onSearch(window.getSelection().toString());
       this.clearSelection();
-    },
-      
-    showContextMenu: function(){
-      SSBridge.onShowContextMenu();
-    },
-      
-    // iOS only
-    shouldDeselectContextMenu: function() {
-      if (rangy.getSelection().toString().length){
-        var selection = rangy.getSelection().nativeSelection;
-        var getRange = selection.getRangeAt(0);
-        var getRect = JSON.parse(JSON.stringify(getRange.getBoundingClientRect()));
-          
-        if (!getRect.x) {
-          getRect.x = getRect.left
-        }
-
-        if (!getRect.y) {
-          getRect.y = getRect.top
-        }
-            
-        var rectString = ssReader.base64encode(JSON.stringify(getRect))
-        var scrollTop = window.scrollY || document.body.scrollTop || document.documentElement.scrollTop;
-
-        if ((SSBridge.prevSelection != rectString && rangy.getSelection().toString() != SSBridge.prevSelection) || SSBridge.prevScroll != scrollTop) {
-          return "no"
-        }
-      }
-      return "yes"
-    },
+    }
   });
 
   if (iOS){
     window.SSBridge = Class({
       $singleton: true,
-      prevSelection: null,
-      prevRect: null,
-      prevScroll: null,
       urlBase: "sabbath-school://ss",
 
       request: function(data){
@@ -241,43 +209,11 @@ $(function(){
       onSearch: function(text){
         this.request("?search=" + text);
       },
-        
-      onShowContextMenu: function(){
-        if (rangy.getSelection().toString().length){
-          var selection = rangy.getSelection().nativeSelection;
-          var getRange = selection.getRangeAt(0);
-          var getRect = JSON.parse(JSON.stringify(getRange.getBoundingClientRect()));
-          
-          if (!getRect.x) {
-            getRect.x = getRect.left
-          }
-
-          if (!getRect.y) {
-            getRect.y = getRect.top
-          }
-            
-          var rectString = ssReader.base64encode(JSON.stringify(getRect))
-          var scrollTop = window.scrollY || document.body.scrollTop || document.documentElement.scrollTop;
-
-          if ((SSBridge.prevSelection != rectString && rangy.getSelection().toString() != SSBridge.prevSelection) || SSBridge.prevScroll != scrollTop) {
-            this.request("?contextMenu=" + rectString);
-            SSBridge.prevSelection = rangy.getSelection().toString()
-            SSBridge.prevRect = rectString
-            SSBridge.prevScroll = scrollTop
-          }
-        } else {
-          this.request("?contextMenu=" + ssReader.base64encode("dismiss"));
-        }
-      },
 
       focusin: function(){},
       focusout: function(){}
     });
     SSBridge.onReady();
-    document.addEventListener("selectionchange", function() {
-      SSBridge.onShowContextMenu();
-    });
-    // setInterval(function(){ SSBridge.onShowContextMenu() }, 400);
   }
 
   if(typeof ssReader !== "undefined"){

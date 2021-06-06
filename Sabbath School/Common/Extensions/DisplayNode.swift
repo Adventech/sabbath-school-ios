@@ -25,7 +25,6 @@ import AsyncDisplayKit
 private var shimmeringNodeKey: UInt = 1
 
 extension ASDisplayNode {
-
     var shimmeringNode: ShimmeringNode? {
         get {
             return objc_getAssociatedObject(self, &shimmeringNodeKey) as? ShimmeringNode

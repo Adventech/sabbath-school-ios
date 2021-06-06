@@ -24,15 +24,15 @@ import AsyncDisplayKit
 import UIKit
 
 class BibleVersionView: ASCellNode {
-    let titleNode = ASTextNode()
-    let selectedNode = ASImageNode()
+    let name = ASTextNode()
+    let active = ASImageNode()
 
-    init(title: String, isSelected: Bool) {
+    init(name: String, isSelected: Bool) {
         super.init()
-
+        self.backgroundColor = AppStyle.Base.Color.background
         self.isSelected = isSelected
-        titleNode.attributedText = TextStyles.languageTitleStyle(string: title)
-        selectedNode.image = R.image.iconCheckmark()?.imageTintColor(.readOptionsSelectedButtonColor)
+        self.name.attributedText = AppStyle.Bible.Text.title(string: name)
+        self.active.image = R.image.iconCheckmark()?.imageTintColor(AppStyle.Base.Color.controlActive2)
         automaticallyManagesSubnodes = true
     }
 
@@ -42,13 +42,13 @@ class BibleVersionView: ASCellNode {
             spacing: 2,
             justifyContent: .start,
             alignItems: .start,
-            children: [titleNode]
+            children: [name]
         )
 
         var hSpecChildren: [ASLayoutElement] = [vSpec]
 
         if isSelected {
-            hSpecChildren.append(selectedNode)
+            hSpecChildren.append(active)
         }
 
         let hSpec = ASStackLayoutSpec(
@@ -62,5 +62,9 @@ class BibleVersionView: ASCellNode {
         hSpec.style.alignSelf = .stretch
 
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 16, left: 15, bottom: 16, right: 15), child: hSpec)
+    }
+    
+    override var isHighlighted: Bool {
+        didSet { backgroundColor = isHighlighted ? AppStyle.Lesson.Color.backgroundHighlighted : AppStyle.Lesson.Color.background }
     }
 }

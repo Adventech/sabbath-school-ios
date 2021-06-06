@@ -36,35 +36,15 @@ class ReadPresenter: ReadPresenterProtocol {
     }
 
     func presentBibleScreen(read: Read, verse: String, size: CGSize) {
-
         let bibleScreen = BibleWireFrame.createBibleModule(read: read, verse: verse)
         (bibleScreen as! BibleController).delegate = (controller as! BibleControllerOutputProtocol)
         let navigation = ASNavigationController(rootViewController: bibleScreen)
         
-        var attributes = EKAttributes.centerFloat
-        attributes.positionConstraints.size = .init(width: EKAttributes.PositionConstraints.Edge.ratio(value: 0.9), height: EKAttributes.PositionConstraints.Edge.ratio(value: 0.8))
-        attributes.precedence = .override(priority: .max, dropEnqueuedEntries: false)
-
-        attributes.displayDuration = .infinity
-        attributes.roundCorners = .all(radius: 6)
-
-        // Set its background to white
-        attributes.entryBackground = .color(color: EKColor(currentTheme().backgroundColor))
-        attributes.screenBackground = .color(color: EKColor(UIColor(white: 0, alpha: 0.5)))
+        if #available(iOS 10.0, *) {
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        }
         
-        attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 10, offset: .zero))
-
-        // Animate in and out using default translation
-        attributes.entranceAnimation = .init(
-            scale: .init(from: 0.6, to: 1, duration: 0.4, spring: .init(damping: 0.6, initialVelocity: 2)),
-            fade: .init(from: 0.3, to: 1, duration: 0.1)
-        )
-        
-        attributes.entryInteraction = .forward
-        attributes.screenInteraction = .dismiss
-        
-        attributes.exitAnimation = .init(fade: .init(from: 1, to: 0, duration: 0.2))
-        SwiftEntryKit.display(entry: navigation, using: attributes)
+        SwiftEntryKit.display(entry: navigation, using: Animation.modalAnimationAttributes(widthRatio: 0.9, heightRatio: 0.8, backgroundColor: Preferences.currentTheme().backgroundColor))
     }
 
     func presentReadOptionsScreen(size: CGSize, sourceView: UIBarButtonItem) {
@@ -74,7 +54,7 @@ class ReadPresenter: ReadPresenterProtocol {
         readOptionsScreen.preferredContentSize = size
         readOptionsScreen.popoverPresentationController?.barButtonItem = sourceView
         readOptionsScreen.popoverPresentationController?.delegate = readOptionsScreen
-        readOptionsScreen.popoverPresentationController?.backgroundColor = .baseBackground
+        readOptionsScreen.popoverPresentationController?.backgroundColor = AppStyle.Base.Color.background
         
         (controller as! UIViewController).present(readOptionsScreen, animated: true, completion: nil)
     }

@@ -27,11 +27,12 @@ final class RoundedCornersImage: ASDisplayNode {
     var imageNode = ASNetworkImageNode()
     var size: CGSize!
 
-    init(imageURL: URL, corner: CGFloat, size: CGSize = CGSize(width: 125, height: 187)) {
+    init(imageURL: URL, corner: CGFloat, size: CGSize = CGSize(width: 125, height: 187), backgroundColor: UIColor = ASDisplayNodeDefaultPlaceholderColor()) {
         super.init()
 
         self.size = size
-        imageNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
+        imageNode.placeholderColor = backgroundColor
+        imageNode.backgroundColor = backgroundColor
         imageNode.placeholderEnabled = true
         imageNode.placeholderFadeDuration = 0.6
 

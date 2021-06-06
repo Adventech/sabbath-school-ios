@@ -32,6 +32,7 @@ protocol AboutViewDelegate: class {
 
 class AboutView: ASCellNode {
     weak var delegate: AboutViewDelegate?
+    
     let sspmLogo = ASImageNode()
     let adventechLogo = ASImageNode()
     let slogan = ASTextNode()
@@ -48,15 +49,15 @@ class AboutView: ASCellNode {
 
         sspmLogo.image = R.image.sspmLogo()
         adventechLogo.image = R.image.logoAdventech()
-        slogan.attributedText = TextStyles.sloganStyle(string: "God's Ministry through Technology".localized())
+        slogan.attributedText = AppStyle.About.Text.slogan(string: "God's Ministry through Technology".localized())
         instagramLogo.image = R.image.iconInstagram()
         facebookLogo.image = R.image.iconFacebook()
         githubLogo.image = R.image.iconGithub()
-        websiteUrl.attributedText = TextStyles.websiteUrlStyle(string: "adventech.io".localized())
+        websiteUrl.attributedText = AppStyle.About.Text.url(string: "adventech.io".localized())
         
-        sspmText.attributedText = TextStyles.descriptionStyle(string: "The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.".localized())
-        descriptionText.attributedText = TextStyles.descriptionStyle(string: "Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.".localized())
-        signatureText.attributedText = TextStyles.signatureStyle(string: "Your friends at Adventech".localized())
+        sspmText.attributedText = AppStyle.About.Text.text(string: "The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.".localized())
+        descriptionText.attributedText = AppStyle.About.Text.text(string: "Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.".localized())
+        signatureText.attributedText = AppStyle.About.Text.signature(string: "Your friends at Adventech".localized())
 
         instagramLogo.addTarget(self, action: #selector(tapInstagram(_:)), forControlEvents: .touchUpInside)
         facebookLogo.addTarget(self, action: #selector(tapFacebook(_:)), forControlEvents: .touchUpInside)

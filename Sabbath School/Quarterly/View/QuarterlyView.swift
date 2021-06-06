@@ -23,52 +23,53 @@
 import AsyncDisplayKit
 import UIKit
 
-class QuarterlyCellNode: ASCellNode {
-    let coverNode = ASDisplayNode()
-    var coverImageNode: RoundedCornersImage!
-    let titleNode = ASTextNode()
-    let humanDateNode = ASTextNode()
-    let imageCornerRadius = CGFloat(6)
+class QuarterlyView: ASCellNode {
+    let cover = ASDisplayNode()
+    var coverImage: RoundedCornersImage!
+    let title = ASTextNode()
+    let humanDate = ASTextNode()
+    private let coverCornerRadius = CGFloat(6)
 
     init(quarterly: Quarterly) {
         super.init()
         self.selectionStyle = .none
 
-        titleNode.attributedText = TextStyles.h3(string: quarterly.title)
-        humanDateNode.attributedText = TextStyles.uppercaseHeader(string: quarterly.humanDate, color: .baseGray2)
+        title.attributedText = AppStyle.Quarterly.Text.title(string: quarterly.title)
+        humanDate.attributedText = AppStyle.Quarterly.Text.humanDate(string: quarterly.humanDate, color: .baseGray2)
 
-        coverNode.cornerRadius = imageCornerRadius
-        coverNode.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
-        coverNode.shadowOffset = CGSize(width: 0, height: 2)
-        coverNode.shadowRadius = 10
-        coverNode.shadowOpacity = 0.3
-        coverNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor()
-        coverNode.clipsToBounds = false
+        cover.cornerRadius = coverCornerRadius
+        cover.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
+        cover.shadowOffset = CGSize(width: 0, height: 2)
+        cover.shadowRadius = 10
+        cover.shadowOpacity = 0.3
+        cover.clipsToBounds = false
 
-        coverImageNode = RoundedCornersImage(
+        coverImage = RoundedCornersImage(
             imageURL: quarterly.cover,
-            corner: imageCornerRadius,
-            size: CGSize(width: 90, height: 135)
+            corner: coverCornerRadius,
+            size: CGSize(width: 90, height: 135),
+            backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!)
         )
-        coverImageNode.style.alignSelf = .stretch
+        coverImage.style.alignSelf = .stretch
 
         automaticallyManagesSubnodes = true
+        backgroundColor = AppStyle.Base.Color.background
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        coverNode.style.preferredSize = CGSize(width: 90, height: 135)
+        cover.style.preferredSize = CGSize(width: 90, height: 135)
 
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 0,
             justifyContent: .start,
             alignItems: .start,
-            children: [humanDateNode, titleNode]
+            children: [humanDate, title]
         )
 
         vSpec.style.flexShrink = 1.0
 
-        let coverSpec = ASBackgroundLayoutSpec(child: coverImageNode, background: coverNode)
+        let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 15,
@@ -82,22 +83,10 @@ class QuarterlyCellNode: ASCellNode {
 
     override func layoutDidFinish() {
         super.layoutDidFinish()
-        coverNode.layer.shadowPath = UIBezierPath(roundedRect: coverNode.bounds, cornerRadius: imageCornerRadius).cgPath
+        cover.layer.shadowPath = UIBezierPath(roundedRect: cover.bounds, cornerRadius: coverCornerRadius).cgPath
     }
     
     override var isHighlighted: Bool {
-        didSet { bounce(isHighlighted) }
-    }
-
-    func bounce(_ bounce: Bool) {
-        UIView.animate(
-            withDuration: 0.8,
-            delay: 0,
-            usingSpringWithDamping: 0.4,
-            initialSpringVelocity: 0.8,
-            options: [.allowUserInteraction, .beginFromCurrentState],
-            animations: { self.transform = bounce ? CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.988, y: 0.988)) : CATransform3DMakeAffineTransform(CGAffineTransform.identity) },
-            completion: nil)
-
+        didSet { backgroundColor = isHighlighted ? AppStyle.Quarterly.Color.backgroundHighlighted : AppStyle.Quarterly.Color.background }
     }
 }

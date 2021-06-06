@@ -46,7 +46,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let theme = currentTheme()
+        let theme = Preferences.currentTheme()
         setTranslucentNavigation(false, color: theme.navBarColor, tintColor: theme.navBarTextColor, titleColor: theme.navBarTextColor)
         
         navigationController?.navigationBar.backgroundColor = .clear
@@ -66,12 +66,10 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         closeButton.accessibilityIdentifier = "dismissBibleVerse"
         navigationItem.leftBarButtonItem = closeButton
 
-        print("SSDEBUG", presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? "")
-        
         let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? ""
 
         versionButton = UIButton(type: .custom)
-        versionButton.setAttributedTitle(TextStyles.navBarButtonStyle(string: versionName), for: .normal)
+        versionButton.setAttributedTitle(AppStyle.Base.Text.navBarButton(string: versionName), for: .normal)
         versionButton.setImage(R.image.bulletArrowDown(), for: .normal)
         versionButton.addTarget(self, action: #selector(changeVersionAction(sender:)), for: .touchUpInside)
         versionButton.centerTextAndImage(spacing: 4)
@@ -111,7 +109,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         let menu = BibleVersionController(withItems: menuitems)
         menu.delegate = self
         var size = CGSize(width: view.window!.frame.width*0.8, height: CGFloat((self.read?.bible)!.count) * MenuItem.height + CGFloat((self.read?.bible)!.count))
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        if Helper.isPad {
             size.width = round(node.frame.width*0.3)
         }
         menu.preferredContentSize = size
@@ -120,7 +118,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         menu.popoverPresentationController?.sourceView = versionButton!
         menu.popoverPresentationController?.sourceRect = CGRect.init(x: 0, y: 0, width: versionButton.frame.size.width, height: versionButton.frame.size.height)
         menu.popoverPresentationController?.delegate = menu
-        menu.popoverPresentationController?.backgroundColor = .baseBackground
+        menu.popoverPresentationController?.backgroundColor = AppStyle.Base.Color.background
         menu.popoverPresentationController?.permittedArrowDirections = .up
         present(menu, animated: true, completion: nil)
     }
@@ -138,7 +136,7 @@ extension BibleController: BibleVersionControllerDelegate {
 
         presenter?.presentBibleVerse(read: self.read!, verse: self.verse!)
 
-        versionButton.setAttributedTitle(TextStyles.navBarButtonStyle(string: versionName), for: .normal)
+        versionButton.setAttributedTitle(AppStyle.Base.Text.navBarButton(string: versionName), for: .normal)
         versionButton.sizeToFit()
     }
 }

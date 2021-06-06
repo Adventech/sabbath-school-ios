@@ -22,61 +22,56 @@
 
 import AsyncDisplayKit
 
-enum SettingsCellNodeStyle {
-    case detailOnRight
-    case detailOnBottom
+enum SettingsDetailsStyle {
+    case right
+    case bottom
 }
 
 final class SettingsItemView: ASCellNode {
-    let imageNode = ASImageNode()
-    let textNode = ASTextNode()
-    let detailTextNode = ASTextNode()
+    let image = ASImageNode()
+    let title = ASTextNode()
+    let detail = ASTextNode()
     let switchNode = ASDisplayNode { UISwitch() }
-    let datePickerNode = ASDisplayNode { UIDatePicker() }
+    let datePicker = ASDisplayNode { UIDatePicker() }
     var switchView: UISwitch { return switchNode.view as! UISwitch }
-    var datePickerView: UIDatePicker { return datePickerNode.view as! UIDatePicker }
-    var contentStyle: SettingsCellNodeStyle = .detailOnBottom
+    var datePickerView: UIDatePicker { return datePicker.view as! UIDatePicker }
+    var contentStyle: SettingsDetailsStyle = .bottom
+    
     fileprivate let disclosureIndicator = ASImageNode()
     fileprivate var showDisclosure = false
-    fileprivate var showDetailText = false
+    fileprivate var showDetail = false
     fileprivate var showSwitch = false
     fileprivate var showDatePicker = false
     fileprivate var switchState = false
 
-    init(text: String, icon: UIImage? = nil, detailText: String = "", showDisclosure: Bool = false, destructive: Bool = false, actionButton: Bool = false, switchState: Bool? = nil, datePicker: Bool = false) {
+    init(title: String, image: UIImage? = nil, detail: String = "", showDisclosure: Bool = false, danger: Bool = false, actionButton: Bool = false, switchState: Bool? = nil, datePicker: Bool = false) {
         super.init()
 
         self.showDisclosure = showDisclosure
-        self.backgroundColor = .baseBackground
-        
+        self.backgroundColor = AppStyle.Base.Color.background
         
         if let switchState = switchState {
             self.showSwitch = true
             self.switchState = switchState
-            switchNode.backgroundColor = .clear
-            switchNode.style.preferredSize = CGSize(width: 51, height: 31)
+            self.switchNode.backgroundColor = .clear
+            self.switchNode.style.preferredSize = CGSize(width: 51, height: 31)
         }
         
         if datePicker {
             self.showDatePicker = true
-            datePickerNode.style.preferredSize = CGSize(width: 90, height: 31)
         }
 
-        if !destructive {
-            textNode.attributedText = TextStyles.settingsCellStyle(string: text)
-        } else {
-            textNode.attributedText = TextStyles.settingsDestructiveCellStyle(string: text)
-        }
+        self.title.attributedText = AppStyle.Settings.Text.title(string: title, danger: danger)
 
-        imageNode.image = icon
+        self.image.image = image
 
-        if !detailText.isEmpty {
-            showDetailText = true
-            detailTextNode.attributedText = TextStyles.settingsCellDetailStyle(string: detailText)
+        if !detail.isEmpty {
+            self.showDetail = true
+            self.detail.attributedText = AppStyle.Settings.Text.detail(string: detail)
         }
 
         if showDisclosure {
-            disclosureIndicator.image = R.image.iconDisclosureIndicator()
+            self.disclosureIndicator.image = R.image.iconDisclosureIndicator()
         }
 
         automaticallyManagesSubnodes = true
@@ -85,18 +80,24 @@ final class SettingsItemView: ASCellNode {
     override func didLoad() {
         super.didLoad()
         switchView.isOn = switchState
-        switchView.onTintColor = .tintColor
+        switchView.onTintColor = AppStyle.Base.Color.tint
+    }
+    
+    override func layout() {
+        super.layout()
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         var rightStackChildren = [ASLayoutElement]()
-        var leftStackChildren: [ASLayoutElement] = [textNode]
+        var leftStackChildren: [ASLayoutElement] = [title]
+        
+        self.datePicker.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(Helper.is24hr() ? 70 : 90), ASDimensionMake(31))
 
         if showDisclosure { rightStackChildren.insert(disclosureIndicator, at: 0) }
         if showSwitch { rightStackChildren.append(switchNode) }
-        if showDatePicker { rightStackChildren.append(datePickerNode) }
-        if showDetailText && contentStyle == .detailOnRight { rightStackChildren.insert(detailTextNode, at: 0) }
-        if showDetailText && contentStyle == .detailOnBottom { leftStackChildren.append(detailTextNode) }
+        if showDatePicker { rightStackChildren.append(datePicker) }
+        if showDetail && contentStyle == .right { rightStackChildren.insert(detail, at: 0) }
+        if showDetail && contentStyle == .bottom { leftStackChildren.append(detail) }
 
         let rightSpec = ASStackLayoutSpec(
             direction: .horizontal,
@@ -116,7 +117,7 @@ final class SettingsItemView: ASCellNode {
         let spacer = ASLayoutSpec()
         spacer.style.flexGrow = 1
 
-        let mainChildren: [ASLayoutElement] = imageNode.image == nil ? [leftSpec, spacer, rightSpec] : [imageNode, leftSpec, spacer, rightSpec]
+        let mainChildren: [ASLayoutElement] = image.image == nil ? [leftSpec, spacer, rightSpec] : [image, leftSpec, spacer, rightSpec]
         let mainSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 10,

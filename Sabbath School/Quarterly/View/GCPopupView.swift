@@ -39,12 +39,12 @@ class GCPopupView: ASCellNode {
 
     override init() {
         super.init()
-        self.backgroundColor = .baseBackground
+        self.backgroundColor = AppStyle.Base.Color.background
         
         closeIcon.image = R.image.iconClose()
         appLogo.image = R.image.loginLogo()
         sspmLogo.image = R.image.sspmLogo()
-        descriptionText.attributedText = TextStyles.descriptionStyle(string: "Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!".localized())
+        descriptionText.attributedText = AppStyle.Quarterly.Text.gcPopupText(string: "Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!".localized())
         
         closeIcon.addTarget(self, action: #selector(tapClose(_:)), forControlEvents: .touchUpInside)
         
