@@ -78,6 +78,7 @@ lane :match_sync do |options|
     type: type,
     force_for_new_devices: true,
     git_basic_authorization: "#{ENV['MATCH_GIT_BASIC_AUTHORIZATION']}",
-    username: "lim.vitaliy@gmail.com"
+    username: "lim.vitaliy@gmail.com",
+    api_key_path: "Fastlane/appstore_api_key.json"
   )
 end
