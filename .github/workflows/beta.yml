@@ -20,4 +20,4 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         with:
           lane: 'beta'
-          options: '{ "api_key_path": "Fastlane/appstore_api_key.json.gpg" }'
+          options: '{ "subdirectory": "Fastlane",  "api_key_path": "Fastlane/appstore_api_key.json.gpg" }'
