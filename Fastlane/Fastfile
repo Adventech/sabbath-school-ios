@@ -77,6 +77,7 @@ lane :match_sync do |options|
     app_identifier: ["com.cryart.SabbathSchool"],
     type: type,
     force_for_new_devices: true,
-    git_basic_authorization: "#{ENV['MATCH_GIT_BASIC_AUTHORIZATION']}"
+    git_basic_authorization: "#{ENV['MATCH_GIT_BASIC_AUTHORIZATION']}",
+    username: "lim.vitaliy@gmail.com"
   )
 end
