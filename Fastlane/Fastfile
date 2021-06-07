@@ -76,6 +76,7 @@ lane :match_sync do |options|
     git_url: "git@github.org:Adventech/sabbath-school-certificates.git",
     app_identifier: ["com.cryart.SabbathSchool"],
     type: type,
-    force_for_new_devices: true
+    force_for_new_devices: true,
+    git_basic_authorization: "#{ENV['MATCH_GIT_BASIC_AUTHORIZATION']}"
   )
 end
