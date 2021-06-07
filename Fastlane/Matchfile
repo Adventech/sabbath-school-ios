@@ -1,6 +1,5 @@
-git_url "git@bitbucket.org:v1talik/sabbath-school-certificates.git"
+git_url "git@github.com:Adventech/sabbath-school-certificates.git"
 
 type "development" # The default type, can be: appstore, adhoc, enterprise or development
 
 app_identifier ["com.cryart.SabbathSchool"]
-username "lim.vitaliy@gmail.com"

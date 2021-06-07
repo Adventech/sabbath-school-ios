@@ -1,0 +1,19 @@
+name: beta
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: gpg --quiet --batch --yes --decrypt --passphrase="$CREDS_PASSPHRASE" --output deploy-creds.tar deploy-creds.tar.gpg
+        env:
+          CREDS_PASSPHRASE: ${{ secrets.CREDS_PASSPHRASE }}
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7.2'
+      - uses: maierj/fastlane-action@v2.0.1
+        with:
+          lane: 'beta'

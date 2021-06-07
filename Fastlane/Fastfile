@@ -1,34 +1,16 @@
 # More documentation about how to customize your build
 # can be found here:
 # https://docs.fastlane.tools
-fastlane_version "1.109.0"
+# fastlane_version "1.109.0"
 
 default_platform :ios
 
 # Fastfile actions accept additional configuration, but
 # don't worry, fastlane will prompt you for required
 # info which you can add here later
-lane :travis do
-  create_keychain(
-    name: ENV["MATCH_KEYCHAIN_NAME"],
-    password: ENV["MATCH_PASSWORD"],
-    default_keychain: true,
-    unlock: true,
-    timeout: 3600,
-    add_to_search_list: true,
-    verbose: true
-  )
 
-  match(
-    type: "adhoc",
-    git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",
-    force_for_new_devices: false,
-    keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
-    keychain_password: ENV["MATCH_PASSWORD"],
-    readonly: true
-  )
-
-  beta
+lane :testflights do
+  
 end
 
 desc "Configure local environment certificates"
@@ -38,22 +20,17 @@ desc "Configure local environment certificates"
 end
 
 lane :beta do
-  match(
-    type: "adhoc",
-    git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",
-    force_for_new_devices: true,
-    readonly: false
+  app_store_connect_api_key(
+    key_id: "29T9XT6VUJ",
+    issuer_id: "69a6de7f-f764-47e3-e053-5b8c7c11a4d1",
+    key_filepath: "./AuthKey_29T9XT6VUJ.p8",
+    duration: 1200, # optional (maximum 1200)
+    in_house: true
   )
-  increment_build
-  sync_code_signing(type: "appstore")
+  match_sync(type: "appstore")
+  increment_build_number
   build
-
-  crashlytics(
-    api_token: File.open("../Fabric.apiKey", "rb").read,
-    build_secret: File.open("../Fabric.buildSecret", "rb").read,
-    groups: "ios-beta-testers",
-    notes: changelog_from_git_commits
-  )
+  pilot
 end
 
 lane :release do
@@ -93,24 +70,17 @@ lane :screenshots do
   frameit(white: true)
 end
 
-desc "Download dSYM files from iTC, upload them to Crashlytics and delete the local dSYM files"
-lane :refresh_dsyms do
-  download_dsyms
-  upload_symbols_to_crashlytics(api_token: File.open("../Fabric.apiKey", "rb").read)
-  clean_build_artifacts
-end
-
-lane :increment_build do
-  date_number = Time.new.strftime("%Y.%m")
-  build_number = "#{date_number}.#{number_of_commits}"
-  increment_build_number(build_number: build_number)
-end
+# lane :increment_build do
+#   date_number = Time.new.strftime("%Y.%m")
+#   build_number = "#{date_number}.#{number_of_commits}"
+#   increment_build_number(build_number: build_number)
+# end
 
 desc "Sync your certificates and profiles across your team using git"
 lane :match_sync do |options|
   type = options[:type]
   match(
-    git_url: "git@bitbucket.org:v1talik/sabbath-school-certificates.git",
+    git_url: "git@github.org:Adventech/sabbath-school-certificates.git",
     app_identifier: ["com.cryart.SabbathSchool"],
     type: type,
     force_for_new_devices: true

@@ -364,24 +364,12 @@ struct AppStyle {
                 return UIColor(hex: "#FDFDFD")
             }
 
-            static var whiteFont: UIColor {
-                return UIColor.baseGray4
-            }
-
             static var dark: UIColor {
                 return UIColor(hex: "#000000")
             }
 
-            static var darkFont: UIColor {
-                return UIColor(hex: "#acacac")
-            }
-
             static var sepia: UIColor {
                 return UIColor(hex: "#FBF0D9")
-            }
-
-            static var sepiaFont: UIColor {
-                return UIColor(hex: "#5b4636")
             }
         }
     }

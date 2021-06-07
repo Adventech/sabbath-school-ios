@@ -5,4 +5,3 @@
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md
 
 app_identifier "com.cryart.SabbathSchool"
-apple_id "lim.vitaliy@gmail.com"

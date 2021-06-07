@@ -8,18 +8,16 @@ Make sure you have the latest version of the Xcode command line tools installed:
 xcode-select --install
 ```
 
-## Choose your installation method:
-
-| Method                     | OS support                              | Description                                                                                                                           |
-|----------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| [Homebrew](http://brew.sh) | macOS                                   | `brew cask install fastlane`                                                                                                          |
-| Installer Script           | macOS                                   | [Download the zip file](https://download.fastlane.tools). Then double click on the `install` script (or run it in a terminal window). |
-| RubyGems                   | macOS or Linux with Ruby 2.0.0 or above | `sudo gem install fastlane -NV`                                                                                                       |
+Install _fastlane_ using
+```
+[sudo] gem install fastlane -NV
+```
+or alternatively using `brew install fastlane`
 
 # Available Actions
-### travis
+### testflights
 ```
-fastlane travis
+fastlane testflights
 ```
 
 ### match_config
@@ -52,16 +50,6 @@ fastlane build
 fastlane screenshots
 ```
 Generate screenshots and upload to the App Store
-### refresh_dsyms
-```
-fastlane refresh_dsyms
-```
-Download dSYM files from iTC, upload them to Crashlytics and delete the local dSYM files
-### increment_build
-```
-fastlane increment_build
-```
-
 ### match_sync
 ```
 fastlane match_sync
