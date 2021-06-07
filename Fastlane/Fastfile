@@ -23,7 +23,7 @@ lane :beta do
   match_sync(type: "appstore")
   increment_build_number
   build
-  pilot
+  pilot(api_key_path: "Fastlane/appstore_api_key.json")
 end
 
 lane :release do
