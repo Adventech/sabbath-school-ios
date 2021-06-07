@@ -73,7 +73,7 @@ desc "Sync your certificates and profiles across your team using git"
 lane :match_sync do |options|
   type = options[:type]
   match(
-    git_url: "git@github.org:Adventech/sabbath-school-certificates.git",
+    git_url: "https://github.com/Adventech/sabbath-school-certificates.git",
     app_identifier: ["com.cryart.SabbathSchool"],
     type: type,
     force_for_new_devices: true,
