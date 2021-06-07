@@ -5,19 +5,27 @@ on:
       - develop
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - run: gpg --quiet --batch --yes --decrypt --passphrase="$CREDS_PASSPHRASE" --output Fastlane/appstore_api_key.json Fastlane/appstore_api_key.json.gpg
         env:
           CREDS_PASSPHRASE: ${{ secrets.CREDS_PASSPHRASE }}
+      - name: Select Xcode Version
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.6'
-      - uses: maierj/fastlane-action@v2.0.1
+          bundler-cache: true
+      - name: Install Pods
+        run: pod install  
+      - name: Build & Distribute to Testflight 
+        run: |
+          export LC_ALL=en_US.UTF-8
+          export LANG=en_US.UTF-8
+          bundle exec fastlane beta --api_key_path Fastlane/keyfile.json
         env:
-          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-        with:
-          lane: 'beta'
-          options: '{ "subdirectory": "Fastlane",  "api_key_path": "Fastlane/appstore_api_key.json.gpg" }'
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
