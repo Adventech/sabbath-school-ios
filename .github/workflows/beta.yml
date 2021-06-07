@@ -11,9 +11,9 @@ jobs:
       - run: gpg --quiet --batch --yes --decrypt --passphrase="$CREDS_PASSPHRASE" --output Fastlane/appstore_api_key.json Fastlane/appstore_api_key.json.gpg
         env:
           CREDS_PASSPHRASE: ${{ secrets.CREDS_PASSPHRASE }}
-      - uses: actions/setup-ruby@v1
+      - uses: actions/setup-ruby@v2
         with:
-          ruby-version: '2.7.2'
+          ruby-version: '2.6'
       - uses: maierj/fastlane-action@v2.0.1
         env:
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
