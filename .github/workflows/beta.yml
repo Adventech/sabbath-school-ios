@@ -22,6 +22,8 @@ jobs:
       - name: Install dependencies
         run: bundle install
       - name: Install Pods
+        run: pod install
+      - name: Install fastlane
         run: brew install fastlane
       - name: Build & Distribute to Testflight 
         run: |
