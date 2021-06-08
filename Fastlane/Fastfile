@@ -5,37 +5,6 @@
 
 default_platform :ios
 
-TEMP_KEYCHAIN_USER = ENV["TEMP_KEYCHAIN_USER"]
-TEMP_KEYCHAIN_PASSWORD = ENV["TEMP_KEYCHAIN_PASSWORD"]
-
-# Fastfile actions accept additional configuration, but
-# don't worry, fastlane will prompt you for required
-# info which you can add here later
-
-lane :testflights do
-  
-end
-
-def delete_temp_keychain(name)
-  delete_keychain(
-    name: name
-  ) if File.exist? File.expand_path("~/Library/Keychains/#{name}-db")
-end
-
-def create_temp_keychain(name, password)
-  create_keychain(
-    name: name,
-    password: password,
-    unlock: false,
-    timeout: false
-  )
-end
-
-def ensure_temp_keychain(name, password)
-  delete_temp_keychain(name)
-  create_temp_keychain(name, password)
-end
-
 lane :beta do
   setup_ci(provider: "travis")
   match_sync(type: "appstore")
@@ -63,8 +32,8 @@ end
 
 lane :build do
   gym(
-    workspace: "./Sabbath\ School.xcworkspace",
-    scheme: "Sabbath\ School",
+    workspace: "./Sabbath School.xcworkspace",
+    scheme: "Sabbath School",
     clean: true,
     include_bitcode: true,
     configuration: "Release",
@@ -95,8 +64,7 @@ end
 
 desc "Sync your certificates and profiles across your team using git"
 lane :match_sync do |options|
-  type = options[:type]  
-
+  type = options[:type]
   match(
     git_url: "https://github.com/Adventech/sabbath-school-certificates.git",
     app_identifier: ["com.cryart.SabbathSchool"],
