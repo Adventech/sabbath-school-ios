@@ -37,18 +37,8 @@ def ensure_temp_keychain(name, password)
 end
 
 lane :beta do
-  ensure_temp_keychain(TEMP_KEYCHAIN_USER, TEMP_KEYCHAIN_PASSWORD)
-  match(
-    git_url: "https://github.com/Adventech/sabbath-school-certificates.git",
-    app_identifier: ["com.cryart.SabbathSchool"],
-    type: "appstore",
-    readonly: true,
-    git_basic_authorization: "#{ENV['MATCH_GIT_BASIC_AUTHORIZATION']}",
-    username: "lim.vitaliy@gmail.com",
-    api_key_path: "Fastlane/appstore_api_key.json",
-    keychain_name: TEMP_KEYCHAIN_PASSWORD,
-    keychain_password: TEMP_KEYCHAIN_PASSWORD
-  )
+  setup_ci(provider: "travis")
+  match_sync(type: "appstore")
   increment_build_number
   build
   pilot(api_key_path: "Fastlane/appstore_api_key.json")
