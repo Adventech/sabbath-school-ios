@@ -5,6 +5,9 @@
 
 default_platform :ios
 
+TEMP_KEYCHAIN_USER = ENV["TEMP_KEYCHAIN_USER"]
+TEMP_KEYCHAIN_PASSWORD = ENV["TEMP_KEYCHAIN_PASSWORD"]
+
 # Fastfile actions accept additional configuration, but
 # don't worry, fastlane will prompt you for required
 # info which you can add here later
@@ -13,14 +16,39 @@ lane :testflights do
   
 end
 
-desc "Configure local environment certificates"
-  lane :match_config do
-  match_sync(type: "development")
-  match_sync(type: "adhoc")
+def delete_temp_keychain(name)
+  delete_keychain(
+    name: name
+  ) if File.exist? File.expand_path("~/Library/Keychains/#{name}-db")
+end
+
+def create_temp_keychain(name, password)
+  create_keychain(
+    name: name,
+    password: password,
+    unlock: false,
+    timeout: false
+  )
+end
+
+def ensure_temp_keychain(name, password)
+  delete_temp_keychain(name)
+  create_temp_keychain(name, password)
 end
 
 lane :beta do
-  match_sync(type: "appstore")
+  ensure_temp_keychain(TEMP_KEYCHAIN_USER, TEMP_KEYCHAIN_PASSWORD)
+  match(
+    git_url: "https://github.com/Adventech/sabbath-school-certificates.git",
+    app_identifier: ["com.cryart.SabbathSchool"],
+    type: type,
+    readonly: true,
+    git_basic_authorization: "#{ENV['MATCH_GIT_BASIC_AUTHORIZATION']}",
+    username: "lim.vitaliy@gmail.com",
+    api_key_path: "Fastlane/appstore_api_key.json",
+    keychain_name: TEMP_KEYCHAIN_PASSWORD,
+    keychain_password: TEMP_KEYCHAIN_PASSWORD
+  )
   increment_build_number
   build
   pilot(api_key_path: "Fastlane/appstore_api_key.json")
@@ -69,15 +97,20 @@ end
 #   increment_build_number(build_number: build_number)
 # end
 
+desc "Configure local environment certificates"
+lane :match_config do
+  match_sync(type: "development")
+  match_sync(type: "adhoc")
+end
+
 desc "Sync your certificates and profiles across your team using git"
 lane :match_sync do |options|
-  type = options[:type]
+  type = options[:type]  
+
   match(
     git_url: "https://github.com/Adventech/sabbath-school-certificates.git",
     app_identifier: ["com.cryart.SabbathSchool"],
     type: type,
-    readonly: true,
-    git_basic_authorization: "#{ENV['MATCH_GIT_BASIC_AUTHORIZATION']}",
     username: "lim.vitaliy@gmail.com",
     api_key_path: "Fastlane/appstore_api_key.json"
   )
