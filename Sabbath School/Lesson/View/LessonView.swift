@@ -30,9 +30,10 @@ class LessonView: ASCellNode {
 
     init(lesson: Lesson, number: String) {
         super.init()
-
+        self.selectionStyle = .none
+        backgroundColor = AppStyle.Base.Color.background
         title.attributedText = AppStyle.Lesson.Text.title(string: lesson.title)
-        dateRange.attributedText = AppStyle.Lesson.Text.dateRange(string: "\(lesson.startDate.stringLessonDate()) - \(lesson.endDate.stringLessonDate())")
+        dateRange.attributedText = AppStyle.Lesson.Text.dateRange(string: lesson.dateRange)
         index.attributedText = AppStyle.Lesson.Text.index(string: number)
 
         automaticallyManagesSubnodes = true

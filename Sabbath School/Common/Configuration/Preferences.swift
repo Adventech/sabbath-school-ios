@@ -21,15 +21,15 @@
  */
 
 import Foundation
-import Unbox
+import UIKit
 
 struct Preferences {
     static func currentLanguage() -> QuarterlyLanguage {
-        guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
+        guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? Data else {
             return QuarterlyLanguage(code: "en", name: "English")
         }
 
-        let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
+        let language: QuarterlyLanguage = try! JSONDecoder().decode(QuarterlyLanguage.self, from: dictionary)
         return language
     }
     

@@ -45,4 +45,18 @@ struct Helper {
         guard #available(iOS 13.0, *) else { return false }
         return UITraitCollection.current.userInterfaceStyle == .dark
     }
+    
+    static func shareTextDialogue(vc: UIViewController, sourceView: UIView, objectsToShare: [Any]) {
+        let activityController = UIActivityViewController(
+                activityItems: objectsToShare,
+                applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceRect = sourceView.frame
+        activityController.popoverPresentationController?.sourceView = sourceView
+        if Helper.isPad {
+            activityController.popoverPresentationController?.sourceRect = CGRect(x: sourceView.bounds.midX, y: sourceView.bounds.maxY, width: 0, height: 0)
+        }
+        activityController.popoverPresentationController?.permittedArrowDirections = .any
+
+        vc.present(activityController, animated: true, completion: nil)
+    }
 }

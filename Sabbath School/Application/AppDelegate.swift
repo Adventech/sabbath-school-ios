@@ -23,11 +23,12 @@
 
 import AsyncDisplayKit
 import AuthenticationServices
-import FacebookCore
+import FBSDKCoreKit
 import Firebase
 import FirebaseMessaging
 import GoogleSignIn
 import UIKit
+import CoreSpotlight
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -40,11 +41,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Configuration.configurePreferences()
         Configuration.configureNotifications(application: application)
         Configuration.configureAuthentication()
+        
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
     }
 
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        let facebookHandle = ApplicationDelegate.shared.application(application, open: url, options: options)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let facebookHandle = ApplicationDelegate.shared.application(application,
+                                                                    open: url,
+                                                                    sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                                    annotation: options[UIApplication.OpenURLOptionsKey.annotation])
 
         if facebookHandle {
             return facebookHandle
@@ -95,25 +102,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().apnsToken = deviceToken
     }
     
-    @available(iOS 9.0, *)
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        
-        if shortcutItem.type == Constants.openTodayLessonShortcutItemType {
-            guard let navigationController = UIApplication.shared.delegate?.window??.rootViewController as? ASNavigationController else { return }
+        if shortcutItem.type == Constants.DefaultKey.shortcutItem {
+            guard let quarterlyIndex = shortcutItem.userInfo?["index"] as? String else { return }
+            launchQuarterly(quarterlyIndex: quarterlyIndex, initiateOpen: true)
             
-            var quarterlyController: QuarterlyController?
-            
-            for controller in navigationController.viewControllers {
-                guard ((controller as? QuarterlyController) != nil) else { continue }
-                
-                quarterlyController = controller as? QuarterlyController
-                break
-            }
-            
-            guard quarterlyController != nil else { return }
-            guard ((quarterlyController?.dataSource.first) != nil) else { return }
-            quarterlyController?.showLessonScreen(quarterly: quarterlyController!.dataSource.first!)
         }
     }
-}
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.activityType == CSSearchableItemActionType {
+            guard let quarterlyIndex = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String else { return false }
+            launchQuarterly(quarterlyIndex: quarterlyIndex)
+        }
 
+        return true
+    }
+    
+    func launchQuarterly(quarterlyIndex: String, initiateOpen: Bool = false) {
+        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule()
+        let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpen)
+        quarterlyController.pushViewController(lessonController, animated: false)
+        Configuration.window?.rootViewController = quarterlyController
+        Configuration.window?.makeKeyAndVisible()
+    }
+}

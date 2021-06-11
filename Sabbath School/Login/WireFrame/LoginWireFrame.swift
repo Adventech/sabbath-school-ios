@@ -24,7 +24,7 @@ import UIKit
 import AsyncDisplayKit
 
 class LoginWireFrame: LoginWireFrameProtocol {
-    class func createLoginModule() -> ASDKViewController<ASDisplayNode> {
+    class func createLoginModule() -> LoginController {
         let controller: LoginControllerProtocol = LoginController()
         let presenter: LoginPresenterProtocol & LoginInteractorOutputProtocol = LoginPresenter()
         let wireFrame: LoginWireFrameProtocol = LoginWireFrame()
@@ -35,12 +35,10 @@ class LoginWireFrame: LoginWireFrameProtocol {
         presenter.wireFrame = wireFrame
         presenter.interactor = interactor
         
-        return controller as! ASDKViewController<ASDisplayNode>
+        return controller as! LoginController
     }
 
     func presentQuarterlyScreen() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
         UIView.transition(with: Configuration.window!,
                           duration: 0.5,
                           options: .transitionFlipFromLeft,

@@ -21,8 +21,6 @@
  */
 
 import FirebaseDatabase
-import Unbox
-import Wrap
 
 class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputProtocol {
     weak var presenter: LanguageInteractorOutputProtocol?
@@ -32,11 +30,11 @@ class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputPro
     }
 
     func retrieveLanguages() {
-        database?.child(Constants.Firebase.languages).observe(.value, with: { [weak self] (snapshot) in
-            guard let json = snapshot.value as? [[String: AnyObject]] else { return }
+        database?.child(Constants.Firebase.languages).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            guard let json = snapshot.data else { return }
 
             do {
-                let items: [QuarterlyLanguage] = try unbox(dictionaries: json)
+                let items: [QuarterlyLanguage] = try FirebaseDecoder().decode([QuarterlyLanguage].self, from: json)
                 self?.presenter?.didRetrieveLanguages(languages: items)
             } catch let error {
                 self?.presenter?.onError(error)
@@ -45,7 +43,7 @@ class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputPro
     }
 
     func saveLanguage(language: QuarterlyLanguage) {
-        let dictionary: [String: Any] = try! wrap(language)
+        let dictionary = try! JSONEncoder().encode(language)
         UserDefaults.standard.set(dictionary, forKey: Constants.DefaultKey.quarterlyLanguage)
     }
 }

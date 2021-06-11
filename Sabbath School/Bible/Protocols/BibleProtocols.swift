@@ -43,7 +43,7 @@ protocol BibleControllerOutputProtocol: class {
 }
 
 protocol BibleWireFrameProtocol: class {
-    static func createBibleModule(read: Read, verse: String) -> ASDKViewController<ASDisplayNode>
+    static func createBibleModule(read: Read, verse: String) -> BibleController
 }
 
 protocol BibleInteractorOutputProtocol: class {

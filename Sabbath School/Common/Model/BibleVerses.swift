@@ -20,16 +20,7 @@
  * THE SOFTWARE.
  */
 
-import Unbox
-
-struct BibleVerses {
+struct BibleVerses: Codable {
     let name: String
     let verses: [String: String]?
-}
-
-extension BibleVerses: Unboxable {
-    init(unboxer: Unboxer) throws {
-        name = try unboxer.unbox(key: "name")
-        verses = try? unboxer.unbox(key: "verses")
-    }
 }

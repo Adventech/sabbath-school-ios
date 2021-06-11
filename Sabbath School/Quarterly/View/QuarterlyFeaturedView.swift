@@ -24,6 +24,7 @@ import UIKit
 import AsyncDisplayKit
 
 class QuarterlyFeaturedView: ASCellNode {
+    var quarterly: Quarterly?
     let cover = ASNetworkImageNode()
     var coverImage: RoundedCornersImage!
     let title = ASTextNode()
@@ -34,7 +35,7 @@ class QuarterlyFeaturedView: ASCellNode {
 
     init(quarterly: Quarterly) {
         super.init()
-
+        self.quarterly = quarterly
         clipsToBounds = false
         insertSubnode(infiniteColor, at: 0)
         selectionStyle = .none
@@ -60,6 +61,7 @@ class QuarterlyFeaturedView: ASCellNode {
 
         coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
         coverImage.style.alignSelf = .stretch
+        coverImage.imageNode.delegate = self
 
         openButton.setAttributedTitle(AppStyle.Quarterly.Text.openButton(string: "Open".localized().uppercased()), for: .normal)
         openButton.accessibilityIdentifier = "openLesson"
@@ -114,5 +116,14 @@ class QuarterlyFeaturedView: ASCellNode {
     override func layoutDidFinish() {
         super.layoutDidFinish()
         cover.layer.shadowPath = UIBezierPath(roundedRect: cover.bounds, cornerRadius: coverCornerRadius).cgPath
+    }
+}
+
+extension QuarterlyFeaturedView: ASNetworkImageNodeDelegate {
+    func imageNodeDidFinishDecoding(_ imageNode: ASNetworkImageNode) {
+        if let quarterly = quarterly {
+            guard let image = imageNode.image else { return }
+            Spotlight.indexQuarterly(quarterly: quarterly, image: image)
+        }
     }
 }

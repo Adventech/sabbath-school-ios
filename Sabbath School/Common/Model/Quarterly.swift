@@ -20,9 +20,9 @@
  * THE SOFTWARE.
  */
 
-import Unbox
+import Foundation
 
-struct Quarterly {
+struct Quarterly: Codable {
     
     static func ==(lhs: Quarterly, rhs: Quarterly) -> Bool {
         return lhs.id == rhs.id && lhs.index == rhs.index
@@ -41,22 +41,23 @@ struct Quarterly {
     let path: String
     let fullPath: URL
     let lang: String
-}
-
-extension Quarterly: Unboxable {
-    init(unboxer: Unboxer) throws {
-        id = try unboxer.unbox(key: "id")
-        title = try unboxer.unbox(key: "title")
-        description = try unboxer.unbox(key: "description")
-        humanDate = try unboxer.unbox(key: "human_date")
-        startDate = try unboxer.unbox(key: "start_date", formatter: Date.serverDateFormatter())
-        endDate = try unboxer.unbox(key: "end_date", formatter: Date.serverDateFormatter())
-        cover = try unboxer.unbox(key: "cover")
-        colorPrimary = try? unboxer.unbox(key: "color_primary")
-        colorPrimaryDark = try? unboxer.unbox(key: "color_primary_dark")
-        index = try unboxer.unbox(key: "index")
-        path = try unboxer.unbox(key: "path")
-        fullPath = try unboxer.unbox(key: "full_path")
-        lang = try unboxer.unbox(key: "lang")
+    let webURL: URL
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        title = try values.decode(String.self, forKey: .title)
+        description = try values.decode(String.self, forKey: .description)
+        humanDate = try values.decode(String.self, forKey: .humanDate)
+        startDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .startDate))!
+        endDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .endDate))!
+        cover = try values.decode(URL.self, forKey: .cover)
+        colorPrimary = try values.decode(String.self, forKey: .colorPrimary)
+        colorPrimaryDark = try values.decode(String.self, forKey: .colorPrimaryDark)
+        index = try values.decode(String.self, forKey: .index)
+        path = try values.decode(String.self, forKey: .path)
+        fullPath = try values.decode(URL.self, forKey: .fullPath)
+        lang = try values.decode(String.self, forKey: .lang)
+        webURL = URL.init(string: fullPath.absoluteString.replacingOccurrences(of: Constants.URLs.webReplacementRegex, with: "", options: [.regularExpression]))!
     }
 }

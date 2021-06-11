@@ -22,7 +22,6 @@
 
 import AsyncDisplayKit
 import UIKit
-import Unbox
 
 final class LanguageController: ASDKViewController<ASDisplayNode> {
     var presenter: LanguagePresenterProtocol & LanguageInteractorOutputProtocol = LanguagePresenter()
@@ -31,7 +30,7 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
     var languageView = LanguageView()
     var loading: Bool = false
     
-    weak var languageViewNode: ASDisplayNode? { return node as? ASDisplayNode }
+    weak var languageViewNode: ASDisplayNode? { return node as ASDisplayNode }
 
     override init() {
         super.init(node: languageView)
@@ -108,7 +107,7 @@ extension LanguageController: ASTableDataSource {
         let cellNodeBlock: () -> ASCellNode = {
             let language = self.filtered[indexPath.row]
             
-            let savedLanguage = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any]
+            let savedLanguage = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? Data
 
             let cell = LanguageItemView(
                 name: language.name,
@@ -116,7 +115,7 @@ extension LanguageController: ASTableDataSource {
             )
 
             if let selectedLanguage = savedLanguage {
-                let current: QuarterlyLanguage = try! unbox(dictionary: selectedLanguage)
+                let current: QuarterlyLanguage = try! JSONDecoder().decode(QuarterlyLanguage.self, from: selectedLanguage)
                 cell.isSelected = language.code == current.code
             }
 

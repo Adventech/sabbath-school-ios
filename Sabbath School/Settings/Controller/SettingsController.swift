@@ -112,6 +112,9 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
             UserDefaults.standard.set(nil, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
         }
         
+        UIApplication.shared.shortcutItems = []
+        Spotlight.clearSpotlight()
+        
         try! Auth.auth().signOut()
         if presentLoginScreen {
             DispatchQueue.main.async {

@@ -24,6 +24,7 @@ import AsyncDisplayKit
 import UIKit
 
 class QuarterlyView: ASCellNode {
+    var quarterly: Quarterly?
     let cover = ASDisplayNode()
     var coverImage: RoundedCornersImage!
     let title = ASTextNode()
@@ -32,8 +33,10 @@ class QuarterlyView: ASCellNode {
 
     init(quarterly: Quarterly) {
         super.init()
+        self.quarterly = quarterly
         self.selectionStyle = .none
-
+        backgroundColor = AppStyle.Base.Color.background
+        
         title.attributedText = AppStyle.Quarterly.Text.title(string: quarterly.title)
         humanDate.attributedText = AppStyle.Quarterly.Text.humanDate(string: quarterly.humanDate, color: .baseGray2)
 
@@ -51,9 +54,9 @@ class QuarterlyView: ASCellNode {
             backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!)
         )
         coverImage.style.alignSelf = .stretch
+        coverImage.imageNode.delegate = self
 
         automaticallyManagesSubnodes = true
-        backgroundColor = AppStyle.Base.Color.background
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -88,5 +91,14 @@ class QuarterlyView: ASCellNode {
     
     override var isHighlighted: Bool {
         didSet { backgroundColor = isHighlighted ? AppStyle.Quarterly.Color.backgroundHighlighted : AppStyle.Quarterly.Color.background }
+    }
+}
+
+extension QuarterlyView: ASNetworkImageNodeDelegate {
+    func imageNodeDidFinishDecoding(_ imageNode: ASNetworkImageNode) {
+        if let quarterly = quarterly {
+            guard let image = imageNode.image else { return }
+            Spotlight.indexQuarterly(quarterly: quarterly, image: image)
+        }
     }
 }

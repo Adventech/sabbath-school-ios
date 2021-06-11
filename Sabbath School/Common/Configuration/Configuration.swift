@@ -23,7 +23,7 @@
 import Armchair
 import AsyncDisplayKit
 import AuthenticationServices
-import FacebookCore
+import FBSDKCoreKit
 import Firebase
 import FirebaseDatabase
 import UserNotifications
@@ -69,16 +69,7 @@ class Configuration: NSObject {
         }
 
         if (Auth.auth().currentUser) != nil {
-            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule()
-            UIApplication.shared.shortcutItems = [
-                .init(
-                    type: Constants.openTodayLessonShortcutItemType,
-                    localizedTitle: "Today's Lesson".localized(),
-                    localizedSubtitle: nil,
-                    icon: .init(templateImageName: "icon-lesson"),
-                    userInfo: nil
-                )
-            ]
+            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }

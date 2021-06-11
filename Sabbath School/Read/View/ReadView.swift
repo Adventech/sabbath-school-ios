@@ -83,10 +83,8 @@ class ReadView: ASCellNode {
         
         automaticallyManagesSubnodes = true
     }
-
-    override func layout() {
-        super.layout()
-
+    
+    func parallax() {
         if self.parallaxCoverHeight >= 0 {
             self.coverOverlay.alpha = 1 - ((self.parallaxCoverHeight-80) * (1/(self.initialCoverHeight-80)))
 
@@ -109,34 +107,46 @@ class ReadView: ASCellNode {
             }
         }
     }
+
+    override func layout() {
+        super.layout()
+        parallax()
+    }
     override func didLoad() {
         super.didLoad()
 
         let theme = Preferences.currentTheme()
         cover.backgroundColor = theme.navBarColor
         coverOverlay.backgroundColor = theme.navBarColor
-
-        initialCoverHeight = cover.calculatedSize.height
-
-        webView.backgroundColor = .clear
-        webView.scrollView.delegate = self
-        webView.delegate = self
-        webView.alpha = 0
-        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
-        webView.readerViewDelegate = self
         
         if #available(iOS 13.0, *) {
             webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
         } else if #available(iOS 11.0, *){
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
-        
+
+        webView.backgroundColor = .clear
+        webView.scrollView.delegate = self
+        webView.delegate = self
+        webView.alpha = 0
+        webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
+        webView.scrollView.contentOffset.y = -self.parallaxCoverHeight
+        // webView.scrollView.setNeedsLayout()
+
+        webView.readerViewDelegate = self
         webView.loadContent(content: read!.content)
+        
+        // parallax()
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        cover.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height*0.4)
-        webNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
+        initialCoverHeight = constrainedSize.max.height*0.4
+        cover.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width), ASDimensionMake(constrainedSize.max.height*0.4))
+        webNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width), ASDimensionMake(constrainedSize.max.height))
+        
+        DispatchQueue.main.async {
+            self.webView.scrollView.contentInset = UIEdgeInsets(top: self.initialCoverHeight, left: 0, bottom: 0, right: 0)
+        }
         title.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
         date.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
 

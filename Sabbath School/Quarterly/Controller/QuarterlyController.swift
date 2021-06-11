@@ -23,12 +23,13 @@
 import AsyncDisplayKit
 import FirebaseAuth
 import UIKit
+import LinkPresentation
 
 class QuarterlyController: TableController {
     var presenter: QuarterlyPresenterProtocol?
-
     var dataSource = [Quarterly]()
-
+    var initiateOpen: Bool?
+        
     override init() {
         super.init()
 
@@ -57,15 +58,21 @@ class QuarterlyController: TableController {
         
         presenter?.configure()
         retrieveQuarterlies()
-
+        
+        if #available(iOS 13, *) {} else {
+            if self.traitCollection.forceTouchCapability == .available, let view = tableNode?.view {
+                registerForPreviewing(with: self, sourceView: view)
+            }
+        }
+        
         if !Preferences.gcPopupStatus() {
             UserDefaults.standard.set(true, forKey: Constants.DefaultKey.gcPopup)
             showGCPopup()
-        } else {
+        } else if initiateOpen ?? false {
             let lastQuarterlyIndex = Preferences.currentQuarterly()
             let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
             if let code = languageCode.first, Preferences.currentLanguage().code == code {
-                presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex)
+                presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex, initiateOpenToday: false)
             }
         }
     }
@@ -77,21 +84,49 @@ class QuarterlyController: TableController {
         presenter?.presentQuarterlies()
     }
 
-    func showLessonScreen(quarterly: Quarterly) {
-        guard dataSource.contains( where: { $0 == quarterly } )  else { return }
-        
-        let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterly.index) as! LessonController
-        
-        lessonController.shouldSkipToReader = true
-        self.show(lessonController, sender: nil)
-    }
-    
     func showGCPopup() {
         presenter?.presentGCScreen()
     }
     
+    func getLessonControllerForPeek(indexPath: IndexPath, point: CGPoint) -> LessonController? {
+        let quarterlyIndex = self.dataSource[indexPath.row].index
+        let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: false)
+        lessonController.isPeeking = true
+        lessonController.delegate = self
+        return lessonController
+    }
+    
+    @available(iOS 13.0, *)
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            guard let lessonController = self.getLessonControllerForPeek(indexPath: indexPath, point: point) else { return nil }
+            return lessonController
+        }, actionProvider: { suggestedActions in
+            let imageView: UIImage
+            if indexPath.row == 0 {
+                imageView = (self.tableNode?.nodeForRow(at: indexPath) as! QuarterlyFeaturedView).coverImage.imageNode.image!
+            } else {
+                imageView = (self.tableNode?.nodeForRow(at: indexPath) as! QuarterlyView).coverImage.imageNode.image!
+            }
+            let quarterly: Quarterly = self.dataSource[indexPath.row]
+            let share = UIAction(title: "Share".localized(), image: UIImage(systemName: "square.and.arrow.up")) { action in
+                let objectToShare = ShareItem(title: quarterly.title, subtitle: quarterly.humanDate, url: quarterly.webURL, image: imageView)
+                Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [objectToShare])
+            }
+            return UIMenu(title: "", children: [share])
+        })
+    }
+    
+    @available(iOS 13.0, *)
+    func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion {
+            guard let lessonController = animator.previewViewController as? LessonController else { return }
+            self.presenter?.showLessonScreen(lessonScreen: lessonController)
+        }
+    }
+    
     @objc func openButtonAction(sender: ASButtonNode) {
-        presenter?.presentLessonScreen(quarterlyIndex: dataSource[0].index)
+        presenter?.presentLessonScreen(quarterlyIndex: dataSource[0].index, initiateOpenToday: false)
     }
     
     @objc func showLanguages(sender: UIBarButtonItem) {
@@ -106,6 +141,28 @@ class QuarterlyController: TableController {
     }
 }
 
+extension QuarterlyController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = tableNode?.indexPathForRow(at: location) else { return nil }
+        guard let lessonController = self.getLessonControllerForPeek(indexPath: indexPath, point: location) else { return nil }
+        guard let cell = tableNode?.cellForRow(at: indexPath) else { return nil }
+        previewingContext.sourceRect = (tableNode?.convert(cell.frame, to: tableNode))!
+        
+        return lessonController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        guard let lessonController = viewControllerToCommit as? LessonController else { return }
+        presenter?.showLessonScreen(lessonScreen: lessonController)
+    }
+}
+
+extension QuarterlyController: LessonControllerDelegate {
+    func shareQuarterly(quarterly: Quarterly) {
+        Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [quarterly.title, quarterly.webURL])
+    }
+}
+
 extension QuarterlyController: QuarterlyControllerProtocol {
     func showQuarterlies(quarterlies: [Quarterly]) {
         self.dataSource = quarterlies
@@ -117,7 +174,6 @@ extension QuarterlyController: QuarterlyControllerProtocol {
         self.colorize()
         self.tableNode?.allowsSelection = true
         self.tableNode?.reloadData()
-        // self.correctHairline()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -128,7 +184,7 @@ extension QuarterlyController: QuarterlyControllerProtocol {
                 setTranslucentNavigation(true, color: UIColor(hex: colorHex), tintColor: .white, titleColor: .white)
             }
 
-            presenter?.presentLessonScreen(quarterlyIndex: quarterly.index)
+            presenter?.presentLessonScreen(quarterlyIndex: quarterly.index, initiateOpenToday: false)
         }
     }
 }

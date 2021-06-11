@@ -23,12 +23,13 @@
 import AsyncDisplayKit
 
 class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
-    class func createQuarterlyModule() -> ASNavigationController {
+    class func createQuarterlyModule(initiateOpen: Bool = false) -> ASNavigationController {
         let controller: QuarterlyControllerProtocol = QuarterlyController()
         let presenter: QuarterlyPresenterProtocol & QuarterlyInteractorOutputProtocol = QuarterlyPresenter()
         let wireFrame: QuarterlyWireFrameProtocol = QuarterlyWireFrame()
         let interactor: QuarterlyInteractorInputProtocol = QuarterlyInteractor()
-
+        
+        controller.initiateOpen = initiateOpen
         controller.presenter = presenter
         presenter.controller = controller
         presenter.wireFrame = wireFrame
@@ -38,19 +39,12 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
         return ASNavigationController(rootViewController: controller as! UIViewController)
     }
 
-    func reloadQuarterlyModule() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
-        UIView.transition(with: Configuration.window!,
-                          duration: 0.5,
-                          options: .transitionCrossDissolve,
-                          animations: { Configuration.window!.rootViewController = QuarterlyWireFrame.createQuarterlyModule() },
-                          completion: nil)
+    func presentLessonScreen(view: QuarterlyControllerProtocol, quarterlyIndex: String, initiateOpenToday: Bool = false) {
+        let lessonScreen = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpenToday)
+        self.showLessonScreen(view: view, lessonScreen: lessonScreen)
     }
-
-    func presentLessonScreen(view: QuarterlyControllerProtocol, quarterlyIndex: String) {
-        let lessonScreen = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex)
-        
+    
+    func showLessonScreen(view: QuarterlyControllerProtocol, lessonScreen: LessonController) {
         if #available(iOS 10.0, *) {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
@@ -61,8 +55,6 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
     }
 
     static func presentLoginScreen() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
         let loginScreen = LoginWireFrame.createLoginModule()
 
         UIView.transition(with: Configuration.window!,

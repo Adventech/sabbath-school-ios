@@ -20,24 +20,23 @@
  * THE SOFTWARE.
  */
 
-import Unbox
+import Foundation
 
-struct Read {
+struct Read: Codable {
     let id: String
     let date: Date
     let index: String
     let title: String
     let content: String
     let bible: [BibleVerses]
-}
-
-extension Read: Unboxable {
-    init(unboxer: Unboxer) throws {
-        id = try unboxer.unbox(key: "id")
-        date = try unboxer.unbox(key: "date", formatter: Date.serverDateFormatter())
-        index = try unboxer.unbox(key: "index")
-        title = try unboxer.unbox(key: "title")
-        content = try unboxer.unbox(key: "content")
-        bible = try unboxer.unbox(key: "bible")
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        date = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .date))!
+        index = try values.decode(String.self, forKey: .index)
+        title = try values.decode(String.self, forKey: .title)
+        content = try values.decode(String.self, forKey: .content)
+        bible = try values.decode(Array<BibleVerses>.self, forKey: .bible)
     }
 }

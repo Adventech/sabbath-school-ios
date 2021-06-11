@@ -135,6 +135,10 @@
 		FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */; };
 		FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */; };
 		FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */; };
+		FE1E33F826702E6800DAC2D6 /* DataSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */; };
+		FE1E33FC26702F0200DAC2D6 /* FirebaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */; };
+		FE1E34BE2672874800DAC2D6 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E34BD2672874700DAC2D6 /* ShareItem.swift */; };
+		FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E34F226731A5F00DAC2D6 /* Spotlight.swift */; };
 		FE420255265D93840061C589 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420254265D93840061C589 /* LanguageView.swift */; };
 		FE863F2A2662BD9F00ADCA36 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE863F292662BD9F00ADCA36 /* Animation.swift */; };
 		FE863F6426657E1800ADCA36 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE863F6326657E1700ADCA36 /* AppStyle.swift */; };
@@ -348,6 +352,10 @@
 		FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupController.swift; sourceTree = "<group>"; };
 		FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupView.swift; sourceTree = "<group>"; };
 		FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleNode.swift; sourceTree = "<group>"; };
+		FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSnapshot.swift; sourceTree = "<group>"; };
+		FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDecoder.swift; sourceTree = "<group>"; };
+		FE1E34BD2672874700DAC2D6 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
+		FE1E34F226731A5F00DAC2D6 /* Spotlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotlight.swift; sourceTree = "<group>"; };
 		FE420254265D93840061C589 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		FE6FAA0B2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FE6FAA0C2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -540,6 +548,7 @@
 				7A280FEA1EDCEAD2003C7458 /* Constants.swift */,
 				FE0249E92669C2E3006BFADC /* Helper.swift */,
 				7AC26AE81EE5EB63003F946C /* Preferences.swift */,
+				FE1E34F226731A5F00DAC2D6 /* Spotlight.swift */,
 				FE0249FD266A91C9006BFADC /* Notifications.swift */,
 			);
 			path = Configuration;
@@ -557,6 +566,8 @@
 				7AF326191EFF998D00A04568 /* Range.swift */,
 				7A3BCE201EE0EC60003EC12B /* String.swift */,
 				7A3BCE1E1EE0EC28003EC12B /* URL.swift */,
+				FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */,
+				FE1E34BD2672874700DAC2D6 /* ShareItem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -644,6 +655,7 @@
 				7A2810281EDDE41F003C7458 /* ShimmeringNode.swift */,
 				7A922E081EDF623500C12A67 /* TableController.swift */,
 				7A922E191EDFB6F600C12A67 /* ThemeController.swift */,
+				FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1307,10 +1319,6 @@
 				"${BUILT_PRODUCTS_DIR}/Armchair/Armchair.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -1329,12 +1337,9 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
-				"${BUILT_PRODUCTS_DIR}/Wrap/Wrap.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1342,10 +1347,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Armchair.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -1364,12 +1365,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEntryKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wrap.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1522,6 +1520,7 @@
 				7A922E121EDF89D600C12A67 /* ReadProtocols.swift in Sources */,
 				7A922E031EDE348D00C12A67 /* LessonQuarterlyInfoView.swift in Sources */,
 				7A2810021EDD060F003C7458 /* LanguagePresenter.swift in Sources */,
+				FE1E34BE2672874800DAC2D6 /* ShareItem.swift in Sources */,
 				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
 				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
 				FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */,
@@ -1553,6 +1552,7 @@
 				7A3BCE321EE27717003EC12B /* BibleWireFrame.swift in Sources */,
 				7A280F9B1EDA015D003C7458 /* AppDelegate.swift in Sources */,
 				7A280FC71EDA06F9003C7458 /* LoginButton.swift in Sources */,
+				FE1E33FC26702F0200DAC2D6 /* FirebaseDecoder.swift in Sources */,
 				7AC26AF81EE5EBDE003F946C /* Day.swift in Sources */,
 				7A28101C1EDDCDEC003C7458 /* LessonWireFrame.swift in Sources */,
 				7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */,
@@ -1588,6 +1588,7 @@
 				7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */,
 				7A280FEB1EDCEAD2003C7458 /* Constants.swift in Sources */,
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
+				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
 				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageItemView.swift in Sources */,
 				FE0249FE266A91C9006BFADC /* Notifications.swift in Sources */,
@@ -1599,6 +1600,7 @@
 				7A3BCE401EE2F27F003EC12B /* ReadOptionsView.swift in Sources */,
 				7A922E181EDFB61600C12A67 /* ReadController.swift in Sources */,
 				7A8C684A1EF2094300CD3228 /* SettingsItemView.swift in Sources */,
+				FE1E33F826702E6800DAC2D6 /* DataSnapshot.swift in Sources */,
 				7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */,
 				7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */,
 				7A2810201EDDCEC9003C7458 /* LessonInteractor.swift in Sources */,

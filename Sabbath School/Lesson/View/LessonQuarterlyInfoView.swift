@@ -24,6 +24,7 @@ import UIKit
 import AsyncDisplayKit
 
 class LessonQuarterlyInfoView: ASCellNode {
+    var quarterly: Quarterly?
     let cover = ASDisplayNode()
     var coverImage: RoundedCornersImage!
     let title = ASTextNode()
@@ -36,7 +37,7 @@ class LessonQuarterlyInfoView: ASCellNode {
 
     init(quarterly: Quarterly) {
         super.init()
-
+        self.quarterly = quarterly
         clipsToBounds = false
         insertSubnode(infiniteColor, at: 0)
         selectionStyle = .none

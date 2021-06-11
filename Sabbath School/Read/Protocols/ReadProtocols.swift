@@ -42,8 +42,12 @@ protocol ReadControllerProtocol: class {
     func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool)
 }
 
+protocol ReadControllerDelegate: class {
+    func shareLesson(lesson: Lesson)
+}
+
 protocol ReadWireFrameProtocol: class {
-    static func createReadModule(lessonIndex: String) -> ASDKViewController<ASDisplayNode>
+    static func createReadModule(lessonIndex: String) -> ReadController
 }
 
 protocol ReadInteractorOutputProtocol: class {

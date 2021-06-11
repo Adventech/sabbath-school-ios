@@ -20,17 +20,17 @@
  * THE SOFTWARE.
  */
 
-import Unbox
+import Foundation
 
 class LessonInteractor: FirebaseDatabaseInteractor, LessonInteractorInputProtocol {
     weak var presenter: LessonInteractorOutputProtocol?
 
     func retrieveQuarterlyInfo(quarterlyIndex: String) {
-        database?.child(Constants.Firebase.quarterlyInfo).child(quarterlyIndex).observe(.value, with: { [weak self] (snapshot) in
-            guard let json = snapshot.value as? [String: AnyObject] else { return }
+        database?.child(Constants.Firebase.quarterlyInfo).child(quarterlyIndex).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            guard let json = snapshot.data else { return }
 
             do {
-                let item: QuarterlyInfo = try unbox(dictionary: json)
+                let item: QuarterlyInfo = try FirebaseDecoder().decode(QuarterlyInfo.self, from: json)
 
                 self?.saveLastQuarterlyIndex(lastQuarterlyIndex: quarterlyIndex)
                 self?.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: item)

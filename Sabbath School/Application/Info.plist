@@ -35,6 +35,8 @@
 	<string>2023</string>
 	<key>FacebookAppID</key>
 	<string>1440555266255436</string>
+    <key>FacebookClientToken</key>
+    <string>Sabbath School</string>
 	<key>FacebookDisplayName</key>
 	<string>Sabbath School</string>
 	<key>LSApplicationQueriesSchemes</key>

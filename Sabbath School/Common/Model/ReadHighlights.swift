@@ -20,16 +20,7 @@
  * THE SOFTWARE.
  */
 
-import Unbox
-
-struct ReadHighlights {
+struct ReadHighlights: Codable {
     let readIndex: String
     let highlights: String
-}
-
-extension ReadHighlights: Unboxable {
-    init(unboxer: Unboxer) throws {
-        readIndex = try unboxer.unbox(key: "readIndex")
-        highlights = try unboxer.unbox(key: "highlights")
-    }
 }

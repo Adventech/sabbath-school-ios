@@ -20,9 +20,9 @@
  * THE SOFTWARE.
  */
 
-import Unbox
+import Foundation
 
-struct Day {
+struct Day: Codable {
     let id: String
     let title: String
     let date: Date
@@ -31,17 +31,18 @@ struct Day {
     let readPath: String
     let fullPath: URL
     let fullReadPath: URL
-}
-
-extension Day: Unboxable {
-    init(unboxer: Unboxer) throws {
-        id = try unboxer.unbox(key: "id")
-        title = try unboxer.unbox(key: "title")
-        date = try unboxer.unbox(key: "date", formatter: Date.serverDateFormatter())
-        index = try unboxer.unbox(key: "index")
-        path = try unboxer.unbox(key: "path")
-        readPath = try unboxer.unbox(key: "read_path")
-        fullPath = try unboxer.unbox(key: "full_path")
-        fullReadPath = try unboxer.unbox(key: "full_read_path")
+    var webURL: URL
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        title = try values.decode(String.self, forKey: .title)
+        date = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .date))!
+        index = try values.decode(String.self, forKey: .index)
+        path = try values.decode(String.self, forKey: .path)
+        readPath = try values.decode(String.self, forKey: .readPath)
+        fullPath = try values.decode(URL.self, forKey: .fullPath)
+        fullReadPath = try values.decode(URL.self, forKey: .fullReadPath)
+        webURL = URL.init(string: fullPath.absoluteString.replacingOccurrences(of: Constants.URLs.webReplacementRegex, with: "", options: [.regularExpression]))!
     }
 }

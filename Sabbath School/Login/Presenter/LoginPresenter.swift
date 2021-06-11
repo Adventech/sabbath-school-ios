@@ -22,8 +22,8 @@
 
 import AuthenticationServices
 import CryptoKit
-import FacebookCore
-import FacebookLogin
+import FBSDKCoreKit
+import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
 import SwiftMessages
@@ -80,7 +80,7 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
             case .cancelled:
                 self?.onError("Cancelled" as? Error)
             case .success(_, _, let accessToken):
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken!.tokenString)
                 self?.performFirebaseLogin(credential: credential)
             }
         }

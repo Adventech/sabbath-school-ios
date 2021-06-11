@@ -36,6 +36,10 @@ class LessonPresenter: LessonPresenterProtocol {
     func presentReadScreen(lessonIndex: String) {
         wireFrame?.presentReadScreen(view: controller!, lessonIndex: lessonIndex)
     }
+    
+    func showReadScreen(readScreen: ReadController) {
+        wireFrame?.showReadScreen(view: controller!, readScreen: readScreen)
+    }
 }
 
 extension LessonPresenter: LessonInteractorOutputProtocol {

@@ -22,9 +22,7 @@
 
 import UIKit
 
-struct Constants {
-    static let openTodayLessonShortcutItemType = "openTodayLessonShortcutItemType"
-    
+struct Constants {    
     struct DefaultKey {
         static let gcmMessageIDKey = "gcm.message_id"
         static let interfaceLanguage = "io.adventech.interfaceLanguage"
@@ -47,6 +45,9 @@ struct Constants {
         
         static let gcPopup = "io.adventech.gcpopup"
         static let appleAuthorizedUserIdKey = "io.adventech.appleAuthorizedUserIdKey"
+        static let shortcutItem = "io.adventech.shortcutItem"
+        
+        static let spotlightDomain = "io.adventech.sabbathSchool"
     }
 
     struct Path {
@@ -95,6 +96,7 @@ struct Constants {
         #else
         static let web = "https://sabbath-school.adventech.io/"
         #endif
+        static let webReplacementRegex = "api/v1/|quarterlies/|lessons/|days/|read/"
     }
     
     struct NotificationKey {}

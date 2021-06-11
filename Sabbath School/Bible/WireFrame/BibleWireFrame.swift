@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 
 class BibleWireFrame: BibleWireFrameProtocol {
-    class func createBibleModule(read: Read, verse: String) -> ASDKViewController<ASDisplayNode> {
+    class func createBibleModule(read: Read, verse: String) -> BibleController {
         let controller: BibleControllerProtocol = BibleController(read: read, verse: verse)
         let presenter: BiblePresenterProtocol & BibleInteractorOutputProtocol = BiblePresenter()
         let wireFrame: BibleWireFrameProtocol = BibleWireFrame()
@@ -35,6 +35,6 @@ class BibleWireFrame: BibleWireFrameProtocol {
         presenter.interactor = interactor
         interactor.presenter = presenter
         
-        return controller as! ASDKViewController<ASDisplayNode>
+        return controller as! BibleController
     }
 }

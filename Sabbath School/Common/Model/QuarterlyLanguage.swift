@@ -20,21 +20,25 @@
  * THE SOFTWARE.
  */
 
-import Unbox
+import Foundation
 
-struct QuarterlyLanguage {
+struct QuarterlyLanguage: Codable {
     let code: String
     let name: String
     var translatedName: String? = ""
-}
+    
+    init(code: String, name: String) {
+        self.code = code
+        self.name = name
+    }
 
-extension QuarterlyLanguage: Unboxable {
-    init(unboxer: Unboxer) throws {
-        let code: String = try unboxer.unbox(key: "code")
-        let name: String = try unboxer.unbox(key: "name")
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let name = try values.decode(String.self, forKey: .name)
+        
+        code = try values.decode(String.self, forKey: .code)
         let locale = Locale(identifier: code)
         let currentLocale = Locale.current
-        self.code = code
         self.name = locale.localizedString(forLanguageCode: code)?.capitalized ?? name.capitalized
         self.translatedName = currentLocale.localizedString(forLanguageCode: code)?.capitalized ?? name.capitalized
     }

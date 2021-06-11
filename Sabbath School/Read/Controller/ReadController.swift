@@ -25,6 +25,7 @@ import SafariServices
 import UIKit
 
 class ReadController: ThemeController {
+    var delegate: ReadControllerDelegate?
     var presenter: ReadPresenterProtocol?
     var collectionNode: ASPagerNode { return node as! ASPagerNode }
     
@@ -41,6 +42,7 @@ class ReadController: ThemeController {
     var lastContentOffset: CGFloat = 0
     var initialContentOffset: CGFloat = 0
     var lastPage: Int?
+    var appeared: Bool = false
     var isTransitionInProgress: Bool = false
     
     var menuItems = [UIMenuItem]()
@@ -66,12 +68,6 @@ class ReadController: ThemeController {
         presenter?.configure()
         setTransparentNavigation()
 
-        for scrollGestureRecognizer in self.collectionNode.view.gestureRecognizers! {
-            guard previewingContext == nil else { continue }
-            
-            scrollGestureRecognizer.require(toFail: (self.navigationController?.interactivePopGestureRecognizer)!)
-        }
-
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
         rightButton.accessibilityIdentifier = "themeSettings"
         navigationItem.rightBarButtonItem = rightButton
@@ -82,6 +78,17 @@ class ReadController: ThemeController {
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if appeared == true {
+            self.collectionNode.relayoutItems()
+            self.collectionNode.waitUntilAllUpdatesAreProcessed()
+            self.collectionNode.reloadData()
+            self.collectionNode.scrollToPage(at: self.lastPage ?? 0, animated: false)
+        }
+        self.appeared = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -195,9 +202,18 @@ class ReadController: ThemeController {
         collectionNode.reloadData()
     
         DispatchQueue.main.async {
-            self.collectionNode.scrollToPage(at: self.lastPage!, animated: false)
+            self.collectionNode.scrollToPage(at: self.lastPage ?? 1, animated: false)
             self.isTransitionInProgress = false
         }
+    }
+    
+    override var previewActionItems: [UIPreviewActionItem] {
+        return [UIPreviewAction(title: "Share".localized(), style: .default, handler: {
+            previewAction, viewController in
+            if let lesson = self.lessonInfo?.lesson {
+                    self.delegate?.shareLesson(lesson: lesson)
+                }
+        })]
     }
 }
 
@@ -256,7 +272,7 @@ extension ReadController: ASPagerDataSource {
 extension ReadController: ASCollectionDelegate {
     func collectionNode(_ collectionNode: ASCollectionNode, willDisplayItemWith node: ASCellNode) {
         if !isTransitionInProgress {
-            lastPage = self.collectionNode.indexOfPage(with: node)
+            // lastPage = self.collectionNode.indexOfPage(with: node)
         }
     }
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
@@ -320,7 +336,12 @@ extension ReadController: ReadViewOutputProtocol {
     }
 
     func didReceiveShare(text: String) {
-        let objectsToShare: [Any] = [text, self.lessonInfo?.lesson.fullPath ?? ""]
+        guard let day = self.lessonInfo?.days[self.collectionNode.currentPageIndex] else { return }
+        var objectsToShare: [Any] = [text, day.webURL]
+        if #available(iOS 13.0, *) {
+            guard let imageView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.cover.image else { return }
+            objectsToShare = [ShareItem(title: day.title, subtitle: day.date.stringReadDate(), url: day.webURL, image: imageView, text: text)]
+        }
         let activityController = UIActivityViewController(
             activityItems: objectsToShare,
             applicationActivities: nil)

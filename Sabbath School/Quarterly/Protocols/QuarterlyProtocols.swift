@@ -31,21 +31,23 @@ protocol QuarterlyPresenterProtocol: class {
     func configure()
     func presentLanguageScreen()
     func presentGCScreen()
-    func presentLessonScreen(quarterlyIndex: String)
+    func presentLessonScreen(quarterlyIndex: String, initiateOpenToday: Bool)
+    func showLessonScreen(lessonScreen: LessonController)
     func presentQuarterlies()
 }
 
 protocol QuarterlyControllerProtocol: class {
     var presenter: QuarterlyPresenterProtocol? { get set }
+    var initiateOpen: Bool? { get set }
     func showQuarterlies(quarterlies: [Quarterly])
     func retrieveQuarterlies()
 }
 
 protocol QuarterlyWireFrameProtocol: class {
-    static func createQuarterlyModule() -> ASNavigationController
-    func reloadQuarterlyModule()
-    func presentLessonScreen(view: QuarterlyControllerProtocol, quarterlyIndex: String)
+    static func createQuarterlyModule(initiateOpen: Bool) -> ASNavigationController
     static func presentLoginScreen()
+    func presentLessonScreen(view: QuarterlyControllerProtocol, quarterlyIndex: String, initiateOpenToday: Bool)
+    func showLessonScreen(view: QuarterlyControllerProtocol, lessonScreen: LessonController)
 }
 
 protocol QuarterlyInteractorOutputProtocol: class {

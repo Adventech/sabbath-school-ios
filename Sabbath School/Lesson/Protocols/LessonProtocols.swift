@@ -31,16 +31,23 @@ protocol LessonPresenterProtocol: class {
 
     func configure()
     func presentReadScreen(lessonIndex: String)
+    func showReadScreen(readScreen: ReadController)
 }
 
 protocol LessonControllerProtocol: class {
     var presenter: LessonPresenterProtocol? { get set }
+    var initiateOpenToday: Bool? { get set }
     func showLessons(quarterlyInfo: QuarterlyInfo)
 }
 
+protocol LessonControllerDelegate: class {
+    func shareQuarterly(quarterly: Quarterly)
+}
+
 protocol LessonWireFrameProtocol: class {
-    static func createLessonModule(quarterlyIndex: String) -> ASDKViewController<ASDisplayNode>
+    static func createLessonModule(quarterlyIndex: String, initiateOpenToday: Bool) -> LessonController
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String)
+    func showReadScreen(view: LessonControllerProtocol, readScreen: ReadController)
 }
 
 protocol LessonInteractorOutputProtocol: class {

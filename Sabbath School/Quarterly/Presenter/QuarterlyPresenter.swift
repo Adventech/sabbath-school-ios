@@ -48,8 +48,12 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
         (controller as? UIViewController)?.present(module, animated: true)
     }
 
-    func presentLessonScreen(quarterlyIndex: String) {
-        wireFrame?.presentLessonScreen(view: controller!, quarterlyIndex: quarterlyIndex)
+    func presentLessonScreen(quarterlyIndex: String, initiateOpenToday: Bool = false) {
+        wireFrame?.presentLessonScreen(view: controller!, quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpenToday)
+    }
+    
+    func showLessonScreen(lessonScreen: LessonController) {
+        wireFrame?.showLessonScreen(view: controller!, lessonScreen: lessonScreen)
     }
     
     func presentGCScreen() {

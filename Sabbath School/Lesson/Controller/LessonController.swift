@@ -26,10 +26,11 @@ import UIKit
 import StoreKit
 
 final class LessonController: TableController {
+    var delegate: LessonControllerDelegate?
     var presenter: LessonPresenterProtocol?
     var dataSource: QuarterlyInfo?
-    
-    var shouldSkipToReader = false
+    var isPeeking: Bool? = false
+    var initiateOpenToday: Bool?
 
     override init() {
         super.init()
@@ -47,10 +48,8 @@ final class LessonController: TableController {
         presenter?.configure()
         Armchair.userDidSignificantEvent(true)
         
-        if #available(iOS 9.0, *) {
-            if self.traitCollection.forceTouchCapability == .available, let view = tableNode?.view {
-                registerForPreviewing(with: self, sourceView: view)
-            }
+        if self.traitCollection.forceTouchCapability == .available, let view = tableNode?.view {
+            registerForPreviewing(with: self, sourceView: view)
         }
     }
 
@@ -63,14 +62,14 @@ final class LessonController: TableController {
             presenter?.presentReadScreen(lessonIndex: lesson.index)
         }
     }
-
-    func openToday() {
-        guard let lessons = dataSource?.lessons else { return }
+    
+    func getTodaysLessonIndex() -> String {
+        guard let lessons = dataSource?.lessons else { return "" }
         let today = Date()
         let weekday = Calendar.current.component(.weekday, from: today)
         let hour = Calendar.current.component(.hour, from: today)
         var prevLessonIndex: String? = nil
-
+        
         for lesson in lessons {
             let start = Calendar.current.compare(lesson.startDate, to: today, toGranularity: .day)
             let end = Calendar.current.compare(lesson.endDate, to: today, toGranularity: .day)
@@ -78,18 +77,87 @@ final class LessonController: TableController {
 
             if fallsBetween {
                 if (weekday == 7 && hour < 12 && prevLessonIndex != nil) {
-                    presenter?.presentReadScreen(lessonIndex: prevLessonIndex!)
+                    return prevLessonIndex!
                 } else {
-                    presenter?.presentReadScreen(lessonIndex: lesson.index)
+                    return lesson.index
                 }
-                return
             }
             prevLessonIndex = lesson.index
         }
 
         if let firstLesson = lessons.first {
-            presenter?.presentReadScreen(lessonIndex: firstLesson.index)
+            return firstLesson.index
         }
+        
+        return ""
+    }
+
+    func openToday() {
+        let todaysLessonIndex = getTodaysLessonIndex()
+        if !todaysLessonIndex.isEmpty {
+            presenter?.presentReadScreen(lessonIndex: todaysLessonIndex)
+        }
+    }
+    
+    func insertShortcutItems(quarterlyInfo: QuarterlyInfo) {
+        var shortcutItems = UIApplication.shared.shortcutItems ?? []
+        
+        let existingIndex = shortcutItems.firstIndex(where: { $0.userInfo?["index"] as? String == quarterlyInfo.quarterly.index })
+        
+        if existingIndex != nil {
+            shortcutItems.remove(at: existingIndex!)
+        }
+
+        let shortcutItem = UIApplicationShortcutItem.init(
+            type: Constants.DefaultKey.shortcutItem,
+            localizedTitle: quarterlyInfo.quarterly.title,
+            localizedSubtitle: quarterlyInfo.quarterly.humanDate,
+            icon: .init(templateImageName: "icon-bookmark"),
+            userInfo: ["index": quarterlyInfo.quarterly.index as NSSecureCoding]
+        )
+        
+        shortcutItems.insert(shortcutItem, at: 0)
+        UIApplication.shared.shortcutItems = shortcutItems
+    }
+    
+    func getReadControllerForPeek(indexPath: IndexPath, point: CGPoint) -> ReadController? {
+        guard let lessonIndex: String = (indexPath.row == 0 && indexPath.section == 0) ? getTodaysLessonIndex() : self.dataSource?.lessons[indexPath.row].index else { return nil }
+        let readController = ReadWireFrame.createReadModule(lessonIndex: lessonIndex)
+        readController.delegate = self
+        return readController
+    }
+    
+    @available(iOS 13.0, *)
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            guard let readController = self.getReadControllerForPeek(indexPath: indexPath, point: point) else { return nil }
+            return readController
+        }, actionProvider: { suggestedActions in
+            let imageView = (self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: 0)) as! LessonQuarterlyInfoView).coverImage.imageNode.image!
+            let lesson: Lesson = (self.dataSource?.lessons[indexPath.row])!
+            let share = UIAction(title: "Share".localized(), image: UIImage(systemName: "square.and.arrow.up")) { action in
+                let objectToShare = ShareItem(title: lesson.title, subtitle: lesson.dateRange, url: lesson.webURL, image: imageView)
+                Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [objectToShare])
+            }
+            return UIMenu(title: "", children: [share])
+        })
+    }
+    
+    @available(iOS 13.0, *)
+    func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion {
+            guard let readController = animator.previewViewController as? ReadController else { return }
+            self.presenter?.showReadScreen(readScreen: readController)
+        }
+    }
+    
+    override var previewActionItems: [UIPreviewActionItem] {
+        return [UIPreviewAction(title: "Share".localized(), style: .default, handler: {
+            previewAction, viewController in
+                if let quarterly = self.dataSource?.quarterly {
+                    self.delegate?.shareQuarterly(quarterly: quarterly)
+                }
+        })]
     }
 
     @objc func readButtonAction(sender: ASButtonNode) {
@@ -106,34 +174,41 @@ extension LessonController: LessonControllerProtocol {
         }
         self.tableNode?.allowsSelection = true
         self.tableNode?.reloadData()
-        self.colorize()
-        // self.correctHairline()
         
-        if shouldSkipToReader {
+        if !self.isPeeking! {
+            self.colorize()
+            self.insertShortcutItems(quarterlyInfo: quarterlyInfo)
+        }
+        
+        if initiateOpenToday == true {
             openToday()
-            //Revert back to default value
-            shouldSkipToReader = false
+            self.initiateOpenToday = false
         }
     }
 }
 
-@available(iOS 9.0, *)
 extension LessonController: UIViewControllerPreviewingDelegate {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         guard let readController = viewControllerToCommit as? ReadController else { return }
         guard let index = readController.lessonInfo?.lesson.index else { return }
-        
         readController.previewingContext = previewingContext
         presenter?.presentReadScreen(lessonIndex: index)
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard let indexPath = tableNode?.indexPathForRow(at: location) else { return nil }
-        guard let lesson = self.dataSource?.lessons[indexPath.row] else { return  nil }
-        guard let readController = ReadWireFrame.createReadModule(lessonIndex: lesson.index) as? ReadController else {  return nil }
-        readController.previewingContext = previewingContext
+        guard let cell = tableNode?.cellForRow(at: indexPath) else { return nil }
+        let readController = getReadControllerForPeek(indexPath: indexPath, point: location)
+        
+        previewingContext.sourceRect = (tableNode?.convert(cell.frame, to: tableNode))!
         
         return readController
+    }
+}
+
+extension LessonController: ReadControllerDelegate {
+    func shareLesson(lesson: Lesson) {
+        Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [lesson.title, lesson.webURL])
     }
 }
 

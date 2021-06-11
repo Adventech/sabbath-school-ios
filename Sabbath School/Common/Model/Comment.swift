@@ -20,16 +20,7 @@
  * THE SOFTWARE.
  */
 
-import Unbox
-
-struct Comment {
+struct Comment: Codable {
     let elementId: String
     var comment: String
-}
-
-extension Comment: Unboxable {
-    init(unboxer: Unboxer) throws {
-        elementId = try unboxer.unbox(key: "elementId")
-        comment = try unboxer.unbox(key: "comment")
-    }
 }

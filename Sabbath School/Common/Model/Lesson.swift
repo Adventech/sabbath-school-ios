@@ -20,9 +20,9 @@
  * THE SOFTWARE.
  */
 
-import Unbox
+import Foundation
 
-struct Lesson {
+struct Lesson: Codable {
     let id: String
     let title: String
     let startDate: Date
@@ -31,17 +31,20 @@ struct Lesson {
     let index: String
     let path: String
     let fullPath: URL
-}
-
-extension Lesson: Unboxable {
-    init(unboxer: Unboxer) throws {
-        id = try unboxer.unbox(key: "id")
-        title = try unboxer.unbox(key: "title")
-        startDate = try unboxer.unbox(key: "start_date", formatter: Date.serverDateFormatter())
-        endDate = try unboxer.unbox(key: "end_date", formatter: Date.serverDateFormatter())
-        index = try unboxer.unbox(key: "index")
-        cover = try? unboxer.unbox(key: "cover")
-        path = try unboxer.unbox(key: "path")
-        fullPath = try unboxer.unbox(key: "full_path")
+    var dateRange: String = ""
+    var webURL: URL
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        title = try values.decode(String.self, forKey: .title)
+        startDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .startDate))!
+        endDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .endDate))!
+        cover = try values.decode(URL.self, forKey: .cover)
+        index = try values.decode(String.self, forKey: .index)
+        path = try values.decode(String.self, forKey: .path)
+        fullPath = try values.decode(URL.self, forKey: .fullPath)
+        dateRange = String(format: "%@ - %@", startDate.stringLessonDate(), endDate.stringLessonDate())
+        webURL = URL.init(string: String(format: "%@/01", fullPath.absoluteString.replacingOccurrences(of: Constants.URLs.webReplacementRegex, with: "", options: [.regularExpression])))!
     }
 }

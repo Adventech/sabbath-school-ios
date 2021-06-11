@@ -20,16 +20,7 @@
  * THE SOFTWARE.
  */
 
-import Unbox
-
-struct LessonInfo {
+struct LessonInfo: Codable {
     let lesson: Lesson
     let days: [Day]
-}
-
-extension LessonInfo: Unboxable {
-    init(unboxer: Unboxer) throws {
-        lesson = try unboxer.unbox(key: "lesson")
-        days = try unboxer.unbox(key: "days")
-    }
 }

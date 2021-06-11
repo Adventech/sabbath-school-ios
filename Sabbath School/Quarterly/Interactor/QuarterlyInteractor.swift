@@ -20,10 +20,7 @@
  * THE SOFTWARE.
  */
 
-import FirebaseStorage
-import FontBlaster
-import Unbox
-import Zip
+import Foundation
 
 class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputProtocol {
     weak var presenter: QuarterlyInteractorOutputProtocol?
@@ -34,15 +31,15 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
 
         languageInteractor.configure()
         languageInteractor.presenter = self
-        checkifReaderBundleNeeded()
     }
 
     func retrieveQuarterliesForLanguage(language: QuarterlyLanguage) {
-        database?.child(Constants.Firebase.quarterlies).child(language.code).observe(.value, with: { [weak self] (snapshot) in
-            guard let json = snapshot.value as? [[String: AnyObject]] else { return }
+        database?.child(Constants.Firebase.quarterlies).child(language.code).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            guard let json = snapshot.data else { return }
 
             do {
-                let items: [Quarterly] = try unbox(dictionaries: json)
+                let items: [Quarterly] = try FirebaseDecoder().decode([Quarterly].self, from: json)
+                
                 self?.presenter?.didRetrieveQuarterlies(quarterlies: items)
             } catch let error {
                 self?.presenter?.onError(error)
@@ -53,52 +50,12 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
     }
 
     func retrieveQuarterlies() {
-        guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? [String: Any] else {
+        guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? Data else {
             return languageInteractor.retrieveLanguages()
         }
 
-        let language: QuarterlyLanguage = try! unbox(dictionary: dictionary)
+        let language: QuarterlyLanguage = try! JSONDecoder().decode(QuarterlyLanguage.self, from: dictionary)
         retrieveQuarterliesForLanguage(language: language)
-    }
-
-    private func checkifReaderBundleNeeded() {
-        let storage = Storage.storage()
-        let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
-
-        gsReference.getMetadata { [weak self] (metadata, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                if String(describing: metadata?.timeCreated?.timeIntervalSince1970) != Preferences.latestReaderBundleTimestamp() {
-                    self?.downloadReaderBundle(metadata: metadata!)
-                }
-            }
-        }
-
-    }
-
-    private func downloadReaderBundle(metadata: StorageMetadata) {
-        let storage = Storage.storage()
-        let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
-        var localURL = Constants.Path.readerBundleZip
-
-        _ = gsReference.write(toFile: localURL) { [weak self] (_, error) in
-            if let error = error {
-                self?.presenter?.onError(error)
-            } else {
-                do {
-                    UserDefaults.standard.set(String(describing: metadata.timeCreated?.timeIntervalSince1970), forKey: Constants.DefaultKey.latestReaderBundleTimestamp)
-                    var unzipDirectory = try Zip.quickUnzipFile(localURL)
-                    var resourceValues = URLResourceValues()
-                    resourceValues.isExcludedFromBackup = true
-                    try localURL.setResourceValues(resourceValues)
-                    try unzipDirectory.setResourceValues(resourceValues)
-                    FontBlaster.blast()
-                } catch {
-                    print("unzipping error")
-                }
-            }
-        }
     }
 }
 
