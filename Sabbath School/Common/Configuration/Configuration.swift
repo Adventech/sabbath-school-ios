@@ -69,7 +69,6 @@ class Configuration: NSObject {
         }
         
         if (Auth.auth().currentUser) != nil {
-            print("SSDEBUG", "Checking migrate the user")
             let user = Auth.auth().currentUser
             var tempUser: User?
             do {

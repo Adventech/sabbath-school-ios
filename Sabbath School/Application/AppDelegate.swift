@@ -132,7 +132,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func handleAppLink(url: URL) -> Bool {
-        print("SSDEBUG", url.absoluteString)
         guard url.pathComponents.count > 1 else { return true }
         
         let languageCode: String? = url.pathComponents.count >= 2 ? url.pathComponents[1] : nil
