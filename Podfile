@@ -28,9 +28,7 @@ target 'WidgetExtension' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Storage'
-  pod 'GoogleSignIn'
+  pod 'GTMSessionFetcher'
   pod 'Hue'
 end
 

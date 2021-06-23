@@ -198,6 +198,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FontBlaster
   - GoogleSignIn
+  - GTMSessionFetcher
   - Hue
   - MenuItemKit
   - R.swift
@@ -296,6 +297,6 @@ SPEC CHECKSUMS:
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: b57a7bfdc7a56bfe5f668caa009ccb39fd0749d0
+PODFILE CHECKSUM: d1c8c5e9bac5e591651281ce79e9ab878deb74a9
 
 COCOAPODS: 1.10.0
