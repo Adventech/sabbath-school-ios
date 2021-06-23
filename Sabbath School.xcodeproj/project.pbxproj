@@ -1330,6 +1330,7 @@
 				FE1E34F82673C5DF00DAC2D6 /* Sources */,
 				FE1E34F92673C5DF00DAC2D6 /* Frameworks */,
 				FE1E34FA2673C5DF00DAC2D6 /* Resources */,
+				F848DC121388AC18588AA706 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1679,6 +1680,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F848DC121388AC18588AA706 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FE4224A7264F5B1C0036F5D2 /* Run Crashlytics */ = {

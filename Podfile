@@ -22,13 +22,17 @@ target 'Sabbath School' do
   pod 'SwiftDate'
   pod 'Texture'
   pod 'Zip'
-
-  target 'WidgetExtension' do
-    inherit! :search_paths
-  end
 end
 
-
+target 'WidgetExtension' do
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Storage'
+  pod 'GoogleSignIn'
+  pod 'Hue'
+end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
