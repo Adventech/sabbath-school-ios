@@ -46,6 +46,7 @@ class LanguageView: ASDisplayNode {
         search.backgroundColor = AppStyle.Base.Color.background
         searchBorder.backgroundColor = AppStyle.Base.Color.tableSeparator
         table.view.separatorColor = AppStyle.Base.Color.tableSeparator
+        table.view.backgroundColor = AppStyle.Base.Color.background
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

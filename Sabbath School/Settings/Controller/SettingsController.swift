@@ -109,7 +109,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
     
     static func logOut(presentLoginScreen: Bool = true) {
         if let providerId = Auth.auth().currentUser?.providerData.first?.providerID, providerId == "apple.com" {
-            UserDefaults.standard.set(nil, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
+            Preferences.userDefaults.set(nil, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
         }
         
         UIApplication.shared.shortcutItems = []
@@ -131,7 +131,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
             if titles[0].indices.contains(1) {
                 titles[0].remove(at: 1)
                 self.tableNode?.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
-                UserDefaults.standard.set(false, forKey: Constants.DefaultKey.settingsReminderStatus)
+                Preferences.userDefaults.set(false, forKey: Constants.DefaultKey.settingsReminderStatus)
                 UIApplication.shared.cancelAllLocalNotifications()
             }
             return
@@ -140,7 +140,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
         // iOS 9 crashes during press hold /drag of the switch, therefore double-checking before adding time row
         if (titles[0].count < 2) {
             titles[0].append("Time".localized())
-            UserDefaults.standard.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
+            Preferences.userDefaults.set(true, forKey: Constants.DefaultKey.settingsReminderStatus)
 
             SettingsController.setUpLocalNotification()
             self.tableNode?.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
@@ -239,7 +239,7 @@ extension SettingsController: ASTableDataSource {
     }
     
     func saveReminderTime(date: Date) {
-        UserDefaults.standard.set(dateFormatter.string(from: date), forKey: Constants.DefaultKey.settingsReminderTime)
+        Preferences.userDefaults.set(dateFormatter.string(from: date), forKey: Constants.DefaultKey.settingsReminderTime)
         SettingsController.setUpLocalNotification()
     }
 }

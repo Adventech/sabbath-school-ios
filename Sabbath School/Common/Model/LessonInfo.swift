@@ -23,4 +23,9 @@
 struct LessonInfo: Codable {
     let lesson: Lesson
     let days: [Day]
+    
+    init(lesson: Lesson, days: [Day]) {
+        self.lesson = lesson
+        self.days = days
+    }
 }

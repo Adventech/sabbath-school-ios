@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-import Firebase
+import FirebaseDatabase
 
 extension DataSnapshot {
     var data: Data? {

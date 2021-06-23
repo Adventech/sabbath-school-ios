@@ -1,4 +1,3 @@
-
 /*Localizable.strings
   Sabbath School
 
@@ -9,8 +8,10 @@
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Kwa kuingia kwa jina bila kujulikana huwezi kuunganisha data zako, kama vile maoni na mambo muhimu, kwenye vifaa au baada ya kufuta programu. Una uhakika unataka kuendelea?";
 "Continue without login" = "Endelea bila kuingia";
 "Contribute" = "Kushiriki";
+"Copy" = "Nakala";
 "Dark" = "Giza";
 "English" = "Kiingereza";
+"God's Ministry through Technology" = "Wizara ya Mungu kupitia Teknolojia";
 "I am using Sabbath School app from Adventech! 🎉" = "Ninatumia programu ya Shule ya Sabato kutoka Adventech! 🎉";
 "Languages" = "Lugha";
 "Lato" = "Lato";
@@ -18,6 +19,7 @@
 "Log out" = "Ingia nje";
 "Login anonymously?" = "Ingia bila kujulikana?";
 "Made with ❤ by Adventech" = "Imefanywa na ❤ na Adventech";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Ujumbe wa Adventech ni wa kwanza na wa kwanza - tukufu utukufu wetu wetu, Mzee wa Kale. Tumejitolea kufanya huduma yetu kupitia teknolojia. Lengo letu ni kuunganisha Kanisa la Adventist yetu ya Saba. Lengo letu ni kutangaza Habari njema kwa ulimwengu huu kupitia teknolojia na maendeleo katika mawasiliano. Lengo letu ni kushuhudia Ujaji wa pili wa Yesu.\n\nTunaongozwa na mfano na mbinu za Yesu, wakati alipokuwa akihudhuria hapa duniani. Kwa hiyo, sisi ni nia ya kutoa kiwango cha juu cha ubora wa miradi yetu yote bila gharama yoyote kwa upendo na kujitolea. Tumejitolea kumtukuza Baba yetu, kwa sababu Yeye anastahili sifa kubwa zaidi.\n\nTunaamini kweli kwamba Mungu ameongeza ujuzi wa dunia ya kisasa na anataka tuutumie kwa utukufu wake ili tangaza Utumishi wake wa hivi karibuni!";
 "More" = "Zaidi";
 "No" = "Hapana";
 "Open" = "Fungua";
@@ -27,6 +29,7 @@
 "Read" = "Soma";
 "Reminder" = "Kumbusho";
 "Sabbath School" = "Mwongozo wa kujifunza Biblia";
+"Share" = "Shiriki";
 "Sepia" = "Sepia";
 "Set the reminder to be notified daily to study the lesson" = "Weka kikumbusho kuwa taarifa kila siku kujifunza somo";
 "Settings" = "Mipangilio";
@@ -36,14 +39,24 @@
 "Time" = "Muda";
 "Time to study Sabbath School 🙏" = "Muda wa kusoma Shule ya Sabato 🙏";
 "Yes" = "Ndiyo";
+"Your friends at Adventech" = "Marafiki zako katika Adventech";
 "https://adventech.io" = "https://adventech.io";
 "🎉 Rate app" = "🎉 Kiwango cha programu";
 "🐙 GitHub" = "🐙 GitHub";
 "💌 Recommend Sabbath School" = "💌 Kupendekeza Shule ya Sabato";
 "🙏 About us" = "🙏 Kuhusu sisi";
-"God's Ministry through Technology" = "Wizara ya Mungu kupitia Teknolojia";
-"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Ujumbe wa Adventech ni wa kwanza na wa kwanza - tukufu utukufu wetu wetu, Mzee wa Kale. Tumejitolea kufanya huduma yetu kupitia teknolojia. Lengo letu ni kuunganisha Kanisa la Adventist yetu ya Saba. Lengo letu ni kutangaza Habari njema kwa ulimwengu huu kupitia teknolojia na maendeleo katika mawasiliano. Lengo letu ni kushuhudia Ujaji wa pili wa Yesu.\n\nTunaongozwa na mfano na mbinu za Yesu, wakati alipokuwa akihudhuria hapa duniani. Kwa hiyo, sisi ni nia ya kutoa kiwango cha juu cha ubora wa miradi yetu yote bila gharama yoyote kwa upendo na kujitolea. Tumejitolea kumtukuza Baba yetu, kwa sababu Yeye anastahili sifa kubwa zaidi.\n\nTunaamini kweli kwamba Mungu ameongeza ujuzi wa dunia ya kisasa na anataka tuutumie kwa utukufu wake ili tangaza Utumishi wake wa hivi karibuni!";
-"Your friends at Adventech" = "Marafiki zako katika Adventech";
-"Copy" = "Nakala";
-"Share" = "Shiriki";
+/*Translated from: Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!*/
+"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "Karibu kwenye programu rasmi ya Shule ya Sabato ya Mkutano Mkuu na Idara ya Huduma za Kibinafsi. Bado inaendeshwa na Adventech, programu hivi karibuni itapokea maboresho mapya ya yaliyomo na huduma wakati inabaki rahisi na rahisi kutumia. Haijawahi kuwa rahisi kusoma na kushiriki Neno la Mungu!";
+/*Translated from: Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.*/
+"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech ni shirika lisilo la faida nchini Canada ambalo limejitolea kwa matumizi ya teknolojia kwa huduma. Kama Waadventista wa Sabato waliojitolea, utume wa Adventech ni jambo la kwanza kabisa kumpa Mungu utukufu. Tunakusudia kupitia huduma yetu kuleta umoja kwa Kanisa la Waadventista Wasabato ulimwenguni. Lengo letu kuu ni kutangaza injili ya milele kupitia teknolojia na maendeleo katika mawasiliano, na kufanya sehemu yetu katika kuandaa ulimwengu kwa ujio wa pili wa Yesu.";
+/*Translated from: The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.*/
+"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "Dhamira ya Mkutano Mkuu Idara ya SSPM ni kufanya wanafunzi, ambao nao hufanya wanafunzi wengine. Tunakusudia kufanya hivyo kwa kusaidia makanisa ya Waadventista wa Sabato na washiriki wao kugundua madhumuni na nguvu ya Shule ya Sabato na kwa kuhamasisha na kuandikisha kila mshiriki kushiriki kikamilifu katika huduma ya kibinafsi ya kushinda roho. \ N \ n Idara ya SSPM hutoa rasilimali za kuwasaidia washirika wa kanisa la Waadventista Wasabato katika matembezi yao na Kristo na ushuhuda wao kwa ulimwengu. Lengo la programu ya Shule ya Sabato na Huduma za Kibinafsi ni kuchanganya rasilimali hizi nyingi katika eneo moja linalofaa. Rasilimali zaidi zinapoendelea kuongezwa, washiriki wa kanisa na familia zao hivi karibuni watapewa rasilimali nyingi za kuwasaidia katika kusoma na kushiriki Neno la Mungu. \ N \ nIli kuwezesha utunzaji na uundaji wa programu, Idara ya SSPM inafurahi kushirikiana na timu ya kujitolea na talanta huko Adventech.";
 "Search…" = "Tafuta…";
+/*Translated from: Today's lesson*/
+"Today's lesson" = "Somo la leo";
+/*Translated from: Get quick access the Sabbath School lesson for today*/
+"Get quick access the Sabbath School lesson for today" = "Pata ufikiaji wa haraka wa somo la Shule ya Sabato ya leo";
+/*Translated from: Get quick access the Sabbath School lesson for today, featuring the background image*/
+"Get quick access the Sabbath School lesson for today, featuring the background image" = "Pata ufikiaji wa haraka wa somo la Shule ya Sabato ya leo, iliyo na picha ya usuli";
+/*Translated from: Preview and access Sabbath School lesson for this week*/
+"Preview and access Sabbath School lesson for this week" = "Chungulia na ufikie somo la Shule ya Sabato kwa juma hili";

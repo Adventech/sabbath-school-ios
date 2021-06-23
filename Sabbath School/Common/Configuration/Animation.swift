@@ -51,6 +51,7 @@ struct Animation {
         attributes.entryInteraction = .forward
         attributes.screenInteraction = .dismiss
         attributes.exitAnimation = .init(fade: .init(from: 1, to: 0, duration: 0.2))
+        attributes.windowLevel = .normal
         return attributes
     }
 }

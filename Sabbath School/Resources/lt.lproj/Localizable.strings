@@ -1,4 +1,3 @@
-
 /*Localizable.strings
   Sabbath School
 
@@ -9,8 +8,10 @@
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Jei prisijungsite anonimiškai, negalėsite sinchronizuoti duomenų, pvz., Komentarų ir akcentų, įrenginiuose ar pašalinus programą. Ar tikrai norite tęsti?";
 "Continue without login" = "Tęsti be prisijungimo";
 "Contribute" = "Prisidėti";
+"Copy" = "Kopijuoti";
 "Dark" = "Tamsus";
 "English" = "Anglų";
+"God's Ministry through Technology" = "Dievo ministerija per technologijas";
 "I am using Sabbath School app from Adventech! 🎉" = "Aš naudoju Adventech sabato mokyklos programą! 🎉";
 "Languages" = "Kalbos";
 "Lato" = "Lato";
@@ -18,6 +19,7 @@
 "Log out" = "Atsijungti";
 "Login anonymously?" = "Prisijungti anonimiškai?";
 "Made with ❤ by Adventech" = "Pagaminta iš „Adventech“";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Adventecho misija pirmiausia yra svarbiausia - suteikti šlovę mūsų Lᴏʀᴅ, Senųjų Dienų. Mes esame pasiryžę atlikti savo tarnybą per technologijas. Mūsų tikslas - suvienyti mūsų septintosios dienos adventistų bažnyčią. Mūsų tikslas - paskelbti gerą naujieną šiam pasauliui technologijų ir komunikacijos pažangos dėka. Mūsų tikslas yra liudyti Jėzaus antrąjį atėjimą.\n\nMes įkvėpė Jėzaus pavyzdys ir metodai, kai Jis čia tarnavo Žemėje. Todėl esame pasiryžę užtikrinti aukštą visų mūsų projektų kokybę be jokios naudos su meile ir pasišventimu. Mes esame įsipareigoję duoti šlovę mūsų Tėvui, nes Jis yra vertas aukščiausio šlovės.\n\nMes tikime, kad Dievas padidino šiuolaikinio pasaulio žinias ir nori, kad mes jį panaudotume, kad Jo šlovė skelbtų Jo greitą sugrįžimą!";
 "More" = "Daugiau";
 "No" = "Ne";
 "Open" = "Atviras";
@@ -27,6 +29,7 @@
 "Read" = "Skaityti";
 "Reminder" = "Priminimas";
 "Sabbath School" = "Šabo mokykla";
+"Share" = "Dalintis";
 "Sepia" = "Sepija";
 "Set the reminder to be notified daily to study the lesson" = "Nustatykite pamoką, apie kurią reikia pranešti kasdien, kad sužinotumėte pamoką";
 "Settings" = "Nustatymai";
@@ -36,14 +39,24 @@
 "Time" = "Laikas";
 "Time to study Sabbath School 🙏" = "Laikas mokytis sabato mokyklos 🙏";
 "Yes" = "Taip";
+"Your friends at Adventech" = "Jūsų draugai „Adventech“";
 "https://adventech.io" = "https://adventech.io";
 "🎉 Rate app" = "🎉 Įvertinkite programą";
 "🐙 GitHub" = "🐙 GitHub";
 "💌 Recommend Sabbath School" = "💌 Rekomenduok sabato mokyklą";
 "🙏 About us" = "🙏 Apie mus";
-"God's Ministry through Technology" = "Dievo ministerija per technologijas";
-"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Adventecho misija pirmiausia yra svarbiausia - suteikti šlovę mūsų Lᴏʀᴅ, Senųjų Dienų. Mes esame pasiryžę atlikti savo tarnybą per technologijas. Mūsų tikslas - suvienyti mūsų septintosios dienos adventistų bažnyčią. Mūsų tikslas - paskelbti gerą naujieną šiam pasauliui technologijų ir komunikacijos pažangos dėka. Mūsų tikslas yra liudyti Jėzaus antrąjį atėjimą.\n\nMes įkvėpė Jėzaus pavyzdys ir metodai, kai Jis čia tarnavo Žemėje. Todėl esame pasiryžę užtikrinti aukštą visų mūsų projektų kokybę be jokios naudos su meile ir pasišventimu. Mes esame įsipareigoję duoti šlovę mūsų Tėvui, nes Jis yra vertas aukščiausio šlovės.\n\nMes tikime, kad Dievas padidino šiuolaikinio pasaulio žinias ir nori, kad mes jį panaudotume, kad Jo šlovė skelbtų Jo greitą sugrįžimą!";
-"Your friends at Adventech" = "Jūsų draugai „Adventech“";
-"Copy" = "Kopijuoti";
-"Share" = "Dalintis";
+/*Translated from: Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!*/
+"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "Sveiki atvykę į oficialią Generalinės konferencijos šabo mokyklos ir asmeninių ministerijų departamento programą. Vis dar veikianti „Adventech“, programa netrukus gaus naujų turinio ir funkcijų patobulinimų, tačiau išliks paprasta ir lengvai naudojama. Dar niekada nebuvo taip lengva studijuoti ir dalytis Dievo žodžiu!";
+/*Translated from: Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.*/
+"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "„Adventech“ yra ne pelno siekianti organizacija Kanadoje, skirta technologijų naudojimui tarnystėje. Kaip atsidavę septintosios dienos adventistai, „Adventech“ misija pirmiausia yra suteikti garbę Dievui. Savo tarnystės metu mes taip pat siekiame sutelkti pasaulinę septintosios dienos adventistų bažnyčią. Mūsų pagrindinis tikslas yra skelbti amžinąją evangeliją pasitelkiant technologijas ir pažangą komunikacijos srityje ir atlikti savo ruožtu ruošiant pasaulį antram Jėzaus atėjimui.";
+/*Translated from: The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.*/
+"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "Generalinės konferencijos SSPM departamento misija yra padaryti mokinius, kurie savo ruožtu daro kitus mokinius. Mes siekiame tai padaryti padėdami vietinėms Septintosios dienos adventistų bažnyčioms ir jų nariams atrasti Šabo mokyklos tikslą ir galią bei įkvėpdami ir kviesdami kiekvieną narį aktyviai dalyvauti asmeninėje sielos laimėjimo tarnyboje. \ N \ nSSPM departamentas gamina šaltiniai, skirti padėti Septintosios dienos adventistų bažnyčios nariams žengti su Kristumi ir liudyti pasaulį. Šabo mokyklos ir asmeninių ministerijų programos tikslas yra sujungti daugelį šių išteklių į vieną patogią vietą. Toliau pridedant daugiau išteklių, bažnyčios nariams ir jų šeimoms netrukus bus suteikta daugybė išteklių, kurie padėtų jiems mokytis ir dalytis Dievo žodžiu. \ N \ nPalengvinant programos priežiūrą ir plėtrą, SSPM departamentas džiaugiasi bendradarbiauti su atsidavusia ir talentinga „Adventech“ komanda.";
 "Search…" = "Ieškoti…";
+/*Translated from: Today's lesson*/
+"Today's lesson" = "Šios dienos pamoka";
+/*Translated from: Get quick access the Sabbath School lesson for today*/
+"Get quick access the Sabbath School lesson for today" = "Gaukite greitą šios dienos šabo mokyklos pamoką";
+/*Translated from: Get quick access the Sabbath School lesson for today, featuring the background image*/
+"Get quick access the Sabbath School lesson for today, featuring the background image" = "Gaukite greitą šios dienos šabo mokyklos pamoką su fono vaizdu";
+/*Translated from: Preview and access Sabbath School lesson for this week*/
+"Preview and access Sabbath School lesson for this week" = "Peržiūrėkite ir pasinaudokite šios savaitės Šabo mokyklos pamokomis";

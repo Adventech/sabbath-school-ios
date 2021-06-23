@@ -24,6 +24,7 @@ import AsyncDisplayKit
 import FirebaseAuth
 import UIKit
 import LinkPresentation
+import WidgetKit
 
 class QuarterlyController: TableController {
     var presenter: QuarterlyPresenterProtocol?
@@ -66,7 +67,7 @@ class QuarterlyController: TableController {
         }
         
         if !Preferences.gcPopupStatus() {
-            UserDefaults.standard.set(true, forKey: Constants.DefaultKey.gcPopup)
+            Preferences.userDefaults.set(true, forKey: Constants.DefaultKey.gcPopup)
             showGCPopup()
         } else if initiateOpen ?? false {
             let lastQuarterlyIndex = Preferences.currentQuarterly()
@@ -174,6 +175,8 @@ extension QuarterlyController: QuarterlyControllerProtocol {
         self.colorize()
         self.tableNode?.allowsSelection = true
         self.tableNode?.reloadData()
+        
+        Configuration.reloadAllWidgets()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

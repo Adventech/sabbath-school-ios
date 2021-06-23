@@ -192,7 +192,7 @@ class ReadOptionsView: ASDisplayNode {
         let selectedIndex = sender.selectedSegmentIndex
         let theme = ReaderStyle.Theme.items[selectedIndex]
 
-        UserDefaults.standard.set(theme.rawValue, forKey: Constants.DefaultKey.readingOptionsTheme)
+        Preferences.userDefaults.set(theme.rawValue, forKey: Constants.DefaultKey.readingOptionsTheme)
         delegate?.didSelectTheme(theme: theme)
     }
 
@@ -200,7 +200,7 @@ class ReadOptionsView: ASDisplayNode {
         let selectedIndex = sender.selectedSegmentIndex
         let typeface = ReaderStyle.Typeface.items[selectedIndex]
 
-        UserDefaults.standard.set(typeface.rawValue, forKey: Constants.DefaultKey.readingOptionsTypeface)
+        Preferences.userDefaults.set(typeface.rawValue, forKey: Constants.DefaultKey.readingOptionsTypeface)
         delegate?.didSelectTypeface(typeface: typeface)
     }
 
@@ -208,7 +208,7 @@ class ReadOptionsView: ASDisplayNode {
         let selectedIndex = Int(sender.value)
         let size = ReaderStyle.Size.items[selectedIndex]
 
-        UserDefaults.standard.set(size.rawValue, forKey: Constants.DefaultKey.readingOptionsSize)
+        Preferences.userDefaults.set(size.rawValue, forKey: Constants.DefaultKey.readingOptionsSize)
         delegate?.didSelectSize(size: size)
     }
 }

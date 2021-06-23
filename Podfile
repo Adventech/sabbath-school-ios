@@ -24,12 +24,19 @@ target 'Sabbath School' do
   pod 'Zip'
 end
 
+target 'WidgetExtension' do
+  pod 'Hue'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+end
+
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
     end
-    
+
     if target.name == 'Armchair'
       target.build_configurations.each do |config|
         if config.name == 'Debug'

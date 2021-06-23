@@ -106,6 +106,7 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
     }
 
     func performFirebaseLogin(credential: AuthCredential) {
+        // Configuration.setAuthAccessGroup()
         Auth.auth().signIn(with: credential) { [weak self] (_, error) in
             if error != nil {
                 self?.onError(error)
@@ -221,7 +222,7 @@ extension LoginPresenter: ASAuthorizationControllerDelegate {
     @available(iOS 13, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            UserDefaults.standard.set(appleIDCredential.user, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
+            Preferences.userDefaults.set(appleIDCredential.user, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
             
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
@@ -238,13 +239,7 @@ extension LoginPresenter: ASAuthorizationControllerDelegate {
             }
 
             let firebaseCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-            Auth.auth().signIn(with: firebaseCredential) { [weak self] (authResult, error) in
-                if let error = error {
-                    self?.onError(error)
-                } else {
-                    self?.onSuccess()
-                }
-            }
+            self.performFirebaseLogin(credential: firebaseCredential)
         }
     }
 }

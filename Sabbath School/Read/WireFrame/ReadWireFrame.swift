@@ -23,11 +23,15 @@
 import AsyncDisplayKit
 
 class ReadWireFrame: ReadWireFrameProtocol {
-    class func createReadModule(lessonIndex: String) -> ReadController {
+    class func createReadModule(lessonIndex: String, readIndex: Int? = nil) -> ReadController {
         let controller: ReadControllerProtocol = ReadController()
         let presenter: ReadPresenterProtocol & ReadInteractorOutputProtocol = ReadPresenter()
         let wireFrame: ReadWireFrameProtocol = ReadWireFrame()
         let interactor: ReadInteractorInputProtocol = ReadInteractor()
+        
+        if let readIndex = readIndex {
+            controller.readIndex = readIndex
+        }
 
         controller.presenter = presenter
         presenter.controller = controller

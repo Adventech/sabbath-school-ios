@@ -80,7 +80,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
 
         presenter?.configure()
         presenter?.presentBibleVerse(read: self.read!, verse: self.verse!)
-        UIMenuController.shared.menuItems = []
+        UIMenuController.shared.menuItems = nil
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -132,7 +132,7 @@ extension BibleController: BibleControllerProtocol {
 
 extension BibleController: BibleVersionControllerDelegate {
     func didSelectVersion(versionName: String) {
-        UserDefaults.standard.set(versionName, forKey: Constants.DefaultKey.preferredBibleVersion)
+        Preferences.userDefaults.set(versionName, forKey: Preferences.getPreferredBibleVersionKey())
 
         presenter?.presentBibleVerse(read: self.read!, verse: self.verse!)
 

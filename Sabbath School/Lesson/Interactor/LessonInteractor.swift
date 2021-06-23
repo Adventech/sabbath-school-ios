@@ -26,7 +26,7 @@ class LessonInteractor: FirebaseDatabaseInteractor, LessonInteractorInputProtoco
     weak var presenter: LessonInteractorOutputProtocol?
 
     func retrieveQuarterlyInfo(quarterlyIndex: String) {
-        database?.child(Constants.Firebase.quarterlyInfo).child(quarterlyIndex).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+        database?.child(Constants.Firebase.quarterlyInfo).child(quarterlyIndex).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.data else { return }
 
             do {
@@ -43,6 +43,6 @@ class LessonInteractor: FirebaseDatabaseInteractor, LessonInteractorInputProtoco
     }
 
     func saveLastQuarterlyIndex(lastQuarterlyIndex: String) {
-        UserDefaults.standard.set(lastQuarterlyIndex, forKey: Constants.DefaultKey.lastQuarterlyIndex)
+        Preferences.userDefaults.set(lastQuarterlyIndex, forKey: Constants.DefaultKey.lastQuarterlyIndex)
     }
 }

@@ -33,6 +33,19 @@ struct Day: Codable {
     let fullReadPath: URL
     var webURL: URL
     
+    // Mock
+    init(title: String) {
+        self.id = "-"
+        self.title = title
+        self.date = Date()
+        self.index = "-"
+        self.path = "-"
+        self.readPath = "-"
+        self.fullPath = URL.init(string: "https://adventech.io")!
+        self.fullReadPath = URL.init(string: "https://adventech.io")!
+        self.webURL = URL.init(string: "https://adventech.io")!
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)

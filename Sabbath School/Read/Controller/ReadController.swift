@@ -46,6 +46,8 @@ class ReadController: ThemeController {
     var isTransitionInProgress: Bool = false
     
     var menuItems = [UIMenuItem]()
+    
+    var readIndex: Int?
 
     override init() {
         super.init(node: ASPagerNode())
@@ -230,16 +232,27 @@ extension ReadController: ReadControllerProtocol {
         guard finish else { return }
         self.finished = finish
         self.collectionNode.reloadData()
-
-        // Scrolls to the current day
-        let today = Date()
-        let cal = Calendar.current
-        for (readIndex, read) in reads.enumerated().prefix(7) where cal.compare(today, to: read.date, toGranularity: .day) == .orderedSame {
-            DispatchQueue.main.async {
-                self.collectionNode.scrollToPage(at: readIndex, animated: false)
-                self.lastPage = readIndex
+        
+        if let readIndex = readIndex {
+            if 0...self.reads.count ~= readIndex {
+                DispatchQueue.main.async {
+                    self.collectionNode.scrollToPage(at: readIndex, animated: false)
+                    self.lastPage = readIndex
+                    self.scrollBehavior()
+                }
+            }
+        } else {
+            // Scrolls to the current day
+            let today = Date()
+            let cal = Calendar.current
+            for (readIndex, read) in reads.enumerated().prefix(7) where cal.compare(today, to: read.date, toGranularity: .day) == .orderedSame {
+                DispatchQueue.main.async {
+                    self.collectionNode.scrollToPage(at: readIndex, animated: false)
+                    self.lastPage = readIndex
+                }
             }
         }
+        Configuration.reloadAllWidgets()
     }
 }
 
@@ -272,7 +285,7 @@ extension ReadController: ASPagerDataSource {
 extension ReadController: ASCollectionDelegate {
     func collectionNode(_ collectionNode: ASCollectionNode, willDisplayItemWith node: ASCellNode) {
         if !isTransitionInProgress {
-            // lastPage = self.collectionNode.indexOfPage(with: node)
+            lastPage = self.collectionNode.indexOfPage(with: node)
         }
     }
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {

@@ -24,6 +24,7 @@ import Armchair
 import AsyncDisplayKit
 import UIKit
 import StoreKit
+import WidgetKit
 
 final class LessonController: TableController {
     var delegate: LessonControllerDelegate?
@@ -179,6 +180,8 @@ extension LessonController: LessonControllerProtocol {
             self.colorize()
             self.insertShortcutItems(quarterlyInfo: quarterlyInfo)
         }
+        
+        Configuration.reloadAllWidgets()
         
         if initiateOpenToday == true {
             openToday()

@@ -32,7 +32,6 @@ struct Spotlight {
         attributeSet.identifier = quarterly.index
         attributeSet.relatedUniqueIdentifier = quarterly.index
         attributeSet.thumbnailData = UIImage.pngData(image)()
-        print("SSDEBUG", "indexing..", quarterly.title)
         Spotlight.indexSpotlight(identifier: quarterly.index, attributeSet: attributeSet)
     }
     

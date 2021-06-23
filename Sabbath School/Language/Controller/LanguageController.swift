@@ -107,7 +107,7 @@ extension LanguageController: ASTableDataSource {
         let cellNodeBlock: () -> ASCellNode = {
             let language = self.filtered[indexPath.row]
             
-            let savedLanguage = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? Data
+            let savedLanguage = Preferences.userDefaults.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? Data
 
             let cell = LanguageItemView(
                 name: language.name,
