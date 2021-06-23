@@ -1,25 +1,3 @@
-/*
- * Copyright (c) 2017 Adventech <info@adventech.io>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
 "Aa" = "Aa";
 "Andada" = "Andada";
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Mit der anonymen Anmeldung werden Sie nicht in der Lage sein Ihre Daten, wie zum Beispiel Kommentare und Hervorhebungen, auf verschiedenen Geräten zu synchronisieren oder nach einer Deinstallation zu verwenden. Sind Sie sicher, dass Sie fortfahren möchten?";
@@ -37,7 +15,6 @@
 "Login anonymously?" = "Anonym anmelden?";
 "Made with ❤ by Adventech" = "Entwickelt mit ❤ von Adventech";
 "Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Mission von Adventech ist in erster Linie - geben Sie Ruhm zu unserem Lᴏʀᴅ, dem Alten der Tage. Wir sind verpflichtet, unseren Dienst durch Technologie zu tun. Unser Ziel ist es, unsere Siebenten-Tags-Adventisten-Kirche zu vereinen. Unser Ziel ist es, Gute Nachrichten auf diese Welt durch Technologie und Fortschritte in der Kommunikation zu verkünden. Unser Ziel ist es, das Zweite Kommen Jesu zu bezeugen.\n\nWir sind inspiriert von dem Beispiel und den Methoden Jesu, als er hier auf der Erde diente. Deshalb sind wir verpflichtet, ein hohes Maß an Qualität aller unserer Projekte zu absolut keine Kosten mit Liebe und Hingabe zu liefern. Wir sind verpflichtet, unserem Vater Ruhm zu geben, weil er dem höchsten Lob würdig ist.\n\nWir glauben wirklich, dass Gott die Erkenntnis der modernen Welt erhöht hat und will, dass wir es für seine Herrlichkeit nutzen, um seine baldige Rückkehr zu verkünden!";
-
 "More" = "Mehr";
 "No" = "Nein";
 "Open" = "Öffnen";
@@ -47,10 +24,10 @@
 "Read" = "Lesen";
 "Reminder" = "Benachrichtigung";
 "Sabbath School" = "Sabbatschule";
+"Share" = "Weiterempfehlen";
 "Sepia" = "Sepia";
 "Set the reminder to be notified daily to study the lesson" = "Selektieren um täglich über die Sabbatschullektion benachrichtigt zu werden";
 "Settings" = "Einstellungen";
-"Share" = "Weiterempfehlen";
 "Sign in with Facebook" = "Über Facebook anmelden";
 "Sign in with Google" = "Über Google anmelden";
 "There was an error during login" = "Ein unbekannter Fehler ist aufgetreten. Bitte versuche es erneut";
@@ -63,4 +40,18 @@
 "🐙 GitHub" = "🐙 GitHub";
 "💌 Recommend Sabbath School" = "💌 Empfiehlt Sabbathschule";
 "🙏 About us" = "🙏 Impressum";
+/*Translated from: Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!*/
+"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "Willkommen in der offiziellen App der General Conference Sabbat School and Personal Ministries Department. Die App wird immer noch von Adventech betrieben und wird bald neue Verbesserungen in Bezug auf Inhalt und Funktionen erhalten, während sie einfach und benutzerfreundlich bleibt. Es war noch nie einfacher, Gottes Wort zu studieren und zu teilen!";
+/*Translated from: Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.*/
+"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech ist eine gemeinnützige Organisation in Kanada, die sich dem Einsatz von Technologie für den Dienst verschrieben hat. Als engagierte Siebenten-Tags-Adventisten besteht die Mission von Adventech in erster Linie darin, Gott die Ehre zu geben. Unser Ziel ist es auch, durch unseren Dienst Einheit in die weltweite Kirche der Siebenten-Tags-Adventisten zu bringen. Unser vorrangiges Ziel ist es, das ewige Evangelium mit Hilfe von Technologie und Fortschritten in der Kommunikation zu verkünden und unseren Teil dazu beizutragen, die Welt auf das zweite Kommen Jesu vorzubereiten.";
+/*Translated from: The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.*/
+"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "Die Mission der SSPM-Abteilung der Generalkonferenz besteht darin, Jünger zu machen, die wiederum andere zu Jüngern machen. Unser Ziel ist es, dies zu tun, indem wir lokalen Gemeinden der Siebenten-Tags-Adventisten und ihren Mitgliedern helfen, den Zweck und die Kraft der Sabbatschule zu entdecken und indem wir jedes Mitglied inspirieren und gewinnen, sich aktiv für einen persönlichen Dienst zur Gewinnung von Seelen zu engagieren Ressourcen, um Gemeindegliedern der Siebenten-Tags-Adventisten auf ihrem Weg mit Christus und ihrem Zeugnis für die Welt zu helfen. Das Ziel der App Sabbath School and Personal Ministries ist es, viele dieser Ressourcen an einem praktischen Ort zu vereinen. Wenn weitere Ressourcen hinzugefügt werden, werden Kirchenmitglieder und ihre Familien bald mit einer Fülle von Ressourcen ausgestattet, die ihnen helfen, Gottes Wort zu studieren und zu teilen.\n\nUm die Wartung und Entwicklung der App zu erleichtern, freut sich die SSPM-Abteilung mit dem engagierten und talentierten Team von Adventech zusammenzuarbeiten.";
 "Search…" = "Suchen…";
+/*Translated from: Today's lesson*/
+"Today's lesson" = "Die heutige Lektion";
+/*Translated from: Get quick access the Sabbath School lesson for today*/
+"Get quick access the Sabbath School lesson for today" = "Erhalten Sie schnellen Zugriff auf die Sabbatschulstunde für heute";
+/*Translated from: Get quick access the Sabbath School lesson for today, featuring the background image*/
+"Get quick access the Sabbath School lesson for today, featuring the background image" = "Erhalten Sie schnellen Zugriff auf die heutige Sabbatschullektion mit dem Hintergrundbild background";
+/*Translated from: Preview and access Sabbath School lesson for this week*/
+"Preview and access Sabbath School lesson for this week" = "Vorschau und Zugang zum Sabbatschulunterricht für diese Woche";

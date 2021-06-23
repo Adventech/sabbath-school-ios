@@ -1,32 +1,12 @@
-/*
- * Copyright (c) 2018 Adventech <info@adventech.io>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
 "Aa" = "Aa";
 "Andada" = "Andada";
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "익명으로 로그인하는 경우 기기간에 (또는 댓글이나 형광펜과 같은) 데이터를 동기화하거나 앱을 제거한 후에는 데이터를 동기화 할 수 없습니다. 계속 하시겠습니까?";
 "Continue without login" = "로그인없이 계속하기";
 "Contribute" = "기여";
+"Copy" = "복사";
 "Dark" = "어둡게";
 "English" = "영어";
+"God's Ministry through Technology" = "기술을 통한 하나님의 사역";
 "I am using Sabbath School app from Adventech! 🎉" = "Adventech의 안식일 학교 앱을 사용하고 있습니다! 🎉";
 "Languages" = "언어";
 "Lato" = "Lato";
@@ -34,6 +14,7 @@
 "Log out" = "로그아웃";
 "Login anonymously?" = "익명으로 로그인 하시겠습니까?";
 "Made with ❤ by Adventech" = "❤ Adventech 제작";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Adventech의 주된 사역은 선교를 최우선으로 하고 있습니다. 우리는 최신기술을 이용하여 이 사역에 최선을 다하고 있습니다. 우리는 전세계 재림교회가 연합되기를 원합니다. 우리의 목표인 전세계에 복음을 전하는 일에 최신정보통신기술을 사용합니다. 우리의 목표는 예수 그리스도의 재림을 촉진시키는 것입니다.\n\n우리의 모본이신  예수 그리스도의 지상에서의 사역은  우리를 감화시키셨습니다. 그러므로 우리는 사랑과 헌신의 마음으로 이 사역을 전적으로 무료로 하고 있습니다. 그분은 최고의 찬양을 받으시기에 합당하시기에 우리는 하나님 아버지께 영광을 돌리려고 헌신합니다.\n\n우리는 진실로 하나님께서 도우셔서 우리의 지식을 넓히셨고, 그가 곧 다시 오심의 그 영광을 위해 그것을 사용하기를 원하심을 믿습니다!";
 "More" = "더보기";
 "No" = "아니요";
 "Open" = "교과책열기";
@@ -43,6 +24,7 @@
 "Read" = "본문속으로";
 "Reminder" = "일일 알리미";
 "Sabbath School" = "안식일 학교";
+"Share" = "공유";
 "Sepia" = "Sepia색";
 "Set the reminder to be notified daily to study the lesson" = "매일 안식일교과 공부 알림을 받도록 미리알림을 설정합니다.";
 "Settings" = "설정";
@@ -52,14 +34,24 @@
 "Time" = "시간";
 "Time to study Sabbath School 🙏" = "안식일 교과를 공부할 시간 🙏";
 "Yes" = "예";
+"Your friends at Adventech" = "Adventech의 친구들";
 "https://adventech.io" = "https://adventech.io";
 "🎉 Rate app" = "🎉 앱을 평가해주세요";
 "🐙 GitHub" = "🐙 GitHub";
 "💌 Recommend Sabbath School" = "💌 안식일학교 앱 추천";
 "🙏 About us" = "🙏 우리의 사역소개";
-"God's Ministry through Technology" = "기술을 통한 하나님의 사역";
-"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Adventech의 주된 사역은 선교를 최우선으로 하고 있습니다. 우리는 최신기술을 이용하여 이 사역에 최선을 다하고 있습니다. 우리는 전세계 재림교회가 연합되기를 원합니다. 우리의 목표인 전세계에 복음을 전하는 일에 최신정보통신기술을 사용합니다. 우리의 목표는 예수 그리스도의 재림을 촉진시키는 것입니다.\n\n우리의 모본이신  예수 그리스도의 지상에서의 사역은  우리를 감화시키셨습니다. 그러므로 우리는 사랑과 헌신의 마음으로 이 사역을 전적으로 무료로 하고 있습니다. 그분은 최고의 찬양을 받으시기에 합당하시기에 우리는 하나님 아버지께 영광을 돌리려고 헌신합니다.\n\n우리는 진실로 하나님께서 도우셔서 우리의 지식을 넓히셨고, 그가 곧 다시 오심의 그 영광을 위해 그것을 사용하기를 원하심을 믿습니다!";
-"Your friends at Adventech" = "Adventech의 친구들";
-"Copy" = "복사";
-"Share" = "공유";
+/*Translated from: Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!*/
+"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "대 총회 안식일 학교 및 개인 사역부의 공식 앱에 오신 것을 환영합니다. 여전히 Adventech에 의해 구동되는이 앱은 곧 간단하고 사용하기 쉬운 상태에서 콘텐츠와 기능의 새로운 개선 사항을 받게 될 것입니다. 하나님의 말씀을 연구하고 공유하는 것이 그 어느 때보 다 쉬워졌습니다!";
+/*Translated from: Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.*/
+"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech는 사역을위한 기술 사용에 전념하는 캐나다의 비영리 단체입니다. 헌신적 인 제칠 일 재림 교회 인 Adventech의 사명은 무엇보다도 하나님 께 영광을 돌리는 것입니다. 우리는 또한 우리의 사역을 통해 전 세계 재림 교회에 연합을 가져 오는 것을 목표로합니다. 우리의 주요 목표는 기술과 커뮤니케이션의 발전을 통해 영원한 복음을 선포하고 예수님의 재림을 위해 세상을 준비하는 데 우리의 역할을 다하는 것입니다.";
+/*Translated from: The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.*/
+"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "대 총회 SSPM 부서의 사명은 제자를 삼고 다른 제자를 삼는 것입니다. 우리는이를 위해 지역 재림 교회와 회원들이 안식일 학교의 목적과 힘을 발견하도록 돕고 모든 회원이 영혼을 얻는 개인 봉사에 적극적으로 참여하도록 격려하고 참여시키는 것을 목표로합니다. \ n \ nSSPM 부서는 다음을 생산합니다. 제칠 일 재림 교회 회원들이 그리스도와 동행하고 세상에 대한 그들의 증언에 도움이되는 자료. 안식일 학교 및 개인 사역 앱의 목적은 이러한 많은 자원을 하나의 편리한 위치에 결합하는 것입니다. 더 많은 리소스가 계속 추가됨에 따라 교회 회원과 그 가족은 곧 하나님의 말씀을 공부하고 공유하는 데 도움이되는 풍부한 리소스를 갖추게 될 것입니다. \ n \ n 앱의 유지 관리 및 개발을 용이하게하기 위해 SSPM 부서는 기쁘게 생각합니다. Adventech의 헌신적이고 재능있는 팀과 협력합니다.";
 "Search…" = "검색…";
+/*Translated from: Today's lesson*/
+"Today's lesson" = "오늘의 수업";
+/*Translated from: Get quick access the Sabbath School lesson for today*/
+"Get quick access the Sabbath School lesson for today" = "오늘의 안식일 학교 수업에 빠르게 액세스하십시오.";
+/*Translated from: Get quick access the Sabbath School lesson for today, featuring the background image*/
+"Get quick access the Sabbath School lesson for today, featuring the background image" = "배경 이미지가 포함 된 오늘의 안식일 학교 수업에 빠르게 액세스하십시오.";
+/*Translated from: Preview and access Sabbath School lesson for this week*/
+"Preview and access Sabbath School lesson for this week" = "이번 주 안식일 학교 수업 미리보기 및 액세스";
