@@ -15,16 +15,6 @@ Install _fastlane_ using
 or alternatively using `brew install fastlane`
 
 # Available Actions
-### testflights
-```
-fastlane testflights
-```
-
-### match_config
-```
-fastlane match_config
-```
-Configure local environment certificates
 ### beta
 ```
 fastlane beta
@@ -50,6 +40,11 @@ fastlane build
 fastlane screenshots
 ```
 Generate screenshots and upload to the App Store
+### match_config
+```
+fastlane match_config
+```
+Configure local environment certificates
 ### match_sync
 ```
 fastlane match_sync

@@ -37,6 +37,7 @@ protocol ReadPresenterProtocol: class {
 
 protocol ReadControllerProtocol: class {
     var presenter: ReadPresenterProtocol? { get set }
+    var readIndex: Int? { get set }
 
     func loadLessonInfo(lessonInfo: LessonInfo)
     func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool)
@@ -47,7 +48,7 @@ protocol ReadControllerDelegate: class {
 }
 
 protocol ReadWireFrameProtocol: class {
-    static func createReadModule(lessonIndex: String) -> ReadController
+    static func createReadModule(lessonIndex: String, readIndex: Int?) -> ReadController
 }
 
 protocol ReadInteractorOutputProtocol: class {

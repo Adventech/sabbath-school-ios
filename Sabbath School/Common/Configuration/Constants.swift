@@ -29,9 +29,7 @@ struct Constants {
         static let quarterlyLanguage = "io.adventech.interfaceLanguage"
         static let firstRun = "io.adventech.firstRun"
         static let tintColor = "io.adventech.tintColor"
-        static var preferredBibleVersion: String {
-            return "io.adventech.preferredBibleVersion." + Preferences.currentLanguage().code
-        }
+        static let preferredBibleVersion = "io.adventech.preferredBibleVersion."
         static let lastQuarterlyIndex = "io.adventech.lastQuarterlyIndex"
         static let latestReaderBundleTimestamp = "io.adventech.latestReaderBundleTimestamp"
 
@@ -48,6 +46,9 @@ struct Constants {
         static let shortcutItem = "io.adventech.shortcutItem"
         
         static let spotlightDomain = "io.adventech.sabbathSchool"
+        
+        static let migrationToAppGroups = "io.adventech.migrationToAppGroups"
+        static let appGroupName = "group.com.cryart.SabbathSchool"
     }
 
     struct Path {
@@ -97,7 +98,15 @@ struct Constants {
         static let web = "https://sabbath-school.adventech.io/"
         #endif
         static let webReplacementRegex = "api/v1/|quarterlies/|lessons/|days/|read/"
+        
+        static let webLinkRegex = #"(^\/[a-z]{2,}\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/\d{2}\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/\d{2}\/\d{2}(-.+)?\/?$)"#
     }
     
     struct NotificationKey {}
+    
+    struct Widgets {
+        static let todayWidget = "io.adventech.SabbathSchool.TodayWidget"
+        static let featuredTodayWidget = "io.adventech.SabbathSchool.FeaturedTodayWidget"
+        static let lessonInfoWidget = "io.adventech.SabbathSchool.LessonInfoWidget"
+    }
 }

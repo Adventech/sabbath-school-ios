@@ -31,13 +31,13 @@ import FontBlaster
 import GoogleSignIn
 import UIKit
 import StoreKit
+import WidgetKit
 
 class Configuration: NSObject {
     static var window: UIWindow?
     static let notification = Notifications()
     
     static func configureAuthentication() {
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .black
         window?.layer.cornerRadius = 6
@@ -49,7 +49,7 @@ class Configuration: NSObject {
         
         // Check if Sign-in With Apple is still valid
         if #available(iOS 13, *) {
-            if let userID = UserDefaults.standard.string(forKey: Constants.DefaultKey.appleAuthorizedUserIdKey) {
+            if let userID = Preferences.userDefaults.string(forKey: Constants.DefaultKey.appleAuthorizedUserIdKey) {
                 ASAuthorizationAppleIDProvider().getCredentialState(forUserID: userID, completion: { []
                     credentialState, error in
                     
@@ -67,12 +67,27 @@ class Configuration: NSObject {
                 })
             }
         }
-
+        
         if (Auth.auth().currentUser) != nil {
+            print("SSDEBUG", "Checking migrate the user")
+            let user = Auth.auth().currentUser
+            var tempUser: User?
+            do {
+                try tempUser = Auth.auth().getStoredUser(forAccessGroup: Constants.DefaultKey.appGroupName)
+            } catch let error as NSError {
+              print("Error getting stored user: %@", error)
+            }
+            
+            if tempUser != nil {} else {
+                ConfigurationShared.setAuthAccessGroup()
+                Auth.auth().updateCurrentUser(user!)
+            }
             window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
+        
+        
 
         window?.makeKeyAndVisible()
     }
@@ -90,16 +105,7 @@ class Configuration: NSObject {
     }
     
     static func configureFirebase() {
-        #if DEBUG
-            let filePath = Bundle.main.path(forResource: "GoogleService-Info-Stage", ofType: "plist")
-        #else
-            let filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")
-        #endif
-
-        let fileopts = FirebaseOptions.init(contentsOfFile: filePath!)
-
-        FirebaseApp.configure(options: fileopts!)
-        Database.database().isPersistenceEnabled = true
+        ConfigurationShared.configureFirebase()
         Messaging.messaging().delegate = Configuration.notification
     }
     
@@ -108,14 +114,17 @@ class Configuration: NSObject {
     }
     
     static func configurePreferences() {
-        UserDefaults.standard.register(defaults: [
+        Preferences.migrateUserDefaultsToAppGroups()
+        
+        Preferences.userDefaults.register(defaults: [
             Constants.DefaultKey.tintColor: UIColor.baseBlue.hex(),
             Constants.DefaultKey.settingsReminderStatus: true,
             Constants.DefaultKey.settingsDefaultReminderTime: Constants.DefaultKey.settingsReminderTime
         ])
 
         if Helper.firstRun() {
-            UserDefaults.standard.set(false, forKey: Constants.DefaultKey.firstRun)
+            Preferences.userDefaults.set(false, forKey: Constants.DefaultKey.firstRun)
+            Preferences.userDefaults.set(true, forKey: Constants.DefaultKey.migrationToAppGroups)
             SettingsController.setUpLocalNotification()
         }
     }
@@ -131,6 +140,12 @@ class Configuration: NSObject {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
+        }
+    }
+    
+    static func reloadAllWidgets() {
+        if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     

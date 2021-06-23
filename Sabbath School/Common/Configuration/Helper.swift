@@ -38,7 +38,7 @@ struct Helper {
     }
     
     static func firstRun() -> Bool {
-        return UserDefaults.standard.bool(forKey: Constants.DefaultKey.firstRun)
+        return PreferencesShared.userDefaults.bool(forKey: Constants.DefaultKey.firstRun)
     }
     
     static func isDarkMode() -> Bool {
@@ -58,5 +58,53 @@ struct Helper {
         activityController.popoverPresentationController?.permittedArrowDirections = .any
 
         vc.present(activityController, animated: true, completion: nil)
+    }
+    
+    static func getCurrentLessonIndex(lessons: [Lesson]) -> String {
+        let today = Date()
+        let weekday = Calendar.current.component(.weekday, from: today)
+        let hour = Calendar.current.component(.hour, from: today)
+        var prevLessonIndex: String? = nil
+        
+        for lesson in lessons {
+            let start = Calendar.current.compare(lesson.startDate, to: today, toGranularity: .day)
+            let end = Calendar.current.compare(lesson.endDate, to: today, toGranularity: .day)
+            let fallsBetween = ((start == .orderedAscending) || (start == .orderedSame)) && ((end == .orderedDescending) || (end == .orderedSame))
+
+            if fallsBetween {
+                if (weekday == 7 && hour < 12 && prevLessonIndex != nil) {
+                    return prevLessonIndex!
+                } else {
+                    return lesson.index
+                }
+            }
+            prevLessonIndex = lesson.index
+        }
+
+        if let firstLesson = lessons.first {
+            return firstLesson.index
+        }
+        
+        return ""
+    }
+    
+    static func getCurrentQuarterlyIndex(quarterlies: [Quarterly]) -> String {
+        let today = Date()
+        
+        for quarterly in quarterlies {
+            let start = Calendar.current.compare(quarterly.startDate, to: today, toGranularity: .day)
+            let end = Calendar.current.compare(quarterly.endDate, to: today, toGranularity: .day)
+            let fallsBetween = ((start == .orderedAscending) || (start == .orderedSame)) && ((end == .orderedDescending) || (end == .orderedSame))
+
+            if fallsBetween {
+                return quarterly.index
+            }
+        }
+
+        if let firstQuarterly = quarterlies.first {
+            return firstQuarterly.index
+        }
+        
+        return ""
     }
 }

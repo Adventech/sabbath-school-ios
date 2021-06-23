@@ -28,12 +28,12 @@ class BibleInteractor: BibleInteractorInputProtocol {
     func configure() {}
 
     func preferredBibleVersionFor(bibleVerses: [BibleVerses]) -> String? {
-        if let bibleVersion = UserDefaults.standard.value(forKey: Constants.DefaultKey.preferredBibleVersion) as? String {
+        if let bibleVersion = Preferences.userDefaults.value(forKey: Preferences.getPreferredBibleVersionKey()) as? String {
             return bibleVersion
         }
 
         guard let versionName = bibleVerses.first?.name else { return nil }
-        UserDefaults.standard.set(versionName, forKey: Constants.DefaultKey.preferredBibleVersion)
+        Preferences.userDefaults.set(versionName, forKey: Preferences.getPreferredBibleVersionKey())
         return versionName
     }
 

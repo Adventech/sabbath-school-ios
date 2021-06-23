@@ -34,7 +34,7 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
     }
 
     func retrieveQuarterliesForLanguage(language: QuarterlyLanguage) {
-        database?.child(Constants.Firebase.quarterlies).child(language.code).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+        database?.child(Constants.Firebase.quarterlies).child(language.code).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.data else { return }
 
             do {
@@ -50,7 +50,7 @@ class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputP
     }
 
     func retrieveQuarterlies() {
-        guard let dictionary = UserDefaults.standard.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? Data else {
+        guard let dictionary = Preferences.userDefaults.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? Data else {
             return languageInteractor.retrieveLanguages()
         }
 

@@ -32,11 +32,11 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2023</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
 	<string>1440555266255436</string>
-    <key>FacebookClientToken</key>
-    <string>Sabbath School</string>
+	<key>FacebookClientToken</key>
+	<string>Sabbath School</string>
 	<key>FacebookDisplayName</key>
 	<string>Sabbath School</string>
 	<key>LSApplicationQueriesSchemes</key>

@@ -43,6 +43,24 @@ struct Quarterly: Codable {
     let lang: String
     let webURL: URL
     
+    // Mock
+    init(title: String) {
+        self.id = "-"
+        self.title = title
+        self.description = "-"
+        self.humanDate = "-"
+        self.startDate = Date()
+        self.endDate = Date()
+        self.cover = URL.init(string: "https://adventech.io")!
+        self.colorPrimary = "-"
+        self.colorPrimaryDark = "-"
+        self.index = "-"
+        self.path = "-"
+        self.fullPath = URL.init(string: "https://adventech.io")!
+        self.lang = "-"
+        self.webURL = URL.init(string: "https://adventech.io")!
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)

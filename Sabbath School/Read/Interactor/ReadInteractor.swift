@@ -167,7 +167,7 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
                 self?.presenter?.onError(error)
             } else {
                 do {
-                    UserDefaults.standard.set(String(describing: metadata.timeCreated?.timeIntervalSince1970), forKey: Constants.DefaultKey.latestReaderBundleTimestamp)
+                    Preferences.userDefaults.set(String(describing: metadata.timeCreated?.timeIntervalSince1970), forKey: Constants.DefaultKey.latestReaderBundleTimestamp)
                     var unzipDirectory = try Zip.quickUnzipFile(localURL)
                     var resourceValues = URLResourceValues()
                     resourceValues.isExcludedFromBackup = true

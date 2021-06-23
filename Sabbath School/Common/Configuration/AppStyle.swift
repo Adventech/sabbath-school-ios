@@ -60,7 +60,7 @@ struct AppStyle {
             }
             
             static var tableSeparator: UIColor {
-                return .baseGray1 | .baseGray4
+                return .baseGray1 | .baseGray5
             }
             
             static var shimmering: UIColor {
@@ -68,7 +68,7 @@ struct AppStyle {
             }
             
             static var tint: UIColor {
-                guard let color = UserDefaults.standard.string(forKey: Constants.DefaultKey.tintColor) else {
+                guard let color = Preferences.userDefaults.string(forKey: Constants.DefaultKey.tintColor) else {
                     return .baseBlue
                 }
                 return UIColor(hex: color)
@@ -300,6 +300,10 @@ struct AppStyle {
         struct Color {
             static var background: UIColor {
                 return .baseWhite1 | .baseGray5
+            }
+            
+            static var tint: UIColor {
+                return AppStyle.Base.Color.tint | .white
             }
         }
         

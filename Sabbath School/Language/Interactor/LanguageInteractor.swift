@@ -30,7 +30,7 @@ class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputPro
     }
 
     func retrieveLanguages() {
-        database?.child(Constants.Firebase.languages).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+        database?.child(Constants.Firebase.languages).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.data else { return }
 
             do {
@@ -44,6 +44,7 @@ class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputPro
 
     func saveLanguage(language: QuarterlyLanguage) {
         let dictionary = try! JSONEncoder().encode(language)
-        UserDefaults.standard.set(dictionary, forKey: Constants.DefaultKey.quarterlyLanguage)
+        Preferences.userDefaults.set(dictionary, forKey: Constants.DefaultKey.quarterlyLanguage)
+        Configuration.reloadAllWidgets()
     }
 }

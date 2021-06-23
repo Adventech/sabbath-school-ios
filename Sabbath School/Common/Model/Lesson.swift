@@ -34,6 +34,20 @@ struct Lesson: Codable {
     var dateRange: String = ""
     var webURL: URL
     
+    // Mock
+    init(title: String) {
+        self.id = "1"
+        self.title = title
+        self.startDate = Date()
+        self.endDate = Date()
+        self.cover = URL.init(string: "https://adventech.io")!
+        self.index = "-"
+        self.path = "-"
+        self.fullPath = URL.init(string: "https://adventech.io")!
+        self.webURL = URL.init(string: "https://adventech.io")!
+    }
+    
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)

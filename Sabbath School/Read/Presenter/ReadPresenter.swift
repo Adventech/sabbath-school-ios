@@ -24,6 +24,29 @@ import AsyncDisplayKit
 import UIKit
 import SwiftEntryKit
 
+class ReadReferenceVC: UIReferenceLibraryViewController {
+    var tintColor: UIColor?
+    
+    override init(term: String) {
+        super.init(term: term)
+        if let tintColor = Configuration.window!.tintColor {
+            self.tintColor = tintColor
+            Configuration.window!.tintColor = AppStyle.Read.Color.tint
+        }
+    }
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if self.tintColor != nil {
+            Configuration.window!.tintColor = self.tintColor
+        }
+    }
+}
+
 class ReadPresenter: ReadPresenterProtocol {
     var controller: ReadControllerProtocol?
     var wireFrame: ReadWireFrameProtocol?
@@ -60,7 +83,7 @@ class ReadPresenter: ReadPresenterProtocol {
     }
     
     func presentDictionary(word: String) {
-        let referenceVC = UIReferenceLibraryViewController(term: word)
+        let referenceVC = ReadReferenceVC(term: word)
         (controller as! UIViewController).present(referenceVC, animated: true)
     }
 }
