@@ -28,14 +28,6 @@ import SwiftUI
 
 struct TodayWidgetProvider: TimelineProvider {
     let database: DatabaseReference = Database.database().reference()
-    static let placeholderRead: Read = Read.init(
-        id: "id",
-        date: "26/06/2021",
-        index: "en-2021-03-01-01",
-        title: "The New Covenant Life",
-        content: "",
-        bible: []
-    )
     static let placeholderDay: Day = Day.init(title: "-------")
     
     func placeholder(in context: Context) -> TodayWidgetEntry {

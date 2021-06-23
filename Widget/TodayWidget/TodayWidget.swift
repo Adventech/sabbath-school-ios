@@ -35,7 +35,7 @@ struct TodayWidget: Widget {
         StaticConfiguration(kind: kind, provider: TodayWidgetProvider()) { entry in
             TodayWidgetView(entry: entry)
         }
-        .configurationDisplayName("Today's Lesson".localized())
+        .configurationDisplayName("Today's lesson".localized())
         .description("Get quick access the Sabbath School lesson for today".localized())
         .supportedFamilies([.systemSmall, .systemMedium])
     }

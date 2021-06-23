@@ -52,7 +52,7 @@ struct LessonInfoWidgetView : View {
                             .foregroundColor(Color(.label))
                             .font(.system(size: 16, weight: .bold))
                             .lineLimit(2)
-                        Text("Lesson \(Int(entry.lessonInfo.lesson.id)!). \(entry.lessonInfo.lesson.title)")
+                        Text(entry.lessonInfo.lesson.title)
                             .font(.system(size: 13, weight: .regular))
                             .padding(.top, 1)
                             .lineLimit(1)
