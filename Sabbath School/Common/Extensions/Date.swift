@@ -37,7 +37,7 @@ extension Date {
 
     func stringLessonDate() -> String {
         let format = DateFormatter()
-        format.dateFormat = "MMM dd"
+        format.setLocalizedDateFormatFromTemplate("MMM dd")
         format.locale = Locale.ReferenceType.current
         format.calendar = Calendar.ReferenceType.current
         return format.string(from: self)
@@ -45,7 +45,15 @@ extension Date {
     
     func stringReadDate() -> String {
         let format = DateFormatter()
-        format.dateFormat = "EEEE, MMMM dd"
+        format.setLocalizedDateFormatFromTemplate("EEEE, MMMM dd")
+        format.locale = Locale.ReferenceType.current
+        format.calendar = Calendar.ReferenceType.current
+        return format.string(from: self)
+    }
+    
+    func stringWidgetDate() -> String {
+        let format = DateFormatter()
+        format.setLocalizedDateFormatFromTemplate("E, MMMM dd")
         format.locale = Locale.ReferenceType.current
         format.calendar = Calendar.ReferenceType.current
         return format.string(from: self)

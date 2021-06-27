@@ -25,7 +25,6 @@ import FirebaseDatabase
 import WidgetKit
 import SwiftUI
 
-
 struct TodayWidgetProvider: TimelineProvider {
     let database: DatabaseReference = Database.database().reference()
     static let placeholderDay: Day = Day.init(title: "-------")
@@ -45,17 +44,23 @@ struct TodayWidgetProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<TodayWidgetEntry>) -> ()) {
-        var todayWidgetEntry: TodayWidgetEntry?
         var entries: [TodayWidgetEntry] = []
         
         WidgetInteractor.getLessonInfo { (quarterly: Quarterly?, lessonInfo: LessonInfo?) in
+            let currentDate = Date()
+            let midnight = Calendar.current.startOfDay(for: currentDate)
+            let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)!
+            
             if let lessonInfo = lessonInfo, let day = WidgetInteractor.getTodayFromLessonInfo(lessonInfo: lessonInfo) {
-                todayWidgetEntry = TodayWidgetEntry(date: Calendar.current.date(byAdding: .hour, value: 1, to: Date())!, lessonInfo: lessonInfo, day: day)
+                entries.append(TodayWidgetEntry(date: currentDate, lessonInfo: lessonInfo, day: day))
+                for offset in 0..<24 {
+                    let entryDate = Calendar.current.date(byAdding: .hour, value: offset, to: midnight)!
+                    entries.append(TodayWidgetEntry(date: entryDate, lessonInfo: lessonInfo, day: day))
+                }
             } else {
-                todayWidgetEntry = TodayWidgetEntry(date: Calendar.current.date(byAdding: .minute, value: 1, to: Date())!, lessonInfo: LessonInfoWidgetProvider.placeholderLessonInfo, day: TodayWidgetProvider.placeholderDay)
+                entries.append(TodayWidgetEntry(date: Calendar.current.date(byAdding: .minute, value: 1, to: Date())!, lessonInfo: LessonInfoWidgetProvider.placeholderLessonInfo, day: TodayWidgetProvider.placeholderDay))
             }
-            entries.append(todayWidgetEntry!)
-            let timeline = Timeline(entries: entries, policy: .atEnd)
+            let timeline = Timeline(entries: entries, policy: .after(nextMidnight))
             completion(timeline)
         }
     }

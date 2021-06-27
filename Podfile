@@ -13,6 +13,7 @@ target 'Sabbath School' do
   pod 'Firebase/Storage'
   pod 'FontBlaster'
   pod 'GoogleSignIn'
+  pod 'Hero'
   pod 'Hue'
   pod 'MenuItemKit'
   pod 'R.swift'

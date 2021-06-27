@@ -35,7 +35,7 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
     }
 
     func retrieveLessonInfo(lessonIndex: String) {
-        database?.child(Constants.Firebase.lessonInfo).child(lessonIndex).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+        database?.child(Constants.Firebase.lessonInfo).child(lessonIndex).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.data else { return }
 
             do {
@@ -59,7 +59,7 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
     }
 
     func retrieveRead(readIndex: String) {
-        database?.child(Constants.Firebase.reads).child(readIndex).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+        database?.child(Constants.Firebase.reads).child(readIndex).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.data else { return }
 
             do {
@@ -77,7 +77,7 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
         database?
             .child(Constants.Firebase.highlights)
             .child((Auth.auth().currentUser?.uid)!)
-            .child(read.index).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            .child(read.index).observe(.value, with: { [weak self] (snapshot) in
                 guard let json = snapshot.data else {
                     self?.retrieveComments(read: read, highlights: ReadHighlights(readIndex: read.index, highlights: ""))
                     return
@@ -99,7 +99,7 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
         database?
             .child(Constants.Firebase.comments)
             .child((Auth.auth().currentUser?.uid)!)
-            .child(read.index).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            .child(read.index).observe(.value, with: { [weak self] (snapshot) in
                 self?.ticker = (self?.ticker)!-1
                 guard let json = snapshot.data else {
                     self?.presenter?.didRetrieveRead(read: read, highlights: highlights, comments: ReadComments(readIndex: read.index, comments: [Comment]()), ticker: (self?.ticker)!)

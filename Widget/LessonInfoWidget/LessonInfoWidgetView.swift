@@ -64,34 +64,49 @@ struct LessonInfoWidgetView : View {
                 .padding(.leading, 15)
                 .padding(.trailing, 15)
                 
-                
                 Divider()
                     .padding(.top, 15)
+                    .padding(.bottom, 10)
                 
-                ForEach(entry.lessonInfo.days[...6], id: \.index) { day in
-                    HStack() {
-                        Link(destination: day.webURL, label: {
-                            Text(day.title)
-                                .font(.system(size: 12, weight: (Calendar.current.compare(self.today, to: day.date, toGranularity: .day) == .orderedSame) ? .bold : .regular))
-                                .lineLimit(1)
-                                .padding(.leading, 15)
-                                .opacity((Calendar.current.compare(self.today, to: day.date, toGranularity: .day) == .orderedSame) ? 1 : 0.7)
-                        })
+                VStack() {
+                    ForEach(entry.lessonInfo.days[...6], id: \.index) { day in
+                        VStack() {
+                            Spacer()
+                            HStack() {
+                                Link(destination: day.webURL, label: {
+                                    Text(day.title)
+                                        .font(.system(size: 12, weight: (Calendar.current.compare(self.today, to: day.date, toGranularity: .day) == .orderedSame) ? .bold : .regular))
+                                        .lineLimit(1)
+                                        .opacity((Calendar.current.compare(self.today, to: day.date, toGranularity: .day) == .orderedSame) ? 1 : 0.7)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                })
+                                    
+                                Spacer()
+                                Link(destination: day.webURL, label: {
+                                    Text(day.date.stringWidgetDate())
+                                        .font(.system(size: 12, weight: .regular))
+                                        .lineLimit(1)
+                                        .opacity(0.7)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                })
+                            }
+                            Spacer()
+                            if entry.lessonInfo.days[...6].last!.index != day.index {
+                                Divider()
+                            }
+                        }.frame(minWidth: 0,
+                                maxWidth: .infinity,
+                                minHeight: 0,
+                                maxHeight: .infinity)
                             
-                        Spacer()
-                        Link(destination: day.webURL, label: {
-                            Text(day.date.stringReadDate())
-                                .font(.system(size: 12, weight: .regular))
-                                .lineLimit(1)
-                                .padding(.trailing, 15)
-                                .opacity(0.7)
-                        })
-                    }
-                    
-                    if entry.lessonInfo.days[...6].last!.index != day.index {
-                        Divider()
-                    }
-                }
+                        }
+                    }.frame(minWidth: 0,
+                            maxWidth: .infinity,
+                            minHeight: 0,
+                            maxHeight: .infinity,
+                            alignment: .center)
+                    .padding(.leading, 15)
+                    .padding(.trailing, 15)
             }.frame(
                 minWidth: 0,
                 maxWidth: .infinity,

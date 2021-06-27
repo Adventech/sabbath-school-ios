@@ -22,6 +22,7 @@
 
 import UIKit
 import AsyncDisplayKit
+import Hero
 
 class LessonQuarterlyInfoView: ASCellNode {
     var quarterly: Quarterly?
