@@ -146,6 +146,11 @@
 		FE420255265D93840061C589 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420254265D93840061C589 /* LanguageView.swift */; };
 		FE4427E9267547670038A863 /* FirebaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */; };
 		FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */; };
+		FE5CC73B268914F000B9F061 /* GroupedQuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73A268914F000B9F061 /* GroupedQuarterlyController.swift */; };
+		FE5CC7402689231700B9F061 /* GroupedQuarterlyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73F2689231700B9F061 /* GroupedQuarterlyPresenter.swift */; };
+		FE5CC7452689238700B9F061 /* GroupedQuarterlyWIreFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC7442689238700B9F061 /* GroupedQuarterlyWIreFrame.swift */; };
+		FE5CC74A268926B800B9F061 /* GroupedQuarterlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC749268926B800B9F061 /* GroupedQuarterlyView.swift */; };
+		FE5CC74F268939DD00B9F061 /* GroupItemQuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC74E268939DD00B9F061 /* GroupItemQuarterlyController.swift */; };
 		FE611A9B2674FECA003CDDB5 /* TodayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A8F2674FE8D003CDDB5 /* TodayWidgetView.swift */; };
 		FE611A9C2674FECA003CDDB5 /* TodayWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A6D2674FA3C003CDDB5 /* TodayWidgetProvider.swift */; };
 		FE611A9D2674FECA003CDDB5 /* TodayWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A652674FA04003CDDB5 /* TodayWidgetEntry.swift */; };
@@ -431,6 +436,11 @@
 		FE1E35042673C5E300DAC2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE1E35062673C5E300DAC2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE420254265D93840061C589 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		FE5CC73A268914F000B9F061 /* GroupedQuarterlyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyController.swift; sourceTree = "<group>"; };
+		FE5CC73F2689231700B9F061 /* GroupedQuarterlyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyPresenter.swift; sourceTree = "<group>"; };
+		FE5CC7442689238700B9F061 /* GroupedQuarterlyWIreFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyWIreFrame.swift; sourceTree = "<group>"; };
+		FE5CC749268926B800B9F061 /* GroupedQuarterlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyView.swift; sourceTree = "<group>"; };
+		FE5CC74E268939DD00B9F061 /* GroupItemQuarterlyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupItemQuarterlyController.swift; sourceTree = "<group>"; };
 		FE611A652674FA04003CDDB5 /* TodayWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetEntry.swift; sourceTree = "<group>"; };
 		FE611A6D2674FA3C003CDDB5 /* TodayWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetProvider.swift; sourceTree = "<group>"; };
 		FE611A872674FDFD003CDDB5 /* TodayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidget.swift; sourceTree = "<group>"; };
@@ -702,6 +712,8 @@
 			children = (
 				7A280FE01EDCBA16003C7458 /* QuarterlyController.swift */,
 				FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */,
+				FE5CC73A268914F000B9F061 /* GroupedQuarterlyController.swift */,
+				FE5CC74E268939DD00B9F061 /* GroupItemQuarterlyController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -718,6 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				7A280FDC1EDCB936003C7458 /* QuarterlyPresenter.swift */,
+				FE5CC73F2689231700B9F061 /* GroupedQuarterlyPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -737,6 +750,7 @@
 				7A2810091EDD2546003C7458 /* QuarterlyFeaturedView.swift */,
 				7A2810241EDDE2AA003C7458 /* QuarterlyEmptyView.swift */,
 				FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */,
+				FE5CC749268926B800B9F061 /* GroupedQuarterlyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -745,6 +759,7 @@
 			isa = PBXGroup;
 			children = (
 				7A280FDA1EDCB846003C7458 /* QuarterlyWireFrame.swift */,
+				FE5CC7442689238700B9F061 /* GroupedQuarterlyWIreFrame.swift */,
 			);
 			path = WireFrame;
 			sourceTree = "<group>";
@@ -1623,7 +1638,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1743,6 +1758,7 @@
 				7A2810021EDD060F003C7458 /* LanguagePresenter.swift in Sources */,
 				FE1E34BE2672874800DAC2D6 /* ShareItem.swift in Sources */,
 				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
+				FE5CC74F268939DD00B9F061 /* GroupItemQuarterlyController.swift in Sources */,
 				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
 				FEC92193267E32C400422F3D /* PreferencesShared.swift in Sources */,
 				FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */,
@@ -1764,6 +1780,7 @@
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,
 				7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */,
 				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
+				FE5CC7452689238700B9F061 /* GroupedQuarterlyWIreFrame.swift in Sources */,
 				7A922E141EDF8A6A00C12A67 /* ReadWireFrame.swift in Sources */,
 				7A8C684D1EF231E200CD3228 /* RoundedCornersImage.swift in Sources */,
 				7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */,
@@ -1798,12 +1815,14 @@
 				7A280FD91EDCB79F003C7458 /* QuarterlyProtocols.swift in Sources */,
 				7A8C68481EF206E100CD3228 /* SettingsView.swift in Sources */,
 				7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */,
+				FE5CC7402689231700B9F061 /* GroupedQuarterlyPresenter.swift in Sources */,
 				7A3BCE421EE37E30003EC12B /* DiscreteSlider.swift in Sources */,
 				7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */,
 				7A3BCE1F1EE0EC28003EC12B /* URL.swift in Sources */,
 				7A2810001EDD051D003C7458 /* Image.swift in Sources */,
 				7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */,
 				7A2810251EDDE2AA003C7458 /* QuarterlyEmptyView.swift in Sources */,
+				FE5CC74A268926B800B9F061 /* GroupedQuarterlyView.swift in Sources */,
 				FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */,
 				7A2810271EDDE3D3003C7458 /* DisplayNode.swift in Sources */,
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
@@ -1811,6 +1830,7 @@
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
 				FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */,
 				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
+				FE5CC73B268914F000B9F061 /* GroupedQuarterlyController.swift in Sources */,
 				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageItemView.swift in Sources */,
 				FE0249FE266A91C9006BFADC /* Notifications.swift in Sources */,

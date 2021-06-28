@@ -81,7 +81,8 @@ class Configuration: NSObject {
                 ConfigurationShared.setAuthAccessGroup()
                 Auth.auth().updateCurrentUser(user!)
             }
-            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
+            // window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
+            window?.rootViewController = GroupedQuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }

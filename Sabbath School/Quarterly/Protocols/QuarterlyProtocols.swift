@@ -23,6 +23,35 @@
 import AsyncDisplayKit
 import UIKit
 
+protocol GroupedQuarterlyControllerProtocol: class {
+    var presenter: GroupedQuarterlyPresenterProtocol? { get set }
+    var initiateOpen: Bool? { get set }
+    func showQuarterlies(quarterlies: [Quarterly])
+    func retrieveQuarterlies()
+}
+
+protocol GroupedQuarterlyWireFrameProtocol: class {
+    static func createQuarterlyModule(initiateOpen: Bool) -> ASNavigationController
+    static func presentLoginScreen()
+    func presentLessonScreen(view: GroupedQuarterlyControllerProtocol, quarterlyIndex: String, initiateOpenToday: Bool)
+    func showLessonScreen(view: GroupedQuarterlyControllerProtocol, lessonScreen: LessonController)
+}
+
+protocol GroupedQuarterlyPresenterProtocol: class {
+    var controller: GroupedQuarterlyControllerProtocol? { get set }
+    var wireFrame: GroupedQuarterlyWireFrameProtocol? { get set }
+    var interactor: QuarterlyInteractorInputProtocol? { get set }
+
+    func configure()
+    func presentLanguageScreen()
+    func presentGCScreen()
+    func presentLessonScreen(quarterlyIndex: String, initiateOpenToday: Bool)
+    func showLessonScreen(lessonScreen: LessonController)
+    func presentQuarterlies()
+}
+
+//
+
 protocol QuarterlyPresenterProtocol: class {
     var controller: QuarterlyControllerProtocol? { get set }
     var wireFrame: QuarterlyWireFrameProtocol? { get set }
