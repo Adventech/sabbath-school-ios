@@ -23,44 +23,48 @@
 import AsyncDisplayKit
 import UIKit
 
-class GroupedQuarterlyView: ASCellNode {
-    let quarterlyGroup: ASCollectionNode
+class QuarterlyItemView: ASCellNode {
+    let cover = ASNetworkImageNode()
+    var coverImage: RoundedCornersImage!
+    let title = ASTextNode()
+    private let coverCornerRadius = CGFloat(6)
+    private let coverImageSize = CGSize(width: 150, height: 225)
 
-    override init() {
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        
-        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.width/3 , height: 100)
-        collectionViewLayout.scrollDirection = .horizontal
-        quarterlyGroup = ASCollectionNode(collectionViewLayout: collectionViewLayout)
+    init(quarterly: Quarterly) {
         super.init()
-        quarterlyGroup.dataSource = self
+        
+        title.attributedText = AppStyle.Quarterly.Text.titleV2(string: quarterly.title)
+        title.maximumNumberOfLines = 2
+        
+        cover.shadowColor = UIColor(white: 0, alpha: 0.6).cgColor
+        cover.shadowOffset = CGSize(width: 0, height: 2)
+        cover.shadowRadius = 5
+        cover.shadowOpacity = 0.3
+        cover.clipsToBounds = false
+        cover.cornerRadius = coverCornerRadius
+        
+        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: coverImageSize, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
+        coverImage.style.alignSelf = .stretch
         automaticallyManagesSubnodes = true
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        //quarterlyGroup.style.preferredSize = CGSize(width: constrainedSize.max.width, height: constrainedSize.max.height)
-        //quarterlyGroup.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(constrainedSize.max.height))
+        cover.style.preferredSize = coverImageSize
+        title.style.spacingBefore = 10
+        
+        let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
+        
         let mainSpec = ASStackLayoutSpec(
                    direction: .vertical,
                    spacing: 0,
                    justifyContent: .start,
                    alignItems: .start,
-                   children: [quarterlyGroup])
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: mainSpec)
-    }
-}
-
-extension GroupedQuarterlyView: ASCollectionDataSource {
-    func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
-      let cellNodeBlock = { () -> ASCellNode in
-        return QuarterlyEmptyView()
-      }
-        
-      return cellNodeBlock
+                   children: [coverSpec, title])
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), child: mainSpec)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+    override func layoutDidFinish() {
+        super.layoutDidFinish()
+        cover.layer.shadowPath = UIBezierPath(roundedRect: cover.bounds, cornerRadius: coverCornerRadius).cgPath
     }
 }

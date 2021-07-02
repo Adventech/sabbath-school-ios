@@ -24,9 +24,9 @@ import AsyncDisplayKit
 import UIKit
 import SwiftEntryKit
 
-class GroupedQuarterlyPresenter: GroupedQuarterlyPresenterProtocol {
-    weak var controller: GroupedQuarterlyControllerProtocol?
-    var wireFrame: GroupedQuarterlyWireFrameProtocol?
+class QuarterlyPresenterV2: QuarterlyPresenterV2Protocol {
+    weak var controller: QuarterlyControllerV2Protocol?
+    var wireFrame: QuarterlyWireFrameV2Protocol?
     var interactor: QuarterlyInteractorInputProtocol?
 
     func configure() {
@@ -65,9 +65,9 @@ class GroupedQuarterlyPresenter: GroupedQuarterlyPresenterProtocol {
     }
 }
 
-extension GroupedQuarterlyPresenter: QuarterlyInteractorOutputProtocol {
+extension QuarterlyPresenterV2: QuarterlyInteractorOutputProtocol {
     func onError(_ error: Error?) {
-        print(error?.localizedDescription ?? "Unknown")
+        print("SSDEBUG", error?.localizedDescription ?? "Unknown")
     }
 
     func didRetrieveQuarterlies(quarterlies: [Quarterly]) {

@@ -27,17 +27,16 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
     var presenter: LanguagePresenterProtocol & LanguageInteractorOutputProtocol = LanguagePresenter()
     var dataSource = [QuarterlyLanguage]()
     var filtered = [QuarterlyLanguage]()
-    var languageView = LanguageView()
+    var table = ASTableNode()
     var loading: Bool = false
-    
-    weak var languageViewNode: ASDisplayNode? { return node as ASDisplayNode }
+    let searchController = UISearchController(searchResultsController: nil)
 
     override init() {
-        super.init(node: languageView)
-        self.languageView.search.delegate = self
-        self.languageView.table.delegate = self
-        self.languageView.table.dataSource = self
-        title = "Languages".localized().uppercased()
+        super.init(node: table)
+        self.table.delegate = self
+        self.table.dataSource = self
+        
+        title = "Languages".localized()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -48,22 +47,37 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
         super.viewDidLoad()
         self.setCloseButton()
         presenter.configure()
-        setTranslucentNavigation(false, color: AppStyle.Base.Color.tint, tintColor: .white, titleColor: .white)
+        setupSearch()
+        
+        self.navigationController?.navigationBar.tintColor = AppStyle.Base.Color.navigationTint
+
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        languageView.search.becomeFirstResponder()
+    func setupSearch() {
+        searchController.searchResultsUpdater = self
+        if #available(iOS 9.1, *) {
+            searchController.obscuresBackgroundDuringPresentation = false
+        }
+        
+        if #available(iOS 11, *) {
+            navigationItem.searchController = searchController
+        } else {
+            table.view.tableHeaderView = searchController.searchBar
+        }
+        
+        searchController.searchBar.placeholder = "Search…".localized()
+        definesPresentationContext = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 13.0, *) {
             if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                self.languageView.table.reloadData()
-                self.languageView.configureStyles()
+                self.table.reloadData()
+                self.table.view.separatorColor = AppStyle.Base.Color.tableSeparator
+                self.table.view.backgroundColor = AppStyle.Base.Color.background
             }
         }
     }
@@ -75,14 +89,14 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
 
         if notification.name == UIResponder.keyboardWillHideNotification {
-            self.languageView.table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.languageView.search.calculatedSize.height, right: 0 )
+            self.table.contentInset.bottom = 0
         } else {
-            var contentInset: UIEdgeInsets = self.languageView.table.contentInset
-            contentInset.bottom = keyboardViewEndFrame.size.height + self.languageView.search.calculatedSize.height
+            var contentInset: UIEdgeInsets = self.table.contentInset
+            contentInset.bottom = keyboardViewEndFrame.size.height
             if #available(iOS 11.0, *) {
                 contentInset.bottom = contentInset.bottom - view.safeAreaInsets.bottom
             }
-            self.languageView.table.contentInset = contentInset
+            self.table.contentInset = contentInset
         }
     }
 }
@@ -91,13 +105,14 @@ extension LanguageController: LanguageControllerProtocol {
     func showLanguages(languages: [QuarterlyLanguage]) {
         self.dataSource = languages
         self.filtered = self.dataSource
-        self.languageView.table.reloadData()
+        self.table.reloadData()
     }
 }
 
 extension LanguageController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let language = filtered[indexPath.row]
+        searchController.isActive = false
         presenter.didSelectLanguage(language: language)
     }
 }
@@ -131,23 +146,13 @@ extension LanguageController: ASTableDataSource {
     }
 }
 
-extension LanguageController: ASEditableTextNodeDelegate {
-    func editableTextNodeDidUpdateText(_ editableTextNode: ASEditableTextNode) {
-        if (self.loading) {
-            return
-        }
+extension LanguageController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if self.loading { return }
         self.loading = true
-        let searchText = editableTextNode.textView.text.lowercased()
+        let searchText = searchController.searchBar.text!.lowercased()
         self.filtered = searchText.isEmpty ? self.dataSource : self.dataSource.filter({ $0.name.lowercased().contains(searchText) || ($0.translatedName ?? $0.name).lowercased().contains(searchText) })
-        self.languageView.table.reloadData {
-            self.loading = false
-        }
-    }
-    
-    func editableTextNode(_ editableTextNode: ASEditableTextNode, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard text.rangeOfCharacter(from: CharacterSet.newlines) == nil else {
-            return false
-        }
-        return true
+        self.table.reloadSections(IndexSet(integer: 0), with: UITableView.RowAnimation.fade)
+        self.loading = false
     }
 }

@@ -45,7 +45,7 @@ class AboutController: ThemeController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTranslucentNavigation(false, color: AppStyle.Base.Color.tint, tintColor: .white, titleColor: .white)
+        // setTranslucentNavigation(false, color: AppStyle.Base.Color.tint, tintColor: .white, titleColor: .white)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

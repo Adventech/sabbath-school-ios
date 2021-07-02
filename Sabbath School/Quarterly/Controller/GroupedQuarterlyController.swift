@@ -21,25 +21,20 @@
  */
 
 import AsyncDisplayKit
+import UIKit
 
 class GroupedQuarterlyController: ASDKViewController<ASDisplayNode> {
-    var presenter: GroupedQuarterlyPresenterProtocol?
-    var dataSource = [Quarterly]()
-    var groupedQuarterlies = []
-    var initiateOpen: Bool?
-    
-    var tableNode: ASTableNode { return node as! ASTableNode }
-//    var collectionNode: ASCollectionNode { return node as! ASCollectionNode }
-//    let collectionViewLayout = UICollectionViewFlowLayout()
-    
-
-    override init() {
-//        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        collectionViewLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
-        super.init(node: ASTableNode())
-//        super.init(node: ASCollectionNode(collectionViewLayout: collectionViewLayout))
-        tableNode.dataSource = self
-//        collectionNode.dataSource = self
+    var quarterlyGroupView: QuarterlyGroupView
+    let quarterlies: [Quarterly]
+    let presenter: QuarterlyPresenterV2Protocol?
+    init(presenter: QuarterlyPresenterV2Protocol?, quarterlyGroup: QuarterlyGroup, quarterlies: [Quarterly], isLast: Bool) {
+        self.presenter = presenter
+        self.quarterlies = quarterlies
+        self.quarterlyGroupView = QuarterlyGroupView(quarterlyGroup: quarterlyGroup, skipGradient: isLast)
+        super.init(node: quarterlyGroupView)
+        quarterlyGroupView.collectionNode.dataSource = self
+        quarterlyGroupView.collectionNode.delegate = self
+        quarterlyGroupView.collectionNode.backgroundColor = UIColor.clear.withAlphaComponent(0)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -48,66 +43,97 @@ class GroupedQuarterlyController: ASDKViewController<ASDisplayNode> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(logout))
-//        settingsButton.accessibilityIdentifier = "openSettings"
-//
-//        let languagesButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(showLanguages(sender:)))
-//        languagesButton.accessibilityIdentifier = "openLanguage"
-//
-//        navigationItem.leftBarButtonItem = settingsButton
-//        navigationItem.rightBarButtonItem = languagesButton
         
-        presenter?.configure()
-        retrieveQuarterlies()
+        quarterlyGroupView.collectionNode.view.showsHorizontalScrollIndicator = false
+        quarterlyGroupView.collectionNode.reloadData()
     }
     
-    func retrieveQuarterlies() {
-        presenter?.presentQuarterlies()
-    }
-}
-
-extension GroupedQuarterlyController: GroupedQuarterlyControllerProtocol {
-    func showQuarterlies(quarterlies: [Quarterly]) {
-        print("SSDEBUG", "quarterlies")
-        self.dataSource = quarterlies
-        Configuration.reloadAllWidgets()
-    }
-}
-
-//extension GroupedQuarterlyController: ASCollectionDataSource {
-//    func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
-//      let cellNodeBlock = { () -> ASCellNode in
-//        let node = GroupItemQuarterlyController()
-//        let size = CGSize(width: collectionNode.bounds.size.width, height: collectionNode.bounds.size.height/2)
-//        node.style.preferredSize = size
-//        return node
-//      }
-//
-//      return cellNodeBlock
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 5
-//    }
-//}
-
-
-extension GroupedQuarterlyController: ASTableDataSource {
-    func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        let node = ASCellNode(viewControllerBlock: { () -> UIViewController in
-            return GroupItemQuarterlyController()
-        }, didLoad: nil)
-
-        let size = CGSize(width: tableNode.bounds.size.width, height: 135)
-        node.style.preferredSize = size
-
-        return {
-            return node
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if #available(iOS 13, *) {} else {
+            print("SSDEBUG forceTouch", self.traitCollection.forceTouchCapability)
+            if self.traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: quarterlyGroupView.collectionNode.view)
+            }
         }
     }
+    
+    func getLessonControllerForPeek(indexPath: IndexPath, point: CGPoint) -> LessonController? {
+        let quarterlyIndex = quarterlies[indexPath.row].index
+        let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: false)
+        lessonController.isPeeking = true
+        lessonController.delegate = self
+        return lessonController
+    }
+}
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+extension GroupedQuarterlyController: ASCollectionDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if !self.quarterlies.isEmpty {
+            let quarterly = quarterlies[indexPath.row]
+            presenter?.presentLessonScreen(quarterlyIndex: quarterly.index, initiateOpenToday: false)
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: {
+            guard let lessonController = self.getLessonControllerForPeek(indexPath: indexPath, point: point) else { return nil }
+            return lessonController
+        }, actionProvider: { suggestedActions in
+            let imageView: UIImage
+            imageView = (self.quarterlyGroupView.collectionNode.nodeForItem(at: indexPath) as! QuarterlyItemView).coverImage.imageNode.image!
+            let quarterly: Quarterly = self.quarterlies[indexPath.row]
+            let share = UIAction(title: "Share".localized(), image: UIImage(systemName: "square.and.arrow.up")) { action in
+                let objectToShare = ShareItem(title: quarterly.title, subtitle: quarterly.humanDate, url: quarterly.webURL, image: imageView)
+                Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [objectToShare])
+            }
+            return UIMenu(title: "", children: [share])
+        })
+    }
+    
+    @available(iOS 13.0, *)
+    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion {
+            guard let lessonController = animator.previewViewController as? LessonController else { return }
+            self.presenter?.showLessonScreen(lessonScreen: lessonController)
+        }
+    }
+}
+
+extension GroupedQuarterlyController: ASCollectionDataSource {
+    func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
+      let cellNodeBlock = { () -> ASCellNode in
+        return QuarterlyItemView(quarterly: self.quarterlies[indexPath.row])
+      }
+        
+      return cellNodeBlock
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return quarterlies.count
+    }
+}
+
+extension GroupedQuarterlyController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = quarterlyGroupView.collectionNode.indexPathForItem(at: location) else { return nil }
+        guard let lessonController = self.getLessonControllerForPeek(indexPath: indexPath, point: location) else { return nil }
+        guard let cell = quarterlyGroupView.collectionNode.cellForItem(at: indexPath) else { return nil }
+        previewingContext.sourceRect = (quarterlyGroupView.collectionNode.convert(cell.frame, to: quarterlyGroupView.collectionNode))
+        
+        return lessonController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        guard let lessonController = viewControllerToCommit as? LessonController else { return }
+        presenter?.showLessonScreen(lessonScreen: lessonController)
+    }
+}
+
+extension GroupedQuarterlyController: LessonControllerDelegate {
+    func shareQuarterly(quarterly: Quarterly) {
+        Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [quarterly.title, quarterly.webURL])
     }
 }

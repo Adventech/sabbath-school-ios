@@ -26,16 +26,21 @@ import UIKit
 import StoreKit
 import WidgetKit
 
+
 final class LessonController: TableController {
     var delegate: LessonControllerDelegate?
     var presenter: LessonPresenterProtocol?
     var dataSource: QuarterlyInfo?
     var isPeeking: Bool? = false
     var initiateOpenToday: Bool?
+    
+    var scrollReachedTouchpoint: Bool = false
+    
+    private var currentTransitionCoordinator: UIViewControllerTransitionCoordinator?
 
     override init() {
         super.init()
-
+        
         tableNode?.dataSource = self
     }
 
@@ -45,7 +50,7 @@ final class LessonController: TableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButton()
+        
         presenter?.configure()
         Armchair.userDidSignificantEvent(true)
         
@@ -53,12 +58,41 @@ final class LessonController: TableController {
             registerForPreviewing(with: self, sourceView: view)
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool)  {
+        super.viewWillAppear(animated)
+        setupNavigationbar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupNavigationbar()
+        scrollBehavior()
+    }
+    
+    func setupNavigationbar() {
+        setNavigationBarOpacity(alpha: 0)
+        self.navigationController?.navigationBar.hideBottomHairline()
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
+        setBackButton()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return scrollReachedTouchpoint ? .default : .lightContent
+    }
+    
+    func statusBarUpdate(light: Bool) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
+    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let lesson = dataSource?.lessons[indexPath.row] else { return }
 
         if indexPath.section == 0 {
-            openToday()
+            // openToday()
         } else {
             presenter?.presentReadScreen(lessonIndex: lesson.index)
         }
@@ -128,6 +162,39 @@ final class LessonController: TableController {
         return readController
     }
     
+    func scrollBehavior() {
+        let mn: CGFloat = 0
+        let initialOffset: CGFloat = 200
+        
+        if self.dataSource == nil { return }
+        
+        if let dataSource = self.dataSource {
+            if dataSource.lessons.count <= 0 { return }
+        }
+        
+        let titleOrigin = (self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: 1)) as! LessonView).view.rectCorrespondingToWindow
+        guard let navigationBarMaxY =  self.navigationController?.navigationBar.rectCorrespondingToWindow.maxY else { return }
+
+        var navBarAlpha: CGFloat = (initialOffset - (titleOrigin.minY + mn - navigationBarMaxY)) / initialOffset
+        var navBarTitleAlpha: CGFloat = titleOrigin.minY-mn < navigationBarMaxY ? 1 : 0
+        
+        if titleOrigin.minY == 0 {
+            navBarAlpha = 1
+            navBarTitleAlpha = 1
+        }
+        
+        setNavigationBarOpacity(alpha: navBarAlpha)
+        
+        statusBarUpdate(light: navBarTitleAlpha != 1)
+        scrollReachedTouchpoint = navBarTitleAlpha == 1
+        
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.transitionColor(fromColor: UIColor.white.withAlphaComponent(navBarAlpha), toColor: AppStyle.Base.Color.navigationTitle, progress:navBarAlpha)]
+            
+        self.navigationController?.navigationBar.tintColor = UIColor.transitionColor(fromColor: UIColor.white, toColor: AppStyle.Base.Color.navigationTint, progress:navBarAlpha)
+        
+    }
+    
     @available(iOS 13.0, *)
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: {
@@ -164,20 +231,33 @@ final class LessonController: TableController {
     @objc func readButtonAction(sender: ASButtonNode) {
         openToday()
     }
+    
+    @objc func openIntroduction(sender: ASTextNode) {
+        self.present(ASNavigationController(rootViewController: QuarterlyIntroductionController(quarterly: self.dataSource!.quarterly)), animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollBehavior()
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        scrollBehavior()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollBehavior()
+    }
 }
 
 extension LessonController: LessonControllerProtocol {
     func showLessons(quarterlyInfo: QuarterlyInfo) {
         self.dataSource = quarterlyInfo
-
-        if let colorHex = dataSource?.quarterly.colorPrimary {
-            self.colorPrimary = UIColor(hex: colorHex)
-        }
         self.tableNode?.allowsSelection = true
         self.tableNode?.reloadData()
         
+        self.title = quarterlyInfo.quarterly.title
+        
         if !self.isPeeking! {
-            self.colorize()
             self.insertShortcutItems(quarterlyInfo: quarterlyInfo)
         }
         
@@ -233,6 +313,7 @@ extension LessonController: ASTableDataSource {
             if indexPath.section == 0 {
                 let node = LessonQuarterlyInfoView(quarterly: (self.dataSource?.quarterly)!)
                 node.readButton.addTarget(self, action: #selector(self.readButtonAction(sender:)), forControlEvents: .touchUpInside)
+                node.introduction.addTarget(self, action: #selector(self.openIntroduction(sender:)), forControlEvents: .touchUpInside)
                 return node
             }
 

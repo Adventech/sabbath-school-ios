@@ -20,24 +20,27 @@
  * THE SOFTWARE.
  */
 
-import AsyncDisplayKit
-import UIKit
+import Foundation
 
-class ThemeController: ASDKViewController<ASDisplayNode> {
-    var colorPrimary: UIColor?
+struct QuarterlyGroup: Codable {
+    let name: String
+    public var weight: Int = 100
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    mutating func setGroupWeight(weight: Int) {
+        self.weight = weight
+    }
+}
 
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
-    
-    
-    func colorize() {
-        return
-//        navigationController?.navigationBar.barStyle = .black
-//
-//        if colorPrimary != nil {
-//            Configuration.window!.tintColor = colorPrimary!
-//            setTranslucentNavigation(true, color: colorPrimary!, tintColor: .white, titleColor: .white)
-//        }
+extension QuarterlyGroup: Hashable {
+    static func == (lhs: QuarterlyGroup, rhs: QuarterlyGroup) -> Bool {
+        return lhs.name == rhs.name
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
     }
 }

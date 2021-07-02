@@ -42,6 +42,7 @@ struct Quarterly: Codable {
     let fullPath: URL
     let lang: String
     let webURL: URL
+    let quarterlyName: String?
     
     // Mock
     init(title: String) {
@@ -59,6 +60,7 @@ struct Quarterly: Codable {
         self.fullPath = URL.init(string: "https://adventech.io")!
         self.lang = "-"
         self.webURL = URL.init(string: "https://adventech.io")!
+        self.quarterlyName = "-"
     }
     
     init(from decoder: Decoder) throws {
@@ -77,5 +79,6 @@ struct Quarterly: Codable {
         fullPath = try values.decode(URL.self, forKey: .fullPath)
         lang = try values.decode(String.self, forKey: .lang)
         webURL = URL.init(string: fullPath.absoluteString.replacingOccurrences(of: Constants.URLs.webReplacementRegex, with: "", options: [.regularExpression]))!
+        quarterlyName = values.contains(.quarterlyName) ? try values.decode(String.self, forKey: .quarterlyName) : nil
     }
 }

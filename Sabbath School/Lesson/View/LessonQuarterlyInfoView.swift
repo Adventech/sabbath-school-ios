@@ -22,7 +22,6 @@
 
 import UIKit
 import AsyncDisplayKit
-import Hero
 
 class LessonQuarterlyInfoView: ASCellNode {
     var quarterly: Quarterly?
@@ -33,7 +32,8 @@ class LessonQuarterlyInfoView: ASCellNode {
     let introduction = ASTextNode()
     let readButton = ASButtonNode()
     let coverCornerRadius = CGFloat(6)
-
+    
+    private let coverImageSize = CGSize(width: 187, height: 276)
     private let infiniteColor = ASDisplayNode()
 
     init(quarterly: Quarterly) {
@@ -49,11 +49,23 @@ class LessonQuarterlyInfoView: ASCellNode {
             backgroundColor = .baseBlue
         }
 
-        // Nodes
         title.attributedText = AppStyle.Quarterly.Text.featuredTitle(string: quarterly.title)
+    
         humanDate.attributedText = AppStyle.Quarterly.Text.humanDate(string: quarterly.humanDate)
-        introduction.attributedText = AppStyle.Lesson.Text.introduction(string: quarterly.description, color: .white)
-        introduction.maximumNumberOfLines = 8
+        introduction.attributedText = AppStyle.Lesson.Text.introduction(string: quarterly.description)
+        introduction.maximumNumberOfLines = 3
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.baseBlue.lighter(componentDelta: 0.4),
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .font: R.font.latoMediumItalic(size: 15)!
+        ]
+        
+        let blurb: NSString = NSString(format: "%@%@", "… ", "more".localized() as NSString)
+        let string = NSMutableAttributedString(string: blurb as String)
+        string.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, 2))
+        string.addAttributes(attributes, range: blurb.range(of: "more".localized()))
+        introduction.truncationAttributedText = string
 
         readButton.setAttributedTitle(AppStyle.Lesson.Text.readButton(string: "Read".localized().uppercased()), for: .normal)
         readButton.accessibilityIdentifier = "readLesson"
@@ -69,7 +81,7 @@ class LessonQuarterlyInfoView: ASCellNode {
         cover.shadowOpacity = 0.3
         cover.clipsToBounds = false
 
-        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
+        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: coverImageSize, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
         coverImage.style.alignSelf = .stretch
 
         addSubnode(title)
@@ -79,59 +91,48 @@ class LessonQuarterlyInfoView: ASCellNode {
         addSubnode(coverImage)
         addSubnode(readButton)
     }
-
+    
     override func didLoad() {
         infiniteColor.backgroundColor = backgroundColor
+        super.didLoad()
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        cover.style.preferredSize = CGSize(width: 130, height: 192)
-        title.style.spacingAfter = 28
+        cover.style.preferredSize = coverImageSize
+        title.style.spacingBefore = 30
+        title.style.spacingAfter = 10
         readButton.style.spacingBefore = 10
 
+        let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
+        let coverHSpec = ASStackLayoutSpec(
+            direction: .horizontal,
+            spacing: 0,
+            justifyContent: .center,
+            alignItems: .center,
+            children: [coverSpec])
+        
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 0,
-            justifyContent: .start,
-            alignItems: .start,
-            children: [humanDate, title]
-        )
-
-        let vSpec2 = ASStackLayoutSpec(
-            direction: .vertical,
-            spacing: 4,
-            justifyContent: .start,
-            alignItems: .start,
-            children: [introduction, readButton]
-        )
-
-        vSpec.style.flexShrink = 1.0
-        vSpec2.style.flexShrink = 1.0
-
-        let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
-
-        let hSpec = ASStackLayoutSpec(
-            direction: .horizontal,
             spacing: 15,
             justifyContent: .center,
             alignItems: .center,
-            children: [coverSpec, vSpec2]
+            children: [humanDate, readButton, introduction]
         )
-
+        
         let mainSpec = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 4,
-            justifyContent: .start,
-            alignItems: .start,
-            children: [vSpec, hSpec]
+            spacing: 0,
+            justifyContent: .center,
+            alignItems: .center,
+            children: [coverHSpec, title, vSpec]
         )
 
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 35, right: 15), child: mainSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 15), child: mainSpec)
     }
 
     override func layout() {
         super.layout()
-        infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-1000, width: calculatedSize.width, height: 1000)
+        infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-10000, width: calculatedSize.width, height: 10000)
     }
 
     override func layoutDidFinish() {

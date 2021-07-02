@@ -68,7 +68,7 @@ class ReadController: ThemeController {
         super.viewDidLoad()
         setBackButton()
         presenter?.configure()
-        setTransparentNavigation()
+        // setTransparentNavigation()
 
         let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
         rightButton.accessibilityIdentifier = "themeSettings"
@@ -130,7 +130,7 @@ class ReadController: ThemeController {
         let shouldHide = !navigationController!.isNavigationBarHidden
         shouldHideStatusBar = shouldHide
         updateAnimatedStatusBar()
-        navigationController?.setNavigationBarHidden(shouldHide, animated: true)
+        //navigationController?.setNavigationBarHidden(shouldHide, animated: true)
     }
 
     func updateAnimatedStatusBar() {
@@ -150,7 +150,7 @@ class ReadController: ThemeController {
                 readNavigationBarStyle(titleColor: UIColor.white.withAlphaComponent(1-(-scrollView.contentOffset.y-navigationBarHeight)/navigationBarHeight))
             } else {
                 title = ""
-                setTransparentNavigation()
+                // setTransparentNavigation()
             }
         }
 
@@ -181,11 +181,11 @@ class ReadController: ThemeController {
 
     func readNavigationBarStyle(titleColor: UIColor = .white) {
         let theme = Preferences.currentTheme()
-        setTranslucentNavigation(
-            color: theme.navBarColor,
-            tintColor: theme.navBarTextColor,
-            titleColor: theme == .dark ? theme.navBarTextColor : titleColor
-        )
+//        setTranslucentNavigation(
+//            color: theme.navBarColor,
+//            tintColor: theme.navBarTextColor,
+//            titleColor: theme == .dark ? theme.navBarTextColor : titleColor
+//        )
         collectionNode.backgroundColor = theme.backgroundColor
 
         for webViewIndex in 0...self.reads.count {

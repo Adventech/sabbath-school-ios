@@ -22,11 +22,11 @@
 
 import AsyncDisplayKit
 
-class GroupedQuarterlyWireFrame: GroupedQuarterlyWireFrameProtocol {
+class QuarterlyWireFrameV2: QuarterlyWireFrameV2Protocol {
     class func createQuarterlyModule(initiateOpen: Bool = false) -> ASNavigationController {
-        let controller: GroupedQuarterlyControllerProtocol = GroupedQuarterlyController()
-        let presenter: GroupedQuarterlyPresenterProtocol & QuarterlyInteractorOutputProtocol = GroupedQuarterlyPresenter()
-        let wireFrame: GroupedQuarterlyWireFrameProtocol = GroupedQuarterlyWireFrame()
+        let controller: QuarterlyControllerV2Protocol = QuarterlyControllerV2()
+        let presenter: QuarterlyPresenterV2Protocol & QuarterlyInteractorOutputProtocol = QuarterlyPresenterV2()
+        let wireFrame: QuarterlyWireFrameV2Protocol = QuarterlyWireFrameV2()
         let interactor: QuarterlyInteractorInputProtocol = QuarterlyInteractor()
         
         controller.initiateOpen = initiateOpen
@@ -39,12 +39,12 @@ class GroupedQuarterlyWireFrame: GroupedQuarterlyWireFrameProtocol {
         return ASNavigationController(rootViewController: controller as! UIViewController)
     }
 
-    func presentLessonScreen(view: GroupedQuarterlyControllerProtocol, quarterlyIndex: String, initiateOpenToday: Bool = false) {
+    func presentLessonScreen(view: QuarterlyControllerV2Protocol, quarterlyIndex: String, initiateOpenToday: Bool = false) {
         let lessonScreen = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpenToday)
         self.showLessonScreen(view: view, lessonScreen: lessonScreen)
     }
     
-    func showLessonScreen(view: GroupedQuarterlyControllerProtocol, lessonScreen: LessonController) {
+    func showLessonScreen(view: QuarterlyControllerV2Protocol, lessonScreen: LessonController) {
         if #available(iOS 10.0, *) {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }

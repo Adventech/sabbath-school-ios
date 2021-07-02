@@ -128,7 +128,6 @@ PODS:
   - GTMSessionFetcher/Core (1.5.0)
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
-  - Hero (1.5.0)
   - Hue (5.0.0)
   - leveldb-library (1.22.1)
   - MenuItemKit (4.0.1)
@@ -200,7 +199,6 @@ DEPENDENCIES:
   - FontBlaster
   - GoogleSignIn
   - GTMSessionFetcher
-  - Hero
   - Hue
   - MenuItemKit
   - R.swift
@@ -236,7 +234,6 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
-    - Hero
     - Hue
     - leveldb-library
     - MenuItemKit
@@ -280,7 +277,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
@@ -301,6 +297,6 @@ SPEC CHECKSUMS:
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 150282a88a65a1171e405adaa23a856a07a17cde
+PODFILE CHECKSUM: d1c8c5e9bac5e591651281ce79e9ab878deb74a9
 
 COCOAPODS: 1.10.0

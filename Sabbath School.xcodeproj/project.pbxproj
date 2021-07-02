@@ -143,14 +143,21 @@
 		FE1E35002673C5DF00DAC2D6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1E34FF2673C5DF00DAC2D6 /* SwiftUI.framework */; };
 		FE1E35052673C5E300DAC2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1E35042673C5E300DAC2D6 /* Assets.xcassets */; };
 		FE1E35092673C5E300DAC2D6 /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FE2FDEAB268A1D390023A853 /* QuarterlyViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDEAA268A1D390023A853 /* QuarterlyViewV2.swift */; };
+		FE2FDEE4268A96CF0023A853 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */; };
+		FE2FDEE5268A96CF0023A853 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */; };
+		FE2FDF83268D6F430023A853 /* QuarterlyIntroductionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */; };
+		FE2FDF8B268D6F7A0023A853 /* QuarterlyIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */; };
 		FE420255265D93840061C589 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420254265D93840061C589 /* LanguageView.swift */; };
 		FE4427E9267547670038A863 /* FirebaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */; };
 		FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */; };
-		FE5CC73B268914F000B9F061 /* GroupedQuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73A268914F000B9F061 /* GroupedQuarterlyController.swift */; };
-		FE5CC7402689231700B9F061 /* GroupedQuarterlyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73F2689231700B9F061 /* GroupedQuarterlyPresenter.swift */; };
-		FE5CC7452689238700B9F061 /* GroupedQuarterlyWIreFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC7442689238700B9F061 /* GroupedQuarterlyWIreFrame.swift */; };
-		FE5CC74A268926B800B9F061 /* GroupedQuarterlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC749268926B800B9F061 /* GroupedQuarterlyView.swift */; };
-		FE5CC74F268939DD00B9F061 /* GroupItemQuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC74E268939DD00B9F061 /* GroupItemQuarterlyController.swift */; };
+		FE5CC73B268914F000B9F061 /* QuarterlyControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73A268914F000B9F061 /* QuarterlyControllerV2.swift */; };
+		FE5CC7402689231700B9F061 /* QuarterlyPresenterV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73F2689231700B9F061 /* QuarterlyPresenterV2.swift */; };
+		FE5CC7452689238700B9F061 /* QuarterlyWIreFrameV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC7442689238700B9F061 /* QuarterlyWIreFrameV2.swift */; };
+		FE5CC74A268926B800B9F061 /* QuarterlyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC749268926B800B9F061 /* QuarterlyGroupView.swift */; };
+		FE5CC74F268939DD00B9F061 /* GroupedQuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC74E268939DD00B9F061 /* GroupedQuarterlyController.swift */; };
+		FE5CC763268972CA00B9F061 /* QuarterlyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */; };
+		FE5CC7A1268A156B00B9F061 /* QuarterlyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC7A0268A156B00B9F061 /* QuarterlyItemView.swift */; };
 		FE611A9B2674FECA003CDDB5 /* TodayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A8F2674FE8D003CDDB5 /* TodayWidgetView.swift */; };
 		FE611A9C2674FECA003CDDB5 /* TodayWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A6D2674FA3C003CDDB5 /* TodayWidgetProvider.swift */; };
 		FE611A9D2674FECA003CDDB5 /* TodayWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A652674FA04003CDDB5 /* TodayWidgetEntry.swift */; };
@@ -435,12 +442,19 @@
 		FE1E34FF2673C5DF00DAC2D6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		FE1E35042673C5E300DAC2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE1E35062673C5E300DAC2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE2FDEAA268A1D390023A853 /* QuarterlyViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyViewV2.swift; sourceTree = "<group>"; };
+		FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyIntroductionController.swift; sourceTree = "<group>"; };
+		FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyIntroductionView.swift; sourceTree = "<group>"; };
 		FE420254265D93840061C589 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
-		FE5CC73A268914F000B9F061 /* GroupedQuarterlyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyController.swift; sourceTree = "<group>"; };
-		FE5CC73F2689231700B9F061 /* GroupedQuarterlyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyPresenter.swift; sourceTree = "<group>"; };
-		FE5CC7442689238700B9F061 /* GroupedQuarterlyWIreFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyWIreFrame.swift; sourceTree = "<group>"; };
-		FE5CC749268926B800B9F061 /* GroupedQuarterlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyView.swift; sourceTree = "<group>"; };
-		FE5CC74E268939DD00B9F061 /* GroupItemQuarterlyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupItemQuarterlyController.swift; sourceTree = "<group>"; };
+		FE5CC73A268914F000B9F061 /* QuarterlyControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyControllerV2.swift; sourceTree = "<group>"; };
+		FE5CC73F2689231700B9F061 /* QuarterlyPresenterV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyPresenterV2.swift; sourceTree = "<group>"; };
+		FE5CC7442689238700B9F061 /* QuarterlyWIreFrameV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyWIreFrameV2.swift; sourceTree = "<group>"; };
+		FE5CC749268926B800B9F061 /* QuarterlyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyGroupView.swift; sourceTree = "<group>"; };
+		FE5CC74E268939DD00B9F061 /* GroupedQuarterlyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyController.swift; sourceTree = "<group>"; };
+		FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyGroup.swift; sourceTree = "<group>"; };
+		FE5CC7A0268A156B00B9F061 /* QuarterlyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyItemView.swift; sourceTree = "<group>"; };
 		FE611A652674FA04003CDDB5 /* TodayWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetEntry.swift; sourceTree = "<group>"; };
 		FE611A6D2674FA3C003CDDB5 /* TodayWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetProvider.swift; sourceTree = "<group>"; };
 		FE611A872674FDFD003CDDB5 /* TodayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidget.swift; sourceTree = "<group>"; };
@@ -630,6 +644,8 @@
 		7A280FAC1EDA0276003C7458 /* Lato */ = {
 			isa = PBXGroup;
 			children = (
+				FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */,
+				FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */,
 				7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */,
 				7A280FAE1EDA0276003C7458 /* Lato-BoldItalic.ttf */,
 				7A280FAF1EDA0276003C7458 /* Lato-Italic.ttf */,
@@ -712,8 +728,9 @@
 			children = (
 				7A280FE01EDCBA16003C7458 /* QuarterlyController.swift */,
 				FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */,
-				FE5CC73A268914F000B9F061 /* GroupedQuarterlyController.swift */,
-				FE5CC74E268939DD00B9F061 /* GroupItemQuarterlyController.swift */,
+				FE5CC73A268914F000B9F061 /* QuarterlyControllerV2.swift */,
+				FE5CC74E268939DD00B9F061 /* GroupedQuarterlyController.swift */,
+				FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -730,7 +747,7 @@
 			isa = PBXGroup;
 			children = (
 				7A280FDC1EDCB936003C7458 /* QuarterlyPresenter.swift */,
-				FE5CC73F2689231700B9F061 /* GroupedQuarterlyPresenter.swift */,
+				FE5CC73F2689231700B9F061 /* QuarterlyPresenterV2.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -750,7 +767,10 @@
 				7A2810091EDD2546003C7458 /* QuarterlyFeaturedView.swift */,
 				7A2810241EDDE2AA003C7458 /* QuarterlyEmptyView.swift */,
 				FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */,
-				FE5CC749268926B800B9F061 /* GroupedQuarterlyView.swift */,
+				FE5CC749268926B800B9F061 /* QuarterlyGroupView.swift */,
+				FE5CC7A0268A156B00B9F061 /* QuarterlyItemView.swift */,
+				FE2FDEAA268A1D390023A853 /* QuarterlyViewV2.swift */,
+				FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -759,7 +779,7 @@
 			isa = PBXGroup;
 			children = (
 				7A280FDA1EDCB846003C7458 /* QuarterlyWireFrame.swift */,
-				FE5CC7442689238700B9F061 /* GroupedQuarterlyWIreFrame.swift */,
+				FE5CC7442689238700B9F061 /* QuarterlyWIreFrameV2.swift */,
 			);
 			path = WireFrame;
 			sourceTree = "<group>";
@@ -1169,6 +1189,7 @@
 				7AC26AF31EE5EBDE003F946C /* Read.swift */,
 				7AC26AF41EE5EBDE003F946C /* ReadComments.swift */,
 				7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */,
+				FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1485,6 +1506,7 @@
 				7AF371701EFA1E6E00547916 /* base.css in Resources */,
 				7A922E5F1EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf in Resources */,
 				7A922E671EE07EC200C12A67 /* index.html in Resources */,
+				FE2FDEE5268A96CF0023A853 /* Lato-BlackItalic.ttf in Resources */,
 				7A280FB31EDA0276003C7458 /* Lato-Bold.ttf in Resources */,
 				7A922E631EE07EC200C12A67 /* PT_Serif-Web-Bold.ttf in Resources */,
 				7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */,
@@ -1496,6 +1518,7 @@
 				7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */,
 				7ABB93E11EF7888900658963 /* GoogleService-Info-Prod.plist in Resources */,
 				7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */,
+				FE2FDEE4268A96CF0023A853 /* Lato-Black.ttf in Resources */,
 				7A922E641EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
 				7A280FB41EDA0276003C7458 /* Lato-BoldItalic.ttf in Resources */,
 				7A280FB81EDA0276003C7458 /* Lato-Regular.ttf in Resources */,
@@ -1535,7 +1558,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
 				"${BUILT_PRODUCTS_DIR}/MenuItemKit/MenuItemKit.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
@@ -1564,7 +1586,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MenuItemKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
@@ -1758,13 +1779,14 @@
 				7A2810021EDD060F003C7458 /* LanguagePresenter.swift in Sources */,
 				FE1E34BE2672874800DAC2D6 /* ShareItem.swift in Sources */,
 				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
-				FE5CC74F268939DD00B9F061 /* GroupItemQuarterlyController.swift in Sources */,
+				FE5CC74F268939DD00B9F061 /* GroupedQuarterlyController.swift in Sources */,
 				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
 				FEC92193267E32C400422F3D /* PreferencesShared.swift in Sources */,
 				FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */,
 				7A3BCE361EE27776003EC12B /* BiblePresenter.swift in Sources */,
 				7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */,
 				7A3BCE381EE29203003EC12B /* BibleVersionView.swift in Sources */,
+				FE5CC763268972CA00B9F061 /* QuarterlyGroup.swift in Sources */,
 				7A2810061EDD071B003C7458 /* LanguageWireFrame.swift in Sources */,
 				7A280FE11EDCBA16003C7458 /* QuarterlyController.swift in Sources */,
 				FE863F2A2662BD9F00ADCA36 /* Animation.swift in Sources */,
@@ -1780,7 +1802,7 @@
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,
 				7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */,
 				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
-				FE5CC7452689238700B9F061 /* GroupedQuarterlyWIreFrame.swift in Sources */,
+				FE5CC7452689238700B9F061 /* QuarterlyWIreFrameV2.swift in Sources */,
 				7A922E141EDF8A6A00C12A67 /* ReadWireFrame.swift in Sources */,
 				7A8C684D1EF231E200CD3228 /* RoundedCornersImage.swift in Sources */,
 				7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */,
@@ -1809,20 +1831,22 @@
 				FE420255265D93840061C589 /* LanguageView.swift in Sources */,
 				7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */,
 				7A3BCE3C1EE29605003EC12B /* Button.swift in Sources */,
+				FE2FDF83268D6F430023A853 /* QuarterlyIntroductionController.swift in Sources */,
 				7AC26AFD1EE5EBDE003F946C /* QuarterlyLanguage.swift in Sources */,
 				7AF3716C1EF9E6EC00547916 /* AboutController.swift in Sources */,
 				7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */,
 				7A280FD91EDCB79F003C7458 /* QuarterlyProtocols.swift in Sources */,
 				7A8C68481EF206E100CD3228 /* SettingsView.swift in Sources */,
 				7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */,
-				FE5CC7402689231700B9F061 /* GroupedQuarterlyPresenter.swift in Sources */,
+				FE5CC7402689231700B9F061 /* QuarterlyPresenterV2.swift in Sources */,
 				7A3BCE421EE37E30003EC12B /* DiscreteSlider.swift in Sources */,
 				7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */,
 				7A3BCE1F1EE0EC28003EC12B /* URL.swift in Sources */,
 				7A2810001EDD051D003C7458 /* Image.swift in Sources */,
 				7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */,
 				7A2810251EDDE2AA003C7458 /* QuarterlyEmptyView.swift in Sources */,
-				FE5CC74A268926B800B9F061 /* GroupedQuarterlyView.swift in Sources */,
+				FE5CC74A268926B800B9F061 /* QuarterlyGroupView.swift in Sources */,
+				FE5CC7A1268A156B00B9F061 /* QuarterlyItemView.swift in Sources */,
 				FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */,
 				7A2810271EDDE3D3003C7458 /* DisplayNode.swift in Sources */,
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
@@ -1830,7 +1854,7 @@
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
 				FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */,
 				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
-				FE5CC73B268914F000B9F061 /* GroupedQuarterlyController.swift in Sources */,
+				FE5CC73B268914F000B9F061 /* QuarterlyControllerV2.swift in Sources */,
 				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageItemView.swift in Sources */,
 				FE0249FE266A91C9006BFADC /* Notifications.swift in Sources */,
@@ -1852,6 +1876,8 @@
 				7A2810041EDD0675003C7458 /* LanguageInteractor.swift in Sources */,
 				7A2810291EDDE41F003C7458 /* ShimmeringNode.swift in Sources */,
 				7A28100A1EDD2546003C7458 /* QuarterlyFeaturedView.swift in Sources */,
+				FE2FDEAB268A1D390023A853 /* QuarterlyViewV2.swift in Sources */,
+				FE2FDF8B268D6F7A0023A853 /* QuarterlyIntroductionView.swift in Sources */,
 				7A4129091EF4D05C0044D6E8 /* PickerViewController.swift in Sources */,
 				7A280FC51EDA04A6003C7458 /* Color.swift in Sources */,
 				7A3BCE301EE275F1003EC12B /* BibleView.swift in Sources */,

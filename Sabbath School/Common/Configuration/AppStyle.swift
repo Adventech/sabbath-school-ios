@@ -31,6 +31,14 @@ struct AppStyle {
         }
         
         struct Color {
+            static var navigationTitle: UIColor {
+                return .black | .white
+            }
+            
+            static var navigationTint: UIColor {
+                return AppStyle.Base.Color.navigationTitle
+            }
+            
             static var background: UIColor {
                 return .white | .black
             }
@@ -68,10 +76,11 @@ struct AppStyle {
             }
             
             static var tint: UIColor {
-                guard let color = Preferences.userDefaults.string(forKey: Constants.DefaultKey.tintColor) else {
-                    return .baseBlue
-                }
-                return UIColor(hex: color)
+                return AppStyle.Base.Color.navigationTint
+//                guard let color = Preferences.userDefaults.string(forKey: Constants.DefaultKey.tintColor) else {
+//                    return .baseBlue
+//                }
+//                return UIColor(hex: color)
             }
         }
         
@@ -189,9 +198,61 @@ struct AppStyle {
             static var backgroundHighlighted: UIColor {
                 return AppStyle.Base.Color.tableCellBackgroundHighlighted
             }
+            
+            static var gradientStart: UIColor {
+                return .white | .black
+            }
+            
+            static var gradientEnd: UIColor {
+                return UIColor.baseWhite1.withAlphaComponent(0.3) | .black
+            }
+            
+            static var seeAllIcon: UIColor {
+                return UIColor.baseGray2.lighter(componentDelta: 0.2) | UIColor.black.lighter(componentDelta: 0.2)
+            }
         }
         
         struct Text {
+            static func introduction(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.text,
+                    .font: R.font.latoMedium(size: 18)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func mainTitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.navigationTitle,
+                    .font: R.font.latoBlack(size: 36)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func groupName(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2,
+                    .font: R.font.latoBold(size: 13)!
+                ]
+                return NSAttributedString(string: string.uppercased(), attributes: attributes)
+            }
+            
+            static func seeMore(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseBlue,
+                    .font: R.font.latoRegular(size: 15)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func titleV2(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.navigationTitle,
+                    .font: R.font.latoBold(size: 15)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
             static func title(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: AppStyle.Base.Color.text,
@@ -201,9 +262,12 @@ struct AppStyle {
             }
             
             static func featuredTitle(string: String) -> NSAttributedString {
+                let style = NSMutableParagraphStyle()
+                style.alignment = .center
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: UIColor.white,
-                    .font: R.font.latoBold(size: 30)!
+                    .font: R.font.latoBold(size: 30)!,
+                    .paragraphStyle: style
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
             }
@@ -278,9 +342,9 @@ struct AppStyle {
                 return NSAttributedString(string: string, attributes: attributes)
             }
 
-            static func introduction(string: String, color: UIColor = .baseGray2) -> NSAttributedString {
+            static func introduction(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
-                    .foregroundColor: color,
+                    .foregroundColor: UIColor.white,
                     .font: R.font.latoMedium(size: 15)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
