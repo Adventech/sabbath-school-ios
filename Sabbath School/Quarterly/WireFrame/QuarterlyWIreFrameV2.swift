@@ -38,6 +38,23 @@ class QuarterlyWireFrameV2: QuarterlyWireFrameV2Protocol {
 
         return ASNavigationController(rootViewController: controller as! UIViewController)
     }
+    
+    func presentSingleGroupScreen(view: QuarterlyControllerV2Protocol, selectedQuarterlyGroup: QuarterlyGroup) {
+        let controller: QuarterlyControllerV2Protocol = SingleGroupQuarterlyController(selectedQuarterlyGroup: selectedQuarterlyGroup)
+        let presenter: QuarterlyPresenterV2Protocol & QuarterlyInteractorOutputProtocol = QuarterlyPresenterV2()
+        let wireFrame: QuarterlyWireFrameV2Protocol = QuarterlyWireFrameV2()
+        let interactor: QuarterlyInteractorInputProtocol = QuarterlyInteractor()
+        
+        controller.presenter = presenter
+        presenter.controller = controller
+        presenter.wireFrame = wireFrame
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        
+        if let sourceView = view as? UIViewController {
+            sourceView.show(controller as! UIViewController, sender: nil)
+        }
+    }
 
     func presentLessonScreen(view: QuarterlyControllerV2Protocol, quarterlyIndex: String, initiateOpenToday: Bool = false) {
         let lessonScreen = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpenToday)

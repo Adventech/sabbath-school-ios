@@ -27,14 +27,18 @@ class GroupedQuarterlyController: ASDKViewController<ASDisplayNode> {
     var quarterlyGroupView: QuarterlyGroupView
     let quarterlies: [Quarterly]
     let presenter: QuarterlyPresenterV2Protocol?
+    let quarterlyGroup: QuarterlyGroup
+    
     init(presenter: QuarterlyPresenterV2Protocol?, quarterlyGroup: QuarterlyGroup, quarterlies: [Quarterly], isLast: Bool) {
         self.presenter = presenter
         self.quarterlies = quarterlies
+        self.quarterlyGroup = quarterlyGroup
         self.quarterlyGroupView = QuarterlyGroupView(quarterlyGroup: quarterlyGroup, skipGradient: isLast)
         super.init(node: quarterlyGroupView)
         quarterlyGroupView.collectionNode.dataSource = self
         quarterlyGroupView.collectionNode.delegate = self
         quarterlyGroupView.collectionNode.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        quarterlyGroupView.seeAll.addTarget(self, action: #selector(self.showSingleGroupQuarterlyScreen(sender:)), forControlEvents: .touchUpInside)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -65,6 +69,11 @@ class GroupedQuarterlyController: ASDKViewController<ASDisplayNode> {
         lessonController.isPeeking = true
         lessonController.delegate = self
         return lessonController
+    }
+    
+    @objc func showSingleGroupQuarterlyScreen(sender: ASTextNode) {
+        print("SSDEBUG", "showSingleGroupQuarterlyScreen")
+        self.presenter?.presentSingleGroupScreen(selectedQuarterlyGroup: quarterlyGroup)
     }
 }
 

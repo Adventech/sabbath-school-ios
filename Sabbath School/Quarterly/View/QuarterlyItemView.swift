@@ -24,6 +24,7 @@ import AsyncDisplayKit
 import UIKit
 
 class QuarterlyItemView: ASCellNode {
+    var quarterly: Quarterly
     let cover = ASNetworkImageNode()
     var coverImage: RoundedCornersImage!
     let title = ASTextNode()
@@ -31,6 +32,7 @@ class QuarterlyItemView: ASCellNode {
     private let coverImageSize = CGSize(width: 150, height: 225)
 
     init(quarterly: Quarterly) {
+        self.quarterly = quarterly
         super.init()
         
         title.attributedText = AppStyle.Quarterly.Text.titleV2(string: quarterly.title)
@@ -45,6 +47,7 @@ class QuarterlyItemView: ASCellNode {
         
         coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: coverImageSize, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
         coverImage.style.alignSelf = .stretch
+        coverImage.imageNode.delegate = self
         automaticallyManagesSubnodes = true
     }
 
@@ -66,5 +69,14 @@ class QuarterlyItemView: ASCellNode {
     override func layoutDidFinish() {
         super.layoutDidFinish()
         cover.layer.shadowPath = UIBezierPath(roundedRect: cover.bounds, cornerRadius: coverCornerRadius).cgPath
+    }
+}
+
+extension QuarterlyItemView: ASNetworkImageNodeDelegate {
+    func imageNodeDidFinishDecoding(_ imageNode: ASNetworkImageNode) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let image = imageNode.image else { return }
+            Spotlight.indexQuarterly(quarterly: self.quarterly, image: image)
+        }
     }
 }

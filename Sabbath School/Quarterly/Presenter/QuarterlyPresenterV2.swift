@@ -63,6 +63,10 @@ class QuarterlyPresenterV2: QuarterlyPresenterV2Protocol {
         
         SwiftEntryKit.display(entry: gcPopupController, using: Animation.modalAnimationAttributes(widthRatio: width, heightRatio: height))
     }
+    
+    func presentSingleGroupScreen(selectedQuarterlyGroup: QuarterlyGroup) {
+        wireFrame?.presentSingleGroupScreen(view: controller!, selectedQuarterlyGroup: selectedQuarterlyGroup)
+    }
 }
 
 extension QuarterlyPresenterV2: QuarterlyInteractorOutputProtocol {

@@ -148,6 +148,7 @@
 		FE2FDEE5268A96CF0023A853 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */; };
 		FE2FDF83268D6F430023A853 /* QuarterlyIntroductionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */; };
 		FE2FDF8B268D6F7A0023A853 /* QuarterlyIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */; };
+		FE2FDFFB26923E0D0023A853 /* QuarterlyControllerCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */; };
 		FE420255265D93840061C589 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420254265D93840061C589 /* LanguageView.swift */; };
 		FE4427E9267547670038A863 /* FirebaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */; };
 		FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */; };
@@ -181,6 +182,7 @@
 		FE78D5412682E902004CEA11 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */; };
 		FE863F2A2662BD9F00ADCA36 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE863F292662BD9F00ADCA36 /* Animation.swift */; };
 		FE863F6426657E1800ADCA36 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE863F6326657E1700ADCA36 /* AppStyle.swift */; };
+		FEB149902692A63C003010E3 /* SingleGroupQuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB1498F2692A63C003010E3 /* SingleGroupQuarterlyController.swift */; };
 		FEC9218D267E315300422F3D /* ConfigurationShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC9218C267E315300422F3D /* ConfigurationShared.swift */; };
 		FEC9218E267E315300422F3D /* ConfigurationShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC9218C267E315300422F3D /* ConfigurationShared.swift */; };
 		FEC92193267E32C400422F3D /* PreferencesShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC92192267E32C400422F3D /* PreferencesShared.swift */; };
@@ -447,6 +449,7 @@
 		FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyIntroductionController.swift; sourceTree = "<group>"; };
 		FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyIntroductionView.swift; sourceTree = "<group>"; };
+		FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyControllerCommon.swift; sourceTree = "<group>"; };
 		FE420254265D93840061C589 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		FE5CC73A268914F000B9F061 /* QuarterlyControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyControllerV2.swift; sourceTree = "<group>"; };
 		FE5CC73F2689231700B9F061 /* QuarterlyPresenterV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyPresenterV2.swift; sourceTree = "<group>"; };
@@ -493,6 +496,7 @@
 		FE78D5042682DD78004CEA11 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FE863F292662BD9F00ADCA36 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		FE863F6326657E1700ADCA36 /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
+		FEB1498F2692A63C003010E3 /* SingleGroupQuarterlyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGroupQuarterlyController.swift; sourceTree = "<group>"; };
 		FEB9C73C20058B4C00C5BD5E /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = sr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FEB9C73D20058B4C00C5BD5E /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = sr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FEB9C73E20058B5300C5BD5E /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = ms.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -731,6 +735,8 @@
 				FE5CC73A268914F000B9F061 /* QuarterlyControllerV2.swift */,
 				FE5CC74E268939DD00B9F061 /* GroupedQuarterlyController.swift */,
 				FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */,
+				FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */,
+				FEB1498F2692A63C003010E3 /* SingleGroupQuarterlyController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1808,6 +1814,7 @@
 				7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */,
 				7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */,
 				7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */,
+				FEB149902692A63C003010E3 /* SingleGroupQuarterlyController.swift in Sources */,
 				7A2810141EDDCB1D003C7458 /* LessonProtocols.swift in Sources */,
 				FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */,
 				7A3BCE321EE27717003EC12B /* BibleWireFrame.swift in Sources */,
@@ -1861,6 +1868,7 @@
 				FE0249F8266A9068006BFADC /* Configuration.swift in Sources */,
 				7A280F971ED94964003C7458 /* R.generated.swift in Sources */,
 				7A280FE91EDCE4B1003C7458 /* Date.swift in Sources */,
+				FE2FDFFB26923E0D0023A853 /* QuarterlyControllerCommon.swift in Sources */,
 				7A280FE31EDCBA7D003C7458 /* QuarterlyView.swift in Sources */,
 				7A2810231EDDD011003C7458 /* LessonView.swift in Sources */,
 				7A3BCE401EE2F27F003EC12B /* ReadOptionsView.swift in Sources */,

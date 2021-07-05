@@ -24,7 +24,7 @@ import AsyncDisplayKit
 import UIKit
 
 class QuarterlyView: ASCellNode {
-    var quarterly: Quarterly?
+    var quarterly: Quarterly
     let cover = ASDisplayNode()
     var coverImage: RoundedCornersImage!
     let title = ASTextNode()
@@ -32,8 +32,8 @@ class QuarterlyView: ASCellNode {
     private let coverCornerRadius = CGFloat(6)
 
     init(quarterly: Quarterly) {
-        super.init()
         self.quarterly = quarterly
+        super.init()
         self.selectionStyle = .none
         backgroundColor = AppStyle.Base.Color.background
         
@@ -96,9 +96,9 @@ class QuarterlyView: ASCellNode {
 
 extension QuarterlyView: ASNetworkImageNodeDelegate {
     func imageNodeDidFinishDecoding(_ imageNode: ASNetworkImageNode) {
-        if let quarterly = quarterly {
+        DispatchQueue.global(qos: .userInitiated).async {
             guard let image = imageNode.image else { return }
-            Spotlight.indexQuarterly(quarterly: quarterly, image: image)
+            Spotlight.indexQuarterly(quarterly: self.quarterly, image: image)
         }
     }
 }

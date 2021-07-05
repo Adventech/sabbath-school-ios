@@ -35,6 +35,7 @@ protocol QuarterlyWireFrameV2Protocol: class {
     static func presentLoginScreen()
     func presentLessonScreen(view: QuarterlyControllerV2Protocol, quarterlyIndex: String, initiateOpenToday: Bool)
     func showLessonScreen(view: QuarterlyControllerV2Protocol, lessonScreen: LessonController)
+    func presentSingleGroupScreen(view: QuarterlyControllerV2Protocol, selectedQuarterlyGroup: QuarterlyGroup)
 }
 
 protocol QuarterlyPresenterV2Protocol: class {
@@ -47,6 +48,7 @@ protocol QuarterlyPresenterV2Protocol: class {
     func presentGCScreen()
     func presentLessonScreen(quarterlyIndex: String, initiateOpenToday: Bool)
     func showLessonScreen(lessonScreen: LessonController)
+    func presentSingleGroupScreen(selectedQuarterlyGroup: QuarterlyGroup)
     func presentQuarterlies()
 }
 

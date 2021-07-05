@@ -22,33 +22,18 @@
 
 import AsyncDisplayKit
 
-extension UIView {
-    var rectCorrespondingToWindow: CGRect{
-        return self.convert(self.bounds, to: nil)
-    }
-}
-
-class QuarterlyControllerV2: QuarterlyControllerCommon {
+class SingleGroupQuarterlyController: QuarterlyControllerCommon {
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")
     }
     
-    override init() {
-        super.init()
+    init(selectedQuarterlyGroup: QuarterlyGroup) {
+        super.init(selectedQuarterlyGroup: selectedQuarterlyGroup)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !Preferences.gcPopupStatus() {
-            Preferences.userDefaults.set(true, forKey: Constants.DefaultKey.gcPopup)
-            presenter?.presentGCScreen()
-        } else if initiateOpen ?? false {
-            let lastQuarterlyIndex = Preferences.currentQuarterly()
-            let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
-            if let code = languageCode.first, Preferences.currentLanguage().code == code {
-                presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex, initiateOpenToday: false)
-            }
-        }
+        setBackButton()
     }
     
     override func viewWillAppear(_ animated: Bool)  {
@@ -63,29 +48,9 @@ class QuarterlyControllerV2: QuarterlyControllerCommon {
     }
     
     private func setupNavigationBar() {
-        let settingsButton = UIBarButtonItem(image: R.image.iconNavbarSettings(), style: .done, target: self, action: #selector(showSettings))
-        settingsButton.accessibilityIdentifier = "openSettings"
-
-        let languagesButton = UIBarButtonItem(image: R.image.iconNavbarLanguage(), style: .done, target: self, action: #selector(showLanguages(sender:)))
-        languagesButton.accessibilityIdentifier = "openLanguage"
-
-        navigationItem.leftBarButtonItem = settingsButton
-        navigationItem.rightBarButtonItem = languagesButton
-        
         setNavigationBarOpacity(alpha: 0)
         self.navigationController?.navigationBar.hideBottomHairline()
         self.navigationController?.navigationBar.tintColor = AppStyle.Base.Color.navigationTint
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
-    }
-    
-    @objc func showSettings() {
-        let settings = SettingsController()
-
-        let nc = ASNavigationController(rootViewController: settings)
-        self.present(nc, animated: true)
-    }
-    
-    @objc func showLanguages(sender: UIBarButtonItem) {
-        presenter?.presentLanguageScreen()
     }
 }

@@ -48,6 +48,8 @@ class ReadController: ThemeController {
     var menuItems = [UIMenuItem]()
     
     var readIndex: Int?
+    
+    var scrollReachedTouchpoint: Bool = false
 
     override init() {
         super.init(node: ASPagerNode())
@@ -92,10 +94,17 @@ class ReadController: ThemeController {
         }
         self.appeared = true
     }
+    
+    private func setupNavigationBar() {
+        setNavigationBarOpacity(alpha: 0)
+        self.navigationController?.navigationBar.hideBottomHairline()
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.hideBottomHairline()
+        setupNavigationBar()
         scrollBehavior()
 
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
@@ -114,6 +123,16 @@ class ReadController: ThemeController {
 
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .slide
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return scrollReachedTouchpoint ? .default : .lightContent
+    }
+    
+    func statusBarUpdate(light: Bool) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+        })
     }
 
     @objc func readingOptions(sender: UIBarButtonItem) {
@@ -143,14 +162,28 @@ class ReadController: ThemeController {
         guard finished || !reads.isEmpty else { return }
         guard let readView = collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as? ReadView else { return }
         let scrollView = readView.webView.scrollView
+        
+        title = readView.read?.title.uppercased()
 
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height {
             if -scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight {
-                title = readView.read?.title.uppercased()
-                readNavigationBarStyle(titleColor: UIColor.white.withAlphaComponent(1-(-scrollView.contentOffset.y-navigationBarHeight)/navigationBarHeight))
+                let alpha = 1-(-scrollView.contentOffset.y-navigationBarHeight)/navigationBarHeight
+                readNavigationBarStyle(titleColor: UIColor.white.withAlphaComponent(alpha))
+                
+                self.navigationController?.navigationBar.titleTextAttributes =
+                    [NSAttributedString.Key.foregroundColor: UIColor.transitionColor(fromColor: UIColor.white.withAlphaComponent(alpha), toColor: AppStyle.Base.Color.navigationTitle, progress:alpha)]
+                    
+                self.navigationController?.navigationBar.tintColor = UIColor.transitionColor(fromColor: UIColor.white, toColor: AppStyle.Base.Color.navigationTint, progress: alpha)
+                setNavigationBarOpacity(alpha: alpha)
+                statusBarUpdate(light: alpha < 1)
+                scrollReachedTouchpoint = alpha >= 1
             } else {
                 title = ""
-                // setTransparentNavigation()
+                self.navigationController?.navigationBar.tintColor = .white
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
+                setNavigationBarOpacity(alpha: 0)
+                statusBarUpdate(light: true)
+                scrollReachedTouchpoint = false
             }
         }
 
