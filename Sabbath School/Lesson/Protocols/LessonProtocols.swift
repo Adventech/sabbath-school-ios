@@ -42,6 +42,7 @@ protocol LessonControllerProtocol: class {
 
 protocol LessonControllerDelegate: class {
     func shareQuarterly(quarterly: Quarterly)
+    func startedSwipingBack()
 }
 
 protocol LessonWireFrameProtocol: class {

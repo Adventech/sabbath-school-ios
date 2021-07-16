@@ -103,10 +103,6 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
         }
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     static func logOut(presentLoginScreen: Bool = true) {
         if let providerId = Auth.auth().currentUser?.providerData.first?.providerID, providerId == "apple.com" {
             Preferences.userDefaults.set(nil, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)

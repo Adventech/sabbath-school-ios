@@ -38,6 +38,8 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
     var quarterlyViewPreference: QuarterlyViewPreference = .grouped
     
     var table: ASTableNode { return node as! ASTableNode }
+    
+    private var currentTransitionCoordinator: UIViewControllerTransitionCoordinator?
 
     override init() {
         selectedQuarterlyGroup = nil
@@ -74,6 +76,26 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
                 registerForPreviewing(with: self, sourceView: table.view)
             }
         }
+        self.navigationController?.interactivePopGestureRecognizer?.addTarget(self, action:#selector(self.handlePopGesture))
+    }
+    
+    @objc func handlePopGesture(gesture: UIGestureRecognizer) -> Void {
+        switch gesture.state {
+        case .began, .changed:
+            if let ct = navigationController?.transitionCoordinator {
+                currentTransitionCoordinator = ct
+            }
+        case .cancelled, .ended:
+            currentTransitionCoordinator = nil
+        case .possible, .failed:
+            break
+        }
+
+        if let currentTransitionCoordinator = currentTransitionCoordinator {
+            if self.navigationController?.navigationBar.subviews.first?.alpha == 0 {
+                
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -87,7 +109,7 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
     
     func scrollBehavior() {
         let mn: CGFloat = 5
-        let initialOffset: CGFloat = 0
+        let initialOffset: CGFloat = 20
         if self.groupedQuarterlies.count <= 0 { return }
         let titleOrigin = (self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as! QuarterlyViewV2).title.view.rectCorrespondingToWindow
         guard let navigationBarMaxY =  self.navigationController?.navigationBar.rectCorrespondingToWindow.maxY else { return }
@@ -95,16 +117,20 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
         var navBarAlpha: CGFloat = (initialOffset - (titleOrigin.minY + mn - navigationBarMaxY)) / initialOffset
         var navBarTitleAlpha: CGFloat = titleOrigin.maxY-mn < navigationBarMaxY ? 1 : 0
         
-        if titleOrigin.minY <= 0 {
-            navBarAlpha = 1
-            navBarTitleAlpha = 1
-        }
+        print("SSDEBUG", navBarAlpha)
+        print("SSDEBUG", navBarTitleAlpha)
+        
+//        if titleOrigin.minY <= 0 {
+//            navBarAlpha = 1
+//            navBarTitleAlpha = 1
+//        }
+        
+        print("SSDEBUG", navBarAlpha)
         
         setNavigationBarOpacity(alpha: navBarAlpha)
         
-        self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(navBarTitleAlpha)]
         
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(navBarTitleAlpha)]
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -293,5 +319,10 @@ extension QuarterlyControllerCommon: ASTableDataSource {
 extension QuarterlyControllerCommon: LessonControllerDelegate {
     func shareQuarterly(quarterly: Quarterly) {
         Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [quarterly.title, quarterly.webURL])
+    }
+    
+    func startedSwipingBack() {
+        print("SSDEBUG", "started")
+        // scrollBehavior()
     }
 }

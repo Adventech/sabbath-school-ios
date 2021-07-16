@@ -35,8 +35,6 @@ final class LessonController: TableController {
     var initiateOpenToday: Bool?
     
     var scrollReachedTouchpoint: Bool = false
-    
-    private var currentTransitionCoordinator: UIViewControllerTransitionCoordinator?
 
     override init() {
         super.init()
@@ -54,21 +52,32 @@ final class LessonController: TableController {
         presenter?.configure()
         Armchair.userDidSignificantEvent(true)
         
-        if self.traitCollection.forceTouchCapability == .available, let view = tableNode?.view {
-            registerForPreviewing(with: self, sourceView: view)
+        if #available(iOS 13, *) {} else {
+            if self.traitCollection.forceTouchCapability == .available, let view = tableNode?.view {
+                registerForPreviewing(with: self, sourceView: view)
+            }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool)  {
-        super.viewWillAppear(animated)
+        
+//        scrollBehavior()
+//
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.navigationBar.tintColor = .white
+//        setBackButton()
         setupNavigationbar()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupNavigationbar()
-        scrollBehavior()
-    }
+//
+//    override func viewWillAppear(_ animated: Bool)  {
+//        super.viewWillAppear(animated)
+//        setupNavigationbar()
+//    }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        setupNavigationbar()
+//        scrollBehavior()
+//    }
     
     func setupNavigationbar() {
         setNavigationBarOpacity(alpha: 0)

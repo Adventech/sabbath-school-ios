@@ -145,4 +145,6 @@ extension GroupedQuarterlyController: LessonControllerDelegate {
     func shareQuarterly(quarterly: Quarterly) {
         Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [quarterly.title, quarterly.webURL])
     }
+    
+    func startedSwipingBack() {}
 }

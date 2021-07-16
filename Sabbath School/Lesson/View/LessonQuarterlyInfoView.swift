@@ -33,7 +33,6 @@ class LessonQuarterlyInfoView: ASCellNode {
     let readButton = ASButtonNode()
     let coverCornerRadius = CGFloat(6)
     
-    private let coverImageSize = CGSize(width: 187, height: 276)
     private let infiniteColor = ASDisplayNode()
 
     init(quarterly: Quarterly) {
@@ -81,7 +80,7 @@ class LessonQuarterlyInfoView: ASCellNode {
         cover.shadowOpacity = 0.3
         cover.clipsToBounds = false
 
-        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: coverImageSize, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
+        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: AppStyle.Lesson.Size.coverImageSize(), backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
         coverImage.style.alignSelf = .stretch
 
         addSubnode(title)
@@ -98,10 +97,8 @@ class LessonQuarterlyInfoView: ASCellNode {
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        cover.style.preferredSize = coverImageSize
-        title.style.spacingBefore = 30
-        title.style.spacingAfter = 10
-        readButton.style.spacingBefore = 10
+        cover.style.preferredSize = AppStyle.Lesson.Size.coverImageSize()
+        coverImage.style.preferredSize = AppStyle.Lesson.Size.coverImageSize()
 
         let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
         let coverHSpec = ASStackLayoutSpec(
@@ -111,28 +108,41 @@ class LessonQuarterlyInfoView: ASCellNode {
             alignItems: .center,
             children: [coverSpec])
         
+        var vSpecChildren: [ASLayoutElement] = [title, humanDate, introduction]
+        
+        if Helper.isPhone {
+            vSpecChildren.insert(readButton, at: 2)
+        }
+        
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 15,
-            justifyContent: .center,
-            alignItems: .center,
-            children: [humanDate, readButton, introduction]
+            justifyContent: Helper.isPad ? .start : .center,
+            alignItems: Helper.isPad ? .start : .center,
+            children: vSpecChildren
         )
         
+        vSpec.style.flexShrink = 1.0
+        // vSpec.style.spacingBefore = Helper.isPad ? 0 : 20
+        
         let mainSpec = ASStackLayoutSpec(
-            direction: .vertical,
-            spacing: 0,
-            justifyContent: .center,
-            alignItems: .center,
-            children: [coverHSpec, title, vSpec]
+            direction: Helper.isPad ? .horizontal : .vertical,
+            spacing: 20,
+            justifyContent: Helper.isPad ? .start : .center,
+            alignItems: Helper.isPad ? .center : .center,
+            children: [coverHSpec, vSpec]
         )
+        
+        if Helper.isPad {
+            mainSpec.children?.append(readButton)
+        }
 
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 15), child: mainSpec)
     }
 
     override func layout() {
         super.layout()
-        infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-10000, width: calculatedSize.width, height: 10000)
+        infiniteColor.frame = CGRect(x: 0, y: calculatedSize.height-2000, width: calculatedSize.width, height: 2000)
     }
 
     override func layoutDidFinish() {

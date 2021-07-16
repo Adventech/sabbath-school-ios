@@ -302,9 +302,28 @@ struct AppStyle {
                 return NSAttributedString(string: string, attributes: attributes)
             }
         }
+        
+        struct Size {
+            struct Grouped {
+                static var coverSize: CGSize {
+                    return CGSize.init(width: 150, height: 225)
+                }
+            }
+            
+        }
     }
     
     struct Lesson {
+        struct Size {
+            static func coverImageSize() -> CGSize {
+                let defaultSize = CGSize(width: 187, height: 276)
+                if Helper.isPad { return defaultSize }
+                
+                let width = UIScreen.main.bounds.width / 2.7
+                
+                return CGSize(width: width, height: width / (defaultSize.width / defaultSize.height))
+            }
+        }
         struct Button {
             static func readButtonUIEdgeInsets() -> UIEdgeInsets {
                 return AppStyle.Base.Button.pillButtonUIEdgeInsets()
