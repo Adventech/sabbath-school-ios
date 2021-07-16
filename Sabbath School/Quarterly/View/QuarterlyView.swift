@@ -97,8 +97,10 @@ class QuarterlyView: ASCellNode {
 extension QuarterlyView: ASNetworkImageNodeDelegate {
     func imageNodeDidFinishDecoding(_ imageNode: ASNetworkImageNode) {
         if let quarterly = quarterly {
-            guard let image = imageNode.image else { return }
-            Spotlight.indexQuarterly(quarterly: quarterly, image: image)
+            DispatchQueue.global(qos: .userInitiated).async {
+                guard let image = imageNode.image else { return }
+                Spotlight.indexQuarterly(quarterly: quarterly, image: image)
+            }
         }
     }
 }

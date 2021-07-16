@@ -167,6 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             launchQuarterlies()
             return true
         }
+        
         return true
     }
     
