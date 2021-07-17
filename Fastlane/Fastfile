@@ -15,7 +15,7 @@ end
 
 lane :release do
   match_sync(type: "appstore")
-  increment_build
+  increment_build_number
   build(submit: true)
   deliverApp
 end
@@ -27,6 +27,17 @@ lane :deliverApp do |options|
     force: true,
     automatic_release: false,
     skip_screenshots: true
+  )
+end
+
+lane :metadata do
+  deliver(
+    submit_for_review: false,
+    force: true,
+    automatic_release: false,
+    skip_metadata: false,
+    skip_screenshots: true,
+    skip_binary_upload: true
   )
 end
 
