@@ -39,16 +39,16 @@ class QuarterlyControllerV2: QuarterlyControllerCommon {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if !Preferences.gcPopupStatus() {
-//            Preferences.userDefaults.set(true, forKey: Constants.DefaultKey.gcPopup)
-//            presenter?.presentGCScreen()
-//        } else if initiateOpen ?? false {
-//            let lastQuarterlyIndex = Preferences.currentQuarterly()
-//            let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
-//            if let code = languageCode.first, Preferences.currentLanguage().code == code {
-//                presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex, initiateOpenToday: false)
-//            }
-//        }
+        if !Preferences.gcPopupStatus() {
+            Preferences.userDefaults.set(true, forKey: Constants.DefaultKey.gcPopup)
+            presenter?.presentGCScreen()
+        } else if initiateOpen ?? false {
+            let lastQuarterlyIndex = Preferences.currentQuarterly()
+            let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
+            if let code = languageCode.first, Preferences.currentLanguage().code == code {
+                presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex, initiateOpenToday: false)
+            }
+        }
         setupNavigationBar()
     }
     
