@@ -56,7 +56,6 @@ class GroupedQuarterlyController: ASDKViewController<ASDisplayNode> {
         super.viewDidLayoutSubviews()
         
         if #available(iOS 13, *) {} else {
-            print("SSDEBUG forceTouch", self.traitCollection.forceTouchCapability)
             if self.traitCollection.forceTouchCapability == .available {
                 registerForPreviewing(with: self, sourceView: quarterlyGroupView.collectionNode.view)
             }
@@ -72,7 +71,6 @@ class GroupedQuarterlyController: ASDKViewController<ASDisplayNode> {
     }
     
     @objc func showSingleGroupQuarterlyScreen(sender: ASTextNode) {
-        print("SSDEBUG", "showSingleGroupQuarterlyScreen")
         self.presenter?.presentSingleGroupScreen(selectedQuarterlyGroup: quarterlyGroup)
     }
 }
@@ -145,6 +143,4 @@ extension GroupedQuarterlyController: LessonControllerDelegate {
     func shareQuarterly(quarterly: Quarterly) {
         Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [quarterly.title, quarterly.webURL])
     }
-    
-    func startedSwipingBack() {}
 }

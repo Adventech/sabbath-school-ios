@@ -29,7 +29,6 @@ class QuarterlyItemView: ASCellNode {
     var coverImage: RoundedCornersImage!
     let title = ASTextNode()
     private let coverCornerRadius = CGFloat(6)
-    private let coverImageSize = CGSize(width: 150, height: 225)
 
     init(quarterly: Quarterly) {
         self.quarterly = quarterly
@@ -45,15 +44,18 @@ class QuarterlyItemView: ASCellNode {
         cover.clipsToBounds = false
         cover.cornerRadius = coverCornerRadius
         
-        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: coverImageSize, backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
+        coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: AppStyle.Quarterly.Size.coverImage(), backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
         coverImage.style.alignSelf = .stretch
         coverImage.imageNode.delegate = self
         automaticallyManagesSubnodes = true
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        cover.style.preferredSize = coverImageSize
+        cover.style.preferredSize = AppStyle.Quarterly.Size.coverImage()
+        coverImage.style.preferredSize = AppStyle.Quarterly.Size.coverImage()
         title.style.spacingBefore = 10
+        title.style.spacingAfter = 20
+        title.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(AppStyle.Quarterly.Size.coverImage().width), height: ASDimensionMake(.auto, 0))
         
         let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
         
@@ -63,7 +65,7 @@ class QuarterlyItemView: ASCellNode {
                    justifyContent: .start,
                    alignItems: .start,
                    children: [coverSpec, title])
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), child: mainSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: AppStyle.Quarterly.Size.xPadding(), bottom: 0, right: AppStyle.Quarterly.Size.xPadding()), child: mainSpec)
     }
     
     override func layoutDidFinish() {

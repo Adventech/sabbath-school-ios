@@ -36,7 +36,7 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
     var initiateOpen: Bool?
     
     var quarterlyViewPreference: QuarterlyViewPreference = .grouped
-    
+    var everScrolled: Bool = false
     var table: ASTableNode { return node as! ASTableNode }
     
     private var currentTransitionCoordinator: UIViewControllerTransitionCoordinator?
@@ -56,6 +56,7 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
     func setupTable() {
         self.table.dataSource = self
         self.table.delegate = self
+        self.table.backgroundColor = AppStyle.Base.Color.background
         title = "Sabbath School".localized()
     }
 
@@ -108,28 +109,23 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
     }
     
     func scrollBehavior() {
+        
         let mn: CGFloat = 5
         let initialOffset: CGFloat = 20
         if self.groupedQuarterlies.count <= 0 { return }
-        let titleOrigin = (self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as! QuarterlyViewV2).title.view.rectCorrespondingToWindow
+        let titleOrigin = (self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as! QuarterlyHeaderView).title.view.rectCorrespondingToWindow
+        
         guard let navigationBarMaxY =  self.navigationController?.navigationBar.rectCorrespondingToWindow.maxY else { return }
         
         var navBarAlpha: CGFloat = (initialOffset - (titleOrigin.minY + mn - navigationBarMaxY)) / initialOffset
         var navBarTitleAlpha: CGFloat = titleOrigin.maxY-mn < navigationBarMaxY ? 1 : 0
-        
-        print("SSDEBUG", navBarAlpha)
-        print("SSDEBUG", navBarTitleAlpha)
-        
-//        if titleOrigin.minY <= 0 {
-//            navBarAlpha = 1
-//            navBarTitleAlpha = 1
-//        }
-        
-        print("SSDEBUG", navBarAlpha)
+
+        if titleOrigin.minY == 0 && titleOrigin.maxY == 0 {
+            navBarAlpha = 0
+            navBarTitleAlpha = 0
+        }
         
         setNavigationBarOpacity(alpha: navBarAlpha)
-        
-        
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(navBarTitleAlpha)]
     }
     
@@ -173,11 +169,9 @@ extension QuarterlyControllerCommon: UIViewControllerPreviewingDelegate {
 extension QuarterlyControllerCommon: QuarterlyControllerV2Protocol {
     func showQuarterlies(quarterlies: [Quarterly]) {
         groupedQuarterlies = [QuarterlyGroup: [Quarterly]]()
-        var groupWeight: Int = 100
         var initialQuarterlyGroup: QuarterlyGroup?
         for quarterly in quarterlies {
-            if let selectedQuarterlyGroup = selectedQuarterlyGroup, let quarterlyName = quarterly.quarterlyName {
-                let quarterlyGroup = QuarterlyGroup(name: quarterlyName)
+            if let selectedQuarterlyGroup = selectedQuarterlyGroup, let quarterlyGroup = quarterly.quarterlyGroup {
                 if (quarterlyGroup != selectedQuarterlyGroup) { continue }
                 if groupedQuarterlies[selectedQuarterlyGroup] != nil {
                     groupedQuarterlies[selectedQuarterlyGroup]?.append(quarterly)
@@ -185,11 +179,9 @@ extension QuarterlyControllerCommon: QuarterlyControllerV2Protocol {
                     groupedQuarterlies[selectedQuarterlyGroup] = [quarterly]
                 }
             } else {
-                var quarterlyGroup: QuarterlyGroup
+                var quarterlyGroup: QuarterlyGroup? = quarterly.quarterlyGroup
                 
-                if let quarterlyName = quarterly.quarterlyName {
-                    quarterlyGroup = QuarterlyGroup(name: quarterlyName)
-                } else {
+                if quarterlyGroup == nil {
                     if groupedQuarterlies.isEmpty {
                         quarterlyGroup = QuarterlyGroup(name: "Empty")
                         if initialQuarterlyGroup == nil {
@@ -200,19 +192,17 @@ extension QuarterlyControllerCommon: QuarterlyControllerV2Protocol {
                     }
                 }
                 
-                if groupedQuarterlies[quarterlyGroup] != nil {
-                    groupedQuarterlies[quarterlyGroup]?.append(quarterly)
+                if groupedQuarterlies[quarterlyGroup!] != nil {
+                    groupedQuarterlies[quarterlyGroup!]?.append(quarterly)
                 } else {
-                    groupWeight += 100
-                    quarterlyGroup.setGroupWeight(weight: groupWeight)
-                    groupedQuarterlies[quarterlyGroup] = [quarterly]
+                    groupedQuarterlies[quarterlyGroup!] = [quarterly]
                     if initialQuarterlyGroup == nil {
-                        initialQuarterlyGroup = quarterlyGroup
+                        initialQuarterlyGroup = quarterlyGroup!
                     }
                 }
             }
         }
-        groupedQuarterliesKeys = Array(groupedQuarterlies.keys).sorted(by: { $0.weight < $1.weight })
+        groupedQuarterliesKeys = Array(groupedQuarterlies.keys).sorted(by: { $0.order < $1.order })
         quarterlyViewPreference = groupedQuarterliesKeys.count == 1 ? .ungrouped : .grouped
         self.table.allowsSelection = quarterlyViewPreference == .ungrouped
         self.table.reloadData()
@@ -222,20 +212,28 @@ extension QuarterlyControllerCommon: QuarterlyControllerV2Protocol {
 
 extension QuarterlyControllerCommon: ASTableDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        everScrolled = true
         scrollBehavior()
     }
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        everScrolled = true
         scrollBehavior()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        everScrolled = true
         scrollBehavior()
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 1
     }
     
     @available(iOS 13.0, *)
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         if quarterlyViewPreference == .grouped { return nil }
+        if indexPath.section != 1 { return nil }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: {
             guard let lessonController = self.getLessonControllerForPeek(indexPath: indexPath, point: point) else { return nil }
             return lessonController
@@ -261,6 +259,7 @@ extension QuarterlyControllerCommon: ASTableDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section != 1 { return }
         if !self.groupedQuarterlies.isEmpty && quarterlyViewPreference == .ungrouped {
             let quarterly = groupedQuarterlies[groupedQuarterliesKeys[0]]![indexPath.row]
             presenter?.presentLessonScreen(quarterlyIndex: quarterly.index, initiateOpenToday: false)
@@ -272,7 +271,7 @@ extension QuarterlyControllerCommon: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         if indexPath.section == 0 {
             let cellNodeBlock: () -> ASCellNode = {
-                return QuarterlyViewV2(title: self.selectedQuarterlyGroup?.name ?? "Sabbath School".localized())
+                return QuarterlyHeaderView(title: self.selectedQuarterlyGroup?.name ?? "Sabbath School".localized())
             }
             return cellNodeBlock
         }
@@ -295,8 +294,10 @@ extension QuarterlyControllerCommon: ASTableDataSource {
             let node = ASCellNode(viewControllerBlock: { () -> UIViewController in
                 return GroupedQuarterlyController(presenter: self.presenter, quarterlyGroup: key, quarterlies: self.groupedQuarterlies[key] ?? [], isLast: indexPath.row == self.groupedQuarterliesKeys.count-1)
             }, didLoad: nil)
-
-            let size = CGSize(width: self.table.bounds.size.width, height: 358)
+            
+            node.layoutIfNeeded()
+            
+            let size = CGSize(width: self.table.bounds.size.width, height: AppStyle.Quarterly.Size.coverImage().height + 140)
             node.style.preferredSize = size
             return {
                 return node
@@ -319,10 +320,5 @@ extension QuarterlyControllerCommon: ASTableDataSource {
 extension QuarterlyControllerCommon: LessonControllerDelegate {
     func shareQuarterly(quarterly: Quarterly) {
         Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [quarterly.title, quarterly.webURL])
-    }
-    
-    func startedSwipingBack() {
-        print("SSDEBUG", "started")
-        // scrollBehavior()
     }
 }

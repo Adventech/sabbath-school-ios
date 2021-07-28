@@ -115,7 +115,7 @@ struct LessonInfoWidgetView : View {
                 alignment: .topLeading)
             .padding(.top, 15)
             .padding(.bottom, 15)
-        }.widgetURL(entry.lessonInfo.lesson.webURL)
+        }.widgetURL(entry.quarterly.webURL)
     }
 }
 

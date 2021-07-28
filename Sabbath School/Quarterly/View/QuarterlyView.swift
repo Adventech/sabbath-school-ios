@@ -81,7 +81,7 @@ class QuarterlyView: ASCellNode {
             children: [coverSpec, vSpec]
         )
 
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15), child: hSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: AppStyle.Quarterly.Size.xPadding() + AppStyle.Quarterly.Size.xInset(), bottom: 20, right: AppStyle.Quarterly.Size.xPadding() + AppStyle.Quarterly.Size.xInset()), child: hSpec)
     }
 
     override func layoutDidFinish() {

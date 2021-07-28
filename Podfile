@@ -4,6 +4,7 @@ inhibit_all_warnings!
 
 target 'Sabbath School' do
   pod 'Armchair'
+  pod 'Down'
   pod 'Firebase/Crashlytics'
   pod 'FBSDKLoginKit'
   pod 'Firebase/Auth'

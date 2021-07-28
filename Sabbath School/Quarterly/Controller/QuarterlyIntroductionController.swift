@@ -56,7 +56,7 @@ class QuarterlyIntroductionController: ASDKViewController<ASDisplayNode> {
 extension QuarterlyIntroductionController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let cellNodeBlock: () -> ASCellNode = {
-            return QuarterlyIntroductionView(introduction: self.quarterly.description)
+            return QuarterlyIntroductionView(introduction: self.quarterly.introduction)
         }
 
         return cellNodeBlock

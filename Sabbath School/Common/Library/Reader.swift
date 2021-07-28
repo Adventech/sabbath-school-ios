@@ -47,16 +47,16 @@ struct ReaderStyle {
 
         var navBarColor: UIColor {
             switch self {
-            case .light: return AppStyle.Base.Color.tint
-            case .sepia: return AppStyle.Base.Color.tint
+            case .light: return AppStyle.Reader.Color.white
+            case .sepia: return AppStyle.Reader.Color.sepia
             case .dark: return AppStyle.Reader.Color.dark
             }
         }
 
         var navBarTextColor: UIColor {
             switch self {
-            case .light: return .white
-            case .sepia: return .white
+            case .light: return .black
+            case .sepia: return .black
             case .dark: return .white
             }
         }

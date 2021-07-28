@@ -143,12 +143,13 @@
 		FE1E35002673C5DF00DAC2D6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1E34FF2673C5DF00DAC2D6 /* SwiftUI.framework */; };
 		FE1E35052673C5E300DAC2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1E35042673C5E300DAC2D6 /* Assets.xcassets */; };
 		FE1E35092673C5E300DAC2D6 /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FE2FDEAB268A1D390023A853 /* QuarterlyViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDEAA268A1D390023A853 /* QuarterlyViewV2.swift */; };
+		FE2FDEAB268A1D390023A853 /* QuarterlyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDEAA268A1D390023A853 /* QuarterlyHeaderView.swift */; };
 		FE2FDEE4268A96CF0023A853 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */; };
 		FE2FDEE5268A96CF0023A853 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */; };
 		FE2FDF83268D6F430023A853 /* QuarterlyIntroductionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */; };
 		FE2FDF8B268D6F7A0023A853 /* QuarterlyIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */; };
 		FE2FDFFB26923E0D0023A853 /* QuarterlyControllerCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */; };
+		FE3FFA5426B11F4E0037539F /* QuarterlyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */; };
 		FE420255265D93840061C589 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420254265D93840061C589 /* LanguageView.swift */; };
 		FE4427E9267547670038A863 /* FirebaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */; };
 		FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */; };
@@ -177,6 +178,7 @@
 		FE611AB3267501A8003CDDB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FEA1EDCEAD2003C7458 /* Constants.swift */; };
 		FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FEA1EDCEAD2003C7458 /* Constants.swift */; };
 		FE611ACC267502EC003CDDB5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE81EDCE4B1003C7458 /* Date.swift */; };
+		FE620E6C26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE620E6B26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift */; };
 		FE78D4FF2682C0EB004CEA11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF371531EF9CB3400547916 /* Localizable.strings */; };
 		FE78D5402682E902004CEA11 /* GoogleService-Info-Stage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */; };
 		FE78D5412682E902004CEA11 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */; };
@@ -200,6 +202,11 @@
 		FED6B3122680E6F7007093CE /* WidgetInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6B3112680E6F7007093CE /* WidgetInteractor.swift */; };
 		FED6B353268133B2007093CE /* FeaturedTodayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6B352268133B2007093CE /* FeaturedTodayWidgetView.swift */; };
 		FED6B35826818BEA007093CE /* FeaturedTodayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6B35726818BEA007093CE /* FeaturedTodayWidget.swift */; };
+		FEF4B75326AF934100548E36 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B75226AF934100548E36 /* Feature.swift */; };
+		FEF4B78A26AF98A900548E36 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B75226AF934100548E36 /* Feature.swift */; };
+		FEF4B79426AF9A9B00548E36 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B79326AF9A9B00548E36 /* Credits.swift */; };
+		FEF4B79526AF9A9B00548E36 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B79326AF9A9B00548E36 /* Credits.swift */; };
+		FEF4B7A226AF9C7200548E36 /* LessonQuarterlyFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B7A126AF9C7200548E36 /* LessonQuarterlyFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -444,7 +451,7 @@
 		FE1E34FF2673C5DF00DAC2D6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		FE1E35042673C5E300DAC2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE1E35062673C5E300DAC2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE2FDEAA268A1D390023A853 /* QuarterlyViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyViewV2.swift; sourceTree = "<group>"; };
+		FE2FDEAA268A1D390023A853 /* QuarterlyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyHeaderView.swift; sourceTree = "<group>"; };
 		FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyIntroductionController.swift; sourceTree = "<group>"; };
@@ -462,6 +469,7 @@
 		FE611A6D2674FA3C003CDDB5 /* TodayWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetProvider.swift; sourceTree = "<group>"; };
 		FE611A872674FDFD003CDDB5 /* TodayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidget.swift; sourceTree = "<group>"; };
 		FE611A8F2674FE8D003CDDB5 /* TodayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetView.swift; sourceTree = "<group>"; };
+		FE620E6B26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonQuarterlyInfoSplashView.swift; sourceTree = "<group>"; };
 		FE6FAA0B2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FE6FAA0C2210903C00B0C002 /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FE6FAA0D2210904B00B0C002 /* my */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = my; path = my.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -514,6 +522,9 @@
 		FED6B352268133B2007093CE /* FeaturedTodayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedTodayWidgetView.swift; sourceTree = "<group>"; };
 		FED6B35726818BEA007093CE /* FeaturedTodayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedTodayWidget.swift; sourceTree = "<group>"; };
 		FEE3024224730E8000A71314 /* MenuItemKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MenuItemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEF4B75226AF934100548E36 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		FEF4B79326AF9A9B00548E36 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
+		FEF4B7A126AF9C7200548E36 /* LessonQuarterlyFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonQuarterlyFooter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -775,7 +786,7 @@
 				FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */,
 				FE5CC749268926B800B9F061 /* QuarterlyGroupView.swift */,
 				FE5CC7A0268A156B00B9F061 /* QuarterlyItemView.swift */,
-				FE2FDEAA268A1D390023A853 /* QuarterlyViewV2.swift */,
+				FE2FDEAA268A1D390023A853 /* QuarterlyHeaderView.swift */,
 				FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */,
 			);
 			path = View;
@@ -925,7 +936,9 @@
 			children = (
 				7A2810221EDDD011003C7458 /* LessonView.swift */,
 				7A922E021EDE348D00C12A67 /* LessonQuarterlyInfoView.swift */,
+				FE620E6B26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift */,
 				7A3BCE221EE262C7003EC12B /* LessonEmptyCellNode.swift */,
+				FEF4B7A126AF9C7200548E36 /* LessonQuarterlyFooter.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1196,6 +1209,8 @@
 				7AC26AF41EE5EBDE003F946C /* ReadComments.swift */,
 				7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */,
 				FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */,
+				FEF4B75226AF934100548E36 /* Feature.swift */,
+				FEF4B79326AF9A9B00548E36 /* Credits.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1558,6 +1573,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Sabbath School/Pods-Sabbath School-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/Armchair/Armchair.framework",
+				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
@@ -1586,6 +1602,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Armchair.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
@@ -1781,6 +1798,7 @@
 			files = (
 				7A280FC91EDA0EB5003C7458 /* LoginPresenter.swift in Sources */,
 				7A922E121EDF89D600C12A67 /* ReadProtocols.swift in Sources */,
+				FEF4B7A226AF9C7200548E36 /* LessonQuarterlyFooter.swift in Sources */,
 				7A922E031EDE348D00C12A67 /* LessonQuarterlyInfoView.swift in Sources */,
 				7A2810021EDD060F003C7458 /* LanguagePresenter.swift in Sources */,
 				FE1E34BE2672874800DAC2D6 /* ShareItem.swift in Sources */,
@@ -1804,6 +1822,7 @@
 				7A280FD01EDA23F0003C7458 /* LoginInteractor.swift in Sources */,
 				7A922E091EDF623500C12A67 /* TableController.swift in Sources */,
 				7A280FCE1EDA10ED003C7458 /* LoginProtocols.swift in Sources */,
+				FE620E6C26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift in Sources */,
 				7AF3261A1EFF998D00A04568 /* Range.swift in Sources */,
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,
 				7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */,
@@ -1814,6 +1833,7 @@
 				7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */,
 				7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */,
 				7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */,
+				FEF4B75326AF934100548E36 /* Feature.swift in Sources */,
 				FEB149902692A63C003010E3 /* SingleGroupQuarterlyController.swift in Sources */,
 				7A2810141EDDCB1D003C7458 /* LessonProtocols.swift in Sources */,
 				FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */,
@@ -1852,6 +1872,7 @@
 				7A2810001EDD051D003C7458 /* Image.swift in Sources */,
 				7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */,
 				7A2810251EDDE2AA003C7458 /* QuarterlyEmptyView.swift in Sources */,
+				FEF4B79426AF9A9B00548E36 /* Credits.swift in Sources */,
 				FE5CC74A268926B800B9F061 /* QuarterlyGroupView.swift in Sources */,
 				FE5CC7A1268A156B00B9F061 /* QuarterlyItemView.swift in Sources */,
 				FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */,
@@ -1884,7 +1905,7 @@
 				7A2810041EDD0675003C7458 /* LanguageInteractor.swift in Sources */,
 				7A2810291EDDE41F003C7458 /* ShimmeringNode.swift in Sources */,
 				7A28100A1EDD2546003C7458 /* QuarterlyFeaturedView.swift in Sources */,
-				FE2FDEAB268A1D390023A853 /* QuarterlyViewV2.swift in Sources */,
+				FE2FDEAB268A1D390023A853 /* QuarterlyHeaderView.swift in Sources */,
 				FE2FDF8B268D6F7A0023A853 /* QuarterlyIntroductionView.swift in Sources */,
 				7A4129091EF4D05C0044D6E8 /* PickerViewController.swift in Sources */,
 				7A280FC51EDA04A6003C7458 /* Color.swift in Sources */,
@@ -1903,6 +1924,7 @@
 				FED6B3032680E0D9007093CE /* String.swift in Sources */,
 				FE611AAB267500F5003CDDB5 /* Day.swift in Sources */,
 				FEC92205267FB09100422F3D /* Color.swift in Sources */,
+				FE3FFA5426B11F4E0037539F /* QuarterlyGroup.swift in Sources */,
 				FE611AAD267500F5003CDDB5 /* Comment.swift in Sources */,
 				FE611AAC267500F5003CDDB5 /* LessonInfo.swift in Sources */,
 				FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */,
@@ -1918,6 +1940,7 @@
 				FEC9218E267E315300422F3D /* ConfigurationShared.swift in Sources */,
 				FE611AA9267500F5003CDDB5 /* Read.swift in Sources */,
 				FE611A9B2674FECA003CDDB5 /* TodayWidgetView.swift in Sources */,
+				FEF4B78A26AF98A900548E36 /* Feature.swift in Sources */,
 				FE611AA5267500F5003CDDB5 /* QuarterlyInfo.swift in Sources */,
 				FE611ACC267502EC003CDDB5 /* Date.swift in Sources */,
 				FE611AAA267500F5003CDDB5 /* BibleVerses.swift in Sources */,
@@ -1929,6 +1952,7 @@
 				FEC9219B267E452800422F3D /* Helper.swift in Sources */,
 				FED6B35826818BEA007093CE /* FeaturedTodayWidget.swift in Sources */,
 				FE4427E9267547670038A863 /* FirebaseDecoder.swift in Sources */,
+				FEF4B79526AF9A9B00548E36 /* Credits.swift in Sources */,
 				FE611AA7267500F5003CDDB5 /* ReadComments.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,6 +5,7 @@ PODS:
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
   - Armchair (0.3.7)
+  - Down (0.11.0)
   - FBSDKCoreKit (9.3.0):
     - FBSDKCoreKit/Basics (= 9.3.0)
     - FBSDKCoreKit/Core (= 9.3.0)
@@ -189,6 +190,7 @@ PODS:
 
 DEPENDENCIES:
   - Armchair
+  - Down
   - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
@@ -214,6 +216,7 @@ SPEC REPOS:
   trunk:
     - AppAuth
     - Armchair
+    - Down
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -257,6 +260,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Armchair: ea2da13f78515da627bd63d9540bd58a50e71562
+  Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
   FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
   FBSDKLoginKit: aea68df6121c5e165ccae2fabfdc83c4644ee40f
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
@@ -297,6 +301,6 @@ SPEC CHECKSUMS:
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: d1c8c5e9bac5e591651281ce79e9ab878deb74a9
+PODFILE CHECKSUM: 2b07e294f3b4fc4071a87c89ab290364f09d08a3
 
 COCOAPODS: 1.10.0

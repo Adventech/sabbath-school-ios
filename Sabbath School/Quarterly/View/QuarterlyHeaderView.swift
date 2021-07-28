@@ -23,16 +23,17 @@
 import AsyncDisplayKit
 import UIKit
 
-class QuarterlyViewV2: ASCellNode {
+class QuarterlyHeaderView: ASCellNode {
     let title = ASTextNode()
     
     init(title: String) {
         super.init()
         self.title.attributedText = AppStyle.Quarterly.Text.mainTitle(string: title)
+        backgroundColor = AppStyle.Base.Color.background
         automaticallyManagesSubnodes = true
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20), child: title)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: AppStyle.Quarterly.Size.xPadding() + AppStyle.Quarterly.Size.xInset(), bottom: 0, right: AppStyle.Quarterly.Size.xPadding() + AppStyle.Quarterly.Size.xInset()), child: title)
     }
 }

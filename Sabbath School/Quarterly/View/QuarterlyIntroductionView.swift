@@ -21,6 +21,7 @@
  */
 
 import AsyncDisplayKit
+import Down
 import UIKit
 
 class QuarterlyIntroductionView: ASCellNode {
@@ -29,11 +30,13 @@ class QuarterlyIntroductionView: ASCellNode {
     init(introduction: String) {
         super.init()
         self.backgroundColor = AppStyle.Base.Color.background
-        self.introduction.attributedText = AppStyle.Quarterly.Text.introduction(string: introduction)
+        let down = Down(markdownString: introduction)
+        self.introduction.attributedText = try? down.toAttributedString(stylesheet: AppStyle.Quarterly.Style.introductionStylesheet)
+
         automaticallyManagesSubnodes = true
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15), child: introduction)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20), child: introduction)
     }
 }

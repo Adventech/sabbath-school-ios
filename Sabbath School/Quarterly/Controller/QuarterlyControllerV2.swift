@@ -77,6 +77,7 @@ class QuarterlyControllerV2: QuarterlyControllerCommon {
         self.navigationController?.navigationBar.hideBottomHairline()
         self.navigationController?.navigationBar.tintColor = AppStyle.Base.Color.navigationTint
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
+        self.navigationController?.navigationBar.barTintColor = nil
     }
     
     @objc func showSettings() {

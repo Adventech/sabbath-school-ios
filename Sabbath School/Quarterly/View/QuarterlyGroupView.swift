@@ -25,6 +25,7 @@ import UIKit
 
 extension ASDisplayNode {
     func gradient(from color1: UIColor, to color2: UIColor) {
+        // return
         if color1 == color2 { return }
         DispatchQueue.main.async {
             let size = self.view.frame.size
@@ -40,6 +41,41 @@ extension ASDisplayNode {
             self.view.layer.insertSublayer(gradient, at: 0)
         }
     }
+    
+    func gradientBlur(from color1: UIColor, to color2: UIColor) {
+        // return
+        if color1 == color2 { return }
+        DispatchQueue.main.async {
+            let size = self.view.frame.size
+            let width = size.width
+            let height = size.height
+
+            let viewEffect = UIBlurEffect(style: .light)
+            let effectView = UIVisualEffectView(effect: viewEffect)
+            
+            let gradient: CAGradientLayer = CAGradientLayer()
+            gradient.locations = [0.0, 0.6, 0.75]
+            gradient.colors = [color1.cgColor, color2.cgColor]
+            gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+            gradient.endPoint = CGPoint(x: 0.0, y: 0.75)
+            gradient.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+            
+            effectView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+            
+            if #available(iOS 11.0, *) {
+                effectView.layer.mask = gradient
+            } else {
+                let maskView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: height))
+                maskView.backgroundColor = UIColor.white
+                maskView.layer.mask = gradient
+                effectView.mask = maskView
+            }
+            
+            effectView.isUserInteractionEnabled = false
+            
+            self.view.insertSubview(effectView, at: 0)
+        }
+    }
 }
 
 // TODO: Refactor
@@ -48,7 +84,7 @@ class HomeCollectionViewFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
 
         var offsetAdjustment = CGFloat.greatestFiniteMagnitude
-        let horizontalOffset = proposedContentOffset.x + collectionView.contentInset.left + 10
+        let horizontalOffset = proposedContentOffset.x + collectionView.contentInset.left + AppStyle.Quarterly.Size.xInset()
 
         let targetRect = CGRect(x: proposedContentOffset.x, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
 
@@ -64,6 +100,25 @@ class HomeCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
         return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
     }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)?.map { $0.copy() } as? [UICollectionViewLayoutAttributes]
+
+        attributes?.reduce([CGFloat: (CGFloat, [UICollectionViewLayoutAttributes])]()) {
+            guard $1.representedElementCategory == .cell else { return $0 }
+            return $0.merging([ceil($1.center.y): ($1.frame.origin.y, [$1])]) {
+                ($0.0 < $1.0 ? $0.0 : $1.0, $0.1 + $1.1)
+            }
+        }.values.forEach { minY, line in
+            line.forEach {
+                $0.frame = $0.frame.offsetBy(
+                    dx: 0,
+                    dy: minY - $0.frame.origin.y
+                )
+            }
+        }
+        return attributes
+    }
 }
 
 class QuarterlyGroupView: ASDisplayNode {
@@ -73,12 +128,12 @@ class QuarterlyGroupView: ASDisplayNode {
     
     let seeAll = ASTextNode()
     let seeAllIcon = ASImageNode()
-
     init(quarterlyGroup: QuarterlyGroup, skipGradient: Bool = true) {
         let collectionViewLayout = HomeCollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
+        collectionViewLayout.minimumInteritemSpacing = 0
+        collectionViewLayout.minimumLineSpacing = 0
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
-        collectionViewLayout.itemSize = CGSize(width: 150 , height: 288)
         collectionNode = ASCollectionNode(collectionViewLayout: collectionViewLayout)
         
         self.skipGradient = skipGradient
@@ -99,8 +154,9 @@ class QuarterlyGroupView: ASDisplayNode {
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        self.collectionNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: 288)
-        seeAllIcon.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMakeWithPoints(6), height: ASDimensionMakeWithPoints(12))
+        collectionNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: self.view.frame.height)
+        collectionNode.style.spacingAfter = 20
+        seeAllIcon.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMakeWithPoints(6), height: ASDimensionMakeWithPoints(8))
         
         let seeAllSpec = ASStackLayoutSpec(
             direction: .horizontal,
@@ -118,7 +174,10 @@ class QuarterlyGroupView: ASDisplayNode {
         
         topSpec.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width), ASDimensionMake(.auto, 0))
         
-        let groupNameSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 20, left: 20, bottom: 10, right: 20), child: topSpec)
+        let groupNameSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: AppStyle.Quarterly.Size.xPadding() + AppStyle.Quarterly.Size.xInset(), bottom: 0, right: AppStyle.Quarterly.Size.xPadding() + AppStyle.Quarterly.Size.xInset()), child: topSpec)
+        
+        groupNameSpec.style.spacingBefore = 20
+        groupNameSpec.style.spacingAfter = 0
         
         let mainSpec = ASStackLayoutSpec(
            direction: .vertical,
