@@ -42,22 +42,24 @@ class TableController: ThemeController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        correctHairline()
+        
+        // correctHairline()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.hideBottomHairline()
+        // navigationController?.navigationBar.hideBottomHairline()
         super.viewWillAppear(animated)
 
         if let selected = tableNode?.indexPathForSelectedRow {
             tableNode?.view.deselectRow(at: selected, animated: true)
         }
 
-        correctHairline()
-        colorize()
+        // correctHairline()
+        // colorize()
     }
 
     func correctHairline() {
+        return
         guard
             let navigationBarHeight = self.navigationController?.navigationBar.frame.height,
             let tableNode = self.tableNode
@@ -93,8 +95,8 @@ extension TableController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Implement within actual controller
     }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.correctHairline()
-    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        // self.correctHairline()
+//    }
 }

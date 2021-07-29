@@ -80,7 +80,6 @@ final class SettingsItemView: ASCellNode {
     override func didLoad() {
         super.didLoad()
         switchView.isOn = switchState
-        switchView.onTintColor = AppStyle.Base.Color.tint
     }
     
     override func layout() {

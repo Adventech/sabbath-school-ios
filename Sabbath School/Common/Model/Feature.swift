@@ -20,24 +20,19 @@
  * THE SOFTWARE.
  */
 
-import AsyncDisplayKit
-import UIKit
+import Foundation
 
-class ThemeController: ASDKViewController<ASDisplayNode> {
-    var colorPrimary: UIColor?
-
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
+struct Feature: Codable {
+    let name: String
+    let title: String
+    let description: String
+    let image: URL
     
-    
-    func colorize() {
-        return
-//        navigationController?.navigationBar.barStyle = .black
-//
-//        if colorPrimary != nil {
-//            Configuration.window!.tintColor = colorPrimary!
-//            setTranslucentNavigation(true, color: colorPrimary!, tintColor: .white, titleColor: .white)
-//        }
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        name = try values.decode(String.self, forKey: .name)
+        title = try values.decode(String.self, forKey: .title)
+        description = try values.decode(String.self, forKey: .description)
+        image = try values.decode(URL.self, forKey: .image)
     }
 }

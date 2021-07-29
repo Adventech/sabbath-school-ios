@@ -31,7 +31,7 @@ class AboutController: ThemeController {
     override init() {
         super.init(node: ASCollectionNode(collectionViewLayout: collectionViewLayout))
         collectionNode.dataSource = self
-        title = "About us".localized().uppercased()
+        title = "About us".localized()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -45,7 +45,6 @@ class AboutController: ThemeController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTranslucentNavigation(false, color: AppStyle.Base.Color.tint, tintColor: .white, titleColor: .white)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

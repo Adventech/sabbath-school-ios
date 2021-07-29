@@ -4,6 +4,7 @@ inhibit_all_warnings!
 
 target 'Sabbath School' do
   pod 'Armchair'
+  pod 'Down'
   pod 'Firebase/Crashlytics'
   pod 'FBSDKLoginKit'
   pod 'Firebase/Auth'
@@ -13,7 +14,6 @@ target 'Sabbath School' do
   pod 'Firebase/Storage'
   pod 'FontBlaster'
   pod 'GoogleSignIn'
-  pod 'Hero'
   pod 'Hue'
   pod 'MenuItemKit'
   pod 'R.swift'

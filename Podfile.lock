@@ -5,6 +5,7 @@ PODS:
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
   - Armchair (0.3.7)
+  - Down (0.11.0)
   - FBSDKCoreKit (9.3.0):
     - FBSDKCoreKit/Basics (= 9.3.0)
     - FBSDKCoreKit/Core (= 9.3.0)
@@ -128,7 +129,6 @@ PODS:
   - GTMSessionFetcher/Core (1.5.0)
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
-  - Hero (1.5.0)
   - Hue (5.0.0)
   - leveldb-library (1.22.1)
   - MenuItemKit (4.0.1)
@@ -190,6 +190,7 @@ PODS:
 
 DEPENDENCIES:
   - Armchair
+  - Down
   - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
@@ -200,7 +201,6 @@ DEPENDENCIES:
   - FontBlaster
   - GoogleSignIn
   - GTMSessionFetcher
-  - Hero
   - Hue
   - MenuItemKit
   - R.swift
@@ -216,6 +216,7 @@ SPEC REPOS:
   trunk:
     - AppAuth
     - Armchair
+    - Down
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -236,7 +237,6 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
-    - Hero
     - Hue
     - leveldb-library
     - MenuItemKit
@@ -260,6 +260,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Armchair: ea2da13f78515da627bd63d9540bd58a50e71562
+  Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
   FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
   FBSDKLoginKit: aea68df6121c5e165ccae2fabfdc83c4644ee40f
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
@@ -280,7 +281,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
@@ -301,6 +301,6 @@ SPEC CHECKSUMS:
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 150282a88a65a1171e405adaa23a856a07a17cde
+PODFILE CHECKSUM: 2b07e294f3b4fc4071a87c89ab290364f09d08a3
 
 COCOAPODS: 1.10.0

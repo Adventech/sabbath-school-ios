@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - develop
+      - 'vl/**'
 jobs:
   deploy:
     runs-on: macos-latest

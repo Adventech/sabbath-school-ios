@@ -60,20 +60,6 @@ struct WidgetInteractor {
         return lessonInfo.days.first
     }
     
-    static func getToday(completion: @escaping (Read?) -> Void) {
-        getCurrentIndex(indexType: .lessonInfo) { (quarterly: Quarterly?, readIndex: String?) in
-            if let readIndex = readIndex {
-                getRead(readIndex: readIndex) { (read: Read?) in
-                    if let read = read {
-                        completion(read)
-                    }
-                }
-            } else {
-                completion(nil)
-            }
-        }
-    }
-    
     static func getCurrentIndex(indexType: IndexType, completion: @escaping (Quarterly?, String?) -> Void) {
         if Auth.auth().currentUser == nil {
            completion(nil, nil)
@@ -85,10 +71,18 @@ struct WidgetInteractor {
             guard let json = snapshot.data else { return }
 
             do {
-                let quarterlies: [Quarterly] = try FirebaseDecoder().decode([Quarterly].self, from: json)
+                var quarterlies: [Quarterly] = try FirebaseDecoder().decode([Quarterly].self, from: json)
                 
                 let today = Date()
                 var found = false
+                
+                let lastQuarterlyIndex = PreferencesShared.currentQuarterly()
+                
+                if let index = quarterlies.firstIndex(where: { $0.index == lastQuarterlyIndex }) {
+                    let lastQuarterly = quarterlies[index]
+                    quarterlies.remove(at: index)
+                    quarterlies.insert(lastQuarterly, at: 0)
+                }
                 
                 for quarterly in quarterlies {
                     let start = Calendar.current.compare(quarterly.startDate, to: today, toGranularity: .day)
@@ -130,21 +124,6 @@ struct WidgetInteractor {
             }
         }) { (error) in
             completion(nil, nil)
-        }
-        return
-    }
-    
-    static func getRead(readIndex: String, completion: @escaping (Read?) -> Void) {
-        database.child(Constants.Firebase.reads).child(readIndex).observe(.value, with: { (snapshot) in
-            guard let json = snapshot.data else { return }
-            do {
-                let read: Read = try FirebaseDecoder().decode(Read.self, from: json)
-                completion(read)
-            } catch {
-                completion(nil)
-            }
-        }) { (error) in
-            completion(nil)
         }
         return
     }

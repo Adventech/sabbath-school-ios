@@ -21,11 +21,21 @@
  */
 
 import UIKit
+import AsyncDisplayKit
+
+extension ASNavigationController {
+    open override var preferredStatusBarStyle : UIStatusBarStyle {
+        return topViewController?.preferredStatusBarStyle ?? .default
+    }
+}
 
 extension UINavigationController {
-
     open override var preferredStatusBarStyle: UIStatusBarStyle {
-        return viewControllers.first?.preferredStatusBarStyle ?? .lightContent
+        return topViewController?.preferredStatusBarStyle ?? .default
+    }
+    
+    open override var childForStatusBarStyle: UIViewController? {
+        return topViewController?.childForStatusBarStyle ?? topViewController
     }
 
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -50,7 +60,6 @@ extension UINavigationController {
 }
 
 extension UIViewController: UIGestureRecognizerDelegate {
-
     func setBackButton() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.iconNavbarBack(), style: UIBarButtonItem.Style.plain, target: self, action: #selector(popBack))
         self.navigationController?.interactivePopGestureRecognizer!.delegate = self
@@ -118,10 +127,14 @@ extension UIViewController: UIGestureRecognizerDelegate {
     public func setOrientationToRotate(_ orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
     }
+    
+    func setNavigationBarOpacity(alpha: CGFloat) {
+        let navigationBackgroundView = self.navigationController?.navigationBar.subviews.first
+        navigationBackgroundView?.alpha = alpha
+    }
 }
 
 extension UINavigationBar {
-
     func hideBottomHairline() {
         let navigationBarImageView = hairlineImageViewInNavigationBar(self)
         navigationBarImageView!.isHidden = true
@@ -152,7 +165,6 @@ extension UINavigationBar {
 // MARK: - Fix iOS 9 crash https://stackoverflow.com/a/32010520/517707
 
 extension UIAlertController {
-
     open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }

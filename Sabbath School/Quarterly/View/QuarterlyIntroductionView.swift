@@ -21,40 +21,22 @@
  */
 
 import AsyncDisplayKit
+import Down
 import UIKit
 
-class LanguageView: ASCellNode {
-    let search = ASEditableTextNode()
-    let searchBorder = ASDisplayNode()
-    
-    override init() {
+class QuarterlyIntroductionView: ASCellNode {
+    let introduction = ASTextNode()
+
+    init(introduction: String) {
         super.init()
-        self.configureStyles()
-        
-        search.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        // search.textView.textContainer.maximumNumberOfLines = 1
-        search.maximumLinesToDisplay = 1
-        search.scrollEnabled = false
+        self.backgroundColor = AppStyle.Base.Color.background
+        let down = Down(markdownString: introduction)
+        self.introduction.attributedText = try? down.toAttributedString(stylesheet: AppStyle.Quarterly.Style.introductionStylesheet)
+
         automaticallyManagesSubnodes = true
     }
     
-    func configureStyles() {
-        backgroundColor = AppStyle.Base.Color.background
-        search.typingAttributes = AppStyle.Language.Text.search()
-        search.attributedPlaceholderText = AppStyle.Language.Text.searchPlaceholder(string: "Search…".localized())
-        search.backgroundColor = AppStyle.Base.Color.background
-        searchBorder.backgroundColor = AppStyle.Base.Color.tableSeparator
-        
-    }
-
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        self.search.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(.auto, 0))
-        self.searchBorder.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(constrainedSize.max.width), height: ASDimensionMake(0.3))
-        return ASStackLayoutSpec(
-            direction: .vertical,
-            spacing: 0,
-            justifyContent: .start,
-            alignItems: .start,
-            children: [search, searchBorder])
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20), child: introduction)
     }
 }

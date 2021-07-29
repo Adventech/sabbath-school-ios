@@ -23,7 +23,6 @@
 import Foundation
 
 struct Quarterly: Codable {
-    
     static func ==(lhs: Quarterly, rhs: Quarterly) -> Bool {
         return lhs.id == rhs.id && lhs.index == rhs.index
     }
@@ -35,6 +34,7 @@ struct Quarterly: Codable {
     let startDate: Date
     let endDate: Date
     let cover: URL
+    let splash: URL?
     let colorPrimary: String?
     let colorPrimaryDark: String?
     let index: String
@@ -42,6 +42,11 @@ struct Quarterly: Codable {
     let fullPath: URL
     let lang: String
     let webURL: URL
+    let quarterlyName: String?
+    let introduction: String
+    let credits: [Credits]
+    let features: [Feature]
+    let quarterlyGroup: QuarterlyGroup?
     
     // Mock
     init(title: String) {
@@ -52,6 +57,7 @@ struct Quarterly: Codable {
         self.startDate = Date()
         self.endDate = Date()
         self.cover = URL.init(string: "https://adventech.io")!
+        self.splash = URL.init(string: "https://adventech.io")!
         self.colorPrimary = "-"
         self.colorPrimaryDark = "-"
         self.index = "-"
@@ -59,6 +65,11 @@ struct Quarterly: Codable {
         self.fullPath = URL.init(string: "https://adventech.io")!
         self.lang = "-"
         self.webURL = URL.init(string: "https://adventech.io")!
+        self.quarterlyName = "-"
+        self.introduction = "-"
+        self.credits = Array<Credits>()
+        self.features = Array<Feature>()
+        self.quarterlyGroup = nil
     }
     
     init(from decoder: Decoder) throws {
@@ -70,6 +81,7 @@ struct Quarterly: Codable {
         startDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .startDate))!
         endDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .endDate))!
         cover = try values.decode(URL.self, forKey: .cover)
+        splash = values.contains(.splash) ? try values.decode(URL.self, forKey: .splash) : nil
         colorPrimary = try values.decode(String.self, forKey: .colorPrimary)
         colorPrimaryDark = try values.decode(String.self, forKey: .colorPrimaryDark)
         index = try values.decode(String.self, forKey: .index)
@@ -77,5 +89,10 @@ struct Quarterly: Codable {
         fullPath = try values.decode(URL.self, forKey: .fullPath)
         lang = try values.decode(String.self, forKey: .lang)
         webURL = URL.init(string: fullPath.absoluteString.replacingOccurrences(of: Constants.URLs.webReplacementRegex, with: "", options: [.regularExpression]))!
+        quarterlyName = values.contains(.quarterlyName) ? try values.decode(String.self, forKey: .quarterlyName) : nil
+        introduction = values.contains(.introduction) ? try values.decode(String.self, forKey: .introduction) : description
+        credits = values.contains(.credits) ? try values.decode(Array<Credits>.self, forKey: .credits) : Array<Credits>()
+        features = values.contains(.features) ? try values.decode(Array<Feature>.self, forKey: .features) : Array<Feature>()
+        quarterlyGroup = values.contains(.quarterlyGroup) ? try values.decode(QuarterlyGroup.self, forKey: .quarterlyGroup) : nil
     }
 }

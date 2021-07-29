@@ -42,6 +42,7 @@ class Configuration: NSObject {
         window?.backgroundColor = .black
         window?.layer.cornerRadius = 6
         window?.clipsToBounds = true
+        window?.tintColor = AppStyle.Base.Color.navigationTint
         
         if #available(iOS 13, *) {
             NotificationCenter.default.addObserver(self, selector: #selector(self.appleIDStateDidRevoked(_:)), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
@@ -81,7 +82,8 @@ class Configuration: NSObject {
                 ConfigurationShared.setAuthAccessGroup()
                 Auth.auth().updateCurrentUser(user!)
             }
-            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
+            // window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
+            window?.rootViewController = QuarterlyWireFrameV2.createQuarterlyModule(initiateOpen: true)
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }

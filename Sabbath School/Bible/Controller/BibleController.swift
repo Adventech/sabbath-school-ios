@@ -69,8 +69,8 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? ""
 
         versionButton = UIButton(type: .custom)
-        versionButton.setAttributedTitle(AppStyle.Base.Text.navBarButton(string: versionName), for: .normal)
-        versionButton.setImage(R.image.bulletArrowDown(), for: .normal)
+        versionButton.setAttributedTitle(AppStyle.Base.Text.navBarButton(string: versionName, color: theme.navBarTextColor), for: .normal)
+        versionButton.setImage(R.image.bulletArrowDown()?.fillAlpha(fillColor: theme.navBarTextColor), for: .normal)
         versionButton.addTarget(self, action: #selector(changeVersionAction(sender:)), for: .touchUpInside)
         versionButton.centerTextAndImage(spacing: 4)
         versionButton.imageOnRight()

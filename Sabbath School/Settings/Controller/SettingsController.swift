@@ -26,6 +26,7 @@ import FirebaseAuth
 import SafariServices
 import SwiftDate
 import UIKit
+import PINRemoteImage
 
 class SettingsController: ASDKViewController<ASDisplayNode> {
     weak var tableNode: SettingsView? { return node as? SettingsView }
@@ -44,7 +45,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
         tableNode?.dataSource = self
         tableNode?.backgroundColor = AppStyle.Base.Color.background
 
-        title = "Settings".localized().uppercased()
+        title = "Settings".localized()
 
         titles = [
             ["Reminder".localized()],
@@ -77,7 +78,8 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCloseButton()
+        self.setCloseButton()
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -97,16 +99,11 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setTranslucentNavigation(false, color: AppStyle.Base.Color.tint, tintColor: .white, titleColor: .white)
         if let selected = tableNode?.indexPathForSelectedRow {
             tableNode?.view.deselectRow(at: selected, animated: true)
         }
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
     static func logOut(presentLoginScreen: Bool = true) {
         if let providerId = Auth.auth().currentUser?.providerData.first?.providerID, providerId == "apple.com" {
             Preferences.userDefaults.set(nil, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
@@ -114,6 +111,8 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
         
         UIApplication.shared.shortcutItems = []
         Spotlight.clearSpotlight()
+        
+        PINRemoteImageManager.shared().cache.removeAllObjects()
         
         try! Auth.auth().signOut()
         if presentLoginScreen {
@@ -285,7 +284,7 @@ extension SettingsController: ASTableDelegate {
         case 1:
             let url = "https://github.com/Adventech"
             let safariVC = SFSafariViewController(url: URL(string: url)!)
-            safariVC.view.tintColor = AppStyle.Base.Color.tint
+            safariVC.view.tintColor = AppStyle.Base.Color.navigationTint
             safariVC.modalPresentationStyle = .currentContext
             present(safariVC, animated: true, completion: nil)
 

@@ -31,6 +31,14 @@ struct AppStyle {
         }
         
         struct Color {
+            static var navigationTitle: UIColor {
+                return .black | .white
+            }
+            
+            static var navigationTint: UIColor {
+                return AppStyle.Base.Color.navigationTitle
+            }
+            
             static var background: UIColor {
                 return .white | .black
             }
@@ -68,17 +76,14 @@ struct AppStyle {
             }
             
             static var tint: UIColor {
-                guard let color = Preferences.userDefaults.string(forKey: Constants.DefaultKey.tintColor) else {
-                    return .baseBlue
-                }
-                return UIColor(hex: color)
+                return AppStyle.Base.Color.navigationTint
             }
         }
         
         struct Text {
-            static func navBarButton(string: String) -> NSAttributedString {
+            static func navBarButton(string: String, color: UIColor = AppStyle.Base.Color.navigationTitle) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
-                    .foregroundColor: UIColor.white,
+                    .foregroundColor: color,
                     .font: R.font.latoRegular(size: 15)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
@@ -175,6 +180,25 @@ struct AppStyle {
     }
     
     struct Quarterly {
+        struct Size {
+            static func coverImage() -> CGSize {
+                let defaultSize = CGSize(width: 187, height: 276)
+                if Helper.isPad { return defaultSize }
+                
+                let width = UIScreen.main.bounds.width / 2.7
+                
+                return CGSize(width: width, height: width / (defaultSize.width / defaultSize.height))
+            }
+            
+            static func xPadding() -> CGFloat {
+                return Helper.isPad ? 20 : 10
+            }
+            
+            static func xInset() -> CGFloat {
+                return 10
+            }
+        }
+        
         struct Button {
             static func openButtonUIEdgeInsets() -> UIEdgeInsets {
                 return AppStyle.Base.Button.pillButtonUIEdgeInsets()
@@ -189,9 +213,69 @@ struct AppStyle {
             static var backgroundHighlighted: UIColor {
                 return AppStyle.Base.Color.tableCellBackgroundHighlighted
             }
+            
+            static var gradientStart: UIColor {
+                return .white | .black
+            }
+            
+            static var gradientEnd: UIColor {
+                return UIColor.baseWhite1.withAlphaComponent(0.3) | .black
+            }
+            
+            static var seeAll: UIColor {
+                return UIColor.baseBlue | .white
+            }
+            
+            static var seeAllIcon: UIColor {
+                return UIColor.baseGray2.lighter(componentDelta: 0.2) | UIColor.black.lighter(componentDelta: 0.2)
+            }
+            
+            static var introduction: UIColor {
+                return UIColor(hex: "#222222") | UIColor(hex: "#ADADAD")
+            }
         }
         
         struct Text {
+            static func introduction(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.text,
+                    .font: R.font.latoMedium(size: 18)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func mainTitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.navigationTitle,
+                    .font: R.font.latoBlack(size: 36)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func groupName(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2,
+                    .font: R.font.latoBold(size: 13)!
+                ]
+                return NSAttributedString(string: string.uppercased(), attributes: attributes)
+            }
+            
+            static func seeMore(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Quarterly.Color.seeAll,
+                    .font: R.font.latoRegular(size: 15)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func titleV2(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.navigationTitle,
+                    .font: R.font.latoBold(size: 15)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
             static func title(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: AppStyle.Base.Color.text,
@@ -201,9 +285,12 @@ struct AppStyle {
             }
             
             static func featuredTitle(string: String) -> NSAttributedString {
+                let style = NSMutableParagraphStyle()
+                style.alignment = .center
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: UIColor.white,
-                    .font: R.font.latoBold(size: 30)!
+                    .font: R.font.latoBold(size: 30)!,
+                    .paragraphStyle: style
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
             }
@@ -238,9 +325,33 @@ struct AppStyle {
                 return NSAttributedString(string: string, attributes: attributes)
             }
         }
+        
+        struct Style {
+            static var introductionStylesheet: String {
+                return "* { font-size: 1.15em; line-height: 1.5em; font-family: 'Lato', sans-serif; color: \(AppStyle.Quarterly.Color.introduction.hex()) }"
+            }
+        }
     }
     
     struct Lesson {
+        struct Size {
+            static func coverImage() -> CGSize {
+                let defaultSize = CGSize(width: 187, height: 276)
+                if Helper.isPad { return defaultSize }
+                
+                let width = UIScreen.main.bounds.width / 2.7
+                
+                return CGSize(width: width, height: width / (defaultSize.width / defaultSize.height))
+            }
+            
+            static func splashCoverImageHeight() -> CGFloat {
+                return UIScreen.main.bounds.height / 1.7
+            }
+            
+            static func featureImage() -> CGSize {
+                return CGSize(width: 16, height: 12)
+            }
+        }
         struct Button {
             static func readButtonUIEdgeInsets() -> UIEdgeInsets {
                 return AppStyle.Base.Button.pillButtonUIEdgeInsets()
@@ -254,6 +365,14 @@ struct AppStyle {
             
             static var backgroundHighlighted: UIColor {
                 return AppStyle.Base.Color.tableCellBackgroundHighlighted
+            }
+            
+            static var copyright: UIColor {
+                return .baseGray2 | .baseGray3
+            }
+            
+            static var backgroundFooter: UIColor {
+                return .baseGray1 | UIColor.black.lighter()
             }
         }
         
@@ -278,9 +397,9 @@ struct AppStyle {
                 return NSAttributedString(string: string, attributes: attributes)
             }
 
-            static func introduction(string: String, color: UIColor = .baseGray2) -> NSAttributedString {
+            static func introduction(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
-                    .foregroundColor: color,
+                    .foregroundColor: UIColor.white,
                     .font: R.font.latoMedium(size: 15)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
@@ -290,6 +409,30 @@ struct AppStyle {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: UIColor.baseGray2.withAlphaComponent(0.5),
                     .font: R.font.latoBold(size: 22)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func creditsName(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.text,
+                    .font: R.font.latoBold(size: 15)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func creditsValue(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2,
+                    .font: R.font.latoRegular(size: 15)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func copyright(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Lesson.Color.copyright,
+                    .font: R.font.latoRegular(size: 15)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
             }
