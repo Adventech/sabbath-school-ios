@@ -25,7 +25,6 @@ import UIKit
 
 extension ASDisplayNode {
     func gradient(from color1: UIColor, to color2: UIColor) {
-        // return
         if color1 == color2 { return }
         DispatchQueue.main.async {
             let size = self.view.frame.size
@@ -43,7 +42,6 @@ extension ASDisplayNode {
     }
     
     func gradientBlur(from color1: UIColor, to color2: UIColor) {
-        // return
         if color1 == color2 { return }
         DispatchQueue.main.async {
             let size = self.view.frame.size
@@ -78,7 +76,6 @@ extension ASDisplayNode {
     }
 }
 
-// TODO: Refactor
 class HomeCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }

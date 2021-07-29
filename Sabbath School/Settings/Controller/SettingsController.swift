@@ -26,6 +26,7 @@ import FirebaseAuth
 import SafariServices
 import SwiftDate
 import UIKit
+import PINRemoteImage
 
 class SettingsController: ASDKViewController<ASDisplayNode> {
     weak var tableNode: SettingsView? { return node as? SettingsView }
@@ -110,6 +111,8 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
         
         UIApplication.shared.shortcutItems = []
         Spotlight.clearSpotlight()
+        
+        PINRemoteImageManager.shared().cache.removeAllObjects()
         
         try! Auth.auth().signOut()
         if presentLoginScreen {

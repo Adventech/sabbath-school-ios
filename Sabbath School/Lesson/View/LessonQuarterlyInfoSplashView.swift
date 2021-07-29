@@ -96,6 +96,11 @@ class LessonQuarterlyInfoSplashView: LessonQuarterlyInfo {
     override func didLoad() {
         super.didLoad()
         initialCoverHeight = coverImage.calculatedSize.height
-        coverOverlay.gradientBlur(from: UIColor.white.withAlphaComponent(0), to: UIColor.white.withAlphaComponent(1))
+        if UIAccessibility.isReduceTransparencyEnabled {
+            coverOverlay.gradient(from: UIColor.white.withAlphaComponent(0), to: UIColor(hex: quarterly?.colorPrimary ?? UIColor.white.hex()))
+        } else {
+            coverOverlay.gradientBlur(from: UIColor.white.withAlphaComponent(0), to: UIColor.white.withAlphaComponent(1))
+        }
+        
     }
 }
