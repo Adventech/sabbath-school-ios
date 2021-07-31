@@ -30,7 +30,7 @@ enum QuarterlyViewPreference {
 class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
     let selectedQuarterlyGroup: QuarterlyGroup?
     
-    var presenter: QuarterlyPresenterV2Protocol?
+    var presenter: QuarterlyPresenterProtocol?
     var groupedQuarterliesKeys = Array<QuarterlyGroup>()
     var groupedQuarterlies = [QuarterlyGroup: [Quarterly]]()
     var initiateOpen: Bool?
@@ -166,7 +166,7 @@ extension QuarterlyControllerCommon: UIViewControllerPreviewingDelegate {
     }
 }
 
-extension QuarterlyControllerCommon: QuarterlyControllerV2Protocol {
+extension QuarterlyControllerCommon: QuarterlyControllerProtocol {
     func showQuarterlies(quarterlies: [Quarterly]) {
         groupedQuarterlies = [QuarterlyGroup: [Quarterly]]()
         var initialQuarterlyGroup: QuarterlyGroup?
@@ -278,7 +278,7 @@ extension QuarterlyControllerCommon: ASTableDataSource {
         
         if groupedQuarterlies.isEmpty {
             let cellNodeBlock: () -> ASCellNode = {
-                return ASCellNode()
+                return QuarterlyEmptyView()
             }
             return cellNodeBlock
         }

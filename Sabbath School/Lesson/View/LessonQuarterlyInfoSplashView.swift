@@ -46,6 +46,7 @@ class LessonQuarterlyInfoSplashView: LessonQuarterlyInfo {
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         coverImageNode.style.preferredSize = CGSize(width: constrainedSize.max.width, height: AppStyle.Lesson.Size.splashCoverImageHeight())
         title.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMakeWithPoints(constrainedSize.max.width), height: ASDimensionMake(.auto, 0))
+        introduction.style.minWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
         
         var vSpecChildren: [ASLayoutElement] = [title, humanDate, readButton, introduction]
         
@@ -63,9 +64,8 @@ class LessonQuarterlyInfoSplashView: LessonQuarterlyInfo {
                 alignItems: .start,
                 children: featuresSpecChildren)
             
-            
             featureHStack.style.minWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
-            vSpecChildren.append(ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5), child: featureHStack))
+            vSpecChildren.append(featureHStack)
         }
         
         let vSpec = ASStackLayoutSpec(
@@ -101,6 +101,5 @@ class LessonQuarterlyInfoSplashView: LessonQuarterlyInfo {
         } else {
             coverOverlay.gradientBlur(from: UIColor.white.withAlphaComponent(0), to: UIColor.white.withAlphaComponent(1))
         }
-        
     }
 }

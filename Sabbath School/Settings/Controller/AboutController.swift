@@ -24,7 +24,7 @@ import AsyncDisplayKit
 import SafariServices
 import UIKit
 
-class AboutController: ThemeController {
+class AboutController: ASDKViewController<ASDisplayNode> {
     var collectionNode: ASCollectionNode { return node as! ASCollectionNode }
     let collectionViewLayout = UICollectionViewFlowLayout()
 

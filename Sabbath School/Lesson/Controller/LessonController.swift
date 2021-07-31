@@ -27,7 +27,9 @@ import StoreKit
 import WidgetKit
 
 
-final class LessonController: TableController {
+final class LessonController: ASDKViewController<ASDisplayNode> {
+    var tableNode: ASTableNode? { return node as? ASTableNode }
+    
     var delegate: LessonControllerDelegate?
     var presenter: LessonPresenterProtocol?
     var dataSource: QuarterlyInfo?
@@ -39,10 +41,9 @@ final class LessonController: TableController {
     var initialCoverHeight: CGFloat = 0
 
     override init() {
-        super.init()
-        
-        tableNode?.dataSource = self
-        
+        super.init(node: ASTableNode())
+        tableNode?.delegate = self
+        tableNode?.dataSource = self   
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +52,8 @@ final class LessonController: TableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableNode?.allowsSelection = false
         
         if #available(iOS 11.0, *) {
             tableNode?.view.contentInsetAdjustmentBehavior = .never
@@ -67,6 +70,28 @@ final class LessonController: TableController {
         }
         setupNavigationbar()
         self.tableNode?.backgroundColor = AppStyle.Lesson.Color.backgroundFooter
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let selected = tableNode?.indexPathForSelectedRow {
+            tableNode?.view.deselectRow(at: selected, animated: true)
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.tableNode?.view.separatorColor = AppStyle.Base.Color.tableSeparator
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background && self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                tableNode?.reloadData()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,16 +119,6 @@ final class LessonController: TableController {
         })
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let lesson = dataSource?.lessons[indexPath.row] else { return }
-
-        if indexPath.section == 0 {
-            // openToday()
-        } else if indexPath.section == 1 {
-            presenter?.presentReadScreen(lessonIndex: lesson.index)
-        }
-    }
-    
     func getTodaysLessonIndex() -> String {
         guard let lessons = dataSource?.lessons else { return "" }
         let today = Date()
@@ -330,13 +345,22 @@ extension LessonController: ReadControllerDelegate {
     }
 }
 
+extension LessonController: ASTableDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let lesson = dataSource?.lessons[indexPath.row] else { return }
+
+        if indexPath.section == 1 {
+            presenter?.presentReadScreen(lessonIndex: lesson.index)
+        }
+    }
+}
+
 extension LessonController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-
         guard let lesson = dataSource?.lessons[indexPath.row] else {
             let cellNodeBlock: () -> ASCellNode = {
                 if indexPath.section == 0 {
-                    return QuarterlyEmptyView()
+                    return LessonQuarterlyInfoEmptyView()
                 }
                 return LessonEmptyCellNode()
             }
