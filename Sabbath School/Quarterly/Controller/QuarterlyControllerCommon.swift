@@ -77,26 +77,6 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
                 registerForPreviewing(with: self, sourceView: table.view)
             }
         }
-        self.navigationController?.interactivePopGestureRecognizer?.addTarget(self, action:#selector(self.handlePopGesture))
-    }
-    
-    @objc func handlePopGesture(gesture: UIGestureRecognizer) -> Void {
-        switch gesture.state {
-        case .began, .changed:
-            if let ct = navigationController?.transitionCoordinator {
-                currentTransitionCoordinator = ct
-            }
-        case .cancelled, .ended:
-            currentTransitionCoordinator = nil
-        case .possible, .failed:
-            break
-        }
-
-        if let currentTransitionCoordinator = currentTransitionCoordinator {
-            if self.navigationController?.navigationBar.subviews.first?.alpha == 0 {
-                
-            }
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
