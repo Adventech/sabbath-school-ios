@@ -227,7 +227,7 @@ struct AppStyle {
             }
             
             static var seeAllIcon: UIColor {
-                return UIColor.baseGray2.lighter(componentDelta: 0.2) | UIColor.black.lighter(componentDelta: 0.2)
+                return UIColor.baseGray2.lighter(componentDelta: 0.2) | UIColor.white
             }
             
             static var introduction: UIColor {

@@ -48,10 +48,10 @@ class LessonQuarterlyInfo: ASCellNode {
             .font: R.font.latoMediumItalic(size: 15)!
         ]
         
-        let blurb: NSString = NSString(format: "%@%@", "… ", "more".localized() as NSString)
+        let blurb: NSString = NSString(format: "%@%@", "… ", "More".localized().lowercased() as NSString)
         let string = NSMutableAttributedString(string: blurb as String)
         string.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, 2))
-        string.addAttributes(attributes, range: blurb.range(of: "more".localized()))
+        string.addAttributes(attributes, range: blurb.range(of: "More".localized().lowercased()))
         introduction.truncationAttributedText = string
 
         readButton.setAttributedTitle(AppStyle.Lesson.Text.readButton(string: "Read".localized().uppercased()), for: .normal)
