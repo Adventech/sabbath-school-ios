@@ -26,10 +26,10 @@ import UIKit
 class GroupedQuarterlyController: ASDKViewController<ASDisplayNode> {
     var quarterlyGroupView: QuarterlyGroupView
     let quarterlies: [Quarterly]
-    let presenter: QuarterlyPresenterV2Protocol?
+    let presenter: QuarterlyPresenterProtocol?
     let quarterlyGroup: QuarterlyGroup
     
-    init(presenter: QuarterlyPresenterV2Protocol?, quarterlyGroup: QuarterlyGroup, quarterlies: [Quarterly], isLast: Bool) {
+    init(presenter: QuarterlyPresenterProtocol?, quarterlyGroup: QuarterlyGroup, quarterlies: [Quarterly], isLast: Bool) {
         self.presenter = presenter
         self.quarterlies = quarterlies
         self.quarterlyGroup = quarterlyGroup

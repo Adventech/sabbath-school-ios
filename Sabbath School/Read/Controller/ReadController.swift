@@ -24,7 +24,7 @@ import AsyncDisplayKit
 import SafariServices
 import UIKit
 
-class ReadController: ThemeController {
+class ReadController: ASDKViewController<ASDisplayNode> {
     var delegate: ReadControllerDelegate?
     var presenter: ReadPresenterProtocol?
     var collectionNode: ASPagerNode { return node as! ASPagerNode }

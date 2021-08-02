@@ -64,7 +64,9 @@ class LessonQuarterlyFooter: ASCellNode {
             addSubnode(description)
         }
         
-        copyright.attributedText = AppStyle.Lesson.Text.copyright(string: "© 2021 General Conference of Seventh-day Adventists®".localized())
+        let year = Calendar.current.component(.year, from: Date())
+        
+        copyright.attributedText = AppStyle.Lesson.Text.copyright(string: String(format: "© %d " + "General Conference of Seventh-day Adventists".localized() + "®", year))
         backgroundColor = AppStyle.Lesson.Color.backgroundFooter
         
         addSubnode(copyright)

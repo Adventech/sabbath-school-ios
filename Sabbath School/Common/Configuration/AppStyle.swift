@@ -219,7 +219,7 @@ struct AppStyle {
             }
             
             static var gradientEnd: UIColor {
-                return UIColor.baseWhite1.withAlphaComponent(0.3) | .black
+                return UIColor.baseWhite1.lighter() | .black
             }
             
             static var seeAll: UIColor {
@@ -227,7 +227,7 @@ struct AppStyle {
             }
             
             static var seeAllIcon: UIColor {
-                return UIColor.baseGray2.lighter(componentDelta: 0.2) | UIColor.black.lighter(componentDelta: 0.2)
+                return UIColor.baseGray2.lighter(componentDelta: 0.2) | UIColor.white
             }
             
             static var introduction: UIColor {
@@ -328,7 +328,7 @@ struct AppStyle {
         
         struct Style {
             static var introductionStylesheet: String {
-                return "* { font-size: 1.15em; line-height: 1.5em; font-family: 'Lato', sans-serif; color: \(AppStyle.Quarterly.Color.introduction.hex()) }"
+                return "body { text-align: justify; text-justify: inter-word; font-size: 1.6em; line-height: 1.4em; font-family: 'Lato', sans-serif; color: \(AppStyle.Quarterly.Color.introduction.hex()) }"
             }
         }
     }

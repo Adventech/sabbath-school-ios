@@ -30,7 +30,7 @@ enum QuarterlyViewPreference {
 class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
     let selectedQuarterlyGroup: QuarterlyGroup?
     
-    var presenter: QuarterlyPresenterV2Protocol?
+    var presenter: QuarterlyPresenterProtocol?
     var groupedQuarterliesKeys = Array<QuarterlyGroup>()
     var groupedQuarterlies = [QuarterlyGroup: [Quarterly]]()
     var initiateOpen: Bool?
@@ -75,26 +75,6 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
         if #available(iOS 13, *) {} else {
             if self.traitCollection.forceTouchCapability == .available {
                 registerForPreviewing(with: self, sourceView: table.view)
-            }
-        }
-        self.navigationController?.interactivePopGestureRecognizer?.addTarget(self, action:#selector(self.handlePopGesture))
-    }
-    
-    @objc func handlePopGesture(gesture: UIGestureRecognizer) -> Void {
-        switch gesture.state {
-        case .began, .changed:
-            if let ct = navigationController?.transitionCoordinator {
-                currentTransitionCoordinator = ct
-            }
-        case .cancelled, .ended:
-            currentTransitionCoordinator = nil
-        case .possible, .failed:
-            break
-        }
-
-        if let currentTransitionCoordinator = currentTransitionCoordinator {
-            if self.navigationController?.navigationBar.subviews.first?.alpha == 0 {
-                
             }
         }
     }
@@ -166,7 +146,7 @@ extension QuarterlyControllerCommon: UIViewControllerPreviewingDelegate {
     }
 }
 
-extension QuarterlyControllerCommon: QuarterlyControllerV2Protocol {
+extension QuarterlyControllerCommon: QuarterlyControllerProtocol {
     func showQuarterlies(quarterlies: [Quarterly]) {
         groupedQuarterlies = [QuarterlyGroup: [Quarterly]]()
         var initialQuarterlyGroup: QuarterlyGroup?
@@ -278,7 +258,7 @@ extension QuarterlyControllerCommon: ASTableDataSource {
         
         if groupedQuarterlies.isEmpty {
             let cellNodeBlock: () -> ASCellNode = {
-                return ASCellNode()
+                return QuarterlyEmptyView()
             }
             return cellNodeBlock
         }

@@ -1,1 +1,1 @@
-Vi har fullständigt ombyggt sabbatsskolan från design till innehåll, läsupplevelse noter och höjdpunkter. Synkronisera appen över enheter! Flera språk och bibel översättningar.
+I denna nya version uppdateras huvudleksskärmen för att visa lektionskategorier. Vi har också lagt till möjligheten att läsa hela introduktionen samt uppdaterat designen. Felkorrigeringar och förbättringar.

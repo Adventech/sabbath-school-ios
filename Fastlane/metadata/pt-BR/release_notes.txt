@@ -1,1 +1,1 @@
-Nós recriamos o app da Escola Sabatina. Desde o design até o conteúdo. Da experiência de leitura a notas e destaques, sincronização entre dispositivos! Múltiplos idiomas e versões da Bíblia.
+Nesta nova versão, a tela principal da lição é atualizada para mostrar as categorias da lição. Também adicionamos a capacidade de ler a introdução completa, bem como atualizamos o design. Correções de bugs e melhorias.

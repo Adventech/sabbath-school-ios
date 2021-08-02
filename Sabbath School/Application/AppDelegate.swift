@@ -172,13 +172,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func launchQuarterlies() {
-        let quarterlyController = QuarterlyWireFrameV2.createQuarterlyModule()
+        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule()
         Configuration.window?.rootViewController = quarterlyController
         Configuration.window?.makeKeyAndVisible()
     }
     
     func launchQuarterly(quarterlyIndex: String, initiateOpen: Bool = false) {
-        let quarterlyController = QuarterlyWireFrameV2.createQuarterlyModule()
+        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule()
         let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpen)
         quarterlyController.pushViewController(lessonController, animated: false)
         Configuration.window?.rootViewController = quarterlyController
@@ -186,7 +186,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func launchLesson(quarterlyIndex: String, lessonIndex: String, readIndex: Int? = nil, initiateOpen: Bool = false) {
-        let quarterlyController = QuarterlyWireFrameV2.createQuarterlyModule()
+        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule()
         let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpen)
         let readController = ReadWireFrame.createReadModule(lessonIndex: lessonIndex, readIndex: readIndex)
         quarterlyController.pushViewController(lessonController, animated: false)

@@ -1,1 +1,1 @@
-We have added widget support for devices with iOS 14+ and have integrated with Spotlight search.
+In this new release the main lesson screen is updated to show lesson categories. We have also added ability to read the full introduction as well as updated the design. Bug fixes and improvements.

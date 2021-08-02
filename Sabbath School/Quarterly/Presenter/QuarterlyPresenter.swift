@@ -63,11 +63,15 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
         
         SwiftEntryKit.display(entry: gcPopupController, using: Animation.modalAnimationAttributes(widthRatio: width, heightRatio: height))
     }
+    
+    func presentSingleGroupScreen(selectedQuarterlyGroup: QuarterlyGroup) {
+        wireFrame?.presentSingleGroupScreen(view: controller!, selectedQuarterlyGroup: selectedQuarterlyGroup)
+    }
 }
 
 extension QuarterlyPresenter: QuarterlyInteractorOutputProtocol {
     func onError(_ error: Error?) {
-        print(error?.localizedDescription ?? "Unknown")
+        print("SSDEBUG", error?.localizedDescription ?? "Unknown")
     }
 
     func didRetrieveQuarterlies(quarterlies: [Quarterly]) {

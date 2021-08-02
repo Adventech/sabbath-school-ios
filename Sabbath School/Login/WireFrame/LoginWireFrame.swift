@@ -42,7 +42,7 @@ class LoginWireFrame: LoginWireFrameProtocol {
         UIView.transition(with: Configuration.window!,
                           duration: 0.5,
                           options: .transitionFlipFromLeft,
-                          animations: { Configuration.window!.rootViewController = QuarterlyWireFrameV2.createQuarterlyModule() },
+                          animations: { Configuration.window!.rootViewController = QuarterlyWireFrame.createQuarterlyModule() },
                           completion: nil)
     }
     

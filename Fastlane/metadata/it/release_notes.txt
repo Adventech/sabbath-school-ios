@@ -1,1 +1,1 @@
-Abbiamo completamente ricostruito l'app Scuola del Sabato dal design al contenuto, dalle note dell'esperienza di lettura e dai punti salienti. Sincronizza l'app su tutti i dispositivi! Più lingue e traduzioni della Bibbia.
+In questa nuova versione la schermata principale della lezione viene aggiornata per mostrare le categorie di lezione. Abbiamo anche aggiunto la possibilità di leggere l'introduzione completa e aggiornato il design. Correzioni di bug e miglioramenti.

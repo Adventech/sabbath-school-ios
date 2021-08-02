@@ -1,1 +1,1 @@
-Nous avons entièrement reconstruit l'application Ecole du Sabbat. De la conception au contenu. De l'expérience de lecture aux notes et met en surbrillance, la synchronisation entre les périphériques! Plusieurs langues et les traductions de la Bible.
+Dans cette nouvelle version, l'écran principal de la leçon est mis à jour pour afficher les catégories de leçons. Nous avons également ajouté la possibilité de lire l'introduction complète ainsi que mis à jour la conception. Corrections de bugs et améliorations.

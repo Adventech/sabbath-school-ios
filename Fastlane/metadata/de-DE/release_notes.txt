@@ -1,1 +1,1 @@
-Wir haben die Sabbatschule App komplett umgebaut. Vom Design bis zum Inhalt. Vom Leseerlebnis bis zum Hinweis & highlights. Synchronisation über Geräte! Mehrere Sprachen und Bibelübersetzungen.
+In dieser neuen Version wird der Hauptbildschirm des Unterrichts aktualisiert, um Unterrichtskategorien anzuzeigen. Wir haben auch die Möglichkeit hinzugefügt, die vollständige Einführung zu lesen und das Design zu aktualisieren. Fehlerbehebungen und Verbesserungen.

@@ -48,10 +48,10 @@ class LessonQuarterlyInfo: ASCellNode {
             .font: R.font.latoMediumItalic(size: 15)!
         ]
         
-        let blurb: NSString = NSString(format: "%@%@", "… ", "more".localized() as NSString)
+        let blurb: NSString = NSString(format: "%@%@", "… ", "More".localized().lowercased() as NSString)
         let string = NSMutableAttributedString(string: blurb as String)
         string.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, 2))
-        string.addAttributes(attributes, range: blurb.range(of: "more".localized()))
+        string.addAttributes(attributes, range: blurb.range(of: "More".localized().lowercased()))
         introduction.truncationAttributedText = string
 
         readButton.setAttributedTitle(AppStyle.Lesson.Text.readButton(string: "Read".localized().uppercased()), for: .normal)
@@ -130,9 +130,9 @@ class LessonQuarterlyInfoView: LessonQuarterlyInfo {
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        
         cover.style.preferredSize = AppStyle.Lesson.Size.coverImage()
         coverImageNode.style.preferredSize = AppStyle.Lesson.Size.coverImage()
+        introduction.style.minWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
 
         let coverSpec = ASBackgroundLayoutSpec(child: coverImageNode, background: cover)
         let coverHSpec = ASStackLayoutSpec(
@@ -162,7 +162,7 @@ class LessonQuarterlyInfoView: LessonQuarterlyInfo {
             
             
             featureHStack.style.minWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
-            vSpecChildren.append(ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5), child: featureHStack))
+            vSpecChildren.append(featureHStack)
         }
         
         if !isHorizontal {
@@ -191,7 +191,7 @@ class LessonQuarterlyInfoView: LessonQuarterlyInfo {
         
         
 
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 95, left: 15, bottom: 25, right: 15), child: mainSpec)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 95, left: 20, bottom: 25, right: 20), child: mainSpec)
     }
 
     override func layout() {

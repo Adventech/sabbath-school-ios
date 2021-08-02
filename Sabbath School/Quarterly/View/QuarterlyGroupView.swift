@@ -23,60 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-extension ASDisplayNode {
-    func gradient(from color1: UIColor, to color2: UIColor) {
-        if color1 == color2 { return }
-        DispatchQueue.main.async {
-            let size = self.view.frame.size
-            let width = size.width
-            let height = size.height
-
-            let gradient: CAGradientLayer = CAGradientLayer()
-            gradient.colors = [color1.cgColor, color2.cgColor]
-            gradient.locations = [0.0 , 1.0]
-            gradient.startPoint = CGPoint(x: width/2, y: 0.0)
-            gradient.endPoint = CGPoint(x: width/2, y: 1.0)
-            gradient.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
-            self.view.layer.insertSublayer(gradient, at: 0)
-        }
-    }
-    
-    func gradientBlur(from color1: UIColor, to color2: UIColor) {
-        if color1 == color2 { return }
-        DispatchQueue.main.async {
-            let size = self.view.frame.size
-            let width = size.width
-            let height = size.height
-
-            let viewEffect = UIBlurEffect(style: .light)
-            let effectView = UIVisualEffectView(effect: viewEffect)
-            
-            let gradient: CAGradientLayer = CAGradientLayer()
-            gradient.locations = [0.0, 0.6, 0.75]
-            gradient.colors = [color1.cgColor, color2.cgColor]
-            gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-            gradient.endPoint = CGPoint(x: 0.0, y: 0.75)
-            gradient.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
-            
-            effectView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
-            
-            if #available(iOS 11.0, *) {
-                effectView.layer.mask = gradient
-            } else {
-                let maskView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: height))
-                maskView.backgroundColor = UIColor.white
-                maskView.layer.mask = gradient
-                effectView.mask = maskView
-            }
-            
-            effectView.isUserInteractionEnabled = false
-            
-            self.view.insertSubview(effectView, at: 0)
-        }
-    }
-}
-
-class HomeCollectionViewFlowLayout: UICollectionViewFlowLayout {
+class HoriontallySnappingCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
 
@@ -118,23 +65,24 @@ class HomeCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
 }
 
-class QuarterlyGroupView: ASDisplayNode {
-    private let skipGradient: Bool
+class QuarterlyGroupView: GradientNode {
     let groupName = ASTextNode()
     var collectionNode: ASCollectionNode
     
     let seeAll = ASTextNode()
     let seeAllIcon = ASImageNode()
     init(quarterlyGroup: QuarterlyGroup, skipGradient: Bool = true) {
-        let collectionViewLayout = HomeCollectionViewFlowLayout()
+        let collectionViewLayout = HoriontallySnappingCollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewLayout.minimumInteritemSpacing = 0
         collectionViewLayout.minimumLineSpacing = 0
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 15, left: 10, bottom: 15, right: 10)
         collectionNode = ASCollectionNode(collectionViewLayout: collectionViewLayout)
         
-        self.skipGradient = skipGradient
-        super.init()
+        super.init(startingAt: CGPoint(x: 0.5, y: 0.0),
+                   endingAt: CGPoint(x: 0.5, y: 1.0),
+                   with: [AppStyle.Quarterly.Color.gradientStart, skipGradient ? AppStyle.Quarterly.Color.gradientStart : AppStyle.Quarterly.Color.gradientEnd],
+                   for: [0.0 , 1.0])
         groupName.maximumNumberOfLines = 1
         groupName.attributedText = AppStyle.Quarterly.Text.groupName(string: quarterlyGroup.name)
         
@@ -143,11 +91,6 @@ class QuarterlyGroupView: ASDisplayNode {
         
         seeAllIcon.image = R.image.iconMore()?.fillAlpha(fillColor: AppStyle.Quarterly.Color.seeAllIcon)
         automaticallyManagesSubnodes = true
-    }
-    
-    override func didLoad() {
-        if skipGradient { return }
-        self.gradient(from: AppStyle.Quarterly.Color.gradientStart, to: AppStyle.Quarterly.Color.gradientEnd)
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

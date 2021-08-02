@@ -30,6 +30,11 @@ fastlane release
 fastlane deliverApp
 ```
 
+### metadata
+```
+fastlane metadata
+```
+
 ### build
 ```
 fastlane build

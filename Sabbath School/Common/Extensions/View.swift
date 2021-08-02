@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Adventech <info@adventech.io>
+ * Copyright (c) 2021 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,24 +20,10 @@
  * THE SOFTWARE.
  */
 
-import AsyncDisplayKit
 import UIKit
 
-class ThemeController: ASDKViewController<ASDisplayNode> {
-    var colorPrimary: UIColor?
-
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
-    
-    
-    func colorize() {
-        return
-//        navigationController?.navigationBar.barStyle = .black
-//
-//        if colorPrimary != nil {
-//            Configuration.window!.tintColor = colorPrimary!
-//            setTranslucentNavigation(true, color: colorPrimary!, tintColor: .white, titleColor: .white)
-//        }
+extension UIView {
+    var rectCorrespondingToWindow: CGRect {
+        return self.convert(self.bounds, to: nil)
     }
 }

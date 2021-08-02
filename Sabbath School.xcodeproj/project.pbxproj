@@ -30,10 +30,7 @@
 		7A280FCE1EDA10ED003C7458 /* LoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FCD1EDA10ED003C7458 /* LoginProtocols.swift */; };
 		7A280FD01EDA23F0003C7458 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FCF1EDA23F0003C7458 /* LoginInteractor.swift */; };
 		7A280FD91EDCB79F003C7458 /* QuarterlyProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FD81EDCB79F003C7458 /* QuarterlyProtocols.swift */; };
-		7A280FDB1EDCB846003C7458 /* QuarterlyWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FDA1EDCB846003C7458 /* QuarterlyWireFrame.swift */; };
-		7A280FDD1EDCB936003C7458 /* QuarterlyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FDC1EDCB936003C7458 /* QuarterlyPresenter.swift */; };
 		7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FDE1EDCB9A9003C7458 /* QuarterlyInteractor.swift */; };
-		7A280FE11EDCBA16003C7458 /* QuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE01EDCBA16003C7458 /* QuarterlyController.swift */; };
 		7A280FE31EDCBA7D003C7458 /* QuarterlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE21EDCBA7D003C7458 /* QuarterlyView.swift */; };
 		7A280FE91EDCE4B1003C7458 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE81EDCE4B1003C7458 /* Date.swift */; };
 		7A280FF81EDD0246003C7458 /* LanguageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FF71EDD0246003C7458 /* LanguageProtocols.swift */; };
@@ -75,12 +72,10 @@
 		7A8C684A1EF2094300CD3228 /* SettingsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C68491EF2094300CD3228 /* SettingsItemView.swift */; };
 		7A8C684D1EF231E200CD3228 /* RoundedCornersImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */; };
 		7A922E031EDE348D00C12A67 /* LessonQuarterlyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E021EDE348D00C12A67 /* LessonQuarterlyInfoView.swift */; };
-		7A922E091EDF623500C12A67 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E081EDF623500C12A67 /* TableController.swift */; };
 		7A922E121EDF89D600C12A67 /* ReadProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E111EDF89D600C12A67 /* ReadProtocols.swift */; };
 		7A922E141EDF8A6A00C12A67 /* ReadWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E131EDF8A6A00C12A67 /* ReadWireFrame.swift */; };
 		7A922E161EDF8AB300C12A67 /* ReadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E151EDF8AB300C12A67 /* ReadPresenter.swift */; };
 		7A922E181EDFB61600C12A67 /* ReadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E171EDFB61600C12A67 /* ReadController.swift */; };
-		7A922E1A1EDFB6F600C12A67 /* ThemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E191EDFB6F600C12A67 /* ThemeController.swift */; };
 		7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */; };
 		7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */; };
 		7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1F1EDFC61D00C12A67 /* ReadView.swift */; };
@@ -153,13 +148,14 @@
 		FE420255265D93840061C589 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420254265D93840061C589 /* LanguageView.swift */; };
 		FE4427E9267547670038A863 /* FirebaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */; };
 		FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */; };
-		FE5CC73B268914F000B9F061 /* QuarterlyControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73A268914F000B9F061 /* QuarterlyControllerV2.swift */; };
-		FE5CC7402689231700B9F061 /* QuarterlyPresenterV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73F2689231700B9F061 /* QuarterlyPresenterV2.swift */; };
-		FE5CC7452689238700B9F061 /* QuarterlyWIreFrameV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC7442689238700B9F061 /* QuarterlyWIreFrameV2.swift */; };
+		FE5CC73B268914F000B9F061 /* QuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73A268914F000B9F061 /* QuarterlyController.swift */; };
+		FE5CC7402689231700B9F061 /* QuarterlyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73F2689231700B9F061 /* QuarterlyPresenter.swift */; };
+		FE5CC7452689238700B9F061 /* QuarterlyWIreFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC7442689238700B9F061 /* QuarterlyWIreFrame.swift */; };
 		FE5CC74A268926B800B9F061 /* QuarterlyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC749268926B800B9F061 /* QuarterlyGroupView.swift */; };
 		FE5CC74F268939DD00B9F061 /* GroupedQuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC74E268939DD00B9F061 /* GroupedQuarterlyController.swift */; };
 		FE5CC763268972CA00B9F061 /* QuarterlyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */; };
 		FE5CC7A1268A156B00B9F061 /* QuarterlyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC7A0268A156B00B9F061 /* QuarterlyItemView.swift */; };
+		FE5D24B526B612D100D09D09 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5D24B426B612D100D09D09 /* View.swift */; };
 		FE611A9B2674FECA003CDDB5 /* TodayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A8F2674FE8D003CDDB5 /* TodayWidgetView.swift */; };
 		FE611A9C2674FECA003CDDB5 /* TodayWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A6D2674FA3C003CDDB5 /* TodayWidgetProvider.swift */; };
 		FE611A9D2674FECA003CDDB5 /* TodayWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE611A652674FA04003CDDB5 /* TodayWidgetEntry.swift */; };
@@ -202,6 +198,7 @@
 		FED6B3122680E6F7007093CE /* WidgetInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6B3112680E6F7007093CE /* WidgetInteractor.swift */; };
 		FED6B353268133B2007093CE /* FeaturedTodayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6B352268133B2007093CE /* FeaturedTodayWidgetView.swift */; };
 		FED6B35826818BEA007093CE /* FeaturedTodayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6B35726818BEA007093CE /* FeaturedTodayWidget.swift */; };
+		FEDA4C9326B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA4C9226B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift */; };
 		FEF4B75326AF934100548E36 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B75226AF934100548E36 /* Feature.swift */; };
 		FEF4B78A26AF98A900548E36 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B75226AF934100548E36 /* Feature.swift */; };
 		FEF4B79426AF9A9B00548E36 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B79326AF9A9B00548E36 /* Credits.swift */; };
@@ -274,10 +271,7 @@
 		7A280FCD1EDA10ED003C7458 /* LoginProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginProtocols.swift; path = "Sabbath School/Login/Protocols/LoginProtocols.swift"; sourceTree = SOURCE_ROOT; };
 		7A280FCF1EDA23F0003C7458 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		7A280FD81EDCB79F003C7458 /* QuarterlyProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyProtocols.swift; sourceTree = "<group>"; };
-		7A280FDA1EDCB846003C7458 /* QuarterlyWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyWireFrame.swift; sourceTree = "<group>"; };
-		7A280FDC1EDCB936003C7458 /* QuarterlyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyPresenter.swift; sourceTree = "<group>"; };
 		7A280FDE1EDCB9A9003C7458 /* QuarterlyInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyInteractor.swift; sourceTree = "<group>"; };
-		7A280FE01EDCBA16003C7458 /* QuarterlyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyController.swift; sourceTree = "<group>"; };
 		7A280FE21EDCBA7D003C7458 /* QuarterlyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterlyView.swift; sourceTree = "<group>"; };
 		7A280FE81EDCE4B1003C7458 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		7A280FEA1EDCEAD2003C7458 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -322,12 +316,10 @@
 		7A8C68491EF2094300CD3228 /* SettingsItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemView.swift; sourceTree = "<group>"; };
 		7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersImage.swift; sourceTree = "<group>"; };
 		7A922E021EDE348D00C12A67 /* LessonQuarterlyInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonQuarterlyInfoView.swift; sourceTree = "<group>"; };
-		7A922E081EDF623500C12A67 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		7A922E111EDF89D600C12A67 /* ReadProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadProtocols.swift; sourceTree = "<group>"; };
 		7A922E131EDF8A6A00C12A67 /* ReadWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWireFrame.swift; sourceTree = "<group>"; };
 		7A922E151EDF8AB300C12A67 /* ReadPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadPresenter.swift; sourceTree = "<group>"; };
 		7A922E171EDFB61600C12A67 /* ReadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadController.swift; sourceTree = "<group>"; };
-		7A922E191EDFB6F600C12A67 /* ThemeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeController.swift; sourceTree = "<group>"; };
 		7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadInteractor.swift; sourceTree = "<group>"; };
 		7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseInteractor.swift; sourceTree = "<group>"; };
 		7A922E1F1EDFC61D00C12A67 /* ReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
@@ -458,13 +450,14 @@
 		FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyIntroductionView.swift; sourceTree = "<group>"; };
 		FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyControllerCommon.swift; sourceTree = "<group>"; };
 		FE420254265D93840061C589 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
-		FE5CC73A268914F000B9F061 /* QuarterlyControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyControllerV2.swift; sourceTree = "<group>"; };
-		FE5CC73F2689231700B9F061 /* QuarterlyPresenterV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyPresenterV2.swift; sourceTree = "<group>"; };
-		FE5CC7442689238700B9F061 /* QuarterlyWIreFrameV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyWIreFrameV2.swift; sourceTree = "<group>"; };
+		FE5CC73A268914F000B9F061 /* QuarterlyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyController.swift; sourceTree = "<group>"; };
+		FE5CC73F2689231700B9F061 /* QuarterlyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyPresenter.swift; sourceTree = "<group>"; };
+		FE5CC7442689238700B9F061 /* QuarterlyWIreFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyWIreFrame.swift; sourceTree = "<group>"; };
 		FE5CC749268926B800B9F061 /* QuarterlyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyGroupView.swift; sourceTree = "<group>"; };
 		FE5CC74E268939DD00B9F061 /* GroupedQuarterlyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedQuarterlyController.swift; sourceTree = "<group>"; };
 		FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyGroup.swift; sourceTree = "<group>"; };
 		FE5CC7A0268A156B00B9F061 /* QuarterlyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyItemView.swift; sourceTree = "<group>"; };
+		FE5D24B426B612D100D09D09 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		FE611A652674FA04003CDDB5 /* TodayWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetEntry.swift; sourceTree = "<group>"; };
 		FE611A6D2674FA3C003CDDB5 /* TodayWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetProvider.swift; sourceTree = "<group>"; };
 		FE611A872674FDFD003CDDB5 /* TodayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidget.swift; sourceTree = "<group>"; };
@@ -521,6 +514,7 @@
 		FED6B3112680E6F7007093CE /* WidgetInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetInteractor.swift; sourceTree = "<group>"; };
 		FED6B352268133B2007093CE /* FeaturedTodayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedTodayWidgetView.swift; sourceTree = "<group>"; };
 		FED6B35726818BEA007093CE /* FeaturedTodayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedTodayWidget.swift; sourceTree = "<group>"; };
+		FEDA4C9226B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonQuarterlyInfoEmptyView.swift; sourceTree = "<group>"; };
 		FEE3024224730E8000A71314 /* MenuItemKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MenuItemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF4B75226AF934100548E36 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		FEF4B79326AF9A9B00548E36 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
@@ -713,6 +707,7 @@
 				7A3BCE1E1EE0EC28003EC12B /* URL.swift */,
 				FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */,
 				FE1E34BD2672874700DAC2D6 /* ShareItem.swift */,
+				FE5D24B426B612D100D09D09 /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -741,9 +736,8 @@
 		7A280FD21EDCB736003C7458 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7A280FE01EDCBA16003C7458 /* QuarterlyController.swift */,
 				FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */,
-				FE5CC73A268914F000B9F061 /* QuarterlyControllerV2.swift */,
+				FE5CC73A268914F000B9F061 /* QuarterlyController.swift */,
 				FE5CC74E268939DD00B9F061 /* GroupedQuarterlyController.swift */,
 				FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */,
 				FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */,
@@ -763,8 +757,7 @@
 		7A280FD41EDCB736003C7458 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				7A280FDC1EDCB936003C7458 /* QuarterlyPresenter.swift */,
-				FE5CC73F2689231700B9F061 /* QuarterlyPresenterV2.swift */,
+				FE5CC73F2689231700B9F061 /* QuarterlyPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -795,8 +788,7 @@
 		7A280FD71EDCB736003C7458 /* WireFrame */ = {
 			isa = PBXGroup;
 			children = (
-				7A280FDA1EDCB846003C7458 /* QuarterlyWireFrame.swift */,
-				FE5CC7442689238700B9F061 /* QuarterlyWIreFrameV2.swift */,
+				FE5CC7442689238700B9F061 /* QuarterlyWIreFrame.swift */,
 			);
 			path = WireFrame;
 			sourceTree = "<group>";
@@ -809,8 +801,6 @@
 				7AC26AE61EE4FA9E003F946C /* Reader.swift */,
 				7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */,
 				7A2810281EDDE41F003C7458 /* ShimmeringNode.swift */,
-				7A922E081EDF623500C12A67 /* TableController.swift */,
-				7A922E191EDFB6F600C12A67 /* ThemeController.swift */,
 				FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */,
 			);
 			path = Library;
@@ -939,6 +929,7 @@
 				FE620E6B26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift */,
 				7A3BCE221EE262C7003EC12B /* LessonEmptyCellNode.swift */,
 				FEF4B7A126AF9C7200548E36 /* LessonQuarterlyFooter.swift */,
+				FEDA4C9226B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1812,22 +1803,19 @@
 				7A3BCE381EE29203003EC12B /* BibleVersionView.swift in Sources */,
 				FE5CC763268972CA00B9F061 /* QuarterlyGroup.swift in Sources */,
 				7A2810061EDD071B003C7458 /* LanguageWireFrame.swift in Sources */,
-				7A280FE11EDCBA16003C7458 /* QuarterlyController.swift in Sources */,
 				FE863F2A2662BD9F00ADCA36 /* Animation.swift in Sources */,
-				7A922E1A1EDFB6F600C12A67 /* ThemeController.swift in Sources */,
 				FE0249EA2669C2E3006BFADC /* Helper.swift in Sources */,
 				7A535A7A1EF0A56D00CBDEAB /* SettingsController.swift in Sources */,
 				FE863F6426657E1800ADCA36 /* AppStyle.swift in Sources */,
 				7AC26AFA1EE5EBDE003F946C /* LessonInfo.swift in Sources */,
 				7A280FD01EDA23F0003C7458 /* LoginInteractor.swift in Sources */,
-				7A922E091EDF623500C12A67 /* TableController.swift in Sources */,
 				7A280FCE1EDA10ED003C7458 /* LoginProtocols.swift in Sources */,
 				FE620E6C26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift in Sources */,
 				7AF3261A1EFF998D00A04568 /* Range.swift in Sources */,
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,
 				7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */,
 				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
-				FE5CC7452689238700B9F061 /* QuarterlyWIreFrameV2.swift in Sources */,
+				FE5CC7452689238700B9F061 /* QuarterlyWIreFrame.swift in Sources */,
 				7A922E141EDF8A6A00C12A67 /* ReadWireFrame.swift in Sources */,
 				7A8C684D1EF231E200CD3228 /* RoundedCornersImage.swift in Sources */,
 				7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */,
@@ -1845,7 +1833,6 @@
 				7A28101C1EDDCDEC003C7458 /* LessonWireFrame.swift in Sources */,
 				7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */,
 				7A28101A1EDDCC1A003C7458 /* LessonController.swift in Sources */,
-				7A280FDB1EDCB846003C7458 /* QuarterlyWireFrame.swift in Sources */,
 				7A3BCE3A1EE292E9003EC12B /* BibleVersionController.swift in Sources */,
 				7A280FFC1EDD032E003C7458 /* LanguageController.swift in Sources */,
 				7A3BCE341EE2776A003EC12B /* BibleInteractor.swift in Sources */,
@@ -1854,7 +1841,6 @@
 				7A922E161EDF8AB300C12A67 /* ReadPresenter.swift in Sources */,
 				7A280FF81EDD0246003C7458 /* LanguageProtocols.swift in Sources */,
 				7A280FCC1EDA0F9D003C7458 /* LoginController.swift in Sources */,
-				7A280FDD1EDCB936003C7458 /* QuarterlyPresenter.swift in Sources */,
 				FE420255265D93840061C589 /* LanguageView.swift in Sources */,
 				7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */,
 				7A3BCE3C1EE29605003EC12B /* Button.swift in Sources */,
@@ -1865,7 +1851,7 @@
 				7A280FD91EDCB79F003C7458 /* QuarterlyProtocols.swift in Sources */,
 				7A8C68481EF206E100CD3228 /* SettingsView.swift in Sources */,
 				7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */,
-				FE5CC7402689231700B9F061 /* QuarterlyPresenterV2.swift in Sources */,
+				FE5CC7402689231700B9F061 /* QuarterlyPresenter.swift in Sources */,
 				7A3BCE421EE37E30003EC12B /* DiscreteSlider.swift in Sources */,
 				7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */,
 				7A3BCE1F1EE0EC28003EC12B /* URL.swift in Sources */,
@@ -1876,15 +1862,17 @@
 				FE5CC74A268926B800B9F061 /* QuarterlyGroupView.swift in Sources */,
 				FE5CC7A1268A156B00B9F061 /* QuarterlyItemView.swift in Sources */,
 				FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */,
+				FE5D24B526B612D100D09D09 /* View.swift in Sources */,
 				7A2810271EDDE3D3003C7458 /* DisplayNode.swift in Sources */,
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
 				7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */,
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
 				FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */,
 				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
-				FE5CC73B268914F000B9F061 /* QuarterlyControllerV2.swift in Sources */,
+				FE5CC73B268914F000B9F061 /* QuarterlyController.swift in Sources */,
 				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageItemView.swift in Sources */,
+				FEDA4C9326B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift in Sources */,
 				FE0249FE266A91C9006BFADC /* Notifications.swift in Sources */,
 				FE0249F8266A9068006BFADC /* Configuration.swift in Sources */,
 				7A280F971ED94964003C7458 /* R.generated.swift in Sources */,
@@ -2250,7 +2238,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 2001;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2276,7 +2264,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 2001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2306,7 +2294,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 2001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -2338,7 +2326,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 2001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
