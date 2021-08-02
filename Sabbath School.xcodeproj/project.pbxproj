@@ -2238,7 +2238,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 2001;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2264,7 +2264,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 2001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2294,7 +2294,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 2001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -2326,7 +2326,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 2001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;

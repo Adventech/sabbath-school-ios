@@ -1,1 +1,1 @@
-Hemos reconstruido completamente la aplicación de la Escuela Sabática. Del diseño al contenido. De la experiencia de lectura a las notas y resalta la sincronización entre dispositivos! Idiomas múltiples y traducciones de la Biblia.
+En esta nueva versión, la pantalla principal de la lección se actualiza para mostrar categorías de lecciones. También hemos agregado la capacidad de leer la introducción completa y actualizar el diseño. Mejoras y correcciones de errores.

@@ -1,1 +1,1 @@
-Vi har helt genopbygget sabbatsskole app. Fra design til indhold. Fra læseoplevelse til noter & fremhæver synkronisering på tværs af enheder! Flere sprog og bibeloversættelser.
+I denne nye version opdateres hovedundervisningsskærmen til at vise lektionskategorier. Vi har også tilføjet evnen til at læse hele introduktionen samt opdateret designet. Fejlrettelser og forbedringer.

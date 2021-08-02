@@ -1,1 +1,1 @@
-Chúng tôi đã xây dựng lại hoàn toàn ứng dụng Sabbath School. Từ thiết kế đến nội dung. Từ kinh nghiệm đọc đến ghi chú & nổi bật, đồng bộ hóa trên các thiết bị! Nhiều ngôn ngữ và bản dịch Kinh Thánh.
+Trong phiên bản mới này, màn hình bài học chính được cập nhật để hiển thị các loại bài học. Chúng tôi cũng đã thêm khả năng đọc toàn bộ phần giới thiệu cũng như cập nhật thiết kế. Sửa các lỗi và cải tiến.

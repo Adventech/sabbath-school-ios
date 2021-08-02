@@ -1,1 +1,1 @@
-Sebt Okulu uygulamasını tamamen yeniden kurdum. Tasarımdan içeriğe. Okuma deneyiminden notaya ve vurgular cihazlar arasında eşzamanlama! Birden fazla dil ve İncil çevirileri.
+Bu yeni sürümde, ana ders ekranı ders kategorilerini gösterecek şekilde güncellendi. Ayrıca tasarımın güncellenmesinin yanı sıra tam tanıtımı okuma yeteneği de ekledik. Hata düzeltmeleri ve iyileştirmeler.
