@@ -68,6 +68,7 @@ class ReadController: ASDKViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.delegate = self
         setBackButton()
         presenter?.configure()
 
@@ -245,6 +246,14 @@ class ReadController: ASDKViewController<ASDisplayNode> {
                     self.delegate?.shareLesson(lesson: lesson)
                 }
         })]
+    }
+}
+
+extension ReadController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        DispatchQueue.main.async(execute: {
+            self.setNavigationBarOpacity(alpha: 0)
+        })
     }
 }
 

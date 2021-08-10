@@ -43,7 +43,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     override init() {
         super.init(node: ASTableNode())
         tableNode?.delegate = self
-        tableNode?.dataSource = self   
+        tableNode?.dataSource = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -52,6 +52,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.delegate = self
         
         self.tableNode?.allowsSelection = false
         
@@ -78,6 +79,8 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         if let selected = tableNode?.indexPathForSelectedRow {
             tableNode?.view.deselectRow(at: selected, animated: true)
         }
+        
+        self.setupNavigationbar()
     }
     
     override func viewWillLayoutSubviews() {
@@ -96,8 +99,18 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupNavigationbar()
-        scrollBehavior()
+        
+        if #available(iOS 11, *) {
+            if #available(iOS 13, *) {
+                setupNavigationbar()
+                scrollBehavior()
+            } else {
+                setNavigationBarOpacity(alpha: 0)
+            }
+        } else {
+            setupNavigationbar()
+            scrollBehavior()
+        }
     }
     
     func setupNavigationbar() {
@@ -298,6 +311,14 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     }
 }
 
+extension LessonController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        DispatchQueue.main.async(execute: {
+            self.setNavigationBarOpacity(alpha: 0)
+        })
+    }
+}
+
 extension LessonController: LessonControllerProtocol {
     func showLessons(quarterlyInfo: QuarterlyInfo) {
         self.dataSource = quarterlyInfo
@@ -352,6 +373,10 @@ extension LessonController: ASTableDelegate {
         if indexPath.section == 1 {
             presenter?.presentReadScreen(lessonIndex: lesson.index)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 1
     }
 }
 

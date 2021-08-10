@@ -1,1 +1,1 @@
-In this new release the main lesson screen is updated to show lesson categories. We have also added ability to read the full introduction as well as updated the design. Bug fixes and improvements.
+Fix for the overheating and high energy consuption issue on some iOS devices.

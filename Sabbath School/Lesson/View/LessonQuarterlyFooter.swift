@@ -52,7 +52,7 @@ class LessonQuarterlyFooter: ASCellNode {
             let description = ASTextNode()
             
             image.url = feature.image
-            image.delegate = self
+            image.imageModificationBlock = ASImageNodeTintColorModificationBlock(AppStyle.Base.Color.text)
             
             title.attributedText = AppStyle.Lesson.Text.creditsName(string: feature.title)
             description.attributedText = AppStyle.Lesson.Text.creditsValue(string: feature.description)
@@ -119,13 +119,5 @@ class LessonQuarterlyFooter: ASCellNode {
         )
         
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 15, left: 15, bottom: 25, right: 15), child: vSpec)
-    }
-}
-
-extension LessonQuarterlyFooter: ASNetworkImageNodeDelegate {
-    func imageNodeDidFinishDecoding(_ imageNode: ASNetworkImageNode) {
-        guard let image = imageNode.image else { return }
-        imageNode.url = nil
-        imageNode.image = image.fillAlpha(fillColor: AppStyle.Base.Color.text)
     }
 }
