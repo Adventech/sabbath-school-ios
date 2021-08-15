@@ -23,15 +23,19 @@
 import AsyncDisplayKit
 import SafariServices
 import UIKit
+import SwiftAudio
 
 class ReadController: ASDKViewController<ASDisplayNode> {
     var delegate: ReadControllerDelegate?
     var presenter: ReadPresenterProtocol?
-    var collectionNode: ASPagerNode { return node as! ASPagerNode }
+    
+    let readCollectionView = ReadCollectionView()
+    var collectionNode: ASPagerNode { return readCollectionView.collectionNode }
     
     var previewingContext: UIViewControllerPreviewing? = nil
 
     var lessonInfo: LessonInfo?
+    var audio: [Audio] = []
     var reads = [Read]()
     var highlights = [ReadHighlights]()
     var comments = [ReadComments]()
@@ -52,14 +56,9 @@ class ReadController: ASDKViewController<ASDisplayNode> {
     var scrollReachedTouchpoint: Bool = false
 
     override init() {
-        super.init(node: ASPagerNode())
-        collectionNode.backgroundColor = AppStyle.Base.Color.background
+        super.init(node: readCollectionView)
         collectionNode.setDataSource(self)
         collectionNode.delegate = self
-        collectionNode.allowsAutomaticInsetsAdjustment = true
-        collectionNode.autoresizesSubviews = true
-        collectionNode.automaticallyRelayoutOnLayoutMarginsChanges = true
-        collectionNode.automaticallyRelayoutOnSafeAreaChanges = true
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -68,18 +67,97 @@ class ReadController: ASDKViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.delegate = self
         setBackButton()
+        
+        let style = NSMutableParagraphStyle()
+        style.alignment = .left
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.paragraphStyle: style]
+        
         presenter?.configure()
+        
+        displayNavRightButtons()
 
-        let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
-        rightButton.accessibilityIdentifier = "themeSettings"
-        navigationItem.rightBarButtonItem = rightButton
         UIApplication.shared.isIdleTimerDisabled = true
 
         if #available(iOS 11.0, *) {
             self.collectionNode.view.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        readCollectionView.miniPlayerView.play.addTarget(self, action: #selector(didPressPlay(_:)), forControlEvents: .touchUpInside)
+        readCollectionView.miniPlayerView.backward.addTarget(self, action: #selector(didPressBackward(_:)), forControlEvents: .touchUpInside)
+        readCollectionView.miniPlayerView.close.addTarget(self, action: #selector(didPressClose(_:)), forControlEvents: .touchUpInside)
+        
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presentAudioController))
+        gesture.numberOfTapsRequired = 1
+        
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(presentAudioController))
+        swipeGesture.direction = .up
+        
+        readCollectionView.miniPlayerView.view.isUserInteractionEnabled = true
+        readCollectionView.miniPlayerView.view.addGestureRecognizer(gesture)
+        readCollectionView.miniPlayerView.view.addGestureRecognizer(swipeGesture)
+        
+        AudioPlaybackV2.shared.event.stateChange.addListener(self, handleAudioPlayerStateChange)
+        handleAudioPlayerStateChange(state: AudioPlaybackV2.shared.playerState)
+    }
+    
+    @objc func didPressPlay(_ sender: ASButtonNode) {
+        if sender.isSelected {
+            AudioPlaybackV2.pause()
+        } else {
+            AudioPlaybackV2.play()
+        }
+    }
+    
+    @objc func didPressBackward(_ sender: ASButtonNode) {
+        AudioPlaybackV2.shared.seek(to: AudioPlaybackV2.shared.currentTime - 15)
+    }
+    
+    @objc func didPressClose(_ sender: ASImageNode) {
+        AudioPlaybackV2.shared.stop()
+        self.readCollectionView.miniPlayerShown = false
+        self.readCollectionView.transitionLayout(withAnimation: true, shouldMeasureAsync: true)
+    }
+    
+    func showMiniPlayer() {
+        self.readCollectionView.miniPlayerShown = true
+        self.readCollectionView.transitionLayout(withAnimation: true, shouldMeasureAsync: true)
+    }
+    
+    func updatePlayPauseState(state: AudioPlayerState) {
+        if AudioPlaybackV2.shared.currentItem != nil {
+            if state == .playing {
+                self.showMiniPlayer()
+            }
+            self.updateAudio()
+        }
+        
+        self.readCollectionView.miniPlayerView.play.isSelected = state == .playing
+    }
+    
+    func updateAudio() {
+        if let item = AudioPlaybackV2.shared.currentItem {
+            self.readCollectionView.miniPlayerView.title.attributedText = AppStyle.Audio.Text.miniPlayerTitle(string: item.getTitle() ?? "")
+            self.readCollectionView.miniPlayerView.artist.attributedText = AppStyle.Audio.Text.miniPlayerArtist(string: item.getArtist() ?? "")
+        }
+    }
+    
+    func handleAudioPlayerStateChange(state: AudioPlayer.StateChangeEventData) {
+        DispatchQueue.main.async {
+            self.updatePlayPauseState(state: state)
+            switch state {
+            case .loading, .ready:
+                self.updateAudio()
+            case .playing:
+                self.showMiniPlayer()
+                self.updateAudio()
+            default:
+                break
+            }
         }
     }
     
@@ -145,6 +223,41 @@ class ReadController: ASDKViewController<ASDisplayNode> {
 
         presenter?.presentReadOptionsScreen(size: size, sourceView: sender)
     }
+    
+    @objc func presentAudio(sender: UIBarButtonItem) {
+        presentAudioController()
+    }
+    
+    @objc func presentAudioController() {
+        var dayIndex: String? = nil
+        if let readIndex = lastPage, 0...self.reads.count ~= readIndex {
+            dayIndex = self.reads[readIndex].index
+        }
+        
+        let audioController = AudioController(audio: self.audio, lessonIndex: lessonInfo?.lesson.index, dayIndex: dayIndex)
+        
+        if #available(iOS 13, *) {
+            self.present(audioController, animated: true)
+        } else {
+            self.present(ASNavigationController(rootViewController: audioController), animated: true)
+        }
+    }
+    
+    func displayNavRightButtons() {
+        var barButtons: [UIBarButtonItem] = []
+        
+        let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
+        rightButton.accessibilityIdentifier = "themeSettings"
+        barButtons.append(rightButton)
+        
+        if self.audio.count > 0 {
+            let audioButton = UIBarButtonItem(image: R.image.iconAudio(), style: .done, target: self, action: #selector(presentAudio(sender:)))
+            audioButton.accessibilityIdentifier = "audioButton"
+            barButtons.append(audioButton)
+        }
+        
+        navigationItem.rightBarButtonItems = barButtons
+    }
 
     func toggleBars() {
         let shouldHide = !navigationController!.isNavigationBarHidden
@@ -163,7 +276,8 @@ class ReadController: ASDKViewController<ASDisplayNode> {
         guard let readView = collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as? ReadView else { return }
         let scrollView = readView.webView.scrollView
         
-        title = readView.read?.title.uppercased()
+        title = readView.read?.title
+        
         let theme = Preferences.currentTheme()
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height {
             if -scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight {
@@ -248,9 +362,22 @@ class ReadController: ASDKViewController<ASDisplayNode> {
     }
 }
 
+extension ReadController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        DispatchQueue.main.async(execute: {
+            self.setNavigationBarOpacity(alpha: 0)
+        })
+    }
+}
+
 extension ReadController: ReadControllerProtocol {
     func loadLessonInfo(lessonInfo: LessonInfo) {
         self.lessonInfo = lessonInfo
+    }
+    
+    func loadAudio(audio: [Audio]) {
+        self.audio = audio
+        displayNavRightButtons()
     }
 
     func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool) {

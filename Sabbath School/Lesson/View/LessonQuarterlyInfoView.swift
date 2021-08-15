@@ -64,7 +64,7 @@ class LessonQuarterlyInfo: ASCellNode {
         for feature in quarterly.features {
             let image = ASNetworkImageNode()
             image.url = feature.image
-            image.delegate = self
+            image.imageModificationBlock = ASImageNodeTintColorModificationBlock(.white)
             image.alpha = 0.5
             self.features.append(image)
             addSubnode(image)
@@ -74,14 +74,6 @@ class LessonQuarterlyInfo: ASCellNode {
         addSubnode(humanDate)
         addSubnode(introduction)
         addSubnode(readButton)
-    }
-}
-
-extension LessonQuarterlyInfo: ASNetworkImageNodeDelegate {
-    func imageNodeDidFinishDecoding(_ imageNode: ASNetworkImageNode) {
-        guard let image = imageNode.image else { return }
-        imageNode.url = nil
-        imageNode.image = image.fillAlpha(fillColor: .white)
     }
 }
 
@@ -189,8 +181,6 @@ class LessonQuarterlyInfoView: LessonQuarterlyInfo {
             children: [coverHSpec, vSpec]
         )
         
-        
-
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 95, left: 20, bottom: 25, right: 20), child: mainSpec)
     }
 

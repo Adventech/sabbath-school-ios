@@ -145,7 +145,9 @@ class ReadView: ASCellNode {
         webNode.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width), ASDimensionMake(constrainedSize.max.height))
         
         DispatchQueue.main.async {
-            self.webView.scrollView.contentInset = UIEdgeInsets(top: self.initialCoverHeight, left: 0, bottom: 0, right: 0)
+            let isPlaying = AudioPlaybackV2.shared.playerState == .playing
+            self.webView.scrollView.contentInset = UIEdgeInsets(top: self.initialCoverHeight, left: 0, bottom: isPlaying ? 40 : 0, right: 0)
+//            self.webView.scrollView.contentInset.top = self.initialCoverHeight
         }
         title.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
         date.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))

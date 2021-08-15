@@ -100,4 +100,8 @@ extension ReadPresenter: ReadInteractorOutputProtocol {
     func didRetrieveLessonInfo(lessonInfo: LessonInfo) {
         controller?.loadLessonInfo(lessonInfo: lessonInfo)
     }
+    
+    func didRetrieveAudio(audio: [Audio]) {
+        controller?.loadAudio(audio: audio)
+    }
 }

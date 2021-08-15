@@ -37,6 +37,11 @@ class Configuration: NSObject {
     static var window: UIWindow?
     static let notification = Notifications()
     
+    static func configureMisc() {
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        AudioPlaybackV2.configure()
+    }
+    
     static func configureAuthentication() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .black
@@ -86,8 +91,6 @@ class Configuration: NSObject {
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
-        
-        
 
         window?.makeKeyAndVisible()
     }

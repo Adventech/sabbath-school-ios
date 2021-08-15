@@ -36,8 +36,8 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
 
     func configure() {
         // interactor?.configure()
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+//        GIDSignIn.sharedInstance().delegate = self
     }
 
     func loginActionAnonymous() {
@@ -87,7 +87,22 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
     }
 
     func loginActionGoogle() {
-        GIDSignIn.sharedInstance().signIn()
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: controller as! UIViewController) { [weak self] user, error in
+            if let error = error {
+                self?.onError(error)
+                return
+            }
+
+            guard let authentication = user?.authentication, let idToken = authentication.idToken else {
+              return
+            }
+
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
+
+            self?.performFirebaseLogin(credential: credential)
+          }
     }
     
     @available(iOS 13, *)
@@ -182,23 +197,23 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
     }
 }
 
-extension LoginPresenter: GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        if let error = error {
-            onError(error)
-            return
-        }
-
-        let authentication = user.authentication
-        let credential = GoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,
-                                                       accessToken: (authentication?.accessToken)!)
-        performFirebaseLogin(credential: credential)
-    }
-
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-    }
-}
+//extension LoginPresenter: GIDSignInDelegate {
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+//        if let error = error {
+//            onError(error)
+//            return
+//        }
+//
+//        let authentication = user.authentication
+//        let credential = GoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,
+//                                                       accessToken: (authentication?.accessToken)!)
+//        performFirebaseLogin(credential: credential)
+//    }
+//
+//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+//        // Perform any operations when the user disconnects from app here.
+//    }
+//}
 
 extension LoginPresenter: ASAuthorizationControllerPresentationContextProviding {
     @available(iOS 13, *)

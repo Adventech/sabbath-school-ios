@@ -46,6 +46,7 @@ protocol LessonControllerDelegate: class {
 
 protocol LessonWireFrameProtocol: class {
     static func createLessonModule(quarterlyIndex: String, initiateOpenToday: Bool) -> LessonController
+    static func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool) -> ASNavigationController
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String)
     func showReadScreen(view: LessonControllerProtocol, readScreen: ReadController)
 }

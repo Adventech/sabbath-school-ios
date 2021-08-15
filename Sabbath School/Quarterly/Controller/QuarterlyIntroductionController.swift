@@ -33,6 +33,7 @@ class QuarterlyIntroductionController: ASDKViewController<ASDisplayNode> {
         self.quarterly = quarterly
         super.init(node: table)
         table.dataSource = self
+        table.delegate = self
         table.backgroundColor = AppStyle.Base.Color.background
         title = quarterly.title
     }
@@ -50,6 +51,12 @@ class QuarterlyIntroductionController: ASDKViewController<ASDisplayNode> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintColor = AppStyle.Base.Color.navigationTint
+    }
+}
+
+extension QuarterlyIntroductionController: ASTableDelegate {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
 }
 

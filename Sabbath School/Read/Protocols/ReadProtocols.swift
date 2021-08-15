@@ -41,6 +41,7 @@ protocol ReadControllerProtocol: class {
 
     func loadLessonInfo(lessonInfo: LessonInfo)
     func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool)
+    func loadAudio(audio: [Audio])
 }
 
 protocol ReadControllerDelegate: class {
@@ -55,6 +56,7 @@ protocol ReadInteractorOutputProtocol: class {
     func onError(_ error: Error?)
     func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int)
     func didRetrieveLessonInfo(lessonInfo: LessonInfo)
+    func didRetrieveAudio(audio: [Audio])
 }
 
 protocol ReadInteractorInputProtocol: class {
@@ -64,6 +66,7 @@ protocol ReadInteractorInputProtocol: class {
     func retrieveRead(readIndex: String)
     func retrieveLessonInfo(lessonIndex: String)
     func retrieveHighlights(read: Read)
+    func retrieveAudio(quarterlyIndex: String)
     func saveHighlights(highlights: ReadHighlights)
     func saveComments(comments: ReadComments)
 }

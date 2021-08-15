@@ -35,13 +35,16 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
     }
 
     func retrieveLessonInfo(lessonIndex: String) {
+        self.retrieveAudio(quarterlyIndex: String(lessonIndex.prefix(lessonIndex.count-3)))
+        
         database?.child(Constants.Firebase.lessonInfo).child(lessonIndex).observe(.value, with: { [weak self] (snapshot) in
             guard let json = snapshot.data else { return }
 
             do {
                 let item: LessonInfo = try FirebaseDecoder().decode(LessonInfo.self, from: json)
                 self?.presenter?.didRetrieveLessonInfo(lessonInfo: item)
-                self?.retrieveReads(lessonInfo: item)
+                self?.retrieveReads(lessonInfo: item)                
+                
             } catch let error {
                 self?.presenter?.onError(error)
             }
@@ -65,6 +68,21 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
             do {
                 let item: Read = try FirebaseDecoder().decode(Read.self, from: json)
                 self?.retrieveHighlights(read: item)
+            } catch let error {
+                self?.presenter?.onError(error)
+            }
+        }) { [weak self] (error) in
+            self?.presenter?.onError(error)
+        }
+    }
+    
+    func retrieveAudio(quarterlyIndex: String) {
+        database?.child(Constants.Firebase.audio).child(quarterlyIndex).observe(.value, with: { [weak self] (snapshot) in
+            guard let json = snapshot.data else { return }
+
+            do {
+                let item: [Audio] = try FirebaseDecoder().decode([Audio].self, from: json)
+                self?.presenter?.didRetrieveAudio(audio: item)
             } catch let error {
                 self?.presenter?.onError(error)
             }

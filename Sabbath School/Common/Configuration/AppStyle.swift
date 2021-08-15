@@ -328,7 +328,7 @@ struct AppStyle {
         
         struct Style {
             static var introductionStylesheet: String {
-                return "body { text-align: justify; text-justify: inter-word; font-size: 1.6em; line-height: 1.4em; font-family: 'Lato', sans-serif; color: \(AppStyle.Quarterly.Color.introduction.hex()) }"
+                return "body { font-size: 1.6em; line-height: 1.4em; font-family: 'Lato', sans-serif; color: \(AppStyle.Quarterly.Color.introduction.hex()) }"
             }
         }
     }
@@ -352,6 +352,7 @@ struct AppStyle {
                 return CGSize(width: 16, height: 12)
             }
         }
+        
         struct Button {
             static func readButtonUIEdgeInsets() -> UIEdgeInsets {
                 return AppStyle.Base.Button.pillButtonUIEdgeInsets()
@@ -527,6 +528,117 @@ struct AppStyle {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: AppStyle.Base.Color.text,
                     .font: R.font.latoRegular(size: 17)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+        }
+    }
+    
+    struct Audio {
+        struct Color {
+            static var topIndicator: UIColor {
+                return .baseGray1 | .baseGray2
+            }
+            
+            static var progressThumb: UIColor {
+                return UIColor.baseWhite1.darker() | .baseGray1
+            }
+            
+            static var progressTint: UIColor {
+                return .baseGray1 | .baseGray3
+            }
+            
+            static var auxControls: UIColor {
+                return .baseBlue | UIColor.baseGray2
+            }
+            
+            static var miniPlayerBackground: UIColor {
+                return .baseGray1 | UIColor.black.lighter()
+            }
+        }
+        
+        struct Size {
+            static func coverImage(coverRatio: String = "portrait", isMini: Bool = false) -> CGSize {
+                let isSquare: Bool = coverRatio == "square"
+                
+                let defaultSize = isSquare ? CGSize(width: 276, height: 276) : CGSize(width: 187, height: 276)
+                if Helper.isPad { return defaultSize }
+                
+                var width = UIScreen.main.bounds.width / (isSquare ? 1.5 : 2.7)
+                var height = width / (defaultSize.width / defaultSize.height)
+                
+                if isMini {
+                    width /= 2
+                    height /= 2
+                }
+                
+                return CGSize(width: width, height: height)
+            }
+            
+            static func miniPlayerWidth(constrainedWidth: CGFloat) -> CGFloat {
+                return constrainedWidth > 650 ? 650 : constrainedWidth
+            }
+        }
+        
+        struct Text {
+            static func title(string: String, alignment: NSTextAlignment = .center) -> NSAttributedString {
+                let style = NSMutableParagraphStyle()
+                style.alignment = alignment
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.text,
+                    .font: R.font.latoMedium(size: 18)!,
+                    .paragraphStyle: style
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+
+            static func artist(string: String, alignment: NSTextAlignment = .center) -> NSAttributedString {
+                let style = NSMutableParagraphStyle()
+                style.alignment = alignment
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2,
+                    .font: R.font.latoRegular(size: 14)!,
+                    .paragraphStyle: style
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func playlistTitle(string: String, isCurrent: Bool = false) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.text,
+                    .font: isCurrent ? R.font.latoBlack(size: 16)! : R.font.latoMedium(size: 16)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+
+            static func playlistArtist(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2,
+                    .font: R.font.latoRegular(size: 14)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func miniPlayerTitle(string: String, isCurrent: Bool = false) -> NSAttributedString {
+                return AppStyle.Audio.Text.playlistTitle(string: string, isCurrent: isCurrent)
+            }
+
+            static func miniPlayerArtist(string: String) -> NSAttributedString {
+                return AppStyle.Audio.Text.playlistArtist(string: string)
+            }
+            
+            static func time(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseWhite1.darker() | .baseGray2,
+                    .font: R.font.latoBold(size: 14)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func rate(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Audio.Color.auxControls,
+                    .font: R.font.latoBold(size: 18)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
             }

@@ -67,7 +67,7 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
         }
 
         if let sourceView = view as? UIViewController {
-            sourceView.show(lessonScreen, sender: nil)
+            sourceView.navigationController?.pushViewController(lessonScreen, animated: true)
         }
     }
 

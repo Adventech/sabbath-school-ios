@@ -24,7 +24,7 @@ import FirebaseMessaging
 import UserNotifications
 
 class Notifications: NSObject, MessagingDelegate {
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         // print("Firebase registration token: \(fcmToken)")
     }
 }
