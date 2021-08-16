@@ -52,7 +52,12 @@ extension ASButtonNode {
         if controlEvents == .touchDown {
             bounce(true)
         }
-        if controlEvents == .touchUpInside || controlEvents == .touchUpOutside || controlEvents == .touchDragOutside {
+        
+        if controlEvents == .touchUpInside
+            || controlEvents == .touchUpOutside
+            || controlEvents == .touchDragOutside
+            || controlEvents == .touchCancel
+        {
             bounce(false)
         }
         super.sendActions(forControlEvents: controlEvents, with: touchEvent)
@@ -64,8 +69,8 @@ extension ASButtonNode {
             delay: 0,
             usingSpringWithDamping: 0.4,
             initialSpringVelocity: 0.8,
-            options: [.beginFromCurrentState, .curveEaseInOut],
-            animations: { self.transform = bounce ? CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.95, y: 0.95)) : CATransform3DMakeAffineTransform(CGAffineTransform.identity) },
+            options: [.beginFromCurrentState, .curveEaseInOut, .allowUserInteraction],
+            animations: { self.transform = bounce ? CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.85, y: 0.85)) : CATransform3DMakeAffineTransform(CGAffineTransform.identity) },
             completion: nil)
     }
 }

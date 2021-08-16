@@ -138,11 +138,7 @@ PODS:
   - GTMAppAuth (1.2.2):
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
-  - GTMSessionFetcher (1.6.1):
-    - GTMSessionFetcher/Full (= 1.6.1)
   - GTMSessionFetcher/Core (1.6.1)
-  - GTMSessionFetcher/Full (1.6.1):
-    - GTMSessionFetcher/Core (= 1.6.1)
   - Hue (5.0.0)
   - leveldb-library (1.22.1)
   - MenuItemKit (4.0.1)
@@ -214,7 +210,6 @@ DEPENDENCIES:
   - Firebase/Storage
   - FontBlaster
   - GoogleSignIn
-  - GTMSessionFetcher
   - Hue
   - MenuItemKit
   - R.swift
@@ -316,6 +311,6 @@ SPEC CHECKSUMS:
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: ff847f26155561c18816b61ebffe761be76674b9
+PODFILE CHECKSUM: 3b79252d9ca903f856c94e63a33259274cef1c53
 
 COCOAPODS: 1.10.1

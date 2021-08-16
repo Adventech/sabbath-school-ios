@@ -30,7 +30,6 @@ target 'WidgetExtension' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-  pod 'GTMSessionFetcher'
   pod 'Hue'
 end
 
