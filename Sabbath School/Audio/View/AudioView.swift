@@ -102,8 +102,8 @@ class AudioView: ASDisplayNode {
         remaining.attributedText = AppStyle.Audio.Text.time(string: "0:00")
         
         volumeView.showsRouteButton = false
-        volumeView.tintColor = .baseWhite1.darker()
-        volumeView.backgroundColor = .baseGray1.lighter(componentDelta: 0.6)
+        volumeView.tintColor = UIColor.baseWhite1.darker()
+        volumeView.backgroundColor = UIColor.baseGray1.lighter(componentDelta: 0.6)
         
         progressView.setThumbImage(R.image.iconAudioProgressSmall()?.fillAlpha(fillColor: AppStyle.Audio.Color.progressThumb), for: .normal)
         progressView.setThumbImage(R.image.iconAudioProgressLarge()?.fillAlpha(fillColor: AppStyle.Audio.Color.progressThumb), for: .highlighted)

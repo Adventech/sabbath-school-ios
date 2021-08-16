@@ -6,7 +6,7 @@ on:
       - 'vl/**'
 jobs:
   deploy:
-    runs-on: macos-latest
+    runs-on: macos-11
     steps:
       - uses: actions/checkout@v2
       - run: gpg --quiet --batch --yes --decrypt --passphrase="$CREDS_PASSPHRASE" --output Fastlane/appstore_api_key.json Fastlane/appstore_api_key.json.gpg
