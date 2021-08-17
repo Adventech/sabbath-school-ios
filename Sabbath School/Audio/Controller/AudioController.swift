@@ -205,7 +205,7 @@ class AudioController: ASDKViewController<ASDisplayNode> {
                     audioPlaylistItemView.setPlayingIndicator(isPlaying: AudioPlayback.shared.playerState == .playing)
                     
                     if !self.audioView.playlistExpanded {
-                        self.audioView.playlist.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: false)
+                        self.audioView.playlist.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: false)
                     }
                 } else {
                     audioPlaylistItemView.reset()

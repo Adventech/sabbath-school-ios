@@ -59,7 +59,7 @@ class AudioPlayback: NSObject {
         try? AVAudioSession.sharedInstance().setMode(.default)
         try? AVAudioSession.sharedInstance().setCategory(.playback)
         try? AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-        AudioPlaybackV2.shared.remoteCommands = [
+        AudioPlayback.shared.remoteCommands = [
             .play,
             .pause,
             .next,
@@ -70,13 +70,13 @@ class AudioPlayback: NSObject {
     }
     
     static func play() {
-        if AudioPlaybackV2.shared.nextItems.count == 0 && AudioPlaybackV2.shared.currentTime == AudioPlaybackV2.shared.duration {
-            AudioPlaybackV2.shared.seek(to: 0)
+        if AudioPlayback.shared.nextItems.count == 0 && AudioPlayback.shared.currentTime == AudioPlayback.shared.duration {
+            AudioPlayback.shared.seek(to: 0)
         }
-        AudioPlaybackV2.shared.play()
+        AudioPlayback.shared.play()
     }
     
     static func pause() {
-        AudioPlaybackV2.shared.pause()
+        AudioPlayback.shared.pause()
     }
 }
