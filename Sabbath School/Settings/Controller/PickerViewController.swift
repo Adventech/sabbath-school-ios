@@ -22,7 +22,7 @@
 
 import AsyncDisplayKit
 
-protocol PickerViewControllerDelegate: class {
+protocol PickerViewControllerDelegate: AnyObject {
     func pickerView(_ pickerView: PickerViewController, didChangedToDate date: Date)
 }
 

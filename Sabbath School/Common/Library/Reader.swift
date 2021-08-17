@@ -119,7 +119,7 @@ extension CaseIterable where Self: Equatable {
     }
 }
 
-protocol ReaderOutputProtocol: class {
+protocol ReaderOutputProtocol: AnyObject {
     func ready()
     func didTapClearHighlight()
     func didTapHighlight(color: String)

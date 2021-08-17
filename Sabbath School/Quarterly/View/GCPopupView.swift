@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol GCPopupViewDelegate: class {
+protocol GCPopupViewDelegate: AnyObject {
     func didTapClose()
 }
 

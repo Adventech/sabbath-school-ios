@@ -39,7 +39,7 @@ class Configuration: NSObject {
     
     static func configureMisc() {
         UIApplication.shared.beginReceivingRemoteControlEvents()
-        AudioPlaybackV2.configure()
+        AudioPlayback.configure()
     }
     
     static func configureAuthentication() {

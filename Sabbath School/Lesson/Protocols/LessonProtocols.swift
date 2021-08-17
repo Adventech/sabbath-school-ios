@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol LessonPresenterProtocol: class {
+protocol LessonPresenterProtocol: AnyObject {
     var controller: LessonControllerProtocol? { get set }
     var interactor: LessonInteractorInputProtocol? { get set }
     var wireFrame: LessonWireFrameProtocol? { get set }
@@ -34,29 +34,29 @@ protocol LessonPresenterProtocol: class {
     func showReadScreen(readScreen: ReadController)
 }
 
-protocol LessonControllerProtocol: class {
+protocol LessonControllerProtocol: AnyObject {
     var presenter: LessonPresenterProtocol? { get set }
     var initiateOpenToday: Bool? { get set }
     func showLessons(quarterlyInfo: QuarterlyInfo)
 }
 
-protocol LessonControllerDelegate: class {
+protocol LessonControllerDelegate: AnyObject {
     func shareQuarterly(quarterly: Quarterly)
 }
 
-protocol LessonWireFrameProtocol: class {
+protocol LessonWireFrameProtocol: AnyObject {
     static func createLessonModule(quarterlyIndex: String, initiateOpenToday: Bool) -> LessonController
     static func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool) -> ASNavigationController
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String)
     func showReadScreen(view: LessonControllerProtocol, readScreen: ReadController)
 }
 
-protocol LessonInteractorOutputProtocol: class {
+protocol LessonInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
     func didRetrieveQuarterlyInfo(quarterlyInfo: QuarterlyInfo)
 }
 
-protocol LessonInteractorInputProtocol: class {
+protocol LessonInteractorInputProtocol: AnyObject {
     var presenter: LessonInteractorOutputProtocol? { get set }
 
     func configure()

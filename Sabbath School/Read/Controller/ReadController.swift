@@ -101,24 +101,24 @@ class ReadController: ASDKViewController<ASDisplayNode> {
         readCollectionView.miniPlayerView.view.addGestureRecognizer(gesture)
         readCollectionView.miniPlayerView.view.addGestureRecognizer(swipeGesture)
         
-        AudioPlaybackV2.shared.event.stateChange.addListener(self, handleAudioPlayerStateChange)
-        handleAudioPlayerStateChange(state: AudioPlaybackV2.shared.playerState)
+        AudioPlayback.shared.event.stateChange.addListener(self, handleAudioPlayerStateChange)
+        handleAudioPlayerStateChange(state: AudioPlayback.shared.playerState)
     }
     
     @objc func didPressPlay(_ sender: ASButtonNode) {
         if sender.isSelected {
-            AudioPlaybackV2.pause()
+            AudioPlayback.pause()
         } else {
-            AudioPlaybackV2.play()
+            AudioPlayback.play()
         }
     }
     
     @objc func didPressBackward(_ sender: ASButtonNode) {
-        AudioPlaybackV2.shared.seek(to: AudioPlaybackV2.shared.currentTime - 15)
+        AudioPlayback.shared.seek(to: AudioPlayback.shared.currentTime - 15)
     }
     
     @objc func didPressClose(_ sender: ASImageNode) {
-        AudioPlaybackV2.shared.stop()
+        AudioPlayback.shared.stop()
         self.readCollectionView.miniPlayerShown = false
         self.readCollectionView.transitionLayout(withAnimation: true, shouldMeasureAsync: true)
     }
@@ -129,7 +129,7 @@ class ReadController: ASDKViewController<ASDisplayNode> {
     }
     
     func updatePlayPauseState(state: AudioPlayerState) {
-        if AudioPlaybackV2.shared.currentItem != nil {
+        if AudioPlayback.shared.currentItem != nil {
             if state == .playing {
                 self.showMiniPlayer()
             }
@@ -140,7 +140,7 @@ class ReadController: ASDKViewController<ASDisplayNode> {
     }
     
     func updateAudio() {
-        if let item = AudioPlaybackV2.shared.currentItem {
+        if let item = AudioPlayback.shared.currentItem {
             self.readCollectionView.miniPlayerView.title.attributedText = AppStyle.Audio.Text.miniPlayerTitle(string: item.getTitle() ?? "")
             self.readCollectionView.miniPlayerView.artist.attributedText = AppStyle.Audio.Text.miniPlayerArtist(string: item.getArtist() ?? "")
         }

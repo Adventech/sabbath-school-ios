@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol AboutViewDelegate: class {
+protocol AboutViewDelegate: AnyObject {
     func didTapInstagram()
     func didTapFacebook()
     func didTapGitHub()

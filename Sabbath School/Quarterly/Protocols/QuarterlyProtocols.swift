@@ -23,14 +23,14 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol QuarterlyControllerProtocol: class {
+protocol QuarterlyControllerProtocol: AnyObject {
     var presenter: QuarterlyPresenterProtocol? { get set }
     var initiateOpen: Bool? { get set }
     func showQuarterlies(quarterlies: [Quarterly])
     func retrieveQuarterlies()
 }
 
-protocol QuarterlyWireFrameProtocol: class {
+protocol QuarterlyWireFrameProtocol: AnyObject {
     static func createQuarterlyModule(initiateOpen: Bool) -> ASNavigationController
     static func presentLoginScreen()
     func presentLessonScreen(view: QuarterlyControllerProtocol, quarterlyIndex: String, initiateOpenToday: Bool)
@@ -38,7 +38,7 @@ protocol QuarterlyWireFrameProtocol: class {
     func presentSingleGroupScreen(view: QuarterlyControllerProtocol, selectedQuarterlyGroup: QuarterlyGroup)
 }
 
-protocol QuarterlyPresenterProtocol: class {
+protocol QuarterlyPresenterProtocol: AnyObject {
     var controller: QuarterlyControllerProtocol? { get set }
     var wireFrame: QuarterlyWireFrameProtocol? { get set }
     var interactor: QuarterlyInteractorInputProtocol? { get set }
@@ -52,12 +52,12 @@ protocol QuarterlyPresenterProtocol: class {
     func presentQuarterlies()
 }
 
-protocol QuarterlyInteractorOutputProtocol: class {
+protocol QuarterlyInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
     func didRetrieveQuarterlies(quarterlies: [Quarterly])
 }
 
-protocol QuarterlyInteractorInputProtocol: class {
+protocol QuarterlyInteractorInputProtocol: AnyObject {
     var presenter: QuarterlyInteractorOutputProtocol? { get set }
     var languageInteractor: LanguageInteractor { get set }
 

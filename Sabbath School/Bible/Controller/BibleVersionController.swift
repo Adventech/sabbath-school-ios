@@ -34,7 +34,7 @@ struct MenuItem {
     }
 }
 
-protocol BibleVersionControllerDelegate: class {
+protocol BibleVersionControllerDelegate: AnyObject {
     func didSelectVersion(versionName: String)
 }
 

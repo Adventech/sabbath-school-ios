@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol ReadPresenterProtocol: class {
+protocol ReadPresenterProtocol: AnyObject {
     var controller: ReadControllerProtocol? { get set }
     var interactor: ReadInteractorInputProtocol? { get set }
     var wireFrame: ReadWireFrameProtocol? { get set }
@@ -35,7 +35,7 @@ protocol ReadPresenterProtocol: class {
     func presentDictionary(word: String)
 }
 
-protocol ReadControllerProtocol: class {
+protocol ReadControllerProtocol: AnyObject {
     var presenter: ReadPresenterProtocol? { get set }
     var readIndex: Int? { get set }
 
@@ -44,22 +44,22 @@ protocol ReadControllerProtocol: class {
     func loadAudio(audio: [Audio])
 }
 
-protocol ReadControllerDelegate: class {
+protocol ReadControllerDelegate: AnyObject {
     func shareLesson(lesson: Lesson)
 }
 
-protocol ReadWireFrameProtocol: class {
+protocol ReadWireFrameProtocol: AnyObject {
     static func createReadModule(lessonIndex: String, readIndex: Int?) -> ReadController
 }
 
-protocol ReadInteractorOutputProtocol: class {
+protocol ReadInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
     func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int)
     func didRetrieveLessonInfo(lessonInfo: LessonInfo)
     func didRetrieveAudio(audio: [Audio])
 }
 
-protocol ReadInteractorInputProtocol: class {
+protocol ReadInteractorInputProtocol: AnyObject {
     var presenter: ReadInteractorOutputProtocol? { get set }
 
     func configure()

@@ -72,29 +72,29 @@ class AudioController: ASDKViewController<ASDisplayNode> {
         audioView.rate.addTarget(self, action: #selector(didPressRate(_:)), forControlEvents: .touchUpInside)
         audioView.airplay.addTarget(self, action: #selector(showAirPlayMenu(_:)), forControlEvents: .touchUpInside)
         
-        AudioPlaybackV2.shared.event.stateChange.addListener(self, handleAudioPlayerStateChange)
-        AudioPlaybackV2.shared.event.secondElapse.addListener(self, handleAudioPlayerSecondElapsed)
-        AudioPlaybackV2.shared.event.updateDuration.addListener(self, handleAudioPlayerUpdateDuration)
-        AudioPlaybackV2.shared.event.seek.addListener(self, handleAudioPlayerDidSeek)
+        AudioPlayback.shared.event.stateChange.addListener(self, handleAudioPlayerStateChange)
+        AudioPlayback.shared.event.secondElapse.addListener(self, handleAudioPlayerSecondElapsed)
+        AudioPlayback.shared.event.updateDuration.addListener(self, handleAudioPlayerUpdateDuration)
+        AudioPlayback.shared.event.seek.addListener(self, handleAudioPlayerDidSeek)
 
         updateAudio()
-        handleAudioPlayerStateChange(state: AudioPlaybackV2.shared.playerState)
+        handleAudioPlayerStateChange(state: AudioPlayback.shared.playerState)
         
 
-        if AudioPlaybackV2.shared.currentItem != nil {
-            if let lessonIndex = lessonIndex, lessonIndex == AudioPlaybackV2.lessonIndex {
-                if AudioPlaybackV2.shared.playerState == .playing && AudioPlaybackV2.shared.items.map({ $0.getSourceUrl() }) == self.dataSource.map({ $0.src.absoluteString }) {
+        if AudioPlayback.shared.currentItem != nil {
+            if let lessonIndex = lessonIndex, lessonIndex == AudioPlayback.lessonIndex {
+                if AudioPlayback.shared.playerState == .playing && AudioPlayback.shared.items.map({ $0.getSourceUrl() }) == self.dataSource.map({ $0.src.absoluteString }) {
                     return
                 }
             }
-            AudioPlaybackV2.shared.stop()
+            AudioPlayback.shared.stop()
         }
         
-        AudioPlaybackV2.lessonIndex = lessonIndex
+        AudioPlayback.lessonIndex = lessonIndex
         let audioItems: [AudioItem] = self.dataSource.map { $0.audioItem() }
         let defaultIndex: Int = dayIndex != nil ? self.dataSource.firstIndex(where: { $0.targetIndex == self.dayIndex! }) ?? 0 : 0
-        try? AudioPlaybackV2.shared.add(items: audioItems, playWhenReady: false)        
-        try? AudioPlaybackV2.shared.jumpToItem(atIndex: defaultIndex, playWhenReady: AudioPlaybackV2.shared.playerState == .playing)
+        try? AudioPlayback.shared.add(items: audioItems, playWhenReady: false)        
+        try? AudioPlayback.shared.jumpToItem(atIndex: defaultIndex, playWhenReady: AudioPlayback.shared.playerState == .playing)
     }
     
     @objc func showAirPlayMenu(_ sender: ASImageNode) {
@@ -113,22 +113,22 @@ class AudioController: ASDKViewController<ASDisplayNode> {
     
     @objc func didPressPlay(_ sender: ASButtonNode) {
         if sender.isSelected {
-            AudioPlaybackV2.pause()
+            AudioPlayback.pause()
         } else {
-            AudioPlaybackV2.play()
+            AudioPlayback.play()
         }
     }
     
     @objc func didPressForward(_ sender: ASButtonNode) {
-        AudioPlaybackV2.shared.seek(to: AudioPlaybackV2.shared.currentTime + 30)
+        AudioPlayback.shared.seek(to: AudioPlayback.shared.currentTime + 30)
     }
     
     @objc func didPressBackward(_ sender: ASButtonNode) {
-        AudioPlaybackV2.shared.seek(to: AudioPlaybackV2.shared.currentTime - 15)
+        AudioPlayback.shared.seek(to: AudioPlayback.shared.currentTime - 15)
     }
     
     @objc func didPressRate(_ sender: ASTextNode) {
-        let currentRate = AudioPlaybackV2.rate
+        let currentRate = AudioPlayback.rate
         var newRate: AudioRate
 
         switch currentRate {
@@ -146,10 +146,10 @@ class AudioController: ASDKViewController<ASDisplayNode> {
             break
         }
         
-        AudioPlaybackV2.rate = newRate
+        AudioPlayback.rate = newRate
         
-        if AudioPlaybackV2.shared.rate > 0 {
-            AudioPlaybackV2.shared.rate = AudioPlaybackV2.rate.val
+        if AudioPlayback.shared.rate > 0 {
+            AudioPlayback.shared.rate = AudioPlayback.rate.val
         }
         
         updateRate(rate: newRate)
@@ -164,11 +164,11 @@ class AudioController: ASDKViewController<ASDisplayNode> {
     }
     
     @objc func didSeek(_ sender: ProgressSlider) {
-        AudioPlaybackV2.shared.seek(to: Double(sender.value))
+        AudioPlayback.shared.seek(to: Double(sender.value))
     }
     
     func updateAudio() {
-        if let item = AudioPlaybackV2.shared.currentItem {
+        if let item = AudioPlayback.shared.currentItem {
             self.audioView.setTitle(string: item.getTitle() ?? "")
             self.audioView.setArtist(string: item.getArtist() ?? "")
             
@@ -184,12 +184,12 @@ class AudioController: ASDKViewController<ASDisplayNode> {
     }
     
     func updateTimeValues() {
-        self.audioView.progressView.maximumValue = Float(AudioPlaybackV2.shared.duration)
-        self.audioView.progressView.setValue(Float(AudioPlaybackV2.shared.currentTime), animated: true)
+        self.audioView.progressView.maximumValue = Float(AudioPlayback.shared.duration)
+        self.audioView.progressView.setValue(Float(AudioPlayback.shared.currentTime), animated: true)
         
-        self.audioView.remaining.attributedText = AppStyle.Audio.Text.time(string: "-" + (AudioPlaybackV2.shared.duration - AudioPlaybackV2.shared.currentTime).secondsToString().formatTimeDroppingLeadingZeros())
+        self.audioView.remaining.attributedText = AppStyle.Audio.Text.time(string: "-" + (AudioPlayback.shared.duration - AudioPlayback.shared.currentTime).secondsToString().formatTimeDroppingLeadingZeros())
         
-        self.audioView.elapsed.attributedText = AppStyle.Audio.Text.time(string: AudioPlaybackV2.shared.currentTime.secondsToString().formatTimeDroppingLeadingZeros())
+        self.audioView.elapsed.attributedText = AppStyle.Audio.Text.time(string: AudioPlayback.shared.currentTime.secondsToString().formatTimeDroppingLeadingZeros())
     }
     
     func updatePlayPauseState(state: AudioPlayerState) {
@@ -197,12 +197,16 @@ class AudioController: ASDKViewController<ASDisplayNode> {
     }
     
     func updatePlaylist() {
-        if AudioPlaybackV2.shared.currentItem != nil {
+        if AudioPlayback.shared.currentItem != nil {
             for index in 0...dataSource.count-1 {
                 let audioPlaylistItemView: AudioPlaylistItemView = self.audioView.playlist.nodeForRow(at: IndexPath(row: index, section: 0)) as! AudioPlaylistItemView
-                if index == AudioPlaybackV2.shared.currentIndex {
+                if index == AudioPlayback.shared.currentIndex {
                     audioPlaylistItemView.setCurrent()
-                    audioPlaylistItemView.setPlayingIndicator(isPlaying: AudioPlaybackV2.shared.playerState == .playing)
+                    audioPlaylistItemView.setPlayingIndicator(isPlaying: AudioPlayback.shared.playerState == .playing)
+                    
+                    if !self.audioView.playlistExpanded {
+                        self.audioView.playlist.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: false)
+                    }
                 } else {
                     audioPlaylistItemView.reset()
                 }
@@ -237,8 +241,8 @@ class AudioController: ASDKViewController<ASDisplayNode> {
                 self.updateTimeValues()
             case .playing:
                 self.updateAudio()
-                AudioPlaybackV2.shared.rate = AudioPlaybackV2.rate.val
-                self.updateRate(rate: AudioPlaybackV2.rate)
+                AudioPlayback.shared.rate = AudioPlayback.rate.val
+                self.updateRate(rate: AudioPlayback.rate)
                 self.updateTimeValues()
                 self.updatePlaylist()
             case .paused, .idle:
@@ -253,7 +257,7 @@ class AudioController: ASDKViewController<ASDisplayNode> {
 
 extension AudioController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        try? AudioPlaybackV2.shared.jumpToItem(atIndex: indexPath.row, playWhenReady: true)
+        try? AudioPlayback.shared.jumpToItem(atIndex: indexPath.row, playWhenReady: true)
     }
 }
 
@@ -283,6 +287,6 @@ extension AudioController: ASNetworkImageNodeDelegate {
         let artwork = MPMediaItemArtwork(boundsSize: cover.size, requestHandler: { (size) -> UIImage in
             return cover
         })
-        AudioPlaybackV2.shared.nowPlayingInfoController.set(keyValue: MediaItemProperty.artwork(artwork))
+        AudioPlayback.shared.nowPlayingInfoController.set(keyValue: MediaItemProperty.artwork(artwork))
     }
 }

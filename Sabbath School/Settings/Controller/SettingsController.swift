@@ -131,7 +131,8 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
                 titles[0].remove(at: 1)
                 self.tableNode?.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
                 Preferences.userDefaults.set(false, forKey: Constants.DefaultKey.settingsReminderStatus)
-                UIApplication.shared.cancelAllLocalNotifications()
+                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             }
             return
         }
@@ -147,7 +148,8 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
     }
 
     static func setUpLocalNotification() {
-        UIApplication.shared.cancelAllLocalNotifications()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         let time = DateInRegion(Preferences.reminderTime(), format: "HH:mm")
         let hour = time?.hour ?? 0
         let minute = time?.minute ?? 0
@@ -312,7 +314,10 @@ extension SettingsController: ASTableDelegate {
             }
 
             if indexPath.row == 2 {
-                UIApplication.shared.openURL(NSURL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=895272167&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software")! as URL)
+                UIApplication.shared.open(
+                    URL.init(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=895272167&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software")!,
+                    options: [:],
+                    completionHandler: nil)
             }
             break
 
