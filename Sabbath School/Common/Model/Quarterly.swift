@@ -56,7 +56,7 @@ struct Quarterly: Codable {
         self.humanDate = "-"
         self.startDate = Date()
         self.endDate = Date()
-        self.cover = URL.init(string: "https://adventech.io")!
+        self.cover = URL.init(string: "https://sabbath-school-stage.adventech.io/api/v1/ru/quarterlies/2021-03/cover.png")!
         self.splash = URL.init(string: "https://adventech.io")!
         self.colorPrimary = "-"
         self.colorPrimaryDark = "-"

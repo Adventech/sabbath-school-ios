@@ -181,8 +181,6 @@ class LessonQuarterlyInfoView: LessonQuarterlyInfo {
             children: [coverHSpec, vSpec]
         )
         
-        
-
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 95, left: 20, bottom: 25, right: 20), child: mainSpec)
     }
 

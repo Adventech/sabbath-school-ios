@@ -37,7 +37,7 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
         loginView?.facebookButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         self.addAppleSignInButtonTarget()
 
-        GIDSignIn.sharedInstance()?.presentingViewController = self
+        // GIDSignIn.sharedInstance()?.presentingViewController = self
     }
 
     required init?(coder aDecoder: NSCoder) {

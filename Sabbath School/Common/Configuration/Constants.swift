@@ -68,6 +68,7 @@ struct Constants {
         static let quarterlyInfo = apiPrefix + "/quarterly-info"
         static let lessonInfo = apiPrefix + "/lesson-info"
         static let reads = apiPrefix + "/reads"
+        static let audio = apiPrefix + "/audio"
 
         #if DEBUG
         struct Storage {

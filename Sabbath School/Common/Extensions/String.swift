@@ -42,4 +42,8 @@ extension String {
     func base64Encode() -> String? {
         return Data(self.utf8).base64EncodedString()
     }
+    
+    func formatTimeDroppingLeadingZeros () -> String {
+        return self.hasPrefix("0") && self.count > 4 ? .init(self.dropFirst()) : self
+    }
 }

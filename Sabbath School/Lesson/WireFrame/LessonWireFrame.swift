@@ -42,6 +42,26 @@ class LessonWireFrame: LessonWireFrameProtocol {
 
         return controller as! LessonController
     }
+    class func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool = false) -> ASNavigationController {
+        let controller: LessonControllerProtocol = LessonController()
+        let presenter: LessonPresenterProtocol & LessonInteractorOutputProtocol = LessonPresenter()
+        let wireFrame: LessonWireFrameProtocol = LessonWireFrame()
+        let interactor: LessonInteractorInputProtocol = LessonInteractor()
+        
+        if initiateOpenToday {
+            controller.initiateOpenToday = true
+        }
+
+        controller.presenter = presenter
+        presenter.controller = controller
+        presenter.wireFrame = wireFrame
+        presenter.interactor = interactor
+        presenter.quarterlyIndex = quarterlyIndex
+        interactor.presenter = presenter
+
+//        return controller as! LessonController
+        return ASNavigationController(rootViewController: controller as! UIViewController)
+    }
 
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String) {
         let readScreen = ReadWireFrame.createReadModule(lessonIndex: lessonIndex)

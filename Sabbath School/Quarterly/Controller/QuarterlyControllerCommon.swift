@@ -89,7 +89,6 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
     }
     
     func scrollBehavior() {
-        
         let mn: CGFloat = 5
         let initialOffset: CGFloat = 20
         if self.groupedQuarterlies.count <= 0 { return }

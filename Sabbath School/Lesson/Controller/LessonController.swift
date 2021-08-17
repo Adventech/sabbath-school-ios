@@ -44,6 +44,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         super.init(node: ASTableNode())
         tableNode?.delegate = self
         tableNode?.dataSource = self
+        navigationController?.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -79,7 +80,6 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         if let selected = tableNode?.indexPathForSelectedRow {
             tableNode?.view.deselectRow(at: selected, animated: true)
         }
-        
         self.setupNavigationbar()
     }
     

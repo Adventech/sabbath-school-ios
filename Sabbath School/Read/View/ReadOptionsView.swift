@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol ReadOptionsDelegate: class {
+protocol ReadOptionsDelegate: AnyObject {
     func didSelectTheme(theme: ReaderStyle.Theme)
     func didSelectTypeface(typeface: ReaderStyle.Typeface)
     func didSelectSize(size: ReaderStyle.Size)

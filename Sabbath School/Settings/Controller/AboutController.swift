@@ -70,7 +70,10 @@ extension AboutController: AboutViewDelegate {
         let instagramURL: URL = URL(string: "instagram://user?username=adventech")!
 
         if UIApplication.shared.canOpenURL(instagramURL) {
-            UIApplication.shared.openURL(instagramURL)
+            UIApplication.shared.open(
+                instagramURL,
+                options: [:],
+                completionHandler: nil)
         } else {
             self.openUrl(url: "https://instagram.com/adventech")
         }
@@ -80,7 +83,10 @@ extension AboutController: AboutViewDelegate {
         let facebookURL: URL = URL(string: "fb://profile/1374916669500596")!
 
         if UIApplication.shared.canOpenURL(facebookURL) {
-            UIApplication.shared.openURL(facebookURL)
+            UIApplication.shared.open(
+                facebookURL,
+                options: [:],
+                completionHandler: nil)
         } else {
             self.openUrl(url: "https://www.facebook.com/shabbatschool/")
         }

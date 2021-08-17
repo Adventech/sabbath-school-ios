@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import Firebase
 
-protocol LoginPresenterProtocol: class {
+protocol LoginPresenterProtocol: AnyObject {
     var controller: LoginControllerProtocol? { get set }
     var interactor: LoginInteractorInputProtocol? { get set }
     var wireFrame: LoginWireFrameProtocol? { get set }
@@ -37,21 +37,21 @@ protocol LoginPresenterProtocol: class {
     @available(iOS 13, *) func loginActionApple()
 }
 
-protocol LoginControllerProtocol: class {
+protocol LoginControllerProtocol: AnyObject {
     var presenter: LoginPresenterProtocol? { get set }
 }
 
-protocol LoginWireFrameProtocol: class {
+protocol LoginWireFrameProtocol: AnyObject {
     static func createLoginModule() -> LoginController
     func presentQuarterlyScreen()
 }
 
-protocol LoginInteractorOutputProtocol: class {
+protocol LoginInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
     func onSuccess()
 }
 
-protocol LoginInteractorInputProtocol: class {
+protocol LoginInteractorInputProtocol: AnyObject {
     var presenter: LoginInteractorOutputProtocol? { get set }
 
     func configure()

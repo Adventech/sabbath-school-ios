@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Configuration.configurePreferences()
         Configuration.configureNotifications(application: application)
         Configuration.configureAuthentication()
+        Configuration.configureMisc()
         
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -61,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return facebookHandle
         }
         
-        return GIDSignIn.sharedInstance().handle(url)
+        return GIDSignIn.sharedInstance.handle(url)
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {

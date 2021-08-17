@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol LanguagePresenterProtocol: class {
+protocol LanguagePresenterProtocol: AnyObject {
     var controller: LanguageControllerProtocol? { get set }
     var interactor: LanguageInteractorInputProtocol? { get set }
     var wireFrame: LanguageWireFrameProtocol? { get set }
@@ -32,22 +32,22 @@ protocol LanguagePresenterProtocol: class {
     func configure()
 }
 
-protocol LanguageControllerProtocol: class {
+protocol LanguageControllerProtocol: AnyObject {
     var presenter: LanguagePresenterProtocol & LanguageInteractorOutputProtocol { get set }
     func showLanguages(languages: [QuarterlyLanguage])
 }
 
-protocol LanguageWireFrameProtocol: class {
+protocol LanguageWireFrameProtocol: AnyObject {
     static func createLanguageModule(didSelectLanguageHandler: @escaping () -> Void?) -> ASNavigationController
 }
 
-protocol LanguageInteractorOutputProtocol: class {
+protocol LanguageInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
     func didRetrieveLanguages(languages: [QuarterlyLanguage])
     func didSelectLanguage(language: QuarterlyLanguage)
 }
 
-protocol LanguageInteractorInputProtocol: class {
+protocol LanguageInteractorInputProtocol: AnyObject {
     var presenter: LanguageInteractorOutputProtocol? { get set }
 
     func configure()

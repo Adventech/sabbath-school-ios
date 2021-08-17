@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import UIKit
 
-protocol BiblePresenterProtocol: class {
+protocol BiblePresenterProtocol: AnyObject {
     var controller: BibleControllerProtocol? { get set }
     var interactor: BibleInteractorInputProtocol? { get set }
     var wireFrame: BibleWireFrameProtocol? { get set }
@@ -32,26 +32,26 @@ protocol BiblePresenterProtocol: class {
     func presentBibleVerse(read: Read, verse: String)
 }
 
-protocol BibleControllerProtocol: class {
+protocol BibleControllerProtocol: AnyObject {
     var presenter: BiblePresenterProtocol? { get set }
 
     func showBibleVerse(content: String)
 }
 
-protocol BibleControllerOutputProtocol: class {
+protocol BibleControllerOutputProtocol: AnyObject {
     func didDismissBibleScreen()
 }
 
-protocol BibleWireFrameProtocol: class {
+protocol BibleWireFrameProtocol: AnyObject {
     static func createBibleModule(read: Read, verse: String) -> BibleController
 }
 
-protocol BibleInteractorOutputProtocol: class {
+protocol BibleInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
     func didRetrieveBibleVerse(content: String)
 }
 
-protocol BibleInteractorInputProtocol: class {
+protocol BibleInteractorInputProtocol: AnyObject {
     var presenter: BibleInteractorOutputProtocol? { get set }
 
     func configure()
