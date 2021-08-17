@@ -83,7 +83,7 @@ class AudioController: ASDKViewController<ASDisplayNode> {
 
         if AudioPlaybackV2.shared.currentItem != nil {
             if let lessonIndex = lessonIndex, lessonIndex == AudioPlaybackV2.lessonIndex {
-                if AudioPlaybackV2.shared.items.map({ $0.getSourceUrl() }) == self.dataSource.map({ $0.src.absoluteString }) {
+                if AudioPlaybackV2.shared.playerState == .playing && AudioPlaybackV2.shared.items.map({ $0.getSourceUrl() }) == self.dataSource.map({ $0.src.absoluteString }) {
                     return
                 }
             }
@@ -92,7 +92,9 @@ class AudioController: ASDKViewController<ASDisplayNode> {
         
         AudioPlaybackV2.lessonIndex = lessonIndex
         let audioItems: [AudioItem] = self.dataSource.map { $0.audioItem() }
-        try? AudioPlaybackV2.shared.add(items: audioItems, playWhenReady: AudioPlaybackV2.shared.playerState == .playing)
+        let defaultIndex: Int = dayIndex != nil ? self.dataSource.firstIndex(where: { $0.targetIndex == self.dayIndex! }) ?? 0 : 0
+        try? AudioPlaybackV2.shared.add(items: audioItems, playWhenReady: false)        
+        try? AudioPlaybackV2.shared.jumpToItem(atIndex: defaultIndex, playWhenReady: AudioPlaybackV2.shared.playerState == .playing)
     }
     
     @objc func showAirPlayMenu(_ sender: ASImageNode) {
