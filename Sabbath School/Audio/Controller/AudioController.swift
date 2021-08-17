@@ -46,7 +46,7 @@ class AudioController: ASDKViewController<ASDisplayNode> {
     init(audio: [Audio], lessonIndex: String? = nil, dayIndex: String? = nil) {
         self.dayIndex = dayIndex
         self.lessonIndex = lessonIndex
-        self.dataSource = audio.filter { lessonIndex != nil ? $0.targetIndex.starts(with: lessonIndex!) : true }
+        self.dataSource = audio
         
         super.init(node: audioView)
         audioView.playlist.dataSource = self
@@ -79,10 +79,13 @@ class AudioController: ASDKViewController<ASDisplayNode> {
 
         updateAudio()
         handleAudioPlayerStateChange(state: AudioPlaybackV2.shared.playerState)
+        
 
         if AudioPlaybackV2.shared.currentItem != nil {
             if let lessonIndex = lessonIndex, lessonIndex == AudioPlaybackV2.lessonIndex {
-                return
+                if AudioPlaybackV2.shared.items.map({ $0.getSourceUrl() }) == self.dataSource.map({ $0.src.absoluteString }) {
+                    return
+                }
             }
             AudioPlaybackV2.shared.stop()
         }

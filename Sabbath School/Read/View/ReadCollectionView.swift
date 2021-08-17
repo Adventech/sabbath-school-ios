@@ -42,7 +42,7 @@ class ReadCollectionView: ASDisplayNode {
         DispatchQueue.main.async {
             if #available(iOS 11.0, *) {
                 let window = UIApplication.shared.keyWindow
-                if let bottomPadding = window?.safeAreaInsets.bottom {
+                if let bottomPadding = window?.safeAreaInsets.bottom, bottomPadding > 0 {
                     self.bottomPadding = bottomPadding
                 }
             }

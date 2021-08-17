@@ -376,7 +376,12 @@ extension ReadController: ReadControllerProtocol {
     }
     
     func loadAudio(audio: [Audio]) {
-        self.audio = audio
+        if let lessonIndex = self.presenter?.lessonIndex {
+            self.audio = audio.filter { $0.targetIndex.starts(with: lessonIndex) }
+        } else {
+            self.audio = audio
+        }
+        
         displayNavRightButtons()
     }
 

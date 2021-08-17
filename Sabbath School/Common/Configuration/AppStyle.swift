@@ -562,10 +562,9 @@ struct AppStyle {
                 let isSquare: Bool = coverRatio == "square"
                 
                 let defaultSize = isSquare ? CGSize(width: 276, height: 276) : CGSize(width: 187, height: 276)
-                if Helper.isPad { return defaultSize }
                 
-                var width = UIScreen.main.bounds.width / (isSquare ? 1.5 : 2.7)
-                var height = width / (defaultSize.width / defaultSize.height)
+                var width = Helper.isPad ? defaultSize.width : UIScreen.main.bounds.width / (isSquare ? 1.5 : 2.7)
+                var height = Helper.isPad ? defaultSize.height : width / (defaultSize.width / defaultSize.height)
                 
                 if isMini {
                     width /= 2
@@ -581,23 +580,23 @@ struct AppStyle {
         }
         
         struct Text {
-            static func title(string: String, alignment: NSTextAlignment = .center) -> NSAttributedString {
+            static func title(string: String, alignment: NSTextAlignment = .center, small: Bool = false) -> NSAttributedString {
                 let style = NSMutableParagraphStyle()
                 style.alignment = alignment
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: AppStyle.Base.Color.text,
-                    .font: R.font.latoMedium(size: 18)!,
+                    .font: small ? R.font.latoMedium(size: 18)! : R.font.latoBlack(size: 21)!,
                     .paragraphStyle: style
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
             }
 
-            static func artist(string: String, alignment: NSTextAlignment = .center) -> NSAttributedString {
+            static func artist(string: String, alignment: NSTextAlignment = .center, small: Bool = false) -> NSAttributedString {
                 let style = NSMutableParagraphStyle()
                 style.alignment = alignment
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: UIColor.baseGray2,
-                    .font: R.font.latoRegular(size: 14)!,
+                    .font: small ? R.font.latoRegular(size: 14)! : R.font.latoRegular(size: 17)!,
                     .paragraphStyle: style
                 ]
                 return NSAttributedString(string: string, attributes: attributes)

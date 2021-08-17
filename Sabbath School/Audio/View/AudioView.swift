@@ -164,19 +164,23 @@ class AudioView: ASDisplayNode {
     func setTitle(string: String?) {
         title.attributedText = AppStyle.Audio.Text.title(
             string: string ?? self.title.attributedText?.string ?? "",
-            alignment: playlistExpanded ? .left : .center
+            alignment: playlistExpanded ? .left : .center,
+            small: playlistExpanded
         )
     }
     
     func setArtist(string: String?) {
         artist.attributedText = AppStyle.Audio.Text.artist(
-            string: string ?? self.title.attributedText?.string ?? "",
-            alignment: playlistExpanded ? .left : .center
+            string: string ?? self.artist.attributedText?.string ?? "",
+            alignment: playlistExpanded ? .left : .center,
+            small: playlistExpanded
         )
     }
     
     @objc func didPlaylistToggle(_ sender: ASButtonNode) {
         playlistExpanded = !playlistExpanded
+        setTitle(string: nil)
+        setArtist(string: nil)
         transitionLayout(withAnimation: true, shouldMeasureAsync: true)
     }
     
@@ -194,11 +198,14 @@ class AudioView: ASDisplayNode {
         topIndicator.style.preferredSize = CGSize(width: 50, height: 5)
         play.style.preferredSize = CGSize(width: 32.15, height: 36)
         play.imageNode.style.preferredSize = CGSize(width: 32.15, height: 36)
+        play.hitTestSlop = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         
         backward.style.preferredSize = CGSize(width: 25.57, height: 28)
         backward.imageNode.style.preferredSize = CGSize(width: 25.57, height: 28)
+        backward.hitTestSlop = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         forward.style.preferredSize = CGSize(width: 25.57, height: 28)
         forward.imageNode.style.preferredSize = CGSize(width: 25.57, height: 28)
+        forward.hitTestSlop = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
         backward.style.spacingAfter = 60
         forward.style.spacingBefore = 60
         
