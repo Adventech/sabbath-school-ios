@@ -56,7 +56,7 @@ class QuarterlyIntroductionController: ASDKViewController<ASDisplayNode> {
 
 extension QuarterlyIntroductionController: ASTableDelegate {
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return indexPath.section == 1
     }
 }
 
