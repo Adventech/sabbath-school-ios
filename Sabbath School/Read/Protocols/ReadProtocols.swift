@@ -42,6 +42,7 @@ protocol ReadControllerProtocol: AnyObject {
     func loadLessonInfo(lessonInfo: LessonInfo)
     func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool)
     func loadAudio(audio: [Audio])
+    func loadVideo(video: [VideoInfo])
 }
 
 protocol ReadControllerDelegate: AnyObject {
@@ -57,6 +58,7 @@ protocol ReadInteractorOutputProtocol: AnyObject {
     func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int)
     func didRetrieveLessonInfo(lessonInfo: LessonInfo)
     func didRetrieveAudio(audio: [Audio])
+    func didRetrieveVideo(video: [VideoInfo])
 }
 
 protocol ReadInteractorInputProtocol: AnyObject {

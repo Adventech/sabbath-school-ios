@@ -40,6 +40,7 @@ final class AudioPlaylistItemView: ASCellNode {
         artist.attributedText = AppStyle.Audio.Text.playlistArtist(string: audio.artist)
         artist.maximumNumberOfLines = 1
         automaticallyManagesSubnodes = true
+        selectionStyle = .none
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

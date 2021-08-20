@@ -254,7 +254,7 @@ struct AppStyle {
             
             static func groupName(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
-                    .foregroundColor: UIColor.baseGray2,
+                    .foregroundColor: .baseBlue | UIColor.baseGray2,
                     .font: R.font.latoBold(size: 13)!
                 ]
                 return NSAttributedString(string: string.uppercased(), attributes: attributes)
@@ -638,6 +638,47 @@ struct AppStyle {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: AppStyle.Audio.Color.auxControls,
                     .font: R.font.latoBold(size: 18)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+        }
+    }
+    
+    struct Video {
+        struct Size {
+            static func thumbnail(viewMode: VideoCollectionItemViewMode = .horizontal) -> CGSize {
+                let defaultSize = CGSize(width: 276, height: 149)
+                
+                let ratio: CGFloat = viewMode == .vertial ? 2.7 : 1.2
+                
+                let width = Helper.isPad ? defaultSize.width : UIScreen.main.bounds.width / ratio
+                let height = Helper.isPad ? defaultSize.height : width / (defaultSize.width / defaultSize.height)
+                
+                return CGSize(width: width, height: height)
+            }
+        }
+        
+        struct Text {
+            static func collectionTitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: .baseBlue | UIColor.baseGray2,
+                    .font: R.font.latoBold(size: 13)!
+                ]
+                return NSAttributedString(string: string.uppercased(), attributes: attributes)
+            }
+            
+            static func title(string: String, featured: Bool = false) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Base.Color.navigationTitle,
+                    .font: R.font.latoBold(size: featured ? 19 : 16)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func subtitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2,
+                    .font: R.font.latoRegular(size: 14)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
             }

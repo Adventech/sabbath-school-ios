@@ -26,6 +26,12 @@
 		2F96FF5D26C847AB0045DC6D /* ESTMusicIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF5C26C847AB0045DC6D /* ESTMusicIndicatorView.swift */; };
 		2F96FF5F26C848AF0045DC6D /* ESTMusicIndicatorViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF5E26C848AF0045DC6D /* ESTMusicIndicatorViewState.swift */; };
 		2F96FF6126C972280045DC6D /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6026C972280045DC6D /* AudioView.swift */; };
+		2F96FF6426CC4BD20045DC6D /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6326CC4BD20045DC6D /* VideoController.swift */; };
+		2F96FF6626CC9A570045DC6D /* VideoPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6526CC9A570045DC6D /* VideoPlayback.swift */; };
+		2F96FF6826CC9BBA0045DC6D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6726CC9BBA0045DC6D /* Video.swift */; };
+		2F96FF6926CC9BBD0045DC6D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6726CC9BBA0045DC6D /* Video.swift */; };
+		2F96FF6B26CC9C6F0045DC6D /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */; };
+		2F96FF6C26CC9C6F0045DC6D /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */; };
 		2FE24EFD26BB90170036FD75 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE24EFC26BB90170036FD75 /* AudioController.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
@@ -274,6 +280,10 @@
 		2F96FF5C26C847AB0045DC6D /* ESTMusicIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTMusicIndicatorView.swift; sourceTree = "<group>"; };
 		2F96FF5E26C848AF0045DC6D /* ESTMusicIndicatorViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESTMusicIndicatorViewState.swift; sourceTree = "<group>"; };
 		2F96FF6026C972280045DC6D /* AudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioView.swift; sourceTree = "<group>"; };
+		2F96FF6326CC4BD20045DC6D /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
+		2F96FF6526CC9A570045DC6D /* VideoPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayback.swift; sourceTree = "<group>"; };
+		2F96FF6726CC9BBA0045DC6D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInfo.swift; sourceTree = "<group>"; };
 		2FE24EFC26BB90170036FD75 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		477B1DC2A057461A3A3B40B8 /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -627,6 +637,31 @@
 				2F96FF5E26C848AF0045DC6D /* ESTMusicIndicatorViewState.swift */,
 			);
 			path = ESTMusicIndicator;
+			sourceTree = "<group>";
+		};
+		2F96FF6226CC4BB80045DC6D /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				2F96FF7026CCA7220045DC6D /* Controller */,
+				2F96FF7126CCA7290045DC6D /* View */,
+				2F96FF6526CC9A570045DC6D /* VideoPlayback.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		2F96FF7026CCA7220045DC6D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F96FF6326CC4BD20045DC6D /* VideoController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F96FF7126CCA7290045DC6D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7A280F701ED7CF05003C7458 /* Login */ = {
@@ -1277,6 +1312,8 @@
 				7AC26AF31EE5EBDE003F946C /* Read.swift */,
 				7AC26AF41EE5EBDE003F946C /* ReadComments.swift */,
 				7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */,
+				2F96FF6726CC9BBA0045DC6D /* Video.swift */,
+				2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1319,6 +1356,7 @@
 				7A922E0A1EDF88F800C12A67 /* Read */,
 				7A280F8C1ED7D75E003C7458 /* Resources */,
 				7A535A721EF0A4F000CBDEAB /* Settings */,
+				2F96FF6226CC4BB80045DC6D /* Video */,
 			);
 			path = "Sabbath School";
 			sourceTree = "<group>";
@@ -1894,6 +1932,7 @@
 				7A2810061EDD071B003C7458 /* LanguageWireFrame.swift in Sources */,
 				FE863F2A2662BD9F00ADCA36 /* Animation.swift in Sources */,
 				FE0249EA2669C2E3006BFADC /* Helper.swift in Sources */,
+				2F96FF6626CC9A570045DC6D /* VideoPlayback.swift in Sources */,
 				7A535A7A1EF0A56D00CBDEAB /* SettingsController.swift in Sources */,
 				FE863F6426657E1800ADCA36 /* AppStyle.swift in Sources */,
 				7AC26AFA1EE5EBDE003F946C /* LessonInfo.swift in Sources */,
@@ -1929,6 +1968,7 @@
 				7A3BCE3A1EE292E9003EC12B /* BibleVersionController.swift in Sources */,
 				7A280FFC1EDD032E003C7458 /* LanguageController.swift in Sources */,
 				7A3BCE341EE2776A003EC12B /* BibleInteractor.swift in Sources */,
+				2F96FF6426CC4BD20045DC6D /* VideoController.swift in Sources */,
 				7A28101E1EDDCE36003C7458 /* LessonPresenter.swift in Sources */,
 				7A3BCE211EE0EC60003EC12B /* String.swift in Sources */,
 				7A922E161EDF8AB300C12A67 /* ReadPresenter.swift in Sources */,
@@ -1962,9 +2002,11 @@
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
 				7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */,
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
+				2F96FF6B26CC9C6F0045DC6D /* VideoInfo.swift in Sources */,
 				FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */,
 				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
 				FE5CC73B268914F000B9F061 /* QuarterlyController.swift in Sources */,
+				2F96FF6826CC9BBA0045DC6D /* Video.swift in Sources */,
 				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageItemView.swift in Sources */,
 				FEDA4C9326B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift in Sources */,
@@ -2019,6 +2061,7 @@
 				FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */,
 				FED6B2F526802826007093CE /* WidgetStyle.swift in Sources */,
 				FE611AAF267500F5003CDDB5 /* ReadHighlights.swift in Sources */,
+				2F96FF6C26CC9C6F0045DC6D /* VideoInfo.swift in Sources */,
 				FED6B2F02680273C007093CE /* LessonInfoWidgetView.swift in Sources */,
 				FEC92194267E32C400422F3D /* PreferencesShared.swift in Sources */,
 				FED6B2FA26802C0C007093CE /* WidgetBundle.swift in Sources */,
@@ -2035,6 +2078,7 @@
 				FE611ACC267502EC003CDDB5 /* Date.swift in Sources */,
 				FE611AAA267500F5003CDDB5 /* BibleVerses.swift in Sources */,
 				FE611AA6267500F5003CDDB5 /* Lesson.swift in Sources */,
+				2F96FF6926CC9BBD0045DC6D /* Video.swift in Sources */,
 				FE611A9D2674FECA003CDDB5 /* TodayWidgetEntry.swift in Sources */,
 				FED6B2EB268026D0007093CE /* LessonInfoWidget.swift in Sources */,
 				FED6B2E6268026AE007093CE /* LessonInfoWidgetProvider.swift in Sources */,
@@ -2340,7 +2384,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1003;
+				CURRENT_PROJECT_VERSION = 1004;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2365,7 +2409,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1003;
+				CURRENT_PROJECT_VERSION = 1004;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2394,7 +2438,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1003;
+				CURRENT_PROJECT_VERSION = 1004;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -2425,7 +2469,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1003;
+				CURRENT_PROJECT_VERSION = 1004;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;

@@ -60,6 +60,7 @@ class AudioController: ASDKViewController<ASDisplayNode> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Audio".localized()
         self.setCloseButton()
         self.navigationController?.navigationBar.isTranslucent = false
         

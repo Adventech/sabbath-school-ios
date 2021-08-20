@@ -20,39 +20,23 @@
  * THE SOFTWARE.
  */
 
-import AsyncDisplayKit
-import UIKit
+import Foundation
 
-final class RoundedCornersImage: ASDisplayNode {
-    var imageNode = ASNetworkImageNode()
-    var size: CGSize?
-
-    init(imageURL: URL?, corner: CGFloat, size: CGSize? = CGSize(width: 125, height: 187), backgroundColor: UIColor = ASDisplayNodeDefaultPlaceholderColor()) {
-        super.init()
-
-        self.size = size
-        imageNode.placeholderColor = backgroundColor
-        imageNode.backgroundColor = backgroundColor
-        imageNode.placeholderEnabled = true
-        imageNode.placeholderFadeDuration = 0.6
-        imageNode.cornerRadius = corner
-        imageNode.clipsToBounds = true
-
-        cornerRadius = corner
-        clipsToBounds = true
-
-        if let imageURL = imageURL {
-            imageNode.url = imageURL
-        }
-        
-
-        automaticallyManagesSubnodes = true
+struct VideoInfo: Codable {
+    let artist: String
+    let thumbnail: URL?
+    let clips: [Video]
+    
+    init(artist: String, clips: [Video]) {
+        self.artist = artist
+        self.thumbnail = URL.init(string:  "https://sabbath-school-stage.adventech.io/api/v1/ru/quarterlies/2021-03/cover.png")!
+        self.clips = clips
     }
-
-    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        if let size = size {
-            imageNode.style.preferredSize = size
-        }
-        return ASAbsoluteLayoutSpec(children: [imageNode])
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        artist = try values.decode(String.self, forKey: .artist)
+        thumbnail = values.contains(.thumbnail) ? try values.decode(URL.self, forKey: .thumbnail) : nil
+        clips = try values.decode(Array<Video>.self, forKey: .clips)   
     }
 }

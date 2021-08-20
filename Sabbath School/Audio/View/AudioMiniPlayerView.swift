@@ -35,8 +35,10 @@ class AudioMiniPlayerView: ASDisplayNode {
         cornerRadius = 10
         title.attributedText = AppStyle.Audio.Text.miniPlayerTitle(string: "")
         title.maximumNumberOfLines = 1
+        title.truncationMode = .byTruncatingTail
         artist.attributedText = AppStyle.Audio.Text.miniPlayerArtist(string: "")
         artist.maximumNumberOfLines = 1
+        artist.truncationMode = .byTruncatingTail
         play.setImage(R.image.iconAudioPlay(), for: .normal)
         play.setImage(R.image.iconAudioPause(), for: .selected)
         backward.setImage(R.image.iconAudioBackward(), for: .normal)

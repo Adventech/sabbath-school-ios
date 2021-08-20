@@ -24,8 +24,9 @@ import AsyncDisplayKit
 import SafariServices
 import UIKit
 import SwiftAudio
+import AVKit
 
-class ReadController: ASDKViewController<ASDisplayNode> {
+class ReadController: VideoPlaybackDelegatable {
     var delegate: ReadControllerDelegate?
     var presenter: ReadPresenterProtocol?
     
@@ -36,6 +37,7 @@ class ReadController: ASDKViewController<ASDisplayNode> {
 
     var lessonInfo: LessonInfo?
     var audio: [Audio] = []
+    var video: [VideoInfo] = []
     var reads = [Read]()
     var highlights = [ReadHighlights]()
     var comments = [ReadComments]()
@@ -228,6 +230,16 @@ class ReadController: ASDKViewController<ASDisplayNode> {
         presentAudioController()
     }
     
+    @objc func presentVideo(sender: UIBarButtonItem) {
+        let videoController = VideoController(video: self.video, lessonIndex: lessonInfo?.lesson.index, readController: self)
+        
+        if #available(iOS 13, *) {
+            self.present(videoController, animated: true)
+        } else {
+            self.present(ASNavigationController(rootViewController: videoController), animated: true)
+        }
+    }
+    
     @objc func presentAudioController() {
         var dayIndex: String? = nil
         if let readIndex = lastPage, 0...self.reads.count ~= readIndex {
@@ -254,6 +266,12 @@ class ReadController: ASDKViewController<ASDisplayNode> {
             let audioButton = UIBarButtonItem(image: R.image.iconAudio(), style: .done, target: self, action: #selector(presentAudio(sender:)))
             audioButton.accessibilityIdentifier = "audioButton"
             barButtons.append(audioButton)
+        }
+        
+        if self.video.count > 0 {
+            let videoButton = UIBarButtonItem(image: R.image.iconVideo(), style: .done, target: self, action: #selector(presentVideo(sender:)))
+            videoButton.accessibilityIdentifier = "videoButton"
+            barButtons.append(videoButton)
         }
         
         navigationItem.rightBarButtonItems = barButtons
@@ -382,6 +400,11 @@ extension ReadController: ReadControllerProtocol {
             self.audio = audio
         }
         
+        displayNavRightButtons()
+    }
+    
+    func loadVideo(video: [VideoInfo]) {
+        self.video = video
         displayNavRightButtons()
     }
 

@@ -69,6 +69,7 @@ struct Constants {
         static let lessonInfo = apiPrefix + "/lesson-info"
         static let reads = apiPrefix + "/reads"
         static let audio = apiPrefix + "/audio"
+        static let video = apiPrefix + "/video"
 
         #if DEBUG
         struct Storage {
