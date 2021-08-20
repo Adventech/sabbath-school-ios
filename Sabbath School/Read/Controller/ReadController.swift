@@ -262,16 +262,16 @@ class ReadController: VideoPlaybackDelegatable {
         rightButton.accessibilityIdentifier = "themeSettings"
         barButtons.append(rightButton)
         
-        if self.audio.count > 0 {
-            let audioButton = UIBarButtonItem(image: R.image.iconAudio(), style: .done, target: self, action: #selector(presentAudio(sender:)))
-            audioButton.accessibilityIdentifier = "audioButton"
-            barButtons.append(audioButton)
-        }
-        
         if self.video.count > 0 {
             let videoButton = UIBarButtonItem(image: R.image.iconVideo(), style: .done, target: self, action: #selector(presentVideo(sender:)))
             videoButton.accessibilityIdentifier = "videoButton"
             barButtons.append(videoButton)
+        }
+        
+        if self.audio.count > 0 {
+            let audioButton = UIBarButtonItem(image: R.image.iconAudio(), style: .done, target: self, action: #selector(presentAudio(sender:)))
+            audioButton.accessibilityIdentifier = "audioButton"
+            barButtons.append(audioButton)
         }
         
         navigationItem.rightBarButtonItems = barButtons

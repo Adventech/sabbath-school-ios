@@ -32,6 +32,11 @@
 		2F96FF6926CC9BBD0045DC6D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6726CC9BBA0045DC6D /* Video.swift */; };
 		2F96FF6B26CC9C6F0045DC6D /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */; };
 		2F96FF6C26CC9C6F0045DC6D /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */; };
+		2F96FF7326CFF44F0045DC6D /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF7226CFF44E0045DC6D /* VideoView.swift */; };
+		2F96FF7526CFF4720045DC6D /* VideoCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF7426CFF4720045DC6D /* VideoCollectionController.swift */; };
+		2F96FF7726CFF4A30045DC6D /* VideoCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF7626CFF4A30045DC6D /* VideoCollectionHeader.swift */; };
+		2F96FF7926CFF4C30045DC6D /* VideoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF7826CFF4C30045DC6D /* VideoCollectionView.swift */; };
+		2F96FF7B26CFF4DE0045DC6D /* VideoCollectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF7A26CFF4DE0045DC6D /* VideoCollectionItemView.swift */; };
 		2FE24EFD26BB90170036FD75 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE24EFC26BB90170036FD75 /* AudioController.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
@@ -284,6 +289,11 @@
 		2F96FF6526CC9A570045DC6D /* VideoPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayback.swift; sourceTree = "<group>"; };
 		2F96FF6726CC9BBA0045DC6D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInfo.swift; sourceTree = "<group>"; };
+		2F96FF7226CFF44E0045DC6D /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		2F96FF7426CFF4720045DC6D /* VideoCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionController.swift; sourceTree = "<group>"; };
+		2F96FF7626CFF4A30045DC6D /* VideoCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionHeader.swift; sourceTree = "<group>"; };
+		2F96FF7826CFF4C30045DC6D /* VideoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionView.swift; sourceTree = "<group>"; };
+		2F96FF7A26CFF4DE0045DC6D /* VideoCollectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionItemView.swift; sourceTree = "<group>"; };
 		2FE24EFC26BB90170036FD75 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		477B1DC2A057461A3A3B40B8 /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -606,6 +616,7 @@
 			children = (
 				2F96FF4E26C721B00045DC6D /* Controller */,
 				2F96FF4D26C7219E0045DC6D /* View */,
+				2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -653,6 +664,7 @@
 			isa = PBXGroup;
 			children = (
 				2F96FF6326CC4BD20045DC6D /* VideoController.swift */,
+				2F96FF7426CFF4720045DC6D /* VideoCollectionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -660,6 +672,10 @@
 		2F96FF7126CCA7290045DC6D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2F96FF7226CFF44E0045DC6D /* VideoView.swift */,
+				2F96FF7626CFF4A30045DC6D /* VideoCollectionHeader.swift */,
+				2F96FF7826CFF4C30045DC6D /* VideoCollectionView.swift */,
+				2F96FF7A26CFF4DE0045DC6D /* VideoCollectionItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -900,15 +916,14 @@
 		7A280FEC1EDCFB38003C7458 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */,
 				2F96FF5926C8477F0045DC6D /* ESTMusicIndicator */,
 				7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */,
-				7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */,
+				FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */,
+				2F96FF5326C7246F0045DC6D /* ProgressSlider.swift */,
 				7AC26AE61EE4FA9E003F946C /* Reader.swift */,
 				7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */,
 				7A2810281EDDE41F003C7458 /* ShimmeringNode.swift */,
-				FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */,
-				2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */,
-				2F96FF5326C7246F0045DC6D /* ProgressSlider.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1942,6 +1957,7 @@
 				7A280FCE1EDA10ED003C7458 /* LoginProtocols.swift in Sources */,
 				FE620E6C26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift in Sources */,
 				7AF3261A1EFF998D00A04568 /* Range.swift in Sources */,
+				2F96FF7726CFF4A30045DC6D /* VideoCollectionHeader.swift in Sources */,
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,
 				7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */,
 				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
@@ -2002,6 +2018,7 @@
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
 				7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */,
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
+				2F96FF7926CFF4C30045DC6D /* VideoCollectionView.swift in Sources */,
 				2F96FF6B26CC9C6F0045DC6D /* VideoInfo.swift in Sources */,
 				FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */,
 				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
@@ -2010,6 +2027,7 @@
 				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageItemView.swift in Sources */,
 				FEDA4C9326B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift in Sources */,
+				2F96FF7526CFF4720045DC6D /* VideoCollectionController.swift in Sources */,
 				2F95D39E26C0B2E8008E6666 /* Audio.swift in Sources */,
 				2F96FF4A26C7188E0045DC6D /* AudioPlaylistItemView.swift in Sources */,
 				FE0249FE266A91C9006BFADC /* Notifications.swift in Sources */,
@@ -2028,6 +2046,7 @@
 				2F96FF4726C58A6A0045DC6D /* AudioPlayback.swift in Sources */,
 				7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */,
 				7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */,
+				2F96FF7326CFF44F0045DC6D /* VideoView.swift in Sources */,
 				7A2810201EDDCEC9003C7458 /* LessonInteractor.swift in Sources */,
 				7A2810081EDD0C51003C7458 /* Navigation.swift in Sources */,
 				7A3BCE2E1EE2753C003EC12B /* BibleController.swift in Sources */,
@@ -2039,6 +2058,7 @@
 				2F96FF5D26C847AB0045DC6D /* ESTMusicIndicatorView.swift in Sources */,
 				7A4129091EF4D05C0044D6E8 /* PickerViewController.swift in Sources */,
 				7A280FC51EDA04A6003C7458 /* Color.swift in Sources */,
+				2F96FF7B26CFF4DE0045DC6D /* VideoCollectionItemView.swift in Sources */,
 				7A3BCE301EE275F1003EC12B /* BibleView.swift in Sources */,
 				2F96FF5626C7FAD90045DC6D /* ReadCollectionView.swift in Sources */,
 			);
@@ -2384,7 +2404,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1004;
+				CURRENT_PROJECT_VERSION = 1005;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2409,7 +2429,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1004;
+				CURRENT_PROJECT_VERSION = 1005;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2438,7 +2458,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1004;
+				CURRENT_PROJECT_VERSION = 1005;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -2469,7 +2489,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1004;
+				CURRENT_PROJECT_VERSION = 1005;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
