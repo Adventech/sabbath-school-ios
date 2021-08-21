@@ -31,10 +31,13 @@ class VideoCollectionItemView: ASCellNode {
     var cover: RoundedCornersImage!
     let title = ASTextNode()
     let subtitle = ASTextNode()
+    let duration = ASButtonNode()
+    let durationEnabled: Bool
     let viewMode: VideoCollectionItemViewMode
     let featured: Bool
     
     init(video: Video, viewMode: VideoCollectionItemViewMode = .vertial, featured: Bool = false) {
+        self.durationEnabled = video.duration != nil
         self.viewMode = viewMode
         self.featured = featured
         super.init()
@@ -60,6 +63,10 @@ class VideoCollectionItemView: ASCellNode {
         subtitle.attributedText = AppStyle.Video.Text.subtitle(string: video.artist)
         subtitle.maximumNumberOfLines = 1
         subtitle.truncationMode = .byTruncatingTail
+        
+        duration.setAttributedTitle(AppStyle.Video.Text.duration(string: video.duration ?? ""), for: .normal)
+        duration.cornerRadius = 3
+        duration.backgroundColor = .baseGray4
         
         backgroundColor = AppStyle.Base.Color.background
         
@@ -98,12 +105,26 @@ class VideoCollectionItemView: ASCellNode {
             titleSpec.style.flexShrink = 1.0
         }
         
+        duration.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        
+        let durationSpec = ASInsetLayoutSpec(
+            insets: UIEdgeInsets(top: CGFloat.infinity, left: CGFloat.infinity, bottom: 10, right: 10),
+            child: duration)
+        
+        let coverSpec = ASOverlayLayoutSpec(
+            child: cover,
+            overlay: durationSpec)
+        
+        var mainSpecChildren: [ASLayoutElement] = [titleSpec]
+        
+        mainSpecChildren.insert(durationEnabled ? coverSpec : cover, at: 0)
+        
         let mainSpec = ASStackLayoutSpec(
             direction: featured ? .vertical : viewMode == .horizontal ? .vertical : .horizontal,
             spacing: 10,
             justifyContent: .start,
             alignItems: featured ? .start : viewMode == .horizontal ? .start : .center,
-            children: [cover, titleSpec])
+            children: mainSpecChildren)
         
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: featured ? yInset + 10 : yInset, left: xInset, bottom: featured ? yInset * 2 : yInset, right: xInset), child: mainSpec)
     }

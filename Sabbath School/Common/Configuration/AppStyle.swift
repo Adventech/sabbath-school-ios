@@ -682,6 +682,14 @@ struct AppStyle {
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
             }
+            
+            static func duration(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.white,
+                    .font: R.font.latoMedium(size: 12)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
         }
     }
     
