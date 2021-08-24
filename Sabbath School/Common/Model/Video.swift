@@ -32,17 +32,6 @@ struct Video: Codable {
     let thumbnail: URL
     let duration: String?
     
-    init(title: String, artist: String, thumbnail: String? = nil, src: String? = nil, duration: String? = nil) {
-        self.title = title
-        self.artist = artist
-        self.id = "unique-id"
-        self.target = "year-quarter/week"
-        self.targetIndex = "year-quarter-week"
-        self.thumbnail = URL.init(string: thumbnail ?? "https://sabbath-school-stage.adventech.io/api/v1/ru/quarterlies/2021-03/cover.png")!
-        self.src = URL.init(string: src ?? "https://s3.amazonaws.com/kargopolov/kukushka.mp3")!
-        self.duration = "23:12"
-    }
-    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)

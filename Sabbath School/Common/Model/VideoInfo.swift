@@ -27,12 +27,6 @@ struct VideoInfo: Codable {
     let thumbnail: URL?
     let clips: [Video]
     
-    init(artist: String, clips: [Video]) {
-        self.artist = artist
-        self.thumbnail = URL.init(string:  "https://sabbath-school-stage.adventech.io/api/v1/ru/quarterlies/2021-03/cover.png")!
-        self.clips = clips
-    }
-    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         artist = try values.decode(String.self, forKey: .artist)

@@ -32,17 +32,6 @@ struct Audio: Codable {
     let image: URL
     let imageRatio: String
     
-    init(title: String, artist: String, image: String? = nil, src: String? = nil) {
-        self.title = title
-        self.artist = artist
-        self.id = "unique-id"
-        self.target = "year-quarter/week"
-        self.targetIndex = "year-quarter-week"
-        self.image = URL.init(string: image ?? "https://sabbath-school-stage.adventech.io/api/v1/ru/quarterlies/2021-03/cover.png")!
-        self.src = URL.init(string: src ?? "https://s3.amazonaws.com/kargopolov/kukushka.mp3")!
-        self.imageRatio = "square"
-    }
-    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)

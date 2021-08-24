@@ -11,8 +11,6 @@
 		1A43D7801EF8BABD00D6A639 /* SnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */; };
 		1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */; };
 		2AC44212F983DF8699249C37 /* Pods_Sabbath_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E42AC27861B53CE32ED7750 /* Pods_Sabbath_School.framework */; };
-		2F95D39B26C0B2A6008E6666 /* AudioInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39A26C0B2A6008E6666 /* AudioInfo.swift */; };
-		2F95D39C26C0B2A6008E6666 /* AudioInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39A26C0B2A6008E6666 /* AudioInfo.swift */; };
 		2F95D39E26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F96FF4726C58A6A0045DC6D /* AudioPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */; };
@@ -272,7 +270,6 @@
 		1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		1BDC817E4DEE5647231E268B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1BDC81CE3CAC580E4EC0FB13 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		2F95D39A26C0B2A6008E6666 /* AudioInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioInfo.swift; sourceTree = "<group>"; };
 		2F95D39D26C0B2E8008E6666 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayback.swift; sourceTree = "<group>"; };
 		2F96FF4926C7188E0045DC6D /* AudioPlaylistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlaylistItemView.swift; sourceTree = "<group>"; };
@@ -1312,7 +1309,6 @@
 			isa = PBXGroup;
 			children = (
 				2F95D39D26C0B2E8008E6666 /* Audio.swift */,
-				2F95D39A26C0B2A6008E6666 /* AudioInfo.swift */,
 				7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */,
 				7AC26AEC1EE5EBDE003F946C /* Comment.swift */,
 				FEF4B79326AF9A9B00548E36 /* Credits.swift */,
@@ -1952,7 +1948,6 @@
 				FE863F6426657E1800ADCA36 /* AppStyle.swift in Sources */,
 				7AC26AFA1EE5EBDE003F946C /* LessonInfo.swift in Sources */,
 				2F96FF5426C7246F0045DC6D /* ProgressSlider.swift in Sources */,
-				2F95D39B26C0B2A6008E6666 /* AudioInfo.swift in Sources */,
 				7A280FD01EDA23F0003C7458 /* LoginInteractor.swift in Sources */,
 				7A280FCE1EDA10ED003C7458 /* LoginProtocols.swift in Sources */,
 				FE620E6C26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift in Sources */,
@@ -2091,7 +2086,6 @@
 				FED6B2FF2680355E007093CE /* NetworkImage.swift in Sources */,
 				FEC9218E267E315300422F3D /* ConfigurationShared.swift in Sources */,
 				FE611AA9267500F5003CDDB5 /* Read.swift in Sources */,
-				2F95D39C26C0B2A6008E6666 /* AudioInfo.swift in Sources */,
 				FE611A9B2674FECA003CDDB5 /* TodayWidgetView.swift in Sources */,
 				FEF4B78A26AF98A900548E36 /* Feature.swift in Sources */,
 				FE611AA5267500F5003CDDB5 /* QuarterlyInfo.swift in Sources */,
