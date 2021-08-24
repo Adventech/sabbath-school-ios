@@ -1,1 +1,1 @@
-In questa nuova versione la schermata principale della lezione viene aggiornata per mostrare le categorie di lezione. Abbiamo anche aggiunto la possibilità di leggere l'introduzione completa e aggiornato il design. Correzioni di bug e miglioramenti.
+Aggiunta di funzionalità audio e video. Ascolta la lezione in movimento con la versione audio e guarda la discussione della lezione settimanale per approfondire il tuo studio

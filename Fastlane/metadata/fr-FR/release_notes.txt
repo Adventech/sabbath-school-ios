@@ -1,1 +1,1 @@
-Dans cette nouvelle version, l'écran principal de la leçon est mis à jour pour afficher les catégories de leçons. Nous avons également ajouté la possibilité de lire l'introduction complète ainsi que mis à jour la conception. Corrections de bugs et améliorations.
+Ajout de fonctionnalités audio et vidéo. Écoutez la leçon en déplacement avec la version audio et regardez la discussion hebdomadaire sur la leçon pour approfondir votre étude

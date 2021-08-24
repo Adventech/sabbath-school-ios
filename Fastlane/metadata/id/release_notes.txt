@@ -1,1 +1,1 @@
-Dalam rilis baru ini, layar pelajaran utama diperbarui untuk menampilkan kategori pelajaran. Kami juga telah menambahkan kemampuan untuk membaca pengantar lengkap serta memperbarui desain. Perbaikan bug dan peningkatan.
+Menambahkan fungsionalitas Audio dan Video. Dengarkan pelajaran saat bepergian dengan versi audio dan tonton diskusi pelajaran mingguan untuk memperdalam studi Anda

@@ -1,1 +1,1 @@
-I denne nye versjonen blir hovedundervisningsskjermen oppdatert for å vise leksjonskategorier. Vi har også lagt til muligheten til å lese hele introduksjonen samt oppdatere designet. Feilrettinger og forbedringer.
+Legger til lyd- og videofunksjonalitet. Lytt til leksjonen mens du er på farten med lydversjonen, og se den ukentlige leksjonens diskusjon for å utdype studiet ditt

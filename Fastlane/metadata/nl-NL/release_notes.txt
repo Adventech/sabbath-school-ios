@@ -1,1 +1,1 @@
-In deze nieuwe release is het hoofdlesscherm bijgewerkt om lescategorieën weer te geven. We hebben ook de mogelijkheid toegevoegd om de volledige introductie te lezen en het ontwerp bijgewerkt. Bugfixes en verbeteringen.
+Audio- en videofunctionaliteit toevoegen. Luister onderweg naar de les met de audioversie en bekijk de wekelijkse lesdiscussie om je studie te verdiepen

@@ -1,1 +1,1 @@
-En esta nueva versión, la pantalla principal de la lección se actualiza para mostrar categorías de lecciones. También hemos agregado la capacidad de leer la introducción completa y actualizar el diseño. Mejoras y correcciones de errores.
+Añadiendo funcionalidad de audio y video. Escuche la lección sobre la marcha con la versión de audio y vea la discusión semanal de la lección para profundizar su estudio

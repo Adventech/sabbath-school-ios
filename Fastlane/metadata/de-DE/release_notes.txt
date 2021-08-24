@@ -1,1 +1,1 @@
-In dieser neuen Version wird der Hauptbildschirm des Unterrichts aktualisiert, um Unterrichtskategorien anzuzeigen. Wir haben auch die Möglichkeit hinzugefügt, die vollständige Einführung zu lesen und das Design zu aktualisieren. Fehlerbehebungen und Verbesserungen.
+Hinzufügen von Audio- und Videofunktionen. Hören Sie sich die Lektion unterwegs mit der Audioversion an und sehen Sie sich die wöchentliche Lektionsdiskussion an, um Ihr Studium zu vertiefen

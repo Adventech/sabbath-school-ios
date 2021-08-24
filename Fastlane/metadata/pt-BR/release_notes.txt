@@ -1,1 +1,1 @@
-Nesta nova versão, a tela principal da lição é atualizada para mostrar as categorias da lição. Também adicionamos a capacidade de ler a introdução completa, bem como atualizamos o design. Correções de bugs e melhorias.
+Adicionando funcionalidade de áudio e vídeo. Ouça a aula em qualquer lugar com a versão em áudio e assista à discussão da aula semanal para aprofundar seu estudo

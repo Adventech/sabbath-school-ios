@@ -1,1 +1,1 @@
-I denna nya version uppdateras huvudleksskärmen för att visa lektionskategorier. Vi har också lagt till möjligheten att läsa hela introduktionen samt uppdaterat designen. Felkorrigeringar och förbättringar.
+Lägger till ljud- och videofunktioner. Lyssna på lektionen när du är på språng med ljudversionen och titta på diskussionen varje vecka för att fördjupa din studie.

@@ -1,1 +1,1 @@
-Bu yeni sürümde, ana ders ekranı ders kategorilerini gösterecek şekilde güncellendi. Ayrıca tasarımın güncellenmesinin yanı sıra tam tanıtımı okuma yeteneği de ekledik. Hata düzeltmeleri ve iyileştirmeler.
+Ses ve Video işlevselliği ekleme. Dersi sesli versiyonuyla hareket halindeyken dinleyin ve çalışmanızı derinleştirmek için haftalık ders tartışmasını izleyin

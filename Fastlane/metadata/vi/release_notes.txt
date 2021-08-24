@@ -1,1 +1,1 @@
-Trong phiên bản mới này, màn hình bài học chính được cập nhật để hiển thị các loại bài học. Chúng tôi cũng đã thêm khả năng đọc toàn bộ phần giới thiệu cũng như cập nhật thiết kế. Sửa các lỗi và cải tiến.
+Thêm chức năng Âm thanh và Video. Nghe bài học khi đang di chuyển với phiên bản âm thanh và xem thảo luận bài học hàng tuần để học sâu hơn
