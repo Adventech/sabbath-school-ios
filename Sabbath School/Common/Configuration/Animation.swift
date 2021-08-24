@@ -24,7 +24,7 @@ import Foundation
 import SwiftEntryKit
 
 struct Animation {
-    static func modalAnimationAttributes(widthRatio: CGFloat = 1, heightRatio: CGFloat = 1, backgroundColor: UIColor = AppStyle.Base.Color.background) -> EKAttributes {
+    static func modalAnimationAttributes(widthRatio: CGFloat = 1, heightRatio: CGFloat = 1, backgroundColor: UIColor = AppStyle.Base.Color.background, statusBar: EKAttributes.StatusBar = .inferred) -> EKAttributes {
         var attributes = EKAttributes.centerFloat
         attributes.positionConstraints.size = .init(
             width: EKAttributes.PositionConstraints.Edge.ratio(value: widthRatio),
@@ -52,6 +52,7 @@ struct Animation {
         attributes.screenInteraction = .dismiss
         attributes.exitAnimation = .init(fade: .init(from: 1, to: 0, duration: 0.2))
         attributes.windowLevel = .normal
+        attributes.statusBar = statusBar
         return attributes
     }
 }

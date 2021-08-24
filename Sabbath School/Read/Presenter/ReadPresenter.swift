@@ -67,7 +67,9 @@ class ReadPresenter: ReadPresenterProtocol {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
         
-        SwiftEntryKit.display(entry: navigation, using: Animation.modalAnimationAttributes(widthRatio: 0.9, heightRatio: 0.8, backgroundColor: Preferences.currentTheme().backgroundColor))
+        let statusBar: EKAttributes.StatusBar = (controller as! ReadController).preferredStatusBarStyle == .lightContent ? .light : .dark
+        
+        SwiftEntryKit.display(entry: navigation, using: Animation.modalAnimationAttributes(widthRatio: 0.9, heightRatio: 0.8, backgroundColor: Preferences.currentTheme().backgroundColor, statusBar: statusBar))
     }
 
     func presentReadOptionsScreen(size: CGSize, sourceView: UIBarButtonItem) {
