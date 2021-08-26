@@ -71,6 +71,15 @@ class VideoController: VideoPlaybackDelegatable {
         super.viewWillDisappear(animated)
         VideoPlayback.shared.controller.delegate = readController
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let oldHeight = self.view.frame.size.height
+        let oldWidth = self.view.frame.size.width
+        self.view.frame = UIScreen.main.bounds
+        self.view.frame.size.height = oldHeight
+        self.view.frame.size.width = oldWidth
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("storyboards are incompatible with truth and beauty")

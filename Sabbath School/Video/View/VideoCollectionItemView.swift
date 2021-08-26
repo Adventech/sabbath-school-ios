@@ -100,7 +100,6 @@ class VideoCollectionItemView: ASCellNode {
         if !featured {
             cover.style.spacingBefore = viewMode == .horizontal ? 10 : 0
             cover.style.spacingAfter = viewMode == .horizontal ? 10 : 0
-            titleSpec.style.maxWidth = viewMode == .horizontal ? ASDimensionMake(AppStyle.Video.Size.thumbnail().width) : ASDimensionMake(constrainedSize.max.width - AppStyle.Video.Size.thumbnail().width)
             titleSpec.style.flexGrow = 1.0
             titleSpec.style.flexShrink = 1.0
         }
