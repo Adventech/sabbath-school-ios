@@ -23,6 +23,7 @@
 import AsyncDisplayKit
 import AVKit
 import SwiftAudio
+import MediaPlayer
 
 class VideoPlayback: NSObject {
     static let shared = VideoPlayback()
@@ -40,6 +41,45 @@ class VideoPlayback: NSObject {
 
 class VideoPlaybackPlayerViewController: AVPlayerViewController {
     var shown: Bool = false
+    var playbackSpeedButton = VideoPlaybackRateButton(playbackRate: .normal)
+    
+    private func findPlayPauseButton(view: UIView) -> UIView? {
+        if view.accessibilityIdentifier == "Mute Toggle" {
+            return view
+        }
+        
+        for subview in view.subviews {
+            if let result = findPlayPauseButton(view: subview) {
+                return result
+            }
+        }
+        return nil
+    }
+    
+    func addRateButton() {
+        if let playerView = self.view,
+           let playPauseButton = findPlayPauseButton(view: playerView),
+           let playerControlsView = playPauseButton.superview {
+            playerControlsView.addSubview(playbackSpeedButton)
+            NSLayoutConstraint.activate([
+                playbackSpeedButton.heightAnchor.constraint(equalTo: playPauseButton.heightAnchor),
+                playbackSpeedButton.widthAnchor.constraint(equalTo: playPauseButton.widthAnchor),
+                playbackSpeedButton.leadingAnchor.constraint(equalTo: playPauseButton.leadingAnchor),
+                playbackSpeedButton.topAnchor.constraint(equalTo: playPauseButton.bottomAnchor, constant: 10),
+            ])
+        }
+        
+        playbackSpeedButton.addTarget(self, action: #selector(self.playbackSpeedButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func playbackSpeedButtonTapped(sender: VideoPlaybackRateButton) {
+        self.player?.rate = sender.playbackRate.val
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.addRateButton()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

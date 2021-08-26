@@ -11,6 +11,7 @@
 		1A43D7801EF8BABD00D6A639 /* SnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */; };
 		1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */; };
 		2AC44212F983DF8699249C37 /* Pods_Sabbath_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E42AC27861B53CE32ED7750 /* Pods_Sabbath_School.framework */; };
+		2F487E8126D8567300B4AA7A /* VideoPlaybackRateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */; };
 		2F95D39E26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F96FF4726C58A6A0045DC6D /* AudioPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */; };
@@ -270,6 +271,7 @@
 		1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		1BDC817E4DEE5647231E268B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1BDC81CE3CAC580E4EC0FB13 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlaybackRateButton.swift; sourceTree = "<group>"; };
 		2F95D39D26C0B2E8008E6666 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayback.swift; sourceTree = "<group>"; };
 		2F96FF4926C7188E0045DC6D /* AudioPlaylistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlaylistItemView.swift; sourceTree = "<group>"; };
@@ -1325,6 +1327,7 @@
 				7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */,
 				2F96FF6726CC9BBA0045DC6D /* Video.swift */,
 				2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */,
+				2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1943,6 +1946,7 @@
 				7A2810061EDD071B003C7458 /* LanguageWireFrame.swift in Sources */,
 				FE863F2A2662BD9F00ADCA36 /* Animation.swift in Sources */,
 				FE0249EA2669C2E3006BFADC /* Helper.swift in Sources */,
+				2F487E8126D8567300B4AA7A /* VideoPlaybackRateButton.swift in Sources */,
 				2F96FF6626CC9A570045DC6D /* VideoPlayback.swift in Sources */,
 				7A535A7A1EF0A56D00CBDEAB /* SettingsController.swift in Sources */,
 				FE863F6426657E1800ADCA36 /* AppStyle.swift in Sources */,
@@ -2398,7 +2402,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1007;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2423,7 +2427,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1007;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -2452,13 +2456,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1007;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.9.0;
+				MARKETING_VERSION = 2.9.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
@@ -2483,13 +2487,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1007;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.9.0;
+				MARKETING_VERSION = 2.9.1;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

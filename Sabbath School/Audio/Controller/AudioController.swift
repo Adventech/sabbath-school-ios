@@ -130,20 +130,20 @@ class AudioController: ASDKViewController<ASDisplayNode> {
     
     @objc func didPressRate(_ sender: ASTextNode) {
         let currentRate = AudioPlayback.rate
-        var newRate: AudioRate
+        var newRate: PlaybackRate
 
         switch currentRate {
         case .slow:
-            newRate = AudioRate.normal
+            newRate = .normal
             break
         case .normal:
-            newRate = AudioRate.fast
+            newRate = .fast
             break
         case .fast:
-            newRate = AudioRate.fastest
+            newRate = .fastest
             break
         case .fastest:
-            newRate = AudioRate.slow
+            newRate = .slow
             break
         }
         
@@ -180,7 +180,7 @@ class AudioController: ASDKViewController<ASDisplayNode> {
         }
     }
     
-    func updateRate(rate: AudioRate) {
+    func updateRate(rate: PlaybackRate) {
         self.audioView.rate.attributedText = AppStyle.Audio.Text.rate(string: rate.label)
     }
     

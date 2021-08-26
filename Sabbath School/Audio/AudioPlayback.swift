@@ -23,7 +23,7 @@
 import AVFoundation
 import SwiftAudio
 
-enum AudioRate {
+enum PlaybackRate {
     case slow
     case normal
     case fast
@@ -50,7 +50,7 @@ enum AudioRate {
 
 class AudioPlayback: NSObject {
     static let shared = QueuedAudioPlayer()
-    static var rate: AudioRate = .normal
+    static var rate: PlaybackRate = .normal
     static var lessonIndex: String? = nil
     
     private override init() {}
