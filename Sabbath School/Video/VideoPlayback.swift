@@ -28,7 +28,10 @@ import MediaPlayer
 class VideoPlayback: NSObject {
     static let shared = VideoPlayback()
     let controller = VideoPlaybackPlayerViewController()
+    
+    var playbackRate: PlaybackRate = .normal
     var pip: Bool = false
+    
     private override init() {}
     
     func stop() {
@@ -73,7 +76,27 @@ class VideoPlaybackPlayerViewController: AVPlayerViewController {
     }
     
     @objc func playbackSpeedButtonTapped(sender: VideoPlaybackRateButton) {
-        self.player?.rate = sender.playbackRate.val
+        let currentRate = VideoPlayback.shared.playbackRate
+        var newRate: PlaybackRate
+
+        switch currentRate {
+        case .slow:
+            newRate = .normal
+            break
+        case .normal:
+            newRate = .fast
+            break
+        case .fast:
+            newRate = .fastest
+            break
+        case .fastest:
+            newRate = .slow
+            break
+        }
+        
+        VideoPlayback.shared.playbackRate = newRate
+        sender.setTitle(playbackRate: VideoPlayback.shared.playbackRate)
+        self.player?.rate = VideoPlayback.shared.playbackRate.val
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,9 +146,11 @@ class VideoPlaybackDelegatable: ASDKViewController<ASDisplayNode> {
         
         if VideoPlayback.shared.pip {
             player.play()
+            player.rate = VideoPlayback.shared.playbackRate.val
         } else {
             self.present(VideoPlayback.shared.controller, animated: true) {
                 player.play()
+                player.rate = VideoPlayback.shared.playbackRate.val
             }
         }
     }

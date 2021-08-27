@@ -23,17 +23,12 @@
 import UIKit
 
 class VideoPlaybackRateButton: UIButton {
-    open var playbackRate: PlaybackRate
-    
     required init(playbackRate: PlaybackRate) {
-        self.playbackRate = playbackRate
-
         super.init(frame: .zero)
         
-        setTitle()
+        setTitle(playbackRate: playbackRate)
         
         self.accessibilityIdentifier = "PlaybackSpeed"
-        self.addTarget(self, action: #selector(self.playbackSpeedButtonTapped), for: .touchUpInside)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 18
         
@@ -59,30 +54,7 @@ class VideoPlaybackRateButton: UIButton {
         self.bottomAnchor.constraint(equalTo: blur.bottomAnchor, constant: 0).isActive = true
     }
     
-    @objc func playbackSpeedButtonTapped(sender: VideoPlaybackRateButton) {
-        let currentRate = playbackRate
-        var newRate: PlaybackRate
-
-        switch currentRate {
-        case .slow:
-            newRate = .normal
-            break
-        case .normal:
-            newRate = .fast
-            break
-        case .fast:
-            newRate = .fastest
-            break
-        case .fastest:
-            newRate = .slow
-            break
-        }
-        
-        self.playbackRate = newRate
-        self.setTitle()
-    }
-    
-    func setTitle() {
+    func setTitle(playbackRate: PlaybackRate) {
         self.setTitle(playbackRate.label, for: .normal)
         self.setTitleColor(.baseGray2, for: .normal)
     }
