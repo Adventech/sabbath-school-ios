@@ -50,6 +50,12 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Pictures captured with the camera can be added to the document as image annotations.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Recording sound annotations requires the microphone.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Images from documents and annotations can be saved to the photo library.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Lato-Italic.ttf</string>
