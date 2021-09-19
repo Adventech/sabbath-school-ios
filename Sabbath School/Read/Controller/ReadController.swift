@@ -25,6 +25,8 @@ import SafariServices
 import UIKit
 import SwiftAudio
 import AVKit
+import PSPDFKit
+import PSPDFKitUI
 
 class ReadController: VideoPlaybackDelegatable {
     var delegate: ReadControllerDelegate?
@@ -56,6 +58,8 @@ class ReadController: VideoPlaybackDelegatable {
     var readIndex: Int?
     
     var scrollReachedTouchpoint: Bool = false
+    
+    var downloader: Downloader?
 
     override init() {
         super.init(node: readCollectionView)
@@ -78,8 +82,6 @@ class ReadController: VideoPlaybackDelegatable {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.paragraphStyle: style]
         
         presenter?.configure()
-        
-        displayNavRightButtons()
 
         UIApplication.shared.isIdleTimerDisabled = true
 
@@ -255,12 +257,51 @@ class ReadController: VideoPlaybackDelegatable {
         }
     }
     
+    @objc func presentReadMenu(sender: UIBarButtonItem) {
+        let readMenuItems: [ReadMenuItem] = [
+            ReadMenuItem(
+                title: "Original PDF".localized(),
+                icon: R.image.iconNavbarPdf()!,
+                type: .originalPDF
+            ),
+            ReadMenuItem(
+                title: "Reading Options".localized(),
+                icon: R.image.iconNavbarFont()!,
+                type: .readOptions
+            )
+        ]
+
+        let menu = ReadMenuController(items: readMenuItems)
+        menu.delegate = self
+        
+        var size = CGSize(width: round(node.frame.width)*0.6, height: CGFloat(readMenuItems.count) * 51.5 + CGFloat(readMenuItems.count) + (CGFloat(readMenuItems.count) - 1))
+        
+        if Helper.isPad {
+            size.width = round(node.frame.width*0.4) < 400 ? 400 : round(node.frame.width*0.4)
+        }
+        
+        menu.preferredContentSize = size
+        menu.modalPresentationStyle = .popover
+        menu.modalTransitionStyle = .crossDissolve
+        menu.popoverPresentationController?.barButtonItem = sender
+        menu.popoverPresentationController?.delegate = menu
+        menu.popoverPresentationController?.backgroundColor = AppStyle.Base.Color.background
+        menu.popoverPresentationController?.permittedArrowDirections = .up
+        present(menu, animated: true, completion: nil)
+    }
+    
     func displayNavRightButtons() {
         var barButtons: [UIBarButtonItem] = []
         
-        let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
-        rightButton.accessibilityIdentifier = "themeSettings"
-        barButtons.append(rightButton)
+        if let pdfCount = lessonInfo?.pdfs.count, pdfCount > 0 {
+            let rightButton = UIBarButtonItem(image: R.image.iconNavbarMore(), style: .done, target: self, action: #selector(presentReadMenu(sender:)))
+            rightButton.accessibilityIdentifier = "additionalSettings"
+            barButtons.append(rightButton)
+        } else {
+            let rightButton = UIBarButtonItem(image: R.image.iconNavbarFont(), style: .done, target: self, action: #selector(readingOptions(sender:)))
+            rightButton.accessibilityIdentifier = "themeSettings"
+            barButtons.append(rightButton)
+        }
         
         if self.video.count > 0 {
             let videoButton = UIBarButtonItem(image: R.image.iconVideo(), style: .done, target: self, action: #selector(presentVideo(sender:)))
@@ -380,6 +421,18 @@ class ReadController: VideoPlaybackDelegatable {
     }
 }
 
+extension ReadController: ReadMenuControllerDelegate {
+    func didSelectMenu(menuItemType: ReadMenuType) {
+        switch menuItemType {
+        case .originalPDF:
+            navigationController?.pushViewController(PDFReadController(lessonIndex: (lessonInfo?.lesson.index)!), animated: true)
+        break
+        case .readOptions:
+            self.readingOptions(sender: (navigationItem.rightBarButtonItems?.first)!)
+        }
+    }
+}
+
 extension ReadController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         DispatchQueue.main.async(execute: {
@@ -391,6 +444,7 @@ extension ReadController: UINavigationControllerDelegate {
 extension ReadController: ReadControllerProtocol {
     func loadLessonInfo(lessonInfo: LessonInfo) {
         self.lessonInfo = lessonInfo
+        displayNavRightButtons()
     }
     
     func loadAudio(audio: [Audio]) {

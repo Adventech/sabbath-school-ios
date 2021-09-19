@@ -12,6 +12,10 @@
 		1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */; };
 		2AC44212F983DF8699249C37 /* Pods_Sabbath_School.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E42AC27861B53CE32ED7750 /* Pods_Sabbath_School.framework */; };
 		2F487E8126D8567300B4AA7A /* VideoPlaybackRateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */; };
+		2F487E8B26D87A5E00B4AA7A /* PDFController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8A26D87A5E00B4AA7A /* PDFController.swift */; };
+		2F487E8F26DC80F300B4AA7A /* ReadMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8E26DC80F300B4AA7A /* ReadMenuController.swift */; };
+		2F5C48F726F2AEB6002C4C83 /* PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C48F626F2AEB6002C4C83 /* PDF.swift */; };
+		2F5C48F826F2AEB6002C4C83 /* PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C48F626F2AEB6002C4C83 /* PDF.swift */; };
 		2F95D39E26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F96FF4726C58A6A0045DC6D /* AudioPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */; };
@@ -36,6 +40,13 @@
 		2F96FF7726CFF4A30045DC6D /* VideoCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF7626CFF4A30045DC6D /* VideoCollectionHeader.swift */; };
 		2F96FF7926CFF4C30045DC6D /* VideoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF7826CFF4C30045DC6D /* VideoCollectionView.swift */; };
 		2F96FF7B26CFF4DE0045DC6D /* VideoCollectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF7A26CFF4DE0045DC6D /* VideoCollectionItemView.swift */; };
+		2FA1FFE026F6B86F00E80868 /* PDFAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFDF26F6B86F00E80868 /* PDFAnnotation.swift */; };
+		2FA1FFE226F6B8B400E80868 /* PDFReadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFE126F6B8B400E80868 /* PDFReadController.swift */; };
+		2FA1FFE426F6B97E00E80868 /* PDFReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFE326F6B97E00E80868 /* PDFReadViewController.swift */; };
+		2FA1FFE626F6B9EB00E80868 /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFE526F6B9EB00E80868 /* PDFView.swift */; };
+		2FA1FFE826F6BA6700E80868 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFE726F6BA6700E80868 /* Downloader.swift */; };
+		2FA1FFEA26F6D87600E80868 /* AudioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFE926F6D87600E80868 /* AudioInteractor.swift */; };
+		2FA1FFEC26F6DA9700E80868 /* VideoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFEB26F6DA9700E80868 /* VideoInteractor.swift */; };
 		2FE24EFD26BB90170036FD75 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE24EFC26BB90170036FD75 /* AudioController.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
@@ -272,6 +283,11 @@
 		1BDC817E4DEE5647231E268B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1BDC81CE3CAC580E4EC0FB13 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlaybackRateButton.swift; sourceTree = "<group>"; };
+		2F487E8226D879D100B4AA7A /* PSPDFKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PSPDFKit.xcframework; sourceTree = "<group>"; };
+		2F487E8326D879D100B4AA7A /* PSPDFKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PSPDFKitUI.xcframework; sourceTree = "<group>"; };
+		2F487E8A26D87A5E00B4AA7A /* PDFController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFController.swift; sourceTree = "<group>"; };
+		2F487E8E26DC80F300B4AA7A /* ReadMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMenuController.swift; sourceTree = "<group>"; };
+		2F5C48F626F2AEB6002C4C83 /* PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDF.swift; sourceTree = "<group>"; };
 		2F95D39D26C0B2E8008E6666 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayback.swift; sourceTree = "<group>"; };
 		2F96FF4926C7188E0045DC6D /* AudioPlaylistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlaylistItemView.swift; sourceTree = "<group>"; };
@@ -293,6 +309,13 @@
 		2F96FF7626CFF4A30045DC6D /* VideoCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionHeader.swift; sourceTree = "<group>"; };
 		2F96FF7826CFF4C30045DC6D /* VideoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionView.swift; sourceTree = "<group>"; };
 		2F96FF7A26CFF4DE0045DC6D /* VideoCollectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionItemView.swift; sourceTree = "<group>"; };
+		2FA1FFDF26F6B86F00E80868 /* PDFAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFAnnotation.swift; sourceTree = "<group>"; };
+		2FA1FFE126F6B8B400E80868 /* PDFReadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReadController.swift; sourceTree = "<group>"; };
+		2FA1FFE326F6B97E00E80868 /* PDFReadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReadViewController.swift; sourceTree = "<group>"; };
+		2FA1FFE526F6B9EB00E80868 /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
+		2FA1FFE726F6BA6700E80868 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		2FA1FFE926F6D87600E80868 /* AudioInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioInteractor.swift; sourceTree = "<group>"; };
+		2FA1FFEB26F6DA9700E80868 /* VideoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInteractor.swift; sourceTree = "<group>"; };
 		2FE24EFC26BB90170036FD75 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		477B1DC2A057461A3A3B40B8 /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -610,12 +633,24 @@
 			path = SnapshotUITests;
 			sourceTree = "<group>";
 		};
+		2F487E8926D87A4D00B4AA7A /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				2F487E8A26D87A5E00B4AA7A /* PDFController.swift */,
+				2FA1FFE126F6B8B400E80868 /* PDFReadController.swift */,
+				2FA1FFE326F6B97E00E80868 /* PDFReadViewController.swift */,
+				2FA1FFE526F6B9EB00E80868 /* PDFView.swift */,
+			);
+			path = PDF;
+			sourceTree = "<group>";
+		};
 		2F96FF4826C7186D0045DC6D /* Audio */ = {
 			isa = PBXGroup;
 			children = (
 				2F96FF4E26C721B00045DC6D /* Controller */,
 				2F96FF4D26C7219E0045DC6D /* View */,
 				2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */,
+				2FA1FFE926F6D87600E80868 /* AudioInteractor.swift */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -655,6 +690,7 @@
 				2F96FF7026CCA7220045DC6D /* Controller */,
 				2F96FF7126CCA7290045DC6D /* View */,
 				2F96FF6526CC9A570045DC6D /* VideoPlayback.swift */,
+				2FA1FFEB26F6DA9700E80868 /* VideoInteractor.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -923,6 +959,8 @@
 				7AC26AE61EE4FA9E003F946C /* Reader.swift */,
 				7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */,
 				7A2810281EDDE41F003C7458 /* ShimmeringNode.swift */,
+				2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */,
+				2FA1FFE726F6BA6700E80868 /* Downloader.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1165,6 +1203,7 @@
 			children = (
 				7A922E171EDFB61600C12A67 /* ReadController.swift */,
 				7A3BCE3D1EE2F209003EC12B /* ReadOptionsController.swift */,
+				2F487E8E26DC80F300B4AA7A /* ReadMenuController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1327,7 +1366,8 @@
 				7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */,
 				2F96FF6726CC9BBA0045DC6D /* Video.swift */,
 				2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */,
-				2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */,
+				2F5C48F626F2AEB6002C4C83 /* PDF.swift */,
+				2FA1FFDF26F6B86F00E80868 /* PDFAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1366,6 +1406,7 @@
 				7A280FEF1EDCFCA7003C7458 /* Language */,
 				7A28100D1EDDC9A4003C7458 /* Lesson */,
 				7A280F701ED7CF05003C7458 /* Login */,
+				2F487E8926D87A4D00B4AA7A /* PDF */,
 				7A280FD11EDCB736003C7458 /* Quarterly */,
 				7A922E0A1EDF88F800C12A67 /* Read */,
 				7A280F8C1ED7D75E003C7458 /* Resources */,
@@ -1392,6 +1433,8 @@
 		CABEE71BDF95136D0B5A003F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F487E8226D879D100B4AA7A /* PSPDFKit.xcframework */,
+				2F487E8326D879D100B4AA7A /* PSPDFKitUI.xcframework */,
 				FEE3024224730E8000A71314 /* MenuItemKit.framework */,
 				FE1E34FD2673C5DF00DAC2D6 /* WidgetKit.framework */,
 				FE1E34FF2673C5DF00DAC2D6 /* SwiftUI.framework */,
@@ -1748,6 +1791,8 @@
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PSPDFKit/Core/PSPDFKit.framework/PSPDFKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PSPDFKit/Core/PSPDFKitUI.framework/PSPDFKitUI",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1788,6 +1833,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSPDFKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSPDFKitUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1936,6 +1983,7 @@
 				FE5CC74F268939DD00B9F061 /* GroupedQuarterlyController.swift in Sources */,
 				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
 				FEC92193267E32C400422F3D /* PreferencesShared.swift in Sources */,
+				2FA1FFE226F6B8B400E80868 /* PDFReadController.swift in Sources */,
 				FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */,
 				7A3BCE361EE27776003EC12B /* BiblePresenter.swift in Sources */,
 				2F96FF6126C972280045DC6D /* AudioView.swift in Sources */,
@@ -1973,21 +2021,25 @@
 				FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */,
 				7A3BCE321EE27717003EC12B /* BibleWireFrame.swift in Sources */,
 				7A280F9B1EDA015D003C7458 /* AppDelegate.swift in Sources */,
+				2FA1FFE826F6BA6700E80868 /* Downloader.swift in Sources */,
 				7A280FC71EDA06F9003C7458 /* LoginButton.swift in Sources */,
 				2F96FF4C26C718A40045DC6D /* AudioPlaylistItemEmptyView.swift in Sources */,
 				FE1E33FC26702F0200DAC2D6 /* FirebaseDecoder.swift in Sources */,
 				7AC26AF81EE5EBDE003F946C /* Day.swift in Sources */,
 				7A28101C1EDDCDEC003C7458 /* LessonWireFrame.swift in Sources */,
 				7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */,
+				2FA1FFE626F6B9EB00E80868 /* PDFView.swift in Sources */,
 				7A28101A1EDDCC1A003C7458 /* LessonController.swift in Sources */,
 				7A3BCE3A1EE292E9003EC12B /* BibleVersionController.swift in Sources */,
 				7A280FFC1EDD032E003C7458 /* LanguageController.swift in Sources */,
 				7A3BCE341EE2776A003EC12B /* BibleInteractor.swift in Sources */,
+				2FA1FFE026F6B86F00E80868 /* PDFAnnotation.swift in Sources */,
 				2F96FF6426CC4BD20045DC6D /* VideoController.swift in Sources */,
 				7A28101E1EDDCE36003C7458 /* LessonPresenter.swift in Sources */,
 				7A3BCE211EE0EC60003EC12B /* String.swift in Sources */,
 				7A922E161EDF8AB300C12A67 /* ReadPresenter.swift in Sources */,
 				7A280FF81EDD0246003C7458 /* LanguageProtocols.swift in Sources */,
+				2FA1FFEC26F6DA9700E80868 /* VideoInteractor.swift in Sources */,
 				7A280FCC1EDA0F9D003C7458 /* LoginController.swift in Sources */,
 				FE420255265D93840061C589 /* LanguageView.swift in Sources */,
 				7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */,
@@ -1998,6 +2050,8 @@
 				2F96FF5826C7FC710045DC6D /* AudioMiniPlayerView.swift in Sources */,
 				7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */,
 				7A280FD91EDCB79F003C7458 /* QuarterlyProtocols.swift in Sources */,
+				2F487E8F26DC80F300B4AA7A /* ReadMenuController.swift in Sources */,
+				2FA1FFE426F6B97E00E80868 /* PDFReadViewController.swift in Sources */,
 				7A8C68481EF206E100CD3228 /* SettingsView.swift in Sources */,
 				7AC26AFF1EE5EBDE003F946C /* ReadComments.swift in Sources */,
 				FE5CC7402689231700B9F061 /* QuarterlyPresenter.swift in Sources */,
@@ -2033,6 +2087,7 @@
 				FE0249F8266A9068006BFADC /* Configuration.swift in Sources */,
 				7A280F971ED94964003C7458 /* R.generated.swift in Sources */,
 				7A280FE91EDCE4B1003C7458 /* Date.swift in Sources */,
+				2F487E8B26D87A5E00B4AA7A /* PDFController.swift in Sources */,
 				FE2FDFFB26923E0D0023A853 /* QuarterlyControllerCommon.swift in Sources */,
 				2F96FF5F26C848AF0045DC6D /* ESTMusicIndicatorViewState.swift in Sources */,
 				7A280FE31EDCBA7D003C7458 /* QuarterlyView.swift in Sources */,
@@ -2057,7 +2112,9 @@
 				2F96FF5D26C847AB0045DC6D /* ESTMusicIndicatorView.swift in Sources */,
 				7A4129091EF4D05C0044D6E8 /* PickerViewController.swift in Sources */,
 				7A280FC51EDA04A6003C7458 /* Color.swift in Sources */,
+				2FA1FFEA26F6D87600E80868 /* AudioInteractor.swift in Sources */,
 				2F96FF7B26CFF4DE0045DC6D /* VideoCollectionItemView.swift in Sources */,
+				2F5C48F726F2AEB6002C4C83 /* PDF.swift in Sources */,
 				7A3BCE301EE275F1003EC12B /* BibleView.swift in Sources */,
 				2F96FF5626C7FAD90045DC6D /* ReadCollectionView.swift in Sources */,
 			);
@@ -2097,6 +2154,7 @@
 				FE611AAA267500F5003CDDB5 /* BibleVerses.swift in Sources */,
 				FE611AA6267500F5003CDDB5 /* Lesson.swift in Sources */,
 				2F96FF6926CC9BBD0045DC6D /* Video.swift in Sources */,
+				2F5C48F826F2AEB6002C4C83 /* PDF.swift in Sources */,
 				FE611A9D2674FECA003CDDB5 /* TodayWidgetEntry.swift in Sources */,
 				FED6B2EB268026D0007093CE /* LessonInfoWidget.swift in Sources */,
 				FED6B2E6268026AE007093CE /* LessonInfoWidgetProvider.swift in Sources */,
@@ -2331,7 +2389,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2385,7 +2443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -2406,9 +2464,9 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.9.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "29d99fff-a72e-4c42-9ceb-b8c5c4176926";
@@ -2430,9 +2488,9 @@
 				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.9.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
@@ -2462,7 +2520,7 @@
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.9.1;
+				MARKETING_VERSION = 3.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
@@ -2493,7 +2551,7 @@
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.9.1;
+				MARKETING_VERSION = 3.0.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

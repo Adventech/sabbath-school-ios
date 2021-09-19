@@ -22,46 +22,31 @@
 
 import Foundation
 
-struct Lesson: Codable {
+struct PDF: Codable {
     let id: String
+    let src: URL
     let title: String
+    let target: String
     let startDate: Date
     let endDate: Date
-    let cover: URL?
-    let index: String
-    let path: String
-    let fullPath: URL
-    let pdfOnly: Bool
-    var dateRange: String = ""
-    var webURL: URL
     
     // Mock
     init(title: String) {
-        self.id = "1"
+        self.id = "en-2021-03-13"
+        self.src = URL.init(string: "https://www.gracelink.net/assets/gracelink/Lessons/Primary/2021/Q3/Primary/Student/P-21-Q3-L01.pdf")!
         self.title = title
+        self.target = "en-2021-03-12"
         self.startDate = Date()
         self.endDate = Date()
-        self.cover = URL.init(string: "https://adventech.io")!
-        self.index = "-"
-        self.path = "-"
-        self.fullPath = URL.init(string: "https://adventech.io")!
-        self.webURL = URL.init(string: "https://adventech.io")!
-        self.pdfOnly = false
     }
-    
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
+        src = try values.decode(URL.self, forKey: .src)
         title = try values.decode(String.self, forKey: .title)
+        target = try values.decode(String.self, forKey: .target)
         startDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .startDate))!
         endDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .endDate))!
-        cover = try values.decode(URL.self, forKey: .cover)
-        index = try values.decode(String.self, forKey: .index)
-        path = try values.decode(String.self, forKey: .path)
-        fullPath = try values.decode(URL.self, forKey: .fullPath)
-        dateRange = String(format: "%@ - %@", startDate.stringLessonDate(), endDate.stringLessonDate())
-        webURL = URL.init(string: String(format: "%@/01", fullPath.absoluteString.replacingOccurrences(of: Constants.URLs.webReplacementRegex, with: "", options: [.regularExpression])))!
-        pdfOnly = try values.decode(Bool.self, forKey: .pdfOnly)
     }
 }

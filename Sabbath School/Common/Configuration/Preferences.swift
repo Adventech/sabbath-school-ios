@@ -22,6 +22,7 @@
 
 import Foundation
 import UIKit
+import PSPDFKitUI
 
 struct Preferences {
     static var userDefaults: UserDefaults {
@@ -120,5 +121,29 @@ struct Preferences {
     
     static func getPreferredBibleVersionKey() -> String {
         return Constants.DefaultKey.preferredBibleVersion + Preferences.currentLanguage().code
+    }
+    
+    static func getPdfPageTransition() -> PageTransition {
+        let exists = Preferences.userDefaults.object(forKey: Constants.DefaultKey.pdfConfigurationPageTransition) != nil
+        let pageTransition = Preferences.userDefaults.integer(forKey: Constants.DefaultKey.pdfConfigurationPageTransition)
+        return exists ? PageTransition(rawValue: UInt(pageTransition))! : PageTransition.scrollContinuous
+    }
+    
+    static func getPdfPageMode() -> PageMode {
+        let exists = Preferences.userDefaults.object(forKey: Constants.DefaultKey.pdfConfigurationPageMode) != nil
+        let pageMode = Preferences.userDefaults.integer(forKey: Constants.DefaultKey.pdfConfigurationPageMode)
+        return exists ? PageMode(rawValue: UInt(pageMode))! : PageMode.single
+    }
+    
+    static func getPdfScrollDirection() -> ScrollDirection {
+        let exists = Preferences.userDefaults.object(forKey: Constants.DefaultKey.pdfConfigurationScrollDirection) != nil
+        let scrollDirection = Preferences.userDefaults.integer(forKey: Constants.DefaultKey.pdfConfigurationScrollDirection)
+        return exists ? ScrollDirection(rawValue: UInt(scrollDirection))! : ScrollDirection.vertical
+    }
+    
+    static func getPdfSpreadFitting() -> PDFConfiguration.SpreadFitting {
+        let exists = Preferences.userDefaults.object(forKey: Constants.DefaultKey.pdfConfigurationSpreadFitting) != nil
+        let spreadFitting = Preferences.userDefaults.integer(forKey: Constants.DefaultKey.pdfConfigurationSpreadFitting)
+        return exists ? PDFConfiguration.SpreadFitting(rawValue: spreadFitting)! : PDFConfiguration.SpreadFitting.fit
     }
 }

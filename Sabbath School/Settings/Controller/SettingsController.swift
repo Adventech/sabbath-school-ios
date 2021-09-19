@@ -120,6 +120,15 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
                 QuarterlyWireFrame.presentLoginScreen()
             }
         }
+        
+        if let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            do {
+                let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+                for fileURL in fileURLs {
+                    try FileManager.default.removeItem(at: fileURL)
+                }
+            } catch {}
+        }        
     }
 
     @objc func reminderChanged(sender: UISwitch) {

@@ -50,9 +50,8 @@ struct TodayWidgetView : View {
                     .font(.system(size: WidgetStyle.getStyle(widgetFamily: widgetFamily).dateFontSize, weight: .regular))
                     .lineLimit(WidgetStyle.getStyle(widgetFamily: widgetFamily).dateMaxLines)
                     .foregroundColor(Color(.label))
-                    
                 
-                Text(entry.day.title)
+                Text(entry.lessonInfo.lesson.pdfOnly ? entry.lessonInfo.lesson.title : entry.day.title)
                     .foregroundColor(Color(.label))
                     .font(.system(size: WidgetStyle.getStyle(widgetFamily: widgetFamily).titleFontSize, weight: .bold))
                     .lineLimit(WidgetStyle.getStyle(widgetFamily: widgetFamily).titleMaxLines)

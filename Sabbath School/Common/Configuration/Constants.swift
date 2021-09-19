@@ -49,6 +49,11 @@ struct Constants {
         
         static let migrationToAppGroups = "io.adventech.migrationToAppGroups"
         static let appGroupName = "group.com.cryart.SabbathSchool"
+        
+        static let pdfConfigurationPageTransition = "io.adventech.settings.pdf.pageTransition"
+        static let pdfConfigurationPageMode = "io.adventech.settings.pdf.pageMode"
+        static let pdfConfigurationScrollDirection = "io.adventech.settings.pdf.scrollDirection"
+        static let pdfConfigurationSpreadFitting = "io.adventech.settings.pdf.spreadFitting"
     }
 
     struct Path {
@@ -62,7 +67,7 @@ struct Constants {
     }
 
     struct Firebase {
-        static let apiPrefix = "/api/v1"
+        static let apiPrefix = "/api/v2"
         static let languages = apiPrefix + "/languages"
         static let quarterlies = apiPrefix + "/quarterlies"
         static let quarterlyInfo = apiPrefix + "/quarterly-info"
@@ -70,6 +75,8 @@ struct Constants {
         static let reads = apiPrefix + "/reads"
         static let audio = apiPrefix + "/audio"
         static let video = apiPrefix + "/video"
+        
+        static let annotations = "annotations"
 
         #if DEBUG
         struct Storage {
@@ -99,7 +106,7 @@ struct Constants {
         #else
         static let web = "https://sabbath-school.adventech.io/"
         #endif
-        static let webReplacementRegex = "api/v1/|quarterlies/|lessons/|days/|read/"
+        static let webReplacementRegex = "api/v1|v2/|quarterlies/|lessons/|days/|read/"
         
         static let webLinkRegex = #"(^\/[a-z]{2,}\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/\d{2}\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/\d{2}\/\d{2}(-.+)?\/?$)"#
     }

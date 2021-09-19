@@ -107,4 +107,32 @@ struct Helper {
         
         return ""
     }
+    
+    static func PDFDownloadFileURL(fileName: String) -> URL {
+        let docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last as NSURL?
+        return (docURL?.appendingPathComponent(fileName))!
+    }
+    
+    static func PDFDownloadFileExists(fileName: String) -> Bool {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = URL(fileURLWithPath: path)
+
+        let filePath = url.appendingPathComponent(fileName).path
+        let fileManager = FileManager.default
+        return fileManager.fileExists(atPath: filePath)
+    }
+    
+    static func TemporaryFileURL(prefix: String?, pathExtension: String) -> URL {
+        let sanePathExtension = pathExtension.hasPrefix(".") ? pathExtension : ".\(pathExtension)"
+        let uuidString = prefix != nil ? NSUUID().uuidString : "_\(NSUUID().uuidString)"
+
+        let tempDirectory = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+        let tempURL = tempDirectory.appendingPathComponent("\(prefix ?? "")\(uuidString)\(sanePathExtension)", isDirectory: false)
+        return tempURL
+    }
+
+    /// Creates a temporary PDF file URL.
+    static func TemporaryPDFFileURL(prefix: String? = nil) -> URL {
+        return TemporaryFileURL(prefix: prefix, pathExtension: ".pdf")
+    }
 }

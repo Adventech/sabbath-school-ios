@@ -1,8 +1,9 @@
-platform :ios, '10.0'
+platform :ios, '12.1'
 use_frameworks!
 inhibit_all_warnings!
 
 target 'Sabbath School' do
+  pod 'PSPDFKit', podspec: 'https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec'
   pod 'Armchair'
   pod 'Down'
   pod 'Firebase/Crashlytics'
@@ -36,7 +37,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-     config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
+     config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.1'
     end
 
     if target.name == 'Armchair'

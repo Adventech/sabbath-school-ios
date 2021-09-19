@@ -646,13 +646,16 @@ struct AppStyle {
     
     struct Video {
         struct Size {
-            static func thumbnail(viewMode: VideoCollectionItemViewMode = .horizontal) -> CGSize {
+            static func thumbnail(viewMode: VideoCollectionItemViewMode = .horizontal, constrainedWidth: CGFloat = 0.0) -> CGSize {
                 let defaultSize = CGSize(width: 276, height: 149)
                 
-                let ratio: CGFloat = viewMode == .vertial ? 2.7 : 1.2
+                let ratio: CGFloat = viewMode == .vertical ? 2.7 : 1.2
                 
-                let width = Helper.isPad ? defaultSize.width : UIScreen.main.bounds.width / ratio
-                let height = Helper.isPad ? defaultSize.height : width / (defaultSize.width / defaultSize.height)
+                let maxWidth: CGFloat = viewMode == .vertical && constrainedWidth > 0 ? constrainedWidth : UIScreen.main.bounds.width
+                
+                let width = maxWidth / ratio
+                
+                let height = width / (defaultSize.width / defaultSize.height)
                 
                 return CGSize(width: width, height: height)
             }

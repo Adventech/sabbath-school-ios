@@ -24,7 +24,7 @@ import AsyncDisplayKit
 
 enum VideoCollectionItemViewMode {
     case horizontal
-    case vertial
+    case vertical
 }
 
 class VideoCollectionItemView: ASCellNode {
@@ -36,7 +36,7 @@ class VideoCollectionItemView: ASCellNode {
     let viewMode: VideoCollectionItemViewMode
     let featured: Bool
     
-    init(video: Video, viewMode: VideoCollectionItemViewMode = .vertial, featured: Bool = false) {
+    init(video: Video, viewMode: VideoCollectionItemViewMode = .vertical, featured: Bool = false) {
         self.durationEnabled = video.duration != nil
         self.viewMode = viewMode
         self.featured = featured
@@ -85,7 +85,7 @@ class VideoCollectionItemView: ASCellNode {
                 width: constrainedSize.max.width-xInset*2,
                 height: (constrainedSize.max.width-xInset*2) / (AppStyle.Video.Size.thumbnail().width / AppStyle.Video.Size.thumbnail().height)
             )
-            : AppStyle.Video.Size.thumbnail(viewMode: viewMode)
+            : AppStyle.Video.Size.thumbnail(viewMode: viewMode, constrainedWidth: constrainedSize.max.width)
         
         cover.style.preferredSize = size
         cover.imageNode.style.preferredSize = size

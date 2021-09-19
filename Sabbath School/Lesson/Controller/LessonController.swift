@@ -164,7 +164,14 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     func openToday() {
         let todaysLessonIndex = getTodaysLessonIndex()
         if !todaysLessonIndex.isEmpty {
-            presenter?.presentReadScreen(lessonIndex: todaysLessonIndex)
+            if let lesson = dataSource?.lessons.first(where: { $0.index == todaysLessonIndex }) {
+                if lesson.pdfOnly {
+                    navigationController?.pushViewController(PDFReadController(lessonIndex: lesson.index), animated: true)
+                } else {
+                    presenter?.presentReadScreen(lessonIndex: todaysLessonIndex)
+                }
+            }
+            
         }
     }
     
@@ -189,10 +196,17 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         UIApplication.shared.shortcutItems = shortcutItems
     }
     
-    func getReadControllerForPeek(indexPath: IndexPath, point: CGPoint) -> ReadController? {
+    func getReadControllerForPeek(indexPath: IndexPath, point: CGPoint) -> ASDKViewController<ASDisplayNode>? {
         guard let lessonIndex: String = (indexPath.row == 0 && indexPath.section == 0) ? getTodaysLessonIndex() : self.dataSource?.lessons[indexPath.row].index else { return nil }
+        guard let lesson = self.dataSource?.lessons[indexPath.row] else { return nil }
+        
+        if lesson.pdfOnly {
+            return nil
+        }
+        
         let readController = ReadWireFrame.createReadModule(lessonIndex: lessonIndex)
         readController.delegate = self
+        
         return readController
     }
     
@@ -371,7 +385,11 @@ extension LessonController: ASTableDelegate {
         guard let lesson = dataSource?.lessons[indexPath.row] else { return }
 
         if indexPath.section == 1 {
-            presenter?.presentReadScreen(lessonIndex: lesson.index)
+            if lesson.pdfOnly {
+                navigationController?.pushViewController(PDFReadController(lessonIndex: lesson.index), animated: true)
+            } else {
+                presenter?.presentReadScreen(lessonIndex: lesson.index)
+            }
         }
     }
     
@@ -410,8 +428,16 @@ extension LessonController: ASTableDataSource {
             if indexPath.section == 2 {
                 return LessonQuarterlyFooter(credits: self.dataSource!.quarterly.credits, features: self.dataSource!.quarterly.features)
             }
+            
+            var lessonNumberString = "\(indexPath.row+1)"
+            
+            if let lessonNumber = Int(lesson.id), lessonNumber > 0 {
+                lessonNumberString = "\(lessonNumber)"
+            } else {
+                lessonNumberString = "•"
+            }
 
-            return LessonView(lesson: lesson, number: "\(indexPath.row+1)")
+            return LessonView(lesson: lesson, number: lessonNumberString)
         }
 
         return cellNodeBlock

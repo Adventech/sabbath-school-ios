@@ -35,7 +35,7 @@ struct LessonInfoWidgetProvider: TimelineProvider {
             Day(title: "--------"),
             Day(title: "--------"),
             Day(title: "---")
-        ]
+        ], pdfs: []
     )
     
     func placeholder(in context: Context) -> LessonInfoWidgetEntry {

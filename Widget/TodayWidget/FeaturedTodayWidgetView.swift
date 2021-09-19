@@ -59,7 +59,7 @@ struct FeaturedTodayWidgetView : View {
                     .foregroundColor(Color(.white))
                     
                 
-                Text(entry.day.title)
+                Text(entry.lessonInfo.lesson.pdfOnly ? entry.lessonInfo.lesson.title : entry.day.title)
                     .foregroundColor(Color(.white))
                     .font(.system(size: WidgetStyle.getStyle(widgetFamily: widgetFamily).titleFontSize, weight: .bold))
                     .lineLimit(WidgetStyle.getStyle(widgetFamily: widgetFamily).titleMaxLines)

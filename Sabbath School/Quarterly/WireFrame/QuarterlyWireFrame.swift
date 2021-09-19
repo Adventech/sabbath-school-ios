@@ -22,6 +22,38 @@
 
 import AsyncDisplayKit
 
+class SplitVc : UISplitViewController, UISplitViewControllerDelegate {
+    override func viewDidLoad() {
+        self.delegate = self
+        
+        let controller: QuarterlyControllerProtocol = QuarterlyController()
+        let presenter: QuarterlyPresenterProtocol & QuarterlyInteractorOutputProtocol = QuarterlyPresenter()
+        let wireFrame: QuarterlyWireFrameProtocol = QuarterlyWireFrame()
+        let interactor: QuarterlyInteractorInputProtocol = QuarterlyInteractor()
+        
+        controller.initiateOpen = false
+        controller.presenter = presenter
+        presenter.controller = controller
+        presenter.wireFrame = wireFrame
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+        
+        let master = ASNavigationController(rootViewController: controller as! UIViewController)
+    
+        
+        //detail.viewControllers = []
+        self.viewControllers = [master]
+    }
+    
+    func splitViewController(
+                _ splitViewController: UISplitViewController,
+                collapseSecondary secondaryViewController: UIViewController,
+                onto primaryViewController: UIViewController) -> Bool {
+           // Return true to prevent UIKit from applying its default behavior
+           return true
+   }
+}
+
 class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
     class func createQuarterlyModule(initiateOpen: Bool = false) -> ASNavigationController {
         let controller: QuarterlyControllerProtocol = QuarterlyController()
@@ -35,7 +67,8 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
         presenter.wireFrame = wireFrame
         presenter.interactor = interactor
         interactor.presenter = presenter
-
+        
+        
         return ASNavigationController(rootViewController: controller as! UIViewController)
     }
     

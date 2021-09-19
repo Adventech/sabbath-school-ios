@@ -92,6 +92,7 @@ class ReadPresenter: ReadPresenterProtocol {
 
 extension ReadPresenter: ReadInteractorOutputProtocol {
     func onError(_ error: Error?) {
+        print("SSDEBUG", error)
         print(error?.localizedDescription ?? "Unknown")
     }
 

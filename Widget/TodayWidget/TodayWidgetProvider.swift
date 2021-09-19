@@ -51,7 +51,11 @@ struct TodayWidgetProvider: TimelineProvider {
             let midnight = Calendar.current.startOfDay(for: currentDate)
             let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)!
             
-            if let lessonInfo = lessonInfo, let day = WidgetInteractor.getTodayFromLessonInfo(lessonInfo: lessonInfo) {
+            if let lessonInfo = lessonInfo {
+                var day = TodayWidgetProvider.placeholderDay
+                if let dbDay = WidgetInteractor.getTodayFromLessonInfo(lessonInfo: lessonInfo) {
+                    day = dbDay
+                }
                 entries.append(TodayWidgetEntry(date: currentDate, lessonInfo: lessonInfo, day: day))
                 for offset in 0..<24 {
                     let entryDate = Calendar.current.date(byAdding: .hour, value: offset, to: midnight)!

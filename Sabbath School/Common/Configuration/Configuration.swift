@@ -32,6 +32,7 @@ import GoogleSignIn
 import UIKit
 import StoreKit
 import WidgetKit
+import PSPDFKit
 
 class Configuration: NSObject {
     static var window: UIWindow?
@@ -40,6 +41,24 @@ class Configuration: NSObject {
     static func configureMisc() {
         UIApplication.shared.beginReceivingRemoteControlEvents()
         AudioPlayback.configure()
+        SDK.setLicenseKey("m1D3G89lgIoFFH8dbw+8zi7H776Qs3ARqiE++46DcVgbrRWMue1EsId1QTLEldTJL91QLlymJDfVWiiNk9BsVPTcREwT0xnzqMIeA2HFe8iCqHpAW8/IC8wV3Ug7Se7r07nGJcY78Zrm8kUd47mGXq7//1JmV6vKoDEhzUVdPx1TRRruHCMbzcozQl9hVbHu5MdL4GLrfhiO2EI3nULoO/qQo2MKYPyR350rcq4nxwZ/aGkHqWWgsMiHVJN/6jrDSzF4YdMZj55GpH8ZrkmQZ7gULfTepKU5g/YlL56tne4Qelgd8048vxSPJ875R4P7WCzJgkc+TSI9wR8AVMm0AM8DwgiIlHcbzlYkQISpv3RDsN190EZ0/hnVP9H1oedeonoctJaOQpyOFo1UQ8rf+8LWXrr5lA5NzNaXdNj+LCR6Oa9itQfSbPJG2xTr0LuHe6zTcbGKIS6y8irFhgIOCbcb6MyUwZrnWEpyrIAzY7zjh8QzhQFxZ9HaQy9fQQYC5O15Q15RJ5m7/JcjQlV69J6+yqBTKGmjheimuj4Py7V724CcvtkBU9yyv+0Qus1LSrVb9HT92NHxVGJ+EINoIZH3T4jC0nQB88UUoATi/xKAfrqG5jrBx2fTNxOM0Cxr",
+                          options: [.fileCoordinationEnabled: false])
+        
+        SDK.shared.imageLoadingHandler = { imageName in
+            if imageName == "edit_annotations" {
+                return R.image.iconPdfAnnotations()
+            }
+            
+            if imageName == "outline" {
+                return R.image.iconPdfBookmarks()
+            }
+            
+            if imageName == "settings" {
+                return R.image.iconNavbarSettings()
+            }
+            
+            return nil
+        }
     }
     
     static func configureAuthentication() {

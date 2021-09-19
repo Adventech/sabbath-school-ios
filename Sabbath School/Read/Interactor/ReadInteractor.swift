@@ -43,6 +43,7 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
 
             do {
                 let item: LessonInfo = try FirebaseDecoder().decode(LessonInfo.self, from: json)
+                
                 self?.presenter?.didRetrieveLessonInfo(lessonInfo: item)
                 self?.retrieveReads(lessonInfo: item)                
                 
@@ -78,32 +79,18 @@ class ReadInteractor: FirebaseDatabaseInteractor, ReadInteractorInputProtocol {
     }
     
     func retrieveAudio(quarterlyIndex: String) {
-        database?.child(Constants.Firebase.audio).child(quarterlyIndex).observe(.value, with: { [weak self] (snapshot) in
-            guard let json = snapshot.data else { return }
-
-            do {
-                let item: [Audio] = try FirebaseDecoder().decode([Audio].self, from: json)
-                self?.presenter?.didRetrieveAudio(audio: item)
-            } catch let error {
-                self?.presenter?.onError(error)
-            }
-        }) { [weak self] (error) in
-            self?.presenter?.onError(error)
+        let audioInteractor = AudioInteractor()
+        
+        audioInteractor.retrieveAudio(quarterlyIndex: quarterlyIndex) { audio in
+            self.presenter?.didRetrieveAudio(audio: audio)
         }
     }
     
     func retrieveVideo(quarterlyIndex: String) {
-        database?.child(Constants.Firebase.video).child(quarterlyIndex).observe(.value, with: { [weak self] (snapshot) in
-            guard let json = snapshot.data else { return }
-
-            do {
-                let item: [VideoInfo] = try FirebaseDecoder().decode([VideoInfo].self, from: json)
-                self?.presenter?.didRetrieveVideo(video: item)
-            } catch let error {
-                self?.presenter?.onError(error)
-            }
-        }) { [weak self] (error) in
-            self?.presenter?.onError(error)
+        let videoInteractor = VideoInteractor()
+        
+        videoInteractor.retrieveVideo(quarterlyIndex: quarterlyIndex) { video in
+            self.presenter?.didRetrieveVideo(video: video)
         }
     }
 

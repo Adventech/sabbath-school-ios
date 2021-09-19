@@ -28,10 +28,10 @@ class VideoController: VideoPlaybackDelegatable {
     var dataSource: [VideoInfo] = []
     var clips: [Video] = []
     let lessonIndex: String?
-    let readController: ReadController?
+    let readController: VideoPlaybackDelegatable?
     let hasHeader: Bool
     
-    init(video: [VideoInfo], lessonIndex: String? = nil, readController: ReadController? = nil) {
+    init(video: [VideoInfo], lessonIndex: String? = nil, readController: VideoPlaybackDelegatable? = nil) {
         if #available(iOS 13, *) {
             self.hasHeader = true
         } else {
@@ -69,7 +69,9 @@ class VideoController: VideoPlaybackDelegatable {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        VideoPlayback.shared.controller.delegate = readController
+        if let readController = self.readController {
+            VideoPlayback.shared.controller.delegate = readController
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

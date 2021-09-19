@@ -163,6 +163,9 @@ PODS:
     - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
   - PromisesObjC (1.2.12)
+  - PSPDFKit (10.4.2):
+    - PSPDFKit/Core (= 10.4.2)
+  - PSPDFKit/Core (10.4.2)
   - QuickLayout (3.0.0)
   - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
@@ -212,6 +215,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - Hue
   - MenuItemKit
+  - PSPDFKit (from `https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec`)
   - R.swift
   - Shimmer
   - SimulatorStatusMagic
@@ -267,6 +271,10 @@ SPEC REPOS:
     - Texture
     - Zip
 
+EXTERNAL SOURCES:
+  PSPDFKit:
+    :podspec: https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec
+
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Armchair: ea2da13f78515da627bd63d9540bd58a50e71562
@@ -299,6 +307,7 @@ SPEC CHECKSUMS:
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  PSPDFKit: 14fbf11a44313b2eac415a1dade24fd9e98a4a2f
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
@@ -311,6 +320,6 @@ SPEC CHECKSUMS:
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 3b79252d9ca903f856c94e63a33259274cef1c53
+PODFILE CHECKSUM: 036d9dc310a975707d037ab86ac3905db02a05ff
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.0

@@ -68,45 +68,75 @@ struct LessonInfoWidgetView : View {
                     .padding(.top, 15)
                     .padding(.bottom, 10)
                 
-                VStack() {
-                    ForEach(entry.lessonInfo.days[...6], id: \.index) { day in
-                        VStack() {
-                            Spacer()
-                            HStack() {
-                                Link(destination: day.webURL, label: {
-                                    Text(day.title)
-                                        .font(.system(size: 12, weight: (Calendar.current.compare(self.today, to: day.date, toGranularity: .day) == .orderedSame) ? .bold : .regular))
-                                        .lineLimit(1)
-                                        .opacity((Calendar.current.compare(self.today, to: day.date, toGranularity: .day) == .orderedSame) ? 1 : 0.7)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                })
-                                    
+                
+                if entry.lessonInfo.days.count > 0 {
+                    VStack() {
+                        ForEach(entry.lessonInfo.days[...6], id: \.index) { day in
+                            VStack() {
                                 Spacer()
-                                Link(destination: day.webURL, label: {
-                                    Text(day.date.stringWidgetDate())
-                                        .font(.system(size: 12, weight: .regular))
-                                        .lineLimit(1)
-                                        .opacity(0.7)
-                                        .fixedSize(horizontal: false, vertical: true)
-                                })
-                            }
-                            Spacer()
-                            if entry.lessonInfo.days[...6].last!.index != day.index {
-                                Divider()
+                                HStack() {
+                                    Link(destination: day.webURL, label: {
+                                        Text(day.title)
+                                            .font(.system(size: 12, weight: (Calendar.current.compare(self.today, to: day.date, toGranularity: .day) == .orderedSame) ? .bold : .regular))
+                                            .lineLimit(1)
+                                            .opacity((Calendar.current.compare(self.today, to: day.date, toGranularity: .day) == .orderedSame) ? 1 : 0.7)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    })
+
+                                    Spacer()
+                                    Link(destination: day.webURL, label: {
+                                        Text(day.date.stringWidgetDate())
+                                            .font(.system(size: 12, weight: .regular))
+                                            .lineLimit(1)
+                                            .opacity(0.7)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                    })
+                                }
+                                Spacer()
+                                if entry.lessonInfo.days[...6].last!.index != day.index {
+                                    Divider()
+                                }
+                            }.frame(minWidth: 0,
+                                    maxWidth: .infinity,
+                                    minHeight: 0,
+                                    maxHeight: .infinity)
+
                             }
                         }.frame(minWidth: 0,
                                 maxWidth: .infinity,
                                 minHeight: 0,
-                                maxHeight: .infinity)
-                            
+                                maxHeight: .infinity,
+                                alignment: .center)
+                        .padding(.leading, 15)
+                        .padding(.trailing, 15)
+                }
+                
+                if entry.lessonInfo.lesson.pdfOnly {
+                    VStack() {
+                        VStack() {
+                            HStack() {
+                                Text(entry.lessonInfo.lesson.title)
+                                    .font(.system(size: 12, weight: .regular))
+                                    .lineLimit(1)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    
+                                Spacer()
+                                Text(entry.lessonInfo.lesson.startDate.stringWidgetDate())
+                                    .font(.system(size: 12, weight: .regular))
+                                    .lineLimit(1)
+                                    .opacity(0.7)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                            Spacer()
                         }
                     }.frame(minWidth: 0,
                             maxWidth: .infinity,
                             minHeight: 0,
                             maxHeight: .infinity,
-                            alignment: .center)
+                            alignment: .topLeading)
                     .padding(.leading, 15)
                     .padding(.trailing, 15)
+                }
             }.frame(
                 minWidth: 0,
                 maxWidth: .infinity,

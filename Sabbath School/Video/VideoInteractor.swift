@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Adventech <info@adventech.io>
+ * Copyright (c) 2021 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,21 +20,21 @@
  * THE SOFTWARE.
  */
 
-struct LessonInfo: Codable {
-    let lesson: Lesson
-    let days: [Day]
-    let pdfs: [PDF]
-    
-    init(lesson: Lesson, days: [Day], pdfs: [PDF]) {
-        self.lesson = lesson
-        self.days = days
-        self.pdfs = pdfs
+import Foundation
+
+class VideoInteractor: FirebaseDatabaseInteractor {
+    override init() {
+        super.init()
+        self.configure()
     }
     
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        lesson = try values.decode(Lesson.self, forKey: .lesson)
-        days = values.contains(.days) ? try values.decode(Array<Day>.self, forKey: .days) : []
-        pdfs = values.contains(.pdfs) ? try values.decode(Array<PDF>.self, forKey: .pdfs) : []
+    func retrieveVideo(quarterlyIndex: String, cb: @escaping ([VideoInfo]) -> Void) {
+        database?.child(Constants.Firebase.video).child(quarterlyIndex).observe(.value, with: { (snapshot) in
+            guard let json = snapshot.data else { return }
+            do {
+                let item: [VideoInfo] = try FirebaseDecoder().decode([VideoInfo].self, from: json)
+                cb(item)
+            } catch {}
+        })
     }
 }

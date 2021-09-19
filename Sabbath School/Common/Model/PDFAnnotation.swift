@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Adventech <info@adventech.io>
+ * Copyright (c) 2021 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,21 +20,20 @@
  * THE SOFTWARE.
  */
 
-struct LessonInfo: Codable {
-    let lesson: Lesson
-    let days: [Day]
-    let pdfs: [PDF]
+import PSPDFKitUI
+
+struct PDFAnnotations: Codable {
+    let pageIndex: Int
+    let annotations: [String]
     
-    init(lesson: Lesson, days: [Day], pdfs: [PDF]) {
-        self.lesson = lesson
-        self.days = days
-        self.pdfs = pdfs
+    init(pageIndex: Int, annotations: [String]) {
+        self.pageIndex = pageIndex
+        self.annotations = annotations
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        lesson = try values.decode(Lesson.self, forKey: .lesson)
-        days = values.contains(.days) ? try values.decode(Array<Day>.self, forKey: .days) : []
-        pdfs = values.contains(.pdfs) ? try values.decode(Array<PDF>.self, forKey: .pdfs) : []
+        pageIndex = try values.decode(Int.self, forKey: .pageIndex)
+        annotations = try values.decode([String].self, forKey: .annotations)
     }
 }

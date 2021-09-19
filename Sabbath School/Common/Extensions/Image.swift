@@ -42,8 +42,8 @@ extension UIImage {
         return newImage
     }
 
-    class func imageWithColor(_ color: UIColor?) -> UIImage! {
-        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+    class func imageWithColor(_ color: UIColor?, width: CGFloat = 1.0, height: CGFloat = 1.0) -> UIImage! {
+        let rect = CGRect(x: 0.0, y: 0.0, width: width, height: height)
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
         let context = UIGraphicsGetCurrentContext()
 
