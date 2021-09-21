@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Configuration.configurePreferences()
         Configuration.configureNotifications(application: application)
         Configuration.configureAuthentication()
+        Configuration.configurePDF()
         Configuration.configureMisc()
         
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)

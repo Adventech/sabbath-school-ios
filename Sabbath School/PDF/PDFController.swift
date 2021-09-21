@@ -52,8 +52,6 @@ class PDFReadTabbedViewController: PDFTabbedViewController {
             document.remove(annotations: pageIndex.value, options: .none)
         }
         
-        try? document.save()
-        
         for pageAnnotations in annotations {
             guard let documentProvider = document.documentProviders.first else { continue }
             var annotations: [Annotation] = []
@@ -69,5 +67,7 @@ class PDFReadTabbedViewController: PDFTabbedViewController {
             }
             document.add(annotations: annotations)
         }
+        
+        try? document.save()
     }
 }

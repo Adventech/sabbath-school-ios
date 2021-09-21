@@ -146,4 +146,31 @@ struct Preferences {
         let spreadFitting = Preferences.userDefaults.integer(forKey: Constants.DefaultKey.pdfConfigurationSpreadFitting)
         return exists ? PDFConfiguration.SpreadFitting(rawValue: spreadFitting)! : PDFConfiguration.SpreadFitting.fit
     }
+    
+    static func saveQuarterlyGroup(quarterlyGroup: QuarterlyGroup) -> Void {
+        var existingGroups = Preferences.getQuarterlyGroups()
+        
+        if let index = existingGroups.firstIndex(where: { $0.name == quarterlyGroup.name }) {
+            existingGroups.remove(at: index)
+        }
+        
+        existingGroups.insert(quarterlyGroup, at: 0)
+        
+        do {
+            let dictionary = try JSONEncoder().encode(existingGroups)
+            Preferences.userDefaults.set(dictionary, forKey: "\(Constants.DefaultKey.quarterlyGroups)\(currentLanguage().code)")
+        } catch {
+            return
+        }
+    }
+    
+    static func getQuarterlyGroups() -> [QuarterlyGroup] {
+        if let quarterliesGroupData = Preferences.userDefaults.value(forKey: "\(Constants.DefaultKey.quarterlyGroups)\(currentLanguage().code)") as? Data {
+            do {
+                let quarterliesGroup: [QuarterlyGroup] = try JSONDecoder().decode(Array<QuarterlyGroup>.self, from: quarterliesGroupData)
+                return quarterliesGroup
+            } catch {}
+        }
+        return []
+    }
 }

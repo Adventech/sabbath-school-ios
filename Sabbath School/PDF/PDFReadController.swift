@@ -202,7 +202,6 @@ extension PDFReadController: PDFReadControllerDelegate {
     }
     
     func uploadAnnotations(documentId: String) {
-        
         for (index, document) in pdfView.tabbedPDFController.documents.enumerated() {
             guard (0 ..< pdfs.count).contains(index) else { continue }
             

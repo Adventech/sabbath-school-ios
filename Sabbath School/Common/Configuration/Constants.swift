@@ -32,6 +32,7 @@ struct Constants {
         static let preferredBibleVersion = "io.adventech.preferredBibleVersion."
         static let lastQuarterlyIndex = "io.adventech.lastQuarterlyIndex"
         static let latestReaderBundleTimestamp = "io.adventech.latestReaderBundleTimestamp"
+        static let quarterlyGroups = "io.adventech.quarterlyGroups."
 
         static let readingOptionsTheme = "io.adventech.readingOptionsTheme"
         static let readingOptionsTypeface = "io.adventech.readingOptionsTypeface"

@@ -38,10 +38,8 @@ class Configuration: NSObject {
     static var window: UIWindow?
     static let notification = Notifications()
     
-    static func configureMisc() {
-        UIApplication.shared.beginReceivingRemoteControlEvents()
-        AudioPlayback.configure()
-        SDK.setLicenseKey("m1D3G89lgIoFFH8dbw+8zi7H776Qs3ARqiE++46DcVgbrRWMue1EsId1QTLEldTJL91QLlymJDfVWiiNk9BsVPTcREwT0xnzqMIeA2HFe8iCqHpAW8/IC8wV3Ug7Se7r07nGJcY78Zrm8kUd47mGXq7//1JmV6vKoDEhzUVdPx1TRRruHCMbzcozQl9hVbHu5MdL4GLrfhiO2EI3nULoO/qQo2MKYPyR350rcq4nxwZ/aGkHqWWgsMiHVJN/6jrDSzF4YdMZj55GpH8ZrkmQZ7gULfTepKU5g/YlL56tne4Qelgd8048vxSPJ875R4P7WCzJgkc+TSI9wR8AVMm0AM8DwgiIlHcbzlYkQISpv3RDsN190EZ0/hnVP9H1oedeonoctJaOQpyOFo1UQ8rf+8LWXrr5lA5NzNaXdNj+LCR6Oa9itQfSbPJG2xTr0LuHe6zTcbGKIS6y8irFhgIOCbcb6MyUwZrnWEpyrIAzY7zjh8QzhQFxZ9HaQy9fQQYC5O15Q15RJ5m7/JcjQlV69J6+yqBTKGmjheimuj4Py7V724CcvtkBU9yyv+0Qus1LSrVb9HT92NHxVGJ+EINoIZH3T4jC0nQB88UUoATi/xKAfrqG5jrBx2fTNxOM0Cxr",
+    static func configurePDF() {
+        SDK.setLicenseKey("ZLQj7zvL9bCaR1f8ZJimIEuUhCGSJ6H4aCl4nRLStyNmHQS/IShh/DySMqXHBVCg9vNn7+arORfAt8EQocSX9Hx6iJ8lFyovEBf7vA06qbEksaVHAk6djHfj6R6TCkG0LDLA0pQxbgTjHCgOYbKf2bTi+mpwf2g0qu+lL9DyBFt3uPRTbl5l9a/vFfm9uX7UchjpkLBcrmKCsWqTU4CYrM0JQZrNx+7t4dF2DUr1SdRaybR0QaWzOPMJiUFLpW/eA8PdLnGLdvnpvqXMigqC9k2RPAs1WL4fPxP4ttgs0ZX/cjqxI+VOhwNzP2RNzhYGPxH/J1/tAQGX+mxSNp8rmffSopvDtQL6r1REYlF61/y0tYV3z66R9n4gESGQTJimtPntMdB8psbSBfadY1+CKLpWVWMEeOKk0lHbiBWx2s17ryAPWhugWDUCyIcrPpHioQT+j/4ff+HRNgYi/9iMThbhdLxsD93UbnWLYuO7+8fPayi9ptNqWrnA6nzoNXncfVp0KMiabWMwOv61Qrgos5I+qr7ceWUIqC6kDB5bjInPWFKNrGuVxB0Ipiv0ZhLuw/eyrx5TILuqNDBGLgI2W7Q8sYHOhmcaRHRpDkyr4OY=",
                           options: [.fileCoordinationEnabled: false])
         
         SDK.shared.imageLoadingHandler = { imageName in
@@ -59,6 +57,11 @@ class Configuration: NSObject {
             
             return nil
         }
+    }
+    
+    static func configureMisc() {
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        AudioPlayback.configure()
     }
     
     static func configureAuthentication() {

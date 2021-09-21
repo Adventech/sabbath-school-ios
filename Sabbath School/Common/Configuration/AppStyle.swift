@@ -651,7 +651,11 @@ struct AppStyle {
                 
                 let ratio: CGFloat = viewMode == .vertical ? 2.7 : 1.2
                 
-                let maxWidth: CGFloat = viewMode == .vertical && constrainedWidth > 0 ? constrainedWidth : UIScreen.main.bounds.width
+                var maxWidth: CGFloat = viewMode == .vertical && constrainedWidth > 0 ? constrainedWidth : UIScreen.main.bounds.width
+                
+                if Helper.isPad && viewMode == .horizontal {
+                    maxWidth = defaultSize.width
+                }
                 
                 let width = maxWidth / ratio
                 

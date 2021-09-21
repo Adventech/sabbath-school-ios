@@ -149,6 +149,8 @@ extension QuarterlyControllerCommon: QuarterlyControllerProtocol {
     func showQuarterlies(quarterlies: [Quarterly]) {
         groupedQuarterlies = [QuarterlyGroup: [Quarterly]]()
         var initialQuarterlyGroup: QuarterlyGroup?
+        let savedGroupedQuarterlies = Preferences.getQuarterlyGroups()
+        
         for quarterly in quarterlies {
             if let selectedQuarterlyGroup = selectedQuarterlyGroup, let quarterlyGroup = quarterly.quarterlyGroup {
                 if (quarterlyGroup != selectedQuarterlyGroup) { continue }
@@ -171,6 +173,10 @@ extension QuarterlyControllerCommon: QuarterlyControllerProtocol {
                     }
                 }
                 
+                if let index = savedGroupedQuarterlies.firstIndex(where: { $0 == quarterlyGroup! }) {
+                    quarterlyGroup?.order = index
+                }
+                
                 if groupedQuarterlies[quarterlyGroup!] != nil {
                     groupedQuarterlies[quarterlyGroup!]?.append(quarterly)
                 } else {
@@ -181,7 +187,11 @@ extension QuarterlyControllerCommon: QuarterlyControllerProtocol {
                 }
             }
         }
-        groupedQuarterliesKeys = Array(groupedQuarterlies.keys).sorted(by: { $0.order < $1.order })
+        
+        groupedQuarterliesKeys = Array(groupedQuarterlies.keys).sorted(by: {
+            
+            $0.order < $1.order
+        })
         quarterlyViewPreference = groupedQuarterliesKeys.count == 1 ? .ungrouped : .grouped
         self.table.allowsSelection = quarterlyViewPreference == .ungrouped
         self.table.reloadData()
