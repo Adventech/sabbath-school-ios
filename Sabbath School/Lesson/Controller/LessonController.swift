@@ -165,14 +165,16 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         let todaysLessonIndex = getTodaysLessonIndex()
         if !todaysLessonIndex.isEmpty {
             if let lesson = dataSource?.lessons.first(where: { $0.index == todaysLessonIndex }) {
-                Preferences.saveQuarterlyGroup(quarterlyGroup: (dataSource?.quarterly.quarterlyGroup)!)
-                
                 openLesson(lessonIndex: todaysLessonIndex, pdf: lesson.pdfOnly)
             }
         }
     }
     
     func openLesson(lessonIndex: String, pdf: Bool = false){
+        if let quarterlyGroup = dataSource?.quarterly.quarterlyGroup {
+            Preferences.saveQuarterlyGroup(quarterlyGroup: quarterlyGroup)
+        }
+        
         if pdf {
             navigationController?.pushViewController(PDFReadController(lessonIndex: lessonIndex), animated: true)
         } else {
@@ -390,7 +392,6 @@ extension LessonController: ASTableDelegate {
         guard let lesson = dataSource?.lessons[indexPath.row] else { return }
 
         if indexPath.section == 1 {
-            Preferences.saveQuarterlyGroup(quarterlyGroup: (dataSource?.quarterly.quarterlyGroup)!)
             openLesson(lessonIndex: lesson.index, pdf: lesson.pdfOnly)
         }
     }
