@@ -176,9 +176,9 @@ PODS:
   - SwiftDate (6.3.1)
   - SwiftEntryKit (1.2.7):
     - QuickLayout (= 3.0.0)
-  - SwiftMessages (9.0.3):
-    - SwiftMessages/App (= 9.0.3)
-  - SwiftMessages/App (9.0.3)
+  - SwiftMessages (9.0.5):
+    - SwiftMessages/App (= 9.0.5)
+  - SwiftMessages/App (9.0.5)
   - Texture (3.0.0):
     - Texture/AssetsLibrary (= 3.0.0)
     - Texture/Core (= 3.0.0)
@@ -316,7 +316,7 @@ SPEC CHECKSUMS:
   SwiftAudio: 217f5f184b27a0e25ff0fe7647021f05a21c06c9
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
-  SwiftMessages: 077f19126c24033fe24042237ecc20261adb46e4
+  SwiftMessages: 9cca50659fa22bb523b4dd2a958d4442e843a354
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
