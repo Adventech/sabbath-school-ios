@@ -4,15 +4,10 @@ inhibit_all_warnings!
 
 target 'Sabbath School' do
   pod 'PSPDFKit', podspec: 'https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec'
+  pod 'Alamofire', '~> 5.5'
   pod 'Armchair'
+  pod 'Cache'
   pod 'Down'
-  pod 'Firebase/Crashlytics'
-  pod 'FBSDKLoginKit'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Storage'
   pod 'FontBlaster'
   pod 'GoogleSignIn'
   pod 'Hue'
@@ -28,10 +23,9 @@ target 'Sabbath School' do
 end
 
 target 'WidgetExtension' do
-  pod 'Firebase/Auth'
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
+  pod 'Alamofire', '~> 5.5'
   pod 'Hue'
+  pod 'Cache'
 end
 
 post_install do |installer|

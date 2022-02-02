@@ -47,12 +47,19 @@
 		2FA1FFE826F6BA6700E80868 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFE726F6BA6700E80868 /* Downloader.swift */; };
 		2FA1FFEA26F6D87600E80868 /* AudioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFE926F6D87600E80868 /* AudioInteractor.swift */; };
 		2FA1FFEC26F6DA9700E80868 /* VideoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA1FFEB26F6DA9700E80868 /* VideoInteractor.swift */; };
+		2FC6F69427A4B43400BBC4A9 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69327A4B43400BBC4A9 /* Account.swift */; };
+		2FC6F69527A4B43400BBC4A9 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69327A4B43400BBC4A9 /* Account.swift */; };
+		2FC6F69727A4B60D00BBC4A9 /* AccountToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */; };
+		2FC6F69827A4B60D00BBC4A9 /* AccountToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */; };
+		2FC6F69B27A8E0FA00BBC4A9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69A27A8E0FA00BBC4A9 /* API.swift */; };
+		2FC6F69C27A8E0FA00BBC4A9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69A27A8E0FA00BBC4A9 /* API.swift */; };
+		2FC6F69E27A8E35C00BBC4A9 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
+		2FC6F69F27A8E35C00BBC4A9 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
 		2FE24EFD26BB90170036FD75 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE24EFC26BB90170036FD75 /* AudioController.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
 		7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F841ED7D6B6003C7458 /* Assets.xcassets */; };
 		7A280F921ED7D8B8003C7458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F901ED7D8B8003C7458 /* LaunchScreen.storyboard */; };
-		7A280F941ED94439003C7458 /* GoogleService-Info-Stage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */; };
 		7A280F971ED94964003C7458 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F961ED94964003C7458 /* R.generated.swift */; };
 		7A280F9B1EDA015D003C7458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F991EDA015D003C7458 /* AppDelegate.swift */; };
 		7A280FB31EDA0276003C7458 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */; };
@@ -115,7 +122,6 @@
 		7A922E161EDF8AB300C12A67 /* ReadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E151EDF8AB300C12A67 /* ReadPresenter.swift */; };
 		7A922E181EDFB61600C12A67 /* ReadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E171EDFB61600C12A67 /* ReadController.swift */; };
 		7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */; };
-		7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */; };
 		7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1F1EDFC61D00C12A67 /* ReadView.swift */; };
 		7A922E551EE07EC200C12A67 /* fonts.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E341EE07EC200C12A67 /* fonts.css */; };
 		7A922E561EE07EC200C12A67 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E351EE07EC200C12A67 /* reset.css */; };
@@ -139,7 +145,6 @@
 		7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E511EE07EC200C12A67 /* rangy-highlighter.js */; };
 		7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E521EE07EC200C12A67 /* rangy-serializer.js */; };
 		7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E531EE07EC200C12A67 /* ss-reader.js */; };
-		7ABB93E11EF7888900658963 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */; };
 		7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE61EE4FA9E003F946C /* Reader.swift */; };
 		7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE81EE5EB63003F946C /* Preferences.swift */; };
 		7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */; };
@@ -167,8 +172,6 @@
 		FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FA0264E0A1400BF945A /* GCPopupController.swift */; };
 		FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */; };
 		FE165F802651B75E00C3D725 /* SignInWithAppleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */; };
-		FE1E33F826702E6800DAC2D6 /* DataSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */; };
-		FE1E33FC26702F0200DAC2D6 /* FirebaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */; };
 		FE1E34BE2672874800DAC2D6 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E34BD2672874700DAC2D6 /* ShareItem.swift */; };
 		FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E34F226731A5F00DAC2D6 /* Spotlight.swift */; };
 		FE1E34FE2673C5DF00DAC2D6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1E34FD2673C5DF00DAC2D6 /* WidgetKit.framework */; };
@@ -183,8 +186,6 @@
 		FE2FDFFB26923E0D0023A853 /* QuarterlyControllerCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */; };
 		FE3FFA5426B11F4E0037539F /* QuarterlyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */; };
 		FE420255265D93840061C589 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE420254265D93840061C589 /* LanguageView.swift */; };
-		FE4427E9267547670038A863 /* FirebaseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */; };
-		FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */; };
 		FE5CC73B268914F000B9F061 /* QuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73A268914F000B9F061 /* QuarterlyController.swift */; };
 		FE5CC7402689231700B9F061 /* QuarterlyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC73F2689231700B9F061 /* QuarterlyPresenter.swift */; };
 		FE5CC7452689238700B9F061 /* QuarterlyWIreFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CC7442689238700B9F061 /* QuarterlyWIreFrame.swift */; };
@@ -213,8 +214,6 @@
 		FE611ACC267502EC003CDDB5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE81EDCE4B1003C7458 /* Date.swift */; };
 		FE620E6C26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE620E6B26A7B949004FE819 /* LessonQuarterlyInfoSplashView.swift */; };
 		FE78D4FF2682C0EB004CEA11 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF371531EF9CB3400547916 /* Localizable.strings */; };
-		FE78D5402682E902004CEA11 /* GoogleService-Info-Stage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */; };
-		FE78D5412682E902004CEA11 /* GoogleService-Info-Prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */; };
 		FE863F2A2662BD9F00ADCA36 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE863F292662BD9F00ADCA36 /* Animation.swift */; };
 		FE863F6426657E1800ADCA36 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE863F6326657E1700ADCA36 /* AppStyle.swift */; };
 		FEB149902692A63C003010E3 /* SingleGroupQuarterlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB1498F2692A63C003010E3 /* SingleGroupQuarterlyController.swift */; };
@@ -316,6 +315,10 @@
 		2FA1FFE726F6BA6700E80868 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		2FA1FFE926F6D87600E80868 /* AudioInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioInteractor.swift; sourceTree = "<group>"; };
 		2FA1FFEB26F6DA9700E80868 /* VideoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInteractor.swift; sourceTree = "<group>"; };
+		2FC6F69327A4B43400BBC4A9 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountToken.swift; sourceTree = "<group>"; };
+		2FC6F69A27A8E0FA00BBC4A9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICache.swift; sourceTree = "<group>"; };
 		2FE24EFC26BB90170036FD75 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		477B1DC2A057461A3A3B40B8 /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -323,7 +326,6 @@
 		7A280F791ED7CF2C003C7458 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7A280F841ED7D6B6003C7458 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A280F911ED7D8B8003C7458 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
 		7A280F961ED94964003C7458 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = ../../R.generated.swift; sourceTree = "<group>"; };
 		7A280F991EDA015D003C7458 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A280F9A1EDA015D003C7458 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -390,7 +392,6 @@
 		7A922E151EDF8AB300C12A67 /* ReadPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadPresenter.swift; sourceTree = "<group>"; };
 		7A922E171EDFB61600C12A67 /* ReadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadController.swift; sourceTree = "<group>"; };
 		7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadInteractor.swift; sourceTree = "<group>"; };
-		7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseInteractor.swift; sourceTree = "<group>"; };
 		7A922E1F1EDFC61D00C12A67 /* ReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
 		7A922E341EE07EC200C12A67 /* fonts.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = fonts.css; sourceTree = "<group>"; };
 		7A922E351EE07EC200C12A67 /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
@@ -434,7 +435,6 @@
 		7A955F261F103EE100AA5DE4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A955F271F103EF500AA5DE4 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7A955F281F103EF500AA5DE4 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		7AC26AE21EE48925003F946C /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
 		7AC26AE31EE48925003F946C /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
 		7AC26AE61EE4FA9E003F946C /* Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
@@ -506,8 +506,6 @@
 		FE0A0FD7264E0A4300BF945A /* GCPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCPopupView.swift; sourceTree = "<group>"; };
 		FE0C8C3F2675195F004040C5 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		FE165F7F2651B75E00C3D725 /* SignInWithAppleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleNode.swift; sourceTree = "<group>"; };
-		FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSnapshot.swift; sourceTree = "<group>"; };
-		FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDecoder.swift; sourceTree = "<group>"; };
 		FE1E34BD2672874700DAC2D6 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		FE1E34F226731A5F00DAC2D6 /* Spotlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotlight.swift; sourceTree = "<group>"; };
 		FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -715,6 +713,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2FC6F69927A8E0EA00BBC4A9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2FC6F69A27A8E0FA00BBC4A9 /* API.swift */,
+				2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		7A280F701ED7CF05003C7458 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,8 +784,6 @@
 				7A280F841ED7D6B6003C7458 /* Assets.xcassets */,
 				7A280FAB1EDA0276003C7458 /* Fonts */,
 				7A922E311EE07EC200C12A67 /* sabbath-school-reader */,
-				7A280F931ED94439003C7458 /* GoogleService-Info-Stage.plist */,
-				7ABB93E01EF7888900658963 /* GoogleService-Info-Prod.plist */,
 				7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */,
 				7AF371531EF9CB3400547916 /* Localizable.strings */,
 				7A280F901ED7D8B8003C7458 /* LaunchScreen.storyboard */,
@@ -852,7 +857,6 @@
 			children = (
 				7A3BCE3B1EE29605003EC12B /* Button.swift */,
 				7A280FC41EDA04A6003C7458 /* Color.swift */,
-				FE1E33F726702E6800DAC2D6 /* DataSnapshot.swift */,
 				7A280FE81EDCE4B1003C7458 /* Date.swift */,
 				7A2810261EDDE3D3003C7458 /* DisplayNode.swift */,
 				2F96FF4F26C724050045DC6D /* Double.swift */,
@@ -953,8 +957,6 @@
 			children = (
 				7A3BCE411EE37E30003EC12B /* DiscreteSlider.swift */,
 				2F96FF5926C8477F0045DC6D /* ESTMusicIndicator */,
-				7A922E1D1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift */,
-				FE1E33FB26702F0200DAC2D6 /* FirebaseDecoder.swift */,
 				2F96FF5326C7246F0045DC6D /* ProgressSlider.swift */,
 				7AC26AE61EE4FA9E003F946C /* Reader.swift */,
 				7A8C684C1EF231E200CD3228 /* RoundedCornersImage.swift */,
@@ -1368,6 +1370,8 @@
 				2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */,
 				2F5C48F626F2AEB6002C4C83 /* PDF.swift */,
 				2FA1FFDF26F6B86F00E80868 /* PDFAnnotation.swift */,
+				2FC6F69327A4B43400BBC4A9 /* Account.swift */,
+				2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1399,6 +1403,7 @@
 		7AF191AA1ED7B89B000CCF0C /* Sabbath School */ = {
 			isa = PBXGroup;
 			children = (
+				2FC6F69927A8E0EA00BBC4A9 /* API */,
 				7A280F981EDA015D003C7458 /* Application */,
 				2F96FF4826C7186D0045DC6D /* Audio */,
 				7A3BCE241EE2715E003EC12B /* Bible */,
@@ -1525,8 +1530,6 @@
 				7AF191A41ED7B89B000CCF0C /* Sources */,
 				7AF191A51ED7B89B000CCF0C /* Frameworks */,
 				7AF191A61ED7B89B000CCF0C /* Resources */,
-				FE4224A7264F5B1C0036F5D2 /* Run Crashlytics */,
-				FE8A39EE26543023007D26D7 /* Upload Symbols */,
 				FE1E350D2673C5E400DAC2D6 /* Embed App Extensions */,
 				5843D463A38776289F655102 /* [CP] Embed Pods Frameworks */,
 			);
@@ -1698,7 +1701,6 @@
 				7A922E6B1EE07EC200C12A67 /* rangy-core.js in Resources */,
 				7A922E681EE07EC200C12A67 /* jquery-3.1.1.min.js in Resources */,
 				7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */,
-				7ABB93E11EF7888900658963 /* GoogleService-Info-Prod.plist in Resources */,
 				7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */,
 				FE2FDEE4268A96CF0023A853 /* Lato-Black.ttf in Resources */,
 				7A922E641EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
@@ -1706,7 +1708,6 @@
 				7A280FB81EDA0276003C7458 /* Lato-Regular.ttf in Resources */,
 				7A922E591EE07EC200C12A67 /* Lora-Italic.ttf in Resources */,
 				7A922E561EE07EC200C12A67 /* reset.css in Resources */,
-				7A280F941ED94439003C7458 /* GoogleService-Info-Stage.plist in Resources */,
 				7A280F921ED7D8B8003C7458 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1715,9 +1716,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE78D5412682E902004CEA11 /* GoogleService-Info-Prod.plist in Resources */,
 				FE78D4FF2682C0EB004CEA11 /* Localizable.strings in Resources */,
-				FE78D5402682E902004CEA11 /* GoogleService-Info-Stage.plist in Resources */,
 				FE1E35052673C5E300DAC2D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1754,32 +1753,20 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Sabbath School/Pods-Sabbath School-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/Armchair/Armchair.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseDatabase/FirebaseDatabase.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseStorage/FirebaseStorage.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
 				"${BUILT_PRODUCTS_DIR}/MenuItemKit/MenuItemKit.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
@@ -1789,39 +1776,25 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PSPDFKit/Core/PSPDFKit.framework/PSPDFKit",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PSPDFKit/Core/PSPDFKitUI.framework/PSPDFKitUI",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Armchair.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseDatabase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseStorage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleSignIn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MenuItemKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
@@ -1831,8 +1804,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSPDFKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSPDFKitUI.framework",
 			);
@@ -1919,44 +1890,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE4224A7264F5B1C0036F5D2 /* Run Crashlytics */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "Run Crashlytics";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n${PODS_ROOT}/FirebaseCrashlytics/run -gsp \"${PROJECT_DIR}/Sabbath School/Resources/GoogleService-Info-Prod.plist\"\nelse\n${PODS_ROOT}/FirebaseCrashlytics/run -gsp \"${PROJECT_DIR}/Sabbath School/Resources/GoogleService-Info-Stage.plist\"\nfi\n\n\n";
-		};
-		FE8A39EE26543023007D26D7 /* Upload Symbols */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Upload Symbols";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n${PODS_ROOT}/FirebaseCrashlytics/upload-symbols -gsp \"${PROJECT_DIR}/Sabbath School/Resources/GoogleService-Info-Prod.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nelse\n${PODS_ROOT}/FirebaseCrashlytics/upload-symbols -gsp \"${PROJECT_DIR}/Sabbath School/Resources/GoogleService-Info-Stage.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi\n\n\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1981,6 +1914,7 @@
 				FE1E34BE2672874800DAC2D6 /* ShareItem.swift in Sources */,
 				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
 				FE5CC74F268939DD00B9F061 /* GroupedQuarterlyController.swift in Sources */,
+				2FC6F69427A4B43400BBC4A9 /* Account.swift in Sources */,
 				7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */,
 				FEC92193267E32C400422F3D /* PreferencesShared.swift in Sources */,
 				2FA1FFE226F6B8B400E80868 /* PDFReadController.swift in Sources */,
@@ -2014,6 +1948,7 @@
 				7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */,
 				2F96FF5026C724050045DC6D /* Double.swift in Sources */,
 				7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */,
+				2FC6F69E27A8E35C00BBC4A9 /* APICache.swift in Sources */,
 				7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */,
 				FEF4B75326AF934100548E36 /* Feature.swift in Sources */,
 				FEB149902692A63C003010E3 /* SingleGroupQuarterlyController.swift in Sources */,
@@ -2024,7 +1959,6 @@
 				2FA1FFE826F6BA6700E80868 /* Downloader.swift in Sources */,
 				7A280FC71EDA06F9003C7458 /* LoginButton.swift in Sources */,
 				2F96FF4C26C718A40045DC6D /* AudioPlaylistItemEmptyView.swift in Sources */,
-				FE1E33FC26702F0200DAC2D6 /* FirebaseDecoder.swift in Sources */,
 				7AC26AF81EE5EBDE003F946C /* Day.swift in Sources */,
 				7A28101C1EDDCDEC003C7458 /* LessonWireFrame.swift in Sources */,
 				7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */,
@@ -2064,12 +1998,13 @@
 				7A2810251EDDE2AA003C7458 /* QuarterlyEmptyView.swift in Sources */,
 				FEF4B79426AF9A9B00548E36 /* Credits.swift in Sources */,
 				FE5CC74A268926B800B9F061 /* QuarterlyGroupView.swift in Sources */,
+				2FC6F69727A4B60D00BBC4A9 /* AccountToken.swift in Sources */,
 				FE5CC7A1268A156B00B9F061 /* QuarterlyItemView.swift in Sources */,
 				FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */,
 				FE5D24B526B612D100D09D09 /* View.swift in Sources */,
 				7A2810271EDDE3D3003C7458 /* DisplayNode.swift in Sources */,
+				2FC6F69B27A8E0FA00BBC4A9 /* API.swift in Sources */,
 				7A3BCE2C1EE27463003EC12B /* BibleProtocols.swift in Sources */,
-				7A922E1E1EDFB81B00C12A67 /* FirebaseDatabaseInteractor.swift in Sources */,
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
 				2F96FF7926CFF4C30045DC6D /* VideoCollectionView.swift in Sources */,
 				2F96FF6B26CC9C6F0045DC6D /* VideoInfo.swift in Sources */,
@@ -2096,7 +2031,6 @@
 				FEC9218D267E315300422F3D /* ConfigurationShared.swift in Sources */,
 				7A922E181EDFB61600C12A67 /* ReadController.swift in Sources */,
 				7A8C684A1EF2094300CD3228 /* SettingsItemView.swift in Sources */,
-				FE1E33F826702E6800DAC2D6 /* DataSnapshot.swift in Sources */,
 				2F96FF4726C58A6A0045DC6D /* AudioPlayback.swift in Sources */,
 				7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */,
 				7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */,
@@ -2125,6 +2059,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE611AAE267500F5003CDDB5 /* QuarterlyLanguage.swift in Sources */,
+				2FC6F69F27A8E35C00BBC4A9 /* APICache.swift in Sources */,
 				FE611AB3267501A8003CDDB5 /* Constants.swift in Sources */,
 				FE611AA8267500F5003CDDB5 /* Quarterly.swift in Sources */,
 				FE611A9C2674FECA003CDDB5 /* TodayWidgetProvider.swift in Sources */,
@@ -2134,7 +2069,6 @@
 				FE3FFA5426B11F4E0037539F /* QuarterlyGroup.swift in Sources */,
 				FE611AAD267500F5003CDDB5 /* Comment.swift in Sources */,
 				FE611AAC267500F5003CDDB5 /* LessonInfo.swift in Sources */,
-				FE4427ED2675478F0038A863 /* DataSnapshot.swift in Sources */,
 				FED6B2F526802826007093CE /* WidgetStyle.swift in Sources */,
 				FE611AAF267500F5003CDDB5 /* ReadHighlights.swift in Sources */,
 				2F96FF6C26CC9C6F0045DC6D /* VideoInfo.swift in Sources */,
@@ -2144,12 +2078,15 @@
 				FE611A9E2674FECA003CDDB5 /* TodayWidget.swift in Sources */,
 				FED6B353268133B2007093CE /* FeaturedTodayWidgetView.swift in Sources */,
 				FED6B2DE2680265F007093CE /* LessonInfoWidgetEntry.swift in Sources */,
+				2FC6F69527A4B43400BBC4A9 /* Account.swift in Sources */,
 				FED6B2FF2680355E007093CE /* NetworkImage.swift in Sources */,
+				2FC6F69C27A8E0FA00BBC4A9 /* API.swift in Sources */,
 				FEC9218E267E315300422F3D /* ConfigurationShared.swift in Sources */,
 				FE611AA9267500F5003CDDB5 /* Read.swift in Sources */,
 				FE611A9B2674FECA003CDDB5 /* TodayWidgetView.swift in Sources */,
 				FEF4B78A26AF98A900548E36 /* Feature.swift in Sources */,
 				FE611AA5267500F5003CDDB5 /* QuarterlyInfo.swift in Sources */,
+				2FC6F69827A4B60D00BBC4A9 /* AccountToken.swift in Sources */,
 				FE611ACC267502EC003CDDB5 /* Date.swift in Sources */,
 				FE611AAA267500F5003CDDB5 /* BibleVerses.swift in Sources */,
 				FE611AA6267500F5003CDDB5 /* Lesson.swift in Sources */,
@@ -2162,7 +2099,6 @@
 				2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */,
 				FEC9219B267E452800422F3D /* Helper.swift in Sources */,
 				FED6B35826818BEA007093CE /* FeaturedTodayWidget.swift in Sources */,
-				FE4427E9267547670038A863 /* FirebaseDecoder.swift in Sources */,
 				FEF4B79526AF9A9B00548E36 /* Credits.swift in Sources */,
 				FE611AA7267500F5003CDDB5 /* ReadComments.swift in Sources */,
 			);
@@ -2460,13 +2396,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1002;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "29d99fff-a72e-4c42-9ceb-b8c5c4176926";
@@ -2485,12 +2421,12 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1002;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
@@ -2514,13 +2450,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1002;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
@@ -2545,13 +2481,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1002;
+				CURRENT_PROJECT_VERSION = 1000;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 3.0.1;
+				MARKETING_VERSION = 3.1.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

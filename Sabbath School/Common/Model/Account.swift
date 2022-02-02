@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Adventech <info@adventech.io>
+ * Copyright (c) 2022 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,19 @@
  * THE SOFTWARE.
  */
 
-import FirebaseDatabase
+import Foundation
 
-extension DataSnapshot {
-    var data: Data? {
-        guard let value = value, !(value is NSNull) else { return nil }
-        return try? JSONSerialization.data(withJSONObject: value)
+struct Account: Codable {
+    let uid: String
+    let displayName: String?
+    let email: String?
+    var stsTokenManager: AccountToken
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        uid = try values.decode(String.self, forKey: .uid)
+        displayName = try? values.decode(String.self, forKey: .displayName)
+        email = try? values.decode(String.self, forKey: .email)
+        stsTokenManager = try values.decode(AccountToken.self, forKey: .stsTokenManager)
     }
 }

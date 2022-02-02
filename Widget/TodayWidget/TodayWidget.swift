@@ -26,10 +26,7 @@ import SwiftUI
 struct TodayWidget: Widget {
     let kind: String = Constants.Widgets.todayWidget
     
-    init() {
-        ConfigurationShared.configureFirebase()
-        ConfigurationShared.setAuthAccessGroup()
-    }
+    init() {}
  
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: TodayWidgetProvider()) { entry in

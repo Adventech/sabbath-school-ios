@@ -40,9 +40,11 @@ protocol ReadControllerProtocol: AnyObject {
     var readIndex: Int? { get set }
 
     func loadLessonInfo(lessonInfo: LessonInfo)
-    func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool)
+    func showRead(read: Read, finish: Bool)
     func loadAudio(audio: [Audio])
     func loadVideo(video: [VideoInfo])
+    func setHighlights(highlights: ReadHighlights)
+    func setComments(comments: ReadComments)
 }
 
 protocol ReadControllerDelegate: AnyObject {
@@ -55,10 +57,12 @@ protocol ReadWireFrameProtocol: AnyObject {
 
 protocol ReadInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
-    func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int)
+    func didRetrieveRead(read: Read, ticker: Int)
     func didRetrieveLessonInfo(lessonInfo: LessonInfo)
     func didRetrieveAudio(audio: [Audio])
     func didRetrieveVideo(video: [VideoInfo])
+    func didRetrieveHighlights(highlights: ReadHighlights)
+    func didRetrieveComments(comments: ReadComments)
 }
 
 protocol ReadInteractorInputProtocol: AnyObject {
@@ -67,7 +71,7 @@ protocol ReadInteractorInputProtocol: AnyObject {
     func configure()
     func retrieveRead(readIndex: String)
     func retrieveLessonInfo(lessonIndex: String)
-    func retrieveHighlights(read: Read)
+    func retrieveHighlights(readIndex: String)
     func retrieveAudio(quarterlyIndex: String)
     func saveHighlights(highlights: ReadHighlights)
     func saveComments(comments: ReadComments)

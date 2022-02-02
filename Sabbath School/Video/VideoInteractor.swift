@@ -21,20 +21,35 @@
  */
 
 import Foundation
+import Cache
 
-class VideoInteractor: FirebaseDatabaseInteractor {
-    override init() {
-        super.init()
+class VideoInteractor {
+    private var videoStorage: Storage<String, [VideoInfo]>?
+    
+    init() {
         self.configure()
     }
     
+    func configure() {
+        self.videoStorage = APICache.storage?.transformCodable(ofType: [VideoInfo].self)
+    }
+    
     func retrieveVideo(quarterlyIndex: String, cb: @escaping ([VideoInfo]) -> Void) {
-        database?.child(Constants.Firebase.video).child(quarterlyIndex).observe(.value, with: { (snapshot) in
-            guard let json = snapshot.data else { return }
-            do {
-                let item: [VideoInfo] = try FirebaseDecoder().decode([VideoInfo].self, from: json)
-                cb(item)
-            } catch {}
-        })
+        let parsedIndex =  Helper.parseIndex(index: quarterlyIndex)
+        let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/video.json"
+        
+        if (try? self.videoStorage?.existsObject(forKey: url)) != nil {
+            if let video = try? self.videoStorage?.entry(forKey: url) {
+                cb(video.object)
+            }
+        }
+        
+        API.session.request(url).responseDecodable(of: [VideoInfo].self, decoder: Helper.SSJSONDecoder()) { response in
+            guard let video = response.value else {
+                return
+            }
+            cb(video)
+            try? self.videoStorage?.setObject(video, forKey: url)
+        }
     }
 }

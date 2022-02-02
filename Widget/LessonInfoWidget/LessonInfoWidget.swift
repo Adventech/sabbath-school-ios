@@ -26,10 +26,7 @@ import SwiftUI
 struct LessonInfoWidget: Widget {
     let kind: String = Constants.Widgets.lessonInfoWidget
     
-    init() {
-        ConfigurationShared.configureFirebase()
-        ConfigurationShared.setAuthAccessGroup()
-    }
+    init() {}
  
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: LessonInfoWidgetProvider()) { entry in

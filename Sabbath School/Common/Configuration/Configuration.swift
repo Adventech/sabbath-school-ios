@@ -21,12 +21,9 @@
  */
 
 import Armchair
+import Alamofire
 import AsyncDisplayKit
 import AuthenticationServices
-import FBSDKCoreKit
-import Firebase
-import FirebaseDatabase
-import UserNotifications
 import FontBlaster
 import GoogleSignIn
 import UIKit
@@ -36,7 +33,6 @@ import PSPDFKit
 
 class Configuration: NSObject {
     static var window: UIWindow?
-    static let notification = Notifications()
     
     static func configurePDF() {
         SDK.setLicenseKey("ZLQj7zvL9bCaR1f8ZJimIEuUhCGSJ6H4aCl4nRLStyNmHQS/IShh/DySMqXHBVCg9vNn7+arORfAt8EQocSX9Hx6iJ8lFyovEBf7vA06qbEksaVHAk6djHfj6R6TCkG0LDLA0pQxbgTjHCgOYbKf2bTi+mpwf2g0qu+lL9DyBFt3uPRTbl5l9a/vFfm9uX7UchjpkLBcrmKCsWqTU4CYrM0JQZrNx+7t4dF2DUr1SdRaybR0QaWzOPMJiUFLpW/eA8PdLnGLdvnpvqXMigqC9k2RPAs1WL4fPxP4ttgs0ZX/cjqxI+VOhwNzP2RNzhYGPxH/J1/tAQGX+mxSNp8rmffSopvDtQL6r1REYlF61/y0tYV3z66R9n4gESGQTJimtPntMdB8psbSBfadY1+CKLpWVWMEeOKk0lHbiBWx2s17ryAPWhugWDUCyIcrPpHioQT+j/4ff+HRNgYi/9iMThbhdLxsD93UbnWLYuO7+8fPayi9ptNqWrnA6nzoNXncfVp0KMiabWMwOv61Qrgos5I+qr7ceWUIqC6kDB5bjInPWFKNrGuVxB0Ipiv0ZhLuw/eyrx5TILuqNDBGLgI2W7Q8sYHOhmcaRHRpDkyr4OY=",
@@ -96,24 +92,12 @@ class Configuration: NSObject {
             }
         }
         
-        if (Auth.auth().currentUser) != nil {
-            let user = Auth.auth().currentUser
-            var tempUser: User?
-            do {
-                try tempUser = Auth.auth().getStoredUser(forAccessGroup: Constants.DefaultKey.appGroupName)
-            } catch let error as NSError {
-              print("Error getting stored user: %@", error)
-            }
-            
-            if tempUser != nil {} else {
-                ConfigurationShared.setAuthAccessGroup()
-                Auth.auth().updateCurrentUser(user!)
-            }
+        if (PreferencesShared.loggedIn()) {
             window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
-
+        
         window?.makeKeyAndVisible()
     }
     
@@ -129,9 +113,8 @@ class Configuration: NSObject {
         }
     }
     
-    static func configureFirebase() {
-        ConfigurationShared.configureFirebase()
-        Messaging.messaging().delegate = Configuration.notification
+    static func configureCache() {
+        ConfigurationShared.configureCache()
     }
     
     static func configureFontblaster() {
@@ -156,7 +139,6 @@ class Configuration: NSObject {
     
     static func configureNotifications(application: UIApplication) {
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = Configuration.notification
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
@@ -177,7 +159,7 @@ class Configuration: NSObject {
     }
     
     @objc func appleIDStateDidRevoked(_ notification: Notification) {
-        if let providerId = Auth.auth().currentUser?.providerData.first?.providerID, providerId == "apple.com" {
+        if PreferencesShared.loggedIn() {
             SettingsController.logOut()
         }
     }

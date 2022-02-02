@@ -20,14 +20,9 @@
  * THE SOFTWARE.
  */
 
-import FirebaseMessaging
 import UserNotifications
 
-class Notifications: NSObject, MessagingDelegate {
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        // print("Firebase registration token: \(fcmToken)")
-    }
-}
+class Notifications: NSObject {}
 
 @available(iOS 10, *)
 extension Notifications: UNUserNotificationCenterDelegate {

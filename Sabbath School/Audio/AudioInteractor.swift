@@ -21,20 +21,35 @@
  */
 
 import Foundation
+import Cache
 
-class AudioInteractor: FirebaseDatabaseInteractor {
-    override init() {
-        super.init()
+class AudioInteractor {
+    private var audioStorage: Storage<String, [Audio]>?
+    
+    init() {
         self.configure()
     }
     
+    func configure() {
+        self.audioStorage = APICache.storage?.transformCodable(ofType: [Audio].self)
+    }
+    
     func retrieveAudio(quarterlyIndex: String, cb: @escaping ([Audio]) -> Void) {
-        database?.child(Constants.Firebase.audio).child(quarterlyIndex).observe(.value, with: { (snapshot) in
-            guard let json = snapshot.data else { return }
-            do {
-                let item: [Audio] = try FirebaseDecoder().decode([Audio].self, from: json)
-                cb(item)
-            } catch {}
-        })
+        let parsedIndex =  Helper.parseIndex(index: quarterlyIndex)
+        let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/audio.json"
+        
+        if (try? self.audioStorage?.existsObject(forKey: url)) != nil {
+            if let audio = try? self.audioStorage?.entry(forKey: url) {
+                cb(audio.object)
+            }
+        }
+        
+        API.session.request(url).responseDecodable(of: [Audio].self, decoder: Helper.SSJSONDecoder()) { response in
+            guard let audio = response.value else {
+                return
+            }
+            cb(audio)
+            try? self.audioStorage?.setObject(audio, forKey: url)
+        }
     }
 }

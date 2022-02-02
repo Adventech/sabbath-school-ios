@@ -21,7 +21,6 @@
  */
 
 import AsyncDisplayKit
-import Firebase
 
 protocol LoginPresenterProtocol: AnyObject {
     var controller: LoginControllerProtocol? { get set }
@@ -31,8 +30,6 @@ protocol LoginPresenterProtocol: AnyObject {
     func configure()
     func loginActionAnonymous()
     func loginActionGoogle()
-    func loginActionFacebook()
-    func performFirebaseLogin(credential: AuthCredential)
     
     @available(iOS 13, *) func loginActionApple()
 }

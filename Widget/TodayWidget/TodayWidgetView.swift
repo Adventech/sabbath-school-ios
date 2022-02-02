@@ -22,8 +22,6 @@
 
 import WidgetKit
 import SwiftUI
-import Firebase
-import FirebaseAuth
 
 struct TodayWidgetView : View {
     var entry: TodayWidgetProvider.Entry

@@ -24,7 +24,6 @@ import UIKit
 import AsyncDisplayKit
 
 enum LoginButtonType {
-    case facebook
     case google
     case anonymous
 }
@@ -50,12 +49,6 @@ class LoginButton: ASButtonNode {
         var attributes: NSAttributedString!
         var icon: UIImage?
         switch type {
-        case .facebook:
-            attributes = AppStyle.Login.Text.signInButton(string: "Sign in with Facebook".localized(), color: .white)
-            backgroundColor = AppStyle.Login.Color.facebookBlue
-            icon = R.image.loginIconFacebook()
-            accessibilityIdentifier = "signInWithFacebook"
-            addShadow()
         case .google:
             attributes = AppStyle.Login.Text.signInButton(string: "Sign in with Google".localized())
             backgroundColor = .white

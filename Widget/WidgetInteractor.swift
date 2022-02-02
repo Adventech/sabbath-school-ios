@@ -20,29 +20,40 @@
  * THE SOFTWARE.
  */
 
-import FirebaseAuth
-import FirebaseDatabase
+import Cache
 
 struct WidgetInteractor {
     enum IndexType: String {
         case read
         case lessonInfo
     }
-    static let database: DatabaseReference = Database.database().reference()
+    static let lessonInfoStorage: Storage<String, LessonInfo>? = {
+        return APICache.storage?.transformCodable(ofType: LessonInfo.self)
+    }()
+    
+    static let quarterlyStorage: Storage<String, [Quarterly]>? = {
+        return APICache.storage?.transformCodable(ofType: [Quarterly].self)
+    }()
     
     static func getLessonInfo(completion: @escaping (Quarterly?, LessonInfo?) -> Void) {
         getCurrentIndex (indexType: .lessonInfo) { (quarterly: Quarterly?, lessonIndex: String?) in
             if let lessonIndex = lessonIndex, let quarterly = quarterly {
-                database.child(Constants.Firebase.lessonInfo).child(lessonIndex).observe(.value, with: { (snapshot) in
-                    guard let json = snapshot.data else { return }
-                    do {
-                        let item: LessonInfo = try FirebaseDecoder().decode(LessonInfo.self, from: json)
-                        completion(quarterly, item)
-                    } catch {
-                        completion(nil, nil)
+                let parsedIndex =  Helper.parseIndex(index: lessonIndex)
+                let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/index.json"
+                
+                if (try? self.lessonInfoStorage?.existsObject(forKey: url)) != nil {
+                    if let lessonInfo = try? self.lessonInfoStorage?.entry(forKey: url) {
+                        completion(quarterly, lessonInfo.object)
                     }
-                }) { (error) in
-                    completion(nil, nil)
+                }
+                
+                API.session.request(url).responseDecodable(of: LessonInfo.self, decoder: Helper.SSJSONDecoder()) { response in
+                    guard let lessonInfo = response.value else {
+                        completion(nil, nil)
+                        return
+                    }
+                    completion(quarterly, lessonInfo)
+                    try? self.lessonInfoStorage?.setObject(lessonInfo, forKey: url)
                 }
             } else {
                 completion(nil, nil)
@@ -60,70 +71,76 @@ struct WidgetInteractor {
         return lessonInfo.days.first
     }
     
-    static func getCurrentIndex(indexType: IndexType, completion: @escaping (Quarterly?, String?) -> Void) {
-        if Auth.auth().currentUser == nil {
-           completion(nil, nil)
+    static func getCurrentIndexFromQuarterlies(indexType: IndexType, quarterlies: [Quarterly]) -> (quarterly: Quarterly, index: String) {
+        var quarterlies = quarterlies
+        let today = Date()
+        var found = false
+        
+        let lastQuarterlyIndex = PreferencesShared.currentQuarterly()
+        
+        if let index = quarterlies.firstIndex(where: { $0.index == lastQuarterlyIndex }) {
+            let lastQuarterly = quarterlies[index]
+            quarterlies.remove(at: index)
+            quarterlies.insert(lastQuarterly, at: 0)
         }
         
+        for quarterly in quarterlies {
+            let start = Calendar.current.compare(quarterly.startDate, to: today, toGranularity: .day)
+            let end = Calendar.current.compare(quarterly.endDate, to: today, toGranularity: .day)
+            let fallsBetween = ((start == .orderedAscending) || (start == .orderedSame)) && ((end == .orderedDescending) || (end == .orderedSame))
+
+            if fallsBetween && !found {
+                var day = 1
+                var week = 1
+                
+                var target = quarterly.startDate
+                while (Calendar.current.compare(today, to: target, toGranularity: .day) != .orderedSame) {
+                    day += 1
+                    if (day == 8) {
+                        day = 1
+                        week += 1
+                    }
+                    target = Calendar.current.date(byAdding: .day, value: 1, to: target)!
+                }
+                
+                found = true
+                
+                if indexType == IndexType.lessonInfo {
+                    return (quarterly, String.init(format: "%@-%02d", quarterly.index, week))
+                } else {
+                    return (quarterly, String.init(format: "%@-%02d-%02d", quarterly.index, week, day))
+                }
+            }
+        }
+        
+        if (!found) {
+            if let quarterly = quarterlies.first {
+                return (quarterly, String.init(format: "%@-%02d", quarterly.index, 1))
+            }
+        }
+        return (Quarterly(title: ""), "")
+    }
+    
+    static func getCurrentIndex(indexType: IndexType, completion: @escaping (Quarterly?, String?) -> Void) {
         let language = PreferencesShared.currentLanguage()
         
-        database.child(Constants.Firebase.quarterlies).child(language.code).observe(.value, with: { (snapshot) in
-            guard let json = snapshot.data else { return }
-
-            do {
-                var quarterlies: [Quarterly] = try FirebaseDecoder().decode([Quarterly].self, from: json)
-                
-                let today = Date()
-                var found = false
-                
-                let lastQuarterlyIndex = PreferencesShared.currentQuarterly()
-                
-                if let index = quarterlies.firstIndex(where: { $0.index == lastQuarterlyIndex }) {
-                    let lastQuarterly = quarterlies[index]
-                    quarterlies.remove(at: index)
-                    quarterlies.insert(lastQuarterly, at: 0)
-                }
-                
-                for quarterly in quarterlies {
-                    let start = Calendar.current.compare(quarterly.startDate, to: today, toGranularity: .day)
-                    let end = Calendar.current.compare(quarterly.endDate, to: today, toGranularity: .day)
-                    let fallsBetween = ((start == .orderedAscending) || (start == .orderedSame)) && ((end == .orderedDescending) || (end == .orderedSame))
-
-                    if fallsBetween && !found {
-                        var day = 1
-                        var week = 1
-                        
-                        var target = quarterly.startDate
-                        while (Calendar.current.compare(today, to: target, toGranularity: .day) != .orderedSame) {
-                            day += 1
-                            if (day == 8) {
-                                day = 1
-                                week += 1
-                            }
-                            target = Calendar.current.date(byAdding: .day, value: 1, to: target)!
-                        }
-                        
-                        found = true
-                        
-                        if indexType == IndexType.lessonInfo {
-                            completion(quarterly, String.init(format: "%@-%02d", quarterly.index, week))
-                        } else {
-                            completion(quarterly, String.init(format: "%@-%02d-%02d", quarterly.index, week, day))
-                        }
-                    }
-                }
-                
-                if (!found) {
-                    if let quarterly = quarterlies.first {
-                        completion(quarterly, String.init(format: "%@-%02d", quarterly.index, 1))
-                    }
-                    
-                }
-            } catch {
-                completion(nil, nil)
+        let url = "\(Constants.API.HOST)/\(language.code)/quarterlies/index.json"
+        
+        if (try? self.quarterlyStorage?.existsObject(forKey: url)) != nil {
+            if let quarterlies = try? self.quarterlyStorage?.entry(forKey: url) {
+                let ret = self.getCurrentIndexFromQuarterlies(indexType: indexType, quarterlies: quarterlies.object)
+                completion(ret.quarterly, ret.index)
             }
-        }) { (error) in
-            completion(nil, nil)
+        }
+        
+        API.session.request(url).responseDecodable(of: [Quarterly].self, decoder: Helper.SSJSONDecoder()) { response in
+            guard let quarterlies = response.value else {
+                completion(nil, nil)
+                return
+            }
+            let ret = self.getCurrentIndexFromQuarterlies(indexType: indexType, quarterlies: quarterlies)
+            completion(ret.quarterly, ret.index)
+            try? self.quarterlyStorage?.setObject(quarterlies, forKey: url)
         }
         return
     }

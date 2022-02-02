@@ -20,28 +20,10 @@
  * THE SOFTWARE.
  */
 
-import Firebase
-import FirebaseDatabase
+import Foundation
 
 class ConfigurationShared: NSObject {
-    static func configureFirebase() {
-        #if DEBUG
-            let filePath = Bundle.main.path(forResource: "GoogleService-Info-Stage", ofType: "plist")
-        #else
-            let filePath = Bundle.main.path(forResource: "GoogleService-Info-Prod", ofType: "plist")
-        #endif
-
-        let fileopts = FirebaseOptions.init(contentsOfFile: filePath!)
-
-        FirebaseApp.configure(options: fileopts!)
-        Database.database().isPersistenceEnabled = true
-    }
-    
-    static func setAuthAccessGroup() {
-        do {
-            try Auth.auth().useUserAccessGroup(Constants.DefaultKey.appGroupName)
-        } catch let error as NSError {
-          print("Error changing user access group: %@", error)
-        }
+    static func configureCache() {
+        APICache.configure()
     }
 }

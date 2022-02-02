@@ -46,4 +46,14 @@ extension String {
     func formatTimeDroppingLeadingZeros () -> String {
         return self.hasPrefix("0") && self.count > 4 ? .init(self.dropFirst()) : self
     }
+    
+    func replacingFirstOccurrence(of target: String, with replacement: String) -> String {
+        guard let range = self.range(of: target) else { return self }
+        return self.replacingCharacters(in: range, with: replacement)
+    }
+    
+    func replacingLastOccurrence(of target: String, with replacement: String) -> String {
+        guard let range = self.range(of: target, options: NSString.CompareOptions.backwards) else { return self }
+        return self.replacingCharacters(in: range, with: replacement)
+    }
 }

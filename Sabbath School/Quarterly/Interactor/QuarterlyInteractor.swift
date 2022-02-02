@@ -20,32 +20,40 @@
  * THE SOFTWARE.
  */
 
+import Alamofire
 import Foundation
+import Cache
 
-class QuarterlyInteractor: FirebaseDatabaseInteractor, QuarterlyInteractorInputProtocol {
+class QuarterlyInteractor: QuarterlyInteractorInputProtocol {
     weak var presenter: QuarterlyInteractorOutputProtocol?
     var languageInteractor = LanguageInteractor()
+    private var storage: Storage<String, [Quarterly]>?
+    
+    init () {
+        self.configure()
+    }
 
-    override func configure() {
-        super.configure()
-
+    func configure() {
         languageInteractor.configure()
         languageInteractor.presenter = self
+        self.storage = APICache.storage?.transformCodable(ofType: [Quarterly].self)
     }
 
     func retrieveQuarterliesForLanguage(language: QuarterlyLanguage) {
-        database?.child(Constants.Firebase.quarterlies).child(language.code).observe(.value, with: { [weak self] (snapshot) in
-            guard let json = snapshot.data else { return }
-
-            do {
-                let items: [Quarterly] = try FirebaseDecoder().decode([Quarterly].self, from: json)
-                
-                self?.presenter?.didRetrieveQuarterlies(quarterlies: items)
-            } catch let error {
-                self?.presenter?.onError(error)
+        let url = "\(Constants.API.HOST)/\(language.code)/quarterlies/index.json"
+        if (try? self.storage?.existsObject(forKey: url)) != nil {
+            if let quarterlies = try? self.storage?.entry(forKey: url) {
+                self.presenter?.didRetrieveQuarterlies(quarterlies: quarterlies.object)
             }
-        }) { [weak self] (error) in
-            self?.presenter?.onError(error)
+        }
+        
+        API.session.request(url).responseDecodable(of: [Quarterly].self, decoder: Helper.SSJSONDecoder()) { response in
+            guard let quarterlies = response.value else {
+                self.presenter?.onError(response.error)
+                return
+            }
+            self.presenter?.didRetrieveQuarterlies(quarterlies: quarterlies)
+            try? self.storage?.setObject(quarterlies, forKey: url)
         }
     }
 

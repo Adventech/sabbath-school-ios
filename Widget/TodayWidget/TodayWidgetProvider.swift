@@ -20,13 +20,10 @@
  * THE SOFTWARE.
  */
 
-import FirebaseAuth
-import FirebaseDatabase
 import WidgetKit
 import SwiftUI
 
 struct TodayWidgetProvider: TimelineProvider {
-    let database: DatabaseReference = Database.database().reference()
     static let placeholderDay: Day = Day.init(title: "-------")
     
     func placeholder(in context: Context) -> TodayWidgetEntry {

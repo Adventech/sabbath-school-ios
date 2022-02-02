@@ -22,7 +22,6 @@
 
 import AuthenticationServices
 import AsyncDisplayKit
-import FirebaseAuth
 import SafariServices
 import SwiftDate
 import UIKit
@@ -105,16 +104,12 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
     }
 
     static func logOut(presentLoginScreen: Bool = true) {
-        if let providerId = Auth.auth().currentUser?.providerData.first?.providerID, providerId == "apple.com" {
-            Preferences.userDefaults.set(nil, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
-        }
-        
         UIApplication.shared.shortcutItems = []
         Spotlight.clearSpotlight()
         
         PINRemoteImageManager.shared().cache.removeAllObjects()
-        
-        try! Auth.auth().signOut()
+        Preferences.userDefaults.removeObject(forKey: Constants.DefaultKey.accountObject)
+        Preferences.userDefaults.set(nil, forKey: Constants.DefaultKey.appleAuthorizedUserIdKey)
         if presentLoginScreen {
             DispatchQueue.main.async {
                 QuarterlyWireFrame.presentLoginScreen()

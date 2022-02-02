@@ -27,7 +27,6 @@ import AuthenticationServices
 class LoginView: ASDisplayNode {
     let appLogo = ASNetworkImageNode()
     let appName = ASTextNode()
-    let facebookButton = LoginButton(type: .facebook)
     let googleButton = LoginButton(type: .google)
     let anonymousButton = LoginButton(type: .anonymous)
     var signInWithAppleButton: ASDisplayNode?
@@ -78,9 +77,9 @@ class LoginView: ASDisplayNode {
         
         if #available(iOS 13.0, *) {
             signInWithAppleButton?.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMakeWithPoints(240), height: ASDimensionMakeWithPoints(45))
-            buttonsSpec.children = [signInWithAppleButton!, facebookButton, googleButton, anonymousButton]
+            buttonsSpec.children = [signInWithAppleButton!, googleButton, anonymousButton]
         } else {
-            buttonsSpec.children = [facebookButton, googleButton, anonymousButton]
+            buttonsSpec.children = [googleButton, anonymousButton]
         }
 
         buttonsSpec.style.spacingAfter = 30

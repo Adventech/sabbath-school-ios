@@ -33,12 +33,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>FacebookAppID</key>
-	<string>1440555266255436</string>
-	<key>FacebookClientToken</key>
-	<string>Sabbath School</string>
-	<key>FacebookDisplayName</key>
-	<string>Sabbath School</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -50,6 +44,11 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Pictures captured with the camera can be added to the document as image annotations.</string>
 	<key>NSMicrophoneUsageDescription</key>

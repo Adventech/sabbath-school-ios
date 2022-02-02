@@ -20,25 +20,39 @@
  * THE SOFTWARE.
  */
 
+import Alamofire
 import Foundation
+import Cache
 
-class LessonInteractor: FirebaseDatabaseInteractor, LessonInteractorInputProtocol {
+class LessonInteractor: LessonInteractorInputProtocol {
     weak var presenter: LessonInteractorOutputProtocol?
+    private var storage: Storage<String, QuarterlyInfo>?
+    
+    init () {
+        self.configure()
+    }
+    
+    func configure() {
+        self.storage = APICache.storage?.transformCodable(ofType: QuarterlyInfo.self)
+    }
 
     func retrieveQuarterlyInfo(quarterlyIndex: String) {
-        database?.child(Constants.Firebase.quarterlyInfo).child(quarterlyIndex).observe(.value, with: { [weak self] (snapshot) in
-            guard let json = snapshot.data else { return }
-
-            do {
-                let item: QuarterlyInfo = try FirebaseDecoder().decode(QuarterlyInfo.self, from: json)
-
-                self?.saveLastQuarterlyIndex(lastQuarterlyIndex: quarterlyIndex)
-                self?.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: item)
-            } catch let error {
-                self?.presenter?.onError(error)
+        let parsedIndex =  Helper.parseIndex(index: quarterlyIndex)
+        let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/index.json"
+        
+        if (try? self.storage?.existsObject(forKey: url)) != nil {
+            if let quarterlyInfo = try? self.storage?.entry(forKey: url) {
+                self.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: quarterlyInfo.object)
             }
-        }) { [weak self] (error) in
-            self?.presenter?.onError(error)
+        }
+        
+        API.session.request(url).responseDecodable(of: QuarterlyInfo.self, decoder: Helper.SSJSONDecoder()) { response in
+            guard let quarterlyInfo = response.value else {
+                self.presenter?.onError(response.error)
+                return
+            }
+            self.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: quarterlyInfo)
+            try? self.storage?.setObject(quarterlyInfo, forKey: url)
         }
     }
 

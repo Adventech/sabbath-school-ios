@@ -92,12 +92,11 @@ class ReadPresenter: ReadPresenterProtocol {
 
 extension ReadPresenter: ReadInteractorOutputProtocol {
     func onError(_ error: Error?) {
-        print("SSDEBUG", error)
-        print(error?.localizedDescription ?? "Unknown")
+        print("SSDEBUG", error?.localizedDescription ?? "Unknown")
     }
 
-    func didRetrieveRead(read: Read, highlights: ReadHighlights, comments: ReadComments, ticker: Int = 0) {
-        controller?.showRead(read: read, highlights: highlights, comments: comments, finish: ticker == 0)
+    func didRetrieveRead(read: Read, ticker: Int = 0) {
+        controller?.showRead(read: read, finish: ticker == 0)
     }
 
     func didRetrieveLessonInfo(lessonInfo: LessonInfo) {
@@ -110,5 +109,13 @@ extension ReadPresenter: ReadInteractorOutputProtocol {
     
     func didRetrieveVideo(video: [VideoInfo]) {
         controller?.loadVideo(video: video)
+    }
+    
+    func didRetrieveHighlights(highlights: ReadHighlights) {
+        controller?.setHighlights(highlights: highlights)
+    }
+    
+    func didRetrieveComments(comments: ReadComments) {
+        controller?.setComments(comments: comments)
     }
 }

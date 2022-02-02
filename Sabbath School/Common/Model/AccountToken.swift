@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Adventech <info@adventech.io>
+ * Copyright (c) 2022 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,13 +20,19 @@
  * THE SOFTWARE.
  */
 
-import FirebaseDatabase
+import Foundation
 
-class FirebaseDatabaseInteractor {
-    var database: DatabaseReference?
-
-    func configure() {
-        database = Database.database().reference()
-        database?.keepSynced(true)
+struct AccountToken: Codable {
+    let apiKey: String
+    let refreshToken: String
+    var accessToken: String
+    let expirationTime: Int
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        apiKey = try values.decode(String.self, forKey: .apiKey)
+        refreshToken = try values.decode(String.self, forKey: .refreshToken)
+        accessToken = try values.decode(String.self, forKey: .accessToken)
+        expirationTime = try values.decode(Int.self, forKey: .expirationTime)
     }
 }

@@ -34,7 +34,6 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
 
         loginView?.anonymousButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         loginView?.googleButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
-        loginView?.facebookButton.addTarget(self, action: #selector(loginAction(sender:)), forControlEvents: .touchUpInside)
         self.addAppleSignInButtonTarget()
 
         // GIDSignIn.sharedInstance()?.presentingViewController = self
@@ -69,8 +68,6 @@ class LoginController: ASDKViewController<ASDisplayNode>, LoginControllerProtoco
 
     @objc func loginAction(sender: LoginButton) {
         switch sender.type {
-        case .facebook:
-            presenter?.loginActionFacebook()
         case .google:
             presenter?.loginActionGoogle()
         case .anonymous:

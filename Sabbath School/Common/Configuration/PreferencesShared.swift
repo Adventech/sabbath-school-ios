@@ -27,6 +27,19 @@ struct PreferencesShared {
     static var userDefaults: UserDefaults {
         return UserDefaults(suiteName: Constants.DefaultKey.appGroupName) ?? UserDefaults.standard
     }
+    
+    static func loggedIn() -> Bool {
+        return PreferencesShared.currentUser() != nil
+    }
+    
+    static func currentUser() -> Account? {
+        guard let dictionary = PreferencesShared.userDefaults.value(forKey: Constants.DefaultKey.accountObject) as? Data else {
+            return nil
+        }
+
+        let user: Account = try! JSONDecoder().decode(Account.self, from: dictionary)
+        return user
+    }
 
     static func currentLanguage() -> QuarterlyLanguage {
         guard let dictionary = PreferencesShared.userDefaults.value(forKey: Constants.DefaultKey.quarterlyLanguage) as? Data else {

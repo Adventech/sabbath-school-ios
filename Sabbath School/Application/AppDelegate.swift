@@ -23,9 +23,6 @@
 
 import AsyncDisplayKit
 import AuthenticationServices
-import FBSDKCoreKit
-import Firebase
-import FirebaseMessaging
 import GoogleSignIn
 import UIKit
 import CoreSpotlight
@@ -36,15 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Configuration.configureArmchair()
-        Configuration.configureFirebase()
         Configuration.configureFontblaster()
         Configuration.configurePreferences()
         Configuration.configureNotifications(application: application)
         Configuration.configureAuthentication()
         Configuration.configurePDF()
         Configuration.configureMisc()
-        
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        Configuration.configureCache()
         
         return true
     }
@@ -52,15 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.path.range(of: Constants.URLs.webLinkRegex, options: .regularExpression) != nil {
             return handleAppLink(url: url)
-        }
-        
-        let facebookHandle = ApplicationDelegate.shared.application(application,
-                                                                    open: url,
-                                                                    sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                                    annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-
-        if facebookHandle {
-            return facebookHandle
         }
         
         return GIDSignIn.sharedInstance.handle(url)
@@ -105,7 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // the FCM registration token.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // With swizzling disabled you must set the APNs token here.
-        Messaging.messaging().apnsToken = deviceToken
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {

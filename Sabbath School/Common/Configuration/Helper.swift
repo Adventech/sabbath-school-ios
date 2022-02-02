@@ -23,6 +23,13 @@
 import UIKit
 import Foundation
 
+struct ParsedIndex {
+    var lang = ""
+    var quarter = ""
+    var week = ""
+    var day = ""
+}
+
 struct Helper {
     static var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
@@ -134,5 +141,57 @@ struct Helper {
     /// Creates a temporary PDF file URL.
     static func TemporaryPDFFileURL(prefix: String? = nil) -> URL {
         return TemporaryFileURL(prefix: prefix, pathExtension: ".pdf")
+    }
+    
+    static func SSJSONDecoder() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }
+    
+    static func convertQuarterlyIndex(quarterlyIndex: String) -> String {
+        return quarterlyIndex.replacingFirstOccurrence(of: "-", with: "/quarterlies/")
+    }
+    
+    static func convertLessonIndex(lessonIndex: String) -> String {
+        return Helper.convertQuarterlyIndex(quarterlyIndex: lessonIndex).replacingLastOccurrence(of: "-", with: "/lessons/")
+    }
+    
+    static func convertReadIndex(readIndex: String) -> String {
+        return "\(Helper.convertLessonIndex(lessonIndex: readIndex.replacingLastOccurrence(of: "-", with: "/days/")))/read/"
+    }
+    
+    static func parseIndex(index: String) -> ParsedIndex {
+        var pI = ParsedIndex()
+        
+        do {
+            let regex = try NSRegularExpression(pattern: Constants.URLs.indexPattern, options: [])
+
+            let nsrange = NSRange(index.startIndex..<index.endIndex, in: index)
+            if let match = regex.firstMatch(in: index, options: [], range: nsrange) {
+                for component in ["lang", "quarter", "week", "day"] {
+                    let nsrange = match.range(withName: component)
+                    if nsrange.location != NSNotFound, let range = Range(nsrange, in: index) {
+                        switch component {
+                        case "lang":
+                            pI.lang = "\(index[range])"
+                            break
+                        case "quarter":
+                            pI.quarter = "\(index[range])"
+                            break
+                        case "week":
+                            pI.week = "\(index[range])"
+                            break
+                        case "day":
+                            pI.day = "\(index[range])"
+                            break
+                        default:
+                            break
+                        }
+                    }
+                }
+            }
+        } catch {}
+        return pI
     }
 }

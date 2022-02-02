@@ -462,10 +462,12 @@ extension ReadController: ReadControllerProtocol {
         displayNavRightButtons()
     }
 
-    func showRead(read: Read, highlights: ReadHighlights, comments: ReadComments, finish: Bool) {
-        self.reads.append(read)
-        self.highlights.append(highlights)
-        self.comments.append(comments)
+    func showRead(read: Read, finish: Bool) {
+        if let index = self.reads.firstIndex(where: { $0.index == read.index }) {
+            self.reads[index] = read
+        } else {
+            self.reads.append(read)
+        }
 
         guard finish else { return }
         self.finished = finish
@@ -492,21 +494,41 @@ extension ReadController: ReadControllerProtocol {
         }
         Configuration.reloadAllWidgets()
     }
+    
+    func setHighlights(highlights: ReadHighlights) {
+        if let index = self.reads.firstIndex(where: { $0.index == highlights.readIndex }) {
+            if let readView = self.collectionNode.nodeForPage(at: index) as? ReadView {
+                readView.highlights = highlights
+                readView.webView.setHighlights(highlights.highlights)
+            }
+        }
+    }
+    
+    func setComments(comments: ReadComments) {
+        if let index = self.reads.firstIndex(where: { $0.index == comments.readIndex }) {
+            if let readView = self.collectionNode.nodeForPage(at: index) as? ReadView {
+                readView.comments = comments
+                for comment in comments.comments {
+                    readView.webView.setComment(comment)
+                }
+            }
+        }
+    }
 }
 
 extension ReadController: ASPagerDataSource {
     func pagerNode(_ pagerNode: ASPagerNode, nodeBlockAt index: Int) -> ASCellNodeBlock {
         let cellNodeBlock: () -> ASCellNode = {
 
-            if !self.finished {
+            if self.reads.count == 0 {
                 return ReadEmptyView()
             }
             
             let read = self.reads[index]
-            let readHighlights = self.highlights[index]
-            let readComments = self.comments[index]
+//            let readHighlights = self.highlights[index]
+//            let readComments = self.comments[index]
             
-            return ReadView(lessonInfo: self.lessonInfo!, read: read, highlights: readHighlights, comments: readComments, delegate: self)
+            return ReadView(lessonInfo: self.lessonInfo!, read: read, delegate: self)
         }
 
         return cellNodeBlock

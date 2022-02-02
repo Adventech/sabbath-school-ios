@@ -55,6 +55,8 @@ struct Constants {
         static let pdfConfigurationPageMode = "io.adventech.settings.pdf.pageMode"
         static let pdfConfigurationScrollDirection = "io.adventech.settings.pdf.scrollDirection"
         static let pdfConfigurationSpreadFitting = "io.adventech.settings.pdf.spreadFitting"
+        
+        static let accountObject = "io.adventech.auth.user"
     }
 
     struct Path {
@@ -66,39 +68,15 @@ struct Constants {
         static let readerBundle = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest/index.html")
         static let readerBundleDir = FileManager.default.urls(for: .documentDirectory, in:.userDomainMask).first!.appendingPathComponent("sabbath-school-reader-latest")
     }
-
-    struct Firebase {
-        static let apiPrefix = "/api/v2"
-        static let languages = apiPrefix + "/languages"
-        static let quarterlies = apiPrefix + "/quarterlies"
-        static let quarterlyInfo = apiPrefix + "/quarterly-info"
-        static let lessonInfo = apiPrefix + "/lesson-info"
-        static let reads = apiPrefix + "/reads"
-        static let audio = apiPrefix + "/audio"
-        static let video = apiPrefix + "/video"
-        
-        static let annotations = "annotations"
-
+    
+    struct API {
         #if DEBUG
-        struct Storage {
-            struct ReaderPath {
-                static let prod = "gs://sabbath-school-stage.appspot.com/sabbath-school-reader-latest.zip"
-                static let stage =  "gs://sabbath-school-stage.appspot.com/sabbath-school-reader-latest.zip"
-            }
-        }
+        static let GOOGLE_CLIENT_ID = "96814818762-k7l0r7no343dms51ss59q6c5dslujcu7.apps.googleusercontent.com"
+        static let HOST = "https://sabbath-school-stage.adventech.io/api/v2"
         #else
-        struct Storage {
-            struct ReaderPath {
-                static let prod = "gs://blistering-inferno-8720.appspot.com/sabbath-school-reader-latest.zip"
-                static let stage =  "gs://blistering-inferno-8720.appspot.com/sabbath-school-reader-latest.zip"
-            }
-        }
+        static let GOOGLE_CLIENT_ID = "443920152945-d0kf5h2dubt0jbcntq8l0qeg6lbpgn60.apps.googleusercontent.com"
+        static let HOST = "https://sabbath-school.adventech.io/api/v2"
         #endif
-
-        // User created
-        static let highlights = "highlights"
-        static let comments = "comments"
-        static let suggestions = "suggestions"
     }
     
     struct URLs {
@@ -108,6 +86,25 @@ struct Constants {
         static let web = "https://sabbath-school.adventech.io/"
         #endif
         static let webReplacementRegex = "api/v1|v2/|quarterlies/|lessons/|days/|read/"
+        
+        static let indexPattern = #"""
+(?xi)
+(?<lang>
+  [a-z]{2,3}
+)
+-
+(?<quarter>
+  \d{4}-\d{2}(-[a-z]{2,})?
+)
+-?
+(?<week>
+  \d{2}
+)?
+-?
+(?<day>
+  \d{2}|[a-z-]{1,}
+)?
+"""#
         
         static let webLinkRegex = #"(^\/[a-z]{2,}\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/\d{2}\/?$)|(^\/[a-z]{2,}\/\d{4}-\d{2}(-[a-z]{2})?\/\d{2}\/\d{2}(-.+)?\/?$)"#
     }

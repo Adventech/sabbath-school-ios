@@ -40,7 +40,6 @@ struct Preferences {
                 }
                 groupDefaults.set(true, forKey: Constants.DefaultKey.migrationToAppGroups)
                 groupDefaults.synchronize()
-                print("Successfully migrated defaults")
             } else {
                 print("No need to migrate defaults")
             }

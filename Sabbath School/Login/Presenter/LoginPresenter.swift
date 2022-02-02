@@ -20,13 +20,25 @@
  * THE SOFTWARE.
  */
 
+import Alamofire
 import AuthenticationServices
 import CryptoKit
-import FBSDKCoreKit
-import FBSDKLoginKit
-import Firebase
 import GoogleSignIn
 import SwiftMessages
+
+enum LoginType {
+    case google
+    case apple
+    case anonymous
+    
+    var param: String {
+        switch self {
+        case .google: return "google"
+        case .apple: return "apple"
+        case .anonymous: return "anonymous"
+        }
+    }
+}
 
 class LoginPresenter: NSObject, LoginPresenterProtocol {
     var controller: LoginControllerProtocol?
@@ -34,14 +46,9 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
     var interactor: LoginInteractorInputProtocol?
     var currentNonce: String?
 
-    func configure() {
-        // interactor?.configure()
-//        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-//        GIDSignIn.sharedInstance().delegate = self
-    }
+    func configure() {}
 
     func loginActionAnonymous() {
-        // interactor?.loginAnonymous()
         let alertController = UIAlertController(
             title: "Login anonymously?".localized(),
             message: "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?".localized(),
@@ -52,13 +59,7 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
         no.accessibilityLabel = "loginAnonymousOptionNo"
 
         let yes = UIAlertAction(title: "Yes".localized(), style: .destructive) { [weak self] (_) in
-            Auth.auth().signInAnonymously(completion: { [weak self] (_, error) in
-                if let error = error {
-                    self?.onError(error)
-                } else {
-                    self?.onSuccess()
-                }
-            })
+            self?.performLogin(credentials: ["a": "b"], loginType: .anonymous)
         }
         yes.accessibilityLabel = "loginAnonymousOptionYes"
 
@@ -69,26 +70,9 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
         (controller as? UIViewController)?.present(alertController, animated: true, completion: nil)
     }
 
-    func loginActionFacebook() {
-        let loginManager = LoginManager()
-        let viewController = controller as? UIViewController
-
-        loginManager.logIn(permissions: [.publicProfile, .email], viewController: viewController) { [weak self] (loginResult) in
-            switch loginResult {
-            case .failed(let error):
-                self?.onError(error)
-            case .cancelled:
-                self?.onError("Cancelled" as? Error)
-            case .success(_, _, let accessToken):
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken!.tokenString)
-                self?.performFirebaseLogin(credential: credential)
-            }
-        }
-    }
-
     func loginActionGoogle() {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        let config = GIDConfiguration(clientID: clientID)
+        let config = GIDConfiguration(clientID: Constants.API.GOOGLE_CLIENT_ID)
+        
         GIDSignIn.sharedInstance.signIn(with: config, presenting: controller as! UIViewController) { [weak self] user, error in
             if let error = error {
                 self?.onError(error)
@@ -98,10 +82,8 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
             guard let authentication = user?.authentication, let idToken = authentication.idToken else {
               return
             }
-
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
-
-            self?.performFirebaseLogin(credential: credential)
+            
+            self?.performLogin(credentials: [ "id_token": idToken ], loginType: .google)
           }
     }
     
@@ -119,15 +101,21 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
         authController.delegate = self
         authController.performRequests()
     }
-
-    func performFirebaseLogin(credential: AuthCredential) {
-        // Configuration.setAuthAccessGroup()
-        Auth.auth().signIn(with: credential) { [weak self] (_, error) in
-            if error != nil {
-                self?.onError(error)
-                return
-            } else {
-                self?.onSuccess()
+    
+    func performLogin(credentials: [String: Any], loginType: LoginType) {
+        AF.request(
+            "\(Constants.API.HOST)/auth/signin/\(loginType.param)",
+            method: .post,
+            parameters: credentials,
+            encoding: JSONEncoding.default
+        ).responseDecodable(of: Account.self, decoder: Helper.SSJSONDecoder()) { response in
+            switch response.result {
+            case .success:
+                let dictionary = try! JSONEncoder().encode(response.value)
+                Preferences.userDefaults.set(dictionary, forKey: Constants.DefaultKey.accountObject)
+                self.onSuccess()
+            case let .failure(error):
+                self.onError(error)
             }
         }
     }
@@ -197,24 +185,6 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
     }
 }
 
-//extension LoginPresenter: GIDSignInDelegate {
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-//        if let error = error {
-//            onError(error)
-//            return
-//        }
-//
-//        let authentication = user.authentication
-//        let credential = GoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,
-//                                                       accessToken: (authentication?.accessToken)!)
-//        performFirebaseLogin(credential: credential)
-//    }
-//
-//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-//        // Perform any operations when the user disconnects from app here.
-//    }
-//}
-
 extension LoginPresenter: ASAuthorizationControllerPresentationContextProviding {
     @available(iOS 13, *)
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
@@ -226,7 +196,6 @@ extension LoginPresenter: ASAuthorizationControllerPresentationContextProviding 
 extension LoginPresenter: ASAuthorizationControllerDelegate {
     @available(iOS 13, *)
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("authorization error")
         guard let error = error as? ASAuthorizationError else {
             return
         }
@@ -253,8 +222,7 @@ extension LoginPresenter: ASAuthorizationControllerDelegate {
                 return
             }
 
-            let firebaseCredential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-            self.performFirebaseLogin(credential: firebaseCredential)
+            self.performLogin(credentials: [ "id_token": idTokenString, "nonce": nonce ], loginType: .apple)
         }
     }
 }

@@ -20,10 +20,9 @@
  * THE SOFTWARE.
  */
 
+import Alamofire
 import AsyncDisplayKit
 import PSPDFKitUI
-import FirebaseDatabase
-import FirebaseAuth
 
 class PDFReadController: VideoPlaybackDelegatable {
     let pdfView = PDFView()
@@ -32,7 +31,8 @@ class PDFReadController: VideoPlaybackDelegatable {
     var audio: [Audio] = []
     // let bibleVerses = [1, 2, 3]
     let lessonIndex: String
-    var database: DatabaseReference!
+    let dispatchQueue = DispatchQueue(label: "annotationsRetrieve", qos: .background)
+    let semaphore = DispatchSemaphore(value: 0)
     
     init(lessonIndex: String) {
         self.lessonIndex = lessonIndex
@@ -49,8 +49,6 @@ class PDFReadController: VideoPlaybackDelegatable {
     
     override func viewDidLoad() {
         setBackButton()
-        database = Database.database().reference()
-        database.keepSynced(true)
         
         super.viewDidLoad()
         navigationController?.delegate = self
@@ -88,6 +86,10 @@ class PDFReadController: VideoPlaybackDelegatable {
     
     func setRightBarButtonItems() {
         var barButtons: [UIBarButtonItem] = []
+        
+        if self.pdfView.tabbedPDFController == nil {
+            return
+        }
         
         if let pdfController = self.pdfView.tabbedPDFController.pdfController as? PDFReadViewController,
            let pdfBarItems = pdfController.navigationItem.rightBarButtonItems {
@@ -130,16 +132,14 @@ class PDFReadController: VideoPlaybackDelegatable {
     }
     
     func getPDFs(cb: @escaping ([PDF]) -> Void) {
-        database.child(Constants.Firebase.lessonInfo).child(self.lessonIndex).observe(.value, with: { [self] (snapshot) in
-            guard let json = snapshot.data else { return }
-            do {
-                let lessonInfo: LessonInfo = try FirebaseDecoder().decode(LessonInfo.self, from: json)
-                
-                self.pdfs = lessonInfo.pdfs
-                cb(pdfs)
-            } catch {}
-            
-        }) { error in }
+        let parsedIndex =  Helper.parseIndex(index: lessonIndex)
+        API.session.request("\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/index.json").responseDecodable(of: LessonInfo.self, decoder: Helper.SSJSONDecoder()) { response in
+            guard let item = response.value else {
+                return
+            }
+            self.pdfs = item.pdfs
+            cb(self.pdfs)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,21 +152,21 @@ class PDFReadController: VideoPlaybackDelegatable {
     }
     
     func retrieveAnnotations() {
-        for (index, pdf) in pdfs.enumerated() {
-            database
-                .child(Constants.Firebase.annotations)
-                .child((Auth.auth().currentUser?.uid)!)
-                .child(lessonIndex)
-                .child(pdf.id).observe(.value, with: { [weak self] (snapshot) in
-                    do {
-                        guard let json = snapshot.data else {
-                            self?.pdfView.tabbedPDFController.loadAnnotations(documentIndex: index, annotations: [])
-                            return
-                        }
-                        let annotations = try FirebaseDecoder().decode(Array<PDFAnnotations>.self, from: json)
-                        self?.pdfView.tabbedPDFController.loadAnnotations(documentIndex: index, annotations: annotations)
-                    } catch {}
-                })
+        dispatchQueue.async {
+            for (index, pdf) in self.pdfs.enumerated() {
+                API.auth.request("\(Constants.API.HOST)/annotations/\(self.lessonIndex)/\(pdf.id)")
+                    .customValidate()
+                    .responseDecodable(of: [PDFAnnotations].self, decoder: Helper.SSJSONDecoder()) { response in
+                    switch response.result {
+                    case .success:
+                        self.pdfView.tabbedPDFController.loadAnnotations(documentIndex: index, annotations: response.value!)
+                    case .failure:
+                        self.pdfView.tabbedPDFController.loadAnnotations(documentIndex: index, annotations: [])
+                    }
+                    self.semaphore.signal()
+                }
+                self.semaphore.wait()
+            }
         }
         
     }
@@ -202,31 +202,37 @@ extension PDFReadController: PDFReadControllerDelegate {
     }
     
     func uploadAnnotations(documentId: String) {
-        for (index, document) in pdfView.tabbedPDFController.documents.enumerated() {
-            guard (0 ..< pdfs.count).contains(index) else { continue }
-            
-            let inkAnnotations = document.allAnnotations(of: .all)
-            var allAnnotations: [PDFAnnotations] = []
-            for pageIndex in inkAnnotations {
-                var annotations: [String] = []
-                for annotation in pageIndex.value {
-                    let data = try! annotation.generateInstantJSON()
-                    let jsonString = String(data: data, encoding: .utf8)
-                    annotations.append(jsonString!)
+        dispatchQueue.async {
+            for (index, document) in self.pdfView.tabbedPDFController.documents.enumerated() {
+                guard (0 ..< self.pdfs.count).contains(index) else { continue }
+                
+                let inkAnnotations = document.allAnnotations(of: .all)
+                var allAnnotations: [PDFAnnotations] = []
+                for pageIndex in inkAnnotations {
+                    var annotations: [String] = []
+                    for annotation in pageIndex.value {
+                        let data = try! annotation.generateInstantJSON()
+                        let jsonString = String(data: data, encoding: .utf8)
+                        annotations.append(jsonString!)
+                    }
+                    allAnnotations.append(PDFAnnotations(pageIndex: Int(pageIndex.key.intValue), annotations: annotations))
                 }
-                allAnnotations.append(PDFAnnotations(pageIndex: Int(pageIndex.key.intValue), annotations: annotations))
+                
+                do {
+                    let data = try JSONSerialization.jsonObject(with: try JSONEncoder().encode(allAnnotations), options: .allowFragments)
+                    
+                    API.auth.request(
+                        "\(Constants.API.HOST)/annotations/\(self.lessonIndex)/\(self.pdfs[index].id)",
+                        method: .post,
+                        parameters: [ "data": data ],
+                        encoding: JSONEncoding.default)
+                        .customValidate()
+                        .responseDecodable(of: String.self, decoder: Helper.SSJSONDecoder()) { response in
+                            self.semaphore.signal()
+                        }
+                    self.semaphore.wait()
+                } catch {}
             }
-            
-            do {
-                let z = try JSONEncoder().encode(allAnnotations)
-                let data = try JSONSerialization.jsonObject(with: z, options: .allowFragments)
-                database
-                    .child(Constants.Firebase.annotations)
-                    .child((Auth.auth().currentUser?.uid)!)
-                    .child(lessonIndex)
-                    .child(pdfs[index].id)
-                    .setValue(data)
-            } catch {}
         }
     }
 }

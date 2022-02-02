@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Adventech <info@adventech.io>
+ * Copyright (c) 2022 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,10 +21,22 @@
  */
 
 import Foundation
+import Cache
 
-class FirebaseDecoder: JSONDecoder {
-    override init() {
-        super.init()
-        self.keyDecodingStrategy = .convertFromSnakeCase
+class APICache: NSObject {
+    static let shared = APICache()
+    static var storage: Storage<String, String>?
+    
+    private override init() {}
+    
+    static func configure() {
+        let diskConfig = DiskConfig(name: "Disk", expiry: .never, maxSize: 1024*1024*500)
+        let memoryConfig = MemoryConfig(expiry: .never, countLimit: 100, totalCostLimit: 10)
+
+        self.storage = try? Storage(
+            diskConfig: diskConfig,
+            memoryConfig: memoryConfig,
+            transformer: TransformerFactory.forCodable(ofType: String.self)
+        )
     }
 }

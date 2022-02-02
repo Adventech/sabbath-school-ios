@@ -20,26 +20,33 @@
  * THE SOFTWARE.
  */
 
-import FirebaseDatabase
+import Alamofire
+import Cache
 
-class LanguageInteractor: FirebaseDatabaseInteractor, LanguageInteractorInputProtocol {
+class LanguageInteractor: LanguageInteractorInputProtocol {
     weak var presenter: LanguageInteractorOutputProtocol?
+    private var storage: Storage<String, [QuarterlyLanguage]>?
 
-    override func configure() {
-        database = Database.database().reference()
+    func configure() {
+        self.storage = APICache.storage?.transformCodable(ofType: [QuarterlyLanguage].self)
     }
 
     func retrieveLanguages() {
-        database?.child(Constants.Firebase.languages).observe(.value, with: { [weak self] (snapshot) in
-            guard let json = snapshot.data else { return }
-
-            do {
-                let items: [QuarterlyLanguage] = try FirebaseDecoder().decode([QuarterlyLanguage].self, from: json)
-                self?.presenter?.didRetrieveLanguages(languages: items)
-            } catch let error {
-                self?.presenter?.onError(error)
+        let key = "\(Constants.API.HOST)/languages/index.json"
+        if (try? self.storage?.existsObject(forKey: key)) != nil {
+            if let languages = try? self.storage?.entry(forKey: key) {
+                self.presenter?.didRetrieveLanguages(languages: languages.object)
             }
-        })
+        }
+
+        API.session.request(key).responseDecodable(of: [QuarterlyLanguage].self, decoder: Helper.SSJSONDecoder()) { response in
+            guard let languages = response.value else {
+                self.presenter?.onError(response.error)
+                return
+            }
+            self.presenter?.didRetrieveLanguages(languages: languages)
+            try? self.storage?.setObject(languages, forKey: key)
+        }
     }
 
     func saveLanguage(language: QuarterlyLanguage) {

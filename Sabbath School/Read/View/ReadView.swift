@@ -58,12 +58,13 @@ class ReadView: ASCellNode {
 
     var webView: Reader { return webNode.view as! Reader }
 
-    init(lessonInfo: LessonInfo, read: Read, highlights: ReadHighlights, comments: ReadComments, delegate: ReadViewOutputProtocol) {
+    init(lessonInfo: LessonInfo, read: Read, delegate: ReadViewOutputProtocol) {
         self.delegate = delegate
         super.init()
         self.read = read
-        self.highlights = highlights
-        self.comments = comments
+    
+        self.highlights = ReadHighlights(readIndex: read.index, highlights: "")
+        self.comments = ReadComments(readIndex: read.index, comments: [Comment]())
 
         cover.url = lessonInfo.lesson.cover
         cover.placeholderEnabled = true
