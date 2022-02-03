@@ -104,6 +104,8 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
             navBarTitleAlpha = 0
         }
         
+        title = navBarAlpha < 1 ? "" : "Sabbath School".localized()
+        
         setNavigationBarOpacity(alpha: navBarAlpha)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(navBarTitleAlpha)]
     }

@@ -178,12 +178,14 @@ class ReadController: VideoPlaybackDelegatable {
     
     private func setupNavigationBar() {
         let theme = Preferences.currentTheme()
-        setNavigationBarOpacity(alpha: 0)
+        
+        setNavigationBarOpacity(alpha: 1)
         self.navigationController?.navigationBar.hideBottomHairline()
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
         self.navigationController?.navigationBar.barTintColor = theme.navBarColor
         readNavigationBarStyle()
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -341,15 +343,19 @@ class ReadController: VideoPlaybackDelegatable {
         if let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height {
             if -scrollView.contentOffset.y <= UIApplication.shared.statusBarFrame.height + navigationBarHeight {
                 let alpha = 1-(-scrollView.contentOffset.y-navigationBarHeight)/navigationBarHeight
-                // readNavigationBarStyle(titleColor: UIColor.white.withAlphaComponent(alpha))
+                readNavigationBarStyle(titleColor: UIColor.white.withAlphaComponent(alpha))
                 
                 self.navigationController?.navigationBar.titleTextAttributes =
                     [NSAttributedString.Key.foregroundColor: UIColor.transitionColor(fromColor: UIColor.white.withAlphaComponent(alpha), toColor: theme.navBarTextColor, progress:alpha)]
                     
                 self.navigationController?.navigationBar.tintColor = UIColor.transitionColor(fromColor: UIColor.white, toColor: theme.navBarTextColor, progress: alpha)
+
                 setNavigationBarOpacity(alpha: alpha)
                 statusBarUpdate(light: alpha < 1)
                 scrollReachedTouchpoint = alpha >= 1
+                if #available(iOS 13.0, *) {
+                    self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
+                }
             } else {
                 title = ""
                 self.navigationController?.navigationBar.tintColor = .white
@@ -357,6 +363,9 @@ class ReadController: VideoPlaybackDelegatable {
                 setNavigationBarOpacity(alpha: 0)
                 statusBarUpdate(light: true)
                 scrollReachedTouchpoint = false
+//                if #available(iOS 13.0, *) {
+//                    self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.scrollEdgeAppearance
+//                }
             }
         }
 
@@ -436,7 +445,7 @@ extension ReadController: ReadMenuControllerDelegate {
 extension ReadController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         DispatchQueue.main.async(execute: {
-            self.setNavigationBarOpacity(alpha: 0)
+            //self.setNavigationBarOpacity(alpha: 0)
         })
     }
 }
@@ -525,9 +534,6 @@ extension ReadController: ASPagerDataSource {
             }
             
             let read = self.reads[index]
-//            let readHighlights = self.highlights[index]
-//            let readComments = self.comments[index]
-            
             return ReadView(lessonInfo: self.lessonInfo!, read: read, delegate: self)
         }
 

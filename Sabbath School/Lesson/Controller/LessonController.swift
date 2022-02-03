@@ -104,6 +104,8 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
             if #available(iOS 13, *) {
                 setupNavigationbar()
                 scrollBehavior()
+                
+                self.view.frame.origin.y = self.view.frame.origin.y-1
             } else {
                 setNavigationBarOpacity(alpha: 0)
             }
@@ -225,7 +227,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
                 coverHeader.coverImage.frame.origin.y = scrollOffset / 2
             } else {
                 if let cellHeader = self.tableNode?.cellForRow(at: IndexPath(row: 0, section: 0)) {
-                    cellHeader.frame.origin.y = scrollOffset
+                    cellHeader.frame.origin.y = scrollOffset-1
                     cellHeader.frame.size.height = coverHeader.initialCoverHeight + (-scrollOffset)
                     coverHeader.frame.size.height = coverHeader.initialCoverHeight + (-scrollOffset)
                 }
@@ -234,6 +236,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     }
     
     func scrollBehavior() {
+        
         let mn: CGFloat = 0
         let initialOffset: CGFloat = 200
         
@@ -256,6 +259,8 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         
         setNavigationBarOpacity(alpha: navBarAlpha)
         
+        title = navBarAlpha < 1 ? "" : self.dataSource?.quarterly.title
+        
         statusBarUpdate(light: navBarTitleAlpha != 1)
         scrollReachedTouchpoint = navBarTitleAlpha == 1
         
@@ -263,6 +268,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
             [NSAttributedString.Key.foregroundColor: UIColor.transitionColor(fromColor: UIColor.white.withAlphaComponent(navBarAlpha), toColor: AppStyle.Base.Color.navigationTitle, progress:navBarAlpha)]
             
         self.navigationController?.navigationBar.tintColor = UIColor.transitionColor(fromColor: UIColor.white, toColor: AppStyle.Base.Color.navigationTint, progress:navBarAlpha)
+        
         
     }
     
