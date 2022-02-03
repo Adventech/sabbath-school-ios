@@ -98,7 +98,7 @@ struct Constants {
 )
 -?
 (?<week>
-  \d{2}
+  \d{2}|[a-z-]{1,}
 )?
 -?
 (?<day>
