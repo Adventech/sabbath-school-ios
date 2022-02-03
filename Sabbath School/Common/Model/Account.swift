@@ -26,7 +26,7 @@ struct Account: Codable {
     let uid: String
     let displayName: String?
     let email: String?
-    var stsTokenManager: AccountToken
+    let stsTokenManager: AccountToken
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)

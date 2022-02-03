@@ -25,7 +25,7 @@ import Foundation
 struct AccountToken: Codable {
     let apiKey: String
     let refreshToken: String
-    var accessToken: String
+    let accessToken: String
     let expirationTime: Int
     
     init(from decoder: Decoder) throws {
