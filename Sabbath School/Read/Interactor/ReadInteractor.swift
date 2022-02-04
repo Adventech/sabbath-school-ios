@@ -37,9 +37,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
     let dispatchQueue = DispatchQueue(label: "readRetrieve", qos: .background)
     let semaphore = DispatchSemaphore(value: 0)
     
-    init () {
-        self.configure()
-    }
+    init () {}
     
     func configure() {
         checkifReaderBundleNeeded()
@@ -54,7 +52,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
         
         let parsedIndex =  Helper.parseIndex(index: lessonIndex)
         
-        let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/index.json"
+        let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/index.json"
         
         var hasCache = false
         
@@ -98,7 +96,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
 
     func retrieveRead(readIndex: String) {
         let parsedIndex =  Helper.parseIndex(index: readIndex)
-        let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/days/\(parsedIndex.day)/read/index.json"
+        let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/days/\(parsedIndex.day)/read/index.json"
         
         if (try? self.readStorage?.existsObject(forKey: url)) != nil {
             if let read = try? self.readStorage?.entry(forKey: url) {
@@ -140,7 +138,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
     }
 
     func retrieveHighlights(readIndex: String) {
-        API.auth.request("\(Constants.API.HOST)/highlights/\(readIndex)")
+        API.auth.request("\(Constants.API.URL)/highlights/\(readIndex)")
             .customValidate()
             .responseDecodable(of: ReadHighlights.self, decoder: Helper.SSJSONDecoder()) { response in
             guard let readHighlights = response.value else {
@@ -152,7 +150,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
     }
 
     func retrieveComments(readIndex: String) {
-        API.auth.request("\(Constants.API.HOST)/comments/\(readIndex)")
+        API.auth.request("\(Constants.API.URL)/comments/\(readIndex)")
             .customValidate()
             .responseDecodable(of: ReadComments.self, decoder: Helper.SSJSONDecoder()) { response in
             guard let readComments = response.value else {
@@ -168,7 +166,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
             let wrappedHighlights = try JSONSerialization.jsonObject(with: JSONEncoder().encode(highlights), options: .allowFragments) as! [String: Any]
             
             API.auth.request(
-                "\(Constants.API.HOST)/highlights",
+                "\(Constants.API.URL)/highlights",
                 method: .post,
                 parameters: wrappedHighlights,
                 encoding: JSONEncoding.default
@@ -187,7 +185,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
             let wrappedComments = try JSONSerialization.jsonObject(with: JSONEncoder().encode(comments), options: .allowFragments) as! [String: Any]
             
             API.auth.request(
-                "\(Constants.API.HOST)/comments",
+                "\(Constants.API.URL)/comments",
                 method: .post,
                 parameters: wrappedComments,
                 encoding: JSONEncoding.default
@@ -200,41 +198,42 @@ class ReadInteractor: ReadInteractorInputProtocol {
     }
     
     private func checkifReaderBundleNeeded() {
-//        let storage = Storage.storage()
-//        let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
-//
-//        gsReference.getMetadata { [weak self] (metadata, error) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            } else {
-//                if String(describing: metadata?.timeCreated?.timeIntervalSince1970) != Preferences.latestReaderBundleTimestamp() {
-//                    self?.downloadReaderBundle(metadata: metadata!)
-//                } else {}
-//            }
-//        }
+        API.session.request("\(Constants.API.HOST)/reader/\(Constants.API.READER_BUNDLE_FILENAME)", method: .head).responseData { response in
+            if let lastModified = response.response?.allHeaderFields["Last-Modified"] as? String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "EEEE, dd LLL yyyy HH:mm:ss ZZZ"
+                let date = dateFormatter.date(from: lastModified)
+                if let timeInterval = date?.timeIntervalSince1970 {
+                    if (String(format: "%f", timeInterval) != Preferences.latestReaderBundleTimestamp()) {
+                        self.downloadReaderBundle(timeInterval: String(format: "%f", timeInterval))
+                    }
+                }
+            }
+        }
     }
 
-    private func downloadReaderBundle() {
-//        let storage = Storage.storage()
-//        let gsReference = storage.reference(forURL: Constants.Firebase.Storage.ReaderPath.stage)
-//        var localURL = Constants.Path.readerBundleZip
-//
-//        _ = gsReference.write(toFile: localURL) { [weak self] (_, error) in
-//            if let error = error {
-//                self?.presenter?.onError(error)
-//            } else {
-//                do {
-//                    Preferences.userDefaults.set(String(describing: metadata.timeCreated?.timeIntervalSince1970), forKey: Constants.DefaultKey.latestReaderBundleTimestamp)
-//                    var unzipDirectory = try Zip.quickUnzipFile(localURL)
-//                    var resourceValues = URLResourceValues()
-//                    resourceValues.isExcludedFromBackup = true
-//                    try localURL.setResourceValues(resourceValues)
-//                    try unzipDirectory.setResourceValues(resourceValues)
-//                    FontBlaster.blast()
-//                } catch {
-//                    print("unzipping error")
-//                }
-//            }
-//        }
+    private func downloadReaderBundle(timeInterval: String) {
+        var localURL = Constants.Path.readerBundleZip
+        
+        let destination: DownloadRequest.Destination = { _, _ in
+            return (Constants.Path.readerBundleZip, [.removePreviousFile, .createIntermediateDirectories])
+        }
+        
+        API.session.download("\(Constants.API.HOST)/reader/\(Constants.API.READER_BUNDLE_FILENAME)", to: destination)
+            .response { response in
+            if response.error == nil {
+                do {
+                    Preferences.userDefaults.set(timeInterval, forKey: Constants.DefaultKey.latestReaderBundleTimestamp)
+                    var unzipDirectory = try Zip.quickUnzipFile(localURL)
+                    var resourceValues = URLResourceValues()
+                    resourceValues.isExcludedFromBackup = true
+                    try localURL.setResourceValues(resourceValues)
+                    try unzipDirectory.setResourceValues(resourceValues)
+                    FontBlaster.blast()
+                } catch {
+                    print("unzipping error")
+                }
+            }
+        }
     }
 }

@@ -36,7 +36,7 @@ class VideoInteractor {
     
     func retrieveVideo(quarterlyIndex: String, cb: @escaping ([VideoInfo]) -> Void) {
         let parsedIndex =  Helper.parseIndex(index: quarterlyIndex)
-        let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/video.json"
+        let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/video.json"
         
         if (try? self.videoStorage?.existsObject(forKey: url)) != nil {
             if let video = try? self.videoStorage?.entry(forKey: url) {

@@ -38,7 +38,7 @@ class LessonInteractor: LessonInteractorInputProtocol {
 
     func retrieveQuarterlyInfo(quarterlyIndex: String) {
         let parsedIndex =  Helper.parseIndex(index: quarterlyIndex)
-        let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/index.json"
+        let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/index.json"
         
         if (try? self.storage?.existsObject(forKey: url)) != nil {
             if let quarterlyInfo = try? self.storage?.entry(forKey: url) {

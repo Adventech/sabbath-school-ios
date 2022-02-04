@@ -36,7 +36,7 @@ class AudioInteractor {
     
     func retrieveAudio(quarterlyIndex: String, cb: @escaping ([Audio]) -> Void) {
         let parsedIndex =  Helper.parseIndex(index: quarterlyIndex)
-        let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/audio.json"
+        let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/audio.json"
         
         if (try? self.audioStorage?.existsObject(forKey: url)) != nil {
             if let audio = try? self.audioStorage?.entry(forKey: url) {

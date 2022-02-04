@@ -96,7 +96,7 @@ class APIRequestInterceptor: RequestInterceptor {
                 }
                 let wrappedUser = try? JSONSerialization.jsonObject(with: JSONEncoder().encode(currentUser), options: .allowFragments) as? [String: Any]
                 API.session.request(
-                    "\(Constants.API.HOST)/auth/refresh",
+                    "\(Constants.API.URL)/auth/refresh",
                     method: .post,
                     parameters: wrappedUser,
                     encoding: JSONEncoding.default

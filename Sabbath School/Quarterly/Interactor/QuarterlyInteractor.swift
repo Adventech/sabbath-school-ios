@@ -40,7 +40,7 @@ class QuarterlyInteractor: QuarterlyInteractorInputProtocol {
     }
 
     func retrieveQuarterliesForLanguage(language: QuarterlyLanguage) {
-        let url = "\(Constants.API.HOST)/\(language.code)/quarterlies/index.json"
+        let url = "\(Constants.API.URL)/\(language.code)/quarterlies/index.json"
         if (try? self.storage?.existsObject(forKey: url)) != nil {
             if let quarterlies = try? self.storage?.entry(forKey: url) {
                 self.presenter?.didRetrieveQuarterlies(quarterlies: quarterlies.object)

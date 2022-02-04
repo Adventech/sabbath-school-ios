@@ -39,7 +39,7 @@ struct WidgetInteractor {
         getCurrentIndex (indexType: .lessonInfo) { (quarterly: Quarterly?, lessonIndex: String?) in
             if let lessonIndex = lessonIndex, let quarterly = quarterly {
                 let parsedIndex =  Helper.parseIndex(index: lessonIndex)
-                let url = "\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/index.json"
+                let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/index.json"
                 
                 if (try? self.lessonInfoStorage?.existsObject(forKey: url)) != nil {
                     if let lessonInfo = try? self.lessonInfoStorage?.entry(forKey: url) {
@@ -124,7 +124,7 @@ struct WidgetInteractor {
     static func getCurrentIndex(indexType: IndexType, completion: @escaping (Quarterly?, String?) -> Void) {
         let language = PreferencesShared.currentLanguage()
         
-        let url = "\(Constants.API.HOST)/\(language.code)/quarterlies/index.json"
+        let url = "\(Constants.API.URL)/\(language.code)/quarterlies/index.json"
         
         if (try? self.quarterlyStorage?.existsObject(forKey: url)) != nil {
             if let quarterlies = try? self.quarterlyStorage?.entry(forKey: url) {

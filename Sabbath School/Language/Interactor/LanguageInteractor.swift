@@ -32,7 +32,7 @@ class LanguageInteractor: LanguageInteractorInputProtocol {
     }
 
     func retrieveLanguages() {
-        let key = "\(Constants.API.HOST)/languages/index.json"
+        let key = "\(Constants.API.URL)/languages/index.json"
         if (try? self.storage?.existsObject(forKey: key)) != nil {
             if let languages = try? self.storage?.entry(forKey: key) {
                 self.presenter?.didRetrieveLanguages(languages: languages.object)

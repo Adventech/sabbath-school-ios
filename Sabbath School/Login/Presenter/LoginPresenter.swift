@@ -104,7 +104,7 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
     
     func performLogin(credentials: [String: Any], loginType: LoginType) {
         AF.request(
-            "\(Constants.API.HOST)/auth/signin/\(loginType.param)",
+            "\(Constants.API.URL)/auth/signin/\(loginType.param)",
             method: .post,
             parameters: credentials,
             encoding: JSONEncoding.default

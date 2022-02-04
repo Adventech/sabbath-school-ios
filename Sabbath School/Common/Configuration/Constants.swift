@@ -72,11 +72,13 @@ struct Constants {
     struct API {
         #if DEBUG
         static let GOOGLE_CLIENT_ID = "96814818762-k7l0r7no343dms51ss59q6c5dslujcu7.apps.googleusercontent.com"
-        static let HOST = "https://sabbath-school-stage.adventech.io/api/v2"
+        static let HOST = "https://sabbath-school-stage.adventech.io"
         #else
         static let GOOGLE_CLIENT_ID = "443920152945-d0kf5h2dubt0jbcntq8l0qeg6lbpgn60.apps.googleusercontent.com"
-        static let HOST = "https://sabbath-school.adventech.io/api/v2"
+        static let HOST = "https://sabbath-school.adventech.io"
         #endif
+        static let URL = "\(Constants.API.HOST)/api/v2"
+        static let READER_BUNDLE_FILENAME = "sabbath-school-reader-latest.zip"
     }
     
     struct URLs {

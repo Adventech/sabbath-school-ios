@@ -133,7 +133,7 @@ class PDFReadController: VideoPlaybackDelegatable {
     
     func getPDFs(cb: @escaping ([PDF]) -> Void) {
         let parsedIndex =  Helper.parseIndex(index: lessonIndex)
-        API.session.request("\(Constants.API.HOST)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/index.json").responseDecodable(of: LessonInfo.self, decoder: Helper.SSJSONDecoder()) { response in
+        API.session.request("\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/index.json").responseDecodable(of: LessonInfo.self, decoder: Helper.SSJSONDecoder()) { response in
             guard let item = response.value else {
                 return
             }
@@ -154,7 +154,7 @@ class PDFReadController: VideoPlaybackDelegatable {
     func retrieveAnnotations() {
         dispatchQueue.async {
             for (index, pdf) in self.pdfs.enumerated() {
-                API.auth.request("\(Constants.API.HOST)/annotations/\(self.lessonIndex)/\(pdf.id)")
+                API.auth.request("\(Constants.API.URL)/annotations/\(self.lessonIndex)/\(pdf.id)")
                     .customValidate()
                     .responseDecodable(of: [PDFAnnotations].self, decoder: Helper.SSJSONDecoder()) { response in
                     switch response.result {
@@ -222,7 +222,7 @@ extension PDFReadController: PDFReadControllerDelegate {
                     let data = try JSONSerialization.jsonObject(with: try JSONEncoder().encode(allAnnotations), options: .allowFragments)
                     
                     API.auth.request(
-                        "\(Constants.API.HOST)/annotations/\(self.lessonIndex)/\(self.pdfs[index].id)",
+                        "\(Constants.API.URL)/annotations/\(self.lessonIndex)/\(self.pdfs[index].id)",
                         method: .post,
                         parameters: [ "data": data ],
                         encoding: JSONEncoding.default)
