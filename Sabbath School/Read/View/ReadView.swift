@@ -23,6 +23,7 @@
 import AsyncDisplayKit
 import SwiftDate
 import UIKit
+import WebKit
 
 protocol ReadViewOutputProtocol: AnyObject {
     func didTapCopy()
@@ -32,7 +33,7 @@ protocol ReadViewOutputProtocol: AnyObject {
     func didTapHighlight(color: String)
     func didClickVerse(read: Read, verse: String)
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
-    func didLoadWebView(webView: UIWebView)
+    func didLoadWebView(webView: WKWebView)
     func didReceiveHighlights(readHighlights: ReadHighlights)
     func didReceiveComment(readComments: ReadComments)
     func didReceiveCopy(text: String)
@@ -128,8 +129,9 @@ class ReadView: ASCellNode {
 
         webView.backgroundColor = .clear
         webView.scrollView.delegate = self
-        webView.delegate = self
-        webView.alpha = 0
+        webView.navigationDelegate = self
+        webView.alpha = 0.1
+        webView.scrollView.backgroundColor = .clear
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.contentOffset.y = -self.parallaxCoverHeight
         // webView.scrollView.setNeedsLayout()
@@ -183,12 +185,18 @@ extension ReadView: UIScrollViewDelegate {
     }
 }
 
-extension ReadView: UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        return (webView as! Reader).shouldStartLoad(request: request, navigationType: navigationType)
+extension ReadView: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let r = webView as! Reader
+        if r.shouldStartLoad(request: navigationAction.request, navigationType: navigationAction.navigationType) {
+            decisionHandler(.allow)
+        } else {
+            decisionHandler(.cancel)
+        }
+        
     }
 
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    func didFinishNavigation(_ webView: WKWebView) {
         (webView as! Reader).contextMenuEnabled = true
 
         if !webView.isLoading {

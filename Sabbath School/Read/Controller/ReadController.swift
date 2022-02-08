@@ -593,7 +593,7 @@ extension ReadController: ReadViewOutputProtocol {
         UIMenuController.shared.menuItems = []
     }
 
-    func didLoadWebView(webView: UIWebView) {
+    func didLoadWebView(webView: WKWebView) {
         if abs(webView.scrollView.contentOffset.y) > 0 {
             initialContentOffset = -webView.scrollView.contentOffset.y
         }
