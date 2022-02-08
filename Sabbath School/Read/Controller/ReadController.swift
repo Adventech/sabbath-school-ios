@@ -418,6 +418,12 @@ class ReadController: VideoPlaybackDelegatable {
             self.collectionNode.scrollToPage(at: self.lastPage ?? 1, animated: false)
             self.isTransitionInProgress = false
         }
+
+        if Helper.isPad {
+            highlights.forEach { highlight in
+                setHighlights(highlights: highlight)
+            }
+        }
     }
     
     override var previewActionItems: [UIPreviewActionItem] {
@@ -505,6 +511,10 @@ extension ReadController: ReadControllerProtocol {
     }
     
     func setHighlights(highlights: ReadHighlights) {
+        if Helper.isPad {
+            self.highlights.append(highlights)
+        }
+        
         if let index = self.reads.firstIndex(where: { $0.index == highlights.readIndex }) {
             if let readView = self.collectionNode.nodeForPage(at: index) as? ReadView {
                 readView.highlights = highlights
@@ -603,6 +613,10 @@ extension ReadController: ReadViewOutputProtocol {
     }
 
     func didReceiveHighlights(readHighlights: ReadHighlights) {
+        if Helper.isPad {
+            highlights.append(readHighlights)
+        }
+        
         presenter?.interactor?.saveHighlights(highlights: readHighlights)
     }
 
