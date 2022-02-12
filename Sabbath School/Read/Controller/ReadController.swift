@@ -480,7 +480,10 @@ extension ReadController: ReadControllerProtocol {
 
         guard finish else { return }
         self.finished = finish
-        self.collectionNode.reloadData()
+        
+        DispatchQueue.main.async {
+            self.collectionNode.reloadData()
+        }
         
         if let readIndex = readIndex {
             if 0...self.reads.count ~= readIndex {

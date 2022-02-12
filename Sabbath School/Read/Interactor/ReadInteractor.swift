@@ -41,6 +41,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
     
     func configure() {
         checkifReaderBundleNeeded()
+        self.lessonInfoStorage = APICache.storage?.transformCodable(ofType: LessonInfo.self)
         self.readStorage = APICache.storage?.transformCodable(ofType: Read.self)
         self.highlightStorage = APICache.storage?.transformCodable(ofType: ReadHighlights.self)
         self.commentStorage = APICache.storage?.transformCodable(ofType: ReadComments.self)
@@ -98,9 +99,13 @@ class ReadInteractor: ReadInteractorInputProtocol {
         let parsedIndex =  Helper.parseIndex(index: readIndex)
         let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/days/\(parsedIndex.day)/read/index.json"
         
+        var found: Bool = false
+        
         if (try? self.readStorage?.existsObject(forKey: url)) != nil {
             if let read = try? self.readStorage?.entry(forKey: url) {
                 self.presenter?.didRetrieveRead(read: read.object, ticker: self.ticker)
+                found = true
+                self.semaphore.signal()
             }
         }
         
@@ -108,16 +113,22 @@ class ReadInteractor: ReadInteractorInputProtocol {
             .responseDecodable(of: Read.self, decoder: Helper.SSJSONDecoder()) { response in
             guard let read = response.value else {
                 self.presenter?.onError(response.error)
-                self.semaphore.signal()
+                if !found {
+                    self.semaphore.signal()
+                }
                 return
             }
+            try? self.readStorage?.setObject(read, forKey: url)
+            
             
             self.presenter?.didRetrieveRead(
                 read: read,
                 ticker: self.ticker
             )
-            try? self.readStorage?.setObject(read, forKey: url)
-            self.semaphore.signal()
+            
+            if !found {
+                self.semaphore.signal()
+            }
         }
     }
     
