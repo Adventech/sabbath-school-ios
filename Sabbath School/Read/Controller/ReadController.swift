@@ -418,6 +418,28 @@ class ReadController: VideoPlaybackDelegatable {
             self.collectionNode.scrollToPage(at: self.lastPage ?? 1, animated: false)
             self.isTransitionInProgress = false
         }
+
+        if Helper.isPad {
+            highlights.forEach { highlight in
+                setHighlights(highlights: highlight)
+            }
+            
+            comments.forEach { comment in
+                setComments(comments: comment)
+            }
+        }
+    }
+    
+    private func updateCommentsListWhenRotateIpad(readComments: ReadComments) {
+        if Helper.isPad {
+            if !comments.filter({ $0.readIndex == readComments.readIndex }).isEmpty {
+                for (i, comment) in comments.enumerated() where comment.readIndex == readComments.readIndex {
+                    comments[i] = readComments
+                }
+            } else {
+                comments.append(readComments)
+            }
+        }
     }
     
     override var previewActionItems: [UIPreviewActionItem] {
@@ -508,6 +530,10 @@ extension ReadController: ReadControllerProtocol {
     }
     
     func setHighlights(highlights: ReadHighlights) {
+        if Helper.isPad {
+            self.highlights.append(highlights)
+        }
+        
         if let index = self.reads.firstIndex(where: { $0.index == highlights.readIndex }) {
             if let readView = self.collectionNode.nodeForPage(at: index) as? ReadView {
                 readView.highlights = highlights
@@ -520,6 +546,9 @@ extension ReadController: ReadControllerProtocol {
         if let index = self.reads.firstIndex(where: { $0.index == comments.readIndex }) {
             if let readView = self.collectionNode.nodeForPage(at: index) as? ReadView {
                 readView.comments = comments
+                if !comments.comments.isEmpty {
+                    updateCommentsListWhenRotateIpad(readComments: comments)
+                }
                 for comment in comments.comments {
                     readView.webView.setComment(comment)
                 }
@@ -606,10 +635,15 @@ extension ReadController: ReadViewOutputProtocol {
     }
 
     func didReceiveHighlights(readHighlights: ReadHighlights) {
+        if Helper.isPad {
+            highlights.append(readHighlights)
+        }
+        
         presenter?.interactor?.saveHighlights(highlights: readHighlights)
     }
 
     func didReceiveComment(readComments: ReadComments) {
+        updateCommentsListWhenRotateIpad(readComments: readComments)
         presenter?.interactor?.saveComments(comments: readComments)
     }
 
