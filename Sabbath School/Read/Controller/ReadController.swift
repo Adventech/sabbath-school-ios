@@ -496,6 +496,7 @@ extension ReadController: ReadControllerProtocol {
     func showRead(read: Read, finish: Bool) {
         if let index = self.reads.firstIndex(where: { $0.index == read.index }) {
             self.reads[index] = read
+            return
         } else {
             self.reads.append(read)
         }
