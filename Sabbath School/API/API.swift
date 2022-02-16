@@ -130,13 +130,15 @@ class API: NSObject {
     static let auth: Session = {
         let interceptor = APIRequestInterceptor()
         let configuration = URLSessionConfiguration.af.default
+        configuration.urlCache = nil
         let responseCacher = ResponseCacher(behavior: .doNotCache)
-        return Session(configuration: configuration, interceptor: interceptor)
+        return Session(configuration: configuration, interceptor: interceptor, cachedResponseHandler: responseCacher)
     }()
     
     static let session: Session = {
         let configuration = URLSessionConfiguration.af.default
+        configuration.urlCache = nil
         let responseCacher = ResponseCacher(behavior: .doNotCache)
-        return Session(configuration: configuration)
+        return Session(configuration: configuration, cachedResponseHandler: responseCacher)
     }()
 }

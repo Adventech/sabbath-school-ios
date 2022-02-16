@@ -30,8 +30,8 @@ class APICache: NSObject {
     private override init() {}
     
     static func configure() {
-        let diskConfig = DiskConfig(name: "Disk", expiry: .never, maxSize: 1024*1024*500)
-        let memoryConfig = MemoryConfig(expiry: .never, countLimit: 100, totalCostLimit: 10)
+        let diskConfig = DiskConfig(name: "Disk", expiry: .never, maxSize: 1024*1024*1024*500)
+        let memoryConfig = MemoryConfig(expiry: .never, countLimit: 10000, totalCostLimit: 0)
 
         self.storage = try? Storage(
             diskConfig: diskConfig,

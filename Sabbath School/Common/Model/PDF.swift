@@ -30,6 +30,10 @@ struct PDF: Codable {
     let startDate: Date
     let endDate: Date
     
+    enum CodingKeys: CodingKey {
+      case id, src, title, target, startDate, endDate
+    }
+    
     // Mock
     init(title: String) {
         self.id = "en-2021-03-13"
@@ -48,5 +52,15 @@ struct PDF: Codable {
         target = try values.decode(String.self, forKey: .target)
         startDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .startDate))!
         endDate = Date.serverDateFormatter().date(from: try values.decode(String.self, forKey: .endDate))!
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(src, forKey: .src)
+        try container.encode(title, forKey: .title)
+        try container.encode(target, forKey: .target)
+        try container.encode(Date.serverDateFormatter().string(from: startDate), forKey: .startDate)
+        try container.encode(Date.serverDateFormatter().string(from: endDate), forKey: .endDate)
     }
 }
