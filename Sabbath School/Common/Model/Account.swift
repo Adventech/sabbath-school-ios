@@ -28,11 +28,79 @@ struct Account: Codable {
     let email: String?
     let stsTokenManager: AccountToken
     
+    init(uid: String, displayName: String?, email: String?, stsTokenManager: AccountToken) {
+        self.uid = uid
+        self.displayName = displayName
+        self.email = email
+        self.stsTokenManager = stsTokenManager
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         uid = try values.decode(String.self, forKey: .uid)
         displayName = try? values.decode(String.self, forKey: .displayName)
         email = try? values.decode(String.self, forKey: .email)
         stsTokenManager = try values.decode(AccountToken.self, forKey: .stsTokenManager)
+    }
+}
+
+class FIRUserTokenService: NSObject, NSSecureCoding {
+    static var supportsSecureCoding: Bool = true
+    var refreshToken: String
+    var accessToken: String
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(self.refreshToken, forKey: "refreshToken")
+        coder.encode(self.accessToken, forKey: "accessToken")
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        self.refreshToken = ""
+        self.accessToken = ""
+        
+        if let refreshToken = aDecoder.decodeObject(forKey: "refreshToken") as? String {
+            self.refreshToken = refreshToken
+        }
+        if let accessToken = aDecoder.decodeObject(forKey: "accessToken") as? String {
+            self.accessToken = accessToken
+        }
+        
+    }
+}
+
+class FIRUser: NSObject, NSSecureCoding {
+    static var supportsSecureCoding: Bool = true
+    
+    var tokenService: FIRUserTokenService?
+    var apiKey: String
+    var email: String?
+    var displayName: String?
+    var uid: String
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(self.tokenService, forKey: "tokenService")
+        coder.encode(self.apiKey, forKey: "apiKey")
+        coder.encode(self.uid, forKey: "uid")
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        self.apiKey = ""
+        self.uid = ""
+        
+        if let tokenService = try? aDecoder.decodeTopLevelObject(of: FIRUserTokenService.self, forKey: "tokenService") {
+            self.tokenService = tokenService
+        }
+        if let apiKey = aDecoder.decodeObject(forKey: "APIKey") as? String {
+            self.apiKey = apiKey
+        }
+        if let uid = aDecoder.decodeObject(forKey: "userID") as? String {
+            self.uid = uid
+        }
+        if let email = aDecoder.decodeObject(forKey: "email") as? String {
+            self.email = email
+        }
+        if let displayName = aDecoder.decodeObject(forKey: "displayName") as? String {
+            self.displayName = displayName
+        }
     }
 }
