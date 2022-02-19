@@ -90,7 +90,7 @@ struct Constants {
         #else
         static let web = "https://sabbath-school.adventech.io/"
         #endif
-        static let webReplacementRegex = "api/v1|v2/|quarterlies/|lessons/|days/|read/"
+        static let webReplacementRegex = "api/v1|api/v2/|quarterlies/|lessons/|days/|read/"
         
         static let indexPattern = #"""
 (?xi)
