@@ -137,7 +137,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
 extension UINavigationBar {
     func hideBottomHairline() {
         let navigationBarImageView = hairlineImageViewInNavigationBar(self)
-        navigationBarImageView!.isHidden = true
+        navigationBarImageView?.isHidden = true
     }
 
     func showBottomHairline() {

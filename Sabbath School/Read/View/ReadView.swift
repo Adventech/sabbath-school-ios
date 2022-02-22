@@ -140,6 +140,7 @@ class ReadView: ASCellNode {
         webView.readerViewDelegate = self
         webView.loadContent(content: read!.content)
         
+        webView.scrollView.scrollToTop(animated: true)
         // parallax()
     }
 
