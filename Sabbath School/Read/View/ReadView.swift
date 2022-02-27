@@ -23,16 +23,14 @@
 import AsyncDisplayKit
 import SwiftDate
 import UIKit
+import WebKit
 
 protocol ReadViewOutputProtocol: AnyObject {
-    func didTapCopy()
-    func didTapShare()
-    func didTapLookup()
     func didTapClearHighlight()
     func didTapHighlight(color: String)
     func didClickVerse(read: Read, verse: String)
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
-    func didLoadWebView(webView: UIWebView)
+    func didLoadWebView(webView: WKWebView)
     func didReceiveHighlights(readHighlights: ReadHighlights)
     func didReceiveComment(readComments: ReadComments)
     func didReceiveCopy(text: String)
@@ -131,7 +129,9 @@ class ReadView: ASCellNode {
 
         webView.backgroundColor = .clear
         webView.scrollView.delegate = self
-        webView.delegate = self
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+        webView.isOpaque = false
         webView.alpha = 0
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.contentOffset.y = -self.parallaxCoverHeight
@@ -186,16 +186,66 @@ extension ReadView: UIScrollViewDelegate {
     }
 }
 
-extension ReadView: UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        return (webView as! Reader).shouldStartLoad(request: request, navigationType: navigationType)
-    }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+extension ReadView: WKNavigationDelegate, WKUIDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
         (webView as! Reader).contextMenuEnabled = true
 
         if !webView.isLoading {
             self.delegate?.didLoadWebView(webView: webView)
+        }
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        var action: WKNavigationActionPolicy?
+        
+        defer {
+            decisionHandler(action ?? .allow)
+        }
+        
+        guard let url = navigationAction.request.url else { return }
+        
+        if url.valueForParameter(key: "ready") != nil {
+            ready()
+            action = .cancel
+        }
+
+        if let text = url.valueForParameter(key: "copy") {
+            didReceiveCopy(text: text)
+            action = .cancel
+        }
+
+        if let text = url.valueForParameter(key: "share") {
+            didReceiveShare(text: text)
+            action = .cancel
+        }
+        
+        if let text = url.valueForParameter(key: "search") {
+            didReceiveLookup(text: text)
+            action = .cancel
+        }
+
+        if let verse = url.valueForParameter(key: "verse"), let decoded = verse.base64Decode() {
+            didClickVerse(verse: decoded)
+            action = .cancel
+        }
+
+        if let highlights = url.valueForParameter(key: "highlights") {
+            didReceiveHighlights(highlights: highlights)
+            action = .cancel
+        }
+
+        if let comment = url.valueForParameter(key: "comment"), let decodedComment = comment.base64Decode() {
+            if let elementId = url.valueForParameter(key: "elementId") {
+                didReceiveComment(comment: decodedComment, elementId: elementId)
+                action = .cancel
+            }
+            action = .cancel
+        }
+
+        if let scheme = url.scheme, (scheme == "http" || scheme == "https"), navigationAction.navigationType == .linkActivated {
+            didTapExternalUrl(url: url)
+            action = .cancel
         }
     }
 }
@@ -217,18 +267,6 @@ extension ReadView: ReaderOutputProtocol {
 
     func didTapClearHighlight() {
         self.delegate?.didTapClearHighlight()
-    }
-
-    func didTapCopy() {
-        self.delegate?.didTapCopy()
-    }
-
-    func didTapShare() {
-        self.delegate?.didTapShare()
-    }
-    
-    func didTapLookup() {
-        self.delegate?.didTapLookup()
     }
 
     func didTapHighlight(color: String) {

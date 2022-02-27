@@ -27,6 +27,7 @@ import SwiftAudio
 import AVKit
 import PSPDFKit
 import PSPDFKitUI
+import WebKit
 
 class ReadController: VideoPlaybackDelegatable {
     var delegate: ReadControllerDelegate?
@@ -592,17 +593,6 @@ extension ReadController: ASCollectionDelegate {
 }
 
 extension ReadController: ReadViewOutputProtocol {
-    func didTapCopy() {
-        (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.copyText()
-    }
-
-    func didTapShare() {
-        (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.shareText()
-    }
-    
-    func didTapLookup() {
-        (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.lookupText()
-    }
 
     func didTapClearHighlight() {
         (collectionNode.nodeForPage(at: collectionNode.currentPageIndex) as! ReadView).webView.clearHighlight()
@@ -622,7 +612,7 @@ extension ReadController: ReadViewOutputProtocol {
         UIMenuController.shared.menuItems = []
     }
 
-    func didLoadWebView(webView: UIWebView) {
+    func didLoadWebView(webView: WKWebView) {
         if abs(webView.scrollView.contentOffset.y) > 0 {
             initialContentOffset = -webView.scrollView.contentOffset.y
         }

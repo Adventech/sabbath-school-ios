@@ -22,6 +22,7 @@
 
 import MenuItemKit
 import UIKit
+import WebKit
 
 struct ReaderStyle {
     enum Theme: String {
@@ -123,9 +124,6 @@ protocol ReaderOutputProtocol: AnyObject {
     func ready()
     func didTapClearHighlight()
     func didTapHighlight(color: String)
-    func didTapCopy()
-    func didTapShare()
-    func didTapLookup()
     func didLoadContent(content: String)
     func didClickVerse(verse: String)
     func didReceiveHighlights(highlights: String)
@@ -136,7 +134,7 @@ protocol ReaderOutputProtocol: AnyObject {
     func didTapExternalUrl(url: URL)
 }
 
-open class Reader: UIWebView {
+open class Reader: WKWebView {
     weak var readerViewDelegate: ReaderOutputProtocol?
     var menuVisible = false
     var contextMenuEnabled = false
@@ -162,19 +160,7 @@ open class Reader: UIWebView {
             self?.readerViewDelegate?.didTapClearHighlight()
         }
 
-        let copy = UIMenuItem(title: "Copy".localized()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapCopy()
-        }
-
-        let share = UIMenuItem(title: "Share".localized()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapShare()
-        }
-        
-        let lookup = UIMenuItem(title: "Look Up".localized()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapLookup()
-        }
-        
-        UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, lookup, share]
+        UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight]
     }
 
     func setupContextMenu() {
@@ -189,31 +175,13 @@ open class Reader: UIWebView {
     }
 
     func highlight(color: String) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.highlightSelection('"+color+"');")
-        self.isUserInteractionEnabled = false
-        self.isUserInteractionEnabled = true
-    }
-
-    func copyText() {
-        self.stringByEvaluatingJavaScript(from: "ssReader.copy()")
-        self.isUserInteractionEnabled = false
-        self.isUserInteractionEnabled = true
-    }
-
-    func shareText() {
-        self.stringByEvaluatingJavaScript(from: "ssReader.share()")
-        self.isUserInteractionEnabled = false
-        self.isUserInteractionEnabled = true
-    }
-    
-    func lookupText() {
-        self.stringByEvaluatingJavaScript(from: "ssReader.search()")
+        evaluateJavaScript("ssReader.highlightSelection('"+color+"');")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
     
     func clearHighlight() {
-        self.stringByEvaluatingJavaScript(from: "ssReader.unHighlightSelection()")
+        evaluateJavaScript("ssReader.unHighlightSelection()")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
@@ -249,80 +217,33 @@ open class Reader: UIWebView {
         index = index?.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size.rawValue)
 
         if exists {
-            self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir)
+            try? index?.write(toFile: Constants.Path.readerBundle.path, atomically: true, encoding: .utf8)
+            loadFileURL(Constants.Path.readerBundle, allowingReadAccessTo: Constants.Path.readerBundleDir)
+//            self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir)
         } else {
-            self.loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+            loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
         }
 
         self.readerViewDelegate?.didLoadContent(content: index!)
     }
 
-    func shouldStartLoad(request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        guard let url = request.url else { return false }
-
-        if url.valueForParameter(key: "ready") != nil {
-            self.readerViewDelegate?.ready()
-            return false
-        }
-
-        if let text = url.valueForParameter(key: "copy") {
-            self.readerViewDelegate?.didReceiveCopy(text: text)
-            return false
-        }
-
-        if let text = url.valueForParameter(key: "share") {
-            self.readerViewDelegate?.didReceiveShare(text: text)
-            return false
-        }
-        
-        if let text = url.valueForParameter(key: "search") {
-            self.readerViewDelegate?.didReceiveLookup(text: text)
-            return false
-        }
-
-        if let verse = url.valueForParameter(key: "verse"), let decoded = verse.base64Decode() {
-            self.readerViewDelegate?.didClickVerse(verse: decoded)
-            return false
-        }
-
-        if let highlights = url.valueForParameter(key: "highlights") {
-            self.readerViewDelegate?.didReceiveHighlights(highlights: highlights)
-            return false
-        }
-
-        if let comment = url.valueForParameter(key: "comment"), let decodedComment = comment.base64Decode() {
-            if let elementId = url.valueForParameter(key: "elementId") {
-                self.readerViewDelegate?.didReceiveComment(comment: decodedComment, elementId: elementId)
-                return false
-            }
-            return false
-        }
-
-        if let scheme = url.scheme, (scheme == "http" || scheme == "https"), navigationType == .linkClicked {
-            self.readerViewDelegate?.didTapExternalUrl(url: url)
-            return false
-        }
-
-        return true
-    }
-
     func setTheme(_ theme: ReaderStyle.Theme) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setTheme('"+theme.rawValue+"')")
+        evaluateJavaScript("ssReader.setTheme('"+theme.rawValue+"')")
     }
 
     func setTypeface(_ typeface: ReaderStyle.Typeface) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setFont('"+typeface.rawValue+"')")
+        evaluateJavaScript("ssReader.setFont('"+typeface.rawValue+"')")
     }
 
     func setSize(_ size: ReaderStyle.Size) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setSize('"+size.rawValue+"')")
+        evaluateJavaScript("ssReader.setSize('"+size.rawValue+"')")
     }
 
     func setHighlights(_ highlights: String) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setHighlights('"+highlights+"')")
+        evaluateJavaScript("ssReader.setHighlights('"+highlights+"')")
     }
 
     func setComment(_ comment: Comment) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setComment('"+comment.comment.base64Encode()!+"', '"+comment.elementId+"')")
+        evaluateJavaScript("ssReader.setComment('"+comment.comment.base64Encode()!+"', '"+comment.elementId+"')")
     }
 }
