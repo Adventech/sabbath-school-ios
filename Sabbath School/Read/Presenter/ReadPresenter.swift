@@ -96,7 +96,7 @@ extension ReadPresenter: ReadInteractorOutputProtocol {
     }
 
     func didRetrieveRead(read: Read, ticker: Int = 0) {
-        controller?.showRead(read: read, finish: ticker == 0)
+        controller?.showRead(read: read, finish: ticker <= 0)
     }
 
     func didRetrieveLessonInfo(lessonInfo: LessonInfo) {

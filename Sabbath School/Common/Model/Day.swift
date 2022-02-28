@@ -33,6 +33,10 @@ struct Day: Codable {
     let fullReadPath: URL
     var webURL: URL
     
+    enum CodingKeys: CodingKey {
+      case id, title, date, index, path, readPath, fullPath, fullReadPath, webURL
+    }
+    
     // Mock
     init(title: String) {
         self.id = "-"
@@ -57,5 +61,18 @@ struct Day: Codable {
         fullPath = try values.decode(URL.self, forKey: .fullPath)
         fullReadPath = try values.decode(URL.self, forKey: .fullReadPath)
         webURL = URL.init(string: fullPath.absoluteString.replacingOccurrences(of: Constants.URLs.webReplacementRegex, with: "", options: [.regularExpression]))!
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(Date.serverDateFormatter().string(from: date), forKey: .date)
+        try container.encode(index, forKey: .index)
+        try container.encode(path, forKey: .path)
+        try container.encode(readPath, forKey: .readPath)
+        try container.encode(fullPath, forKey: .fullPath)
+        try container.encode(fullReadPath, forKey: .fullReadPath)
+        try container.encode(webURL, forKey: .webURL)
     }
 }

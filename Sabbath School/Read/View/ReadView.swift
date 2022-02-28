@@ -97,6 +97,9 @@ class ReadView: ASCellNode {
 
                 self.date.frame.origin.y -= (self.initialCoverHeight - parallaxCoverHeight) / 1.3
                 self.date.alpha = self.parallaxCoverHeight * (1/self.initialCoverHeight)
+                
+                let topInset = coverOverlay.frame.size.height * parallaxCoverHeight * 1/initialCoverHeight
+                webView.scrollView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
             } else {
                 self.coverOverlay.frame.size = CGSize(width: coverOverlay.calculatedSize.width, height: parallaxCoverHeight)
                 self.cover.frame.size = CGSize(width: cover.calculatedSize.width, height: parallaxCoverHeight)
@@ -139,6 +142,7 @@ class ReadView: ASCellNode {
         webView.readerViewDelegate = self
         webView.loadContent(content: read!.content)
         
+        webView.scrollView.scrollToTop(animated: true)
         // parallax()
     }
 
@@ -149,8 +153,7 @@ class ReadView: ASCellNode {
         
         DispatchQueue.main.async {
             let isPlaying = AudioPlayback.shared.playerState == .playing
-            self.webView.scrollView.contentInset = UIEdgeInsets(top: self.initialCoverHeight, left: 0, bottom: isPlaying ? 50 : 0, right: 0)
-//            self.webView.scrollView.contentInset.top = self.initialCoverHeight
+            self.webView.scrollView.contentInset.bottom = isPlaying ? 50 : 0
         }
         title.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
         date.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))

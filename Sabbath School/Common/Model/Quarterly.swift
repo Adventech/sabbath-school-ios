@@ -48,6 +48,10 @@ struct Quarterly: Codable {
     let features: [Feature]
     let quarterlyGroup: QuarterlyGroup?
     
+    enum CodingKeys: CodingKey {
+      case id, title, description, humanDate, startDate, endDate, cover, splash, colorPrimary, colorPrimaryDark, index, path, fullPath, lang, webURL, quarterlyName, introduction, credits, features, quarterlyGroup
+    }
+    
     // Mock
     init(title: String) {
         self.id = "-"
@@ -94,5 +98,34 @@ struct Quarterly: Codable {
         credits = values.contains(.credits) ? try values.decode(Array<Credits>.self, forKey: .credits) : Array<Credits>()
         features = values.contains(.features) ? try values.decode(Array<Feature>.self, forKey: .features) : Array<Feature>()
         quarterlyGroup = values.contains(.quarterlyGroup) ? try values.decode(QuarterlyGroup.self, forKey: .quarterlyGroup) : nil
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(description, forKey: .description)
+        try container.encode(humanDate, forKey: .humanDate)
+        try container.encode(Date.serverDateFormatter().string(from: startDate), forKey: .startDate)
+        try container.encode(Date.serverDateFormatter().string(from: endDate), forKey: .endDate)
+        try container.encode(cover, forKey: .cover)
+        if splash != nil {
+            try container.encode(splash, forKey: .splash)
+        }
+        try container.encode(colorPrimary, forKey: .colorPrimary)
+        try container.encode(colorPrimaryDark, forKey: .colorPrimaryDark)
+        try container.encode(index, forKey: .index)
+        try container.encode(path, forKey: .path)
+        try container.encode(fullPath, forKey: .fullPath)
+        try container.encode(lang, forKey: .lang)
+        try container.encode(webURL, forKey: .webURL)
+        try container.encode(quarterlyName ?? "", forKey: .quarterlyName)
+        try container.encode(introduction, forKey: .introduction)
+        try container.encode(credits, forKey: .credits)
+        try container.encode(features, forKey: .features)
+        if quarterlyGroup != nil {
+            try container.encode(quarterlyGroup, forKey: .quarterlyGroup)
+        }
+        
     }
 }
