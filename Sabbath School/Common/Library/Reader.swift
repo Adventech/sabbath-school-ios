@@ -216,15 +216,17 @@ open class Reader: WKWebView {
         index = index?.replacingOccurrences(of: "ss-wrapper-andada", with: "ss-wrapper-"+typeface.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size.rawValue)
 
+        guard let index = index else { return }
+        
         if exists {
-            try? index?.write(toFile: Constants.Path.readerBundle.path, atomically: true, encoding: .utf8)
+            // looks like WKWebView doesn't allow access local resources from the Documents folder using loadHTMLString, but when I use loadFileURL allowingReadAccessTo allow to load js and css files from local filesystem, remove this when possible.
             loadFileURL(Constants.Path.readerBundle, allowingReadAccessTo: Constants.Path.readerBundleDir)
-//            self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir)
+            loadHTMLString(index, baseURL: Constants.Path.readerBundleDir)
         } else {
-            loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+            loadHTMLString(index, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
         }
 
-        self.readerViewDelegate?.didLoadContent(content: index!)
+        self.readerViewDelegate?.didLoadContent(content: index)
     }
 
     func setTheme(_ theme: ReaderStyle.Theme) {
