@@ -136,12 +136,18 @@ class ReadView: ASCellNode {
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.contentOffset.y = -self.parallaxCoverHeight
         // webView.scrollView.setNeedsLayout()
-
+        configureWKWebView()
         webView.readerViewDelegate = self
         webView.loadContent(content: read!.content)
         
         webView.scrollView.scrollToTop(animated: true)
         // parallax()
+    }
+    
+    private func configureWKWebView() {
+        let disableWKWebViewZoomScript = WKUserScript(source: Constants.WKUserScripts.disableWKWebViewZoom, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        
+        webView.configuration.userContentController.addUserScript(disableWKWebViewZoomScript)
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

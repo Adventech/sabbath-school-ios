@@ -186,11 +186,6 @@ open class Reader: WKWebView {
         self.isUserInteractionEnabled = true
     }
 
-    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if !contextMenuEnabled { return super.canPerformAction(action, withSender: sender) }
-        return false
-    }
-
     func loadContent(content: String) {
         var indexPath = Bundle.main.path(forResource: "index", ofType: "html")
 
