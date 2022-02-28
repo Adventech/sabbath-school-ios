@@ -225,10 +225,11 @@ open class Reader: WKWebView {
     }
 
     func loadContent(content: String) {
-        print("SSDEBUG loading")
         var indexPath = Bundle.main.path(forResource: "index", ofType: "html")
+        
+        let exists = false
 
-        let exists = FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
+//        let exists = FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
 
         if exists {
             indexPath = Constants.Path.readerBundle.path
@@ -250,10 +251,10 @@ open class Reader: WKWebView {
         index = index?.replacingOccurrences(of: "ss-wrapper-andada", with: "ss-wrapper-"+typeface.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size.rawValue)
 
-        if exists {
-            self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir)
+        if exists || false {
+            self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir.deletingLastPathComponent())
         } else {
-            self.loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+            self.loadHTMLString(index!, baseURL: URL(fileURLWithPath: indexPath!).deletingLastPathComponent())
         }
 
         self.readerViewDelegate?.didLoadContent(content: index!)

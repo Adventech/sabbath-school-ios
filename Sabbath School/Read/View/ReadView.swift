@@ -83,6 +83,7 @@ class ReadView: ASCellNode {
         date.maximumNumberOfLines = 1
         date.attributedText = AppStyle.Read.Text.date(string: read.date.stringReadDate())
         
+        
         automaticallyManagesSubnodes = true
     }
     
@@ -117,6 +118,7 @@ class ReadView: ASCellNode {
         super.layout()
         parallax()
     }
+    
     override func didLoad() {
         super.didLoad()
 
@@ -125,15 +127,16 @@ class ReadView: ASCellNode {
         coverOverlay.backgroundColor = theme.navBarColor
         
         if #available(iOS 13.0, *) {
-            webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
+            webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = true
         } else if #available(iOS 11.0, *){
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
 
-        webView.backgroundColor = .clear
         webView.scrollView.delegate = self
         webView.navigationDelegate = self
-        webView.alpha = 0.1
+        
+        webView.isOpaque = false
+        webView.backgroundColor = .clear
         webView.scrollView.backgroundColor = .clear
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.contentOffset.y = -self.parallaxCoverHeight
@@ -143,7 +146,7 @@ class ReadView: ASCellNode {
         webView.loadContent(content: read!.content)
         
         webView.scrollView.scrollToTop(animated: true)
-        // parallax()
+        parallax()
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -198,18 +201,26 @@ extension ReadView: WKNavigationDelegate {
         }
         
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        (webView as! Reader).contextMenuEnabled = true
+        webView.becomeFirstResponder()
+        self.delegate?.didLoadWebView(webView: webView)
+    }
 
     func didFinishNavigation(_ webView: WKWebView) {
-        (webView as! Reader).contextMenuEnabled = true
+        
 
-        if !webView.isLoading {
-            self.delegate?.didLoadWebView(webView: webView)
-        }
+//        if !webView.isLoading {
+//
+//
+//        }
     }
 }
 
 extension ReadView: ReaderOutputProtocol {
     func ready() {
+        
         if self.highlights != nil {
             webView.setHighlights((self.highlights?.highlights)!)
         }

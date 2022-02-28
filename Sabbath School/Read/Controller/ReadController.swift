@@ -624,11 +624,13 @@ extension ReadController: ReadViewOutputProtocol {
 
     func didLoadWebView(webView: WKWebView) {
         if abs(webView.scrollView.contentOffset.y) > 0 {
-            initialContentOffset = -webView.scrollView.contentOffset.y
+            
+            initialContentOffset = -1*webView.scrollView.contentOffset.y
+            print("SSDEBUG", initialContentOffset)
         }
-        UIView.animate(withDuration: 0.3) {
-            webView.alpha = 1
-        }
+//        UIView.animate(withDuration: 0.3) {
+//            webView.alpha = 0.1
+//        }
 
         if let reader = webView as? Reader, !contextMenuEnabled {
             contextMenuEnabled = true

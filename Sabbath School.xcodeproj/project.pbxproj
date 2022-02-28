@@ -815,14 +815,6 @@
 		7A280FAC1EDA0276003C7458 /* Lato */ = {
 			isa = PBXGroup;
 			children = (
-				FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */,
-				FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */,
-				7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */,
-				7A280FAE1EDA0276003C7458 /* Lato-BoldItalic.ttf */,
-				7A280FAF1EDA0276003C7458 /* Lato-Italic.ttf */,
-				7A280FB01EDA0276003C7458 /* Lato-Medium.ttf */,
-				7A280FB11EDA0276003C7458 /* Lato-MediumItalic.ttf */,
-				7A280FB21EDA0276003C7458 /* Lato-Regular.ttf */,
 			);
 			path = Lato;
 			sourceTree = "<group>";
@@ -1303,6 +1295,14 @@
 		7A922E3C1EE07EC200C12A67 /* lato */ = {
 			isa = PBXGroup;
 			children = (
+				FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */,
+				FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */,
+				7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */,
+				7A280FAE1EDA0276003C7458 /* Lato-BoldItalic.ttf */,
+				7A280FAF1EDA0276003C7458 /* Lato-Italic.ttf */,
+				7A280FB01EDA0276003C7458 /* Lato-Medium.ttf */,
+				7A280FB11EDA0276003C7458 /* Lato-MediumItalic.ttf */,
+				7A280FB21EDA0276003C7458 /* Lato-Regular.ttf */,
 			);
 			path = lato;
 			sourceTree = "<group>";

@@ -57,7 +57,7 @@ class VideoCollectionItemView: ASCellNode {
         cover.style.alignSelf = .stretch
         
         title.attributedText = AppStyle.Video.Text.title(string: video.title, featured: featured)
-        title.maximumNumberOfLines = 2
+        title.maximumNumberOfLines = 1
         title.truncationMode = .byTruncatingTail
         
         subtitle.attributedText = AppStyle.Video.Text.subtitle(string: video.artist)
@@ -102,6 +102,7 @@ class VideoCollectionItemView: ASCellNode {
             cover.style.spacingAfter = viewMode == .horizontal ? 10 : 0
             titleSpec.style.flexGrow = 1.0
             titleSpec.style.flexShrink = 1.0
+            titleSpec.style.maxWidth = ASDimension(unit: .points, value: size.width)
         }
         
         duration.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
