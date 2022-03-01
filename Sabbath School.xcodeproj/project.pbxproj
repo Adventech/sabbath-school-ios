@@ -16,6 +16,15 @@
 		2F487E8F26DC80F300B4AA7A /* ReadMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8E26DC80F300B4AA7A /* ReadMenuController.swift */; };
 		2F5C48F726F2AEB6002C4C83 /* PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C48F626F2AEB6002C4C83 /* PDF.swift */; };
 		2F5C48F826F2AEB6002C4C83 /* PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C48F626F2AEB6002C4C83 /* PDF.swift */; };
+		2F613B9227CDC4B600A4C745 /* sabbath-school-reader in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9127CDC4B600A4C745 /* sabbath-school-reader */; };
+		2F613B9F27CDC6A600A4C745 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9727CDC6A600A4C745 /* Lato-Italic.ttf */; };
+		2F613BA027CDC6A600A4C745 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9827CDC6A600A4C745 /* Lato-Bold.ttf */; };
+		2F613BA127CDC6A600A4C745 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9927CDC6A600A4C745 /* Lato-Black.ttf */; };
+		2F613BA227CDC6A600A4C745 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9A27CDC6A600A4C745 /* Lato-Regular.ttf */; };
+		2F613BA327CDC6A600A4C745 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9B27CDC6A600A4C745 /* Lato-BlackItalic.ttf */; };
+		2F613BA427CDC6A600A4C745 /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9C27CDC6A600A4C745 /* Lato-MediumItalic.ttf */; };
+		2F613BA527CDC6A600A4C745 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9D27CDC6A600A4C745 /* Lato-BoldItalic.ttf */; };
+		2F613BA627CDC6A600A4C745 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9E27CDC6A600A4C745 /* Lato-Medium.ttf */; };
 		2F95D39E26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F96FF4726C58A6A0045DC6D /* AudioPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */; };
@@ -63,12 +72,6 @@
 		7A280F921ED7D8B8003C7458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F901ED7D8B8003C7458 /* LaunchScreen.storyboard */; };
 		7A280F971ED94964003C7458 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F961ED94964003C7458 /* R.generated.swift */; };
 		7A280F9B1EDA015D003C7458 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F991EDA015D003C7458 /* AppDelegate.swift */; };
-		7A280FB31EDA0276003C7458 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */; };
-		7A280FB41EDA0276003C7458 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FAE1EDA0276003C7458 /* Lato-BoldItalic.ttf */; };
-		7A280FB51EDA0276003C7458 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FAF1EDA0276003C7458 /* Lato-Italic.ttf */; };
-		7A280FB61EDA0276003C7458 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FB01EDA0276003C7458 /* Lato-Medium.ttf */; };
-		7A280FB71EDA0276003C7458 /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FB11EDA0276003C7458 /* Lato-MediumItalic.ttf */; };
-		7A280FB81EDA0276003C7458 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A280FB21EDA0276003C7458 /* Lato-Regular.ttf */; };
 		7A280FC51EDA04A6003C7458 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FC41EDA04A6003C7458 /* Color.swift */; };
 		7A280FC71EDA06F9003C7458 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FC61EDA06F9003C7458 /* LoginButton.swift */; };
 		7A280FC91EDA0EB5003C7458 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FC81EDA0EB5003C7458 /* LoginPresenter.swift */; };
@@ -124,28 +127,6 @@
 		7A922E181EDFB61600C12A67 /* ReadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E171EDFB61600C12A67 /* ReadController.swift */; };
 		7A922E1C1EDFB7E600C12A67 /* ReadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */; };
 		7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A922E1F1EDFC61D00C12A67 /* ReadView.swift */; };
-		7A922E551EE07EC200C12A67 /* fonts.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E341EE07EC200C12A67 /* fonts.css */; };
-		7A922E561EE07EC200C12A67 /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E351EE07EC200C12A67 /* reset.css */; };
-		7A922E571EE07EC200C12A67 /* Lora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E381EE07EC200C12A67 /* Lora-Bold.ttf */; };
-		7A922E581EE07EC200C12A67 /* Lora-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E391EE07EC200C12A67 /* Lora-BoldItalic.ttf */; };
-		7A922E591EE07EC200C12A67 /* Lora-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E3A1EE07EC200C12A67 /* Lora-Italic.ttf */; };
-		7A922E5A1EE07EC200C12A67 /* Lora-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E3B1EE07EC200C12A67 /* Lora-Regular.ttf */; };
-		7A922E5F1EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E421EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf */; };
-		7A922E601EE07EC200C12A67 /* PT_Sans-Web-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E431EE07EC200C12A67 /* PT_Sans-Web-BoldItalic.ttf */; };
-		7A922E611EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E441EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf */; };
-		7A922E621EE07EC200C12A67 /* PT_Sans-Web-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E451EE07EC200C12A67 /* PT_Sans-Web-Regular.ttf */; };
-		7A922E631EE07EC200C12A67 /* PT_Serif-Web-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E471EE07EC200C12A67 /* PT_Serif-Web-Bold.ttf */; };
-		7A922E641EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E481EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf */; };
-		7A922E651EE07EC200C12A67 /* PT_Serif-Web-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E491EE07EC200C12A67 /* PT_Serif-Web-Italic.ttf */; };
-		7A922E661EE07EC200C12A67 /* PT_Serif-Web-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E4A1EE07EC200C12A67 /* PT_Serif-Web-Regular.ttf */; };
-		7A922E671EE07EC200C12A67 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E4B1EE07EC200C12A67 /* index.html */; };
-		7A922E681EE07EC200C12A67 /* jquery-3.1.1.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E4D1EE07EC200C12A67 /* jquery-3.1.1.min.js */; };
-		7A922E691EE07EC200C12A67 /* jsface.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E4E1EE07EC200C12A67 /* jsface.min.js */; };
-		7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E4F1EE07EC200C12A67 /* rangy-classapplier.js */; };
-		7A922E6B1EE07EC200C12A67 /* rangy-core.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E501EE07EC200C12A67 /* rangy-core.js */; };
-		7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E511EE07EC200C12A67 /* rangy-highlighter.js */; };
-		7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E521EE07EC200C12A67 /* rangy-serializer.js */; };
-		7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */ = {isa = PBXBuildFile; fileRef = 7A922E531EE07EC200C12A67 /* ss-reader.js */; };
 		7AC26AE71EE4FA9E003F946C /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE61EE4FA9E003F946C /* Reader.swift */; };
 		7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AE81EE5EB63003F946C /* Preferences.swift */; };
 		7AC26AF61EE5EBDE003F946C /* BibleVerses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */; };
@@ -165,7 +146,6 @@
 		7AF371611EF9CB5A00547916 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */; };
 		7AF3716C1EF9E6EC00547916 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF3716B1EF9E6EC00547916 /* AboutController.swift */; };
 		7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF3716D1EF9E6FF00547916 /* AboutView.swift */; };
-		7AF371701EFA1E6E00547916 /* base.css in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3716F1EFA1E6E00547916 /* base.css */; };
 		D27426524D2CCAF4D3B4C3CF /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477B1DC2A057461A3A3B40B8 /* Pods_WidgetExtension.framework */; };
 		FE0249EA2669C2E3006BFADC /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0249E92669C2E3006BFADC /* Helper.swift */; };
 		FE0249F8266A9068006BFADC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0249F7266A9068006BFADC /* Configuration.swift */; };
@@ -180,8 +160,6 @@
 		FE1E35052673C5E300DAC2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1E35042673C5E300DAC2D6 /* Assets.xcassets */; };
 		FE1E35092673C5E300DAC2D6 /* WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FE2FDEAB268A1D390023A853 /* QuarterlyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDEAA268A1D390023A853 /* QuarterlyHeaderView.swift */; };
-		FE2FDEE4268A96CF0023A853 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */; };
-		FE2FDEE5268A96CF0023A853 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */; };
 		FE2FDF83268D6F430023A853 /* QuarterlyIntroductionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */; };
 		FE2FDF8B268D6F7A0023A853 /* QuarterlyIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */; };
 		FE2FDFFB26923E0D0023A853 /* QuarterlyControllerCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */; };
@@ -288,6 +266,15 @@
 		2F487E8A26D87A5E00B4AA7A /* PDFController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFController.swift; sourceTree = "<group>"; };
 		2F487E8E26DC80F300B4AA7A /* ReadMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMenuController.swift; sourceTree = "<group>"; };
 		2F5C48F626F2AEB6002C4C83 /* PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDF.swift; sourceTree = "<group>"; };
+		2F613B9127CDC4B600A4C745 /* sabbath-school-reader */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "sabbath-school-reader"; sourceTree = "<group>"; };
+		2F613B9727CDC6A600A4C745 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		2F613B9827CDC6A600A4C745 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		2F613B9927CDC6A600A4C745 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		2F613B9A27CDC6A600A4C745 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		2F613B9B27CDC6A600A4C745 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		2F613B9C27CDC6A600A4C745 /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
+		2F613B9D27CDC6A600A4C745 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		2F613B9E27CDC6A600A4C745 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		2F61E79A27BB5CBF00F696A2 /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
 		2F95D39D26C0B2E8008E6666 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayback.swift; sourceTree = "<group>"; };
@@ -332,12 +319,6 @@
 		7A280F961ED94964003C7458 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = ../../R.generated.swift; sourceTree = "<group>"; };
 		7A280F991EDA015D003C7458 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A280F9A1EDA015D003C7458 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
-		7A280FAE1EDA0276003C7458 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
-		7A280FAF1EDA0276003C7458 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
-		7A280FB01EDA0276003C7458 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
-		7A280FB11EDA0276003C7458 /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
-		7A280FB21EDA0276003C7458 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		7A280FC41EDA04A6003C7458 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		7A280FC61EDA06F9003C7458 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		7A280FC81EDA0EB5003C7458 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -396,28 +377,6 @@
 		7A922E171EDFB61600C12A67 /* ReadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadController.swift; sourceTree = "<group>"; };
 		7A922E1B1EDFB7E600C12A67 /* ReadInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadInteractor.swift; sourceTree = "<group>"; };
 		7A922E1F1EDFC61D00C12A67 /* ReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadView.swift; sourceTree = "<group>"; };
-		7A922E341EE07EC200C12A67 /* fonts.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = fonts.css; sourceTree = "<group>"; };
-		7A922E351EE07EC200C12A67 /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
-		7A922E381EE07EC200C12A67 /* Lora-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Bold.ttf"; sourceTree = "<group>"; };
-		7A922E391EE07EC200C12A67 /* Lora-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-BoldItalic.ttf"; sourceTree = "<group>"; };
-		7A922E3A1EE07EC200C12A67 /* Lora-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Italic.ttf"; sourceTree = "<group>"; };
-		7A922E3B1EE07EC200C12A67 /* Lora-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Regular.ttf"; sourceTree = "<group>"; };
-		7A922E421EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Sans-Web-Bold.ttf"; sourceTree = "<group>"; };
-		7A922E431EE07EC200C12A67 /* PT_Sans-Web-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Sans-Web-BoldItalic.ttf"; sourceTree = "<group>"; };
-		7A922E441EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Sans-Web-Italic.ttf"; sourceTree = "<group>"; };
-		7A922E451EE07EC200C12A67 /* PT_Sans-Web-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Sans-Web-Regular.ttf"; sourceTree = "<group>"; };
-		7A922E471EE07EC200C12A67 /* PT_Serif-Web-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Serif-Web-Bold.ttf"; sourceTree = "<group>"; };
-		7A922E481EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Serif-Web-BoldItalic.ttf"; sourceTree = "<group>"; };
-		7A922E491EE07EC200C12A67 /* PT_Serif-Web-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Serif-Web-Italic.ttf"; sourceTree = "<group>"; };
-		7A922E4A1EE07EC200C12A67 /* PT_Serif-Web-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PT_Serif-Web-Regular.ttf"; sourceTree = "<group>"; };
-		7A922E4B1EE07EC200C12A67 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		7A922E4D1EE07EC200C12A67 /* jquery-3.1.1.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-3.1.1.min.js"; sourceTree = "<group>"; };
-		7A922E4E1EE07EC200C12A67 /* jsface.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jsface.min.js; sourceTree = "<group>"; };
-		7A922E4F1EE07EC200C12A67 /* rangy-classapplier.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-classapplier.js"; sourceTree = "<group>"; };
-		7A922E501EE07EC200C12A67 /* rangy-core.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-core.js"; sourceTree = "<group>"; };
-		7A922E511EE07EC200C12A67 /* rangy-highlighter.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-highlighter.js"; sourceTree = "<group>"; };
-		7A922E521EE07EC200C12A67 /* rangy-serializer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "rangy-serializer.js"; sourceTree = "<group>"; };
-		7A922E531EE07EC200C12A67 /* ss-reader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "ss-reader.js"; sourceTree = "<group>"; };
 		7A94DFCD1F16D69C005A0321 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7A94DFCE1F16D69C005A0321 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7A94DFCF1F16D6AF005A0321 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -477,7 +436,6 @@
 		7AF3716A1EF9CB7100547916 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7AF3716B1EF9E6EC00547916 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
 		7AF3716D1EF9E6FF00547916 /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		7AF3716F1EFA1E6E00547916 /* base.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = base.css; sourceTree = "<group>"; };
 		856E3849D54F4DD6FA1F1066 /* Pods-Sabbath School.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabbath School.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sabbath School/Pods-Sabbath School.debug.xcconfig"; sourceTree = "<group>"; };
 		8E42AC27861B53CE32ED7750 /* Pods_Sabbath_School.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabbath_School.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98592449611CB4493091A961 /* Pods-WidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -517,8 +475,6 @@
 		FE1E35042673C5E300DAC2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE1E35062673C5E300DAC2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE2FDEAA268A1D390023A853 /* QuarterlyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyHeaderView.swift; sourceTree = "<group>"; };
-		FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
-		FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		FE2FDF82268D6F430023A853 /* QuarterlyIntroductionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyIntroductionController.swift; sourceTree = "<group>"; };
 		FE2FDF8A268D6F7A0023A853 /* QuarterlyIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyIntroductionView.swift; sourceTree = "<group>"; };
 		FE2FDFFA26923E0C0023A853 /* QuarterlyControllerCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuarterlyControllerCommon.swift; sourceTree = "<group>"; };
@@ -643,6 +599,29 @@
 				2FA1FFE526F6B9EB00E80868 /* PDFView.swift */,
 			);
 			path = PDF;
+			sourceTree = "<group>";
+		};
+		2F613B9527CDC6A600A4C745 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2F613B9627CDC6A600A4C745 /* lato */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		2F613B9627CDC6A600A4C745 /* lato */ = {
+			isa = PBXGroup;
+			children = (
+				2F613B9727CDC6A600A4C745 /* Lato-Italic.ttf */,
+				2F613B9827CDC6A600A4C745 /* Lato-Bold.ttf */,
+				2F613B9927CDC6A600A4C745 /* Lato-Black.ttf */,
+				2F613B9A27CDC6A600A4C745 /* Lato-Regular.ttf */,
+				2F613B9B27CDC6A600A4C745 /* Lato-BlackItalic.ttf */,
+				2F613B9C27CDC6A600A4C745 /* Lato-MediumItalic.ttf */,
+				2F613B9D27CDC6A600A4C745 /* Lato-BoldItalic.ttf */,
+				2F613B9E27CDC6A600A4C745 /* Lato-Medium.ttf */,
+			);
+			path = lato;
 			sourceTree = "<group>";
 		};
 		2F96FF4826C7186D0045DC6D /* Audio */ = {
@@ -783,10 +762,10 @@
 		7A280F8C1ED7D75E003C7458 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2F613B9527CDC6A600A4C745 /* Fonts */,
+				2F613B9127CDC4B600A4C745 /* sabbath-school-reader */,
 				7AF3261C1F007ACB00A04568 /* Sabbath School.entitlements */,
 				7A280F841ED7D6B6003C7458 /* Assets.xcassets */,
-				7A280FAB1EDA0276003C7458 /* Fonts */,
-				7A922E311EE07EC200C12A67 /* sabbath-school-reader */,
 				7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */,
 				7AF371531EF9CB3400547916 /* Localizable.strings */,
 				7A280F901ED7D8B8003C7458 /* LaunchScreen.storyboard */,
@@ -802,21 +781,6 @@
 				7A280F9A1EDA015D003C7458 /* Info.plist */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		7A280FAB1EDA0276003C7458 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				7A280FAC1EDA0276003C7458 /* Lato */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		7A280FAC1EDA0276003C7458 /* Lato */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Lato;
 			sourceTree = "<group>";
 		};
 		7A280FBF1EDA03C0003C7458 /* Common */ = {
@@ -1249,100 +1213,6 @@
 			path = WireFrame;
 			sourceTree = "<group>";
 		};
-		7A922E311EE07EC200C12A67 /* sabbath-school-reader */ = {
-			isa = PBXGroup;
-			children = (
-				7A922E321EE07EC200C12A67 /* css */,
-				7A922E361EE07EC200C12A67 /* fonts */,
-				7A922E4B1EE07EC200C12A67 /* index.html */,
-				7A922E4C1EE07EC200C12A67 /* js */,
-			);
-			path = "sabbath-school-reader";
-			sourceTree = "<group>";
-		};
-		7A922E321EE07EC200C12A67 /* css */ = {
-			isa = PBXGroup;
-			children = (
-				7AF3716F1EFA1E6E00547916 /* base.css */,
-				7A922E341EE07EC200C12A67 /* fonts.css */,
-				7A922E351EE07EC200C12A67 /* reset.css */,
-			);
-			path = css;
-			sourceTree = "<group>";
-		};
-		7A922E361EE07EC200C12A67 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				7A922E371EE07EC200C12A67 /* andada */,
-				7A922E3C1EE07EC200C12A67 /* lato */,
-				7A922E411EE07EC200C12A67 /* pt-sans */,
-				7A922E461EE07EC200C12A67 /* pt-serif */,
-			);
-			path = fonts;
-			sourceTree = "<group>";
-		};
-		7A922E371EE07EC200C12A67 /* andada */ = {
-			isa = PBXGroup;
-			children = (
-				7A922E381EE07EC200C12A67 /* Lora-Bold.ttf */,
-				7A922E391EE07EC200C12A67 /* Lora-BoldItalic.ttf */,
-				7A922E3A1EE07EC200C12A67 /* Lora-Italic.ttf */,
-				7A922E3B1EE07EC200C12A67 /* Lora-Regular.ttf */,
-			);
-			path = andada;
-			sourceTree = "<group>";
-		};
-		7A922E3C1EE07EC200C12A67 /* lato */ = {
-			isa = PBXGroup;
-			children = (
-				FE2FDEE2268A96CF0023A853 /* Lato-Black.ttf */,
-				FE2FDEE3268A96CF0023A853 /* Lato-BlackItalic.ttf */,
-				7A280FAD1EDA0276003C7458 /* Lato-Bold.ttf */,
-				7A280FAE1EDA0276003C7458 /* Lato-BoldItalic.ttf */,
-				7A280FAF1EDA0276003C7458 /* Lato-Italic.ttf */,
-				7A280FB01EDA0276003C7458 /* Lato-Medium.ttf */,
-				7A280FB11EDA0276003C7458 /* Lato-MediumItalic.ttf */,
-				7A280FB21EDA0276003C7458 /* Lato-Regular.ttf */,
-			);
-			path = lato;
-			sourceTree = "<group>";
-		};
-		7A922E411EE07EC200C12A67 /* pt-sans */ = {
-			isa = PBXGroup;
-			children = (
-				7A922E421EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf */,
-				7A922E431EE07EC200C12A67 /* PT_Sans-Web-BoldItalic.ttf */,
-				7A922E441EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf */,
-				7A922E451EE07EC200C12A67 /* PT_Sans-Web-Regular.ttf */,
-			);
-			path = "pt-sans";
-			sourceTree = "<group>";
-		};
-		7A922E461EE07EC200C12A67 /* pt-serif */ = {
-			isa = PBXGroup;
-			children = (
-				7A922E471EE07EC200C12A67 /* PT_Serif-Web-Bold.ttf */,
-				7A922E481EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf */,
-				7A922E491EE07EC200C12A67 /* PT_Serif-Web-Italic.ttf */,
-				7A922E4A1EE07EC200C12A67 /* PT_Serif-Web-Regular.ttf */,
-			);
-			path = "pt-serif";
-			sourceTree = "<group>";
-		};
-		7A922E4C1EE07EC200C12A67 /* js */ = {
-			isa = PBXGroup;
-			children = (
-				7A922E4D1EE07EC200C12A67 /* jquery-3.1.1.min.js */,
-				7A922E4E1EE07EC200C12A67 /* jsface.min.js */,
-				7A922E4F1EE07EC200C12A67 /* rangy-classapplier.js */,
-				7A922E501EE07EC200C12A67 /* rangy-core.js */,
-				7A922E511EE07EC200C12A67 /* rangy-highlighter.js */,
-				7A922E521EE07EC200C12A67 /* rangy-serializer.js */,
-				7A922E531EE07EC200C12A67 /* ss-reader.js */,
-			);
-			path = js;
-			sourceTree = "<group>";
-		};
 		7AC26AE11EE48925003F946C /* Fastlane */ = {
 			isa = PBXGroup;
 			children = (
@@ -1679,40 +1549,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A280FB71EDA0276003C7458 /* Lato-MediumItalic.ttf in Resources */,
-				7A922E621EE07EC200C12A67 /* PT_Sans-Web-Regular.ttf in Resources */,
-				7A922E581EE07EC200C12A67 /* Lora-BoldItalic.ttf in Resources */,
-				7A922E601EE07EC200C12A67 /* PT_Sans-Web-BoldItalic.ttf in Resources */,
-				7A922E651EE07EC200C12A67 /* PT_Serif-Web-Italic.ttf in Resources */,
+				2F613BA427CDC6A600A4C745 /* Lato-MediumItalic.ttf in Resources */,
+				2F613BA627CDC6A600A4C745 /* Lato-Medium.ttf in Resources */,
+				2F613BA027CDC6A600A4C745 /* Lato-Bold.ttf in Resources */,
+				2F613B9227CDC4B600A4C745 /* sabbath-school-reader in Resources */,
+				2F613BA527CDC6A600A4C745 /* Lato-BoldItalic.ttf in Resources */,
+				2F613BA327CDC6A600A4C745 /* Lato-BlackItalic.ttf in Resources */,
 				7AF371611EF9CB5A00547916 /* InfoPlist.strings in Resources */,
-				7A922E571EE07EC200C12A67 /* Lora-Bold.ttf in Resources */,
-				7A280FB61EDA0276003C7458 /* Lato-Medium.ttf in Resources */,
-				7A922E611EE07EC200C12A67 /* PT_Sans-Web-Italic.ttf in Resources */,
-				7A922E5A1EE07EC200C12A67 /* Lora-Regular.ttf in Resources */,
-				7A922E661EE07EC200C12A67 /* PT_Serif-Web-Regular.ttf in Resources */,
-				7A280FB51EDA0276003C7458 /* Lato-Italic.ttf in Resources */,
 				7AF371551EF9CB3400547916 /* Localizable.strings in Resources */,
-				7A922E6D1EE07EC200C12A67 /* rangy-serializer.js in Resources */,
-				7AF371701EFA1E6E00547916 /* base.css in Resources */,
-				7A922E5F1EE07EC200C12A67 /* PT_Sans-Web-Bold.ttf in Resources */,
-				7A922E671EE07EC200C12A67 /* index.html in Resources */,
-				FE2FDEE5268A96CF0023A853 /* Lato-BlackItalic.ttf in Resources */,
-				7A280FB31EDA0276003C7458 /* Lato-Bold.ttf in Resources */,
-				7A922E631EE07EC200C12A67 /* PT_Serif-Web-Bold.ttf in Resources */,
-				7A922E6E1EE07EC200C12A67 /* ss-reader.js in Resources */,
+				2F613BA227CDC6A600A4C745 /* Lato-Regular.ttf in Resources */,
+				2F613BA127CDC6A600A4C745 /* Lato-Black.ttf in Resources */,
 				7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */,
-				7A922E551EE07EC200C12A67 /* fonts.css in Resources */,
-				7A922E691EE07EC200C12A67 /* jsface.min.js in Resources */,
-				7A922E6B1EE07EC200C12A67 /* rangy-core.js in Resources */,
-				7A922E681EE07EC200C12A67 /* jquery-3.1.1.min.js in Resources */,
-				7A922E6C1EE07EC200C12A67 /* rangy-highlighter.js in Resources */,
-				7A922E6A1EE07EC200C12A67 /* rangy-classapplier.js in Resources */,
-				FE2FDEE4268A96CF0023A853 /* Lato-Black.ttf in Resources */,
-				7A922E641EE07EC200C12A67 /* PT_Serif-Web-BoldItalic.ttf in Resources */,
-				7A280FB41EDA0276003C7458 /* Lato-BoldItalic.ttf in Resources */,
-				7A280FB81EDA0276003C7458 /* Lato-Regular.ttf in Resources */,
-				7A922E591EE07EC200C12A67 /* Lora-Italic.ttf in Resources */,
-				7A922E561EE07EC200C12A67 /* reset.css in Resources */,
+				2F613B9F27CDC6A600A4C745 /* Lato-Italic.ttf in Resources */,
 				7A280F921ED7D8B8003C7458 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

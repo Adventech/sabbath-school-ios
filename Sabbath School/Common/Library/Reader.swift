@@ -225,11 +225,9 @@ open class Reader: WKWebView {
     }
 
     func loadContent(content: String) {
-        var indexPath = Bundle.main.path(forResource: "index", ofType: "html")
+        var indexPath = Bundle.main.path(forResource: "index", ofType: "html", inDirectory: "sabbath-school-reader")
         
-        let exists = false
-
-//        let exists = FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
+        let exists = FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
 
         if exists {
             indexPath = Constants.Path.readerBundle.path
@@ -238,10 +236,6 @@ open class Reader: WKWebView {
         var index = try? String(contentsOfFile: indexPath!, encoding: .utf8)
         index = index?.replacingOccurrences(of: "{{content}}", with: content)
 
-        if !exists {
-            index = index?.replacingOccurrences(of: "css/", with: "")
-            index = index?.replacingOccurrences(of: "js/", with: "")
-        }
 
         let theme = Preferences.currentTheme()
         let typeface = Preferences.currentTypeface()
@@ -250,24 +244,25 @@ open class Reader: WKWebView {
         index = index?.replacingOccurrences(of: "ss-wrapper-light", with: "ss-wrapper-"+theme.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-andada", with: "ss-wrapper-"+typeface.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size.rawValue)
+        
+        guard let index = index else { return }
 
-        if exists || false {
-            self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir.deletingLastPathComponent())
+        if exists {
+            loadFileURL(Constants.Path.readerBundle, allowingReadAccessTo: Constants.Path.readerBundleDir)
+            loadHTMLString(index, baseURL: Constants.Path.readerBundleDir)
         } else {
-            self.loadHTMLString(index!, baseURL: URL(fileURLWithPath: indexPath!).deletingLastPathComponent())
+            loadHTMLString(index, baseURL: URL(fileURLWithPath: indexPath!).deletingLastPathComponent())
         }
 
-        self.readerViewDelegate?.didLoadContent(content: index!)
+        self.readerViewDelegate?.didLoadContent(content: index)
     }
 
     func shouldStartLoad(request: URLRequest, navigationType: WKNavigationType) -> Bool {
+        
         guard let url = request.url else { return false }
         
-        
-
         if url.valueForParameter(key: "ready") != nil {
             self.readerViewDelegate?.ready()
-            print("SSDEBUG READY")
             return false
         }
 

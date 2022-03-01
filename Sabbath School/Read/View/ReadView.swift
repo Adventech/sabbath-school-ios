@@ -127,7 +127,7 @@ class ReadView: ASCellNode {
         coverOverlay.backgroundColor = theme.navBarColor
         
         if #available(iOS 13.0, *) {
-            webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = true
+            webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
         } else if #available(iOS 11.0, *){
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
@@ -191,7 +191,7 @@ extension ReadView: UIScrollViewDelegate {
     }
 }
 
-extension ReadView: WKNavigationDelegate {
+extension ReadView: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let r = webView as! Reader
         if r.shouldStartLoad(request: navigationAction.request, navigationType: navigationAction.navigationType) {
@@ -206,15 +206,6 @@ extension ReadView: WKNavigationDelegate {
         (webView as! Reader).contextMenuEnabled = true
         webView.becomeFirstResponder()
         self.delegate?.didLoadWebView(webView: webView)
-    }
-
-    func didFinishNavigation(_ webView: WKWebView) {
-        
-
-//        if !webView.isLoading {
-//
-//
-//        }
     }
 }
 

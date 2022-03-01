@@ -1,7 +1,7 @@
 timeout = null;
 
 var userAgent = window.navigator.userAgent.toLowerCase(),
-    iOS = /iphone|ipod|ipad/.test(userAgent);
+    iOS = /iphone|ipod|macintosh|ipad/.test(userAgent);
 
 $(function(){
   window.ssReader = Class({
