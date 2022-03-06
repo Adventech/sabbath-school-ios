@@ -140,6 +140,7 @@ class ReadView: ASCellNode {
         webView.scrollView.backgroundColor = .clear
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.contentOffset.y = -self.parallaxCoverHeight
+        webView.tintColor = .systemBlue
         // webView.scrollView.setNeedsLayout()
 
         webView.readerViewDelegate = self
