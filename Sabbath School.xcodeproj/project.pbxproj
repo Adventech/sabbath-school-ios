@@ -57,6 +57,7 @@
 		2FC6F69F27A8E35C00BBC4A9 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
 		2FE24EFD26BB90170036FD75 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE24EFC26BB90170036FD75 /* AudioController.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
+		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
 		7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F841ED7D6B6003C7458 /* Assets.xcassets */; };
@@ -324,6 +325,7 @@
 		2FE24EFC26BB90170036FD75 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		477B1DC2A057461A3A3B40B8 /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireFrame.swift; sourceTree = "<group>"; };
 		7A280F791ED7CF2C003C7458 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -858,6 +860,7 @@
 		7A280FC11EDA03C0003C7458 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4EE2DF0727DA7AFC00812552 /* Array.swift */,
 				4E6409F427C5593A00A43D89 /* ScrollView.swift */,
 				7A3BCE3B1EE29605003EC12B /* Button.swift */,
 				7A280FC41EDA04A6003C7458 /* Color.swift */,
@@ -2004,6 +2007,7 @@
 				FEF4B79426AF9A9B00548E36 /* Credits.swift in Sources */,
 				FE5CC74A268926B800B9F061 /* QuarterlyGroupView.swift in Sources */,
 				2FC6F69727A4B60D00BBC4A9 /* AccountToken.swift in Sources */,
+				4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */,
 				FE5CC7A1268A156B00B9F061 /* QuarterlyItemView.swift in Sources */,
 				FE0A0FA1264E0A1400BF945A /* GCPopupController.swift in Sources */,
 				FE5D24B526B612D100D09D09 /* View.swift in Sources */,
@@ -2402,7 +2406,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1002;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = YES;
@@ -2543,7 +2547,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1002;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2688,7 +2692,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1002;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2735,7 +2739,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1002;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

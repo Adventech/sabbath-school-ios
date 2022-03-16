@@ -242,8 +242,8 @@ class ReadController: VideoPlaybackDelegatable {
     
     @objc func presentAudioController() {
         var dayIndex: String? = nil
-        if let readIndex = lastPage, 0...self.reads.count ~= readIndex {
-            dayIndex = self.reads[readIndex].index
+        if let readIndex = lastPage {
+            dayIndex = self.reads[safe: readIndex]?.index
         }
         
         let audioController = AudioController(audio: self.audio, lessonIndex: lessonInfo?.lesson.index, dayIndex: dayIndex)
