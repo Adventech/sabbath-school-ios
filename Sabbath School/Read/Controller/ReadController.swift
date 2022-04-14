@@ -622,12 +622,9 @@ extension ReadController: ReadViewOutputProtocol {
         UIMenuController.shared.menuItems = []
     }
 
-    func didLoadWebView(webView: UIWebView) {
+    func didLoadWebView(webView: WKWebView) {
         if abs(webView.scrollView.contentOffset.y) > 0 {
-            initialContentOffset = -webView.scrollView.contentOffset.y
-        }
-        UIView.animate(withDuration: 0.3) {
-            webView.alpha = 1
+            initialContentOffset = -1*webView.scrollView.contentOffset.y
         }
 
         if let reader = webView as? Reader, !contextMenuEnabled {

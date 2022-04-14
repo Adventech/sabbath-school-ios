@@ -22,6 +22,7 @@
 
 import MenuItemKit
 import UIKit
+import WebKit
 
 struct ReaderStyle {
     enum Theme: String {
@@ -136,7 +137,7 @@ protocol ReaderOutputProtocol: AnyObject {
     func didTapExternalUrl(url: URL)
 }
 
-open class Reader: UIWebView {
+open class Reader: WKWebView {
     weak var readerViewDelegate: ReaderOutputProtocol?
     var menuVisible = false
     var contextMenuEnabled = false
@@ -189,31 +190,31 @@ open class Reader: UIWebView {
     }
 
     func highlight(color: String) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.highlightSelection('"+color+"');")
+        self.evaluateJavaScript("ssReader.highlightSelection('"+color+"');")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
 
     func copyText() {
-        self.stringByEvaluatingJavaScript(from: "ssReader.copy()")
+        self.evaluateJavaScript("ssReader.copy()")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
 
     func shareText() {
-        self.stringByEvaluatingJavaScript(from: "ssReader.share()")
+        self.evaluateJavaScript("ssReader.share()")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
     
     func lookupText() {
-        self.stringByEvaluatingJavaScript(from: "ssReader.search()")
+        self.evaluateJavaScript("ssReader.search()")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
     
     func clearHighlight() {
-        self.stringByEvaluatingJavaScript(from: "ssReader.unHighlightSelection()")
+        self.evaluateJavaScript("ssReader.unHighlightSelection()")
         self.isUserInteractionEnabled = false
         self.isUserInteractionEnabled = true
     }
@@ -224,8 +225,8 @@ open class Reader: UIWebView {
     }
 
     func loadContent(content: String) {
-        var indexPath = Bundle.main.path(forResource: "index", ofType: "html")
-
+        var indexPath = Bundle.main.path(forResource: "index", ofType: "html", inDirectory: "sabbath-school-reader")
+        
         let exists = FileManager.default.fileExists(atPath: Constants.Path.readerBundle.path)
 
         if exists {
@@ -235,10 +236,6 @@ open class Reader: UIWebView {
         var index = try? String(contentsOfFile: indexPath!, encoding: .utf8)
         index = index?.replacingOccurrences(of: "{{content}}", with: content)
 
-        if !exists {
-            index = index?.replacingOccurrences(of: "css/", with: "")
-            index = index?.replacingOccurrences(of: "js/", with: "")
-        }
 
         let theme = Preferences.currentTheme()
         let typeface = Preferences.currentTypeface()
@@ -247,19 +244,23 @@ open class Reader: UIWebView {
         index = index?.replacingOccurrences(of: "ss-wrapper-light", with: "ss-wrapper-"+theme.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-lato", with: "ss-wrapper-"+typeface.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size.rawValue)
+        
+        guard let index = index else { return }
 
         if exists {
-            self.loadHTMLString(index!, baseURL: Constants.Path.readerBundleDir)
+            loadFileURL(Constants.Path.readerBundle, allowingReadAccessTo: Constants.Path.readerBundleDir)
+            loadHTMLString(index, baseURL: Constants.Path.readerBundleDir)
         } else {
-            self.loadHTMLString(index!, baseURL: URL(fileURLWithPath: Bundle.main.bundlePath))
+            loadHTMLString(index, baseURL: URL(fileURLWithPath: indexPath!).deletingLastPathComponent())
         }
 
-        self.readerViewDelegate?.didLoadContent(content: index!)
+        self.readerViewDelegate?.didLoadContent(content: index)
     }
 
-    func shouldStartLoad(request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+    func shouldStartLoad(request: URLRequest, navigationType: WKNavigationType) -> Bool {
+        
         guard let url = request.url else { return false }
-
+        
         if url.valueForParameter(key: "ready") != nil {
             self.readerViewDelegate?.ready()
             return false
@@ -298,7 +299,7 @@ open class Reader: UIWebView {
             return false
         }
 
-        if let scheme = url.scheme, (scheme == "http" || scheme == "https"), navigationType == .linkClicked {
+        if let scheme = url.scheme, (scheme == "http" || scheme == "https"), navigationType == .linkActivated {
             self.readerViewDelegate?.didTapExternalUrl(url: url)
             return false
         }
@@ -307,22 +308,22 @@ open class Reader: UIWebView {
     }
 
     func setTheme(_ theme: ReaderStyle.Theme) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setTheme('"+theme.rawValue+"')")
+        self.evaluateJavaScript("ssReader.setTheme('"+theme.rawValue+"')")
     }
 
     func setTypeface(_ typeface: ReaderStyle.Typeface) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setFont('"+typeface.rawValue+"')")
+        self.evaluateJavaScript("ssReader.setFont('"+typeface.rawValue+"')")
     }
 
     func setSize(_ size: ReaderStyle.Size) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setSize('"+size.rawValue+"')")
+        self.evaluateJavaScript("ssReader.setSize('"+size.rawValue+"')")
     }
 
     func setHighlights(_ highlights: String) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setHighlights('"+highlights+"')")
+        self.evaluateJavaScript("ssReader.setHighlights('"+highlights+"')")
     }
 
     func setComment(_ comment: Comment) {
-        self.stringByEvaluatingJavaScript(from: "ssReader.setComment('"+comment.comment.base64Encode()!+"', '"+comment.elementId+"')")
+        self.evaluateJavaScript("ssReader.setComment('"+comment.comment.base64Encode()!+"', '"+comment.elementId+"')")
     }
 }
