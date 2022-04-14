@@ -245,7 +245,7 @@ open class Reader: UIWebView {
         let size = Preferences.currentSize()
 
         index = index?.replacingOccurrences(of: "ss-wrapper-light", with: "ss-wrapper-"+theme.rawValue)
-        index = index?.replacingOccurrences(of: "ss-wrapper-andada", with: "ss-wrapper-"+typeface.rawValue)
+        index = index?.replacingOccurrences(of: "ss-wrapper-lato", with: "ss-wrapper-"+typeface.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-medium", with: "ss-wrapper-"+size.rawValue)
 
         if exists {
