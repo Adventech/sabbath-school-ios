@@ -23,6 +23,7 @@
 import AsyncDisplayKit
 import SwiftDate
 import UIKit
+import WebKit
 
 protocol ReadViewOutputProtocol: AnyObject {
     func didTapCopy()
@@ -32,7 +33,7 @@ protocol ReadViewOutputProtocol: AnyObject {
     func didTapHighlight(color: String)
     func didClickVerse(read: Read, verse: String)
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
-    func didLoadWebView(webView: UIWebView)
+    func didLoadWebView(webView: WKWebView)
     func didReceiveHighlights(readHighlights: ReadHighlights)
     func didReceiveComment(readComments: ReadComments)
     func didReceiveCopy(text: String)
@@ -82,6 +83,7 @@ class ReadView: ASCellNode {
         date.maximumNumberOfLines = 1
         date.attributedText = AppStyle.Read.Text.date(string: read.date.stringReadDate())
         
+        
         automaticallyManagesSubnodes = true
     }
     
@@ -116,6 +118,7 @@ class ReadView: ASCellNode {
         super.layout()
         parallax()
     }
+    
     override func didLoad() {
         super.didLoad()
 
@@ -129,19 +132,22 @@ class ReadView: ASCellNode {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
 
-        webView.backgroundColor = .clear
         webView.scrollView.delegate = self
-        webView.delegate = self
-        webView.alpha = 0
+        webView.navigationDelegate = self
+        
+        webView.isOpaque = false
+        webView.backgroundColor = .clear
+        webView.scrollView.backgroundColor = .clear
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.contentOffset.y = -self.parallaxCoverHeight
+        webView.tintColor = .systemBlue
         // webView.scrollView.setNeedsLayout()
 
         webView.readerViewDelegate = self
         webView.loadContent(content: read!.content)
         
         webView.scrollView.scrollToTop(animated: true)
-        // parallax()
+        parallax()
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -186,22 +192,27 @@ extension ReadView: UIScrollViewDelegate {
     }
 }
 
-extension ReadView: UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        return (webView as! Reader).shouldStartLoad(request: request, navigationType: navigationType)
-    }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        (webView as! Reader).contextMenuEnabled = true
-
-        if !webView.isLoading {
-            self.delegate?.didLoadWebView(webView: webView)
+extension ReadView: WKNavigationDelegate, WKUIDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let r = webView as! Reader
+        if r.shouldStartLoad(request: navigationAction.request, navigationType: navigationAction.navigationType) {
+            decisionHandler(.allow)
+        } else {
+            decisionHandler(.cancel)
         }
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        (webView as! Reader).contextMenuEnabled = true
+        webView.becomeFirstResponder()
+        self.delegate?.didLoadWebView(webView: webView)
     }
 }
 
 extension ReadView: ReaderOutputProtocol {
     func ready() {
+        
         if self.highlights != nil {
             webView.setHighlights((self.highlights?.highlights)!)
         }
