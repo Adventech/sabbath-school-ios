@@ -137,7 +137,7 @@ class Configuration: NSObject {
         }
         
         if (PreferencesShared.loggedIn()) {
-            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
+            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: false)
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
