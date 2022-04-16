@@ -65,6 +65,10 @@ class QuarterlyInteractor: QuarterlyInteractorInputProtocol {
         let language: QuarterlyLanguage = try! JSONDecoder().decode(QuarterlyLanguage.self, from: dictionary)
         retrieveQuarterliesForLanguage(language: language)
     }
+    
+    func saveLastQuarterlyIndex(lastQuarterlyIndex: String) {
+        Preferences.userDefaults.set(lastQuarterlyIndex, forKey: Constants.DefaultKey.lastQuarterlyIndex)
+    }
 }
 
 extension QuarterlyInteractor: LanguageInteractorOutputProtocol {

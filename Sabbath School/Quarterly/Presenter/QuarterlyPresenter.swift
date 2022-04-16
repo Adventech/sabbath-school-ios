@@ -49,6 +49,8 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
     }
 
     func presentLessonScreen(quarterlyIndex: String, initiateOpenToday: Bool = false) {
+        
+        interactor?.saveLastQuarterlyIndex(lastQuarterlyIndex: quarterlyIndex)
         wireFrame?.presentLessonScreen(view: controller!, quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpenToday)
     }
     

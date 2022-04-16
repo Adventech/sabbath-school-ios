@@ -55,8 +55,4 @@ class LessonInteractor: LessonInteractorInputProtocol {
             try? self.storage?.setObject(quarterlyInfo, forKey: url)
         }
     }
-
-    func saveLastQuarterlyIndex(lastQuarterlyIndex: String) {
-        Preferences.userDefaults.set(lastQuarterlyIndex, forKey: Constants.DefaultKey.lastQuarterlyIndex)
-    }
 }
