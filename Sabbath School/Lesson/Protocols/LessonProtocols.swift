@@ -63,4 +63,5 @@ protocol LessonInteractorInputProtocol: AnyObject {
 
     func configure()
     func retrieveQuarterlyInfo(quarterlyIndex: String)
+    func retrievePublishingInfo()
 }

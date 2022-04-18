@@ -31,6 +31,7 @@ class LessonPresenter: LessonPresenterProtocol {
     func configure() {
         interactor?.configure()
         interactor?.retrieveQuarterlyInfo(quarterlyIndex: quarterlyIndex!)
+        interactor?.retrievePublishingInfo()
     }
 
     func presentReadScreen(lessonIndex: String) {

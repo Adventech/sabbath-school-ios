@@ -45,6 +45,7 @@ protocol ReadControllerProtocol: AnyObject {
     func loadVideo(video: [VideoInfo])
     func setHighlights(highlights: ReadHighlights)
     func setComments(comments: ReadComments)
+    func setPublishingInfo(publishingInfo: PublishingInfo?)
 }
 
 protocol ReadControllerDelegate: AnyObject {
@@ -63,6 +64,7 @@ protocol ReadInteractorOutputProtocol: AnyObject {
     func didRetrieveVideo(video: [VideoInfo])
     func didRetrieveHighlights(highlights: ReadHighlights)
     func didRetrieveComments(comments: ReadComments)
+    func didRetrievePublishingInfo(publishingInfo: PublishingInfo?)
 }
 
 protocol ReadInteractorInputProtocol: AnyObject {
@@ -75,4 +77,5 @@ protocol ReadInteractorInputProtocol: AnyObject {
     func retrieveAudio(quarterlyIndex: String)
     func saveHighlights(highlights: ReadHighlights)
     func saveComments(comments: ReadComments)
+    func retrievePublishingInfo()
 }

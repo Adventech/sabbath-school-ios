@@ -65,6 +65,9 @@
 		2FC6F69E27A8E35C00BBC4A9 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
 		2FC6F69F27A8E35C00BBC4A9 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
 		2FE24EFD26BB90170036FD75 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE24EFC26BB90170036FD75 /* AudioController.swift */; };
+		4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */; };
+		4E2882CC280CCBB600AB8C31 /* PublishingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */; };
+		4E2882CE280CE46100AB8C31 /* PublishingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
@@ -311,6 +314,9 @@
 		2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICache.swift; sourceTree = "<group>"; };
 		2FE24EFC26BB90170036FD75 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		477B1DC2A057461A3A3B40B8 /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfoData.swift; sourceTree = "<group>"; };
+		4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfo.swift; sourceTree = "<group>"; };
+		4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfoView.swift; sourceTree = "<group>"; };
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1054,6 +1060,7 @@
 				7A3BCE221EE262C7003EC12B /* LessonEmptyCellNode.swift */,
 				FEF4B7A126AF9C7200548E36 /* LessonQuarterlyFooter.swift */,
 				FEDA4C9226B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift */,
+				4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1249,6 +1256,8 @@
 				2FA1FFDF26F6B86F00E80868 /* PDFAnnotation.swift */,
 				2FC6F69327A4B43400BBC4A9 /* Account.swift */,
 				2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */,
+				4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */,
+				4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1700,7 +1709,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1797,6 +1806,7 @@
 				2F96FF7726CFF4A30045DC6D /* VideoCollectionHeader.swift in Sources */,
 				7A3BCE231EE262C7003EC12B /* LessonEmptyCellNode.swift in Sources */,
 				7AF3716E1EF9E6FF00547916 /* AboutView.swift in Sources */,
+				4E2882CE280CE46100AB8C31 /* PublishingInfoView.swift in Sources */,
 				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
 				FE5CC7452689238700B9F061 /* QuarterlyWIreFrame.swift in Sources */,
 				7A922E141EDF8A6A00C12A67 /* ReadWireFrame.swift in Sources */,
@@ -1828,6 +1838,7 @@
 				7A28101E1EDDCE36003C7458 /* LessonPresenter.swift in Sources */,
 				7A3BCE211EE0EC60003EC12B /* String.swift in Sources */,
 				7A922E161EDF8AB300C12A67 /* ReadPresenter.swift in Sources */,
+				4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */,
 				7A280FF81EDD0246003C7458 /* LanguageProtocols.swift in Sources */,
 				2FA1FFEC26F6DA9700E80868 /* VideoInteractor.swift in Sources */,
 				7A280FCC1EDA0F9D003C7458 /* LoginController.swift in Sources */,
@@ -1866,6 +1877,7 @@
 				7A3BCE3E1EE2F209003EC12B /* ReadOptionsController.swift in Sources */,
 				2F96FF7926CFF4C30045DC6D /* VideoCollectionView.swift in Sources */,
 				2F96FF6B26CC9C6F0045DC6D /* VideoInfo.swift in Sources */,
+				4E2882CC280CCBB600AB8C31 /* PublishingInfo.swift in Sources */,
 				FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */,
 				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
 				FE5CC73B268914F000B9F061 /* QuarterlyController.swift in Sources */,

@@ -25,7 +25,13 @@ import AsyncDisplayKit
 import UIKit
 import StoreKit
 import WidgetKit
+import SafariServices
 
+enum LessonControllerSections: Int {
+    case header = 0
+    case publishingInfo = 1
+    case lessons = 2
+}
 
 final class LessonController: ASDKViewController<ASDisplayNode> {
     var tableNode: ASTableNode? { return node as? ASTableNode }
@@ -33,6 +39,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     var delegate: LessonControllerDelegate?
     var presenter: LessonPresenterProtocol?
     var dataSource: QuarterlyInfo?
+    private var publishingInfo: PublishingInfo?
     var isPeeking: Bool? = false
     var initiateOpenToday: Bool?
     
@@ -246,7 +253,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
             if dataSource.lessons.count <= 0 { return }
         }
         
-        let titleOrigin = (self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: 1)) as! LessonView).view.rectCorrespondingToWindow
+        let titleOrigin = (self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: 2)) as! LessonView).view.rectCorrespondingToWindow
         guard let navigationBarMaxY =  self.navigationController?.navigationBar.rectCorrespondingToWindow.maxY else { return }
 
         var navBarAlpha: CGFloat = (initialOffset - (titleOrigin.minY + mn - navigationBarMaxY)) / initialOffset
@@ -279,7 +286,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     
     @available(iOS 13.0, *)
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        if indexPath.section > 1 { return nil }
+        if indexPath.section > 2 { return nil }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: {
             guard let readController = self.getReadControllerForPeek(indexPath: indexPath, point: point) else { return nil }
             return readController
@@ -336,6 +343,16 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         parallax(scrollView: scrollView)
         scrollBehavior()
     }
+    
+    func openPublishingHouse(url: String?) {
+        guard let urlString = url, let url = URL(string: urlString) else {
+            return
+        }
+
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .formSheet
+        present(safariViewController, animated: true)
+    }
 }
 
 extension LessonController: UINavigationControllerDelegate {
@@ -365,6 +382,11 @@ extension LessonController: LessonControllerProtocol {
             self.initiateOpenToday = false
         }
     }
+    
+    func showPublishingInfo(publishingInfo: PublishingInfo?) {
+        self.publishingInfo = publishingInfo
+        tableNode?.reloadSections(IndexSet(integer: LessonControllerSections.publishingInfo.rawValue), with: .automatic)
+    }
 }
 
 extension LessonController: UIViewControllerPreviewingDelegate {
@@ -377,7 +399,7 @@ extension LessonController: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard let indexPath = tableNode?.indexPathForRow(at: location) else { return nil }
-        if indexPath.section > 1 { return nil }
+        if indexPath.section > 2 { return nil }
         guard let cell = tableNode?.cellForRow(at: indexPath) else { return nil }
         let readController = getReadControllerForPeek(indexPath: indexPath, point: location)
         
@@ -395,15 +417,20 @@ extension LessonController: ReadControllerDelegate {
 
 extension LessonController: ASTableDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let lesson = dataSource?.lessons[indexPath.row] else { return }
 
         if indexPath.section == 1 {
+            openPublishingHouse(url: publishingInfo?.url)
+        }
+        
+        guard let lesson = dataSource?.lessons[indexPath.row] else { return }
+
+        if indexPath.section == 2 {
             openLesson(lessonIndex: lesson.index, pdf: lesson.pdfOnly)
         }
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.section == 1
+        return indexPath.section == 2 || indexPath.section == 1
     }
 }
 
@@ -434,7 +461,11 @@ extension LessonController: ASTableDataSource {
                 return node
             }
             
-            if indexPath.section == 2 {
+            if let publishingInfo = self.publishingInfo, indexPath.section == 1 {
+                return PublishingInfoView(publishingInfo: publishingInfo, hexArrowColor: self.dataSource?.quarterly.colorPrimaryDark)
+            }
+
+            if indexPath.section == 3 {
                 return LessonQuarterlyFooter(credits: self.dataSource!.quarterly.credits, features: self.dataSource!.quarterly.features)
             }
             
@@ -454,13 +485,18 @@ extension LessonController: ASTableDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let lessons = dataSource?.lessons else {
-            return section == 1 ? 13 : 1
+            return section == 2 ? 13 : 1
         }
-        return section == 1 ? lessons.count : 1
+
+        if section == 1 {
+            return publishingInfo != nil ? 1:0
+        }
+        
+        return section == 2 ? lessons.count : 1
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        var sections = 2
+        var sections = 3
         
         if dataSource != nil {
             sections += 1
