@@ -372,6 +372,10 @@ struct AppStyle {
                 return .baseGray2 | .baseGray3
             }
             
+            static var publishingHouseInfo: UIColor {
+                return .baseGray2 | .baseGray3
+            }
+            
             static var backgroundFooter: UIColor {
                 return .baseGray1 | UIColor.black.lighter()
             }
@@ -434,6 +438,14 @@ struct AppStyle {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: AppStyle.Lesson.Color.copyright,
                     .font: R.font.latoRegular(size: 15)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func publishingHouseInfo(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: AppStyle.Lesson.Color.copyright,
+                    .font: R.font.latoRegular(size: 13)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
             }

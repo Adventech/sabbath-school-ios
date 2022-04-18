@@ -50,4 +50,8 @@ extension LessonPresenter: LessonInteractorOutputProtocol {
     func didRetrieveQuarterlyInfo(quarterlyInfo: QuarterlyInfo) {
         controller?.showLessons(quarterlyInfo: quarterlyInfo)
     }
+    
+    func didRetrievePublishingInfo(publishingInfo: PublishingInfo?) {
+        controller?.showPublishingInfo(publishingInfo: publishingInfo)
+    }
 }

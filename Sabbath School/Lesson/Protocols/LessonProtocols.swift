@@ -38,6 +38,7 @@ protocol LessonControllerProtocol: AnyObject {
     var presenter: LessonPresenterProtocol? { get set }
     var initiateOpenToday: Bool? { get set }
     func showLessons(quarterlyInfo: QuarterlyInfo)
+    func showPublishingInfo(publishingInfo: PublishingInfo?)
 }
 
 protocol LessonControllerDelegate: AnyObject {
@@ -54,6 +55,7 @@ protocol LessonWireFrameProtocol: AnyObject {
 protocol LessonInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
     func didRetrieveQuarterlyInfo(quarterlyInfo: QuarterlyInfo)
+    func didRetrievePublishingInfo(publishingInfo: PublishingInfo?)
 }
 
 protocol LessonInteractorInputProtocol: AnyObject {
