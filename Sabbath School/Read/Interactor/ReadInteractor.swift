@@ -30,6 +30,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
     private var readStorage: Cache.Storage<String, Read>?
     private var highlightStorage: Cache.Storage<String, ReadHighlights>?
     private var commentStorage: Cache.Storage<String, ReadComments>?
+    private var publishingInfoStorage: Storage<String, PublishingInfoData>?
     
     weak var presenter: ReadInteractorOutputProtocol?
     var ticker: Int = -1
@@ -45,6 +46,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
         self.readStorage = APICache.storage?.transformCodable(ofType: Read.self)
         self.highlightStorage = APICache.storage?.transformCodable(ofType: ReadHighlights.self)
         self.commentStorage = APICache.storage?.transformCodable(ofType: ReadComments.self)
+        self.publishingInfoStorage = APICache.storage?.transformCodable(ofType: PublishingInfoData.self)
     }
 
     func retrieveLessonInfo(lessonIndex: String) {
@@ -245,6 +247,14 @@ class ReadInteractor: ReadInteractorInputProtocol {
                     print("unzipping error")
                 }
             }
+        }
+    }
+    
+    func retrievePublishingInfo() {
+        let url = "\(Constants.API.URL)/misc/publishing/info"
+        
+        if let publishingInfo = try? self.publishingInfoStorage?.entry(forKey: url) {
+            self.presenter?.didRetrievePublishingInfo(publishingInfo: publishingInfo.object.data)
         }
     }
 }

@@ -38,6 +38,7 @@ class ReadController: VideoPlaybackDelegatable {
     var previewingContext: UIViewControllerPreviewing? = nil
 
     var lessonInfo: LessonInfo?
+    private var publishingInfo: PublishingInfo?
     private var audio: [Audio] = []
     private var video: [VideoInfo] = []
     private var reads = [Read]()
@@ -85,11 +86,7 @@ class ReadController: VideoPlaybackDelegatable {
 
         UIApplication.shared.isIdleTimerDisabled = true
 
-        if #available(iOS 11.0, *) {
-            self.collectionNode.view.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
+        collectionNode.view.contentInsetAdjustmentBehavior = .never
         
         readCollectionView.miniPlayerView.play.addTarget(self, action: #selector(didPressPlay(_:)), forControlEvents: .touchUpInside)
         readCollectionView.miniPlayerView.backward.addTarget(self, action: #selector(didPressBackward(_:)), forControlEvents: .touchUpInside)
@@ -256,7 +253,7 @@ class ReadController: VideoPlaybackDelegatable {
     }
     
     @objc func presentReadMenu(sender: UIBarButtonItem) {
-        let readMenuItems: [ReadMenuItem] = [
+        var readMenuItems: [ReadMenuItem] = [
             ReadMenuItem(
                 title: "Original PDF".localized(),
                 icon: R.image.iconNavbarPdf()!,
@@ -268,6 +265,15 @@ class ReadController: VideoPlaybackDelegatable {
                 type: .readOptions
             )
         ]
+        
+        if publishingInfo != nil {
+            let item = ReadMenuItem(
+                title: "Get Printed Resources".localized(),
+                icon: R.image.arrowCircle()!,
+                type: .getPrintedResources
+            )
+            readMenuItems.append(item)
+        }
 
         let menu = ReadMenuController(items: readMenuItems)
         menu.delegate = self
@@ -446,6 +452,16 @@ class ReadController: VideoPlaybackDelegatable {
                 }
         })]
     }
+    
+    func openPublishingHouse(url: String?) {
+        guard let urlString = url, let url = URL(string: urlString) else {
+            return
+        }
+
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .formSheet
+        present(safariViewController, animated: true)
+    }
 }
 
 extension ReadController: ReadMenuControllerDelegate {
@@ -453,9 +469,10 @@ extension ReadController: ReadMenuControllerDelegate {
         switch menuItemType {
         case .originalPDF:
             navigationController?.pushViewController(PDFReadController(lessonIndex: (lessonInfo?.lesson.index)!), animated: true)
-        break
         case .readOptions:
             self.readingOptions(sender: (navigationItem.rightBarButtonItems?.first)!)
+        case .getPrintedResources:
+            openPublishingHouse(url: publishingInfo?.url)
         }
     }
 }
@@ -551,6 +568,10 @@ extension ReadController: ReadControllerProtocol {
                 }
             }
         }
+    }
+    
+    func setPublishingInfo(publishingInfo: PublishingInfo?) {
+        self.publishingInfo = publishingInfo
     }
 }
 

@@ -56,6 +56,7 @@ class ReadPresenter: ReadPresenterProtocol {
     func configure() {
         interactor?.configure()
         interactor?.retrieveLessonInfo(lessonIndex: lessonIndex!)
+        interactor?.retrievePublishingInfo()
     }
 
     func presentBibleScreen(read: Read, verse: String, size: CGSize) {
@@ -117,5 +118,9 @@ extension ReadPresenter: ReadInteractorOutputProtocol {
     
     func didRetrieveComments(comments: ReadComments) {
         controller?.setComments(comments: comments)
+    }
+    
+    func didRetrievePublishingInfo(publishingInfo: PublishingInfo?) {
+        controller?.setPublishingInfo(publishingInfo: publishingInfo)
     }
 }

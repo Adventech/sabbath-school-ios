@@ -31,6 +31,7 @@ class LessonPresenter: LessonPresenterProtocol {
     func configure() {
         interactor?.configure()
         interactor?.retrieveQuarterlyInfo(quarterlyIndex: quarterlyIndex!)
+        interactor?.retrievePublishingInfo()
     }
 
     func presentReadScreen(lessonIndex: String) {
@@ -49,5 +50,9 @@ extension LessonPresenter: LessonInteractorOutputProtocol {
 
     func didRetrieveQuarterlyInfo(quarterlyInfo: QuarterlyInfo) {
         controller?.showLessons(quarterlyInfo: quarterlyInfo)
+    }
+    
+    func didRetrievePublishingInfo(publishingInfo: PublishingInfo?) {
+        controller?.showPublishingInfo(publishingInfo: publishingInfo)
     }
 }

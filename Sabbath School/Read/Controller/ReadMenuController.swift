@@ -26,6 +26,7 @@ import UIKit
 enum ReadMenuType {
     case originalPDF
     case readOptions
+    case getPrintedResources
 }
 
 struct ReadMenuItem {
