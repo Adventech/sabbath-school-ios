@@ -284,7 +284,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     
     @available(iOS 13.0, *)
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        if indexPath.section > 2 { return nil }
+        if indexPath.section != LessonControllerSections.lessons.rawValue { return nil }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: {
             guard let readController = self.getReadControllerForPeek(indexPath: indexPath, point: point) else { return nil }
             return readController
