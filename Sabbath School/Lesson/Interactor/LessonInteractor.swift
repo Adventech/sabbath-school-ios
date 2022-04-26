@@ -42,8 +42,11 @@ class LessonInteractor: LessonInteractorInputProtocol {
         let parsedIndex =  Helper.parseIndex(index: quarterlyIndex)
         let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/index.json"
         
+        var cachedObject: QuarterlyInfo?
+        
         if (try? self.storage?.existsObject(forKey: url)) != nil {
             if let quarterlyInfo = try? self.storage?.entry(forKey: url) {
+                cachedObject = quarterlyInfo.object
                 self.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: quarterlyInfo.object)
             }
         }
@@ -53,6 +56,11 @@ class LessonInteractor: LessonInteractorInputProtocol {
                 self.presenter?.onError(response.error)
                 return
             }
+            
+            if let cachedObject = cachedObject, cachedObject.isEqual(from: quarterlyInfo) {
+                return
+            }
+            
             self.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: quarterlyInfo)
             try? self.storage?.setObject(quarterlyInfo, forKey: url)
         }
