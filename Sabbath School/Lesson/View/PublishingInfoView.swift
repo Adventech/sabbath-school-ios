@@ -45,7 +45,7 @@ final class PublishingInfoView: ASCellNode {
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 15,
-            justifyContent: .start,
+            justifyContent: .spaceBetween,
             alignItems: .center,
             children: [title, seeAllIcon]
         )
