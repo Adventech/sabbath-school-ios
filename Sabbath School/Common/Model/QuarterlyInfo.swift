@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-struct QuarterlyInfo: Codable {
+struct QuarterlyInfo: Codable, Comparable {
     let quarterly: Quarterly
     let lessons: [Lesson]
 }
