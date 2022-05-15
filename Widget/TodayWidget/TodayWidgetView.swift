@@ -31,16 +31,24 @@ struct TodayWidgetView : View {
         ZStack(alignment: widgetFamily == .systemLarge ? .bottomTrailing : .topTrailing) {
             Color("WidgetBackground")
             ZStack {
-                ZStack(alignment: .topTrailing) {
-                    Image("AppLogo")
-                        .resizable()
-                        .padding(WidgetStyle.getLogoSize()*0.1)
-                        .unredacted()
-                }
-            }
-            .frame(width: WidgetStyle.getLogoSize(), height: WidgetStyle.getLogoSize())
-            .offset(x: WidgetStyle.getLogoOffset(widgetFamily: widgetFamily).x, y: WidgetStyle.getLogoOffset(widgetFamily: widgetFamily).y)
-            .opacity(0.2)
+                NetworkImage(url: entry.lessonInfo.lesson.cover)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(
+                        minWidth: 0,
+                        maxWidth: .infinity,
+                        minHeight: 0,
+                        maxHeight: .infinity,
+                        alignment: .bottomLeading)
+                Rectangle()
+                        .foregroundColor(.clear)
+                        .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
+            }.frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 0,
+                maxHeight: .infinity,
+                alignment: .bottomLeading)
+            
             
             VStack(alignment: .leading) {
                 Text(entry.day.date.stringReadDate())
@@ -66,7 +74,7 @@ struct TodayWidgetView : View {
                             .cornerRadius(11)
                             .font(.system(size: 9, weight: .bold))
                     }
-                })  
+                })
             }.frame(
                 minWidth: 0,
                 maxWidth: .infinity,
