@@ -64,9 +64,7 @@ class ReadPresenter: ReadPresenterProtocol {
         bibleScreen.delegate = (controller as! BibleControllerOutputProtocol)
         let navigation = ASNavigationController(rootViewController: bibleScreen)
         
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         
         let statusBar: EKAttributes.StatusBar = (controller as! ReadController).preferredStatusBarStyle == .lightContent ? .light : .dark
         

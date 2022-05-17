@@ -376,22 +376,6 @@ class ReadController: VideoPlaybackDelegatable {
             if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                 toggleBars()
             }
-        } else {
-            guard #available(iOS 11.0, *) else {
-                if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
-                    if let navigationController = navigationController, navigationController.isNavigationBarHidden {
-                        toggleBars()
-                    }
-                } else {
-                    if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
-                        if scrollView.panGestureRecognizer.state != .possible {
-                            toggleBars()
-                        }
-                    }
-                }
-                lastContentOffset = -scrollView.contentOffset.y
-                return
-            }
         }
         lastContentOffset = -scrollView.contentOffset.y
     }

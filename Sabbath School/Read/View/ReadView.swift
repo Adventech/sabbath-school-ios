@@ -128,7 +128,7 @@ class ReadView: ASCellNode {
         
         if #available(iOS 13.0, *) {
             webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
-        } else if #available(iOS 11.0, *){
+        } else {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
 

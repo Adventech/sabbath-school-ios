@@ -69,9 +69,7 @@ class LessonWireFrame: LessonWireFrameProtocol {
     }
     
     func showReadScreen(view: LessonControllerProtocol, readScreen: ReadController) {
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 
         if let sourceView = view as? UIViewController {
             sourceView.show(readScreen, sender: nil)

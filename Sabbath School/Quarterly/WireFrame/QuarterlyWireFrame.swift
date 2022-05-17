@@ -95,9 +95,7 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
     }
     
     func showLessonScreen(view: QuarterlyControllerProtocol, lessonScreen: LessonController) {
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
 
         if let sourceView = view as? UIViewController {
             sourceView.navigationController?.pushViewController(lessonScreen, animated: true)

@@ -105,18 +105,13 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if #available(iOS 11, *) {
-            if #available(iOS 13, *) {
-                setupNavigationbar()
-                scrollBehavior()
-                
-                self.view.frame.origin.y = self.view.frame.origin.y-1
-            } else {
-                setNavigationBarOpacity(alpha: 0)
-            }
-        } else {
+        if #available(iOS 13, *) {
             setupNavigationbar()
             scrollBehavior()
+            
+            self.view.frame.origin.y = self.view.frame.origin.y-1
+        } else {
+            setNavigationBarOpacity(alpha: 0)
         }
     }
     
