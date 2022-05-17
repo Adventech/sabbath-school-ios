@@ -84,14 +84,7 @@ extension ASDisplayNode {
             
             effectView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
             
-            if #available(iOS 11.0, *) {
-                effectView.layer.mask = gradient
-            } else {
-                let maskView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: height))
-                maskView.backgroundColor = UIColor.white
-                maskView.layer.mask = gradient
-                effectView.mask = maskView
-            }
+            effectView.layer.mask = gradient
             
             effectView.isUserInteractionEnabled = false
             

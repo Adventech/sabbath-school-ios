@@ -148,12 +148,8 @@ class Configuration: NSObject {
     static func configureArmchair() {
         Armchair.appID("895272167")
         Armchair.shouldPromptClosure { info -> Bool in
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
-                return false
-            } else {
-                return true
-            }
+            SKStoreReviewController.requestReview()
+            return false
         }
     }
     
@@ -182,16 +178,10 @@ class Configuration: NSObject {
     }
     
     static func configureNotifications(application: UIApplication) {
-        if #available(iOS 10.0, *) {
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
     }
     
     static func reloadAllWidgets() {

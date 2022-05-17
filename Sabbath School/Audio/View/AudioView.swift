@@ -138,11 +138,9 @@ class AudioView: ASDisplayNode {
         cover.style.alignSelf = .stretch
         
         DispatchQueue.main.async {
-            if #available(iOS 11.0, *) {
-                let window = UIApplication.shared.keyWindow
-                if let bottomPadding = window?.safeAreaInsets.bottom {
-                    self.bottomArea = bottomPadding
-                }
+            let window = UIApplication.shared.keyWindow
+            if let bottomPadding = window?.safeAreaInsets.bottom {
+                self.bottomArea = bottomPadding
             }
         }
 
