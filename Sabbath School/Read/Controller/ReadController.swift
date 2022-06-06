@@ -189,11 +189,18 @@ class ReadController: VideoPlaybackDelegatable {
         super.viewDidAppear(animated)
         setupNavigationBar()
         scrollBehavior()
+        setupObservers()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    // MARK: Setup Observers
+    
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(resetContextMenu), name: .resetReaderContextMenu, object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -211,6 +218,12 @@ class ReadController: VideoPlaybackDelegatable {
         UIView.animate(withDuration: 0.5, animations: {
             self.setNeedsStatusBarAppearanceUpdate()
         })
+    }
+    
+    @objc func resetContextMenu() {
+        if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
+            webView.createContextMenu()
+        }
     }
 
     @objc func readingOptions(sender: UIBarButtonItem) {
