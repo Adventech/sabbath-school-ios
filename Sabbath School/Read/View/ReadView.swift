@@ -81,8 +81,9 @@ class ReadView: ASCellNode {
 
         date.alpha = 1
         date.maximumNumberOfLines = 1
-        date.attributedText = AppStyle.Read.Text.date(string: read.date.stringReadDate())
-        
+        let formattedDate = read.date.stringReadDate().replacingLastOccurrence(of: Constants.StringsToBeReplaced.saturday,
+                                                                               with: Constants.StringsToBeReplaced.sabbath)
+        date.attributedText = AppStyle.Read.Text.date(string: formattedDate)
         
         automaticallyManagesSubnodes = true
     }
