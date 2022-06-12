@@ -200,7 +200,7 @@ class ReadController: VideoPlaybackDelegatable {
     // MARK: Setup Observers
     
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(resetContextMenu), name: .resetReaderContextMenu, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resetReader), name: .resetReader, object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -220,9 +220,14 @@ class ReadController: VideoPlaybackDelegatable {
         })
     }
     
-    @objc func resetContextMenu() {
+    @objc func resetReader() {
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
             webView.createContextMenu()
+            webView.evaluateJavaScript("ssReader.clearSelection()") { _, error in
+                if error != nil {
+                    self.collectionNode.reloadData()
+                }
+            }
         }
     }
 
