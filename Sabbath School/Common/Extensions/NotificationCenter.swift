@@ -23,5 +23,5 @@
 import Foundation
 
 extension Notification.Name {
-    static let resetReaderContextMenu = Notification.Name("resetReaderContextMenu")
+    static let resetReader = Notification.Name("resetReader")
 }

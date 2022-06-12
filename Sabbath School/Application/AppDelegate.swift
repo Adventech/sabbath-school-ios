@@ -182,6 +182,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        NotificationCenter.default.post(name: .resetReaderContextMenu, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: .resetReader, object: nil, userInfo: nil)
     }
 }
