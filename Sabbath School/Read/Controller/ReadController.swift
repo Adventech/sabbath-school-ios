@@ -38,6 +38,7 @@ class ReadController: VideoPlaybackDelegatable {
     var previewingContext: UIViewControllerPreviewing? = nil
 
     var lessonInfo: LessonInfo?
+    private var publishingInfo: PublishingInfo?
     private var audio: [Audio] = []
     private var video: [VideoInfo] = []
     private var reads = [Read]()
@@ -85,11 +86,7 @@ class ReadController: VideoPlaybackDelegatable {
 
         UIApplication.shared.isIdleTimerDisabled = true
 
-        if #available(iOS 11.0, *) {
-            self.collectionNode.view.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
+        collectionNode.view.contentInsetAdjustmentBehavior = .never
         
         readCollectionView.miniPlayerView.play.addTarget(self, action: #selector(didPressPlay(_:)), forControlEvents: .touchUpInside)
         readCollectionView.miniPlayerView.backward.addTarget(self, action: #selector(didPressBackward(_:)), forControlEvents: .touchUpInside)
@@ -192,11 +189,18 @@ class ReadController: VideoPlaybackDelegatable {
         super.viewDidAppear(animated)
         setupNavigationBar()
         scrollBehavior()
+        setupObservers()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    // MARK: Setup Observers
+    
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(resetReader), name: .resetReader, object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -214,6 +218,17 @@ class ReadController: VideoPlaybackDelegatable {
         UIView.animate(withDuration: 0.5, animations: {
             self.setNeedsStatusBarAppearanceUpdate()
         })
+    }
+    
+    @objc func resetReader() {
+        if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
+            webView.createContextMenu()
+            webView.evaluateJavaScript("ssReader.clearSelection()") { _, error in
+                if error != nil {
+                    self.collectionNode.reloadData()
+                }
+            }
+        }
     }
 
     @objc func readingOptions(sender: UIBarButtonItem) {
@@ -256,7 +271,7 @@ class ReadController: VideoPlaybackDelegatable {
     }
     
     @objc func presentReadMenu(sender: UIBarButtonItem) {
-        let readMenuItems: [ReadMenuItem] = [
+        var readMenuItems: [ReadMenuItem] = [
             ReadMenuItem(
                 title: "Original PDF".localized(),
                 icon: R.image.iconNavbarPdf()!,
@@ -268,6 +283,15 @@ class ReadController: VideoPlaybackDelegatable {
                 type: .readOptions
             )
         ]
+        
+        if publishingInfo != nil {
+            let item = ReadMenuItem(
+                title: "Get Printed Resources".localized(),
+                icon: R.image.arrowCircle()!,
+                type: .getPrintedResources
+            )
+            readMenuItems.append(item)
+        }
 
         let menu = ReadMenuController(items: readMenuItems)
         menu.delegate = self
@@ -370,22 +394,6 @@ class ReadController: VideoPlaybackDelegatable {
             if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                 toggleBars()
             }
-        } else {
-            guard #available(iOS 11.0, *) else {
-                if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
-                    if let navigationController = navigationController, navigationController.isNavigationBarHidden {
-                        toggleBars()
-                    }
-                } else {
-                    if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
-                        if scrollView.panGestureRecognizer.state != .possible {
-                            toggleBars()
-                        }
-                    }
-                }
-                lastContentOffset = -scrollView.contentOffset.y
-                return
-            }
         }
         lastContentOffset = -scrollView.contentOffset.y
     }
@@ -446,6 +454,16 @@ class ReadController: VideoPlaybackDelegatable {
                 }
         })]
     }
+    
+    func openPublishingHouse(url: String?) {
+        guard let urlString = url, let url = URL(string: urlString) else {
+            return
+        }
+
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .formSheet
+        present(safariViewController, animated: true)
+    }
 }
 
 extension ReadController: ReadMenuControllerDelegate {
@@ -453,9 +471,10 @@ extension ReadController: ReadMenuControllerDelegate {
         switch menuItemType {
         case .originalPDF:
             navigationController?.pushViewController(PDFReadController(lessonIndex: (lessonInfo?.lesson.index)!), animated: true)
-        break
         case .readOptions:
             self.readingOptions(sender: (navigationItem.rightBarButtonItems?.first)!)
+        case .getPrintedResources:
+            openPublishingHouse(url: publishingInfo?.url)
         }
     }
 }
@@ -552,6 +571,10 @@ extension ReadController: ReadControllerProtocol {
             }
         }
     }
+    
+    func setPublishingInfo(publishingInfo: PublishingInfo?) {
+        self.publishingInfo = publishingInfo
+    }
 }
 
 extension ReadController: ASPagerDataSource {
@@ -622,12 +645,9 @@ extension ReadController: ReadViewOutputProtocol {
         UIMenuController.shared.menuItems = []
     }
 
-    func didLoadWebView(webView: UIWebView) {
+    func didLoadWebView(webView: WKWebView) {
         if abs(webView.scrollView.contentOffset.y) > 0 {
-            initialContentOffset = -webView.scrollView.contentOffset.y
-        }
-        UIView.animate(withDuration: 0.3) {
-            webView.alpha = 1
+            initialContentOffset = -1*webView.scrollView.contentOffset.y
         }
 
         if let reader = webView as? Reader, !contextMenuEnabled {

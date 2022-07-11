@@ -41,8 +41,12 @@ class QuarterlyInteractor: QuarterlyInteractorInputProtocol {
 
     func retrieveQuarterliesForLanguage(language: QuarterlyLanguage) {
         let url = "\(Constants.API.URL)/\(language.code)/quarterlies/index.json"
+
+        var cachedObject: QuarterlyCache?
+        
         if (try? self.storage?.existsObject(forKey: url)) != nil {
             if let quarterlies = try? self.storage?.entry(forKey: url) {
+                cachedObject = QuarterlyCache(quarterlies: quarterlies.object)
                 self.presenter?.didRetrieveQuarterlies(quarterlies: quarterlies.object)
             }
         }
@@ -52,6 +56,11 @@ class QuarterlyInteractor: QuarterlyInteractorInputProtocol {
                 self.presenter?.onError(response.error)
                 return
             }
+
+            if let cachedObject = cachedObject, cachedObject.isEqual(from: QuarterlyCache(quarterlies: quarterlies)) {
+                return
+            }
+            
             self.presenter?.didRetrieveQuarterlies(quarterlies: quarterlies)
             try? self.storage?.setObject(quarterlies, forKey: url)
         }
@@ -64,6 +73,10 @@ class QuarterlyInteractor: QuarterlyInteractorInputProtocol {
 
         let language: QuarterlyLanguage = try! JSONDecoder().decode(QuarterlyLanguage.self, from: dictionary)
         retrieveQuarterliesForLanguage(language: language)
+    }
+    
+    func saveLastQuarterlyIndex(lastQuarterlyIndex: String) {
+        Preferences.userDefaults.set(lastQuarterlyIndex, forKey: Constants.DefaultKey.lastQuarterlyIndex)
     }
 }
 

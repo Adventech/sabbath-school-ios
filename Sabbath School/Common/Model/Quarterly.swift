@@ -129,3 +129,7 @@ struct Quarterly: Codable {
         
     }
 }
+
+struct QuarterlyCache: Codable, Comparable {
+    let quarterlies: [Quarterly]?
+}

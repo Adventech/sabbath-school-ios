@@ -38,9 +38,7 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
     }
 
     func presentLanguageScreen() {
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         let module = LanguageWireFrame.createLanguageModule() { [weak self] () -> Void? in
             self?.controller?.retrieveQuarterlies()
         }
@@ -49,6 +47,8 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
     }
 
     func presentLessonScreen(quarterlyIndex: String, initiateOpenToday: Bool = false) {
+        
+        interactor?.saveLastQuarterlyIndex(lastQuarterlyIndex: quarterlyIndex)
         wireFrame?.presentLessonScreen(view: controller!, quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpenToday)
     }
     

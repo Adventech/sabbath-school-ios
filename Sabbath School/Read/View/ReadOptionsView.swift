@@ -104,11 +104,7 @@ class ReadOptionsView: ASDisplayNode {
             alignItems: .center,
             children: [theme, divider1, typeface, divider2, sliderSpec])
         
-        var topMargin: CGFloat = 0
-        
-        if #available(iOS 11.0, *) {
-            topMargin = 10
-        }
+        let topMargin: CGFloat = 10
         
         return ASInsetLayoutSpec(insets: UIEdgeInsets(top: topMargin, left: 0, bottom: 0, right: 0), child: mainLayout)
     }

@@ -29,7 +29,6 @@ import CoreSpotlight
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Configuration.configureArmchair()
@@ -180,5 +179,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         quarterlyController.pushViewController(readController, animated: false)
         Configuration.window?.rootViewController = quarterlyController
         Configuration.window?.makeKeyAndVisible()
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        NotificationCenter.default.post(name: .resetReader, object: nil, userInfo: nil)
     }
 }

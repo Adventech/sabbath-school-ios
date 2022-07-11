@@ -118,6 +118,10 @@ class VideoPlaybackPlayerViewController: AVPlayerViewController {
 
 class VideoPlaybackDelegatable: ASDKViewController<ASDisplayNode> {
     func playVideo(video: Video, artwork: UIImage? = nil) {
+        if !VideoPlayback.shared.pip && presentedViewController != nil {
+            return
+        }
+
         let titleMetadata = AVMutableMetadataItem()
         titleMetadata.identifier = AVMetadataIdentifier.commonIdentifierTitle
         titleMetadata.value = video.title as NSString

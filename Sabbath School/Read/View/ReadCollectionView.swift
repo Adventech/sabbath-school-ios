@@ -40,11 +40,9 @@ class ReadCollectionView: ASDisplayNode {
         collectionNode.automaticallyRelayoutOnLayoutMarginsChanges = true
         collectionNode.automaticallyRelayoutOnSafeAreaChanges = true
         DispatchQueue.main.async {
-            if #available(iOS 11.0, *) {
-                let window = UIApplication.shared.keyWindow
-                if let bottomPadding = window?.safeAreaInsets.bottom, bottomPadding > 0 {
-                    self.bottomPadding = bottomPadding
-                }
+            let window = UIApplication.shared.keyWindow
+            if let bottomPadding = window?.safeAreaInsets.bottom, bottomPadding > 0 {
+                self.bottomPadding = bottomPadding
             }
         }
         automaticallyManagesSubnodes = true

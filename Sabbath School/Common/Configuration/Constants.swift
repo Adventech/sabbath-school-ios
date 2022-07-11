@@ -121,4 +121,9 @@ struct Constants {
         static let featuredTodayWidget = "io.adventech.SabbathSchool.FeaturedTodayWidget"
         static let lessonInfoWidget = "io.adventech.SabbathSchool.LessonInfoWidget"
     }
+    
+    struct StringsToBeReplaced {
+        static let saturday = "Saturday"
+        static let sabbath = "Sabbath"
+    }
 }

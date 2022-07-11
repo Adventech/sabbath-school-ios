@@ -56,6 +56,7 @@ class ReadPresenter: ReadPresenterProtocol {
     func configure() {
         interactor?.configure()
         interactor?.retrieveLessonInfo(lessonIndex: lessonIndex!)
+        interactor?.retrievePublishingInfo()
     }
 
     func presentBibleScreen(read: Read, verse: String, size: CGSize) {
@@ -63,9 +64,7 @@ class ReadPresenter: ReadPresenterProtocol {
         bibleScreen.delegate = (controller as! BibleControllerOutputProtocol)
         let navigation = ASNavigationController(rootViewController: bibleScreen)
         
-        if #available(iOS 10.0, *) {
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        }
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         
         let statusBar: EKAttributes.StatusBar = (controller as! ReadController).preferredStatusBarStyle == .lightContent ? .light : .dark
         
@@ -117,5 +116,9 @@ extension ReadPresenter: ReadInteractorOutputProtocol {
     
     func didRetrieveComments(comments: ReadComments) {
         controller?.setComments(comments: comments)
+    }
+    
+    func didRetrievePublishingInfo(publishingInfo: PublishingInfo?) {
+        controller?.setPublishingInfo(publishingInfo: publishingInfo)
     }
 }
