@@ -70,6 +70,10 @@ class ReadPresenter: ReadPresenterProtocol {
         
         SwiftEntryKit.display(entry: navigation, using: Animation.modalAnimationAttributes(widthRatio: 0.9, heightRatio: 0.8, backgroundColor: Preferences.currentTheme().backgroundColor, statusBar: statusBar))
     }
+    
+    func dismissBibleScreen() {
+        SwiftEntryKit.dismiss()
+    }
 
     func presentReadOptionsScreen(size: CGSize, sourceView: UIBarButtonItem) {
         let readOptionsScreen = ReadOptionsController(delegate: self.controller as! ReadOptionsDelegate)
