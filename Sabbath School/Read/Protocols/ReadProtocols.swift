@@ -33,6 +33,7 @@ protocol ReadPresenterProtocol: AnyObject {
     func presentBibleScreen(read: Read, verse: String, size: CGSize)
     func presentReadOptionsScreen(size: CGSize, sourceView: UIBarButtonItem)
     func presentDictionary(word: String)
+    func dismissBibleScreen()
 }
 
 protocol ReadControllerProtocol: AnyObject {

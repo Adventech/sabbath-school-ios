@@ -106,6 +106,12 @@ class ReadController: VideoPlaybackDelegatable {
         handleAudioPlayerStateChange(state: AudioPlayback.shared.playerState)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presenter?.dismissBibleScreen()
+    }
+    
     @objc func didPressPlay(_ sender: ASButtonNode) {
         if sender.isSelected {
             AudioPlayback.pause()
