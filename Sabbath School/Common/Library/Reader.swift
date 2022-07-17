@@ -175,7 +175,11 @@ open class Reader: WKWebView {
             self?.readerViewDelegate?.didTapLookup()
         }
         
-        UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, lookup, share]
+        let paste = UIMenuItem(title: "Paste".localized()) { [weak self] _ in
+            self?.perform(#selector(self?.paste(_:)))
+        }
+
+        UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, paste, lookup, share]
     }
 
     func setupContextMenu() {
