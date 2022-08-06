@@ -4,6 +4,7 @@
 "Continue without login" = "المتابعة دون تسجيل الدخول";
 "Contribute" = "تساهم";
 "Copy" = "نسخ";
+"Paste" = "معجون";
 "Dark" = "داكن";
 "English" = "الإنجليزية";
 "God's Ministry through Technology" = "وزارة الله من خلال التكنولوجيا";
@@ -67,3 +68,4 @@
 "Original PDF" = "ملف PDF الأصلي";
 /*Translated from: Reading Options*/
 "Reading Options" = "خيارات القراءة";
+"Get Printed Resources" = "احصل على موارد مطبوعة";

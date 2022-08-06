@@ -64,4 +64,5 @@ protocol QuarterlyInteractorInputProtocol: AnyObject {
     func configure()
     func retrieveQuarterlies()
     func retrieveQuarterliesForLanguage(language: QuarterlyLanguage)
+    func saveLastQuarterlyIndex(lastQuarterlyIndex: String)
 }

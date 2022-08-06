@@ -57,15 +57,9 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
     
     func setupSearch() {
         searchController.searchResultsUpdater = self
-        if #available(iOS 9.1, *) {
-            searchController.obscuresBackgroundDuringPresentation = false
-        }
+        searchController.obscuresBackgroundDuringPresentation = false
         
-        if #available(iOS 11, *) {
-            navigationItem.searchController = searchController
-        } else {
-            table.view.tableHeaderView = searchController.searchBar
-        }
+        navigationItem.searchController = searchController
         
         searchController.searchBar.placeholder = "Search…".localized()
         definesPresentationContext = true
@@ -93,9 +87,7 @@ final class LanguageController: ASDKViewController<ASDisplayNode> {
         } else {
             var contentInset: UIEdgeInsets = self.table.contentInset
             contentInset.bottom = keyboardViewEndFrame.size.height
-            if #available(iOS 11.0, *) {
-                contentInset.bottom = contentInset.bottom - view.safeAreaInsets.bottom
-            }
+            contentInset.bottom = contentInset.bottom - view.safeAreaInsets.bottom
             self.table.contentInset = contentInset
         }
     }

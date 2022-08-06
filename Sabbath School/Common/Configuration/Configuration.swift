@@ -60,7 +60,51 @@ class Configuration: NSObject {
         AudioPlayback.configure()
     }
     
+    static func migrateUserAccountFromFirebase() {
+        if (PreferencesShared.loggedIn() || Preferences.firebaseUserMigrated()) { return }
+        
+        let query: [String: AnyObject] = [
+            kSecAttrService as String: Constants.API.LEGACY_API_KEY as AnyObject,
+            kSecAttrAccessGroup as String: Constants.DefaultKey.appGroupName as AnyObject,
+            kSecAttrAccount as String: "firebase_auth_firebase_user" as AnyObject,
+            kSecClass as String: kSecClassGenericPassword,
+            kSecMatchLimit as String: kSecMatchLimitOne,
+            kSecReturnData as String: kCFBooleanTrue
+        ]
+
+        var itemCopy: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &itemCopy)
+
+        guard status != errSecItemNotFound else { return }
+        guard status == errSecSuccess else { return }
+        guard let firebaseUserObject = itemCopy as? Data else { return }
+        
+        do {
+            let unarchiver = try NSKeyedUnarchiver(forReadingFrom: firebaseUserObject)
+            
+            unarchiver.decodingFailurePolicy = .setErrorAndReturn
+            unarchiver.setClass(FIRUser.self, forClassName: "FIRUser")
+            unarchiver.setClass(FIRUserTokenService.self, forClassName: "FIRSecureTokenService")
+            
+            if let user: FIRUser = try? unarchiver.decodeTopLevelObject(of: FIRUser.self, forKey: "firebase_auth_stored_user_coder_key") {
+                if !user.apiKey.isEmpty,
+                   !user.uid.isEmpty,
+                   let accessToken = user.tokenService?.accessToken,
+                   let refreshToken = user.tokenService?.refreshToken
+                {
+                    let accountToken: AccountToken = AccountToken(apiKey: user.apiKey, refreshToken: refreshToken, accessToken: accessToken, expirationTime: 0)
+                    let account: Account = Account(uid: user.uid, displayName: user.displayName, email: user.email, stsTokenManager: accountToken)
+                    let dictionary = try! JSONEncoder().encode(account)
+                    
+                    Preferences.userDefaults.set(dictionary, forKey: Constants.DefaultKey.accountObject)
+                    Preferences.userDefaults.set(true, forKey: Constants.DefaultKey.accountFirebaseMigrated)
+                }
+            }
+        } catch {}
+    }
+    
     static func configureAuthentication() {
+        self.migrateUserAccountFromFirebase()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .black
         window?.layer.cornerRadius = 6
@@ -93,7 +137,7 @@ class Configuration: NSObject {
         }
         
         if (PreferencesShared.loggedIn()) {
-            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: true)
+            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: false)
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
@@ -104,12 +148,8 @@ class Configuration: NSObject {
     static func configureArmchair() {
         Armchair.appID("895272167")
         Armchair.shouldPromptClosure { info -> Bool in
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
-                return false
-            } else {
-                return true
-            }
+            SKStoreReviewController.requestReview()
+            return false
         }
     }
     
@@ -138,16 +178,10 @@ class Configuration: NSObject {
     }
     
     static func configureNotifications(application: UIApplication) {
-        if #available(iOS 10.0, *) {
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
     }
     
     static func reloadAllWidgets() {

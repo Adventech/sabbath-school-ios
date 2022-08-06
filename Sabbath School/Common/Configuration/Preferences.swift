@@ -28,6 +28,10 @@ struct Preferences {
     static var userDefaults: UserDefaults {
         return PreferencesShared.userDefaults
     }
+    
+    static func firebaseUserMigrated() -> Bool {
+        return Preferences.userDefaults.bool(forKey: Constants.DefaultKey.accountFirebaseMigrated)
+    }
 
     static func migrateUserDefaultsToAppGroups() {
         let userDefaults = UserDefaults.standard

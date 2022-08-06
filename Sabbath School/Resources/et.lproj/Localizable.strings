@@ -4,6 +4,7 @@
 "Continue without login" = "Jätka ilma login";
 "Contribute" = "Panustama";
 "Copy" = "Koopia";
+"Paste" = "Kleebi";
 "Dark" = "Tume";
 "English" = "Inglise";
 "God's Ministry through Technology" = "Jumala ministeerium läbi Technology";
@@ -67,3 +68,4 @@
 "Original PDF" = "Originaal PDF";
 /*Translated from: Reading Options*/
 "Reading Options" = "Lugemisvalikud";
+"Get Printed Resources" = "Hankige trükitud ressursse";

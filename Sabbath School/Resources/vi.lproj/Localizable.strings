@@ -9,6 +9,7 @@
 "Continue without login" = "Tiếp tục mà không cần đăng nhập";
 "Contribute" = "Góp phần";
 "Copy" = "Sao chép";
+"Paste" = "Dán";
 "Dark" = "Tối";
 "English" = "Anh";
 "God's Ministry through Technology" = "Bộ Chúa thông qua công nghệ";
@@ -72,3 +73,4 @@
 "Original PDF" = "PDF gốc";
 /*Translated from: Reading Options*/
 "Reading Options" = "Tùy chọn đọc";
+"Get Printed Resources" = "Nhận tài nguyên in";

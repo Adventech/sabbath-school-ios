@@ -28,6 +28,13 @@ struct AccountToken: Codable {
     let accessToken: String
     let expirationTime: Int
     
+    init(apiKey: String, refreshToken: String, accessToken: String, expirationTime: Int) {
+        self.apiKey = apiKey
+        self.refreshToken = refreshToken
+        self.accessToken = accessToken
+        self.expirationTime = expirationTime
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         apiKey = try values.decode(String.self, forKey: .apiKey)

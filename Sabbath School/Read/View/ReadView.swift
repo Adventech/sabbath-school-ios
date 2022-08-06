@@ -23,6 +23,7 @@
 import AsyncDisplayKit
 import SwiftDate
 import UIKit
+import WebKit
 
 protocol ReadViewOutputProtocol: AnyObject {
     func didTapCopy()
@@ -32,7 +33,7 @@ protocol ReadViewOutputProtocol: AnyObject {
     func didTapHighlight(color: String)
     func didClickVerse(read: Read, verse: String)
     func didScrollView(readCellNode: ReadView, scrollView: UIScrollView)
-    func didLoadWebView(webView: UIWebView)
+    func didLoadWebView(webView: WKWebView)
     func didReceiveHighlights(readHighlights: ReadHighlights)
     func didReceiveComment(readComments: ReadComments)
     func didReceiveCopy(text: String)
@@ -45,8 +46,8 @@ class ReadView: ASCellNode {
     weak var delegate: ReadViewOutputProtocol?
     let cover = ASNetworkImageNode()
     let coverOverlay = ASDisplayNode()
-    let title = ASTextNode()
-    let date = ASTextNode()
+    let title = ASTextNode2()
+    let date = ASTextNode2()
 
     let webNode = ASDisplayNode { Reader() }
     var read: Read?
@@ -74,13 +75,19 @@ class ReadView: ASCellNode {
         coverOverlay.alpha = 0
 
         title.alpha = 1
-        title.maximumNumberOfLines = 2
-        title.pointSizeScaleFactors = [0.9, 0.8]
+        title.maximumNumberOfLines = 3
+        title.shadowOpacity = 0.8
+        title.shadowOffset = CGSize(width: 1, height: 2)
         title.attributedText = AppStyle.Read.Text.title(string: read.title)
 
         date.alpha = 1
         date.maximumNumberOfLines = 1
-        date.attributedText = AppStyle.Read.Text.date(string: read.date.stringReadDate())
+        date.shadowOpacity = 0.8
+        date.shadowRadius = 1
+        date.shadowOffset = CGSize(width: 1, height: 1)
+        let formattedDate = read.date.stringReadDate().replacingLastOccurrence(of: Constants.StringsToBeReplaced.saturday,
+                                                                               with: Constants.StringsToBeReplaced.sabbath)
+        date.attributedText = AppStyle.Read.Text.date(string: formattedDate)
         
         automaticallyManagesSubnodes = true
     }
@@ -96,6 +103,9 @@ class ReadView: ASCellNode {
 
                 self.date.frame.origin.y -= (self.initialCoverHeight - parallaxCoverHeight) / 1.3
                 self.date.alpha = self.parallaxCoverHeight * (1/self.initialCoverHeight)
+                
+                let topInset = coverOverlay.frame.size.height * parallaxCoverHeight * 1/initialCoverHeight
+                webView.scrollView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
             } else {
                 self.coverOverlay.frame.size = CGSize(width: coverOverlay.calculatedSize.width, height: parallaxCoverHeight)
                 self.cover.frame.size = CGSize(width: cover.calculatedSize.width, height: parallaxCoverHeight)
@@ -113,6 +123,7 @@ class ReadView: ASCellNode {
         super.layout()
         parallax()
     }
+    
     override func didLoad() {
         super.didLoad()
 
@@ -122,22 +133,26 @@ class ReadView: ASCellNode {
         
         if #available(iOS 13.0, *) {
             webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
-        } else if #available(iOS 11.0, *){
+        } else {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
 
-        webView.backgroundColor = .clear
         webView.scrollView.delegate = self
-        webView.delegate = self
-        webView.alpha = 0
+        webView.navigationDelegate = self
+        
+        webView.isOpaque = false
+        webView.backgroundColor = .clear
+        webView.scrollView.backgroundColor = .clear
         webView.scrollView.contentInset = UIEdgeInsets(top: initialCoverHeight, left: 0, bottom: 0, right: 0)
         webView.scrollView.contentOffset.y = -self.parallaxCoverHeight
+        webView.tintColor = .systemBlue
         // webView.scrollView.setNeedsLayout()
 
         webView.readerViewDelegate = self
         webView.loadContent(content: read!.content)
         
-        // parallax()
+        webView.scrollView.scrollToTop(animated: true)
+        parallax()
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
@@ -147,8 +162,7 @@ class ReadView: ASCellNode {
         
         DispatchQueue.main.async {
             let isPlaying = AudioPlayback.shared.playerState == .playing
-            self.webView.scrollView.contentInset = UIEdgeInsets(top: self.initialCoverHeight, left: 0, bottom: isPlaying ? 50 : 0, right: 0)
-//            self.webView.scrollView.contentInset.top = self.initialCoverHeight
+            self.webView.scrollView.contentInset.bottom = isPlaying ? 50 : 0
         }
         title.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
         date.style.preferredLayoutSize = ASLayoutSizeMake(ASDimensionMake(constrainedSize.max.width-40), ASDimensionMake(.auto, 0))
@@ -183,22 +197,27 @@ extension ReadView: UIScrollViewDelegate {
     }
 }
 
-extension ReadView: UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        return (webView as! Reader).shouldStartLoad(request: request, navigationType: navigationType)
-    }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        (webView as! Reader).contextMenuEnabled = true
-
-        if !webView.isLoading {
-            self.delegate?.didLoadWebView(webView: webView)
+extension ReadView: WKNavigationDelegate, WKUIDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let r = webView as! Reader
+        if r.shouldStartLoad(request: navigationAction.request, navigationType: navigationAction.navigationType) {
+            decisionHandler(.allow)
+        } else {
+            decisionHandler(.cancel)
         }
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        (webView as! Reader).contextMenuEnabled = true
+        webView.becomeFirstResponder()
+        self.delegate?.didLoadWebView(webView: webView)
     }
 }
 
 extension ReadView: ReaderOutputProtocol {
     func ready() {
+        
         if self.highlights != nil {
             webView.setHighlights((self.highlights?.highlights)!)
         }

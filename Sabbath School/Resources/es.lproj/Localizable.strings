@@ -4,6 +4,7 @@
 "Continue without login" = "Continuar anónimamente";
 "Contribute" = "Contribuir";
 "Copy" = "Copiar";
+"Paste" = "Pegar";
 "Dark" = "Oscuro";
 "English" = "Inglés";
 "God's Ministry through Technology" = "El ministerio de Dios a través de la tecnología";
@@ -67,3 +68,4 @@
 "Original PDF" = "PDF original";
 /*Translated from: Reading Options*/
 "Reading Options" = "Opciones de lectura";
+"Get Printed Resources" = "Obtenga recursos impresos";

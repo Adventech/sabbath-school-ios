@@ -32,34 +32,35 @@ class ReadController: VideoPlaybackDelegatable {
     var delegate: ReadControllerDelegate?
     var presenter: ReadPresenterProtocol?
     
-    let readCollectionView = ReadCollectionView()
-    var collectionNode: ASPagerNode { return readCollectionView.collectionNode }
+    private let readCollectionView = ReadCollectionView()
+    private var collectionNode: ASPagerNode { return readCollectionView.collectionNode }
     
     var previewingContext: UIViewControllerPreviewing? = nil
 
     var lessonInfo: LessonInfo?
-    var audio: [Audio] = []
-    var video: [VideoInfo] = []
-    var reads = [Read]()
-    var highlights = [ReadHighlights]()
-    var comments = [ReadComments]()
-    var finished: Bool = false
-    var processing: Bool = false
+    private var publishingInfo: PublishingInfo?
+    private var audio: [Audio] = []
+    private var video: [VideoInfo] = []
+    private var reads = [Read]()
+    private var highlights = [ReadHighlights]()
+    private var comments = [ReadComments]()
+    private var finished: Bool = false
 
-    var shouldHideStatusBar = false
-    var lastContentOffset: CGFloat = 0
-    var initialContentOffset: CGFloat = 0
-    var lastPage: Int?
-    var appeared: Bool = false
-    var isTransitionInProgress: Bool = false
+    private var shouldHideStatusBar = false
+    private var lastContentOffset: CGFloat = 0
+    private var initialContentOffset: CGFloat = 0
+    private var lastPage: Int?
+    private var appeared: Bool = false
+    private var isTransitionInProgress: Bool = false
+    private var contextMenuEnabled = false
     
-    var menuItems = [UIMenuItem]()
+    private var menuItems = [UIMenuItem]()
     
     var readIndex: Int?
     
-    var scrollReachedTouchpoint: Bool = false
+    private var scrollReachedTouchpoint: Bool = false
     
-    var downloader: Downloader?
+    private var downloader: Downloader?
 
     override init() {
         super.init(node: readCollectionView)
@@ -85,11 +86,7 @@ class ReadController: VideoPlaybackDelegatable {
 
         UIApplication.shared.isIdleTimerDisabled = true
 
-        if #available(iOS 11.0, *) {
-            self.collectionNode.view.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
+        collectionNode.view.contentInsetAdjustmentBehavior = .never
         
         readCollectionView.miniPlayerView.play.addTarget(self, action: #selector(didPressPlay(_:)), forControlEvents: .touchUpInside)
         readCollectionView.miniPlayerView.backward.addTarget(self, action: #selector(didPressBackward(_:)), forControlEvents: .touchUpInside)
@@ -107,6 +104,12 @@ class ReadController: VideoPlaybackDelegatable {
         
         AudioPlayback.shared.event.stateChange.addListener(self, handleAudioPlayerStateChange)
         handleAudioPlayerStateChange(state: AudioPlayback.shared.playerState)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presenter?.dismissBibleScreen()
     }
     
     @objc func didPressPlay(_ sender: ASButtonNode) {
@@ -192,15 +195,18 @@ class ReadController: VideoPlaybackDelegatable {
         super.viewDidAppear(animated)
         setupNavigationBar()
         scrollBehavior()
-
-        if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
-            webView.setupContextMenu()
-        }
+        setupObservers()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    // MARK: Setup Observers
+    
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(resetReader), name: .resetReader, object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -218,6 +224,17 @@ class ReadController: VideoPlaybackDelegatable {
         UIView.animate(withDuration: 0.5, animations: {
             self.setNeedsStatusBarAppearanceUpdate()
         })
+    }
+    
+    @objc func resetReader() {
+        if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
+            webView.createContextMenu()
+            webView.evaluateJavaScript("ssReader.clearSelection()") { _, error in
+                if error != nil {
+                    self.collectionNode.reloadData()
+                }
+            }
+        }
     }
 
     @objc func readingOptions(sender: UIBarButtonItem) {
@@ -246,8 +263,8 @@ class ReadController: VideoPlaybackDelegatable {
     
     @objc func presentAudioController() {
         var dayIndex: String? = nil
-        if let readIndex = lastPage, 0...self.reads.count ~= readIndex {
-            dayIndex = self.reads[readIndex].index
+        if let readIndex = lastPage {
+            dayIndex = self.reads[safe: readIndex]?.index
         }
         
         let audioController = AudioController(audio: self.audio, lessonIndex: lessonInfo?.lesson.index, dayIndex: dayIndex)
@@ -260,7 +277,7 @@ class ReadController: VideoPlaybackDelegatable {
     }
     
     @objc func presentReadMenu(sender: UIBarButtonItem) {
-        let readMenuItems: [ReadMenuItem] = [
+        var readMenuItems: [ReadMenuItem] = [
             ReadMenuItem(
                 title: "Original PDF".localized(),
                 icon: R.image.iconNavbarPdf()!,
@@ -272,6 +289,15 @@ class ReadController: VideoPlaybackDelegatable {
                 type: .readOptions
             )
         ]
+        
+        if publishingInfo != nil {
+            let item = ReadMenuItem(
+                title: "Get Printed Resources".localized(),
+                icon: R.image.arrowCircle()!,
+                type: .getPrintedResources
+            )
+            readMenuItems.append(item)
+        }
 
         let menu = ReadMenuController(items: readMenuItems)
         menu.delegate = self
@@ -374,22 +400,6 @@ class ReadController: VideoPlaybackDelegatable {
             if let navigationController = navigationController, navigationController.isNavigationBarHidden {
                 toggleBars()
             }
-        } else {
-            guard #available(iOS 11.0, *) else {
-                if (-scrollView.contentOffset.y > 0) || (lastContentOffset < -scrollView.contentOffset.y) {
-                    if let navigationController = navigationController, navigationController.isNavigationBarHidden {
-                        toggleBars()
-                    }
-                } else {
-                    if let navigationController = navigationController, !navigationController.isNavigationBarHidden {
-                        if scrollView.panGestureRecognizer.state != .possible {
-                            toggleBars()
-                        }
-                    }
-                }
-                lastContentOffset = -scrollView.contentOffset.y
-                return
-            }
         }
         lastContentOffset = -scrollView.contentOffset.y
     }
@@ -418,6 +428,28 @@ class ReadController: VideoPlaybackDelegatable {
             self.collectionNode.scrollToPage(at: self.lastPage ?? 1, animated: false)
             self.isTransitionInProgress = false
         }
+
+        if Helper.isPad {
+            highlights.forEach { highlight in
+                setHighlights(highlights: highlight)
+            }
+            
+            comments.forEach { comment in
+                setComments(comments: comment)
+            }
+        }
+    }
+    
+    private func updateCommentsListWhenRotateIpad(readComments: ReadComments) {
+        if Helper.isPad {
+            if !comments.filter({ $0.readIndex == readComments.readIndex }).isEmpty {
+                for (i, comment) in comments.enumerated() where comment.readIndex == readComments.readIndex {
+                    comments[i] = readComments
+                }
+            } else {
+                comments.append(readComments)
+            }
+        }
     }
     
     override var previewActionItems: [UIPreviewActionItem] {
@@ -428,6 +460,16 @@ class ReadController: VideoPlaybackDelegatable {
                 }
         })]
     }
+    
+    func openPublishingHouse(url: String?) {
+        guard let urlString = url, let url = URL(string: urlString) else {
+            return
+        }
+
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .formSheet
+        present(safariViewController, animated: true)
+    }
 }
 
 extension ReadController: ReadMenuControllerDelegate {
@@ -435,9 +477,10 @@ extension ReadController: ReadMenuControllerDelegate {
         switch menuItemType {
         case .originalPDF:
             navigationController?.pushViewController(PDFReadController(lessonIndex: (lessonInfo?.lesson.index)!), animated: true)
-        break
         case .readOptions:
             self.readingOptions(sender: (navigationItem.rightBarButtonItems?.first)!)
+        case .getPrintedResources:
+            openPublishingHouse(url: publishingInfo?.url)
         }
     }
 }
@@ -474,13 +517,17 @@ extension ReadController: ReadControllerProtocol {
     func showRead(read: Read, finish: Bool) {
         if let index = self.reads.firstIndex(where: { $0.index == read.index }) {
             self.reads[index] = read
+            return
         } else {
             self.reads.append(read)
         }
 
         guard finish else { return }
         self.finished = finish
-        self.collectionNode.reloadData()
+        
+        DispatchQueue.main.async {
+            self.collectionNode.reloadData()
+        }
         
         if let readIndex = readIndex {
             if 0...self.reads.count ~= readIndex {
@@ -505,6 +552,10 @@ extension ReadController: ReadControllerProtocol {
     }
     
     func setHighlights(highlights: ReadHighlights) {
+        if Helper.isPad {
+            self.highlights.append(highlights)
+        }
+        
         if let index = self.reads.firstIndex(where: { $0.index == highlights.readIndex }) {
             if let readView = self.collectionNode.nodeForPage(at: index) as? ReadView {
                 readView.highlights = highlights
@@ -517,11 +568,18 @@ extension ReadController: ReadControllerProtocol {
         if let index = self.reads.firstIndex(where: { $0.index == comments.readIndex }) {
             if let readView = self.collectionNode.nodeForPage(at: index) as? ReadView {
                 readView.comments = comments
+                if !comments.comments.isEmpty {
+                    updateCommentsListWhenRotateIpad(readComments: comments)
+                }
                 for comment in comments.comments {
                     readView.webView.setComment(comment)
                 }
             }
         }
+    }
+    
+    func setPublishingInfo(publishingInfo: PublishingInfo?) {
+        self.publishingInfo = publishingInfo
     }
 }
 
@@ -593,20 +651,27 @@ extension ReadController: ReadViewOutputProtocol {
         UIMenuController.shared.menuItems = []
     }
 
-    func didLoadWebView(webView: UIWebView) {
+    func didLoadWebView(webView: WKWebView) {
         if abs(webView.scrollView.contentOffset.y) > 0 {
-            initialContentOffset = -webView.scrollView.contentOffset.y
+            initialContentOffset = -1*webView.scrollView.contentOffset.y
         }
-        UIView.animate(withDuration: 0.3) {
-            webView.alpha = 1
+
+        if let reader = webView as? Reader, !contextMenuEnabled {
+            contextMenuEnabled = true
+            reader.setupContextMenu()
         }
     }
 
     func didReceiveHighlights(readHighlights: ReadHighlights) {
+        if Helper.isPad {
+            highlights.append(readHighlights)
+        }
+        
         presenter?.interactor?.saveHighlights(highlights: readHighlights)
     }
 
     func didReceiveComment(readComments: ReadComments) {
+        updateCommentsListWhenRotateIpad(readComments: readComments)
         presenter?.interactor?.saveComments(comments: readComments)
     }
 

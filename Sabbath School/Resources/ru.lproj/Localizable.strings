@@ -4,6 +4,7 @@
 "Continue without login" = "Продолжить анонимно";
 "Contribute" = "Помочь в разработке";
 "Copy" = "Скопировать";
+"Paste" = "Вставить";
 "Dark" = "Темная";
 "English" = "Английский";
 "God's Ministry through Technology" = "Божье служение используя Технологии";
@@ -68,3 +69,4 @@
 "Original PDF" = "Исходный PDF";
 /*Translated from: Reading Options*/
 "Reading Options" = "Параметры чтения";
+"Get Printed Resources" = "Получить печатные ресурсы";

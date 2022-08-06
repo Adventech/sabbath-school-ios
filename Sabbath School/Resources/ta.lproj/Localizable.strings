@@ -9,6 +9,7 @@
 "Continue without login" = "உள்நுழை இல்லாமல் தொடரவும்";
 "Contribute" = "பங்களிக்க";
 "Copy" = "நகல்";
+"Paste" = "ஒட்டவும்";
 "Dark" = "டார்க்";
 "English" = "ஆங்கிலம்";
 "God's Ministry through Technology" = "தொழில்நுட்பம் மூலம் கடவுளின் அமைச்சகம்";
@@ -72,3 +73,4 @@
 "Original PDF" = "அசல் PDF";
 /*Translated from: Reading Options*/
 "Reading Options" = "வாசிப்பு விருப்பங்கள்";
+"Get Printed Resources" = "அச்சிடப்பட்ட வளங்களைப் பெறுங்கள்";

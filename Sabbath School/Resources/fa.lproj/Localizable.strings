@@ -4,6 +4,7 @@
 "Continue without login" = "ادامه بدون ورود به سیستم";
 "Contribute" = "مشارکت";
 "Copy" = "نسخه";
+"Paste" = "چسباندن";
 "Dark" = "تاریک";
 "English" = "انگلیسی";
 "God's Ministry through Technology" = "وزارت خدا را از طریق فناوری";
@@ -67,3 +68,4 @@
 "Original PDF" = "PDF اصلی";
 /*Translated from: Reading Options*/
 "Reading Options" = "گزینه های خواندن";
+"Get Printed Resources" = "دریافت منابع چاپی";

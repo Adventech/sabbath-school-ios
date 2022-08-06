@@ -30,6 +30,7 @@ class ReadInteractor: ReadInteractorInputProtocol {
     private var readStorage: Cache.Storage<String, Read>?
     private var highlightStorage: Cache.Storage<String, ReadHighlights>?
     private var commentStorage: Cache.Storage<String, ReadComments>?
+    private var publishingInfoStorage: Storage<String, PublishingInfoData>?
     
     weak var presenter: ReadInteractorOutputProtocol?
     var ticker: Int = -1
@@ -41,9 +42,11 @@ class ReadInteractor: ReadInteractorInputProtocol {
     
     func configure() {
         checkifReaderBundleNeeded()
+        self.lessonInfoStorage = APICache.storage?.transformCodable(ofType: LessonInfo.self)
         self.readStorage = APICache.storage?.transformCodable(ofType: Read.self)
         self.highlightStorage = APICache.storage?.transformCodable(ofType: ReadHighlights.self)
         self.commentStorage = APICache.storage?.transformCodable(ofType: ReadComments.self)
+        self.publishingInfoStorage = APICache.storage?.transformCodable(ofType: PublishingInfoData.self)
     }
 
     func retrieveLessonInfo(lessonIndex: String) {
@@ -98,9 +101,13 @@ class ReadInteractor: ReadInteractorInputProtocol {
         let parsedIndex =  Helper.parseIndex(index: readIndex)
         let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/lessons/\(parsedIndex.week)/days/\(parsedIndex.day)/read/index.json"
         
+        var found: Bool = false
+        
         if (try? self.readStorage?.existsObject(forKey: url)) != nil {
             if let read = try? self.readStorage?.entry(forKey: url) {
                 self.presenter?.didRetrieveRead(read: read.object, ticker: self.ticker)
+                found = true
+                self.semaphore.signal()
             }
         }
         
@@ -108,16 +115,22 @@ class ReadInteractor: ReadInteractorInputProtocol {
             .responseDecodable(of: Read.self, decoder: Helper.SSJSONDecoder()) { response in
             guard let read = response.value else {
                 self.presenter?.onError(response.error)
-                self.semaphore.signal()
+                if !found {
+                    self.semaphore.signal()
+                }
                 return
             }
+            try? self.readStorage?.setObject(read, forKey: url)
+            
             
             self.presenter?.didRetrieveRead(
                 read: read,
                 ticker: self.ticker
             )
-            try? self.readStorage?.setObject(read, forKey: url)
-            self.semaphore.signal()
+            
+            if !found {
+                self.semaphore.signal()
+            }
         }
     }
     
@@ -234,6 +247,14 @@ class ReadInteractor: ReadInteractorInputProtocol {
                     print("unzipping error")
                 }
             }
+        }
+    }
+    
+    func retrievePublishingInfo() {
+        let url = "\(Constants.API.URL)/misc/publishing/info"
+        
+        if let publishingInfo = try? self.publishingInfoStorage?.entry(forKey: url) {
+            self.presenter?.didRetrievePublishingInfo(publishingInfo: publishingInfo.object.data)
         }
     }
 }

@@ -35,6 +35,10 @@ struct Lesson: Codable {
     var dateRange: String = ""
     var webURL: URL
     
+    enum CodingKeys: CodingKey {
+      case id, title, startDate, endDate, cover, index, path, fullPath, pdfOnly, dateRange, webURL
+    }
+    
     // Mock
     init(title: String) {
         self.id = "1"
@@ -63,5 +67,20 @@ struct Lesson: Codable {
         dateRange = String(format: "%@ - %@", startDate.stringLessonDate(), endDate.stringLessonDate())
         webURL = URL.init(string: String(format: "%@/01", fullPath.absoluteString.replacingOccurrences(of: Constants.URLs.webReplacementRegex, with: "", options: [.regularExpression])))!
         pdfOnly = try values.decode(Bool.self, forKey: .pdfOnly)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(Date.serverDateFormatter().string(from: startDate), forKey: .startDate)
+        try container.encode(Date.serverDateFormatter().string(from: endDate), forKey: .endDate)
+        try container.encode(cover, forKey: .cover)
+        try container.encode(index, forKey: .index)
+        try container.encode(path, forKey: .path)
+        try container.encode(fullPath, forKey: .fullPath)
+        try container.encode(dateRange, forKey: .dateRange)
+        try container.encode(webURL, forKey: .webURL)
+        try container.encode(pdfOnly, forKey: .pdfOnly)
     }
 }

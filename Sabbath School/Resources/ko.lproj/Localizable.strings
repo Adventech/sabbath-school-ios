@@ -4,6 +4,7 @@
 "Continue without login" = "로그인없이 계속하기";
 "Contribute" = "기여";
 "Copy" = "복사";
+"Paste" = "반죽";
 "Dark" = "어둡게";
 "English" = "영어";
 "God's Ministry through Technology" = "기술을 통한 하나님의 사역";
@@ -67,3 +68,4 @@
 "Original PDF" = "원본 PDF";
 /*Translated from: Reading Options*/
 "Reading Options" = "읽기 옵션";
+"Get Printed Resources" = "인쇄된 리소스 얻기";

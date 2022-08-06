@@ -9,6 +9,7 @@
 "Continue without login" = "Qhubeka ngaphandle kokungena ngemvume";
 "Contribute" = "Nika isandla";
 "Copy" = "Kopisha";
+"Paste" = "Namathisela";
 "Dark" = "Umnyama";
 "English" = "IsiNgisi";
 "God's Ministry through Technology" = "Ministry of God ngokusebenzisa Technology";
@@ -72,3 +73,4 @@
 "Original PDF" = "I-PDF yangempela";
 /*Translated from: Reading Options*/
 "Reading Options" = "Izinketho Zokufunda";
+"Get Printed Resources" = "Thola Izinsiza Eziphrintiwe";

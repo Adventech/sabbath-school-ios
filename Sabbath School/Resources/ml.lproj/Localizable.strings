@@ -9,6 +9,7 @@
 "Continue without login" = "ലോഗിൻ ചെയ്യാതെ തുടരുക";
 "Contribute" = "സംഭാവന ചെയ്യുക";
 "Copy" = "പകർത്തുക";
+"Paste" = "പേസ്റ്റ്";
 "Dark" = "ഇരുണ്ടത്";
 "English" = "ഇംഗ്ലീഷ്";
 "God's Ministry through Technology" = "സാങ്കേതികവിദ്യയിലൂടെ ദൈവ മന്ത്രാലയം";
@@ -72,3 +73,4 @@
 "Original PDF" = "യഥാർത്ഥ PDF";
 /*Translated from: Reading Options*/
 "Reading Options" = "വായന ഓപ്ഷനുകൾ";
+"Get Printed Resources" = "അച്ചടിച്ച വിഭവങ്ങൾ നേടുക";

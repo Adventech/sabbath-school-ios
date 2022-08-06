@@ -10,6 +10,7 @@
 "Contribute" = "Придонесете";
 /*Translated from: Copy*/
 "Copy" = "Копирај";
+"Paste" = "Залепи";
 /*Translated from: Dark*/
 "Dark" = "Темно";
 /*Translated from: English*/
@@ -82,3 +83,4 @@
 "Original PDF" = "Оригинален PDF";
 /*Translated from: Reading Options*/
 "Reading Options" = "Опции за читање";
+"Get Printed Resources" = "Добијте печатени ресурси";

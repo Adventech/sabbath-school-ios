@@ -42,6 +42,7 @@ struct TodayWidgetView : View {
             .offset(x: WidgetStyle.getLogoOffset(widgetFamily: widgetFamily).x, y: WidgetStyle.getLogoOffset(widgetFamily: widgetFamily).y)
             .opacity(0.2)
             
+            
             VStack(alignment: .leading) {
                 Text(entry.day.date.stringReadDate())
                     .padding(.bottom, 0.1)
@@ -66,7 +67,7 @@ struct TodayWidgetView : View {
                             .cornerRadius(11)
                             .font(.system(size: 9, weight: .bold))
                     }
-                })  
+                })
             }.frame(
                 minWidth: 0,
                 maxWidth: .infinity,

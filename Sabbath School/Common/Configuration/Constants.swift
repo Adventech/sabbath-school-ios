@@ -57,6 +57,7 @@ struct Constants {
         static let pdfConfigurationSpreadFitting = "io.adventech.settings.pdf.spreadFitting"
         
         static let accountObject = "io.adventech.auth.user"
+        static let accountFirebaseMigrated = "io.adventech.auth.firebase.migration"
     }
 
     struct Path {
@@ -73,9 +74,11 @@ struct Constants {
         #if DEBUG
         static let GOOGLE_CLIENT_ID = "96814818762-k7l0r7no343dms51ss59q6c5dslujcu7.apps.googleusercontent.com"
         static let HOST = "https://sabbath-school-stage.adventech.io"
+        static let LEGACY_API_KEY = "AIzaSyAfnNJPLHamTqxqQEfNVtcVM0_sPSL1mso"
         #else
         static let GOOGLE_CLIENT_ID = "443920152945-d0kf5h2dubt0jbcntq8l0qeg6lbpgn60.apps.googleusercontent.com"
         static let HOST = "https://sabbath-school.adventech.io"
+        static let LEGACY_API_KEY = "AIzaSyBcGMSMYFVkKgTuuvUdLgjmEy4CWjmmLNU"
         #endif
         static let URL = "\(Constants.API.HOST)/api/v2"
         static let READER_BUNDLE_FILENAME = "sabbath-school-reader-latest.zip"
@@ -87,7 +90,7 @@ struct Constants {
         #else
         static let web = "https://sabbath-school.adventech.io/"
         #endif
-        static let webReplacementRegex = "api/v1|v2/|quarterlies/|lessons/|days/|read/"
+        static let webReplacementRegex = "api/v1|api/v2/|quarterlies/|lessons/|days/|read/"
         
         static let indexPattern = #"""
 (?xi)
@@ -117,5 +120,10 @@ struct Constants {
         static let todayWidget = "io.adventech.SabbathSchool.TodayWidget"
         static let featuredTodayWidget = "io.adventech.SabbathSchool.FeaturedTodayWidget"
         static let lessonInfoWidget = "io.adventech.SabbathSchool.LessonInfoWidget"
+    }
+    
+    struct StringsToBeReplaced {
+        static let saturday = "Saturday"
+        static let sabbath = "Sabbath"
     }
 }

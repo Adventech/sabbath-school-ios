@@ -9,6 +9,7 @@
 "Continue without login" = "Tęsti be prisijungimo";
 "Contribute" = "Prisidėti";
 "Copy" = "Kopijuoti";
+"Paste" = "Įklijuoti";
 "Dark" = "Tamsus";
 "English" = "Anglų";
 "God's Ministry through Technology" = "Dievo ministerija per technologijas";
@@ -72,3 +73,4 @@
 "Original PDF" = "Originalus PDF";
 /*Translated from: Reading Options*/
 "Reading Options" = "Skaitymo parinktys";
+"Get Printed Resources" = "Gaukite spausdintų išteklių";
