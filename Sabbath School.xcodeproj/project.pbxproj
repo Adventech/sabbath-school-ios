@@ -2290,7 +2290,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1001;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = YES;
@@ -2431,7 +2431,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2556,7 +2556,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool 1659999027";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2576,7 +2576,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2623,7 +2623,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1001;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2649,7 +2649,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool.Widget";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool.Widget 1659999040";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
