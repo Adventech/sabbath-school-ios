@@ -2,6 +2,7 @@ name: beta
 on:
   push:
     branches:
+      - feature/adding-tabbar
       - develop
       - 'vl/**'
 jobs:
