@@ -167,7 +167,7 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
 
 extension LoginPresenter: LoginInteractorOutputProtocol {
     func onSuccess() {
-        wireFrame?.presentQuarterlyScreen()
+        Configuration.loginAnimated()
     }
 
     func onError(_ error: Error?) {

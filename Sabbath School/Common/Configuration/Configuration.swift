@@ -137,12 +137,26 @@ class Configuration: NSObject {
         }
         
         if (PreferencesShared.loggedIn()) {
-            window?.rootViewController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: false)
+            window?.rootViewController = defaultTabBar()
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
         
         window?.makeKeyAndVisible()
+    }
+    
+    static func loginAnimated(_ completion: (() -> Void)? = nil) {
+        UIView.transition(with: window!, duration: 0.5, options: .transitionFlipFromLeft, animations: {
+            self.window?.rootViewController = self.defaultTabBar()
+        }, completion: { _ in
+            completion?()
+        })
+    }
+    
+    private static func defaultTabBar() -> ASTabBarController {
+        let tabBarController = TabBarViewController()
+        tabBarController.viewControllers = tabBarController.tabBarControllersFor(items: TabBarItem.defaultItems())
+        return tabBarController
     }
     
     static func configureArmchair() {

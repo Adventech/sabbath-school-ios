@@ -68,6 +68,7 @@ class QuarterlyController: QuarterlyControllerCommon {
         navigationItem.rightBarButtonItem = languagesButton
         
         setNavigationBarOpacity(alpha: 0)
+        self.navigationController?.tabBarItem.title = "Sabbath School".localized()
         self.navigationController?.navigationBar.hideBottomHairline()
         self.navigationController?.navigationBar.tintColor = AppStyle.Base.Color.navigationTint
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
