@@ -46,8 +46,8 @@ class ReadView: ASCellNode {
     weak var delegate: ReadViewOutputProtocol?
     let cover = ASNetworkImageNode()
     let coverOverlay = ASDisplayNode()
-    let title = ASTextNode()
-    let date = ASTextNode()
+    let title = ASTextNode2()
+    let date = ASTextNode2()
 
     let webNode = ASDisplayNode { Reader() }
     var read: Read?
@@ -75,12 +75,16 @@ class ReadView: ASCellNode {
         coverOverlay.alpha = 0
 
         title.alpha = 1
-        title.maximumNumberOfLines = 2
-        title.pointSizeScaleFactors = [0.9, 0.8]
+        title.maximumNumberOfLines = 3
+        title.shadowOpacity = 0.8
+        title.shadowOffset = CGSize(width: 1, height: 2)
         title.attributedText = AppStyle.Read.Text.title(string: read.title)
 
         date.alpha = 1
         date.maximumNumberOfLines = 1
+        date.shadowOpacity = 0.8
+        date.shadowRadius = 1
+        date.shadowOffset = CGSize(width: 1, height: 1)
         let formattedDate = read.date.stringReadDate().replacingLastOccurrence(of: Constants.StringsToBeReplaced.saturday,
                                                                                with: Constants.StringsToBeReplaced.sabbath)
         date.attributedText = AppStyle.Read.Text.date(string: formattedDate)
