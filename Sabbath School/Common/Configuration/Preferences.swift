@@ -72,6 +72,10 @@ struct Preferences {
         return theme
     }
     
+    static func darkModeEnable() -> Bool {
+        return UIScreen.main.traitCollection.userInterfaceStyle == .dark
+    }
+    
     static func currentTypeface() -> ReaderStyle.Typeface {
         guard let rawTypeface = Preferences.userDefaults.string(forKey: Constants.DefaultKey.readingOptionsTypeface),
             let typeface = ReaderStyle.Typeface(rawValue: rawTypeface) else {

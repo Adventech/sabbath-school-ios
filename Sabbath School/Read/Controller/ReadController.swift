@@ -106,6 +106,18 @@ class ReadController: VideoPlaybackDelegatable {
         handleAudioPlayerStateChange(state: AudioPlayback.shared.playerState)
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background &&
+                self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection),
+                Preferences.currentTheme() == .auto {
+                
+                didSelectTheme(theme: ReaderStyle.Theme.auto)
+            }
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
