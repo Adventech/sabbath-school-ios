@@ -124,7 +124,7 @@ class ReadOptionsView: ASDisplayNode {
         themeView.insertSegment(withTitle: "Sepia".localized(), at: 1, animated: false)
         themeView.insertSegment(withTitle: "Dark".localized(), at: 2, animated: false)
         if #available(iOS 13, *) {
-            themeView.insertSegment(withTitle: "Auto".localized(), at: 3, animated: false)
+            themeView.insertSegment(withTitle: "Automatic".localized(), at: 3, animated: false)
         }
         
         themeView.setTitleTextAttributes(AppStyle.ReadOptions.Text.button(), for: .normal)

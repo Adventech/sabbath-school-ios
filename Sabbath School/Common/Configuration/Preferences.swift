@@ -64,8 +64,8 @@ struct Preferences {
     static func currentTheme() -> ReaderStyle.Theme {
         guard let rawTheme = Preferences.userDefaults.string(forKey: Constants.DefaultKey.readingOptionsTheme),
             let theme = ReaderStyle.Theme(rawValue: rawTheme) else {
-            if Preferences.getSettingsTheme() == Theme.Dark.rawValue {
-                return .dark
+            if #available(iOS 13, *) {
+                return .auto
             }
             return .light
         }
