@@ -123,6 +123,9 @@ class ReadOptionsView: ASDisplayNode {
         themeView.insertSegment(withTitle: "Light".localized(), at: 0, animated: false)
         themeView.insertSegment(withTitle: "Sepia".localized(), at: 1, animated: false)
         themeView.insertSegment(withTitle: "Dark".localized(), at: 2, animated: false)
+        if #available(iOS 13, *) {
+            themeView.insertSegment(withTitle: "Automatic".localized(), at: 3, animated: false)
+        }
         
         themeView.setTitleTextAttributes(AppStyle.ReadOptions.Text.button(), for: .normal)
         themeView.setTitleTextAttributes(AppStyle.ReadOptions.Text.buttonSelected(), for: .selected)
@@ -131,13 +134,12 @@ class ReadOptionsView: ASDisplayNode {
         switch Preferences.currentTheme() {
         case .light:
             themeView.selectedSegmentIndex = 0
-            break
         case .sepia:
             themeView.selectedSegmentIndex = 1
-            break
         case .dark:
             themeView.selectedSegmentIndex = 2
-            break
+        case .auto:
+            themeView.selectedSegmentIndex = 3
         }
         
         themeView.removeBorders()

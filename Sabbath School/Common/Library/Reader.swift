@@ -29,12 +29,14 @@ struct ReaderStyle {
         case light
         case sepia
         case dark
+        case auto
 
         static var items: [Theme] {
             return [
                 .light,
                 .sepia,
-                .dark
+                .dark,
+                .auto
             ]
         }
 
@@ -43,6 +45,7 @@ struct ReaderStyle {
             case .light: return AppStyle.Reader.Color.white
             case .sepia: return AppStyle.Reader.Color.sepia
             case .dark: return AppStyle.Reader.Color.dark
+            case .auto: return AppStyle.Reader.Color.auto
             }
         }
 
@@ -51,6 +54,7 @@ struct ReaderStyle {
             case .light: return AppStyle.Reader.Color.white
             case .sepia: return AppStyle.Reader.Color.sepia
             case .dark: return AppStyle.Reader.Color.dark
+            case .auto: return AppStyle.Reader.Color.auto
             }
         }
 
@@ -59,6 +63,8 @@ struct ReaderStyle {
             case .light: return .black
             case .sepia: return .black
             case .dark: return .white
+            case .auto:
+                return Preferences.darkModeEnable() ? UIColor.white:UIColor.black
             }
         }
     }
@@ -241,9 +247,13 @@ open class Reader: WKWebView {
         index = index?.replacingOccurrences(of: "{{content}}", with: content)
 
 
-        let theme = Preferences.currentTheme()
+        var theme = Preferences.currentTheme()
         let typeface = Preferences.currentTypeface()
         let size = Preferences.currentSize()
+        
+        if theme == .auto {
+            theme = Preferences.darkModeEnable() ? .dark: .light
+        }
 
         index = index?.replacingOccurrences(of: "ss-wrapper-light", with: "ss-wrapper-"+theme.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-lato", with: "ss-wrapper-"+typeface.rawValue)
@@ -312,7 +322,12 @@ open class Reader: WKWebView {
     }
 
     func setTheme(_ theme: ReaderStyle.Theme) {
-        self.evaluateJavaScript("ssReader.setTheme('"+theme.rawValue+"')")
+        if theme == .auto {
+            let readerTheme: ReaderStyle.Theme = Preferences.darkModeEnable() ? .dark:.light
+            evaluateJavaScript("ssReader.setTheme('"+readerTheme.rawValue+"')")
+        } else {
+            evaluateJavaScript("ssReader.setTheme('"+theme.rawValue+"')")
+        }
     }
 
     func setTypeface(_ typeface: ReaderStyle.Typeface) {
