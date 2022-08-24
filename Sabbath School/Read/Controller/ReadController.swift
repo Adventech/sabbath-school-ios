@@ -66,6 +66,7 @@ class ReadController: VideoPlaybackDelegatable {
         super.init(node: readCollectionView)
         collectionNode.setDataSource(self)
         collectionNode.delegate = self
+        hidesBottomBarWhenPushed = true
     }
 
     required init?(coder aDecoder: NSCoder) {

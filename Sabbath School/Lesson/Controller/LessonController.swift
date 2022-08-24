@@ -77,6 +77,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         }
         setupNavigationbar()
         self.tableNode?.backgroundColor = AppStyle.Lesson.Color.backgroundFooter
+        self.tableNode?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.tabBarController?.tabBar.frame.height ?? 0, right: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
