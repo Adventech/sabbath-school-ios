@@ -25,6 +25,8 @@
 		2F613BA427CDC6A600A4C745 /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9C27CDC6A600A4C745 /* Lato-MediumItalic.ttf */; };
 		2F613BA527CDC6A600A4C745 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9D27CDC6A600A4C745 /* Lato-BoldItalic.ttf */; };
 		2F613BA627CDC6A600A4C745 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9E27CDC6A600A4C745 /* Lato-Medium.ttf */; };
+		2F87852B28B0809B0079C13D /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87852A28B0809B0079C13D /* Block.swift */; };
+		2F87852C28B0809B0079C13D /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F87852A28B0809B0079C13D /* Block.swift */; };
 		2F95D39E26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F95D39D26C0B2E8008E6666 /* Audio.swift */; };
 		2F96FF4726C58A6A0045DC6D /* AudioPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */; };
@@ -285,6 +287,7 @@
 		2F613B9D27CDC6A600A4C745 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		2F613B9E27CDC6A600A4C745 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		2F61E79A27BB5CBF00F696A2 /* libswift_Concurrency.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswift_Concurrency.tbd; path = usr/lib/swift/libswift_Concurrency.tbd; sourceTree = SDKROOT; };
+		2F87852A28B0809B0079C13D /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		2F95D39D26C0B2E8008E6666 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		2F96FF4626C58A6A0045DC6D /* AudioPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayback.swift; sourceTree = "<group>"; };
 		2F96FF4926C7188E0045DC6D /* AudioPlaylistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlaylistItemView.swift; sourceTree = "<group>"; };
@@ -1277,6 +1280,7 @@
 				2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */,
 				4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */,
 				4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */,
+				2F87852A28B0809B0079C13D /* Block.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1730,7 +1734,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1793,6 +1797,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A280FC91EDA0EB5003C7458 /* LoginPresenter.swift in Sources */,
+				2F87852B28B0809B0079C13D /* Block.swift in Sources */,
 				7A922E121EDF89D600C12A67 /* ReadProtocols.swift in Sources */,
 				FEF4B7A226AF9C7200548E36 /* LessonQuarterlyFooter.swift in Sources */,
 				7A922E031EDE348D00C12A67 /* LessonQuarterlyInfoView.swift in Sources */,
@@ -1995,6 +2000,7 @@
 				2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */,
 				FEC9219B267E452800422F3D /* Helper.swift in Sources */,
 				FED6B35826818BEA007093CE /* FeaturedTodayWidget.swift in Sources */,
+				2F87852C28B0809B0079C13D /* Block.swift in Sources */,
 				FEF4B79526AF9A9B00548E36 /* Credits.swift in Sources */,
 				FE611AA7267500F5003CDDB5 /* ReadComments.swift in Sources */,
 			);
@@ -2558,7 +2564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool 1659999027";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

@@ -838,6 +838,126 @@ struct AppStyle {
         }
     }
     
+    struct Markdown {
+        struct Color {
+            struct Reference {
+                static var actionIcon: UIColor {
+                    return .black | .white
+                }
+            }
+        }
+        
+        struct Text {
+            struct Reference {
+                static func title(string: String) -> NSAttributedString {
+                    let attributes: [NSAttributedString.Key: Any] = [
+                        .foregroundColor: .black | .white,
+                        .font: R.font.latoMedium(size: 16)!
+                    ]
+                    return NSAttributedString(string: string, attributes: attributes)
+                }
+                static func subtitle(string: String) -> NSAttributedString {
+                    let attributes: [NSAttributedString.Key: Any] = [
+                        .foregroundColor: UIColor.baseGray2,
+                        .font: R.font.latoRegular(size: 14)!
+                    ]
+                    return NSAttributedString(string: string, attributes: attributes)
+                }
+            }
+            
+            struct Blockquote {
+                static func memoryText(string: String) -> NSAttributedString {
+                    let attributes: [NSAttributedString.Key: Any] = [
+                        .foregroundColor: .black | .white,
+                        .font: R.font.latoBold(size: 17)!
+                    ]
+                    return NSAttributedString(string: string, attributes: attributes)
+                }
+                static func citation(string: String) -> NSAttributedString {
+                    let attributes: [NSAttributedString.Key: Any] = [
+                        .foregroundColor: .black | .white,
+                        .font: R.font.latoItalic(size: 14)!
+                    ]
+                    return NSAttributedString(string: string, attributes: attributes)
+                }
+            }
+            
+            static func collapseHeader(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: .black | .white,
+                    .font: R.font.latoMedium(size: 16)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func answer() -> [String: Any] {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: .black | .white,
+                    .font: R.font.latoRegular(size: 17)!
+                ]
+                return AppStyle.convertTypingAttribute(attributes)
+            }
+            
+            static func question(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: .black | .white,
+                    .font: R.font.latoBlack(size: 20)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func listBullet(string: String, ordered: Bool = false) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: .black | .white,
+                    .font: R.font.latoMedium(size: ordered ? 18 : 13)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func heading(string: String, depth: Int) -> NSAttributedString {
+                let style = NSMutableParagraphStyle()
+                
+                // TODO: get options for local overrides
+                style.alignment = .left
+                
+                // TODO: implement app / document level overrides
+                
+                var fontSize: Int
+                
+                switch depth {
+                case 1:
+                    fontSize = 28
+                case 2:
+                    fontSize = 26
+                case 3:
+                    fontSize = 24
+                case 4:
+                    fontSize = 23
+                case 5:
+                    fontSize = 22
+                case 6:
+                    fontSize = 21
+                default:
+                    fontSize = 21
+                }
+                
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: .black | .white,
+                    .paragraphStyle: style,
+                    .font: R.font.latoBlack(size: CGFloat(fontSize))!,
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+        }
+        
+        struct Size {
+            static func headingSpacing() -> (top: CGFloat, bottom: CGFloat)  {
+                return (10.0, 20.0)
+            }
+        }
+    }
+    
     static func convertTypingAttribute(_ attributes: [NSAttributedString.Key: Any]) -> [String: Any] {
         var typingAttribute: [String: Any] = [:]
         
