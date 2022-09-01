@@ -17,6 +17,9 @@
 "Light" = "เบา";
 "Automatic" = "อัตโนมัติ";
 "Log out" = "ออกจากระบบ";
+"Delete account" = "ลบบัญชี";
+"Delete account?" = "ลบบัญชี?";
+"By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "การลบบัญชีของคุณ ข้อมูลทั้งหมดของคุณ เช่น ความคิดเห็นและไฮไลท์ จะถูกลบอย่างถาวร คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ";
 "Login anonymously?" = "ลงชื่อเข้าใช้โดยไม่ระบุชื่อหรือไม่";
 /*Translated from: Made with ❤ by Adventech*/
 "Made with ❤ by Adventech" = "ทำโดย Adventech";

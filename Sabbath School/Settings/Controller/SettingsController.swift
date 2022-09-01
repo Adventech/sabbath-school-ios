@@ -27,11 +27,13 @@ import SwiftDate
 import UIKit
 import PINRemoteImage
 
-class SettingsController: ASDKViewController<ASDisplayNode> {
+class SettingsController: ASDKViewController<ASDisplayNode>, SettingsControllerProtocol {
     weak var tableNode: SettingsView? { return node as? SettingsView }
 
     fileprivate let pickerView = PickerViewController()
     fileprivate let dateFormatter = DateFormatter()
+    
+    var presenter: SettingsPresenterProtocol?
 
     var titles = [[String]]()
     var sections = [String]()
@@ -50,7 +52,7 @@ class SettingsController: ASDKViewController<ASDisplayNode> {
             ["Reminder".localized()],
             ["🐙 GitHub".localized()],
             ["🙏 About us".localized(), "💌 Recommend Sabbath School".localized(), "🎉 Rate app".localized()],
-            ["Log out".localized()]
+            ["Log out".localized(), "Delete account".localized()]
         ]
 
         if Preferences.reminderStatus() {
@@ -286,15 +288,14 @@ extension SettingsController: ASTableDelegate {
                     present(pickerView, animated: true, completion: nil)
                 }
             }
-            break
+            
         case 1:
             let url = "https://github.com/Adventech"
             let safariVC = SFSafariViewController(url: URL(string: url)!)
             safariVC.view.tintColor = AppStyle.Base.Color.navigationTint
             safariVC.modalPresentationStyle = .currentContext
             present(safariVC, animated: true, completion: nil)
-
-            break
+            
         case 2:
             if indexPath.row == 0 {
                 let about = AboutController()
@@ -323,11 +324,14 @@ extension SettingsController: ASTableDelegate {
                     options: [:],
                     completionHandler: nil)
             }
-            break
 
         case 3:
-            SettingsController.logOut()
-            break
+            if indexPath.row == 0 {
+                SettingsController.logOut()
+            } else {
+                presenter?.presentRemoveAccountConfirmation()
+            }
+            
         default:
             break
         }

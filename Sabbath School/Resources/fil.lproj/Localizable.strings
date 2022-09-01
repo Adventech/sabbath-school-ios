@@ -17,6 +17,9 @@
 "Light" = "Banayad";
 "Automatic" = "Awtomatiko";
 "Log out" = "Mag-log out";
+"Delete account" = "Tanggalin ang account";
+"Delete account?" = "Tanggalin ang account?";
+"By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Sa pamamagitan ng pagtanggal sa iyong account, ang lahat ng iyong data, gaya ng mga komento at mga highlight ay permanenteng tatanggalin. Sigurado ka bang gusto mong magpatuloy?";
 "Login anonymously?" = "Mag-login nang hindi nagpapakilala?";
 "Made with ❤ by Adventech" = "Ginawa gamit ang ❤ sa Adventech";
 "More" = "Higit pa";
