@@ -40,7 +40,8 @@ class QuarterlyController: QuarterlyControllerCommon {
             let lastQuarterlyIndex = Preferences.currentQuarterly()
             let languageCode = lastQuarterlyIndex.components(separatedBy: "-")
             if let code = languageCode.first, Preferences.currentLanguage().code == code {
-                presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex, initiateOpenToday: false)
+                presenter?.presentLessonScreen(quarterlyIndex: lastQuarterlyIndex, initiateOpenToday: initiateOpen ?? false
+                )
             }
         }
         setupNavigationBar()

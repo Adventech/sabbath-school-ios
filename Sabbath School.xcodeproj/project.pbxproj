@@ -70,11 +70,14 @@
 		4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */; };
 		4E2882CC280CCBB600AB8C31 /* PublishingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */; };
 		4E2882CE280CE46100AB8C31 /* PublishingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */; };
+		4E562ACB28C8C390006841F7 /* SabbathSchoolShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E562ACA28C8C390006841F7 /* SabbathSchoolShortcuts.swift */; };
+		4E562ACE28C8C448006841F7 /* ReadTodaySabbathSchoolIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E562ACD28C8C448006841F7 /* ReadTodaySabbathSchoolIntent.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		4EE8B6F5284D1FAA003C1A46 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
+		4EFBFB9328C9EE56009FBD21 /* ListenTodaySabbathSchoolIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFBFB9228C9EE56009FBD21 /* ListenTodaySabbathSchoolIntent.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
 		7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F841ED7D6B6003C7458 /* Assets.xcassets */; };
@@ -322,11 +325,14 @@
 		4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfoData.swift; sourceTree = "<group>"; };
 		4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfo.swift; sourceTree = "<group>"; };
 		4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfoView.swift; sourceTree = "<group>"; };
+		4E562ACA28C8C390006841F7 /* SabbathSchoolShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolShortcuts.swift; sourceTree = "<group>"; };
+		4E562ACD28C8C448006841F7 /* ReadTodaySabbathSchoolIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTodaySabbathSchoolIntent.swift; sourceTree = "<group>"; };
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		4E7B09882814CA3D00687C33 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		4E7B098B2814CA8A00687C33 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		4EFBFB9228C9EE56009FBD21 /* ListenTodaySabbathSchoolIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenTodaySabbathSchoolIntent.swift; sourceTree = "<group>"; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireFrame.swift; sourceTree = "<group>"; };
 		7A280F791ED7CF2C003C7458 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -718,6 +724,24 @@
 				2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		4E562AC928C8C21E006841F7 /* Siri */ = {
+			isa = PBXGroup;
+			children = (
+				4E562ACC28C8C404006841F7 /* Intents */,
+				4E562ACA28C8C390006841F7 /* SabbathSchoolShortcuts.swift */,
+			);
+			path = Siri;
+			sourceTree = "<group>";
+		};
+		4E562ACC28C8C404006841F7 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				4E562ACD28C8C448006841F7 /* ReadTodaySabbathSchoolIntent.swift */,
+				4EFBFB9228C9EE56009FBD21 /* ListenTodaySabbathSchoolIntent.swift */,
+			);
+			path = Intents;
 			sourceTree = "<group>";
 		};
 		4E7B098A2814CA7400687C33 /* Protocols */ = {
@@ -1308,6 +1332,7 @@
 		7AF191AA1ED7B89B000CCF0C /* Sabbath School */ = {
 			isa = PBXGroup;
 			children = (
+				4E562AC928C8C21E006841F7 /* Siri */,
 				2FC6F69927A8E0EA00BBC4A9 /* API */,
 				7A280F981EDA015D003C7458 /* Application */,
 				2F96FF4826C7186D0045DC6D /* Audio */,
@@ -1844,6 +1869,7 @@
 				FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */,
 				7A3BCE321EE27717003EC12B /* BibleWireFrame.swift in Sources */,
 				7A280F9B1EDA015D003C7458 /* AppDelegate.swift in Sources */,
+				4E562ACE28C8C448006841F7 /* ReadTodaySabbathSchoolIntent.swift in Sources */,
 				2FA1FFE826F6BA6700E80868 /* Downloader.swift in Sources */,
 				7A280FC71EDA06F9003C7458 /* LoginButton.swift in Sources */,
 				2F96FF4C26C718A40045DC6D /* AudioPlaylistItemEmptyView.swift in Sources */,
@@ -1905,6 +1931,7 @@
 				FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */,
 				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
 				FE5CC73B268914F000B9F061 /* QuarterlyController.swift in Sources */,
+				4EFBFB9328C9EE56009FBD21 /* ListenTodaySabbathSchoolIntent.swift in Sources */,
 				2F96FF6826CC9BBA0045DC6D /* Video.swift in Sources */,
 				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageItemView.swift in Sources */,
@@ -1931,6 +1958,7 @@
 				2F96FF7326CFF44F0045DC6D /* VideoView.swift in Sources */,
 				7A2810201EDDCEC9003C7458 /* LessonInteractor.swift in Sources */,
 				7A2810081EDD0C51003C7458 /* Navigation.swift in Sources */,
+				4E562ACB28C8C390006841F7 /* SabbathSchoolShortcuts.swift in Sources */,
 				7A3BCE2E1EE2753C003EC12B /* BibleController.swift in Sources */,
 				7A2810041EDD0675003C7458 /* LanguageInteractor.swift in Sources */,
 				7A2810291EDDE41F003C7458 /* ShimmeringNode.swift in Sources */,
@@ -2295,7 +2323,7 @@
 				CURRENT_PROJECT_VERSION = 1002;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2435,7 +2463,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1002;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2580,7 +2608,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1002;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -2627,7 +2655,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1002;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;

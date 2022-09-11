@@ -29,9 +29,17 @@ target 'WidgetExtension' do
   pod 'Cache'
 end
 
+def fix_config(config)
+  # https://github.com/CocoaPods/CocoaPods/issues/8891
+  if config.build_settings['DEVELOPMENT_TEAM'].nil?
+    config.build_settings['DEVELOPMENT_TEAM'] = 'XVGX5G4YQ9'
+  end
+end
+
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
+      fix_config(config)
      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.1'
     end
 

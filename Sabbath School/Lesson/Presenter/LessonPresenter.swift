@@ -30,7 +30,7 @@ class LessonPresenter: LessonPresenterProtocol {
 
     func configure() {
         interactor?.configure()
-        interactor?.retrieveQuarterlyInfo(quarterlyIndex: quarterlyIndex!)
+        interactor?.retrieveQuarterlyInfo(quarterlyIndex: quarterlyIndex!, completion: { _ in })
         interactor?.retrievePublishingInfo()
     }
 

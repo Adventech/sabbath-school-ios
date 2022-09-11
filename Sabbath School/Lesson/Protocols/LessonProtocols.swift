@@ -62,6 +62,6 @@ protocol LessonInteractorInputProtocol: AnyObject {
     var presenter: LessonInteractorOutputProtocol? { get set }
 
     func configure()
-    func retrieveQuarterlyInfo(quarterlyIndex: String)
+    func retrieveQuarterlyInfo(quarterlyIndex: String, completion: @escaping (QuarterlyInfo?) -> Void)
     func retrievePublishingInfo()
 }
