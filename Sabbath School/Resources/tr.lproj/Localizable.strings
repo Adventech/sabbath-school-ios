@@ -14,7 +14,7 @@
 "Light" = "Açık";
 "Automatic" = "Otomatik";
 "Log out" = "Oturumu Kapat";
-"Delete account" = "Hesabı sil";
+"Account removal" = "Hesap kaldırma";
 "Delete account?" = "Hesabı sil?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Hesabınızı sildiğinizde, yorumlar ve öne çıkanlar gibi tüm verileriniz kalıcı olarak silinecektir. Devam etmek istediğinizden emin misiniz?";
 "Login anonymously?" = "Anonim Girişi yapılsın mı?";

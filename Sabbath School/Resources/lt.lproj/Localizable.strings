@@ -19,7 +19,7 @@
 "Light" = "Šviesa";
 "Automatic" = "Automatinis";
 "Log out" = "Atsijungti";
-"Delete account" = "Ištrinti paskyrą";
+"Account removal" = "Paskyros pašalinimas";
 "Delete account?" = "Ištrinti paskyrą?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Ištrynus paskyrą visi jūsų duomenys, pvz., komentarai ir akcentai, bus visam laikui ištrinti. Ar tikrai norite tęsti?";
 "Login anonymously?" = "Prisijungti anonimiškai?";

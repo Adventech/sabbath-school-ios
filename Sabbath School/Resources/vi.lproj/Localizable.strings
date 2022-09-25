@@ -19,7 +19,7 @@
 "Light" = "Ánh sáng";
 "Automatic" = "Tự động";
 "Log out" = "Đăng xuất";
-"Delete account" = "Xóa tài khoản";
+"Account removal" = "Xóa tài khoản";
 "Delete account?" = "Xóa tài khoản?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Bằng cách xóa tài khoản của bạn, tất cả dữ liệu của bạn, chẳng hạn như nhận xét và đánh dấu sẽ bị xóa vĩnh viễn. Bạn có chắc muốn tiếp tục?";
 "Login anonymously?" = "Đăng nhập nặc danh?";

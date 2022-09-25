@@ -14,7 +14,7 @@
 "Light" = "Светлая";
 "Automatic" = "автоматический";
 "Log out" = "Выйти";
-"Delete account" = "Удалить аккаунт";
+"Account removal" = "Удаление аккаунта";
 "Delete account?" = "Удалить аккаунт?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "При удалении вашей учетной записи все ваши данные, такие как комментарии и основные моменты, будут безвозвратно удалены. Вы уверены, что хотите продолжить?";
 "Login anonymously?" = "Войти анонимно?";

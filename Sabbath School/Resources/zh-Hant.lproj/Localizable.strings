@@ -14,7 +14,7 @@
 "Light" = "光";
 "Automatic" = "自動的";
 "Log out" = "登出";
-"Delete account" = "刪除帳戶";
+"Account removal" = "帳戶刪除";
 "Delete account?" = "刪除帳戶？";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "通過刪除您的帳戶，您的所有數據（例如評論和亮點）將被永久刪除。 您確定要繼續嗎？";
 "Login anonymously?" = "匿名登錄？";

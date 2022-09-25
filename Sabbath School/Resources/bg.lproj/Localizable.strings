@@ -14,7 +14,7 @@
 "Light" = "Светлина";
 "Automatic" = "Автоматично";
 "Log out" = "Излез от профила си";
-"Delete account" = "Изтриване на акаунт";
+"Account removal" = "Премахване на акаунт";
 "Delete account?" = "Изтриване на акаунт?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "С изтриването на вашия акаунт всички ваши данни, като коментари и акценти, ще бъдат изтрити за постоянно. Сигурни ли сте, че искате да продължите?";
 "Login anonymously?" = "Анонимно влизате ли?";

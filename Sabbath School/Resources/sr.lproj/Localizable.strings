@@ -14,7 +14,7 @@
 "Light" = "Svetlo";
 "Automatic" = "Аутоматски";
 "Log out" = "Odjavite se";
-"Delete account" = "Обрисати налог";
+"Account removal" = "Уклањање налога";
 "Delete account?" = "Обрисати налог?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Брисањем налога сви ваши подаци, као што су коментари и истакнути садржаји, биће трајно избрисани. Да ли сте сигурни да желите да наставите?";
 "Login anonymously?" = "Anonimno prijavljivanje?";

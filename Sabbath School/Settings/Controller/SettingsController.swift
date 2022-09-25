@@ -47,12 +47,20 @@ class SettingsController: ASDKViewController<ASDisplayNode>, SettingsControllerP
         tableNode?.backgroundColor = AppStyle.Base.Color.background
 
         title = "Settings".localized()
+        
+        var dangerZoneItems = ["Log out".localized(), "Account removal".localized()]
+        
+        if let user = PreferencesShared.currentUser(),
+            let isAnonymous = user.isAnonymous,
+            isAnonymous {
+            dangerZoneItems.removeLast()
+        }
 
         titles = [
             ["Reminder".localized()],
             ["🐙 GitHub".localized()],
             ["🙏 About us".localized(), "💌 Recommend Sabbath School".localized(), "🎉 Rate app".localized()],
-            ["Log out".localized(), "Delete account".localized()]
+            dangerZoneItems
         ]
 
         if Preferences.reminderStatus() {

@@ -14,7 +14,7 @@
 "Light" = "Ljus";
 "Automatic" = "Automatisk";
 "Log out" = "Logga ut";
-"Delete account" = "Radera konto";
+"Account removal" = "Borttagning av konto";
 "Delete account?" = "Radera konto?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Genom att radera ditt konto kommer all din data, såsom kommentarer och höjdpunkter, att raderas permanent. Är du säker på att du vill fortsätta?";
 "Login anonymously?" = "Logga in anonymt?";

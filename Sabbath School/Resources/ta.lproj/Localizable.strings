@@ -19,7 +19,7 @@
 "Light" = "ஒளி";
 "Automatic" = "தானியங்கி";
 "Log out" = "வெளியேறு";
-"Delete account" = "கணக்கை நீக்குக";
+"Account removal" = "கணக்கு அகற்றுதல்";
 "Delete account?" = "கணக்கை நீக்குக?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "உங்கள் கணக்கை நீக்குவதன் மூலம், கருத்துகள் மற்றும் சிறப்பம்சங்கள் போன்ற உங்களின் எல்லாத் தரவும் நிரந்தரமாக நீக்கப்படும். நீங்கள் நிச்சயமாக தொடர விரும்புகிறீர்களா?";
 "Login anonymously?" = "அநாமதேயமாக உள்நுழையவா?";

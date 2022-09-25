@@ -23,7 +23,17 @@
 import UIKit
 
 class SettingsPresenter: NSObject, SettingsPresenterProtocol {
+    
     weak var controller: SettingsControllerProtocol?
+    
+    private var interactor: SettingsInteractorInputProtocol?
+    
+    override init() {
+        super.init()
+        let interactor = SettingsInteractor()
+        interactor.presenter = self
+        self.interactor = interactor
+    }
     
     func presentRemoveAccountConfirmation() {
         let alertController = UIAlertController(
@@ -33,17 +43,28 @@ class SettingsPresenter: NSObject, SettingsPresenterProtocol {
         )
 
         let no = UIAlertAction(title: "No".localized(), style: .default, handler: nil)
-        no.accessibilityLabel = "loginAnonymousOptionNo"
+        no.accessibilityLabel = "removeAccountNo"
 
         let yes = UIAlertAction(title: "Yes".localized(), style: .destructive) { _ in
-            SettingsController.logOut()
+            self.interactor?.removeAccount()
+//            SettingsController.logOut()
         }
-        yes.accessibilityLabel = "loginAnonymousOptionYes"
+        yes.accessibilityLabel = "removeAccountYes"
 
         alertController.addAction(no)
         alertController.addAction(yes)
-        alertController.accessibilityLabel = "loginAnonymous"
+        alertController.accessibilityLabel = "removeAccount"
 
         (controller as? UIViewController)?.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension SettingsPresenter: SettingsInteractorOutputProtocol {
+    func onError(_ error: Error?) {
+        print("SSDEBUG", error?.localizedDescription ?? "Unknown")
+    }
+    
+    func onSuccess() {
+        SettingsController.logOut()
     }
 }

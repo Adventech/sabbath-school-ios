@@ -19,7 +19,7 @@
 "Light" = "लाइट";
 "Automatic" = "स्वचालित";
 "Log out" = "बाहिर निस्कनु";
-"Delete account" = "खाता मेटाउनुहोस्";
+"Account removal" = "खाता हटाउने";
 "Delete account?" = "खाता मेट्ने हो?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "तपाईंको खाता मेटाएर तपाईंको सबै डेटा, जस्तै टिप्पणीहरू र हाइलाइटहरू स्थायी रूपमा मेटिने छन्। के तपाइँ निश्चित रूपमा अगाडि बढ्न चाहनुहुन्छ?";
 "Login anonymously?" = "गुमनाम रूपमा लगइन गर्नुहोस्?";

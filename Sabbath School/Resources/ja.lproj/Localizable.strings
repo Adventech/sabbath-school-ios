@@ -14,7 +14,7 @@
 "Light" = "明色";
 "Automatic" = "自動";
 "Log out" = "サインアウト";
-"Delete account" = "アカウントを削除する";
+"Account removal" = "アカウントの削除";
 "Delete account?" = "アカウントを削除する？";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "アカウントを削除すると、コメントやハイライトなどのすべてのデータが完全に削除されます。 続行してもよろしいですか？";
 "Login anonymously?" = "無名でログインしますか？";

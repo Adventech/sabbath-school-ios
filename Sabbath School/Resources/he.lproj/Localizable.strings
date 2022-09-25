@@ -14,7 +14,7 @@
 "Light" = "בהיר";
 "Automatic" = "אוֹטוֹמָטִי";
 "Log out" = "התנתק";
-"Delete account" = "מחק חשבון";
+"Account removal" = "הסרת חשבון";
 "Delete account?" = "מחק חשבון?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "על ידי מחיקת חשבונך כל הנתונים שלך, כגון הערות והדגשים יימחקו לצמיתות. האם אתה בטוח שאתה רוצה להמשיך?";
 "Login anonymously?" = "להתחבר באופן אנונימי?";

@@ -27,12 +27,14 @@ struct Account: Codable {
     let displayName: String?
     let email: String?
     let stsTokenManager: AccountToken
+    let isAnonymous: Bool?
     
-    init(uid: String, displayName: String?, email: String?, stsTokenManager: AccountToken) {
+    init(uid: String, displayName: String?, email: String?, stsTokenManager: AccountToken, isAnonymous: Bool) {
         self.uid = uid
         self.displayName = displayName
         self.email = email
         self.stsTokenManager = stsTokenManager
+        self.isAnonymous = isAnonymous
     }
     
     init(from decoder: Decoder) throws {
@@ -41,6 +43,7 @@ struct Account: Codable {
         displayName = try? values.decode(String.self, forKey: .displayName)
         email = try? values.decode(String.self, forKey: .email)
         stsTokenManager = try values.decode(AccountToken.self, forKey: .stsTokenManager)
+        isAnonymous = try? values.decode(Bool.self, forKey: .isAnonymous)
     }
 }
 

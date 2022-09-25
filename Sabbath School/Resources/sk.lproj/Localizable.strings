@@ -14,7 +14,7 @@
 "Light" = "Svetlo";
 "Automatic" = "Automaticky";
 "Log out" = "Odhlásiť sa";
-"Delete account" = "Zmazať účet";
+"Account removal" = "Odstránenie účtu";
 "Delete account?" = "Zmazať účet?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Odstránením účtu sa natrvalo odstránia všetky vaše údaje, ako sú komentáre a zvýraznenia. Naozaj chcete pokračovať?";
 "Login anonymously?" = "Prihlásiť sa anonymne?";

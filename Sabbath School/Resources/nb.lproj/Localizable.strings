@@ -14,7 +14,7 @@
 "Light" = "Lett";
 "Automatic" = "Automatisk";
 "Log out" = "Logg ut";
-"Delete account" = "Slett konto";
+"Account removal" = "Fjerning av konto";
 "Delete account?" = "Slett konto?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Ved å slette kontoen din vil alle dataene dine, for eksempel kommentarer og høydepunkter, bli slettet permanent. Er du sikker på at du vil fortsette?";
 "Login anonymously?" = "Logg inn anonymt?";

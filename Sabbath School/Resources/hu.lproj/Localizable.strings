@@ -14,7 +14,7 @@
 "Light" = "Fény";
 "Automatic" = "Automatikus";
 "Log out" = "Kijelentkezés";
-"Delete account" = "Fiók törlése";
+"Account removal" = "Fiók eltávolítása";
 "Delete account?" = "Fiók törlése?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Fiókja törlésével minden adata, például megjegyzései és kiemelt tartalmai véglegesen törlődnek. Biztosan folytatja?";
 "Login anonymously?" = "Névtelen bejelentkezés?";

@@ -14,7 +14,7 @@
 "Light" = "밝게";
 "Automatic" = "자동적 인";
 "Log out" = "로그아웃";
-"Delete account" = "계정 삭제";
+"Account removal" = "계정 삭제";
 "Delete account?" = "계정 삭제?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "계정을 삭제하면 댓글 및 하이라이트와 같은 모든 데이터가 영구적으로 삭제됩니다. 계속하시겠습니까?";
 "Login anonymously?" = "익명으로 로그인 하시겠습니까?";

@@ -19,7 +19,7 @@
 "Light" = "ແສງສະຫວ່າງ";
 "Automatic" = "ອັດຕະໂນມັດ";
 "Log out" = "ອອກ​ຈາກ​ລະ​ບົບ";
-"Delete account" = "ລຶບບັນຊີ";
+"Account removal" = "ການລຶບບັນຊີ";
 "Delete account?" = "ລຶບບັນຊີບໍ?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "ໂດຍການລຶບບັນຊີຂອງທ່ານທັງໝົດຂໍ້ມູນຂອງທ່ານ, ເຊັ່ນ: ຄຳເຫັນ ແລະຈຸດເດັ່ນຈະຖືກລຶບຢ່າງຖາວອນ. ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການດຳເນີນການຕໍ່?";
 "Login anonymously?" = "ເຂົ້າສູ່ລະບົບໂດຍບໍ່ລະບຸ?";

@@ -14,7 +14,7 @@
 "Light" = "ضوء";
 "Automatic" = "أوتوماتيكي";
 "Log out" = "الخروج";
-"Delete account" = "حذف الحساب";
+"Account removal" = "إزالة الحساب";
 "Delete account?" = "حذف الحساب؟";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "بحذف حسابك ، سيتم حذف جميع بياناتك ، مثل التعليقات والميزات بشكل دائم. هل انت متأكد انك تريد المتابعة؟";
 "Login anonymously?" = "تسجيل الدخول مجهول؟";

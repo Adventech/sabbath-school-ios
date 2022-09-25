@@ -20,23 +20,20 @@
  * THE SOFTWARE.
  */
 
-protocol SettingsPresenterProtocol: AnyObject {
-    var controller: SettingsControllerProtocol? { get set }
+import Foundation
+
+class SettingsInteractor: NSObject, SettingsInteractorInputProtocol {
+    weak var presenter: SettingsInteractorOutputProtocol?
     
-    func presentRemoveAccountConfirmation()
-}
-
-protocol SettingsControllerProtocol: AnyObject {
-    var presenter: SettingsPresenterProtocol? { get set }
-}
-
-protocol SettingsInteractorInputProtocol: AnyObject {
-    var presenter: SettingsInteractorOutputProtocol? { get set }
-    
-    func removeAccount()
-}
-
-protocol SettingsInteractorOutputProtocol: AnyObject {
-    func onError(_ error: Error?)
-    func onSuccess()
+    func removeAccount() {
+        API.auth.request("\(Constants.API.URL)/auth/delete", method: .post)
+            .customValidate().response { [weak self] response in
+            if let error = response.error {
+                self?.presenter?.onError(error)
+                return
+            }
+            
+            self?.presenter?.onSuccess()
+        }
+    }
 }

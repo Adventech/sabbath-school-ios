@@ -14,7 +14,7 @@
 "Light" = "Leggero";
 "Automatic" = "Automatico";
 "Log out" = "Disconnettersi";
-"Delete account" = "Eliminare l'account";
+"Account removal" = "Rimozione dell'account";
 "Delete account?" = "Eliminare l'account?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Eliminando il tuo account tutti i tuoi dati, come commenti ed evidenziazioni, verranno eliminati definitivamente. Sei sicuro di voler procedere?";
 "Login anonymously?" = "Accedi in modo anonimo?";
