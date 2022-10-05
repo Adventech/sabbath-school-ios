@@ -17,6 +17,9 @@
 "Light" = "အလင်း";
 "Automatic" = "အလိုအလျောက်";
 "Log out" = "လော့ဂ်အော့ဖ်လုပ်ထွက်ခြင်း";
+"Account removal" = "အကောင့်ဖယ်ရှားခြင်း။";
+"Delete account?" = "အကောင့်ဖျက်မလား။";
+"By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "သင့်အကောင့်ကို ဖျက်ခြင်းဖြင့် မှတ်ချက်များနှင့် အသားပေးဖော်ပြချက်များကဲ့သို့သော သင့်ဒေတာအားလုံးကို အပြီးအပိုင် ဖျက်လိုက်ပါမည်။ ရှေ့ဆက်လိုသည်မှာ သေချာပါသလား။";
 "Login anonymously?" = "အမည်ဝှက်?";
 "Made with ❤ by Adventech" = "Adventech အားဖြင့်❤နှင့်ဖွဲ့";
 "More" = "နောက်ထပ်";

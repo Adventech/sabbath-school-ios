@@ -77,6 +77,9 @@ class QuarterlyController: QuarterlyControllerCommon {
     
     @objc func showSettings() {
         let settings = SettingsController()
+        let presenter = SettingsPresenter()
+        presenter.controller = settings
+        settings.presenter = presenter
 
         let nc = ASNavigationController(rootViewController: settings)
         self.present(nc, animated: true)

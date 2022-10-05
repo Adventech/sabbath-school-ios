@@ -30,11 +30,11 @@ target 'WidgetExtension' do
 end
 
 def fix_config(config)
-  # https://github.com/CocoaPods/CocoaPods/issues/8891
-  if config.build_settings['DEVELOPMENT_TEAM'].nil?
-    config.build_settings['DEVELOPMENT_TEAM'] = 'XVGX5G4YQ9'
-  end
-end
+   # https://github.com/CocoaPods/CocoaPods/issues/8891
+   if config.build_settings['DEVELOPMENT_TEAM'].nil?
+     config.build_settings['DEVELOPMENT_TEAM'] = 'XVGX5G4YQ9'
+   end
+ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
