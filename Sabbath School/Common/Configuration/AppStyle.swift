@@ -667,6 +667,10 @@ struct AppStyle {
             static var sepia: UIColor {
                 return UIColor(hex: "#FBF0D9")
             }
+
+            static var auto: UIColor {
+                Preferences.darkModeEnable() ? dark:white
+            }
         }
     }
     

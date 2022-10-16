@@ -58,7 +58,6 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         maskLayer.path = path.cgPath
         self.navigationController?.navigationBar.layer.mask = maskLayer
         
-        self.view.layer.cornerRadius = 6
         self.view.clipsToBounds = true
         self.view.backgroundColor = theme.backgroundColor
         self.bibleView.webView.isOpaque = false
@@ -122,6 +121,26 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         menu.popoverPresentationController?.backgroundColor = AppStyle.Base.Color.background
         menu.popoverPresentationController?.permittedArrowDirections = .up
         present(menu, animated: true, completion: nil)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if UIApplication.shared.applicationState != .background &&
+                self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection),
+                Preferences.currentTheme() == .auto {
+                
+                let theme = ReaderStyle.Theme.auto
+                bibleView.webView.setTheme(.auto)
+                navigationController?.navigationBar.backgroundColor = theme.navBarColor
+                setTranslucentNavigation(false, color: theme.navBarColor, tintColor: theme.navBarTextColor, titleColor: theme.navBarTextColor)
+                
+                if let bible = self.read?.bible,
+                    let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: bible) {
+                    versionButton.setAttributedTitle(AppStyle.Base.Text.navBarButton(string: versionName, color: theme.navBarTextColor), for: .normal)
+                }
+            }
+        }
     }
 }
 

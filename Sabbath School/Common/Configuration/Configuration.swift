@@ -93,7 +93,7 @@ class Configuration: NSObject {
                    let refreshToken = user.tokenService?.refreshToken
                 {
                     let accountToken: AccountToken = AccountToken(apiKey: user.apiKey, refreshToken: refreshToken, accessToken: accessToken, expirationTime: 0)
-                    let account: Account = Account(uid: user.uid, displayName: user.displayName, email: user.email, stsTokenManager: accountToken)
+                    let account: Account = Account(uid: user.uid, displayName: user.displayName, email: user.email, stsTokenManager: accountToken, isAnonymous: false)
                     let dictionary = try! JSONEncoder().encode(account)
                     
                     Preferences.userDefaults.set(dictionary, forKey: Constants.DefaultKey.accountObject)

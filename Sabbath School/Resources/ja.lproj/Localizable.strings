@@ -12,7 +12,11 @@
 "Languages" = "言語";
 "Lato" = "Lato";
 "Light" = "明色";
+"Automatic" = "自動";
 "Log out" = "サインアウト";
+"Account removal" = "アカウントの削除";
+"Delete account?" = "アカウントを削除する？";
+"By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "アカウントを削除すると、コメントやハイライトなどのすべてのデータが完全に削除されます。 続行してもよろしいですか？";
 "Login anonymously?" = "無名でログインしますか？";
 "Made with ❤ by Adventech" = "Adventechによって&#10084;に作りました。";
 "Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "アドベンチャーの使命は何よりもまずあります - 古代の時代である私たちのL toに栄光を与えましょう。 私たちは技術を通して私たちの使命を果たすことに専心しています。 私たちの目標は、第七日の再臨教会を結集することです。 私たちの目標は、通信の技術と進歩によって、この世界に良いニュースを宣伝することです。 私たちの目標は、イエスの再臨を目撃することです。\n\n私たちは、イエスが地上でここで奉仕したときの模範と方法に触発されています。 したがって、我々は愛と献身をもって絶対に無償で、すべてのプロジェクトの質の高いレベルを提供することに努めています。 私たちは父に栄光を与えることを約束しています。なぜなら、彼は最高の賞賛に値するからです。\n\n私たちは真に神が現代世界の知識を増やし、私たちが彼の栄光のためにそれを使用してすぐに彼の復帰を宣言することを望んでいると本当に信じています！";
