@@ -29,9 +29,9 @@ class AudioView: ASDisplayNode {
     let coverCornerRadius = CGFloat(6)
     let topIndicator = ASDisplayNode()
     
-    let play = ASButtonNode()
-    let backward = ASButtonNode()
-    let forward = ASButtonNode()
+    let play = MediaButtonNode()
+    let backward = MediaButtonNode()
+    let forward = MediaButtonNode()
     
     let rate = ASTextNode()
     let airplay = ASImageNode()

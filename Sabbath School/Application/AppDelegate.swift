@@ -96,7 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if shortcutItem.type == Constants.DefaultKey.shortcutItem {
             guard let quarterlyIndex = shortcutItem.userInfo?["index"] as? String else { return }
             launchQuarterly(quarterlyIndex: quarterlyIndex, initiateOpen: true)
-            
         }
     }
     
@@ -158,26 +157,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func launchQuarterlies() {
-        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule()
-        Configuration.window?.rootViewController = quarterlyController
+        Configuration.window?.rootViewController = Configuration.getRootViewController()
         Configuration.window?.makeKeyAndVisible()
     }
     
     func launchQuarterly(quarterlyIndex: String, initiateOpen: Bool = false) {
-        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule()
-        let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpen)
-        quarterlyController.pushViewController(lessonController, animated: false)
-        Configuration.window?.rootViewController = quarterlyController
+        Configuration.window?.rootViewController = Configuration.getRootViewController(quarterlyIndex: quarterlyIndex, initiateOpen: initiateOpen)
         Configuration.window?.makeKeyAndVisible()
     }
     
     func launchLesson(quarterlyIndex: String, lessonIndex: String, readIndex: Int? = nil, initiateOpen: Bool = false) {
-        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule()
-        let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpen)
-        let readController = ReadWireFrame.createReadModule(lessonIndex: lessonIndex, readIndex: readIndex)
-        quarterlyController.pushViewController(lessonController, animated: false)
-        quarterlyController.pushViewController(readController, animated: false)
-        Configuration.window?.rootViewController = quarterlyController
+        Configuration.window?.rootViewController = Configuration.getRootViewController(quarterlyIndex: quarterlyIndex,
+                                                                                       lessonIndex: lessonIndex,
+                                                                                       readIndex: readIndex,
+                                                                                       initiateOpen: initiateOpen)
         Configuration.window?.makeKeyAndVisible()
     }
     

@@ -60,7 +60,7 @@ class ReadPresenter: ReadPresenterProtocol {
     }
 
     func presentBibleScreen(read: Read, verse: String, size: CGSize) {
-        let bibleScreen = BibleWireFrame.createBibleModule(read: read, verse: verse)
+        let bibleScreen = BibleWireFrame.createBibleModule(bibleVerses: read.bible, verse: verse)
         bibleScreen.delegate = (controller as! BibleControllerOutputProtocol)
         let navigation = ASNavigationController(rootViewController: bibleScreen)
         

@@ -23,8 +23,8 @@
 import AsyncDisplayKit
 
 class BibleWireFrame: BibleWireFrameProtocol {
-    class func createBibleModule(read: Read, verse: String) -> BibleController {
-        let controller: BibleControllerProtocol = BibleController(read: read, verse: verse)
+    class func createBibleModule(bibleVerses: [BibleVerses], verse: String) -> BibleController {
+        let controller: BibleControllerProtocol = BibleController(bibleVerses: bibleVerses, verse: verse)
         let presenter: BiblePresenterProtocol & BibleInteractorOutputProtocol = BiblePresenter()
         let wireFrame: BibleWireFrameProtocol = BibleWireFrame()
         let interactor: BibleInteractorInputProtocol = BibleInteractor()

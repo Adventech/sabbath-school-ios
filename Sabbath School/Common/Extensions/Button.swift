@@ -47,7 +47,7 @@ extension UIButton {
     }
 }
 
-extension ASButtonNode {
+class ReadButtonNode: ASButtonNode {
     open override func sendActions(forControlEvents controlEvents: ASControlNodeEvent, with touchEvent: UIEvent?) {
         if controlEvents == .touchDown {
             bounce(true)
@@ -62,15 +62,51 @@ extension ASButtonNode {
         }
         super.sendActions(forControlEvents: controlEvents, with: touchEvent)
     }
-    
-    func bounce(_ bounce: Bool) {
+}
+
+class MediaButtonNode: ASButtonNode {
+    open override func sendActions(forControlEvents controlEvents: ASControlNodeEvent, with touchEvent: UIEvent?) {
+        if controlEvents == .touchDown {
+            bounce(true)
+        }
+        
+        if controlEvents == .touchUpInside
+            || controlEvents == .touchUpOutside
+            || controlEvents == .touchDragOutside
+            || controlEvents == .touchCancel
+        {
+            bounce(false)
+        }
+        super.sendActions(forControlEvents: controlEvents, with: touchEvent)
+    }
+}
+
+class OpenButtonNode: ASButtonNode {
+    open override func sendActions(forControlEvents controlEvents: ASControlNodeEvent, with touchEvent: UIEvent?) {
+        if controlEvents == .touchDown {
+            bounce(true, scale: 0.98)
+        }
+        
+        if controlEvents == .touchUpInside
+            || controlEvents == .touchUpOutside
+            || controlEvents == .touchDragOutside
+            || controlEvents == .touchCancel
+        {
+            bounce(false, scale: 0.98)
+        }
+        super.sendActions(forControlEvents: controlEvents, with: touchEvent)
+    }
+}
+
+extension ASButtonNode {
+    func bounce(_ bounce: Bool, scale: CGFloat = 0.85) {
         UIView.animate(
             withDuration: bounce ? 0.8 : 0.6,
             delay: 0,
             usingSpringWithDamping: 0.4,
             initialSpringVelocity: 0.8,
             options: [.beginFromCurrentState, .curveEaseInOut, .allowUserInteraction],
-            animations: { self.transform = bounce ? CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.85, y: 0.85)) : CATransform3DMakeAffineTransform(CGAffineTransform.identity) },
+            animations: { self.transform = bounce ? CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: scale, y: scale)) : CATransform3DMakeAffineTransform(CGAffineTransform.identity) },
             completion: nil)
     }
 }

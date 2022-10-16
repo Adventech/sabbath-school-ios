@@ -31,7 +31,7 @@ class VideoCollectionItemView: ASCellNode {
     var cover: RoundedCornersImage!
     let title = ASTextNode()
     let subtitle = ASTextNode()
-    let duration = ASButtonNode()
+    let duration = MediaButtonNode()
     let durationEnabled: Bool
     let viewMode: VideoCollectionItemViewMode
     let featured: Bool

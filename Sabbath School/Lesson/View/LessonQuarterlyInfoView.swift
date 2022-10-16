@@ -28,7 +28,7 @@ class LessonQuarterlyInfo: ASCellNode {
     let title = ASTextNode()
     let humanDate = ASTextNode()
     let introduction = ASTextNode()
-    let readButton = ASButtonNode()
+    let readButton = ReadButtonNode()
     var coverImage = ASImageNode()
     var features: [ASNetworkImageNode] = []
     

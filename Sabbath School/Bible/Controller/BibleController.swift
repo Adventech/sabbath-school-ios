@@ -28,14 +28,15 @@ class BibleController: ASDKViewController<ASDisplayNode> {
     var bibleView = BibleView()
     var versionButton: UIButton!
 
-    var read: Read?
+    var bibleVerses: [BibleVerses] = []
     var verse: String?
     weak var delegate: BibleControllerOutputProtocol?
 
-    init(read: Read, verse: String) {
+    init(bibleVerses: [BibleVerses], verse: String) {
+        self.bibleVerses = bibleVerses
         super.init(node: bibleView)
 
-        self.read = read
+        
         self.verse = verse
     }
 
@@ -66,7 +67,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         closeButton.accessibilityIdentifier = "dismissBibleVerse"
         navigationItem.leftBarButtonItem = closeButton
 
-        let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? ""
+        let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: bibleVerses) ?? ""
 
         versionButton = UIButton(type: .custom)
         versionButton.setAttributedTitle(AppStyle.Base.Text.navBarButton(string: versionName, color: theme.navBarTextColor), for: .normal)
@@ -79,7 +80,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: versionButton)
 
         presenter?.configure()
-        presenter?.presentBibleVerse(read: self.read!, verse: self.verse!)
+        presenter?.presentBibleVerse(bibleVerses: self.bibleVerses, verse: self.verse!)
         UIMenuController.shared.menuItems = nil
     }
 
@@ -93,10 +94,10 @@ class BibleController: ASDKViewController<ASDisplayNode> {
     }
 
     @objc func changeVersionAction(sender: UIBarButtonItem) {
-        let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: (self.read?.bible)!) ?? ""
+        let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: self.bibleVerses) ?? ""
         var menuitems = [MenuItem]()
 
-        (self.read?.bible)!.forEach { item in
+        self.bibleVerses.forEach { item in
             let menuItem = MenuItem(
                 name: item.name,
                 subtitle: nil,
@@ -108,7 +109,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
 
         let menu = BibleVersionController(withItems: menuitems)
         menu.delegate = self
-        var size = CGSize(width: view.window!.frame.width*0.8, height: CGFloat((self.read?.bible)!.count) * MenuItem.height + CGFloat((self.read?.bible)!.count))
+        var size = CGSize(width: view.window!.frame.width*0.8, height: CGFloat(bibleVerses.count) * MenuItem.height + CGFloat(bibleVerses.count))
         if Helper.isPad {
             size.width = round(node.frame.width*0.3)
         }
@@ -134,7 +135,7 @@ extension BibleController: BibleVersionControllerDelegate {
     func didSelectVersion(versionName: String) {
         Preferences.userDefaults.set(versionName, forKey: Preferences.getPreferredBibleVersionKey())
 
-        presenter?.presentBibleVerse(read: self.read!, verse: self.verse!)
+        presenter?.presentBibleVerse(bibleVerses: self.bibleVerses, verse: self.verse!)
 
         versionButton.setAttributedTitle(AppStyle.Base.Text.navBarButton(string: versionName), for: .normal)
         versionButton.sizeToFit()

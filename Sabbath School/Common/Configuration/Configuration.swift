@@ -137,7 +137,7 @@ class Configuration: NSObject {
         }
         
         if (PreferencesShared.loggedIn()) {
-            window?.rootViewController = defaultTabBar()
+            window?.rootViewController = getRootViewController()
         } else {
             window?.rootViewController = LoginWireFrame.createLoginModule()
         }
@@ -147,16 +147,25 @@ class Configuration: NSObject {
     
     static func loginAnimated(_ completion: (() -> Void)? = nil) {
         UIView.transition(with: window!, duration: 0.5, options: .transitionFlipFromLeft, animations: {
-            self.window?.rootViewController = self.defaultTabBar()
+            self.window?.rootViewController = self.getRootViewController()
         }, completion: { _ in
             completion?()
         })
     }
     
-    private static func defaultTabBar() -> ASTabBarController {
-        let tabBarController = TabBarViewController()
-        tabBarController.viewControllers = tabBarController.tabBarControllersFor(items: TabBarItem.defaultItems())
-        return tabBarController
+    public static func getRootViewController(quarterlyIndex: String? = nil,
+                                              lessonIndex: String? = nil,
+                                              readIndex: Int? = nil,
+                                              initiateOpen: Bool = false) -> UIViewController {
+        let showTabs = true
+        
+        if showTabs {
+            let tabBarController = TabBarViewController()
+            tabBarController.viewControllers = tabBarController.tabBarControllersFor(quarterlyIndex: quarterlyIndex, lessonIndex: lessonIndex, readIndex: readIndex, initiateOpen: initiateOpen)
+            return tabBarController
+        } else {
+            return QuarterlyWireFrame.createQuarterlyModule()
+        }
     }
     
     static func configureArmchair() {

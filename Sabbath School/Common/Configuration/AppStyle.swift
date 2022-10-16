@@ -21,6 +21,142 @@
  */
 
 import UIKit
+import Down
+
+struct SSPMColorCollection: ColorCollection {
+    public var heading1: DownColor
+    public var heading2: DownColor
+    public var heading3: DownColor
+    public var heading4: DownColor
+    public var heading5: DownColor
+    public var heading6: DownColor
+    public var body: DownColor
+    public var code: DownColor
+    public var link: DownColor
+    public var quote: DownColor
+    public var quoteStripe: DownColor
+    public var thematicBreak: DownColor
+    public var listItemPrefix: DownColor
+    public var codeBlockBackground: DownColor
+
+    public init(
+        heading1: DownColor = .black,
+        heading2: DownColor = .black,
+        heading3: DownColor = .black,
+        heading4: DownColor = .black,
+        heading5: DownColor = .black,
+        heading6: DownColor = .black,
+        body: DownColor = AppStyle.Quarterly.Color.introduction,
+        code: DownColor = AppStyle.Quarterly.Color.introduction,
+        link: DownColor = AppStyle.Quarterly.Color.introduction,
+        quote: DownColor = .darkGray,
+        quoteStripe: DownColor = .darkGray,
+        thematicBreak: DownColor = .init(white: 0.9, alpha: 1),
+        listItemPrefix: DownColor = .lightGray,
+        codeBlockBackground: DownColor = .init(red: 0.96, green: 0.97, blue: 0.98, alpha: 1)
+    ) {
+        self.heading1 = heading1
+        self.heading2 = heading2
+        self.heading3 = heading3
+        self.heading4 = heading4
+        self.heading5 = heading5
+        self.heading6 = heading6
+        self.body = body
+        self.code = code
+        self.link = link
+        self.quote = quote
+        self.quoteStripe = quoteStripe
+        self.thematicBreak = thematicBreak
+        self.listItemPrefix = listItemPrefix
+        self.codeBlockBackground = codeBlockBackground
+    }
+
+}
+
+struct SSPMParagraphStyleCollection: ParagraphStyleCollection {
+    public var heading1: NSParagraphStyle
+    public var heading2: NSParagraphStyle
+    public var heading3: NSParagraphStyle
+    public var heading4: NSParagraphStyle
+    public var heading5: NSParagraphStyle
+    public var heading6: NSParagraphStyle
+    public var body: NSParagraphStyle
+    public var code: NSParagraphStyle
+
+    public init() {
+        let headingStyle = NSMutableParagraphStyle()
+        headingStyle.paragraphSpacing = 8
+
+        let bodyStyle = NSMutableParagraphStyle()
+        bodyStyle.paragraphSpacingBefore = 0
+        bodyStyle.paragraphSpacing = 0
+        bodyStyle.lineSpacing = 3
+
+        let codeStyle = NSMutableParagraphStyle()
+        codeStyle.paragraphSpacingBefore = 8
+        codeStyle.paragraphSpacing = 8
+
+        heading1 = headingStyle
+        heading2 = headingStyle
+        heading3 = headingStyle
+        heading4 = headingStyle
+        heading5 = headingStyle
+        heading6 = headingStyle
+        body = bodyStyle
+        code = codeStyle
+    }
+}
+
+class SSPMFontCollection: FontCollection {
+    public var heading1: DownFont
+    public var heading2: DownFont
+    public var heading3: DownFont
+    public var heading4: DownFont
+    public var heading5: DownFont
+    public var heading6: DownFont
+    public var body: DownFont
+    public var code: DownFont
+    public var listItemPrefix: DownFont
+
+    public init(
+        heading1: DownFont = R.font.latoRegular(size: 28)!,
+        heading2: DownFont = R.font.latoRegular(size: 24)!,
+        heading3: DownFont = R.font.latoRegular(size: 20)!,
+        heading4: DownFont = R.font.latoRegular(size: 20)!,
+        heading5: DownFont = R.font.latoRegular(size: 20)!,
+        heading6: DownFont = R.font.latoRegular(size: 20)!,
+        body: DownFont = R.font.latoMedium(size: 18)!,
+        code: DownFont = DownFont(name: "menlo", size: 17) ?? .systemFont(ofSize: 17),
+        listItemPrefix: DownFont = DownFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)
+    ) {
+        self.heading1 = heading1
+        self.heading2 = heading2
+        self.heading3 = heading3
+        self.heading4 = heading4
+        self.heading5 = heading5
+        self.heading6 = heading6
+        self.body = body
+        self.code = code
+        self.listItemPrefix = listItemPrefix
+    }
+}
+
+class SSPMStyler: DownStyler {
+    override func style(link str: NSMutableAttributedString, title: String?, url: String?) {
+        guard let url = url else { return }
+        
+        // TODO: In future style URLs depending on their type potentially
+        str.addAttributes(
+            [
+                .link: url,
+                .font: R.font.latoBold(size: 18)!,
+                .foregroundColor: UIColor.baseBlue,
+                .underlineColor: UIColor.clear
+            ],
+            range: NSRange(location: 0, length: str.length)
+        )
+    }
+}
 
 struct AppStyle {
     struct Base {
@@ -838,16 +974,171 @@ struct AppStyle {
         }
     }
     
+    struct Devo {
+        struct Color {
+            static func resourceDetailSectionBackground() -> UIColor {
+                return .baseGray1 | .baseGray5
+            }
+        }
+        struct Text {
+            static func resourceDetailSection(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2,
+                    .font: R.font.latoBold(size: 12)!
+                ]
+                return NSAttributedString(string: string.uppercased(), attributes: attributes)
+            }
+            
+            static func resourceDetailDocumentTitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: .baseGray4 | .baseGray1,
+                    .font: R.font.latoRegular(size: 18)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceDetailDocumentSubtitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2.lighter() | .baseGray3,
+                    .font: R.font.latoBold(size: 12)!
+                ]
+                return NSAttributedString(string: string.uppercased(), attributes: attributes)
+            }
+            
+            static func openButtonTitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: .black | .white,
+                    .font: R.font.latoBold(size: 18)!
+                ]
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func openButtonSubtitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.baseGray2,
+                    .font: R.font.latoRegular(size: 14)!
+                ]
+                return NSAttributedString(string: string.uppercased(), attributes: attributes)
+            }
+            
+            static func resourceGroupName(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoBold(size: 13)!,
+                    .foregroundColor: .baseGray5 | .baseGray2
+                ]
+
+                return NSAttributedString(string: string.uppercased(), attributes: attributes)
+            }
+            
+            static func resourceListTitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoBold(size: 18)!,
+                    .foregroundColor: .black | .white
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceListSubtitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoRegular(size: 13)!,
+                    .foregroundColor: .baseGray2 | .baseGray3
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceTileSubtitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoRegular(size: 15)!,
+                    .foregroundColor: UIColor.baseGray3
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceTileTitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoBold(size: 19)!,
+                    .foregroundColor: .black | .white
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceTileSmallSubtitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoRegular(size: 15)!,
+                    .foregroundColor: UIColor.white
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceTileSmallTitle(string: String) -> NSAttributedString {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoBold(size: 19)!,
+                    .foregroundColor: UIColor.white
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceDetailTitleForColor(string: String, textColor: UIColor = UIColor.white) -> NSAttributedString {
+                let style = NSMutableParagraphStyle()
+                style.alignment = .center
+                
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoBlack(size: 28)!,
+                    .foregroundColor: textColor,
+                    .paragraphStyle: style
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceDetailSubtitleForColor(string: String, textColor: UIColor = UIColor.white) -> NSAttributedString {
+                let style = NSMutableParagraphStyle()
+                style.alignment = .left
+                
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: R.font.latoRegular(size: 14)!,
+                    .foregroundColor: textColor,
+                    .paragraphStyle: style
+                ]
+
+                return NSAttributedString(string: string, attributes: attributes)
+            }
+        }
+    }
+    
     struct Markdown {
         struct Color {
             struct Reference {
                 static var actionIcon: UIColor {
-                    return .black | .white
+                    return .baseGray2
                 }
             }
         }
         
         struct Text {
+            struct Head {
+                static func title(string: String) -> NSAttributedString {
+                    let attributes: [NSAttributedString.Key: Any] = [
+                        .foregroundColor: .black | .white,
+                        .font: R.font.latoBlack(size: 28)!
+                    ]
+                    return NSAttributedString(string: string, attributes: attributes)
+                }
+                static func subtitle(string: String) -> NSAttributedString {
+                    let attributes: [NSAttributedString.Key: Any] = [
+                        .foregroundColor: UIColor.baseGray2,
+                        .font: R.font.latoRegular(size: 13)!
+                    ]
+                    return NSAttributedString(string: string, attributes: attributes)
+                }
+            }
+
             struct Reference {
                 static func title(string: String) -> NSAttributedString {
                     let attributes: [NSAttributedString.Key: Any] = [
@@ -856,6 +1147,7 @@ struct AppStyle {
                     ]
                     return NSAttributedString(string: string, attributes: attributes)
                 }
+
                 static func subtitle(string: String) -> NSAttributedString {
                     let attributes: [NSAttributedString.Key: Any] = [
                         .foregroundColor: UIColor.baseGray2,
@@ -876,6 +1168,16 @@ struct AppStyle {
                 static func citation(string: String) -> NSAttributedString {
                     let attributes: [NSAttributedString.Key: Any] = [
                         .foregroundColor: .black | .white,
+                        .font: R.font.latoItalic(size: 14)!
+                    ]
+                    return NSAttributedString(string: string, attributes: attributes)
+                }
+            }
+            
+            struct Image {
+                static func caption(string: String) -> NSAttributedString {
+                    let attributes: [NSAttributedString.Key: Any] = [
+                        .foregroundColor: UIColor.baseGray2,
                         .font: R.font.latoItalic(size: 14)!
                     ]
                     return NSAttributedString(string: string, attributes: attributes)
@@ -926,19 +1228,19 @@ struct AppStyle {
                 
                 switch depth {
                 case 1:
-                    fontSize = 28
-                case 2:
                     fontSize = 26
-                case 3:
+                case 2:
                     fontSize = 24
-                case 4:
+                case 3:
                     fontSize = 23
-                case 5:
+                case 4:
                     fontSize = 22
+                case 5:
+                    fontSize = 21
                 case 6:
-                    fontSize = 21
+                    fontSize = 20
                 default:
-                    fontSize = 21
+                    fontSize = 20
                 }
                 
                 let attributes: [NSAttributedString.Key: Any] = [
@@ -953,7 +1255,7 @@ struct AppStyle {
         
         struct Size {
             static func headingSpacing() -> (top: CGFloat, bottom: CGFloat)  {
-                return (10.0, 20.0)
+                return (10.0, 10.0)
             }
         }
     }

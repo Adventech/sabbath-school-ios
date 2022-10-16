@@ -28,7 +28,7 @@ enum LoginButtonType {
     case anonymous
 }
 
-class LoginButton: ASButtonNode {
+class LoginButton: ReadButtonNode {
     let type: LoginButtonType
 
     init(type: LoginButtonType) {

@@ -31,8 +31,8 @@ class BiblePresenter: BiblePresenterProtocol {
         interactor?.configure()
     }
 
-    func presentBibleVerse(read: Read, verse: String) {
-        interactor?.retrieveBibleVerse(read: read, verse: verse)
+    func presentBibleVerse(bibleVerses: [BibleVerses], verse: String) {
+        interactor?.retrieveBibleVerse(bibleVerses: bibleVerses, verse: verse)
     }
 }
 

@@ -59,7 +59,6 @@ class LessonWireFrame: LessonWireFrameProtocol {
         presenter.quarterlyIndex = quarterlyIndex
         interactor.presenter = presenter
 
-//        return controller as! LessonController
         return ASNavigationController(rootViewController: controller as! UIViewController)
     }
 

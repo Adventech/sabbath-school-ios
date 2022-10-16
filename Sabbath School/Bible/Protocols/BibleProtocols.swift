@@ -29,7 +29,7 @@ protocol BiblePresenterProtocol: AnyObject {
     var wireFrame: BibleWireFrameProtocol? { get set }
 
     func configure()
-    func presentBibleVerse(read: Read, verse: String)
+    func presentBibleVerse(bibleVerses: [BibleVerses], verse: String)
 }
 
 protocol BibleControllerProtocol: AnyObject {
@@ -43,7 +43,7 @@ protocol BibleControllerOutputProtocol: AnyObject {
 }
 
 protocol BibleWireFrameProtocol: AnyObject {
-    static func createBibleModule(read: Read, verse: String) -> BibleController
+    static func createBibleModule(bibleVerses: [BibleVerses], verse: String) -> BibleController
 }
 
 protocol BibleInteractorOutputProtocol: AnyObject {
@@ -55,6 +55,6 @@ protocol BibleInteractorInputProtocol: AnyObject {
     var presenter: BibleInteractorOutputProtocol? { get set }
 
     func configure()
-    func retrieveBibleVerse(read: Read, verse: String)
+    func retrieveBibleVerse(bibleVerses: [BibleVerses], verse: String)
     func preferredBibleVersionFor(bibleVerses: [BibleVerses]) -> String?
 }

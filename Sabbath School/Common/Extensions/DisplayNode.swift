@@ -21,6 +21,7 @@
  */
 
 import AsyncDisplayKit
+import CoreGraphics
 
 private var shimmeringNodeKey: UInt = 1
 
@@ -65,7 +66,7 @@ extension ASDisplayNode {
         }
     }
     
-    func gradientBlur(from color1: UIColor, to color2: UIColor) {
+    func gradientBlur(from color1: UIColor, to color2: UIColor, locations: [NSNumber] = [0.0, 0.6, 0.75], startPoint: CGPoint? = nil, backgroundColor: UIColor? = nil) {
         if color1 == color2 { return }
         DispatchQueue.main.async {
             let size = self.view.frame.size
@@ -76,13 +77,17 @@ extension ASDisplayNode {
             let effectView = UIVisualEffectView(effect: viewEffect)
             
             let gradient: CAGradientLayer = CAGradientLayer()
-            gradient.locations = [0.0, 0.6, 0.75]
-            gradient.colors = [color1.cgColor, color2.cgColor]
-            gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
-            gradient.endPoint = CGPoint(x: 0.0, y: 0.75)
-            gradient.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+            gradient.locations = locations
+            if let backgroundColor = backgroundColor {
+                effectView.backgroundColor = backgroundColor
+            }
             
-            effectView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+            gradient.colors = [color1.cgColor, color2.cgColor]
+            gradient.startPoint = startPoint ?? CGPoint(x: 0.0, y: 0.0)
+            gradient.endPoint = CGPoint(x: gradient.startPoint.x, y: locations.last?.doubleValue ?? 1)
+            gradient.frame = CGRect(x: gradient.startPoint.x, y: gradient.startPoint.y, width: width, height: height)
+            
+            effectView.frame = CGRect(x: gradient.startPoint.x, y: gradient.startPoint.y, width: width, height: height)
             
             effectView.layer.mask = gradient
             

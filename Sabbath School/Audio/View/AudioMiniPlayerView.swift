@@ -25,8 +25,8 @@ import AsyncDisplayKit
 class AudioMiniPlayerView: ASDisplayNode {
     let artist = ASTextNode()
     let title = ASTextNode()
-    let play = ASButtonNode()
-    let backward = ASButtonNode()
+    let play = ReadButtonNode()
+    let backward = ReadButtonNode()
     let close = ASImageNode()
     
     override init() {

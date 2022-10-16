@@ -22,6 +22,102 @@
 
 import Foundation
 
+enum ResourceFeed: Codable {
+    case resource(Resource)
+    case resourceGroup(ResourceGroup)
+    
+    enum TypeCodingKey: String, CodingKey {
+        case type
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: TypeCodingKey.self)
+         let type = try container.decode(String.self, forKey: .type)
+         switch type {
+         case "group":
+             self = try .resourceGroup(ResourceGroup(from: decoder))
+         default:
+             self = try .resource(Resource(from: decoder))
+             
+         }
+    }
+}
+
+enum ResourceGroupView: String, Codable {
+    case tileSmall
+    case tile
+    case list
+    case book
+}
+
+enum ResourceKind: String, Codable {
+    case book
+    case devotional
+}
+
+struct Resource: Codable {
+    let id: String
+    let index: String
+    let title: String
+    let subtitle: String?
+    let description: String?
+    let cover: URL?
+    let tile: URL?
+    let splash: URL?
+    let primaryColor: String
+    let primaryColorDark: String
+    let textColor: String
+    let credits: [Credits]?
+    let view: ResourceGroupView
+    let sections: [SSPMSection]?
+    let kind: ResourceKind
+}
+
+struct ResourceGroup: Codable {
+    let type: String
+    let title: String
+    let cover: URL?
+    let resources: [Resource]
+    let view: ResourceGroupView
+}
+
+struct SSPMSection: Codable {
+    let title: String?
+    let documents: [SSPMDocument]
+}
+
+struct SSPMDocument: Codable {
+    let index: String
+    let title: String
+    let subtitle: String?
+    let thumbnail: URL?
+    let blocks: [Block]?
+}
+
+struct BlockData: Codable {
+    let bible: [BibleVerses]
+}
+
+enum BlockStylePosition: String, Codable {
+    case start
+    case center
+    case end
+}
+
+enum BlockStyleSize: String, Codable {
+    case small
+    case medium
+    case large
+}
+
+struct BlockStyle: Codable {
+    let rounded: Bool?
+    let expandable: Bool?
+    let position: BlockStylePosition?
+    let size: BlockStyleSize?
+    let fullBleed: Bool?
+}
+
 enum Block: Codable {
     case paragraph(Paragraph)
     case heading(Heading)
@@ -81,6 +177,7 @@ enum Block: Codable {
     struct Paragraph: Codable {
         let type: String
         let markdown: String
+        let data: BlockData?
     }
     
     struct List: Codable {
@@ -131,6 +228,7 @@ enum Block: Codable {
         let type: String
         let src: URL
         let caption: String?
+        let style: BlockStyle?
     }
     
     struct Unknown: Codable {

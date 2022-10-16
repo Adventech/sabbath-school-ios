@@ -57,7 +57,7 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
         self.table.dataSource = self
         self.table.delegate = self
         self.table.backgroundColor = AppStyle.Base.Color.background
-        title = "Sabbath School".localized()
+        navigationItem.title = "Sabbath School".localized()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -104,7 +104,7 @@ class QuarterlyControllerCommon: ASDKViewController<ASDisplayNode> {
             navBarTitleAlpha = 0
         }
         
-        title = navBarAlpha < 1 ? "" : "Sabbath School".localized()
+        navigationItem.title = navBarAlpha < 1 ? "" : "Sabbath School".localized()
         
         setNavigationBarOpacity(alpha: navBarAlpha)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(navBarTitleAlpha)]

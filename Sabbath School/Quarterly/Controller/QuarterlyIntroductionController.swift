@@ -28,8 +28,6 @@ class QuarterlyIntroductionController: ASDKViewController<ASDisplayNode> {
     let quarterly: Quarterly
     var table = ASTableNode()
     let collectionViewLayout = UICollectionViewFlowLayout()
-    
-    var blocks: [Block] = []
 
     init(quarterly: Quarterly) {
         self.quarterly = quarterly
@@ -48,161 +46,8 @@ class QuarterlyIntroductionController: ASDKViewController<ASDisplayNode> {
         super.viewDidLoad()
         self.setCloseButton()
         self.table.view.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
-        let json = """
-[
-  {
-    "type": "paragraph",
-    "markdown": "boo",
-    "data": {
-      "a": "b"
-    }
-  },
-  {
-    "type": "paragraph",
-    "markdown": "HELLO WORLD"
-  },
-  {
-    "type": "paragraph",
-    "markdown": "HWPO YO!"
-  },
-  {
-    "type": "reference",
-    "target": "es/pm/discipleship-handbook",
-    "title": "Discipleship Handbook",
-    "subtitle": null,
-    "scope": "resource"
-  },
-  {
-    "type": "reference",
-    "target": "es/pm/discipleship-handbook/content/00-introduction.md",
-    "title": "Introduction",
-    "subtitle": "Discipleship Handbook",
-    "scope": "document"
-  },
-  {
-    "type": "audio",
-    "src": "es/pm/discipleship-handbook/01",
-    "title": "test2",
-    "subtitle": null
-  },
-  {
-    "type": "video",
-    "src": "es/pm/discipleship-handbook/01",
-    "title": "test",
-    "subtitle": null
-  },
-  {
-    "type": "collapse",
-    "caption": "testing",
-    "items": [
-      {
-        "type": "paragraph",
-        "markdown": "Hello, world!"
-      },
-      {
-        "type": "paragraph",
-        "markdown": "_test_"
-      },
-      {
-        "type": "reference",
-        "target": "es/pm/discipleship-handbook",
-        "title": "Discipleship Handbook",
-        "subtitle": null,
-        "scope": "resource"
-      }
-    ]
-  },
-  {
-    "type": "question",
-    "markdown": "How are you doing?"
-  },
-  {
-    "type": "appeal",
-    "markdown": "hello"
-  },
-  {
-    "type": "paragraph",
-    "markdown": "test"
-  },
-  {
-    "type": "multiple-choice",
-    "items": [
-      {
-        "type": "list-item",
-        "markdown": "hello"
-      },
-      {
-        "type": "list-item",
-        "markdown": "hello"
-      }
-    ],
-    "ordered": false,
-    "start": 0,
-    "answer": 0
-  },
-  {
-    "type": "image",
-    "src": "https://picsum.photos/450/300",
-    "caption": "Google"
-  },
-  {
-    "type": "blockquote",
-    "memoryVerse": true,
-    "caption": "Memory verse",
-    "items": [
-      {
-        "type": "paragraph",
-        "markdown": "[Rev 13](sspmBible://Rev13)"
-      },
-      {
-        "type": "reference",
-        "target": "es/pm/discipleship-handbook",
-        "title": "Discipleship Handbook",
-        "subtitle": null,
-        "scope": "resource"
-      },
-      {
-        "type": "paragraph",
-        "markdown": "[Rev 22](sspmBible://Rev22)"
-      }
-    ]
-  },
-  {
-    "type": "blockquote",
-    "caption": "Yes",
-    "citation": true,
-    "items": [
-      {
-        "type": "paragraph",
-        "markdown": "[Gen 22](sspmBible://Gen22)"
-      }
-    ]
-  },
-  {
-    "type": "question",
-    "markdown": "How are you doing?"
-  },
-]
-""".data(using: .utf8)!
-        do {
-            self.blocks = try JSONDecoder().decode(Array<Block>.self, from: json)
-        } catch let error {
-            print("SSDEBUG", error)
-        }
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        let tap = UITapGestureRecognizer(target: self.table, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-
     }
     
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintColor = AppStyle.Base.Color.navigationTint
@@ -234,7 +79,7 @@ extension QuarterlyIntroductionController: ASTableDelegate {
 extension QuarterlyIntroductionController: ASTableDataSource {
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let cellNodeBlock: () -> ASCellNode = {
-            return QuarterlyIntroductionView(blocks: self.blocks)
+            return QuarterlyIntroductionView(introduction: self.quarterly.introduction)
         }
 
         return cellNodeBlock

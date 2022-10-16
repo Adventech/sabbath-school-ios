@@ -29,7 +29,7 @@ class QuarterlyFeaturedView: ASCellNode {
     var coverImage: RoundedCornersImage!
     let title = ASTextNode()
     let humanDate = ASTextNode()
-    let openButton = ASButtonNode()
+    let openButton = ReadButtonNode()
     private let coverCornerRadius = CGFloat(6)
     private let infiniteColor = ASDisplayNode()
 

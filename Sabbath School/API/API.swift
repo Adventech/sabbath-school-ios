@@ -126,10 +126,18 @@ class APIRequestInterceptor: RequestInterceptor {
     }
 }
 
+class APIDisableCache: RequestInterceptor {
+    func adapt( _ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
+        URLCache.shared.removeAllCachedResponses()
+        completion(.success(urlRequest))
+    }
+}
+
 class API: NSObject {
     static let auth: Session = {
         let interceptor = APIRequestInterceptor()
         let configuration = URLSessionConfiguration.af.default
+        configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         configuration.urlCache = nil
         let responseCacher = ResponseCacher(behavior: .doNotCache)
         return Session(configuration: configuration, interceptor: interceptor, cachedResponseHandler: responseCacher)
@@ -137,8 +145,10 @@ class API: NSObject {
     
     static let session: Session = {
         let configuration = URLSessionConfiguration.af.default
+        configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        
         configuration.urlCache = nil
         let responseCacher = ResponseCacher(behavior: .doNotCache)
-        return Session(configuration: configuration, cachedResponseHandler: responseCacher)
+        return Session(configuration: configuration, interceptor: APIDisableCache(), cachedResponseHandler: responseCacher)
     }()
 }

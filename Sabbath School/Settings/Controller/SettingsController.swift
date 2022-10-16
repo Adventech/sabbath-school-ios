@@ -371,7 +371,7 @@ extension SettingsController: ASTableDelegate {
 
     func getLabelForSectionFooter(section: Int) -> UIView {
         let footerView = UIView()
-        let footerLabel = UILabel(frame: CGRect(x: 15, y: 10, width: view.frame.width-20, height: 0))
+        let footerLabel = UILabel(frame: CGRect(x: 15, y: 10, width: view.frame.width-30, height: 0))
         footerLabel.numberOfLines = 0
         footerLabel.attributedText = AppStyle.Settings.Text.footer(string: footers[section])
         footerLabel.lineBreakMode = NSLineBreakMode.byWordWrapping

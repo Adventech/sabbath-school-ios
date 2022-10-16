@@ -44,7 +44,7 @@ class ReadWireFrame: ReadWireFrameProtocol {
     }
 
     func presentBibleScreen(view: ReadControllerProtocol, read: Read, verse: String) {
-        let bibleScreen = BibleWireFrame.createBibleModule(read: read, verse: verse)
+        let bibleScreen = BibleWireFrame.createBibleModule(bibleVerses: read.bible, verse: verse)
 
         if let sourceView = view as? UIViewController {
             sourceView.show(bibleScreen, sender: nil)
