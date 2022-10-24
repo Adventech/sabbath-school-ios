@@ -64,6 +64,7 @@ class DevotionalResourceViewHeader: ASCellNode {
         )
         super.init()
         title.attributedText = AppStyle.Devo.Text.resourceDetailTitleForColor(string: resource.title, textColor: UIColor(hex: resource.textColor))
+        openButtonTitle.truncationMode = .byTruncatingTail
         subtitle.attributedText = AppStyle.Devo.Text.resourceDetailSubtitleForColor(string: resource.subtitle ?? "", textColor: UIColor(hex: resource.textColor).withAlphaComponent(0.7))
         
         cover.shadowColor = UIColor(hex: resource.primaryColorDark).cgColor
@@ -130,11 +131,15 @@ class DevotionalResourceViewHeader: ASCellNode {
             children: [title]
         )
         
+        
+        
         if resource.subtitle != nil {
             vSpec.children?.append(subtitle)
         }
         
         var openButtonChildren: [ASLayoutElement] = [openButtonTitle]
+        
+        openButtonTitle.style.maxWidth = ASDimensionMake(constrainedSize.max.width)
         
         if openButtonSubtitleText != nil {
             openButtonChildren.insert(openButtonSubtitle, at: 0)
@@ -155,6 +160,9 @@ class DevotionalResourceViewHeader: ASCellNode {
                 )
                 , openButtonIcon]
         )
+        
+        openButtonTitle.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width * 0.55)
+        openButtonSubtitle.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width * 0.55)
         
         openButtonTextSpec.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMakeWithFraction(0.75), height: ASDimensionMake(.auto, 0))
         

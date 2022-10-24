@@ -30,6 +30,8 @@ import UIKit
 import StoreKit
 import WidgetKit
 import PSPDFKit
+import Cache
+import simd
 
 class Configuration: NSObject {
     static var window: UIWindow?
@@ -136,6 +138,10 @@ class Configuration: NSObject {
             }
         }
         
+        self.makeKeyAndVisible()
+    }
+    
+    static func makeKeyAndVisible() {
         if (PreferencesShared.loggedIn()) {
             window?.rootViewController = getRootViewController()
         } else {
@@ -157,15 +163,30 @@ class Configuration: NSObject {
                                               lessonIndex: String? = nil,
                                               readIndex: Int? = nil,
                                               initiateOpen: Bool = false) -> UIViewController {
-        let showTabs = true
+        self.configureCache()
+        var ret: UIViewController = QuarterlyWireFrame.createQuarterlyModule()
         
-        if showTabs {
-            let tabBarController = TabBarViewController()
-            tabBarController.viewControllers = tabBarController.tabBarControllersFor(quarterlyIndex: quarterlyIndex, lessonIndex: lessonIndex, readIndex: readIndex, initiateOpen: initiateOpen)
-            return tabBarController
-        } else {
-            return QuarterlyWireFrame.createQuarterlyModule()
+        let currentLanguage = PreferencesShared.currentLanguage()
+        let devotionalInteractor = DevotionalInteractor()
+        
+        if let resourceInfo = devotionalInteractor.getDevotionalResourceInfo(key: devotionalInteractor.devotionalInfoEndpoint) {
+            let resourceInfoForLanguage = resourceInfo.filter { $0.code == currentLanguage.code }
+            if !resourceInfoForLanguage.isEmpty {
+                let tabBarController = TabBarViewController()
+                tabBarController.viewControllers = tabBarController.tabBarControllersFor(
+                    pm: resourceInfoForLanguage.first?.pm ?? false,
+                    study: resourceInfoForLanguage.first?.study ?? false,
+                    quarterlyIndex: quarterlyIndex,
+                    lessonIndex: lessonIndex,
+                    readIndex: readIndex,
+                    initiateOpen: initiateOpen)
+                ret = tabBarController
+            }
         }
+        
+        devotionalInteractor.retrieveResourceInfo()
+        
+        return ret
     }
     
     static func configureArmchair() {

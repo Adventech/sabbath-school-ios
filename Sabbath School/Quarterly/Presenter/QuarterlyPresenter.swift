@@ -71,7 +71,7 @@ class QuarterlyPresenter: QuarterlyPresenterProtocol {
 
 extension QuarterlyPresenter: QuarterlyInteractorOutputProtocol {
     func onError(_ error: Error?) {
-        print("SSDEBUG", error?.localizedDescription ?? "Unknown")
+        print(error?.localizedDescription ?? "Unknown")
     }
 
     func didRetrieveQuarterlies(quarterlies: [Quarterly]) {

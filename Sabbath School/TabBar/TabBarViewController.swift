@@ -23,7 +23,9 @@
 import AsyncDisplayKit
 
 class TabBarViewController: ASTabBarController {
-    func tabBarControllersFor(quarterlyIndex: String? = nil,
+    func tabBarControllersFor(pm: Bool = true,
+                              study: Bool = true,
+                              quarterlyIndex: String? = nil,
                               lessonIndex: String? = nil,
                               readIndex: Int? = nil,
                               initiateOpen: Bool = false) -> [UIViewController] {
@@ -31,6 +33,7 @@ class TabBarViewController: ASTabBarController {
         let sabbathSchool = QuarterlyWireFrame.createQuarterlyModule()
         let personalMinistries = DevotionalWireFrame.createDevotionalModuleNav(devotionalType: .pm)
         let moreStudy = DevotionalWireFrame.createDevotionalModuleNav(devotionalType: .study)
+        let settings = ASNavigationController(rootViewController: SettingsController())
         
         if let quarterlyIndex = quarterlyIndex {
             let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpen)
@@ -40,18 +43,33 @@ class TabBarViewController: ASTabBarController {
                 let readController = ReadWireFrame.createReadModule(lessonIndex: lessonIndex, readIndex: readIndex)
                 sabbathSchool.pushViewController(readController, animated: false)
             }
-            
         }
         
         sabbathSchool.tabBarItem.image = R.image.iconNavbarSs()
-        sabbathSchool.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
-        
         personalMinistries.tabBarItem.image = R.image.iconNavbarPm()
-        personalMinistries.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
-        
         moreStudy.tabBarItem.image = R.image.iconNavbarDevo()
-        moreStudy.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+        settings.tabBarItem.image = R.image.iconNavbarProfile()
         
-        return [sabbathSchool, personalMinistries, moreStudy]
+        
+        if #available(iOS 13, *) {
+            sabbathSchool.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+            personalMinistries.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+            moreStudy.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+            settings.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+        }
+        
+        var viewControllers: [UIViewController] = [sabbathSchool]
+        
+        if pm {
+            viewControllers.append(personalMinistries)
+        }
+        
+        if study {
+            viewControllers.append(moreStudy)
+        }
+        
+        viewControllers.append(settings)
+        
+        return viewControllers
     }
 }

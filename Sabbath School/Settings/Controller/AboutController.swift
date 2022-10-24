@@ -31,6 +31,7 @@ class AboutController: ASDKViewController<ASDisplayNode> {
     override init() {
         super.init(node: ASCollectionNode(collectionViewLayout: collectionViewLayout))
         collectionNode.dataSource = self
+        collectionNode.backgroundColor = AppStyle.Base.Color.background
         title = "About us".localized()
     }
 

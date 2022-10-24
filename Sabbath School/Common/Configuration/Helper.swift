@@ -146,6 +146,7 @@ struct Helper {
     static func SSJSONDecoder() -> JSONDecoder {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(Date.serverDateFormatter())
         return decoder
     }
     

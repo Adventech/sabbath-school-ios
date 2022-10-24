@@ -25,6 +25,15 @@ import AsyncDisplayKit
 enum DevotionalType {
     case study
     case pm
+    
+    func getTitle() -> String {
+        switch self {
+        case .study:
+            return "Devotional".localized()
+        case .pm:
+            return "Personal Ministries".localized()
+        }
+    }
 }
 
 class DevotionalFeedController: ASDKViewController<ASDisplayNode>, ASTableDataSource, ASTableDelegate, DevotionalGroupDelegate {
@@ -57,7 +66,7 @@ class DevotionalFeedController: ASDKViewController<ASDisplayNode>, ASTableDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Devotional"
+        navigationItem.title = devotionalType.getTitle()
         UINavigationBar.appearance().largeTitleTextAttributes = [
             .foregroundColor: AppStyle.Base.Color.navigationTitle,
             .font: R.font.latoBlack(size: 36)!

@@ -27,6 +27,11 @@ class BlockquoteNode: BlockWrapperNode {
     private let line = ASDisplayNode()
     private let caption = ASTextNode()
     private let block: Block.Blockquote
+    private var processed: Bool = false
+    
+    override var margins: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 30)
+    }
     
     public init(block: Block.Blockquote) {
         self.block = block
@@ -39,11 +44,12 @@ class BlockquoteNode: BlockWrapperNode {
         if let caption = block.caption, !caption.isEmpty {
             if let _ = block.memoryVerse {
                 self.caption.attributedText = AppStyle.Markdown.Text.Blockquote.memoryText(string: caption)
-            }
+            } else
             
             if let _ = block.citation {
                 self.caption.attributedText = AppStyle.Markdown.Text.Blockquote.citation(string: caption)
             }
+            
         }
         automaticallyManagesSubnodes = true
     }
@@ -53,13 +59,13 @@ class BlockquoteNode: BlockWrapperNode {
         self.line.style.alignSelf = .stretch
         
         
-        if let caption = block.caption, !caption.isEmpty {
+        if let caption = block.caption, !caption.isEmpty, !self.processed {
+            self.processed = true
             let captionBlock = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0), child: self.caption)
-            if let _ = block.memoryVerse {
-                nestedBlocks.insert(captionBlock, at: 0)
-            }
             
-            if let _ = block.citation {
+            if let memoryVerse = block.memoryVerse, memoryVerse == true {
+                nestedBlocks.insert(captionBlock, at: 0)
+            } else if let citation = block.citation, citation == true {
                 nestedBlocks.append(captionBlock)
             }
         }
@@ -72,8 +78,7 @@ class BlockquoteNode: BlockWrapperNode {
             children: nestedBlocks
         )
         
-        vSpec.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width-15)
-        
+        vSpec.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
         
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
@@ -86,6 +91,6 @@ class BlockquoteNode: BlockWrapperNode {
         hSpec.style.flexGrow = 1.0
         hSpec.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
         
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0), child: hSpec)
+        return ASInsetLayoutSpec(insets: paddings, child: hSpec)
     }
 }

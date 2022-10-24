@@ -31,7 +31,7 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
     private var scrollReachedTouchpoint: Bool = false
     private var everScrolled: Bool = false
     private let presenter = DevotionalPresenter()
-    private var status: Array<Bool> = []
+    private var sectionStatus: Array<Bool> = []
     
     init(resourceIndex: String) {
         self.resourceIndex = resourceIndex
@@ -39,6 +39,8 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
         table.dataSource = self
         table.delegate = self
         view.backgroundColor = .white | .black
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -79,19 +81,24 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
         super.viewDidLoad()
         setBackButton()
         table.view.contentInsetAdjustmentBehavior = .never
-        setupNavigationbar()
         
         self.devotionalInteractor.retrieveResource(index: resourceIndex) { resource in
             self.devotionalResource = resource
-            self.status = Array(repeating: self.devotionalResource?.kind == .devotional ? false : true, count: self.devotionalResource?.sections?.count ?? 0)
+            self.sectionStatus = Array(repeating: self.devotionalResource?.kind == .devotional ? false : true, count: self.devotionalResource?.sections?.count ?? 0)
             self.table.reloadData()
         }
+        
+        setupNavigationbar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupNavigationbar()
-        scrollBehavior()
+        if #available(iOS 13, *) {
+            setupNavigationbar()
+            scrollBehavior()
+        } else {
+            setNavigationBarOpacity(alpha: 0)
+        }
     }
     
     func tableView(_ tableView: ASTableView, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
@@ -102,8 +109,45 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
             }
             
             if indexPath.section == 0 {
-                let openButtonIndex = sections[0].documents[0].index
-                let header = DevotionalResourceViewHeader(resource: resource, openButtonIndex: openButtonIndex, openButtonTitleText: "Read")
+                var openButtonIndex = sections[0].documents[0].index
+                var openButtonTitleText = "Read".localized()
+                var openButtonSubtitleText:String? = nil
+                
+                if self.devotionalResource?.kind == .devotional {
+                    let today = Date()
+                    
+                    let flatDocuments = sections.map({ (document) -> [SSPMDocument] in
+                        return document.documents
+                    }).flatMap({ $0 })
+                    
+                    for currentDocument in flatDocuments {
+                        if let date = currentDocument.date {
+                          if today >= date {
+                              openButtonIndex = currentDocument.index
+                              openButtonTitleText = currentDocument.title
+                              openButtonSubtitleText = currentDocument.subtitle
+                          } else { break }
+                        }
+                    }
+                    
+                    if let a = flatDocuments.first(where: {
+                        $0.date?.day == Calendar.current.component(.day, from: today) &&
+                        $0.date?.month == Calendar.current.component(.month, from: today) &&
+                        $0.date?.year == Calendar.current.component(.year, from: today)
+                    }) {
+                        
+                        openButtonIndex = a.index
+                        openButtonTitleText = a.title
+                        openButtonSubtitleText = a.subtitle
+                    }
+                }
+                
+                let header = DevotionalResourceViewHeader(
+                    resource: resource,
+                    openButtonIndex: openButtonIndex,
+                    openButtonTitleText: openButtonTitleText,
+                    openButtonSubtitleText: openButtonSubtitleText)
+                
                 header.delegate = self
                 return header
             } else {
@@ -125,18 +169,21 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 { return 1 }
         
+        // Making sure we adjust # of rows depending on the collapsed / expanded state of the corresponding section
         if self.devotionalResource?.kind == .devotional {
-            if self.status[section-1] {
+            if self.sectionStatus[section-1] {
                 return (devotionalResource?.sections?[section-1].documents.count ?? 0) + 1
             } else {
                 return 1
             }
         }
         
+        // If non empty section (ex: section has title)
         if devotionalResource?.sections?[section-1].title != nil {
             return (devotionalResource?.sections?[section-1].documents.count ?? 0) + 1
         }
         
+        // Documents inside "root" section that has no title
         return (devotionalResource?.sections?[section-1].documents.count ?? 0)
     }
     
@@ -149,8 +196,9 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
             return true
         }
         
-        if indexPath.row == 0 && indexPath.section > 1 && sections[indexPath.section-1].title != nil {
-            return self.devotionalResource?.kind == .devotional ? true : false
+        // Allowing collapsable sections (devotional content) to be clickable
+        if indexPath.row == 0 && indexPath.section > 0 && sections[indexPath.section-1].title != nil {
+            return self.devotionalResource?.kind == .devotional
         }
 
         return true
@@ -161,21 +209,24 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
             return
         }
         
-        if indexPath.row == 0 && indexPath.section == 0 {
+        if indexPath.section == 0 {
             return
         }
         
-        if indexPath.row == 0 && indexPath.section > 0 && self.devotionalResource?.kind == .devotional {
-            self.status[indexPath.section-1] = !self.status[indexPath.section-1]
-            self.table.reloadSections(IndexSet(integersIn: indexPath.section...indexPath.section), with: .fade)
-            
-            if let sectionView = self.table.nodeForRow(at: indexPath) as? DevotionalResourceCollapsableSectionView {
-                sectionView.collapsed = !self.status[indexPath.section-1]
+        // Clicking on the expand / collapse section header item
+        if indexPath.row == 0 && indexPath.section > 0 && sections[indexPath.section-1].title != nil {
+            if self.devotionalResource?.kind == .devotional {
+                self.sectionStatus[indexPath.section-1] = !self.sectionStatus[indexPath.section-1]
+                self.table.reloadSections(IndexSet(integersIn: indexPath.section...indexPath.section), with: .fade)
+                
+                if let sectionView = self.table.nodeForRow(at: indexPath) as? DevotionalResourceCollapsableSectionView {
+                    sectionView.collapsed = !self.sectionStatus[indexPath.section-1]
+                }
             }
-            
             return
         }
         
+        // Clicking on the document item
         self.didSelectResource(index: sections[indexPath.section-1].documents[indexPath.row - (sections[indexPath.section-1].title != nil ? 1 : 0)].index)
     }
     

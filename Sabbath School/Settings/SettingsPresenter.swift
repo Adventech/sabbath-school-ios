@@ -47,7 +47,6 @@ class SettingsPresenter: NSObject, SettingsPresenterProtocol {
 
         let yes = UIAlertAction(title: "Yes".localized(), style: .destructive) { _ in
             self.interactor?.removeAccount()
-//            SettingsController.logOut()
         }
         yes.accessibilityLabel = "removeAccountYes"
 
@@ -61,7 +60,7 @@ class SettingsPresenter: NSObject, SettingsPresenterProtocol {
 
 extension SettingsPresenter: SettingsInteractorOutputProtocol {
     func onError(_ error: Error?) {
-        print("SSDEBUG", error?.localizedDescription ?? "Unknown")
+        print(error?.localizedDescription ?? "Unknown")
     }
     
     func onSuccess() {

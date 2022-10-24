@@ -75,7 +75,7 @@ class CollapseNode: BlockWrapperNode {
     }
     
     public override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        caption.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width-50)
+        caption.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
         let hSpec = ASStackLayoutSpec(
             direction: .horizontal,
             spacing: 0,

@@ -47,5 +47,7 @@ extension LanguagePresenter: LanguageInteractorOutputProtocol {
         interactor?.saveLanguage(language: language)
         (controller as! UIViewController).dismiss()
         didSelectLanguageHandler()
+        
+        Configuration.makeKeyAndVisible()
     }
 }

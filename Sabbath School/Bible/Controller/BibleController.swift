@@ -135,8 +135,7 @@ class BibleController: ASDKViewController<ASDisplayNode> {
                 navigationController?.navigationBar.backgroundColor = theme.navBarColor
                 setTranslucentNavigation(false, color: theme.navBarColor, tintColor: theme.navBarTextColor, titleColor: theme.navBarTextColor)
                 
-                if let bible = self.read?.bible,
-                    let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: bible) {
+                if let versionName = presenter?.interactor?.preferredBibleVersionFor(bibleVerses: bibleVerses) {
                     versionButton.setAttributedTitle(AppStyle.Base.Text.navBarButton(string: versionName, color: theme.navBarTextColor), for: .normal)
                 }
             }

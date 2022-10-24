@@ -92,7 +92,7 @@ class ReferenceNode: BlockWrapperNode {
             children: [titles, actionIcon]
         )
         
-        titles.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width-40)
+        titles.style.maxWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
         
         return ASInsetLayoutSpec(insets: paddings, child: ASBackgroundLayoutSpec(child: hSpec, background: button))
     }
