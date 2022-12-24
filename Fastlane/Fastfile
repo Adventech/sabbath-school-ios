@@ -46,7 +46,7 @@ lane :build do
     workspace: "./Sabbath School.xcworkspace",
     scheme: "Sabbath School",
     clean: true,
-    include_bitcode: true,
+    include_bitcode: false,
     configuration: "Release",
     output_directory: "./Fastlane/build"
   )
