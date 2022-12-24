@@ -61,11 +61,11 @@ lane :screenshots do
   frameit(white: true)
 end
 
-# lane :increment_build do
-#   date_number = Time.new.strftime("%Y.%m")
-#   build_number = "#{date_number}.#{number_of_commits}"
-#   increment_build_number(build_number: build_number)
-# end
+lane :increment_build do
+  date_number = Time.new.strftime("%Y.%m")
+  build_number = "#{date_number}.#{number_of_commits}"
+  increment_build_number(build_number: build_number)
+end
 
 desc "Configure local environment certificates"
 lane :match_config do
