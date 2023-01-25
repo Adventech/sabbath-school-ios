@@ -37,6 +37,8 @@ enum DevotionalType {
 }
 
 class DevotionalFeedController: ASDKViewController<ASDisplayNode>, ASTableDataSource, ASTableDelegate, DevotionalGroupDelegate {
+    
+    
     private let devotionalInteractor = DevotionalInteractor()
     private var devotionalResources: [ResourceFeed] = []
     private let table = ASTableNode()
@@ -142,6 +144,7 @@ class DevotionalFeedController: ASDKViewController<ASDisplayNode>, ASTableDataSo
     }
     
     func didSelectResource(groupIndex: Int, resourceIndex: Int) {
+        print("SSDEBUG", groupIndex, resourceIndex)
         switch devotionalResources[groupIndex] {
         case .resourceGroup(let resourceGroup):
             presenter.presentDevotionalDetail(source: self, index: resourceGroup.resources[resourceIndex].index)

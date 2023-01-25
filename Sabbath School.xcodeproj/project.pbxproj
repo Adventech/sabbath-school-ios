@@ -14,6 +14,7 @@
 		2F487E8126D8567300B4AA7A /* VideoPlaybackRateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */; };
 		2F487E8B26D87A5E00B4AA7A /* PDFController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8A26D87A5E00B4AA7A /* PDFController.swift */; };
 		2F487E8F26DC80F300B4AA7A /* ReadMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8E26DC80F300B4AA7A /* ReadMenuController.swift */; };
+		2F4A8DD6290CB7B7006AA36B /* CompositeScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A8DD5290CB7B7006AA36B /* CompositeScrollViewController.swift */; };
 		2F5C48F726F2AEB6002C4C83 /* PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C48F626F2AEB6002C4C83 /* PDF.swift */; };
 		2F5C48F826F2AEB6002C4C83 /* PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5C48F626F2AEB6002C4C83 /* PDF.swift */; };
 		2F613B9227CDC4B600A4C745 /* sabbath-school-reader in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9127CDC4B600A4C745 /* sabbath-school-reader */; };
@@ -313,6 +314,7 @@
 		2F487E8326D879D100B4AA7A /* PSPDFKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PSPDFKitUI.xcframework; sourceTree = "<group>"; };
 		2F487E8A26D87A5E00B4AA7A /* PDFController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFController.swift; sourceTree = "<group>"; };
 		2F487E8E26DC80F300B4AA7A /* ReadMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMenuController.swift; sourceTree = "<group>"; };
+		2F4A8DD5290CB7B7006AA36B /* CompositeScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeScrollViewController.swift; sourceTree = "<group>"; };
 		2F5C48F626F2AEB6002C4C83 /* PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDF.swift; sourceTree = "<group>"; };
 		2F613B9127CDC4B600A4C745 /* sabbath-school-reader */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "sabbath-school-reader"; sourceTree = "<group>"; };
 		2F613B9727CDC6A600A4C745 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
@@ -1124,6 +1126,7 @@
 				7A2810281EDDE41F003C7458 /* ShimmeringNode.swift */,
 				2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */,
 				2FA1FFE726F6BA6700E80868 /* Downloader.swift */,
+				2F4A8DD5290CB7B7006AA36B /* CompositeScrollViewController.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1430,14 +1433,21 @@
 		7AC26AEA1EE5EBDE003F946C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2FC6F69327A4B43400BBC4A9 /* Account.swift */,
+				2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */,
 				2F95D39D26C0B2E8008E6666 /* Audio.swift */,
 				7AC26AEB1EE5EBDE003F946C /* BibleVerses.swift */,
+				2F87852A28B0809B0079C13D /* Block.swift */,
 				7AC26AEC1EE5EBDE003F946C /* Comment.swift */,
 				FEF4B79326AF9A9B00548E36 /* Credits.swift */,
 				7AC26AED1EE5EBDE003F946C /* Day.swift */,
 				FEF4B75226AF934100548E36 /* Feature.swift */,
 				7AC26AEE1EE5EBDE003F946C /* Lesson.swift */,
 				7AC26AEF1EE5EBDE003F946C /* LessonInfo.swift */,
+				2F5C48F626F2AEB6002C4C83 /* PDF.swift */,
+				2FA1FFDF26F6B86F00E80868 /* PDFAnnotation.swift */,
+				4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */,
+				4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */,
 				7AC26AF01EE5EBDE003F946C /* Quarterly.swift */,
 				FE5CC762268972CA00B9F061 /* QuarterlyGroup.swift */,
 				7AC26AF11EE5EBDE003F946C /* QuarterlyInfo.swift */,
@@ -1447,13 +1457,6 @@
 				7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */,
 				2F96FF6726CC9BBA0045DC6D /* Video.swift */,
 				2F96FF6A26CC9C6F0045DC6D /* VideoInfo.swift */,
-				2F5C48F626F2AEB6002C4C83 /* PDF.swift */,
-				2FA1FFDF26F6B86F00E80868 /* PDFAnnotation.swift */,
-				2FC6F69327A4B43400BBC4A9 /* Account.swift */,
-				2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */,
-				4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */,
-				4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */,
-				2F87852A28B0809B0079C13D /* Block.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2122,6 +2125,7 @@
 				2F96FF4A26C7188E0045DC6D /* AudioPlaylistItemView.swift in Sources */,
 				FE0249FE266A91C9006BFADC /* Notifications.swift in Sources */,
 				FE0249F8266A9068006BFADC /* Configuration.swift in Sources */,
+				2F4A8DD6290CB7B7006AA36B /* CompositeScrollViewController.swift in Sources */,
 				2F6CD25228C6BB64000B06F4 /* DevotionalInteractor.swift in Sources */,
 				7A280F971ED94964003C7458 /* R.generated.swift in Sources */,
 				7A280FE91EDCE4B1003C7458 /* Date.swift in Sources */,
@@ -2510,7 +2514,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1005;
+				CURRENT_PROJECT_VERSION = 1007;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
@@ -2651,7 +2655,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1005;
+				CURRENT_PROJECT_VERSION = 1007;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
@@ -2798,7 +2802,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1005;
+				CURRENT_PROJECT_VERSION = 1007;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2845,7 +2849,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1005;
+				CURRENT_PROJECT_VERSION = 1007;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

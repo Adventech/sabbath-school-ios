@@ -23,6 +23,10 @@
 import AsyncDisplayKit
 
 class TabBarViewController: ASTabBarController {
+    var iconMargins: UIEdgeInsets {
+        return UIEdgeInsets(top: Helper.isPad ? 0 : 9, left: 0, bottom: Helper.isPad ? 0 : -9, right: 0)
+    }
+    
     func tabBarControllersFor(pm: Bool = true,
                               study: Bool = true,
                               quarterlyIndex: String? = nil,
@@ -52,10 +56,10 @@ class TabBarViewController: ASTabBarController {
         
         
         if #available(iOS 13, *) {
-            sabbathSchool.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
-            personalMinistries.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
-            moreStudy.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
-            settings.tabBarItem.imageInsets = UIEdgeInsets(top: 9, left: 0, bottom: -9, right: 0)
+            sabbathSchool.tabBarItem.imageInsets = self.iconMargins
+            personalMinistries.tabBarItem.imageInsets = self.iconMargins
+            moreStudy.tabBarItem.imageInsets = self.iconMargins
+            settings.tabBarItem.imageInsets = self.iconMargins
         }
         
         var viewControllers: [UIViewController] = [sabbathSchool]

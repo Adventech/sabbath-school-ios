@@ -34,7 +34,7 @@ enum LessonControllerSections: Int {
     case footer = 3
 }
 
-final class LessonController: ASDKViewController<ASDisplayNode> {
+final class LessonController: CompositeScrollViewController {
     var tableNode: ASTableNode? { return node as? ASTableNode }
     
     var delegate: LessonControllerDelegate?
@@ -43,10 +43,6 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     private var publishingInfo: PublishingInfo?
     var isPeeking: Bool? = false
     var initiateOpenToday: Bool?
-    
-    var scrollReachedTouchpoint: Bool = false
-    var everScrolled: Bool = false
-    var initialCoverHeight: CGFloat = 0
 
     override init() {
         super.init(node: ASTableNode())
@@ -75,7 +71,6 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
                 registerForPreviewing(with: self, sourceView: view)
             }
         }
-        setupNavigationbar()
         self.tableNode?.backgroundColor = AppStyle.Lesson.Color.backgroundFooter
         self.tableNode?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.tabBarController?.tabBar.frame.height ?? 0, right: 0)
     }
@@ -86,7 +81,6 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         if let selected = tableNode?.indexPathForSelectedRow {
             tableNode?.view.deselectRow(at: selected, animated: true)
         }
-        self.setupNavigationbar()
     }
     
     override func viewWillLayoutSubviews() {
@@ -101,38 +95,6 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
                 tableNode?.reloadData()
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if #available(iOS 13, *) {
-            setupNavigationbar()
-            scrollBehavior()
-            
-            self.view.frame.origin.y = self.view.frame.origin.y-1
-        } else {
-            setNavigationBarOpacity(alpha: 0)
-        }
-    }
-    
-    func setupNavigationbar() {
-        setNavigationBarOpacity(alpha: 0)
-        self.navigationController?.navigationBar.hideBottomHairline()
-        self.navigationController?.navigationBar.tintColor = .white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
-        self.navigationController?.navigationBar.barTintColor = nil
-        setBackButton()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return scrollReachedTouchpoint ? .default : .lightContent
-    }
-    
-    func statusBarUpdate(light: Bool) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.setNeedsStatusBarAppearanceUpdate()
-        })
     }
 
     func getTodaysLessonIndex() -> String {
@@ -220,64 +182,45 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         return readController
     }
     
-    func parallax(scrollView: UIScrollView) {
-        if let coverHeader = self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: LessonControllerSections.header.rawValue)) as? LessonQuarterlyInfoSplashView {
-            let scrollOffset = scrollView.contentOffset.y
-            
-            if scrollOffset >= 0 {
-                coverHeader.coverImage.frame.origin.y = scrollOffset / 2
-            } else {
-                if let cellHeader = self.tableNode?.cellForRow(at: IndexPath(row: 0, section: LessonControllerSections.header.rawValue)) {
-                    cellHeader.frame.origin.y = scrollOffset-1
-                    cellHeader.frame.size.height = coverHeader.initialCoverHeight + (-scrollOffset)
-                    coverHeader.frame.size.height = coverHeader.initialCoverHeight + (-scrollOffset)
-                }
-            }
-        }
+    override var navbarTitle: String {
+        return self.dataSource?.quarterly.title ?? ""
     }
-    
-    func scrollBehavior() {
-        
-        let mn: CGFloat = 0
-        let initialOffset: CGFloat = 200
-        
-        if self.dataSource == nil { return }
-        
-        if let dataSource = self.dataSource {
-            if dataSource.lessons.count <= 0 { return }
-        }
-        
-        let titleOrigin = (self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: LessonControllerSections.lessons.rawValue)) as! LessonView).view.rectCorrespondingToWindow
-        guard let navigationBarMaxY =  self.navigationController?.navigationBar.rectCorrespondingToWindow.maxY else { return }
 
-        var navBarAlpha: CGFloat = (initialOffset - (titleOrigin.minY + mn - navigationBarMaxY)) / initialOffset
-        var navBarTitleAlpha: CGFloat = titleOrigin.minY-mn < navigationBarMaxY ? 1 : 0
-        
-        if titleOrigin.minY == 0 {
-            navBarAlpha = everScrolled ? 1 : 0
-            navBarTitleAlpha = everScrolled ? 1 : 0
+    override var touchpointRect: CGRect? {
+        guard let touchpoint = self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: LessonControllerSections.lessons.rawValue)) as? LessonView else {
+            return nil
         }
-        
-        setNavigationBarOpacity(alpha: navBarAlpha)
-        
-        title = navBarAlpha < 1 ? "" : self.dataSource?.quarterly.title
-        
-        statusBarUpdate(light: navBarTitleAlpha != 1)
-        scrollReachedTouchpoint = navBarTitleAlpha == 1
-        
-        self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.transitionColor(fromColor: UIColor.white.withAlphaComponent(navBarAlpha), toColor: AppStyle.Base.Color.navigationTitle, progress:navBarAlpha)]
-            
-        self.navigationController?.navigationBar.tintColor = UIColor.transitionColor(fromColor: UIColor.white, toColor: AppStyle.Base.Color.navigationTint, progress:navBarAlpha)
-        
-        
+        return touchpoint.view.rectCorrespondingToWindow
     }
-    
+
+    override var parallaxEnabled: Bool {
+        guard self.parallaxHeaderNode is LessonQuarterlyInfoSplashView else { return false }
+        return true
+    }
+
+    override var parallaxImageHeight: CGFloat? {
+        guard let parallaxHeaderNode = self.parallaxHeaderNode as? LessonQuarterlyInfoSplashView else { return nil }
+        return parallaxHeaderNode.initialCoverHeight
+    }
+
+    override var parallaxTargetRect: CGRect? {
+        guard let parallaxHeaderNode = self.parallaxHeaderNode as? LessonQuarterlyInfoSplashView else { return nil }
+        return parallaxHeaderNode.coverImage.frame
+    }
+
+    override var parallaxHeaderNode: ASCellNode? {
+        return self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: LessonControllerSections.header.rawValue)) as? LessonQuarterlyInfoSplashView
+    }
+
+    override var parallaxHeaderCell: UITableViewCell? {
+        return self.tableNode?.cellForRow(at: IndexPath(row: 0, section: 0))
+    }
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        self.tableNode?.reloadData()   
+        self.tableNode?.reloadData()
     }
-    
+
     @available(iOS 13.0, *)
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         if indexPath.section != LessonControllerSections.lessons.rawValue { return nil }
@@ -320,24 +263,6 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         self.present(ASNavigationController(rootViewController: QuarterlyIntroductionController(quarterly: self.dataSource!.quarterly)), animated: true)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        everScrolled = true
-        parallax(scrollView: scrollView)
-        scrollBehavior()
-    }
-    
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        everScrolled = true
-        parallax(scrollView: scrollView)
-        scrollBehavior()
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        everScrolled = true
-        parallax(scrollView: scrollView)
-        scrollBehavior()
-    }
-    
     func openPublishingHouse(url: String?) {
         guard let urlString = url, let url = URL(string: urlString) else {
             return
@@ -346,6 +271,22 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.modalPresentationStyle = .formSheet
         present(safariViewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == LessonControllerSections.publishingInfo.rawValue {
+            openPublishingHouse(url: publishingInfo?.url)
+        }
+        
+        guard let lesson = dataSource?.lessons[indexPath.row] else { return }
+
+        if indexPath.section == LessonControllerSections.lessons.rawValue {
+            openLesson(lessonIndex: lesson.index, pdf: lesson.pdfOnly)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == LessonControllerSections.lessons.rawValue || indexPath.section == LessonControllerSections.publishingInfo.rawValue
     }
 }
 
@@ -406,24 +347,6 @@ extension LessonController: UIViewControllerPreviewingDelegate {
 extension LessonController: ReadControllerDelegate {
     func shareLesson(lesson: Lesson) {
         Helper.shareTextDialogue(vc: self, sourceView: self.view, objectsToShare: [lesson.title, lesson.webURL])
-    }
-}
-
-extension LessonController: ASTableDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == LessonControllerSections.publishingInfo.rawValue {
-            openPublishingHouse(url: publishingInfo?.url)
-        }
-        
-        guard let lesson = dataSource?.lessons[indexPath.row] else { return }
-
-        if indexPath.section == LessonControllerSections.lessons.rawValue {
-            openLesson(lessonIndex: lesson.index, pdf: lesson.pdfOnly)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return indexPath.section == LessonControllerSections.lessons.rawValue || indexPath.section == LessonControllerSections.publishingInfo.rawValue
     }
 }
 

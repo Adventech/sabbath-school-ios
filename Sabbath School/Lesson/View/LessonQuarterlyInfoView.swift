@@ -107,6 +107,9 @@ class LessonQuarterlyInfoView: LessonQuarterlyInfo {
         coverImageNode = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: AppStyle.Lesson.Size.coverImage(), backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
         coverImageNode.style.alignSelf = .stretch
         coverImage = coverImageNode.imageNode
+        
+        selectionStyle = .none
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
 
         addSubnode(title)
         addSubnode(humanDate)

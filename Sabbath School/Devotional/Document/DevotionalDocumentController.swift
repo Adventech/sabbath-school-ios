@@ -24,16 +24,13 @@ import AsyncDisplayKit
 import SafariServices
 import SwiftEntryKit
 
-class DevotionalDocumentController: ASDKViewController<ASDisplayNode>, ASTableDataSource, ASTableDelegate, BlockActionsDelegate {
+class DevotionalDocumentController: CompositeScrollViewController, ASTableDataSource, BlockActionsDelegate {
     private let devotionalInteractor = DevotionalInteractor()
     private var table = ASTableNode()
     private var blocks: [Block] = []
     private var document: SSPMDocument?
     private let index: String
     private let devotionalPresenter = DevotionalPresenter()
-    
-    private var scrollReachedTouchpoint: Bool = false
-    private var everScrolled: Bool = false
 
     init(index: String) {
         self.index = index
@@ -49,7 +46,6 @@ class DevotionalDocumentController: ASDKViewController<ASDisplayNode>, ASTableDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationbar()
         self.table.view.separatorStyle = UITableViewCell.SeparatorStyle.none
         self.table.allowsSelection = false
         self.table.view.contentInsetAdjustmentBehavior = .never
@@ -71,7 +67,6 @@ class DevotionalDocumentController: ASDKViewController<ASDisplayNode>, ASTableDa
         navigationItem.largeTitleDisplayMode = .never
         
         table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: tabBarController?.tabBar.frame.height ?? 0, right: 0)
-        setupNavigationbar()
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
@@ -113,60 +108,27 @@ class DevotionalDocumentController: ASDKViewController<ASDisplayNode>, ASTableDa
         return false
     }
     
-    func setupNavigationbar() {
-        self.navigationController?.navigationBar.hideBottomHairline()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
-        self.navigationController?.navigationBar.tintColor = AppStyle.Base.Color.navigationTint
-        setBackButton()
+    override var tintColors: (fromColor: UIColor, toColor: UIColor) {
+        return (AppStyle.Base.Color.navigationTint, AppStyle.Base.Color.navigationTint)
     }
     
-    func scrollBehavior() {
-        let mn: CGFloat = 0
-        let initialOffset: CGFloat = 50
-        
-        if self.document == nil { return }
-        
-        if let document = self.document {
-            if document.blocks?.count ?? 0 <= 0 { return }
+    override var navbarTitle: String {
+        return self.document?.title ?? ""
+    }
+    
+    override var touchpointRect: CGRect? {
+        guard let touchpoint = self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as? DocumentHeadNode else {
+            return nil
         }
-        
-        let titleOrigin = (self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as! DocumentHeadNode).titleNode.view.rectCorrespondingToWindow
-        
-        guard let navigationBarMaxY =  self.navigationController?.navigationBar.rectCorrespondingToWindow.maxY else { return }
-
-        var navBarAlpha: CGFloat = (initialOffset - (titleOrigin.minY + mn - navigationBarMaxY)) / initialOffset
-        var navBarTitleAlpha: CGFloat = titleOrigin.minY-mn < navigationBarMaxY ? 1 : 0
-        
-        if titleOrigin.minY == 0 {
-            navBarAlpha = everScrolled ? 1 : 0
-            navBarTitleAlpha = everScrolled ? 1 : 0
-        }
-        
-        setNavigationBarOpacity(alpha: navBarAlpha)
-        
-        title = navBarAlpha < 1 ? "" : self.document?.title
-        
-        scrollReachedTouchpoint = navBarTitleAlpha == 1
-        
-        self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.transitionColor(fromColor: UIColor.white.withAlphaComponent(navBarAlpha), toColor: AppStyle.Base.Color.navigationTitle, progress:navBarAlpha)]
-            
-        self.navigationController?.navigationBar.tintColor = AppStyle.Base.Color.navigationTint
+        return touchpoint.titleNode.view.rectCorrespondingToWindow
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        everScrolled = true
-        scrollBehavior()
+    override var parallaxEnabled: Bool {
+        return false
     }
     
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        everScrolled = true
-        scrollBehavior()
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        everScrolled = true
-        scrollBehavior()
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
     
     func didClickBible(bibleVerses: [BibleVerses], verse: String) {
@@ -192,6 +154,5 @@ class DevotionalDocumentController: ASDKViewController<ASDisplayNode>, ASTableDa
         case .resource:
             self.devotionalPresenter.presentDevotionalDetail(source: self, index: index)
         }
-            
     }
 }

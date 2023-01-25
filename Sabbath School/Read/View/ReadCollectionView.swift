@@ -41,9 +41,15 @@ class ReadCollectionView: ASDisplayNode {
         collectionNode.automaticallyRelayoutOnSafeAreaChanges = true
         DispatchQueue.main.async {
             let window = UIApplication.shared.keyWindow
+            
             if let bottomPadding = window?.safeAreaInsets.bottom, bottomPadding > 0 {
                 self.bottomPadding = bottomPadding
             }
+            
+            if let tabBarController = window?.rootViewController as? UITabBarController {
+                self.bottomPadding = tabBarController.tabBar.frame.height + 10
+            }
+            
         }
         automaticallyManagesSubnodes = true
     }

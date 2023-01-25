@@ -63,7 +63,8 @@ class DevotionalFeedListView: ASCellNode {
         guard let groupIndex = self.groupIndex, let resourceIndex = self.resourceIndex else {
             return
         }
-        delegate?.didSelectResource(groupIndex: groupIndex, resourceIndex: resourceIndex)
+        print("SSDEBUG", self.delegate)
+        self.delegate?.didSelectResource(groupIndex: groupIndex, resourceIndex: resourceIndex)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

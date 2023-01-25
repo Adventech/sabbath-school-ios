@@ -40,6 +40,9 @@ class LessonQuarterlyInfoSplashView: LessonQuarterlyInfo {
         coverImageNode.placeholderFadeDuration = 0.6
         coverImage = coverImageNode
         
+        selectionStyle = .none
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+        
         automaticallyManagesSubnodes = true
     }
 

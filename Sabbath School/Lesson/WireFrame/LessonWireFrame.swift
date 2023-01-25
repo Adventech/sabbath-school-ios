@@ -24,8 +24,8 @@ import AsyncDisplayKit
 
 class LessonWireFrame: LessonWireFrameProtocol {
     class func createLessonModule(quarterlyIndex: String, initiateOpenToday: Bool = false) -> LessonController {
-        let controller: LessonControllerProtocol = LessonController()
         let presenter: LessonPresenterProtocol & LessonInteractorOutputProtocol = LessonPresenter()
+        let controller: LessonControllerProtocol = LessonController()
         let wireFrame: LessonWireFrameProtocol = LessonWireFrame()
         let interactor: LessonInteractorInputProtocol = LessonInteractor()
         

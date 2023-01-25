@@ -57,8 +57,7 @@ class DevotionalFeedBookView: ASCellNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         image.style.preferredSize = CGSize(width: 100, height: 140)
-        
-        
+
         let vSpec = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 5,

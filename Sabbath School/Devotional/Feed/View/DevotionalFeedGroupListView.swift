@@ -32,7 +32,15 @@ class DevotionalFeedGroupListView: ASCellNode {
     private let groupName = ASTextNode()
     private let groupIndex: Int
     
-    public var delegate: DevotionalGroupDelegate?
+    public var delegate: DevotionalGroupDelegate? {
+        didSet {
+            for node in resourcesList {
+                if let n = node as? DevotionalFeedListView {
+                    n.delegate = self.delegate
+                }
+            }
+        }
+    }
     
     init(groupIndex: Int, resourceGroup: ResourceGroup) {
         self.resourceGroup = resourceGroup
@@ -55,11 +63,7 @@ class DevotionalFeedGroupListView: ASCellNode {
         
         groupName.attributedText = AppStyle.Devo.Text.resourceGroupName(string: resourceGroup.title)
         automaticallyManagesSubnodes = true
-        selectionStyle = .none
-    }
-    
-    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        header.style.height = ASDimensionMakeWithPoints(140)
+        
         for (i, resource) in resourceGroup.resources.enumerated() {
             let listNode = DevotionalFeedListView(resource: resource, groupIndex: groupIndex, resourceIndex: i)
             listNode.delegate = delegate
@@ -75,6 +79,12 @@ class DevotionalFeedGroupListView: ASCellNode {
         if resourceGroup.cover != nil {
             resourcesList.insert(header, at: 0)
         }
+        
+        selectionStyle = .none
+    }
+    
+    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+        header.style.height = ASDimensionMakeWithPoints(140)
         
         let groupTable = ASStackLayoutSpec(
             direction: .vertical,

@@ -125,7 +125,7 @@ class SSPMFontCollection: FontCollection {
         heading4: DownFont = R.font.latoRegular(size: 20)!,
         heading5: DownFont = R.font.latoRegular(size: 20)!,
         heading6: DownFont = R.font.latoRegular(size: 20)!,
-        body: DownFont = R.font.latoMedium(size: 18)!,
+        body: DownFont = R.font.latoMedium(size: 19)!,
         code: DownFont = DownFont(name: "menlo", size: 17) ?? .systemFont(ofSize: 17),
         listItemPrefix: DownFont = DownFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)
     ) {

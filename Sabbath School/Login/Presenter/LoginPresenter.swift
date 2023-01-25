@@ -181,7 +181,6 @@ extension LoginPresenter: LoginInteractorOutputProtocol {
         messageView.configureTheme(.warning)
         messageView.configureContent(title: "", body: "There was an error during login".localized())
         SwiftMessages.show(config: config, view: messageView)
-
     }
 }
 

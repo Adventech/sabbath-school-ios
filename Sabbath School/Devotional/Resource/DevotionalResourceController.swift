@@ -23,28 +23,17 @@
 import AsyncDisplayKit
 import UIKit
 
-class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDataSource, ASTableDelegate, DevotionalResourceDetailDelegate {
+class DevotionalResourceController: CompositeScrollViewController, ASTableDataSource, DevotionalResourceDetailDelegate {
     private let devotionalInteractor = DevotionalInteractor()
     private var devotionalResource: Resource?
     private let table = ASTableNode()
     private let resourceIndex: String
-    private var scrollReachedTouchpoint: Bool = false
-    private var everScrolled: Bool = false
     private let presenter = DevotionalPresenter()
     private var sectionStatus: Array<Bool> = []
     
     init(resourceIndex: String) {
         self.resourceIndex = resourceIndex
         super.init(node: self.table)
-        table.dataSource = self
-        table.delegate = self
-        view.backgroundColor = .white | .black
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.largeTitleDisplayMode = .never
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return scrollReachedTouchpoint ? .default : .lightContent
     }
     
     override func viewWillLayoutSubviews() {
@@ -56,48 +45,24 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
         fatalError("storyboards are incompatible with truth and beauty")
     }
     
-    func statusBarUpdate(light: Bool) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.setNeedsStatusBarAppearanceUpdate()
-        })
-    }
-    
-    func setupNavigationbar() {
-        setNavigationBarOpacity(alpha: 0)
-        self.navigationController?.navigationBar.hideBottomHairline()
-        self.navigationController?.navigationBar.tintColor = .white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle.withAlphaComponent(0)]
-        self.navigationController?.navigationBar.barTintColor = nil
-        setBackButton()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: tabBarController?.tabBar.frame.height ?? 0, right: 0)
-        setupNavigationbar()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        table.dataSource = self
+        table.delegate = self
+        
         setBackButton()
         table.view.contentInsetAdjustmentBehavior = .never
-        
+
         self.devotionalInteractor.retrieveResource(index: resourceIndex) { resource in
             self.devotionalResource = resource
             self.sectionStatus = Array(repeating: self.devotionalResource?.kind == .devotional ? false : true, count: self.devotionalResource?.sections?.count ?? 0)
             self.table.reloadData()
-        }
-        
-        setupNavigationbar()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if #available(iOS 13, *) {
-            setupNavigationbar()
-            scrollBehavior()
-        } else {
-            setNavigationBarOpacity(alpha: 0)
         }
     }
     
@@ -234,73 +199,37 @@ class DevotionalResourceController: ASDKViewController<ASDisplayNode>, ASTableDa
         presenter.presentDevotionalDocument(source: self, index: index)
     }
     
-    func scrollBehavior() {
-        let mn: CGFloat = 0
-        let initialOffset: CGFloat = 50
-        
-        if self.devotionalResource == nil { return }
-        
-        if let devotionalResource = self.devotionalResource {
-            if devotionalResource.sections?.count ?? 0 <= 0 { return }
+    override var navbarTitle: String {
+        return self.devotionalResource?.title ?? ""
+    }
+    
+    override var touchpointRect: CGRect? {
+        guard let touchpoint = self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as? DevotionalResourceViewHeader else {
+            return nil
         }
-        
-        let titleOrigin = (self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as! DevotionalResourceViewHeader).title.view.rectCorrespondingToWindow
-        
-        guard let navigationBarMaxY =  self.navigationController?.navigationBar.rectCorrespondingToWindow.maxY else { return }
-
-        var navBarAlpha: CGFloat = (initialOffset - (titleOrigin.minY + mn - navigationBarMaxY)) / initialOffset
-        var navBarTitleAlpha: CGFloat = titleOrigin.minY-mn < navigationBarMaxY ? 1 : 0
-        
-        if titleOrigin.minY == 0 {
-            navBarAlpha = everScrolled ? 1 : 0
-            navBarTitleAlpha = everScrolled ? 1 : 0
-        }
-        
-        setNavigationBarOpacity(alpha: navBarAlpha)
-        
-        title = navBarAlpha < 1 ? "" : self.devotionalResource?.title
-        
-        statusBarUpdate(light: navBarTitleAlpha != 1)
-        scrollReachedTouchpoint = navBarTitleAlpha == 1
-        
-        self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.transitionColor(fromColor: UIColor.white.withAlphaComponent(navBarAlpha), toColor: AppStyle.Base.Color.navigationTitle, progress:navBarAlpha)]
-            
-        self.navigationController?.navigationBar.tintColor = UIColor.transitionColor(fromColor: UIColor.white, toColor: AppStyle.Base.Color.navigationTint, progress:navBarAlpha)
+        return touchpoint.title.view.rectCorrespondingToWindow
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        everScrolled = true
-        scrollBehavior()
-        parallax(scrollView)
+    override var parallaxEnabled: Bool {
+        guard let parallaxHeaderNode = self.parallaxHeaderNode as? DevotionalResourceViewHeader else { return false }
+        return parallaxHeaderNode.headerStyle == .splash
     }
     
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        everScrolled = true
-        scrollBehavior()
-        parallax(scrollView)
+    override var parallaxImageHeight: CGFloat? {
+        guard let parallaxHeaderNode = self.parallaxHeaderNode as? DevotionalResourceViewHeader else { return 0 }
+        return parallaxHeaderNode.initialSplashHeight
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        everScrolled = true
-        scrollBehavior()
-        parallax(scrollView)
+    override var parallaxTargetRect: CGRect? {
+        guard let parallaxHeaderNode = self.parallaxHeaderNode as? DevotionalResourceViewHeader else { return nil }
+        return parallaxHeaderNode.splash.frame
     }
     
-    func parallax(_ scrollView: UIScrollView) {
-        if let coverHeader = self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as? DevotionalResourceViewHeader {
-            if coverHeader.headerStyle != .splash { return }
-            let scrollOffset = scrollView.contentOffset.y
-            
-            if scrollOffset >= 0 {
-                coverHeader.splash.frame.origin.y = scrollOffset / 2
-            } else {
-                if let cellHeader = self.table.cellForRow(at: IndexPath(row: 0, section: 0)) {
-                    cellHeader.frame.origin.y = scrollOffset
-                    cellHeader.frame.size.height = coverHeader.initialSplashHeight + (-scrollOffset)
-                    coverHeader.frame.size.height = coverHeader.initialSplashHeight + (-scrollOffset)
-                }
-            }
-        }
+    override var parallaxHeaderNode: ASCellNode? {
+        return self.table.nodeForRow(at: IndexPath(row: 0, section: 0)) as? DevotionalResourceViewHeader
+    }
+    
+    override var parallaxHeaderCell: UITableViewCell? {
+        return self.table.cellForRow(at: IndexPath(row: 0, section: 0))
     }
 }
