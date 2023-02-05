@@ -24,7 +24,7 @@ import Alamofire
 import AsyncDisplayKit
 import PSPDFKitUI
 
-class PDFReadController: VideoPlaybackDelegatable {
+class PDFReadController: VideoPlaybackDelegatable, TablessViewController {
     let pdfView = PDFView()
     var pdfs: [PDF] = []
     var video: [VideoInfo] = []
@@ -51,7 +51,6 @@ class PDFReadController: VideoPlaybackDelegatable {
         setBackButton()
         
         super.viewDidLoad()
-        navigationController?.delegate = self
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle]
             
@@ -117,7 +116,7 @@ class PDFReadController: VideoPlaybackDelegatable {
         if #available(iOS 13, *) {
             self.present(videoController, animated: true)
         } else {
-            self.present(ASNavigationController(rootViewController: videoController), animated: true)
+            self.present(SSNavigationController(rootViewController: videoController), animated: true)
         }
     }
     
@@ -127,7 +126,7 @@ class PDFReadController: VideoPlaybackDelegatable {
         if #available(iOS 13, *) {
             self.present(audioController, animated: true)
         } else {
-            self.present(ASNavigationController(rootViewController: audioController), animated: true)
+            self.present(SSNavigationController(rootViewController: audioController), animated: true)
         }
     }
     
@@ -236,15 +235,6 @@ extension PDFReadController: PDFReadControllerDelegate {
         }
     }
 }
-
-extension PDFReadController: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        DispatchQueue.main.async(execute: {
-            self.setNavigationBarOpacity(alpha: 1)
-        })
-    }
-}
-
 
 protocol PDFReadControllerDelegate {
     func didTapBible()

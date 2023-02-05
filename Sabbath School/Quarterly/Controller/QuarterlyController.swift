@@ -80,7 +80,7 @@ class QuarterlyController: QuarterlyControllerCommon {
         presenter.controller = settings
         settings.presenter = presenter
 
-        let nc = ASNavigationController(rootViewController: settings)
+        let nc = SSNavigationController(rootViewController: settings)
         self.present(nc, animated: true)
     }
     

@@ -133,7 +133,7 @@ class DevotionalDocumentController: CompositeScrollViewController, ASTableDataSo
     
     func didClickBible(bibleVerses: [BibleVerses], verse: String) {
         let bibleScreen = BibleWireFrame.createBibleModule(bibleVerses: bibleVerses, verse: verse)
-        let navigation = ASNavigationController(rootViewController: bibleScreen)
+        let navigation = SSNavigationController(rootViewController: bibleScreen)
         
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         

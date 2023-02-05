@@ -37,7 +37,7 @@ class LanguageWireFrame: LanguageWireFrameProtocol {
         presenter.interactor = interactor
         interactor.presenter = presenter
 
-        let navigation = ASNavigationController(rootViewController: controller as! UIViewController)
+        let navigation = SSNavigationController(rootViewController: controller as! UIViewController)
 
         return navigation
     }

@@ -59,7 +59,7 @@ class LessonWireFrame: LessonWireFrameProtocol {
         presenter.quarterlyIndex = quarterlyIndex
         interactor.presenter = presenter
 
-        return ASNavigationController(rootViewController: controller as! UIViewController)
+        return SSNavigationController(rootViewController: controller as! UIViewController)
     }
 
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String) {
