@@ -113,6 +113,8 @@
 		4E6FE2E128A9CB5E00566517 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FE2E028A9CB5E00566517 /* TabBarViewController.swift */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
+		4EAE43CD2990277800FEA510 /* TabBarLessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE43CC2990277800FEA510 /* TabBarLessViewController.swift */; };
+		4EAE43D029902DAA00FEA510 /* SSNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAE43CF29902DAA00FEA510 /* SSNavigationController.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		4EE8B6F5284D1FAA003C1A46 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
@@ -404,6 +406,8 @@
 		4E6FE2E028A9CB5E00566517 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4E7B09882814CA3D00687C33 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		4E7B098B2814CA8A00687C33 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
+		4EAE43CC2990277800FEA510 /* TabBarLessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarLessViewController.swift; sourceTree = "<group>"; };
+		4EAE43CF29902DAA00FEA510 /* SSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSNavigationController.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -899,8 +903,24 @@
 			isa = PBXGroup;
 			children = (
 				4E7B098B2814CA8A00687C33 /* Comparable.swift */,
+				4EAE43CC2990277800FEA510 /* TabBarLessViewController.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4EAE43CB2990265500FEA510 /* SSNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				4EAE43CF29902DAA00FEA510 /* SSNavigationController.swift */,
+			);
+			path = SSNavigation;
+			sourceTree = "<group>";
+		};
+		4EAE43CE29902B4B00FEA510 /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NotificationCenter;
 			sourceTree = "<group>";
 		};
 		7A280F701ED7CF05003C7458 /* Login */ = {
@@ -985,6 +1005,8 @@
 		7A280FBF1EDA03C0003C7458 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4EAE43CE29902B4B00FEA510 /* NotificationCenter */,
+				4EAE43CB2990265500FEA510 /* SSNavigation */,
 				4E7B098A2814CA7400687C33 /* Protocols */,
 				7A280FC01EDA03C0003C7458 /* Configuration */,
 				7A280FC11EDA03C0003C7458 /* Extensions */,
@@ -2051,6 +2073,7 @@
 				7A28101A1EDDCC1A003C7458 /* LessonController.swift in Sources */,
 				7A3BCE3A1EE292E9003EC12B /* BibleVersionController.swift in Sources */,
 				7A280FFC1EDD032E003C7458 /* LanguageController.swift in Sources */,
+				4EAE43D029902DAA00FEA510 /* SSNavigationController.swift in Sources */,
 				7A3BCE341EE2776A003EC12B /* BibleInteractor.swift in Sources */,
 				2FB91F7328FB44D500A2DAD7 /* BlockWrapperNode.swift in Sources */,
 				2FA1FFE026F6B86F00E80868 /* PDFAnnotation.swift in Sources */,
@@ -2142,6 +2165,7 @@
 				2FB91F5628FB40D300A2DAD7 /* DevotionalResourceController.swift in Sources */,
 				7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */,
 				7A922E201EDFC61D00C12A67 /* ReadView.swift in Sources */,
+				4EAE43CD2990277800FEA510 /* TabBarLessViewController.swift in Sources */,
 				2F96FF7326CFF44F0045DC6D /* VideoView.swift in Sources */,
 				7A2810201EDDCEC9003C7458 /* LessonInteractor.swift in Sources */,
 				7A2810081EDD0C51003C7458 /* Navigation.swift in Sources */,
