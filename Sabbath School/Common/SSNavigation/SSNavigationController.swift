@@ -26,7 +26,7 @@ final class SSNavigationController: ASNavigationController, UINavigationControll
 
 private extension SSNavigationController {
     func shouldHideTabbar(basedOn viewController: UIViewController) -> Bool {
-        return viewController is TablessViewController
+        return viewController is TabBarLessViewController
     }
 }
 

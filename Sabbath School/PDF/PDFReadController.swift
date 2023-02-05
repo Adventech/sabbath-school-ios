@@ -24,7 +24,7 @@ import Alamofire
 import AsyncDisplayKit
 import PSPDFKitUI
 
-class PDFReadController: VideoPlaybackDelegatable, TablessViewController {
+class PDFReadController: VideoPlaybackDelegatable, TabBarLessViewController {
     let pdfView = PDFView()
     var pdfs: [PDF] = []
     var video: [VideoInfo] = []

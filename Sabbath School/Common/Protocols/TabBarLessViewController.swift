@@ -9,4 +9,4 @@
 import Foundation
 
 /// Implementing this protocol will indicate that the view controller should not have the app's custom tabbar visible
-public protocol TablessViewController: AnyObject { }
+public protocol TabBarLessViewController: AnyObject { }

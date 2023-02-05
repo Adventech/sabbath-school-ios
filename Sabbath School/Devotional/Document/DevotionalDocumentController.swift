@@ -24,7 +24,7 @@ import AsyncDisplayKit
 import SafariServices
 import SwiftEntryKit
 
-class DevotionalDocumentController: CompositeScrollViewController, ASTableDataSource, BlockActionsDelegate {
+class DevotionalDocumentController: CompositeScrollViewController, ASTableDataSource, BlockActionsDelegate, TabBarLessViewController {
     private let devotionalInteractor = DevotionalInteractor()
     private var table = ASTableNode()
     private var blocks: [Block] = []
