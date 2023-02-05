@@ -916,13 +916,6 @@
 			path = SSNavigation;
 			sourceTree = "<group>";
 		};
-		4EAE43CE29902B4B00FEA510 /* NotificationCenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NotificationCenter;
-			sourceTree = "<group>";
-		};
 		7A280F701ED7CF05003C7458 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1005,7 +998,6 @@
 		7A280FBF1EDA03C0003C7458 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4EAE43CE29902B4B00FEA510 /* NotificationCenter */,
 				4EAE43CB2990265500FEA510 /* SSNavigation */,
 				4E7B098A2814CA7400687C33 /* Protocols */,
 				7A280FC01EDA03C0003C7458 /* Configuration */,
