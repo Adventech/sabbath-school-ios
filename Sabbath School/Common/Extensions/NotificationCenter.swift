@@ -24,4 +24,7 @@ import Foundation
 
 extension Notification.Name {
     static let resetReader = Notification.Name("resetReader")
+    
+    /// Meaning: tabbar should be hidden / displayed
+    static let hideTabBar = Notification.Name("hide-tabbar")
 }
