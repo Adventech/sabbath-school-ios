@@ -22,7 +22,7 @@
 
 import AsyncDisplayKit
 
-class TabBarViewController: ASTabBarController {
+final class TabBarViewController: ASTabBarController {
     var iconMargins: UIEdgeInsets {
         return UIEdgeInsets(top: Helper.isPad ? 0 : 9, left: 0, bottom: Helper.isPad ? 0 : -9, right: 0)
     }
@@ -37,7 +37,7 @@ class TabBarViewController: ASTabBarController {
         let sabbathSchool = QuarterlyWireFrame.createQuarterlyModule()
         let personalMinistries = DevotionalWireFrame.createDevotionalModuleNav(devotionalType: .pm)
         let moreStudy = DevotionalWireFrame.createDevotionalModuleNav(devotionalType: .study)
-        let settings = ASNavigationController(rootViewController: SettingsController())
+        let settings = SSNavigationController(rootViewController: SettingsController())
         
         if let quarterlyIndex = quarterlyIndex {
             let lessonController = LessonWireFrame.createLessonModule(quarterlyIndex: quarterlyIndex, initiateOpenToday: initiateOpen)
@@ -75,5 +75,49 @@ class TabBarViewController: ASTabBarController {
         viewControllers.append(settings)
         
         return viewControllers
+    }
+    
+    override func viewDidLoad() {
+        setupUI()
+        registerEvents()
+    }
+}
+
+// MARK: Setup UI
+
+private extension TabBarViewController {
+    func setupUI() {
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithOpaqueBackground()
+            
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+            
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithOpaqueBackground()
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        }
+    }
+}
+
+// MARK: Notification Center
+
+private extension TabBarViewController {
+    private func registerEvents() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTabShow), name: .hideTabBar, object: nil)
+    }
+    
+    @objc private func handleTabShow(_ notification: Notification) {
+        if let hide = notification.object as? Bool, hide {
+            UIView.animate(withDuration: 0.2) {
+                self.tabBar.alpha = 0
+            }
+        } else {
+            UIView.animate(withDuration: 0.2) {
+                self.tabBar.alpha = 1
+            }
+        }
     }
 }

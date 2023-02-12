@@ -74,7 +74,6 @@ class ReadController: VideoPlaybackDelegatable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.delegate = self
         setBackButton()
         
         let style = NSMutableParagraphStyle()
@@ -269,7 +268,7 @@ class ReadController: VideoPlaybackDelegatable {
         if #available(iOS 13, *) {
             self.present(videoController, animated: true)
         } else {
-            self.present(ASNavigationController(rootViewController: videoController), animated: true)
+            self.present(SSNavigationController(rootViewController: videoController), animated: true)
         }
     }
     
@@ -284,7 +283,7 @@ class ReadController: VideoPlaybackDelegatable {
         if #available(iOS 13, *) {
             self.present(audioController, animated: true)
         } else {
-            self.present(ASNavigationController(rootViewController: audioController), animated: true)
+            self.present(SSNavigationController(rootViewController: audioController), animated: true)
         }
     }
     
@@ -494,14 +493,6 @@ extension ReadController: ReadMenuControllerDelegate {
         case .getPrintedResources:
             openPublishingHouse(url: publishingInfo?.url)
         }
-    }
-}
-
-extension ReadController: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        DispatchQueue.main.async(execute: {
-            //self.setNavigationBarOpacity(alpha: 0)
-        })
     }
 }
 

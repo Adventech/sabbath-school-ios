@@ -48,7 +48,6 @@ final class LessonController: CompositeScrollViewController {
         super.init(node: ASTableNode())
         tableNode?.delegate = self
         tableNode?.dataSource = self
-        navigationController?.delegate = self
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -57,7 +56,6 @@ final class LessonController: CompositeScrollViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.delegate = self
         
         self.tableNode?.allowsSelection = false
 
@@ -260,7 +258,7 @@ final class LessonController: CompositeScrollViewController {
     }
     
     @objc func openIntroduction(sender: ASTextNode) {
-        self.present(ASNavigationController(rootViewController: QuarterlyIntroductionController(quarterly: self.dataSource!.quarterly)), animated: true)
+        self.present(SSNavigationController(rootViewController: QuarterlyIntroductionController(quarterly: self.dataSource!.quarterly)), animated: true)
     }
     
     func openPublishingHouse(url: String?) {
@@ -287,14 +285,6 @@ final class LessonController: CompositeScrollViewController {
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == LessonControllerSections.lessons.rawValue || indexPath.section == LessonControllerSections.publishingInfo.rawValue
-    }
-}
-
-extension LessonController: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        DispatchQueue.main.async(execute: {
-            self.setNavigationBarOpacity(alpha: 0)
-        })
     }
 }
 

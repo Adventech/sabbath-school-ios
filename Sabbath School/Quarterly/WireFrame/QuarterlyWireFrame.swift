@@ -38,7 +38,7 @@ class SplitVc : UISplitViewController, UISplitViewControllerDelegate {
         presenter.interactor = interactor
         interactor.presenter = presenter
         
-        let master = ASNavigationController(rootViewController: controller as! UIViewController)
+        let master = SSNavigationController(rootViewController: controller as! UIViewController)
     
         
         //detail.viewControllers = []
@@ -69,7 +69,7 @@ class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
         interactor.presenter = presenter
         
         
-        return ASNavigationController(rootViewController: controller as! UIViewController)
+        return SSNavigationController(rootViewController: controller as! UIViewController)
     }
     
     func presentSingleGroupScreen(view: QuarterlyControllerProtocol, selectedQuarterlyGroup: QuarterlyGroup) {

@@ -25,6 +25,6 @@ import AsyncDisplayKit
 class DevotionalWireFrame: DevotionalWireFrameProtocol {
     static func createDevotionalModuleNav(devotionalType: DevotionalType) -> ASNavigationController {
         let controller = DevotionalFeedController(devotionalType: devotionalType)
-        return ASNavigationController(rootViewController: controller)
+        return SSNavigationController(rootViewController: controller)
     }
 }
