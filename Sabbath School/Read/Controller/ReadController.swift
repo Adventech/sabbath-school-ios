@@ -28,7 +28,7 @@ import AVKit
 import PSPDFKit
 import PSPDFKitUI
 
-class ReadController: VideoPlaybackDelegatable, TabBarLessViewController {
+class ReadController: VideoPlaybackDelegatable {
     var delegate: ReadControllerDelegate?
     var presenter: ReadPresenterProtocol?
     
