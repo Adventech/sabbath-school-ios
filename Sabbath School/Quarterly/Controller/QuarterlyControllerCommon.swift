@@ -151,8 +151,7 @@ extension QuarterlyControllerCommon: QuarterlyControllerProtocol {
     func showQuarterlies(quarterlies: [Quarterly]) {
         groupedQuarterlies = [QuarterlyGroup: [Quarterly]]()
         var initialQuarterlyGroup: QuarterlyGroup?
-        let savedGroupedQuarterlies = Preferences.getQuarterlyGroups()
-        
+
         for quarterly in quarterlies {
             if let selectedQuarterlyGroup = selectedQuarterlyGroup, let quarterlyGroup = quarterly.quarterlyGroup {
                 if (quarterlyGroup != selectedQuarterlyGroup) { continue }
@@ -173,10 +172,6 @@ extension QuarterlyControllerCommon: QuarterlyControllerProtocol {
                     } else {
                         quarterlyGroup = initialQuarterlyGroup ?? groupedQuarterlies.first!.key
                     }
-                }
-                
-                if let index = savedGroupedQuarterlies.firstIndex(where: { $0 == quarterlyGroup! }) {
-                    quarterlyGroup?.order = index
                 }
                 
                 if groupedQuarterlies[quarterlyGroup!] != nil {

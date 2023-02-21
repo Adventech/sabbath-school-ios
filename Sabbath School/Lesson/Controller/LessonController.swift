@@ -173,9 +173,6 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     }
     
     func openLesson(lessonIndex: String, pdf: Bool = false){
-        if let quarterlyGroup = dataSource?.quarterly.quarterlyGroup {
-            Preferences.saveQuarterlyGroup(quarterlyGroup: quarterlyGroup)
-        }
         
         if pdf {
             navigationController?.pushViewController(PDFReadController(lessonIndex: lessonIndex), animated: true)
