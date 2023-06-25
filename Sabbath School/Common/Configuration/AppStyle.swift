@@ -1043,6 +1043,24 @@ struct AppStyle {
                 return NSAttributedString(string: string, attributes: attributes)
             }
             
+            static func resourceListTitle(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = .black | .white
+                container.font = R.font.latoBold(size: 18)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
+            static func resourceListSubtitle(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = .baseGray2 | .baseGray3
+                container.font = R.font.latoRegular(size: 13)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
             static func resourceListSubtitle(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .font: R.font.latoRegular(size: 13)!,

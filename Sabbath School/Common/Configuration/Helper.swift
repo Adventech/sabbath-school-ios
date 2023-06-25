@@ -31,6 +31,10 @@ struct ParsedIndex {
 }
 
 struct Helper {
+    static var isSwiftUIEnable: Bool {
+        return true
+    }
+    
     static var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
