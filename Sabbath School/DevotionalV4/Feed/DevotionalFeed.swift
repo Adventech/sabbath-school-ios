@@ -21,8 +21,17 @@ struct DevotionalFeed: View {
                         switch item.resourceFeed {
                         case .resource(let resource):
                             DevotionalFeedBookViewV4(resource: resource, inline: false)
-                        case .resourceGroup(_):
-                            DevotionalFeedGroupBookViewNew()
+                        case .resourceGroup(let resourceGroup):
+                            switch resourceGroup.view {
+                            case .list:
+                                DevotionalFeedGroupListViewV4(resourceGroup: resourceGroup)
+                            case .tileSmall:
+                                DevotionalFeedGroupSmallTileViewNew()
+                            case .tile:
+                                DevotionalFeedGroupTileViewNew()
+                            case .book:
+                                DevotionalFeedGroupBookViewNew()
+                            }
                         }
                     }.listRowSeparator(.hidden)
             }.listStyle(.plain)
