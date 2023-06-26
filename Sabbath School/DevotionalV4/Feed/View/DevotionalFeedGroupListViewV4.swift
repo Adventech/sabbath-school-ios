@@ -24,7 +24,7 @@ struct DevotionalFeedGroupListViewV4: View {
             .cornerRadius(4)
             
             ForEach(resourceGroup.resources, id: \.self) { resource in
-                DevotionalFeedListViewNew(resource: resource)
+                DevotionalFeedListViewV4(resource: resource)
             }
         }
         .overlay(

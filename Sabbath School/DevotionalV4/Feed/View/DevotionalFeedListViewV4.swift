@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DevotionalFeedListViewNew: View {
+struct DevotionalFeedListViewV4: View {
     
     let resource: Resource
     
@@ -28,6 +28,6 @@ struct DevotionalFeedListViewNew: View {
 
 struct DevotionalFeedListViewNew_Previews: PreviewProvider {
     static var previews: some View {
-        DevotionalFeedListViewNew(resource: BlockMockData.generateTileResource())
+        DevotionalFeedListViewV4(resource: BlockMockData.generateTileResource())
     }
 }
