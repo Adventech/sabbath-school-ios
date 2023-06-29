@@ -26,7 +26,7 @@ struct DevotionalFeed: View {
                             case .list:
                                 DevotionalFeedGroupListViewV4(resourceGroup: resourceGroup)
                             case .tileSmall:
-                                DevotionalFeedGroupSmallTileViewNew()
+                                DevotionalFeedGroupSmallTileViewV4(resourceGroup: resourceGroup)
                             case .tile:
                                 DevotionalFeedGroupTileViewV4(resourceGroup: resourceGroup)
                             case .book:
