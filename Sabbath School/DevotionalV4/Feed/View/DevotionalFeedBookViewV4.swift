@@ -23,8 +23,12 @@ struct DevotionalFeedBookViewV4: View {
                     .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
             }
             VStack(spacing: 8) {
-                Text(AppStyle.Devo.Text.resourceListSubtitle(string: resource.subtitle ?? "")).lineLimit(2)
-                Text(AppStyle.Devo.Text.resourceListTitle(string: resource.title)).frame(maxWidth: .infinity ,alignment: .leading)
+                Text(AppStyle.Devo.Text.resourceListSubtitle(string: resource.subtitle ?? ""))
+                    .lineLimit(2)
+                    .frame(maxWidth: .infinity ,alignment: .leading)
+                
+                Text(AppStyle.Devo.Text.resourceListTitle(string: resource.title))
+                    .frame(maxWidth: .infinity ,alignment: .leading)
                 
             }
         }

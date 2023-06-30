@@ -1034,6 +1034,16 @@ struct AppStyle {
                 return NSAttributedString(string: string.uppercased(), attributes: attributes)
             }
             
+            static func resourceGroupName(string: String) -> AttributedString {
+                
+                var container = AttributeContainer()
+                container.foregroundColor = .baseGray5 | .baseGray2
+                container.font = R.font.latoBold(size: 13)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
             static func resourceListTitle(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .font: R.font.latoBold(size: 18)!,

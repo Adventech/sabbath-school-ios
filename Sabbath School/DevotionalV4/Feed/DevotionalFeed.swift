@@ -20,7 +20,11 @@ struct DevotionalFeed: View {
                     ForEach(viewModel.items) { item in
                         switch item.resourceFeed {
                         case .resource(let resource):
-                            DevotionalFeedBookViewV4(resource: resource, inline: false)
+                            if resource.view == .book {
+                                DevotionalFeedBookViewV4(resource: resource, inline: false)
+                            } else {
+                                DevotionalFeedTileViewV4(resource: resource)
+                            }
                         case .resourceGroup(let resourceGroup):
                             switch resourceGroup.view {
                             case .list:
@@ -30,7 +34,7 @@ struct DevotionalFeed: View {
                             case .tile:
                                 DevotionalFeedGroupTileViewV4(resourceGroup: resourceGroup)
                             case .book:
-                                DevotionalFeedGroupBookViewNew()
+                                DevotionalFeedGroupBookViewV4(resourceGroup: resourceGroup)
                             }
                         }
                     }.listRowSeparator(.hidden)

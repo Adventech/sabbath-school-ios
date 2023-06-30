@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct DevotionalResourceControllerV4: View {
+struct DevotionalResourceControllerV4: View, Hashable {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("DevotionalResourceControllerV4")
     }
 }
 

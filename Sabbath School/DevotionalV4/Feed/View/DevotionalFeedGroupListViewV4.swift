@@ -27,10 +27,6 @@ struct DevotionalFeedGroupListViewV4: View {
                 DevotionalFeedListViewV4(resource: resource)
             }
         }
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color(UIColor(white: 0, alpha: 0.6) | .gray), lineWidth: 1)
-        )
     }
 }
 

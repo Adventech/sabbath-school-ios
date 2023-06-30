@@ -106,7 +106,7 @@
 		4E1768612A479A2200060649 /* DevotionalFeedGroupListViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1768602A479A2200060649 /* DevotionalFeedGroupListViewV4.swift */; };
 		4E1768632A47B97600060649 /* DevotionalFeedGroupSmallTileViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1768622A47B97600060649 /* DevotionalFeedGroupSmallTileViewV4.swift */; };
 		4E1768652A47B98A00060649 /* DevotionalFeedGroupTileViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1768642A47B98A00060649 /* DevotionalFeedGroupTileViewV4.swift */; };
-		4E1768672A47B9A100060649 /* DevotionalFeedGroupBookViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1768662A47B9A100060649 /* DevotionalFeedGroupBookViewNew.swift */; };
+		4E1768672A47B9A100060649 /* DevotionalFeedGroupBookViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1768662A47B9A100060649 /* DevotionalFeedGroupBookViewV4.swift */; };
 		4E1768692A47BDC200060649 /* DevotionalFeedBookViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1768682A47BDC200060649 /* DevotionalFeedBookViewV4.swift */; };
 		4E17686E2A48AFC400060649 /* DevotionalResourceControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E17686D2A48AFC400060649 /* DevotionalResourceControllerV4.swift */; };
 		4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */; };
@@ -410,7 +410,7 @@
 		4E1768602A479A2200060649 /* DevotionalFeedGroupListViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedGroupListViewV4.swift; sourceTree = "<group>"; };
 		4E1768622A47B97600060649 /* DevotionalFeedGroupSmallTileViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedGroupSmallTileViewV4.swift; sourceTree = "<group>"; };
 		4E1768642A47B98A00060649 /* DevotionalFeedGroupTileViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedGroupTileViewV4.swift; sourceTree = "<group>"; };
-		4E1768662A47B9A100060649 /* DevotionalFeedGroupBookViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedGroupBookViewNew.swift; sourceTree = "<group>"; };
+		4E1768662A47B9A100060649 /* DevotionalFeedGroupBookViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedGroupBookViewV4.swift; sourceTree = "<group>"; };
 		4E1768682A47BDC200060649 /* DevotionalFeedBookViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedBookViewV4.swift; sourceTree = "<group>"; };
 		4E17686D2A48AFC400060649 /* DevotionalResourceControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalResourceControllerV4.swift; sourceTree = "<group>"; };
 		4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfoData.swift; sourceTree = "<group>"; };
@@ -919,6 +919,7 @@
 				4E1768642A47B98A00060649 /* DevotionalFeedGroupTileViewV4.swift */,
 				4E7186112A4DCB2C0005E0E6 /* DevotionalFeedSmallTileViewV4.swift */,
 				4E1768622A47B97600060649 /* DevotionalFeedGroupSmallTileViewV4.swift */,
+				4E1768662A47B9A100060649 /* DevotionalFeedGroupBookViewV4.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -982,7 +983,6 @@
 				4E88CDD52A48FDE300F6B6E4 /* Models */,
 				4E17686C2A48AF9200060649 /* Resource */,
 				4E17686A2A48AC7100060649 /* Feed */,
-				4E1768662A47B9A100060649 /* DevotionalFeedGroupBookViewNew.swift */,
 			);
 			path = DevotionalV4;
 			sourceTree = "<group>";
@@ -2092,7 +2092,7 @@
 				FE0249EA2669C2E3006BFADC /* Helper.swift in Sources */,
 				2FB91F7028FB43FB00A2DAD7 /* DevotionalFeedGroupTileView.swift in Sources */,
 				4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */,
-				4E1768672A47B9A100060649 /* DevotionalFeedGroupBookViewNew.swift in Sources */,
+				4E1768672A47B9A100060649 /* DevotionalFeedGroupBookViewV4.swift in Sources */,
 				2F487E8126D8567300B4AA7A /* VideoPlaybackRateButton.swift in Sources */,
 				2FB91F8D28FB47FC00A2DAD7 /* DevotionalDocumentView.swift in Sources */,
 				2F96FF6626CC9A570045DC6D /* VideoPlayback.swift in Sources */,

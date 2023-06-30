@@ -76,4 +76,27 @@ class TabBarViewController: ASTabBarController {
         
         return viewControllers
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupUI()
+    }
+}
+
+private extension TabBarViewController {
+    func setupUI() {
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithOpaqueBackground()
+            
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+            
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithOpaqueBackground()
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        }
+    }
 }
