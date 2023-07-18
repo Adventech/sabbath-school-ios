@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,19 +20,32 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
+import OSLog
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
-        }
-    }
+struct DevotionalResource: View {
     
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
+    @ObservedObject var viewModel: DevotionalResourceViewModel = DevotionalResourceViewModel(id: 0, resource: BlockMockData.generateResource())
+    
+    var body: some View {
+        
+        List {
+            DevotionalResourceViewHeaderV4(resource: viewModel.resource, openButtonIndex: "", openButtonTitleText: "Read".localized(), openButtonSubtitleText: "")
+                .listRowInsets(EdgeInsets())
+            
+            ForEach(viewModel.sections) { section in
+                DevotionalResourceSectionViewV4(section: section)
+                .listRowInsets(EdgeInsets())
+            }
+        }
+        .environment(\.defaultMinListRowHeight, 0)
+        .listStyle(.plain)
+    }
+}
+
+struct DevotionalResource_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = DevotionalResourceViewModel(id: 0, resource: BlockMockData.generateResource())
+        DevotionalResource(viewModel: viewModel)
     }
 }

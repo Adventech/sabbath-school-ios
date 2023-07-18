@@ -79,7 +79,19 @@ struct ResourceInfo: Codable {
     let study: Bool
 }
 
-struct Resource: Codable {
+struct Resource: Codable, Hashable, Identifiable {
+    var identifier: String {
+            return UUID().uuidString
+        }
+    
+    public func hash(into hasher: inout Hasher) {
+            return hasher.combine(identifier)
+        }
+    
+    static func == (lhs: Resource, rhs: Resource) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     let id: String
     let index: String
     let title: String
@@ -110,7 +122,19 @@ struct SSPMSection: Codable {
     let documents: [SSPMDocument]
 }
 
-struct SSPMDocument: Codable {
+struct SSPMDocument: Codable, Hashable {
+    var identifier: String {
+            return UUID().uuidString
+        }
+    
+    public func hash(into hasher: inout Hasher) {
+            return hasher.combine(identifier)
+        }
+    
+    static func == (lhs: SSPMDocument, rhs: SSPMDocument) -> Bool {
+        return lhs.title == rhs.title
+    }
+    
     let index: String
     let title: String
     let subtitle: String?

@@ -993,6 +993,24 @@ struct AppStyle {
                 return NSAttributedString(string: string.uppercased(), attributes: attributes)
             }
             
+            static func resourceDetailSection(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = UIColor.baseGray2
+                container.font = R.font.latoBold(size: 12)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
+            static func resourceDetailDocumentTitle(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = .baseGray4 | .baseGray1
+                container.font = R.font.latoRegular(size: 18)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
             static func resourceDetailDocumentTitle(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: .baseGray4 | .baseGray1,
@@ -1009,12 +1027,30 @@ struct AppStyle {
                 return NSAttributedString(string: string.uppercased(), attributes: attributes)
             }
             
+            static func resourceDetailDocumentSubtitle(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = UIColor.baseGray2.lighter() | .baseGray3
+                container.font = R.font.latoBold(size: 12)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
             static func openButtonTitle(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: .black | .white,
                     .font: R.font.latoBold(size: 18)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func openButtonTitle(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = .black | .white
+                container.font = R.font.latoBold(size: 18)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
             }
             
             static func openButtonSubtitle(string: String) -> NSAttributedString {
@@ -1129,6 +1165,19 @@ struct AppStyle {
                 return NSAttributedString(string: string, attributes: attributes)
             }
             
+            static func resourceDetailTitleForColor(string: String, textColor: UIColor = UIColor.white) -> AttributedString {
+                let style = NSMutableParagraphStyle()
+                style.alignment = .center
+                
+                var container = AttributeContainer()
+                container.foregroundColor = textColor
+                container.font = R.font.latoBold(size: 28)!//R.font.latoBlack(size: 28)!
+//                container.para
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
             static func resourceDetailSubtitleForColor(string: String, textColor: UIColor = UIColor.white) -> NSAttributedString {
                 let style = NSMutableParagraphStyle()
                 style.alignment = .left
@@ -1140,6 +1189,19 @@ struct AppStyle {
                 ]
 
                 return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func resourceDetailSubtitleForColor(string: String, textColor: UIColor = UIColor.white) -> AttributedString {
+                let style = NSMutableParagraphStyle()
+                style.alignment = .left
+                
+                var container = AttributeContainer()
+                container.foregroundColor = textColor
+                container.font = R.font.latoRegular(size: 14)!
+                container.paragraphStyle  = style
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
             }
         }
     }

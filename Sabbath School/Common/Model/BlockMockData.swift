@@ -1,14 +1,47 @@
-//
-//  BlockData.swift
-//  Sabbath School
-//
-//  Created by Emerson Carpes on 25/06/23.
-//  Copyright © 2023 Adventech. All rights reserved.
-//
+/*
+ * Copyright (c) 2023 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 import Foundation
 
 class BlockMockData: ObservableObject {
+    
+    static func generateSSPMSection() -> SSPMSectionViewModel {
+        return SSPMSectionViewModel(id: 0, title: "Titulo", documents: [
+            generateSSPMDocument()
+        ])
+    }
+    
+    static func generateSSPMDocument() -> SSPMDocument {
+        return SSPMDocument(index: "en/pm/discipleship-handbook/content/04-church-life/13-tell-it-to-the-world",
+                            title: "Tell It to the World",
+                            subtitle: "Chapter 13",
+                            date: nil,
+                            thumbnail: nil,
+                            blocks: nil)
+    }
+    
+    
+    
+    
     static func generateResource() -> Resource {
         return Resource(id: "discipleship-handbook",
                         index: "en/pm/discipleship-handbook",
@@ -23,7 +56,11 @@ class BlockMockData: ObservableObject {
                         textColor: "#ffffff",
                         credits: nil,
                         view: .book,
-                        sections: nil,
+                        sections: [
+                            SSPMSection(title: "Teste", documents: []),
+                            SSPMSection(title: "Teste1", documents: []),
+                            SSPMSection(title: "Teste2", documents: [])
+                        ],
                         kind: .book)
     }
     

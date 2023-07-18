@@ -27,6 +27,7 @@ final class DevotionalFeedControllerV4: UIViewController {
     
     private let devotionalInteractor = DevotionalInteractor()
     private var devotionalResources: [ResourceFeed] = []
+    private let presenter = DevotionalPresenter()
     private let devotionalType: DevotionalType
     
     let hosting = UIHostingController(rootView: DevotionalFeed())
@@ -49,6 +50,7 @@ final class DevotionalFeedControllerV4: UIViewController {
         
         setupNavigationBar()
         setupMainView()
+        bindUI()
         
         self.devotionalInteractor.retrieveFeed(devotionalType: self.devotionalType, language: "en") { resourceFeed in
             self.devotionalResources = resourceFeed
@@ -56,6 +58,12 @@ final class DevotionalFeedControllerV4: UIViewController {
             for i in self.devotionalResources.enumerated() {
                 self.hosting.rootView.viewModel.items.append(ResourceViewModel(id: i.offset, resourceFeed: i.element))
             }
+        }
+    }
+    
+    private func bindUI() {
+        self.hosting.rootView.didTapResource = { index in
+            self.presenter.presentDevotionalDetail(source: self, index: index)
         }
     }
 }
