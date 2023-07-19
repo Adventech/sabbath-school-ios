@@ -49,7 +49,7 @@ struct DevotionalResourceViewHeaderV4: View {
             EdgeInsets(top: 80, leading: 0, bottom: 40, trailing: 0)
         )
         .background(
-            Color(uiColor: UIColor(hex: resource.primaryColorDark))
+            Color(uiColor: UIColor(hex: resource.primaryColor))
         )
     }
 }
