@@ -33,6 +33,12 @@ class DevotionalPresenter {
     }
     
     func presentDevotionalDocument(source: UIViewController, index: String) {
-        source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
+        if Helper.isSwiftUIEnable {
+            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
+        } else {
+            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
+        }
+        
+        
     }
 }

@@ -30,27 +30,37 @@ struct DevotionalResourceViewHeaderV4: View {
     let openButtonSubtitleText: String?
     
     var body: some View {
-        
-        VStack(spacing: 20) {
-            AsyncImage(url: resource.cover) { image in
-                image.image?.resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: 90, maxHeight: 90 * 1.5)
-                    .cornerRadius(4)
-                    .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
-            }
-            Text(AppStyle.Devo.Text.resourceDetailTitleForColor(string: resource.title, textColor: UIColor(hex: resource.textColor)))
-            Text(AppStyle.Devo.Text.resourceDetailSubtitleForColor(string: resource.subtitle ?? "", textColor: UIColor(hex: resource.textColor)
-                .withAlphaComponent(0.7))).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            
-            DevotionalReadButtonView(openButtonTitleText: openButtonTitleText)
+        AsyncImage(url: resource.splash) { image in
+            image.image
         }
-        .padding(
-            EdgeInsets(top: 80, leading: 0, bottom: 40, trailing: 0)
-        )
-        .background(
-            Color(uiColor: UIColor(hex: resource.primaryColor))
-        )
+        .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / 1.7)
+        .cornerRadius(4)
+        .overlay {
+            VStack(spacing: 20) {
+                Spacer()
+                if resource.cover != nil {
+                    AsyncImage(url: resource.cover) { image in
+                        image.image?.resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: 90, maxHeight: 90 * 1.5)
+                            .cornerRadius(4)
+                            .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
+                    }
+                }
+                Text(AppStyle.Devo.Text.resourceDetailTitleForColor(string: resource.title, textColor: UIColor(hex: resource.textColor)))
+                Text(AppStyle.Devo.Text.resourceDetailSubtitleForColor(string: resource.subtitle ?? "", textColor: UIColor(hex: resource.textColor)
+                    .withAlphaComponent(0.7))).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                
+                DevotionalReadButtonView(openButtonTitleText: openButtonTitleText)
+            }
+            .frame(width: UIScreen.main.bounds.width)
+            .padding(
+                EdgeInsets(top: 80, leading: 0, bottom: 40, trailing: 0)
+            )
+            .background(
+                Color(uiColor: resource.cover != nil ? UIColor(hex: resource.primaryColor) : .clear)
+            )
+        }
     }
 }
 

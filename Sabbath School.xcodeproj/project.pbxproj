@@ -135,6 +135,7 @@
 		4ED0B8C62A478746008A6E71 /* DevotionalFeedControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED0B8C52A478746008A6E71 /* DevotionalFeedControllerV4.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		4EE8B6F5284D1FAA003C1A46 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
+		4EED9DD12A6751F7004609AB /* DevotionalDocumentControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DD02A6751F7004609AB /* DevotionalDocumentControllerV4.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
 		7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F841ED7D6B6003C7458 /* Assets.xcassets */; };
@@ -446,6 +447,7 @@
 		4ED0B8C52A478746008A6E71 /* DevotionalFeedControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedControllerV4.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		4EED9DD02A6751F7004609AB /* DevotionalDocumentControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalDocumentControllerV4.swift; sourceTree = "<group>"; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireFrame.swift; sourceTree = "<group>"; };
 		7A280F791ED7CF2C003C7458 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -1009,11 +1011,20 @@
 		4ED0B8C22A4784F2008A6E71 /* DevotionalV4 */ = {
 			isa = PBXGroup;
 			children = (
+				4EED9DCF2A6751DE004609AB /* Document */,
 				4E88CDD52A48FDE300F6B6E4 /* Models */,
 				4E17686C2A48AF9200060649 /* Resource */,
 				4E17686A2A48AC7100060649 /* Feed */,
 			);
 			path = DevotionalV4;
+			sourceTree = "<group>";
+		};
+		4EED9DCF2A6751DE004609AB /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				4EED9DD02A6751F7004609AB /* DevotionalDocumentControllerV4.swift */,
+			);
+			path = Document;
 			sourceTree = "<group>";
 		};
 		7A280F701ED7CF05003C7458 /* Login */ = {
@@ -2221,6 +2232,7 @@
 				2FB91F8728FB462300A2DAD7 /* BlockquoteNode.swift in Sources */,
 				7A3BCE1F1EE0EC28003EC12B /* URL.swift in Sources */,
 				4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */,
+				4EED9DD12A6751F7004609AB /* DevotionalDocumentControllerV4.swift in Sources */,
 				7A2810001EDD051D003C7458 /* Image.swift in Sources */,
 				7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */,
 				2FB91F8928FB462A00A2DAD7 /* QuestionNode.swift in Sources */,
