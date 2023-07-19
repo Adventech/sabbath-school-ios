@@ -118,7 +118,6 @@
 		4E385D122A54DDED002DB1CD /* DevotionalResourceViewHeaderV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E385D112A54DDED002DB1CD /* DevotionalResourceViewHeaderV4.swift */; };
 		4E385D142A54DE06002DB1CD /* DevotionalResourceSectionViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E385D132A54DE06002DB1CD /* DevotionalResourceSectionViewV4.swift */; };
 		4E385D162A54DE19002DB1CD /* DevotionalResourceDocumentViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E385D152A54DE19002DB1CD /* DevotionalResourceDocumentViewV4.swift */; };
-		4E385D182A54DE2D002DB1CD /* DevotionalResourceCollapsableSectionViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E385D172A54DE2D002DB1CD /* DevotionalResourceCollapsableSectionViewV4.swift */; };
 		4E5633AA2A49D8AF0029E676 /* DevotionalFeedListViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5633A92A49D8AF0029E676 /* DevotionalFeedListViewV4.swift */; };
 		4E57799028E095B300D6F7ED /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57798F28E095B300D6F7ED /* SettingsInteractor.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
@@ -430,7 +429,6 @@
 		4E385D112A54DDED002DB1CD /* DevotionalResourceViewHeaderV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalResourceViewHeaderV4.swift; sourceTree = "<group>"; };
 		4E385D132A54DE06002DB1CD /* DevotionalResourceSectionViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalResourceSectionViewV4.swift; sourceTree = "<group>"; };
 		4E385D152A54DE19002DB1CD /* DevotionalResourceDocumentViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalResourceDocumentViewV4.swift; sourceTree = "<group>"; };
-		4E385D172A54DE2D002DB1CD /* DevotionalResourceCollapsableSectionViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalResourceCollapsableSectionViewV4.swift; sourceTree = "<group>"; };
 		4E5633A92A49D8AF0029E676 /* DevotionalFeedListViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedListViewV4.swift; sourceTree = "<group>"; };
 		4E57798F28E095B300D6F7ED /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
@@ -956,7 +954,6 @@
 				4E385D112A54DDED002DB1CD /* DevotionalResourceViewHeaderV4.swift */,
 				4E385D132A54DE06002DB1CD /* DevotionalResourceSectionViewV4.swift */,
 				4E385D152A54DE19002DB1CD /* DevotionalResourceDocumentViewV4.swift */,
-				4E385D172A54DE2D002DB1CD /* DevotionalResourceCollapsableSectionViewV4.swift */,
 				4E8AA2682A5598AE003064D7 /* DevotionalReadButtonView.swift */,
 				4E8AA26A2A55D646003064D7 /* DevotionalResourceSectionHeaderViewV4.swift */,
 			);
@@ -2281,7 +2278,6 @@
 				FEC9218D267E315300422F3D /* ConfigurationShared.swift in Sources */,
 				7A922E181EDFB61600C12A67 /* ReadController.swift in Sources */,
 				7A8C684A1EF2094300CD3228 /* SettingsItemView.swift in Sources */,
-				4E385D182A54DE2D002DB1CD /* DevotionalResourceCollapsableSectionViewV4.swift in Sources */,
 				2F96FF4726C58A6A0045DC6D /* AudioPlayback.swift in Sources */,
 				2FB91F5628FB40D300A2DAD7 /* DevotionalResourceController.swift in Sources */,
 				7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */,

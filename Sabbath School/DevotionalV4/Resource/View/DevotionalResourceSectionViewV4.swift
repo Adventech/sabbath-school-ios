@@ -24,23 +24,26 @@ import SwiftUI
 
 struct DevotionalResourceSectionViewV4: View {
     
+    let colapsedSection: Bool
     let section: SSPMSectionViewModel
+    @State private var isCollapsed = true
     
     var body: some View {
         
         VStack {
             if let title = section.title {
-                DevotionalResourceSectionHeaderViewV4(sectionTitle: title)
-                    .background(
-                        Color(AppStyle.Devo.Color.resourceDetailSectionBackground())
-                    )
+                DevotionalResourceSectionHeaderViewV4(colapsedSection: colapsedSection, sectionTitle: title, didTap: {
+                    isCollapsed = !isCollapsed
+                })
             }
             
-            ForEach(section.documents, id: \.self) { document in
-                DevotionalResourceDocumentViewV4(document: document)
-                    .background(
-                        Color(AppStyle.Base.Color.background)
-                    )
+            if !isCollapsed {
+                ForEach(section.documents, id: \.self) { document in
+                    DevotionalResourceDocumentViewV4(document: document)
+                        .background(
+                            Color(AppStyle.Base.Color.background)
+                        )
+                }
             }
         }
         .padding(EdgeInsets())
@@ -49,6 +52,6 @@ struct DevotionalResourceSectionViewV4: View {
 
 struct DevotionalResourceSectionViewV4_Previews: PreviewProvider {
     static var previews: some View {
-        DevotionalResourceSectionViewV4(section: BlockMockData.generateSSPMSection())
+        DevotionalResourceSectionViewV4(colapsedSection: true, section: BlockMockData.generateSSPMSection())
     }
 }

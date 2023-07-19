@@ -34,8 +34,9 @@ struct DevotionalResource: View {
                 .listRowInsets(EdgeInsets())
             
             ForEach(viewModel.sections) { section in
-                DevotionalResourceSectionViewV4(section: section)
+                DevotionalResourceSectionViewV4(colapsedSection: viewModel.resource.kind == .devotional, section: section)
                 .listRowInsets(EdgeInsets())
+                .listRowSeparator(.hidden)
             }
         }
         .environment(\.defaultMinListRowHeight, 0)

@@ -24,17 +24,37 @@ import SwiftUI
 
 struct DevotionalResourceSectionHeaderViewV4: View {
     
+    let colapsedSection: Bool
     let sectionTitle: String?
+    var didTap: (() -> Void)?
+    
+    @State private var isCollapsed = true
     
     var body: some View {
-        Text(AppStyle.Devo.Text.resourceDetailSection(string: sectionTitle?.uppercased() ?? ""))
-            .frame(maxWidth: .infinity ,alignment: .leading)
+        ViewThatFits {
+            HStack {
+                Text(AppStyle.Devo.Text.resourceDetailSection(string: sectionTitle?.uppercased() ?? ""))
+                    .frame(maxWidth: .infinity ,alignment: .leading)
+                if let iconMore = R.image.iconMore(), colapsedSection {
+                    Image(uiImage: iconMore.fillAlpha(fillColor: .baseGray2))
+                        .rotationEffect(.radians(isCollapsed ? .pi / 2 : .pi * 1.5))
+                }
+            }
             .padding(EdgeInsets(top: 16, leading: 20, bottom: 16, trailing: 20))
+        }
+        .background(
+            Color(AppStyle.Devo.Color.resourceDetailSectionBackground())
+        )
+        .onTapGesture {
+            guard colapsedSection else { return }
+            didTap?()
+            isCollapsed = !isCollapsed
+        }
     }
 }
 
 struct DevotionalResourceSectionHeaderViewV4_Previews: PreviewProvider {
     static var previews: some View {
-        DevotionalResourceSectionHeaderViewV4(sectionTitle: "Discipleship")
+        DevotionalResourceSectionHeaderViewV4(colapsedSection: true, sectionTitle: "Discipleship")
     }
 }
