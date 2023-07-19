@@ -25,6 +25,7 @@ import SwiftUI
 struct DevotionalFeedGroupListViewV4: View {
     
     let resourceGroup: ResourceGroup
+    var didTapResource: ((String) -> Void)?
     
     var body: some View {
         VStack {
@@ -38,7 +39,7 @@ struct DevotionalFeedGroupListViewV4: View {
             .cornerRadius(4)
             
             ForEach(resourceGroup.resources, id: \.self) { resource in
-                DevotionalFeedListViewV4(resource: resource)
+                DevotionalFeedListViewV4(resource: resource, didTapResource: didTapResource)
             }
         }
     }

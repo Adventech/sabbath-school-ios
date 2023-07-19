@@ -25,6 +25,7 @@ import SwiftUI
 struct DevotionalFeedSmallTileViewV4: View {
     
     let resource: Resource
+    var didTapResource: ((String) -> Void)?
     
     var body: some View {
         VStack {
@@ -46,6 +47,9 @@ struct DevotionalFeedSmallTileViewV4: View {
                 }.padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 15))
                 
             }
+        }
+        .onTapGesture {
+            didTapResource?(resource.index)
         }
     }
 }

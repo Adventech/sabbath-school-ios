@@ -25,7 +25,7 @@ import SwiftUI
 struct DevotionalFeedGroupSmallTileViewV4: View {
     
     let resourceGroup: ResourceGroup
-    @State private var selectedView: Int?
+    var didTapResource: ((String) -> Void)?
     
     var body: some View {
         VStack {
@@ -36,7 +36,7 @@ struct DevotionalFeedGroupSmallTileViewV4: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
                     ForEach(resourceGroup.resources, id: \.self) { resource in
-                        DevotionalFeedSmallTileViewV4(resource: resource).frame(width: 300, height: 260)
+                        DevotionalFeedSmallTileViewV4(resource: resource, didTapResource: didTapResource).frame(width: 300, height: 260)
                     }
                 }
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))

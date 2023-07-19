@@ -25,6 +25,7 @@ import SwiftUI
 struct DevotionalFeedListViewV4: View {
     
     let resource: Resource
+    var didTapResource: ((String) -> Void)?
     
     var body: some View {
         VStack {
@@ -36,6 +37,8 @@ struct DevotionalFeedListViewV4: View {
                 .frame(maxWidth: .infinity ,alignment: .leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 8, trailing: 15))
             Divider().background(Color( .baseGray1 | .baseGray4)).frame(height: 0)
+        }.onTapGesture {
+            didTapResource?(resource.index)
         }
     }
 }

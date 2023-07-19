@@ -26,6 +26,7 @@ struct DevotionalFeedBookViewV4: View {
     
     let resource: Resource
     let inline: Bool
+    var didTapResource: ((String) -> Void)?
     
     var body: some View {
         HStack(spacing: 20) {
@@ -47,6 +48,9 @@ struct DevotionalFeedBookViewV4: View {
             }
         }
         .padding(EdgeInsets(top: 1, leading: inline ? 20 : 0, bottom: 1, trailing: inline ? 20 : 0))
+        .onTapGesture {
+            didTapResource?(resource.index)
+        }
     }
 }
 

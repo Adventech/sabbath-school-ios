@@ -25,12 +25,13 @@ import SwiftUI
 struct DevotionalFeedGroupBookViewV4: View {
     
     let resourceGroup: ResourceGroup
+    var didTapResource: ((String) -> Void)?
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 10) {
                 ForEach(resourceGroup.resources, id: \.self) { resource in
-                    DevotionalFeedBookViewV4(resource: resource, inline: true)
+                    DevotionalFeedBookViewV4(resource: resource, inline: true, didTapResource: didTapResource)
                         .frame(width: 300, height: 260)
                 }
             }
