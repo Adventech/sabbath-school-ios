@@ -34,24 +34,20 @@ struct DevotionalFeed: View {
                 switch item.resourceFeed {
                 case .resource(let resource):
                     if resource.view == .book {
-                        DevotionalFeedBookViewV4(resource: resource, inline: false).onTapGesture {
-                            didTapResource?(resource.index)
-                        }
+                        DevotionalFeedBookViewV4(resource: resource, inline: false, didTapResource: didTapResource)
                     } else {
-                        DevotionalFeedTileViewV4(resource: resource).onTapGesture {
-                            didTapResource?(resource.index)
-                        }
+                        DevotionalFeedTileViewV4(resource: resource, didTapResource: didTapResource)
                     }
                 case .resourceGroup(let resourceGroup):
                     switch resourceGroup.view {
                     case .list:
-                        DevotionalFeedGroupListViewV4(resourceGroup: resourceGroup)
+                        DevotionalFeedGroupListViewV4(resourceGroup: resourceGroup, didTapResource: didTapResource)
                     case .tileSmall:
-                        DevotionalFeedGroupSmallTileViewV4(resourceGroup: resourceGroup)
+                        DevotionalFeedGroupSmallTileViewV4(resourceGroup: resourceGroup, didTapResource: didTapResource)
                     case .tile:
-                        DevotionalFeedGroupTileViewV4(resourceGroup: resourceGroup)
+                        DevotionalFeedGroupTileViewV4(resourceGroup: resourceGroup, didTapResource: didTapResource)
                     case .book:
-                        DevotionalFeedGroupBookViewV4(resourceGroup: resourceGroup)
+                        DevotionalFeedGroupBookViewV4(resourceGroup: resourceGroup, didTapResource: didTapResource)
                     }
                 }
             }.listRowSeparator(.hidden)
