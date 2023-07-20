@@ -52,6 +52,7 @@ final class DevotionalResourceControllerV4: UIViewController {
         setBackButton()
         setupNavigationBar()
         setupMainView()
+        bindUI()
         
         self.devotionalInteractor.retrieveResource(index: resourceIndex) { resource in
             self.devotionalResource = resource
@@ -63,6 +64,12 @@ final class DevotionalResourceControllerV4: UIViewController {
                 let element = SSPMSectionViewModel(id: section.offset, title: section.element.title, documents: section.element.documents)
                 self.hosting.rootView.viewModel.sections.append(element)
             }
+        }
+    }
+    
+    private func bindUI() {
+        self.hosting.rootView.didTapDocument = { index in
+            self.presenter.presentDevotionalDocument(source: self, index: index)
         }
     }
 }

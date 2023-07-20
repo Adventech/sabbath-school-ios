@@ -26,6 +26,7 @@ struct DevotionalResourceSectionViewV4: View {
     
     let colapsedSection: Bool
     let section: SSPMSectionViewModel
+    var didTapDocument: ((String) -> Void)?
     @State private var isCollapsed = true
     
     var body: some View {
@@ -37,9 +38,9 @@ struct DevotionalResourceSectionViewV4: View {
                 })
             }
             
-            if !isCollapsed {
+            if !isCollapsed || !colapsedSection {
                 ForEach(section.documents, id: \.self) { document in
-                    DevotionalResourceDocumentViewV4(document: document)
+                    DevotionalResourceDocumentViewV4(document: document, didTapDocument: didTapDocument)
                         .background(
                             Color(AppStyle.Base.Color.background)
                         )

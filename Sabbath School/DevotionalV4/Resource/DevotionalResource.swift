@@ -26,6 +26,7 @@ import OSLog
 struct DevotionalResource: View {
     
     @ObservedObject var viewModel: DevotionalResourceViewModel = DevotionalResourceViewModel(id: 0, resource: BlockMockData.generateResource())
+    var didTapDocument: ((String) -> Void)?
     
     var body: some View {
         
@@ -34,7 +35,7 @@ struct DevotionalResource: View {
                 .listRowInsets(EdgeInsets())
             
             ForEach(viewModel.sections) { section in
-                DevotionalResourceSectionViewV4(colapsedSection: viewModel.resource.kind == .devotional, section: section)
+                DevotionalResourceSectionViewV4(colapsedSection: viewModel.resource.kind == .devotional, section: section, didTapDocument: didTapDocument)
                 .listRowInsets(EdgeInsets())
                 .listRowSeparator(.hidden)
             }

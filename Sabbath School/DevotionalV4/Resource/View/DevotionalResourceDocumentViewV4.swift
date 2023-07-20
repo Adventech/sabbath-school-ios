@@ -25,6 +25,7 @@ import SwiftUI
 struct DevotionalResourceDocumentViewV4: View {
     
     let document: SSPMDocument
+    var didTapDocument: ((String) -> Void)?
     
     var body: some View {
         VStack(spacing: 6) {
@@ -45,6 +46,9 @@ struct DevotionalResourceDocumentViewV4: View {
                 )
         }
         .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
+        .onTapGesture {
+            didTapDocument?(document.index)
+        }
     }
 }
 
