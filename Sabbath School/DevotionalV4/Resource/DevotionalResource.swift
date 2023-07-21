@@ -41,6 +41,7 @@ struct DevotionalResource: View {
         }
         .environment(\.defaultMinListRowHeight, 0)
         .listStyle(.plain)
+        .ignoresSafeArea(edges: .top)
     }
 }
 
