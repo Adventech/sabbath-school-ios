@@ -21,7 +21,6 @@
  */
 
 import SwiftUI
-import OSLog
 
 struct DevotionalResource: View {
     
