@@ -48,7 +48,6 @@ final class DevotionalFeedControllerV4: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBar()
         setupMainView()
         bindUI()
         
@@ -61,10 +60,10 @@ final class DevotionalFeedControllerV4: UIViewController {
         }
     }
     
-    private func bindUI() {
-        self.hosting.rootView.didTapResource = { index in
-            self.presenter.presentDevotionalDetail(source: self, index: index)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupNavigationBar()
     }
 }
 
@@ -99,5 +98,11 @@ private extension DevotionalFeedControllerV4 {
             .foregroundColor: AppStyle.Base.Color.navigationTitle,
             .font: R.font.latoBlack(size: 36)!
         ]
+    }
+    
+    private func bindUI() {
+        self.hosting.rootView.didTapResource = { index in
+            self.presenter.presentDevotionalDetail(source: self, index: index)
+        }
     }
 }
