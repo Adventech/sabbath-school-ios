@@ -21,6 +21,7 @@
  */
 
 import SwiftUI
+import Kingfisher
 
 struct DevotionalFeedBookViewV4: View {
     
@@ -30,13 +31,12 @@ struct DevotionalFeedBookViewV4: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            AsyncImage(url: resource.cover) { image in
-                image.image?.resizable()
-                    .scaledToFill()
-                    .frame(maxWidth: 90, maxHeight: 90 * 1.5)
-                    .cornerRadius(4)
-                    .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
-            }
+            KFImage(resource.cover)
+                .resizable()
+                .scaledToFill()
+                .frame(maxWidth: 90, maxHeight: 90 * 1.5)
+                .cornerRadius(4)
+                .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
             VStack(spacing: 8) {
                 Text(AppStyle.Devo.Text.resourceListSubtitle(string: resource.subtitle ?? ""))
                     .lineLimit(2)

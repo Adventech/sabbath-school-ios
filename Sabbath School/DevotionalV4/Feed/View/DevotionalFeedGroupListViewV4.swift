@@ -21,6 +21,7 @@
  */
 
 import SwiftUI
+import Kingfisher
 
 struct DevotionalFeedGroupListViewV4: View {
     
@@ -32,11 +33,11 @@ struct DevotionalFeedGroupListViewV4: View {
             Text(AppStyle.Devo.Text.resourceGroupName(string: resourceGroup.title.uppercased()))
                 .frame(maxWidth: .infinity ,alignment: .leading)
                 .padding(EdgeInsets(top: 15, leading: 15, bottom: 8, trailing: 0))
-            AsyncImage(url: resourceGroup.cover) { image in
-                image.image?.resizable()
-                    .scaledToFit()
-            }
-            .cornerRadius(4)
+            
+            KFImage(resourceGroup.cover)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(4)
             
             ForEach(resourceGroup.resources, id: \.self) { resource in
                 DevotionalFeedListViewV4(resource: resource, didTapResource: didTapResource)

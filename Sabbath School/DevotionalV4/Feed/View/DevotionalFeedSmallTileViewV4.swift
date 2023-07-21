@@ -21,6 +21,7 @@
  */
 
 import SwiftUI
+import Kingfisher
 
 struct DevotionalFeedSmallTileViewV4: View {
     
@@ -29,24 +30,22 @@ struct DevotionalFeedSmallTileViewV4: View {
     
     var body: some View {
         VStack {
-            
-            AsyncImage(url: resource.tile) { image in
-                image.image?.resizable()
-            }
-            .scaledToFit()
-            .cornerRadius(4)
-            .overlay {
-                VStack(spacing: 8) {
-                    Spacer()
+            KFImage(resource.tile)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(4)
+                .overlay {
+                    VStack(spacing: 8) {
+                        Spacer()
+                        
+                        Text(AppStyle.Devo.Text.resourceListSubtitle(string: resource.subtitle ?? ""))
+                            .frame(maxWidth: .infinity ,alignment: .leading)
+                        
+                        Text(AppStyle.Devo.Text.resourceListTitle(string: resource.title))
+                            .frame(maxWidth: .infinity ,alignment: .leading)
+                    }.padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 15))
                     
-                    Text(AppStyle.Devo.Text.resourceListSubtitle(string: resource.subtitle ?? ""))
-                        .frame(maxWidth: .infinity ,alignment: .leading)
-                    
-                    Text(AppStyle.Devo.Text.resourceListTitle(string: resource.title))
-                        .frame(maxWidth: .infinity ,alignment: .leading)
-                }.padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 15))
-                
-            }
+                }
         }
         .onTapGesture {
             didTapResource?(resource.index)

@@ -21,6 +21,7 @@
  */
 
 import SwiftUI
+import Kingfisher
 
 struct DevotionalFeedTileViewV4: View {
     
@@ -29,12 +30,10 @@ struct DevotionalFeedTileViewV4: View {
     
     var body: some View {
         VStack {
-            
-            AsyncImage(url: resource.tile) { image in
-                image.image?.resizable()
-            }
-            .scaledToFit()
-            .cornerRadius(4)
+            KFImage(resource.tile)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(4)
             
             Text(AppStyle.Devo.Text.resourceListSubtitle(string: resource.subtitle ?? ""))
                 .frame(maxWidth: .infinity ,alignment: .leading)
