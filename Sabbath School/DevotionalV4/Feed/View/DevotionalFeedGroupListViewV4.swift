@@ -32,16 +32,23 @@ struct DevotionalFeedGroupListViewV4: View {
         VStack {
             Text(AppStyle.Devo.Text.resourceGroupName(string: resourceGroup.title.uppercased()))
                 .frame(maxWidth: .infinity ,alignment: .leading)
-                .padding(EdgeInsets(top: 15, leading: 15, bottom: 8, trailing: 0))
+                .padding(EdgeInsets(top: 15, leading: 0, bottom: 8, trailing: 0))
             
-            KFImage(resourceGroup.cover)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(4)
-            
-            ForEach(resourceGroup.resources, id: \.self) { resource in
-                DevotionalFeedListViewV4(resource: resource, didTapResource: didTapResource)
+            VStack {
+                KFImage(resourceGroup.cover)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(4)
+                
+                ForEach(resourceGroup.resources, id: \.self) { resource in
+                    DevotionalFeedListViewV4(resource: resource, didTapResource: didTapResource)
+                }
             }
+            .background(
+                Color(uiColor: .white | .baseGray5)
+            )
+            .clipped()
+            .shadow(color: Color(uiColor: UIColor(white: 0, alpha: 0.6).withAlphaComponent(0.3) | .gray.withAlphaComponent(0.3)), radius: 4, x: 0, y: 0)
         }
     }
 }
