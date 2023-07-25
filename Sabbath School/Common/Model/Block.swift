@@ -80,16 +80,13 @@ struct ResourceInfo: Codable {
 }
 
 struct Resource: Codable, Hashable, Identifiable {
-    var identifier: String {
-            return UUID().uuidString
-        }
+    static func == (lhs: Resource, rhs: Resource) -> Bool {
+        let result = lhs.id.compare(rhs.id) == .orderedSame
+        return result
+    }
     
     public func hash(into hasher: inout Hasher) {
-            return hasher.combine(identifier)
-        }
-    
-    static func == (lhs: Resource, rhs: Resource) -> Bool {
-        return lhs.id == rhs.id
+        return hasher.combine(id)
     }
     
     let id: String
@@ -124,12 +121,12 @@ struct SSPMSection: Codable {
 
 struct SSPMDocument: Codable, Hashable {
     var identifier: String {
-            return UUID().uuidString
-        }
+        return UUID().uuidString
+    }
     
     public func hash(into hasher: inout Hasher) {
-            return hasher.combine(identifier)
-        }
+        return hasher.combine(identifier)
+    }
     
     static func == (lhs: SSPMDocument, rhs: SSPMDocument) -> Bool {
         return lhs.title == rhs.title
@@ -185,7 +182,7 @@ enum Block: Codable {
     }
     
     enum type: String, Codable {
-        case paragraph, heading, list, listItem = "listItem", reference, question, blockquote, collapse, image, unknown
+        case paragraph, heading, list, listItem = "list-item", reference, question, blockquote, collapse, image, unknown
     }
     
     enum ReferenceScope: String, Codable {
