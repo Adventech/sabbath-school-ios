@@ -25,6 +25,7 @@ import SwiftUI
 struct DevotionalDocument: View {
     
     @ObservedObject var viewModel: SSPMDocumentViewModel = SSPMDocumentViewModel(id: 0)
+    var didTapLink: (([BibleVerses], String) -> Void)?
     
     var body: some View {
         List {
@@ -34,7 +35,7 @@ struct DevotionalDocument: View {
             }
             
             ForEach(viewModel.blocks) { blockViewModel in
-                DevotionalDocumentViewV4(block: blockViewModel.block)
+                DevotionalDocumentViewV4(block: blockViewModel.block, didTapLink: didTapLink)
                     .listRowSeparator(.hidden)
             }
         }
