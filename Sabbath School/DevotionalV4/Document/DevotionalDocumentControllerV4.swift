@@ -22,6 +22,8 @@
 
 import UIKit
 import SwiftUI
+import SwiftEntryKit
+import AsyncDisplayKit
 
 class DevotionalDocumentControllerV4: UIViewController {
 
@@ -46,6 +48,7 @@ class DevotionalDocumentControllerV4: UIViewController {
         setBackButton()
         setupNavigationBar()
         setupMainView()
+        bindUI()
         
         self.devotionalInteractor.retrieveDocument(index: index) { resourceDocument in
             self.document = resourceDocument
@@ -57,8 +60,13 @@ class DevotionalDocumentControllerV4: UIViewController {
             }
         }
     }
+    
+    private func bindUI() {
+        self.hosting.rootView.didTapLink = { bibleVerses, link in
+            self.didClickBible(bibleVerses: bibleVerses, verse: link)
+        }
+    }
 }
-
 
 // MARK: Setup UI
 
@@ -92,4 +100,15 @@ private extension DevotionalDocumentControllerV4 {
     }
 }
 
+// MARK: Navigation
 
+private extension DevotionalDocumentControllerV4 {
+    func didClickBible(bibleVerses: [BibleVerses], verse: String) {
+        let bibleScreen = BibleWireFrame.createBibleModule(bibleVerses: bibleVerses, verse: verse)
+        let navigation = ASNavigationController(rootViewController: bibleScreen)
+        
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        
+        SwiftEntryKit.display(entry: navigation, using: Animation.modalAnimationAttributes(widthRatio: 0.9, heightRatio: 0.8, backgroundColor: Preferences.currentTheme().backgroundColor))
+    }
+}
