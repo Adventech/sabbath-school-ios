@@ -21,34 +21,31 @@
  */
 
 import SwiftUI
+import Kingfisher
 
-struct DevotionalDocument: View {
+struct ImageNodeV4: View {
     
-    @ObservedObject var viewModel: SSPMDocumentViewModel = SSPMDocumentViewModel(id: 0)
-    var didTapLink: (([BibleVerses], String) -> Void)?
+    let block: Block.Image
     
     var body: some View {
-        List {
-            if let title = viewModel.document?.title {
-                DocumentHeadNodeV4(title: title, subtitle: viewModel.document?.subtitle)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-            }
-            
-            ForEach(viewModel.blocks) { blockViewModel in
-                DevotionalDocumentViewV4(block: blockViewModel.block, didTapLink: didTapLink)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-            }
+        VStack {
+            KFImage(block.src)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(4)
+            Text(AppStyle.Markdown.Text.Image.caption(string: block.caption ?? ""))
+                .frame(maxWidth: .infinity ,alignment: .leading)
         }
-        .environment(\.defaultMinListRowHeight, 0)
-        .listStyle(.plain)
-        
     }
 }
 
-struct DevotionalDocument_Previews: PreviewProvider {
+struct ImageNodeV4_Previews: PreviewProvider {
     static var previews: some View {
-        DevotionalDocument()
+        let image = Block.Image(type: "image",
+                                src: URL(string: "https://manna.amazingfacts.org/amazingfacts/website/medialibrary/images/collections/Sabbath-school-study-hour-large.jpg")!,
+                                caption: "teste",
+                                style: nil)
+        
+        ImageNodeV4(block: image)
     }
 }
