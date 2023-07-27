@@ -29,6 +29,7 @@ class DevotionalDocumentControllerV4: UIViewController {
 
     private var document: SSPMDocument?
     private let devotionalInteractor = DevotionalInteractor()
+    private let devotionalPresenter = DevotionalPresenter()
     private let index: String
     
     let hosting = UIHostingController(rootView: DevotionalDocument())
@@ -64,6 +65,10 @@ class DevotionalDocumentControllerV4: UIViewController {
     private func bindUI() {
         self.hosting.rootView.didTapLink = { bibleVerses, link in
             self.didClickBible(bibleVerses: bibleVerses, verse: link)
+        }
+        
+        self.hosting.rootView.didClickReference = { scope, index in
+            self.didClickReference(scope: scope, index: index)
         }
     }
 }
@@ -110,5 +115,14 @@ private extension DevotionalDocumentControllerV4 {
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         
         SwiftEntryKit.display(entry: navigation, using: Animation.modalAnimationAttributes(widthRatio: 0.9, heightRatio: 0.8, backgroundColor: Preferences.currentTheme().backgroundColor))
+    }
+    
+    func didClickReference(scope: Block.ReferenceScope, index: String) {
+        switch scope {
+        case .document:
+            self.devotionalPresenter.presentDevotionalDocument(source: self, index: index)
+        case .resource:
+            self.devotionalPresenter.presentDevotionalDetail(source: self, index: index)
+        }
     }
 }

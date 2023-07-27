@@ -26,6 +26,7 @@ struct DevotionalDocument: View {
     
     @ObservedObject var viewModel: SSPMDocumentViewModel = SSPMDocumentViewModel(id: 0)
     var didTapLink: (([BibleVerses], String) -> Void)?
+    var didClickReference: ((Block.ReferenceScope, String) -> Void)?
     
     var body: some View {
         List {
@@ -36,7 +37,7 @@ struct DevotionalDocument: View {
             }
             
             ForEach(viewModel.blocks) { blockViewModel in
-                DevotionalDocumentViewV4(block: blockViewModel.block, didTapLink: didTapLink)
+                DevotionalDocumentViewV4(block: blockViewModel.block, didTapLink: didTapLink, didClickReference: didClickReference)
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
