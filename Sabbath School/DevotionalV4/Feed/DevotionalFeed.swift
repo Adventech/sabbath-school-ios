@@ -35,6 +35,7 @@ struct DevotionalFeed: View {
                 case .resource(let resource):
                     if resource.view == .book {
                         DevotionalFeedBookViewV4(resource: resource, inline: false, didTapResource: didTapResource)
+                            .listRowInsets(.init(top: 16, leading: 16, bottom: 16, trailing: 16))
                     } else {
                         DevotionalFeedTileViewV4(resource: resource, didTapResource: didTapResource)
                     }

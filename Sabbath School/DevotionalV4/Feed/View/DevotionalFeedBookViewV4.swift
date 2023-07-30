@@ -34,7 +34,7 @@ struct DevotionalFeedBookViewV4: View {
             KFImage(resource.cover)
                 .resizable()
                 .scaledToFill()
-                .frame(maxWidth: 90, maxHeight: 90 * 1.5)
+                .frame(width: 100, height: 140)
                 .cornerRadius(4)
                 .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
             VStack(spacing: 8) {

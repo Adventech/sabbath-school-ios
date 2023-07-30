@@ -23,13 +23,14 @@
 import UIKit
 import SwiftUI
 
-final class DevotionalResourceControllerV4: UIViewController {
+final class DevotionalResourceControllerV4: CompositeScrollViewController {
     
     private let devotionalInteractor = DevotionalInteractor()
     private var devotionalResource: Resource?
     private let resourceIndex: String
     private let presenter = DevotionalPresenter()
     private var sectionStatus: Array<Bool> = []
+    private var yPosition: CGFloat = 0
     
     let hosting = UIHostingController(rootView: DevotionalResource())
     
@@ -49,8 +50,8 @@ final class DevotionalResourceControllerV4: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setBackButton()
         setupNavigationBar()
+        setBackButton()
         setupMainView()
         bindUI()
         
@@ -71,6 +72,19 @@ final class DevotionalResourceControllerV4: UIViewController {
         self.hosting.rootView.didTapDocument = { index in
             self.presenter.presentDevotionalDocument(source: self, index: index)
         }
+        
+        self.hosting.rootView.didScroll = { yPosition in
+            self.yPosition = yPosition
+            self.scrollBehavior()
+        }
+    }
+    
+    override var navbarTitle: String {
+        return self.devotionalResource?.title ?? ""
+    }
+    
+    override var touchpointRect: CGRect? {
+        return CGRect(x: 0, y: yPosition, width: 0 ,height: 0)
     }
 }
 

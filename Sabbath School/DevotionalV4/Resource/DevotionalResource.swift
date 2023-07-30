@@ -26,22 +26,45 @@ struct DevotionalResource: View {
     
     @ObservedObject var viewModel: DevotionalResourceViewModel = DevotionalResourceViewModel(id: 0, resource: BlockMockData.generateResource())
     var didTapDocument: ((String) -> Void)?
+    var didScroll: ((CGFloat) -> Void)?
+    
+    @State private var navBarHeight: CGFloat = 0
     
     var body: some View {
-        
-        List {
-            DevotionalResourceViewHeaderV4(resource: viewModel.resource, openButtonIndex: "", openButtonTitleText: "Read".localized(), openButtonSubtitleText: "")
+        GeometryReader { geometry in
+            List {
+                DevotionalResourceViewHeaderV4(resource: viewModel.resource,
+                                               openButtonIndex: "",
+                                               openButtonTitleText: "Read".localized(),
+                                               openButtonSubtitleText: "")
                 .listRowInsets(EdgeInsets())
-            
-            ForEach(viewModel.sections) { section in
-                DevotionalResourceSectionViewV4(colapsedSection: viewModel.resource.kind == .devotional, section: section, didTapDocument: didTapDocument)
-                .listRowInsets(EdgeInsets())
-                .listRowSeparator(.hidden)
+                .transformAnchorPreference(key: SSKey.self, value: .bounds) {
+                    $0.append(SSFrame(id: "DevotionalResourceViewHeaderV4", frame: geometry[$1]))
+                }
+                .onPreferenceChange(SSKey.self) {
+                    didScroll(keyValue: $0)
+                }
+                
+                ForEach(viewModel.sections) { section in
+                    DevotionalResourceSectionViewV4(colapsedSection: viewModel.resource.kind == .devotional, section: section, didTapDocument: didTapDocument)
+                        .listRowInsets(EdgeInsets())
+                        .listRowSeparator(.hidden)
+                }
             }
+            .environment(\.defaultMinListRowHeight, 0)
+            .listStyle(.plain)
+            .ignoresSafeArea(edges: .top)
         }
-        .environment(\.defaultMinListRowHeight, 0)
-        .listStyle(.plain)
-        .ignoresSafeArea(edges: .top)
+    }
+    
+    private func didScroll(keyValue: SSKey.Value) {
+        let positionY = keyValue[0].frame.origin.y
+        
+        if navBarHeight == 0 {
+            navBarHeight = positionY
+        }
+        
+        didScroll?(positionY + (UIScreen.main.bounds.height / 1.7) - abs(navBarHeight))
     }
 }
 
