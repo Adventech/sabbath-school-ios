@@ -31,12 +31,16 @@ struct DevotionalResource: View {
     @State private var navBarHeight: CGFloat = 0
     
     var body: some View {
+        
+        let headerData = getHeaderData()
+        
         GeometryReader { geometry in
             List {
                 DevotionalResourceViewHeaderV4(resource: viewModel.resource,
-                                               openButtonIndex: "",
-                                               openButtonTitleText: "Read".localized(),
-                                               openButtonSubtitleText: "")
+                                               openButtonIndex: headerData.openButtonIndex,
+                                               openButtonTitleText: headerData.openButtonTitleText,
+                                               openButtonSubtitleText: headerData.openButtonSubtitleText,
+                                               didTapDocument: didTapDocument)
                 .listRowInsets(EdgeInsets())
                 .transformAnchorPreference(key: SSKey.self, value: .bounds) {
                     $0.append(SSFrame(id: "DevotionalResourceViewHeaderV4", frame: geometry[$1]))
@@ -65,6 +69,30 @@ struct DevotionalResource: View {
         }
         
         didScroll?(positionY + (UIScreen.main.bounds.height / 1.7) - abs(navBarHeight))
+    }
+    
+    private func getHeaderData() -> (openButtonIndex: String, openButtonTitleText: String, openButtonSubtitleText: String) {
+        
+        let today = Date()
+        var openButtonIndex = viewModel.sections[safe: 0]?.documents[safe: 0]?.index ?? ""
+        var openButtonTitleText = "Read".localized()
+        var openButtonSubtitleText = ""
+        
+        let flatDocuments = viewModel.sections.map({ (document) -> [SSPMDocument] in
+            return document.documents
+        }).flatMap({ $0 })
+        
+        if let a = flatDocuments.first(where: {
+            $0.date?.day == Calendar.current.component(.day, from: today) &&
+            $0.date?.month == Calendar.current.component(.month, from: today) &&
+            $0.date?.year == Calendar.current.component(.year, from: today)
+        }) {
+            
+            openButtonIndex = a.index
+            openButtonTitleText = a.title
+            openButtonSubtitleText = a.subtitle ?? ""        }
+        
+        return (openButtonIndex, openButtonTitleText, openButtonSubtitleText)
     }
 }
 
