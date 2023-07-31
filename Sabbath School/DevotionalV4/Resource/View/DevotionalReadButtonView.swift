@@ -48,7 +48,7 @@ struct DevotionalReadButtonView: View {
             .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
             Spacer()
         }
-        .padding(EdgeInsets(top: 0, leading: 60, bottom: 0, trailing: 60))
+        .frame(width: UIScreen.main.bounds.width * 0.75)
     }
 }
 
