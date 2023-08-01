@@ -39,7 +39,7 @@ struct DevotionalResourceDocumentViewV4: View {
                 .frame(maxWidth: .infinity ,alignment: .leading)
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             
-            Spacer(minLength: 8)
+            Spacer(minLength: 0)
             Divider()
                 .background(
                     Color(AppStyle.Base.Color.tableSeparator)
