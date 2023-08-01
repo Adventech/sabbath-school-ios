@@ -31,7 +31,7 @@ struct DevotionalResourceSectionViewV4: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
             if let title = section.title {
                 DevotionalResourceSectionHeaderViewV4(colapsedSection: colapsedSection, sectionTitle: title, didTap: {
                     isCollapsed = !isCollapsed

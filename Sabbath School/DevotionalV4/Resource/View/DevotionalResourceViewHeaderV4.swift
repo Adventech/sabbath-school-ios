@@ -29,10 +29,11 @@ struct DevotionalResourceViewHeaderV4: View {
     let openButtonIndex: String
     let openButtonTitleText: String
     let openButtonSubtitleText: String?
+    var didTapDocument: ((String) -> Void)?
     
     var body: some View {
         KFImage(resource.splash)
-            .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / 1.7)
+            .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / 1.5)
             .cornerRadius(4)
             .overlay {
                 VStack(spacing: 20) {
@@ -41,7 +42,7 @@ struct DevotionalResourceViewHeaderV4: View {
                         KFImage(resource.cover)
                             .resizable()
                             .scaledToFill()
-                            .frame(maxWidth: 90, maxHeight: 90 * 1.5)
+                            .frame(width: 150, height: 225)
                             .cornerRadius(4)
                             .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
                     }
@@ -49,11 +50,13 @@ struct DevotionalResourceViewHeaderV4: View {
                     Text(AppStyle.Devo.Text.resourceDetailSubtitleForColor(string: resource.subtitle ?? "", textColor: UIColor(hex: resource.textColor)
                         .withAlphaComponent(0.7))).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                     
-                    DevotionalReadButtonView(openButtonTitleText: openButtonTitleText)
+                    DevotionalReadButtonView(openButtonTitleText: openButtonTitleText).onTapGesture {
+                        didTapDocument?(openButtonIndex)
+                    }
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 .padding(
-                    EdgeInsets(top: 80, leading: 0, bottom: 40, trailing: 0)
+                    EdgeInsets(top: 70, leading: 0, bottom: 40, trailing: 0)
                 )
                 .background(
                     Color(uiColor: resource.cover != nil ? UIColor(hex: resource.primaryColor) : .clear)
