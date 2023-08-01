@@ -27,7 +27,7 @@ struct ListNodeV4: View {
     let block: Block.List
     
     var body: some View {
-        VStack {
+        VStack(spacing: 5) {
             ForEach(Array((block.items ?? []).enumerated()), id: \.offset) { index, itemBlock in
                 switch itemBlock {
                 case .listItem(let listItem):
@@ -36,17 +36,21 @@ struct ListNodeV4: View {
                        ordered {
                         Text(AppStyle.Markdown.Text.listBullet(string: "\(index + start). " + listItem.markdown, ordered: block.ordered ?? false))
                             .frame(maxWidth: .infinity ,alignment: .leading)
+                            .environment(\.lineSpacing, 3)
                     } else {
                         switch block.depth {
                         case 1:
                             Text(AppStyle.Markdown.Text.listBullet(string: "● " + listItem.markdown, ordered: block.ordered ?? false))
                                 .frame(maxWidth: .infinity ,alignment: .leading)
+                                .environment(\.lineSpacing, 3)
                         case 2:
                             Text(AppStyle.Markdown.Text.listBullet(string: "○ " + listItem.markdown, ordered: block.ordered ?? false))
                                 .frame(maxWidth: .infinity ,alignment: .leading)
+                                .environment(\.lineSpacing, 3)
                         default:
                             Text(AppStyle.Markdown.Text.listBullet(string: "◆ " + listItem.markdown, ordered: block.ordered ?? false))
                                 .frame(maxWidth: .infinity ,alignment: .leading)
+                                .environment(\.lineSpacing, 3)
                         }
                     }
                 default:
