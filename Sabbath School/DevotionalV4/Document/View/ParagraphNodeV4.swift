@@ -31,7 +31,10 @@ struct ParagraphNodeV4: View {
     
     var body: some View {
         VStack {
-            TextNodeV4(bibleVerses: block.data?.bible ?? [], text: block.markdown, didTapLink: didTapLink)
+            TextNodeV4(font: R.font.latoMedium(size: 19)!,
+                       bibleVerses: block.data?.bible ?? [],
+                       text: block.markdown,
+                       didTapLink: didTapLink)
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
         }
     }
