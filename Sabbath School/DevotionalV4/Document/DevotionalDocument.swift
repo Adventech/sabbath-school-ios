@@ -27,24 +27,44 @@ struct DevotionalDocument: View {
     @ObservedObject var viewModel: SSPMDocumentViewModel = SSPMDocumentViewModel(id: 0)
     var didTapLink: (([BibleVerses], String) -> Void)?
     var didClickReference: ((Block.ReferenceScope, String) -> Void)?
+    var didScroll: ((CGFloat) -> Void)?
+    
+    @State private var navBarHeight: CGFloat = 0
     
     var body: some View {
-        List {
-            if let title = viewModel.document?.title {
-                DocumentHeadNodeV4(title: title, subtitle: viewModel.document?.subtitle)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+        GeometryReader { geometry in
+            List {
+                if let title = viewModel.document?.title {
+                    DocumentHeadNodeV4(title: title, subtitle: viewModel.document?.subtitle)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(.init(top: 0, leading: 16, bottom: 0, trailing: 16))
+                        .transformAnchorPreference(key: SSKey.self, value: .bounds) {
+                            $0.append(SSFrame(id: "DocumentHeadNodeV4", frame: geometry[$1]))
+                        }
+                        .onPreferenceChange(SSKey.self) {
+                            didScroll(keyValue: $0)
+                        }
+                }
+                
+                ForEach(viewModel.blocks) { blockViewModel in
+                    DevotionalDocumentViewV4(block: blockViewModel.block, didTapLink: didTapLink, didClickReference: didClickReference)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                }
             }
-            
-            ForEach(viewModel.blocks) { blockViewModel in
-                DevotionalDocumentViewV4(block: blockViewModel.block, didTapLink: didTapLink, didClickReference: didClickReference)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-            }
+            .environment(\.defaultMinListRowHeight, 0)
+            .listStyle(.plain)
         }
-        .environment(\.defaultMinListRowHeight, 0)
-        .listStyle(.plain)
+    }
+    
+    private func didScroll(keyValue: SSKey.Value) {
+        let positionY = keyValue[0].frame.origin.y
         
+        if navBarHeight == 0 {
+            navBarHeight = positionY
+        }
+        
+        didScroll?(positionY + 150 - abs(navBarHeight))
     }
 }
 
