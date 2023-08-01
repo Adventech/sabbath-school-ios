@@ -26,29 +26,35 @@ struct DevotionalDocumentViewV4: View {
     
     let block: Block
     var didTapLink: (([BibleVerses], String) -> Void)?
+    var didClickReference: ((Block.ReferenceScope, String) -> Void)?
     
     var body: some View {
         switch block {
         case .paragraph(let paragraph):
             ParagraphNodeV4(block: paragraph, didTapLink: didTapLink)
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         case .heading(let heading):
             HeadingNodeV4(block: heading)
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         case .list(let list):
             ListNodeV4(block: list)
+                .padding(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
         case .listItem(let listItem):
             DocumentHeadNodeV4(title: "Item errado", subtitle: "Item errado")
         case .hr(let hr):
             HorizontalLineNodeV4()
         case .reference(let reference):
-            ReferenceNodeV4()
+            ReferenceNodeV4(block: reference)
         case .question(let question):
             QuestionNodeV4()
         case .blockquote(let blockquote):
-            BlockquoteNodeV4()
+            BlockquoteNodeV4(block: blockquote)
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         case .collapse(let collapse):
             CollapseNodeV4()
         case .image(let image):
-            ImageNodeV4()
+            ImageNodeV4(block: image)
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         default:
             DocumentHeadNodeV4(title: "Item errado", subtitle: "Item errado")
         }
