@@ -59,6 +59,7 @@ struct DevotionalResource: View {
             .listStyle(.plain)
             .ignoresSafeArea(edges: .top)
         }
+        .ignoresSafeArea(edges: .top)
     }
     
     private func didScroll(keyValue: SSKey.Value) {
@@ -71,26 +72,40 @@ struct DevotionalResource: View {
         didScroll?(positionY + (UIScreen.main.bounds.height / 1.7) - abs(navBarHeight))
     }
     
-    private func getHeaderData() -> (openButtonIndex: String, openButtonTitleText: String, openButtonSubtitleText: String) {
+    private func getHeaderData() -> (openButtonIndex: String, openButtonTitleText: String, openButtonSubtitleText: String?) {
         
-        let today = Date()
         var openButtonIndex = viewModel.sections[safe: 0]?.documents[safe: 0]?.index ?? ""
         var openButtonTitleText = "Read".localized()
-        var openButtonSubtitleText = ""
+        var openButtonSubtitleText:String? = nil
         
-        let flatDocuments = viewModel.sections.map({ (document) -> [SSPMDocument] in
-            return document.documents
-        }).flatMap({ $0 })
-        
-        if let a = flatDocuments.first(where: {
-            $0.date?.day == Calendar.current.component(.day, from: today) &&
-            $0.date?.month == Calendar.current.component(.month, from: today) &&
-            $0.date?.year == Calendar.current.component(.year, from: today)
-        }) {
-            
-            openButtonIndex = a.index
-            openButtonTitleText = a.title
-            openButtonSubtitleText = a.subtitle ?? ""        }
+        if self.viewModel.resource.kind == .devotional {
+            let today = Date()
+
+            let flatDocuments = viewModel.sections.map({ (document) -> [SSPMDocument] in
+                return document.documents
+            }).flatMap({ $0 })
+
+            for currentDocument in flatDocuments {
+                if let date = currentDocument.date {
+                  if today >= date {
+                      openButtonIndex = currentDocument.index
+                      openButtonTitleText = currentDocument.title
+                      openButtonSubtitleText = currentDocument.subtitle
+                  } else { break }
+                }
+            }
+
+            if let a = flatDocuments.first(where: {
+                $0.date?.day == Calendar.current.component(.day, from: today) &&
+                $0.date?.month == Calendar.current.component(.month, from: today) &&
+                $0.date?.year == Calendar.current.component(.year, from: today)
+            }) {
+
+                openButtonIndex = a.index
+                openButtonTitleText = a.title
+                openButtonSubtitleText = a.subtitle
+            }
+        }
         
         return (openButtonIndex, openButtonTitleText, openButtonSubtitleText)
     }
