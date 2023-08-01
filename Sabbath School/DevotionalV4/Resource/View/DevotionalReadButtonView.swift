@@ -25,6 +25,7 @@ import SwiftUI
 struct DevotionalReadButtonView: View {
     
     let openButtonTitleText: String
+    let openButtonSubtitleText: String?
     
     var body: some View {
         HStack {
@@ -34,7 +35,14 @@ struct DevotionalReadButtonView: View {
                 
             }, label: {
                 HStack {
-                    Text(AppStyle.Devo.Text.openButtonTitle(string: openButtonTitleText))
+                    VStack(spacing: 6) {
+                        if let openButtonSubtitleText, !openButtonSubtitleText.isEmpty {
+                            Text(AppStyle.Devo.Text.openButtonSubtitle(string: openButtonSubtitleText.uppercased()))
+                        }
+                        
+                        Text(AppStyle.Devo.Text.openButtonTitle(string: openButtonTitleText))
+                    }
+                    
                     Spacer(minLength: 80)
                     Image(uiImage: R.image.iconMore()!.fillAlpha(fillColor: AppStyle.Quarterly.Color.seeAllIcon))
                 }
@@ -54,6 +62,6 @@ struct DevotionalReadButtonView: View {
 
 struct DevotionalReadButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        DevotionalReadButtonView(openButtonTitleText: "Ler")
+        DevotionalReadButtonView(openButtonTitleText: "Ler", openButtonSubtitleText: nil)
     }
 }
