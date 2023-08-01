@@ -28,18 +28,18 @@ struct DevotionalResourceDocumentViewV4: View {
     var didTapDocument: ((String) -> Void)?
     
     var body: some View {
-        VStack(spacing: 6) {
+        VStack(spacing: 8) {
             if let subtitle = document.subtitle, !subtitle.isEmpty {
                 Text(AppStyle.Devo.Text.resourceDetailDocumentSubtitle(string: document.subtitle?.uppercased() ?? ""))
                     .frame(maxWidth: .infinity ,alignment: .leading)
-                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 18))
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             }
             
             Text(AppStyle.Devo.Text.resourceDetailDocumentTitle(string: document.title))
                 .frame(maxWidth: .infinity ,alignment: .leading)
-                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
+                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             
-            Spacer(minLength: 9)
+            Spacer(minLength: 8)
             Divider()
                 .background(
                     Color(AppStyle.Base.Color.tableSeparator)
