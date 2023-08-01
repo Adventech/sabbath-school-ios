@@ -25,12 +25,13 @@ import SwiftUI
 import SwiftEntryKit
 import AsyncDisplayKit
 
-class DevotionalDocumentControllerV4: UIViewController {
+class DevotionalDocumentControllerV4: CompositeScrollViewController {
 
     private var document: SSPMDocument?
     private let devotionalInteractor = DevotionalInteractor()
     private let devotionalPresenter = DevotionalPresenter()
     private let index: String
+    private var yPosition: CGFloat = 0
     
     let hosting = UIHostingController(rootView: DevotionalDocument())
     
@@ -45,15 +46,12 @@ class DevotionalDocumentControllerV4: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setBackButton()
-        setupNavigationBar()
+        
         setupMainView()
         bindUI()
         
         self.devotionalInteractor.retrieveDocument(index: index) { resourceDocument in
             self.document = resourceDocument
-            self.title = resourceDocument.title
             
             self.hosting.rootView.viewModel.document = self.document
             for (index, block) in (self.document?.blocks ?? []).enumerated() {
@@ -70,6 +68,23 @@ class DevotionalDocumentControllerV4: UIViewController {
         self.hosting.rootView.didClickReference = { scope, index in
             self.didClickReference(scope: scope, index: index)
         }
+        
+        self.hosting.rootView.didScroll = { yPosition in
+            self.yPosition = yPosition
+            self.scrollBehavior()
+        }
+    }
+    
+    override var tintColors: (fromColor: UIColor, toColor: UIColor) {
+        return (AppStyle.Base.Color.navigationTint, AppStyle.Base.Color.navigationTint)
+    }
+    
+    override var navbarTitle: String {
+        return self.document?.title ?? ""
+    }
+    
+    override var touchpointRect: CGRect? {
+        return CGRect(x: 0, y: yPosition, width: 0 ,height: 0)
     }
 }
 
@@ -90,18 +105,6 @@ private extension DevotionalDocumentControllerV4 {
             hosting.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             hosting.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
         ])
-    }
-    
-    func setupNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = false
-        setNavigationBarOpacity(alpha: 0)
-
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppStyle.Base.Color.navigationTitle]
-
-        UINavigationBar.appearance().largeTitleTextAttributes = [
-            .foregroundColor: AppStyle.Base.Color.navigationTitle,
-            .font: R.font.latoBlack(size: 36)!
-        ]
     }
 }
 
