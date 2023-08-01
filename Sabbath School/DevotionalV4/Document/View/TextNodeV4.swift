@@ -34,6 +34,7 @@ struct TextNodeV4: View {
         Text(markdown)
             .environment(\.openURL, OpenURLAction(handler: handleURL))
             .environment(\.font, Font(R.font.latoMedium(size: 19)!))
+            .environment(\.lineSpacing, 3)
             .accentColor(Color(uiColor: UIColor.baseBlue))
             .foregroundColor(
                 Color(uiColor: AppStyle.Quarterly.Color.introduction)
