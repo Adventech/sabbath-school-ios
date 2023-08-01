@@ -42,7 +42,7 @@ struct ImageNodeV4: View {
 struct ImageNodeV4_Previews: PreviewProvider {
     static var previews: some View {
         let image = Block.Image(type: "image",
-                                src: URL(string: "https://manna.amazingfacts.org/amazingfacts/website/medialibrary/images/collections/Sabbath-school-study-hour-large.jpg")!,
+                                src: URL(string: "https://sabbath-school.adventech.io/api/v2/en/study/assets/img/rr-cover.png")!,
                                 caption: "teste",
                                 style: nil)
         
