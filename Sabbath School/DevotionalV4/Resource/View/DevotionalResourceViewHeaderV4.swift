@@ -33,7 +33,7 @@ struct DevotionalResourceViewHeaderV4: View {
     
     var body: some View {
         KFImage(resource.splash)
-            .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / 1.5)
+            .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / (resource.cover != nil ? 1.5:1.7))
             .cornerRadius(4)
             .overlay {
                 VStack(spacing: 20) {
@@ -50,9 +50,10 @@ struct DevotionalResourceViewHeaderV4: View {
                     Text(AppStyle.Devo.Text.resourceDetailSubtitleForColor(string: resource.subtitle ?? "", textColor: UIColor(hex: resource.textColor)
                         .withAlphaComponent(0.7))).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                     
-                    DevotionalReadButtonView(openButtonTitleText: openButtonTitleText).onTapGesture {
-                        didTapDocument?(openButtonIndex)
-                    }
+                    DevotionalReadButtonView(openButtonTitleText: openButtonTitleText, openButtonSubtitleText: openButtonSubtitleText)
+                        .onTapGesture {
+                            didTapDocument?(openButtonIndex)
+                        }
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 .padding(
