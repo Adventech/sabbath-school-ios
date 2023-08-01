@@ -25,6 +25,7 @@ import SwiftUI
 
 struct TextNodeV4: View {
     
+    let font: UIFont
     let bibleVerses: [BibleVerses]
     let text: String
     var didTapLink: (([BibleVerses], String) -> Void)?
@@ -33,12 +34,13 @@ struct TextNodeV4: View {
         let markdown = try! AttributedString(markdown: text, options: .init(allowsExtendedAttributes: true))
         Text(markdown)
             .environment(\.openURL, OpenURLAction(handler: handleURL))
-            .environment(\.font, Font(R.font.latoMedium(size: 19)!))
+            .environment(\.font, Font(font))
             .environment(\.lineSpacing, 3)
             .accentColor(Color(uiColor: UIColor.baseBlue))
             .foregroundColor(
                 Color(uiColor: AppStyle.Quarterly.Color.introduction)
             )
+            .frame(maxWidth: .infinity ,alignment: .leading)
     }
     
     func handleURL(_ url: URL) -> OpenURLAction.Result {
@@ -53,6 +55,6 @@ struct TextNodeV4: View {
 
 struct TextNodeV4_Previews: PreviewProvider {
     static var previews: some View {
-        TextNodeV4(bibleVerses: [], text: "A disciple is not above his teacher, but everyone who is perfectly trained will be like his teacher” ([Luke 6:40](sspmBible://Luke640)). This one short statement outlines the object of the Christian life. The goal of every true disciple is to be like Jesus.")
+        TextNodeV4(font: R.font.latoMedium(size: 19)!, bibleVerses: [], text: "A disciple is not above his teacher, but everyone who is perfectly trained will be like his teacher” ([Luke 6:40](sspmBible://Luke640)). This one short statement outlines the object of the Christian life. The goal of every true disciple is to be like Jesus.")
     }
 }
