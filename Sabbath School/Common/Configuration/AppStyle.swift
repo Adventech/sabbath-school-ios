@@ -1061,6 +1061,15 @@ struct AppStyle {
                 return NSAttributedString(string: string.uppercased(), attributes: attributes)
             }
             
+            static func openButtonSubtitle(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = UIColor.baseGray2
+                container.font = R.font.latoRegular(size: 14)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
             static func resourceGroupName(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .font: R.font.latoBold(size: 13)!,
@@ -1231,6 +1240,24 @@ struct AppStyle {
                     ]
                     return NSAttributedString(string: string, attributes: attributes)
                 }
+                
+                static func title(string: String) -> AttributedString {
+                    var container = AttributeContainer()
+                    container.foregroundColor = .black | .white
+                    container.font = R.font.latoBlack(size: 28)!
+
+                    let attributedString = AttributedString(string, attributes: container)
+                    return attributedString
+                }
+                
+                static func subtitle(string: String) -> AttributedString {
+                    var container = AttributeContainer()
+                    container.foregroundColor = UIColor.baseGray2
+                    container.font = R.font.latoRegular(size: 13)!
+
+                    let attributedString = AttributedString(string, attributes: container)
+                    return attributedString
+                }
             }
 
             struct Reference {
@@ -1241,6 +1268,15 @@ struct AppStyle {
                     ]
                     return NSAttributedString(string: string, attributes: attributes)
                 }
+                
+                static func title(string: String) -> AttributedString {
+                    var container = AttributeContainer()
+                    container.foregroundColor = .black | .white
+                    container.font = R.font.latoMedium(size: 16)!
+
+                    let attributedString = AttributedString(string, attributes: container)
+                    return attributedString
+                }
 
                 static func subtitle(string: String) -> NSAttributedString {
                     let attributes: [NSAttributedString.Key: Any] = [
@@ -1248,6 +1284,15 @@ struct AppStyle {
                         .font: R.font.latoRegular(size: 14)!
                     ]
                     return NSAttributedString(string: string, attributes: attributes)
+                }
+                
+                static func subtitle(string: String) -> AttributedString {
+                    var container = AttributeContainer()
+                    container.foregroundColor = UIColor.baseGray2
+                    container.font = R.font.latoRegular(size: 14)!
+
+                    let attributedString = AttributedString(string, attributes: container)
+                    return attributedString
                 }
             }
             
@@ -1259,12 +1304,31 @@ struct AppStyle {
                     ]
                     return NSAttributedString(string: string, attributes: attributes)
                 }
+                
+                static func memoryText(string: String) -> AttributedString {
+                    var container = AttributeContainer()
+                    container.foregroundColor = .black | .white
+                    container.font = R.font.latoBold(size: 17)!
+
+                    let attributedString = AttributedString(string, attributes: container)
+                    return attributedString
+                }
+                
                 static func citation(string: String) -> NSAttributedString {
                     let attributes: [NSAttributedString.Key: Any] = [
                         .foregroundColor: .black | .white,
                         .font: R.font.latoItalic(size: 14)!
                     ]
                     return NSAttributedString(string: string, attributes: attributes)
+                }
+                
+                static func citation(string: String) -> AttributedString {
+                    var container = AttributeContainer()
+                    container.foregroundColor = .black | .white
+                    container.font = R.font.latoItalic(size: 14)!
+
+                    let attributedString = AttributedString(string, attributes: container)
+                    return attributedString
                 }
             }
             
@@ -1275,6 +1339,15 @@ struct AppStyle {
                         .font: R.font.latoItalic(size: 14)!
                     ]
                     return NSAttributedString(string: string, attributes: attributes)
+                }
+                
+                static func caption(string: String) -> AttributedString {
+                    var container = AttributeContainer()
+                    container.foregroundColor = UIColor.baseGray2
+                    container.font = R.font.latoItalic(size: 14)!
+
+                    let attributedString = AttributedString(string, attributes: container)
+                    return attributedString
                 }
             }
             
@@ -1308,6 +1381,15 @@ struct AppStyle {
                     .font: R.font.latoMedium(size: ordered ? 18 : 13)!
                 ]
                 return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func listBullet(string: String, ordered: Bool = false) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = .black | .white
+                container.font = R.font.latoMedium(size: ordered ? 18 : 13)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
             }
             
             static func heading(string: String, depth: Int) -> NSAttributedString {
@@ -1344,6 +1426,41 @@ struct AppStyle {
                 ]
 
                 return NSAttributedString(string: string, attributes: attributes)
+            }
+            
+            static func heading(string: String, depth: Int) -> AttributedString {
+                let style = NSMutableParagraphStyle()
+                
+                // TODO: get options for local overrides
+                style.alignment = .left
+                
+                // TODO: implement app / document level overrides
+                
+                var fontSize: Int
+                
+                switch depth {
+                case 1:
+                    fontSize = 26
+                case 2:
+                    fontSize = 24
+                case 3:
+                    fontSize = 23
+                case 4:
+                    fontSize = 22
+                case 5:
+                    fontSize = 21
+                case 6:
+                    fontSize = 20
+                default:
+                    fontSize = 20
+                }
+
+                var container = AttributeContainer()
+                container.foregroundColor = .black | .white
+                container.font = R.font.latoBlack(size: CGFloat(fontSize))!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
             }
         }
         
