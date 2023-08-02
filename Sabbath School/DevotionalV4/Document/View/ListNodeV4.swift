@@ -25,6 +25,8 @@ import SwiftUI
 struct ListNodeV4: View {
     
     let block: Block.List
+    var didTapLink: (([BibleVerses], String) -> Void)?
+    var didClickReference: ((Block.ReferenceScope, String) -> Void)?
     
     var body: some View {
         VStack(spacing: 5) {
@@ -34,27 +36,12 @@ struct ListNodeV4: View {
                     if let ordered = block.ordered,
                        let start = block.start,
                        ordered {
-                        Text(AppStyle.Markdown.Text.listBullet(string: "\(index + start). " + listItem.markdown, ordered: block.ordered ?? false))
-                            .frame(maxWidth: .infinity ,alignment: .leading)
-                            .environment(\.lineSpacing, 3)
+                        ListItemNodeV4(block: listItem, index: index + start)
                     } else {
-                        switch block.depth {
-                        case 1:
-                            Text(AppStyle.Markdown.Text.listBullet(string: "● " + listItem.markdown, ordered: block.ordered ?? false))
-                                .frame(maxWidth: .infinity ,alignment: .leading)
-                                .environment(\.lineSpacing, 3)
-                        case 2:
-                            Text(AppStyle.Markdown.Text.listBullet(string: "○ " + listItem.markdown, ordered: block.ordered ?? false))
-                                .frame(maxWidth: .infinity ,alignment: .leading)
-                                .environment(\.lineSpacing, 3)
-                        default:
-                            Text(AppStyle.Markdown.Text.listBullet(string: "◆ " + listItem.markdown, ordered: block.ordered ?? false))
-                                .frame(maxWidth: .infinity ,alignment: .leading)
-                                .environment(\.lineSpacing, 3)
-                        }
+                        TextNodeV4(font: R.font.latoMedium(size: 13)!, bibleVerses: [], text: block.bullet + listItem.markdown)
                     }
                 default:
-                    Text("")
+                    BlockWrapperNodeV4(block: itemBlock, didTapLink: didTapLink, didClickReference: didClickReference)
                 }
             }
         }
@@ -66,7 +53,7 @@ struct ListNodeV4_Previews: PreviewProvider {
         let list = Block.List(type: "list",
                               depth: 1,
                               ordered: true,
-                              start: 1,
+                              start: 10,
                               items: [
                                 .listItem(.init(type: "list-item", markdown: "Daily personal prayer")),
                                 .listItem(.init(type: "list-item", markdown: "Daily personal study of the Bible")),
