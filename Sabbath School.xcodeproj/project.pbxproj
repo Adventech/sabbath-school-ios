@@ -132,15 +132,16 @@
 		4EAED1022A4A433A00D35DE4 /* DevotionalFeedTileViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAED1012A4A433A00D35DE4 /* DevotionalFeedTileViewV4.swift */; };
 		4ED0B8C42A47853F008A6E71 /* DevotionalFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED0B8C32A47853F008A6E71 /* DevotionalFeed.swift */; };
 		4ED0B8C62A478746008A6E71 /* DevotionalFeedControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED0B8C52A478746008A6E71 /* DevotionalFeedControllerV4.swift */; };
+		4EDBE3EA2A76F8A700D33F3A /* SSKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDBE3E92A76F8A700D33F3A /* SSKey.swift */; };
+		4EDBE3EC2A76F8E100D33F3A /* SSFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDBE3EB2A76F8E100D33F3A /* SSFrame.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		4EE8B6F5284D1FAA003C1A46 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		4EED9DD12A6751F7004609AB /* DevotionalDocumentControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DD02A6751F7004609AB /* DevotionalDocumentControllerV4.swift */; };
 		4EED9DD32A6877F7004609AB /* DevotionalDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DD22A6877F7004609AB /* DevotionalDocument.swift */; };
-		4EED9DD62A687A4C004609AB /* BlockNodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DD52A687A4C004609AB /* BlockNodeV4.swift */; };
+		4EED9DD62A687A4C004609AB /* ListItemNodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DD52A687A4C004609AB /* ListItemNodeV4.swift */; };
 		4EED9DDA2A687A8F004609AB /* BlockquoteNodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DD92A687A8F004609AB /* BlockquoteNodeV4.swift */; };
 		4EED9DDC2A687AA4004609AB /* BlockWrapperNodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DDB2A687AA4004609AB /* BlockWrapperNodeV4.swift */; };
 		4EED9DDE2A687AB6004609AB /* CollapseNodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DDD2A687AB6004609AB /* CollapseNodeV4.swift */; };
-		4EED9DE02A687AC6004609AB /* DevotionalDocumentViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DDF2A687AC6004609AB /* DevotionalDocumentViewV4.swift */; };
 		4EED9DE22A687AE0004609AB /* DocumentHeadNodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DE12A687AE0004609AB /* DocumentHeadNodeV4.swift */; };
 		4EED9DE42A687AFC004609AB /* HeadingNodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DE32A687AFC004609AB /* HeadingNodeV4.swift */; };
 		4EED9DE62A687B0E004609AB /* HorizontalLineNodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EED9DE52A687B0E004609AB /* HorizontalLineNodeV4.swift */; };
@@ -458,15 +459,16 @@
 		4EAED1012A4A433A00D35DE4 /* DevotionalFeedTileViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedTileViewV4.swift; sourceTree = "<group>"; };
 		4ED0B8C32A47853F008A6E71 /* DevotionalFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeed.swift; sourceTree = "<group>"; };
 		4ED0B8C52A478746008A6E71 /* DevotionalFeedControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedControllerV4.swift; sourceTree = "<group>"; };
+		4EDBE3E92A76F8A700D33F3A /* SSKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSKey.swift; sourceTree = "<group>"; };
+		4EDBE3EB2A76F8E100D33F3A /* SSFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFrame.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		4EED9DD02A6751F7004609AB /* DevotionalDocumentControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalDocumentControllerV4.swift; sourceTree = "<group>"; };
 		4EED9DD22A6877F7004609AB /* DevotionalDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalDocument.swift; sourceTree = "<group>"; };
-		4EED9DD52A687A4C004609AB /* BlockNodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockNodeV4.swift; sourceTree = "<group>"; };
+		4EED9DD52A687A4C004609AB /* ListItemNodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemNodeV4.swift; sourceTree = "<group>"; };
 		4EED9DD92A687A8F004609AB /* BlockquoteNodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockquoteNodeV4.swift; sourceTree = "<group>"; };
 		4EED9DDB2A687AA4004609AB /* BlockWrapperNodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockWrapperNodeV4.swift; sourceTree = "<group>"; };
 		4EED9DDD2A687AB6004609AB /* CollapseNodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapseNodeV4.swift; sourceTree = "<group>"; };
-		4EED9DDF2A687AC6004609AB /* DevotionalDocumentViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalDocumentViewV4.swift; sourceTree = "<group>"; };
 		4EED9DE12A687AE0004609AB /* DocumentHeadNodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentHeadNodeV4.swift; sourceTree = "<group>"; };
 		4EED9DE32A687AFC004609AB /* HeadingNodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingNodeV4.swift; sourceTree = "<group>"; };
 		4EED9DE52A687B0E004609AB /* HorizontalLineNodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineNodeV4.swift; sourceTree = "<group>"; };
@@ -1046,6 +1048,15 @@
 			path = DevotionalV4;
 			sourceTree = "<group>";
 		};
+		4EDBE3E82A76F88C00D33F3A /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				4EDBE3E92A76F8A700D33F3A /* SSKey.swift */,
+				4EDBE3EB2A76F8E100D33F3A /* SSFrame.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		4EED9DCF2A6751DE004609AB /* Document */ = {
 			isa = PBXGroup;
 			children = (
@@ -1059,11 +1070,10 @@
 		4EED9DD42A6879C6004609AB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4EED9DD52A687A4C004609AB /* BlockNodeV4.swift */,
+				4EED9DD52A687A4C004609AB /* ListItemNodeV4.swift */,
 				4EED9DD92A687A8F004609AB /* BlockquoteNodeV4.swift */,
 				4EED9DDB2A687AA4004609AB /* BlockWrapperNodeV4.swift */,
 				4EED9DDD2A687AB6004609AB /* CollapseNodeV4.swift */,
-				4EED9DDF2A687AC6004609AB /* DevotionalDocumentViewV4.swift */,
 				4EED9DE12A687AE0004609AB /* DocumentHeadNodeV4.swift */,
 				4EED9DE32A687AFC004609AB /* HeadingNodeV4.swift */,
 				4EED9DE52A687B0E004609AB /* HorizontalLineNodeV4.swift */,
@@ -1607,6 +1617,7 @@
 		7AC26AEA1EE5EBDE003F946C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4EDBE3E82A76F88C00D33F3A /* SwiftUI */,
 				4E88CDD82A4902DB00F6B6E4 /* ViewModels */,
 				2FC6F69327A4B43400BBC4A9 /* Account.swift */,
 				2FC6F69627A4B60D00BBC4A9 /* AccountToken.swift */,
@@ -1804,6 +1815,8 @@
 				FE1E35082673C5E300DAC2D6 /* PBXTargetDependency */,
 			);
 			name = "Sabbath School";
+			packageProductDependencies = (
+			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
 			productType = "com.apple.product-type.application";
@@ -1847,7 +1860,7 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = XVGX5G4YQ9;
 						LastSwiftMigration = 1130;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1857,7 +1870,7 @@
 					FE1E34FB2673C5DF00DAC2D6 = {
 						CreatedOnToolsVersion = 12.4;
 						DevelopmentTeam = XVGX5G4YQ9;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1916,6 +1929,8 @@
 				pt,
 			);
 			mainGroup = 7AF1919F1ED7B89B000CCF0C;
+			packageReferences = (
+			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2091,7 +2106,7 @@
 			);
 			name = R.swift;
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2185,7 +2200,7 @@
 				FE863F2A2662BD9F00ADCA36 /* Animation.swift in Sources */,
 				FE0249EA2669C2E3006BFADC /* Helper.swift in Sources */,
 				2FB91F7028FB43FB00A2DAD7 /* DevotionalFeedGroupTileView.swift in Sources */,
-				4EED9DD62A687A4C004609AB /* BlockNodeV4.swift in Sources */,
+				4EED9DD62A687A4C004609AB /* ListItemNodeV4.swift in Sources */,
 				4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */,
 				4E1768672A47B9A100060649 /* DevotionalFeedGroupBookViewV4.swift in Sources */,
 				4EED9DD32A6877F7004609AB /* DevotionalDocument.swift in Sources */,
@@ -2219,13 +2234,13 @@
 				4EED9DE22A687AE0004609AB /* DocumentHeadNodeV4.swift in Sources */,
 				2FC6F69E27A8E35C00BBC4A9 /* APICache.swift in Sources */,
 				2FB91F6E28FB43D200A2DAD7 /* DevotionalFeedGroupSmallTileView.swift in Sources */,
+				4EDBE3EC2A76F8E100D33F3A /* SSFrame.swift in Sources */,
 				7A280FDF1EDCB9A9003C7458 /* QuarterlyInteractor.swift in Sources */,
 				2FB91F6028FB429600A2DAD7 /* DevotionalFeedBookView.swift in Sources */,
 				2FB91F7928FB457800A2DAD7 /* ParagraphNode.swift in Sources */,
 				4E6FE2E128A9CB5E00566517 /* TabBarViewController.swift in Sources */,
 				FEF4B75326AF934100548E36 /* Feature.swift in Sources */,
 				4EED9DE62A687B0E004609AB /* HorizontalLineNodeV4.swift in Sources */,
-				4EED9DE02A687AC6004609AB /* DevotionalDocumentViewV4.swift in Sources */,
 				FEB149902692A63C003010E3 /* SingleGroupQuarterlyController.swift in Sources */,
 				7A2810141EDDCB1D003C7458 /* LessonProtocols.swift in Sources */,
 				FE0A0FD8264E0A4300BF945A /* GCPopupView.swift in Sources */,
@@ -2374,6 +2389,7 @@
 				4E385D142A54DE06002DB1CD /* DevotionalResourceSectionViewV4.swift in Sources */,
 				4EAED1022A4A433A00D35DE4 /* DevotionalFeedTileViewV4.swift in Sources */,
 				4E8AA26B2A55D646003064D7 /* DevotionalResourceSectionHeaderViewV4.swift in Sources */,
+				4EDBE3EA2A76F8A700D33F3A /* SSKey.swift in Sources */,
 				2F96FF7B26CFF4DE0045DC6D /* VideoCollectionItemView.swift in Sources */,
 				4E05C03028AA31E800F38FB8 /* DevotionalProtocols.swift in Sources */,
 				2F5C48F726F2AEB6002C4C83 /* PDF.swift in Sources */,
@@ -2726,8 +2742,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1007;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
@@ -2854,7 +2870,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "29d99fff-a72e-4c42-9ceb-b8c5c4176926";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3013,9 +3029,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1007;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
@@ -3043,7 +3058,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool.Widget";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -56,7 +56,7 @@ struct ResourceModel: Identifiable {
 class DevotionalResourceViewModel: Identifiable, ObservableObject {
     let id: Int
     var sections: [SSPMSectionViewModel] = []
-    var resource: Resource
+    @Published var  resource: Resource
     
     init(id: Int, resource: Resource) {
         self.id = id
@@ -68,4 +68,21 @@ struct SSPMSectionViewModel: Identifiable {
     let id: Int
     let title: String?
     let documents: [SSPMDocument]
+}
+
+
+class SSPMDocumentViewModel: Identifiable, ObservableObject {
+
+    var document: SSPMDocument?
+    @Published var blocks: [BlockViewModel] = []
+}
+
+struct BlockViewModel: Identifiable {
+    let id: Int
+    var block: Block
+    
+    init(id: Int, block: Block) {
+        self.id = id
+        self.block = block
+    }
 }

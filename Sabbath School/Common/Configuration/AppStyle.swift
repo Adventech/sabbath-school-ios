@@ -1180,8 +1180,7 @@ struct AppStyle {
                 
                 var container = AttributeContainer()
                 container.foregroundColor = textColor
-                container.font = R.font.latoBold(size: 28)!//R.font.latoBlack(size: 28)!
-//                container.para
+                container.font = R.font.latoBlack(size: 28)!
 
                 let attributedString = AttributedString(string, attributes: container)
                 return attributedString

@@ -119,19 +119,23 @@ struct SSPMSection: Codable {
     let documents: [SSPMDocument]
 }
 
-struct SSPMDocument: Codable, Hashable {
+struct SSPMDocument: Codable, Hashable, Identifiable {
+    var id: String {
+        identifier
+    }
+    
     var identifier: String {
         return UUID().uuidString
     }
-    
+
     public func hash(into hasher: inout Hasher) {
-        return hasher.combine(identifier)
+        return hasher.combine(index)
     }
-    
+
     static func == (lhs: SSPMDocument, rhs: SSPMDocument) -> Bool {
-        return lhs.title == rhs.title
+        return lhs.index == rhs.index && lhs.title == rhs.title && lhs.subtitle == rhs.subtitle && lhs.date == rhs.date && lhs.thumbnail == rhs.thumbnail
     }
-    
+
     let index: String
     let title: String
     let subtitle: String?
@@ -164,7 +168,24 @@ struct BlockStyle: Codable {
     let fullBleed: Bool?
 }
 
-enum Block: Codable {
+enum Block: Codable, Hashable, Identifiable {
+    
+    var id: String {
+        identifier
+    }
+    
+    var identifier: String {
+        return UUID().uuidString
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(identifier)
+    }
+    
+    static func == (lhs: Block, rhs: Block) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+    
     case paragraph(Paragraph)
     case heading(Heading)
     case list(Block.List)
@@ -275,8 +296,19 @@ enum Block: Codable {
         let ordered: Bool?
         let start: Int?
         let items: [Block]?
+        
+        var bullet: String {
+            switch depth {
+            case 1:
+                return "● "
+            case 2:
+                return "○ "
+            default:
+                return "◆ "
+            }
+        }
     }
-    
+
     struct ListItem: Codable {
         let type: String
         let markdown: String

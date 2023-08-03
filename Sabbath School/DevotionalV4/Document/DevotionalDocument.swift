@@ -47,7 +47,7 @@ struct DevotionalDocument: View {
                 }
                 
                 ForEach(viewModel.blocks) { blockViewModel in
-                    DevotionalDocumentViewV4(block: blockViewModel.block, didTapLink: didTapLink, didClickReference: didClickReference)
+                    BlockWrapperNodeV4(block: blockViewModel.block, didTapLink: didTapLink, didClickReference: didClickReference)
                         .listRowSeparator(.hidden)
                         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
