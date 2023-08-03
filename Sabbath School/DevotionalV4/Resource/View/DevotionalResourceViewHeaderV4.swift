@@ -33,6 +33,8 @@ struct DevotionalResourceViewHeaderV4: View {
     
     var body: some View {
         KFImage(resource.splash)
+            .resizable()
+            .scaledToFill()
             .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / (resource.cover != nil && resource.splash == nil ? 1.5:1.7))
             .cornerRadius(4)
             .overlay {
@@ -65,7 +67,13 @@ struct DevotionalResourceViewHeaderV4: View {
                     EdgeInsets(top: 70, leading: 0, bottom: 40, trailing: 0)
                 )
                 .background(
-                    Color(uiColor: resource.cover != nil && resource.splash == nil ? UIColor(hex: resource.primaryColor) : .clear)
+                    Group {
+                        if resource.splash != nil {
+                            LinearGradient(gradient: Gradient(colors: [.clear, Color(uiColor: UIColor(hex: resource.primaryColor))]), startPoint: .top, endPoint: .bottom)
+                        } else {
+                            Color(uiColor: resource.cover != nil ? UIColor(hex: resource.primaryColor) : .clear)
+                        }
+                    }
                 )
             }
     }
