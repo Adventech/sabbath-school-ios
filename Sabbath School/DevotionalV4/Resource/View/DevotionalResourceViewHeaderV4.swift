@@ -33,12 +33,12 @@ struct DevotionalResourceViewHeaderV4: View {
     
     var body: some View {
         KFImage(resource.splash)
-            .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / (resource.cover != nil ? 1.5:1.7))
+            .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / (resource.cover != nil && resource.splash == nil ? 1.5:1.7))
             .cornerRadius(4)
             .overlay {
                 VStack(spacing: 20) {
                     Spacer()
-                    if resource.cover != nil {
+                    if resource.cover != nil && resource.splash == nil {
                         KFImage(resource.cover)
                             .resizable()
                             .scaledToFill()
@@ -47,6 +47,11 @@ struct DevotionalResourceViewHeaderV4: View {
                             .shadow(color: Color(UIColor(white: 0, alpha: 0.6)), radius: 4, x: 0, y: 0)
                     }
                     Text(AppStyle.Devo.Text.resourceDetailTitleForColor(string: resource.title, textColor: UIColor(hex: resource.textColor)))
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity ,alignment: .center)
+                        .padding(
+                            EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+                        )
                     Text(AppStyle.Devo.Text.resourceDetailSubtitleForColor(string: resource.subtitle ?? "", textColor: UIColor(hex: resource.textColor)
                         .withAlphaComponent(0.7))).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                     
@@ -60,7 +65,7 @@ struct DevotionalResourceViewHeaderV4: View {
                     EdgeInsets(top: 70, leading: 0, bottom: 40, trailing: 0)
                 )
                 .background(
-                    Color(uiColor: resource.cover != nil ? UIColor(hex: resource.primaryColor) : .clear)
+                    Color(uiColor: resource.cover != nil && resource.splash == nil ? UIColor(hex: resource.primaryColor) : .clear)
                 )
             }
     }
