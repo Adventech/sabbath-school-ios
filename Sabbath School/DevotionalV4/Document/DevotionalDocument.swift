@@ -24,7 +24,7 @@ import SwiftUI
 
 struct DevotionalDocument: View {
     
-    @ObservedObject var viewModel: SSPMDocumentViewModel = SSPMDocumentViewModel(id: 0)
+    @ObservedObject var viewModel: SSPMDocumentViewModel = SSPMDocumentViewModel()
     var didTapLink: (([BibleVerses], String) -> Void)?
     var didClickReference: ((Block.ReferenceScope, String) -> Void)?
     var didScroll: ((CGFloat) -> Void)?

@@ -49,7 +49,7 @@ final class DevotionalResourceControllerV4: CompositeScrollViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupNavigationBar()
         setBackButton()
         setupMainView()
@@ -57,10 +57,10 @@ final class DevotionalResourceControllerV4: CompositeScrollViewController {
         
         self.devotionalInteractor.retrieveResource(index: resourceIndex) { resource in
             self.devotionalResource = resource
-            self.sectionStatus = Array(repeating: self.devotionalResource?.kind == .devotional ? false : true, count: self.devotionalResource?.sections?.count ?? 0)
-
+            
             self.hosting.rootView.viewModel.resource = resource
             
+            self.hosting.rootView.viewModel.sections.removeAll()
             for section in (resource.sections ?? []).enumerated() {
                 let element = SSPMSectionViewModel(id: section.offset, title: section.element.title, documents: section.element.documents)
                 self.hosting.rootView.viewModel.sections.append(element)

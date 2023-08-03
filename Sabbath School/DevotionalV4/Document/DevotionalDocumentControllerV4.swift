@@ -50,10 +50,12 @@ class DevotionalDocumentControllerV4: CompositeScrollViewController {
         setupMainView()
         bindUI()
         
-        self.devotionalInteractor.retrieveDocument(index: index) { resourceDocument in
+        self.devotionalInteractor.retrieveDocument(index: index) { [weak self] resourceDocument in
+            guard let self else { return }
             self.document = resourceDocument
             
-            self.hosting.rootView.viewModel.document = self.document
+            self.hosting.rootView.viewModel.blocks.removeAll()
+            self.hosting.rootView.viewModel.document = resourceDocument
             for (index, block) in (self.document?.blocks ?? []).enumerated() {
                 self.hosting.rootView.viewModel.blocks.append(BlockViewModel(id: index, block: block))
             }
@@ -61,15 +63,18 @@ class DevotionalDocumentControllerV4: CompositeScrollViewController {
     }
     
     private func bindUI() {
-        self.hosting.rootView.didTapLink = { bibleVerses, link in
+        self.hosting.rootView.didTapLink = { [weak self] bibleVerses, link in
+            guard let self else { return }
             self.didClickBible(bibleVerses: bibleVerses, verse: link)
         }
         
-        self.hosting.rootView.didClickReference = { scope, index in
+        self.hosting.rootView.didClickReference = { [weak self] scope, index in
+            guard let self else { return }
             self.didClickReference(scope: scope, index: index)
         }
         
-        self.hosting.rootView.didScroll = { yPosition in
+        self.hosting.rootView.didScroll = { [weak self] yPosition in
+            guard let self else { return }
             self.yPosition = yPosition
             self.scrollBehavior()
         }
