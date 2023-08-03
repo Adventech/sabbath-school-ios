@@ -59,8 +59,8 @@ struct BlockquoteNodeV4: View {
                     case .list(let list):
                         ListNodeV4(block: list)
                     case .listItem(let listItem):
-                        DocumentHeadNodeV4(title: "Item errado", subtitle: "Item errado")
-                    case .hr(let hr):
+                        ListItemNodeV4(block: listItem, index: 0)
+                    case .hr(_):
                         HorizontalLineNodeV4()
                     case .reference(let reference):
                         ReferenceNodeV4(block: reference)
@@ -69,7 +69,7 @@ struct BlockquoteNodeV4: View {
                     case .blockquote(let blockquote):
                         BlockquoteNodeV4(block: blockquote)
                     case .collapse(let collapse):
-                        CollapseNodeV4()
+                        CollapseNodeV4(block: collapse)
                     case .image(let image):
                         ImageNodeV4(block: image)
                     default:
