@@ -76,6 +76,16 @@
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
+		4EC9EB492A83BD61000E012D /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9EB482A83BD61000E012D /* DataProvider.swift */; };
+		4EC9EB4C2A83D5CE000E012D /* VideoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9EB4B2A83D5CE000E012D /* VideoListView.swift */; };
+		4EC9EB4E2A83D777000E012D /* VideoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9EB4D2A83D777000E012D /* VideoItemView.swift */; };
+		4EDDA4C62A83B8F60078B29E /* SabbathSchoolTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDA4C52A83B8F60078B29E /* SabbathSchoolTVApp.swift */; };
+		4EDDA4C82A83B8F60078B29E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDA4C72A83B8F60078B29E /* ContentView.swift */; };
+		4EDDA4CA2A83B8F70078B29E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EDDA4C92A83B8F70078B29E /* Assets.xcassets */; };
+		4EDDA4CD2A83B8F70078B29E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EDDA4CC2A83B8F70078B29E /* Preview Assets.xcassets */; };
+		4EDDA4D72A83B8F70078B29E /* SabbathSchoolTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDA4D62A83B8F70078B29E /* SabbathSchoolTVTests.swift */; };
+		4EDDA4E12A83B8F70078B29E /* SabbathSchoolTVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDA4E02A83B8F70078B29E /* SabbathSchoolTVUITests.swift */; };
+		4EDDA4E32A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDA4E22A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		4EE8B6F5284D1FAA003C1A46 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
@@ -241,6 +251,20 @@
 			remoteGlobalIDString = 7AF191A71ED7B89B000CCF0C;
 			remoteInfo = "Sabbath School";
 		};
+		4EDDA4D32A83B8F70078B29E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AF191A01ED7B89B000CCF0C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EDDA4C22A83B8F60078B29E;
+			remoteInfo = SabbathSchoolTV;
+		};
+		4EDDA4DD2A83B8F70078B29E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AF191A01ED7B89B000CCF0C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EDDA4C22A83B8F60078B29E;
+			remoteInfo = SabbathSchoolTV;
+		};
 		FE1E35072673C5E300DAC2D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7AF191A01ED7B89B000CCF0C /* Project object */;
@@ -331,6 +355,19 @@
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		4E7B09882814CA3D00687C33 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		4E7B098B2814CA8A00687C33 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
+		4EC9EB482A83BD61000E012D /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		4EC9EB4B2A83D5CE000E012D /* VideoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListView.swift; sourceTree = "<group>"; };
+		4EC9EB4D2A83D777000E012D /* VideoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemView.swift; sourceTree = "<group>"; };
+		4EDDA4C32A83B8F60078B29E /* SabbathSchoolTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SabbathSchoolTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EDDA4C52A83B8F60078B29E /* SabbathSchoolTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTVApp.swift; sourceTree = "<group>"; };
+		4EDDA4C72A83B8F60078B29E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4EDDA4C92A83B8F70078B29E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4EDDA4CC2A83B8F70078B29E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4EDDA4D22A83B8F70078B29E /* SabbathSchoolTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SabbathSchoolTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EDDA4D62A83B8F70078B29E /* SabbathSchoolTVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTVTests.swift; sourceTree = "<group>"; };
+		4EDDA4DC2A83B8F70078B29E /* SabbathSchoolTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SabbathSchoolTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EDDA4E02A83B8F70078B29E /* SabbathSchoolTVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTVUITests.swift; sourceTree = "<group>"; };
+		4EDDA4E22A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		523C8C93B698954EDD53FD14 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -581,6 +618,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4EDDA4C02A83B8F60078B29E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EDDA4CF2A83B8F70078B29E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EDDA4D92A83B8F70078B29E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7AF191A51ED7B89B000CCF0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -732,6 +790,69 @@
 				4E7B098B2814CA8A00687C33 /* Comparable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4EC9EB462A83BD2A000E012D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4EC9EB472A83BD3C000E012D /* Provider */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4EC9EB472A83BD3C000E012D /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				4EC9EB482A83BD61000E012D /* DataProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		4EC9EB4A2A83D5AD000E012D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4EC9EB4B2A83D5CE000E012D /* VideoListView.swift */,
+				4EC9EB4D2A83D777000E012D /* VideoItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4EDDA4C42A83B8F60078B29E /* SabbathSchoolTV */ = {
+			isa = PBXGroup;
+			children = (
+				4EC9EB4A2A83D5AD000E012D /* View */,
+				4EC9EB462A83BD2A000E012D /* Model */,
+				4EDDA4C52A83B8F60078B29E /* SabbathSchoolTVApp.swift */,
+				4EDDA4C72A83B8F60078B29E /* ContentView.swift */,
+				4EDDA4C92A83B8F70078B29E /* Assets.xcassets */,
+				4EDDA4CB2A83B8F70078B29E /* Preview Content */,
+			);
+			path = SabbathSchoolTV;
+			sourceTree = "<group>";
+		};
+		4EDDA4CB2A83B8F70078B29E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4EDDA4CC2A83B8F70078B29E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4EDDA4D52A83B8F70078B29E /* SabbathSchoolTVTests */ = {
+			isa = PBXGroup;
+			children = (
+				4EDDA4D62A83B8F70078B29E /* SabbathSchoolTVTests.swift */,
+			);
+			path = SabbathSchoolTVTests;
+			sourceTree = "<group>";
+		};
+		4EDDA4DF2A83B8F70078B29E /* SabbathSchoolTVUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4EDDA4E02A83B8F70078B29E /* SabbathSchoolTVUITests.swift */,
+				4EDDA4E22A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift */,
+			);
+			path = SabbathSchoolTVUITests;
 			sourceTree = "<group>";
 		};
 		7A280F701ED7CF05003C7458 /* Login */ = {
@@ -1296,6 +1417,9 @@
 				7AF191AA1ED7B89B000CCF0C /* Sabbath School */,
 				1A43D77E1EF8BABD00D6A639 /* SnapshotUITests */,
 				FE1E35012673C5DF00DAC2D6 /* Widget */,
+				4EDDA4C42A83B8F60078B29E /* SabbathSchoolTV */,
+				4EDDA4D52A83B8F70078B29E /* SabbathSchoolTVTests */,
+				4EDDA4DF2A83B8F70078B29E /* SabbathSchoolTVUITests */,
 				7AF191A91ED7B89B000CCF0C /* Products */,
 				C6B7EC586755A52E1EB59B9D /* Pods */,
 				CABEE71BDF95136D0B5A003F /* Frameworks */,
@@ -1310,6 +1434,9 @@
 				7AF191A81ED7B89B000CCF0C /* Sabbath School.app */,
 				1A43D77D1EF8BABD00D6A639 /* SnapshotUITests.xctest */,
 				FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */,
+				4EDDA4C32A83B8F60078B29E /* SabbathSchoolTV.app */,
+				4EDDA4D22A83B8F70078B29E /* SabbathSchoolTVTests.xctest */,
+				4EDDA4DC2A83B8F70078B29E /* SabbathSchoolTVUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1436,6 +1563,59 @@
 			productReference = 1A43D77D1EF8BABD00D6A639 /* SnapshotUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		4EDDA4C22A83B8F60078B29E /* SabbathSchoolTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EDDA4EA2A83B8F70078B29E /* Build configuration list for PBXNativeTarget "SabbathSchoolTV" */;
+			buildPhases = (
+				4EDDA4BF2A83B8F60078B29E /* Sources */,
+				4EDDA4C02A83B8F60078B29E /* Frameworks */,
+				4EDDA4C12A83B8F60078B29E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SabbathSchoolTV;
+			productName = SabbathSchoolTV;
+			productReference = 4EDDA4C32A83B8F60078B29E /* SabbathSchoolTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4EDDA4D12A83B8F70078B29E /* SabbathSchoolTVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EDDA4EB2A83B8F70078B29E /* Build configuration list for PBXNativeTarget "SabbathSchoolTVTests" */;
+			buildPhases = (
+				4EDDA4CE2A83B8F70078B29E /* Sources */,
+				4EDDA4CF2A83B8F70078B29E /* Frameworks */,
+				4EDDA4D02A83B8F70078B29E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4EDDA4D42A83B8F70078B29E /* PBXTargetDependency */,
+			);
+			name = SabbathSchoolTVTests;
+			productName = SabbathSchoolTVTests;
+			productReference = 4EDDA4D22A83B8F70078B29E /* SabbathSchoolTVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4EDDA4DB2A83B8F70078B29E /* SabbathSchoolTVUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EDDA4EC2A83B8F70078B29E /* Build configuration list for PBXNativeTarget "SabbathSchoolTVUITests" */;
+			buildPhases = (
+				4EDDA4D82A83B8F70078B29E /* Sources */,
+				4EDDA4D92A83B8F70078B29E /* Frameworks */,
+				4EDDA4DA2A83B8F70078B29E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4EDDA4DE2A83B8F70078B29E /* PBXTargetDependency */,
+			);
+			name = SabbathSchoolTVUITests;
+			productName = SabbathSchoolTVUITests;
+			productReference = 4EDDA4DC2A83B8F70078B29E /* SabbathSchoolTVUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		7AF191A71ED7B89B000CCF0C /* Sabbath School */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7AF191BA1ED7B89B000CCF0C /* Build configuration list for PBXNativeTarget "Sabbath School" */;
@@ -1482,7 +1662,7 @@
 		7AF191A01ED7B89B000CCF0C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Adventech;
 				TargetAttributes = {
@@ -1492,6 +1672,23 @@
 						LastSwiftMigration = 1130;
 						ProvisioningStyle = Manual;
 						TestTargetID = 7AF191A71ED7B89B000CCF0C;
+					};
+					4EDDA4C22A83B8F60078B29E = {
+						CreatedOnToolsVersion = 14.3.1;
+						DevelopmentTeam = XVGX5G4YQ9;
+						ProvisioningStyle = Automatic;
+					};
+					4EDDA4D12A83B8F70078B29E = {
+						CreatedOnToolsVersion = 14.3.1;
+						DevelopmentTeam = XVGX5G4YQ9;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4EDDA4C22A83B8F60078B29E;
+					};
+					4EDDA4DB2A83B8F70078B29E = {
+						CreatedOnToolsVersion = 14.3.1;
+						DevelopmentTeam = XVGX5G4YQ9;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4EDDA4C22A83B8F60078B29E;
 					};
 					7AF191A71ED7B89B000CCF0C = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -1573,12 +1770,38 @@
 				7AF191A71ED7B89B000CCF0C /* Sabbath School */,
 				1A43D77C1EF8BABD00D6A639 /* SnapshotUITests */,
 				FE1E34FB2673C5DF00DAC2D6 /* WidgetExtension */,
+				4EDDA4C22A83B8F60078B29E /* SabbathSchoolTV */,
+				4EDDA4D12A83B8F70078B29E /* SabbathSchoolTVTests */,
+				4EDDA4DB2A83B8F70078B29E /* SabbathSchoolTVUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1A43D77B1EF8BABD00D6A639 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EDDA4C12A83B8F60078B29E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EDDA4CD2A83B8F70078B29E /* Preview Assets.xcassets in Resources */,
+				4EDDA4CA2A83B8F70078B29E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EDDA4D02A83B8F70078B29E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EDDA4DA2A83B8F70078B29E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1794,6 +2017,35 @@
 			files = (
 				1A43D7801EF8BABD00D6A639 /* SnapshotUITests.swift in Sources */,
 				1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EDDA4BF2A83B8F60078B29E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EC9EB492A83BD61000E012D /* DataProvider.swift in Sources */,
+				4EDDA4C82A83B8F60078B29E /* ContentView.swift in Sources */,
+				4EC9EB4E2A83D777000E012D /* VideoItemView.swift in Sources */,
+				4EC9EB4C2A83D5CE000E012D /* VideoListView.swift in Sources */,
+				4EDDA4C62A83B8F60078B29E /* SabbathSchoolTVApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EDDA4CE2A83B8F70078B29E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EDDA4D72A83B8F70078B29E /* SabbathSchoolTVTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EDDA4D82A83B8F70078B29E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EDDA4E32A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift in Sources */,
+				4EDDA4E12A83B8F70078B29E /* SabbathSchoolTVUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2020,6 +2272,16 @@
 			target = 7AF191A71ED7B89B000CCF0C /* Sabbath School */;
 			targetProxy = 1A43D7821EF8BABD00D6A639 /* PBXContainerItemProxy */;
 		};
+		4EDDA4D42A83B8F70078B29E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4EDDA4C22A83B8F60078B29E /* SabbathSchoolTV */;
+			targetProxy = 4EDDA4D32A83B8F70078B29E /* PBXContainerItemProxy */;
+		};
+		4EDDA4DE2A83B8F70078B29E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4EDDA4C22A83B8F60078B29E /* SabbathSchoolTV */;
+			targetProxy = 4EDDA4DD2A83B8F70078B29E /* PBXContainerItemProxy */;
+		};
 		FE1E35082673C5E300DAC2D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FE1E34FB2673C5DF00DAC2D6 /* WidgetExtension */;
@@ -2180,6 +2442,177 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "Sabbath School";
+			};
+			name = Release;
+		};
+		4EDDA4E42A83B8F70078B29E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SabbathSchoolTV/Preview Content\"";
+				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchoolTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 16.4;
+			};
+			name = Debug;
+		};
+		4EDDA4E52A83B8F70078B29E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SabbathSchoolTV/Preview Content\"";
+				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchoolTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 16.4;
+			};
+			name = Release;
+		};
+		4EDDA4E62A83B8F70078B29E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchoolTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SabbathSchoolTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SabbathSchoolTV";
+				TVOS_DEPLOYMENT_TARGET = 16.4;
+			};
+			name = Debug;
+		};
+		4EDDA4E72A83B8F70078B29E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchoolTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SabbathSchoolTV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SabbathSchoolTV";
+				TVOS_DEPLOYMENT_TARGET = 16.4;
+			};
+			name = Release;
+		};
+		4EDDA4E82A83B8F70078B29E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchoolTVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = SabbathSchoolTV;
+				TVOS_DEPLOYMENT_TARGET = 16.4;
+			};
+			name = Debug;
+		};
+		4EDDA4E92A83B8F70078B29E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchoolTVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = SabbathSchoolTV;
+				TVOS_DEPLOYMENT_TARGET = 16.4;
 			};
 			name = Release;
 		};
@@ -2678,6 +3111,33 @@
 			buildConfigurations = (
 				1A43D7841EF8BABD00D6A639 /* Debug */,
 				1A43D7851EF8BABD00D6A639 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EDDA4EA2A83B8F70078B29E /* Build configuration list for PBXNativeTarget "SabbathSchoolTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EDDA4E42A83B8F70078B29E /* Debug */,
+				4EDDA4E52A83B8F70078B29E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EDDA4EB2A83B8F70078B29E /* Build configuration list for PBXNativeTarget "SabbathSchoolTVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EDDA4E62A83B8F70078B29E /* Debug */,
+				4EDDA4E72A83B8F70078B29E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4EDDA4EC2A83B8F70078B29E /* Build configuration list for PBXNativeTarget "SabbathSchoolTVUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4EDDA4E82A83B8F70078B29E /* Debug */,
+				4EDDA4E92A83B8F70078B29E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
