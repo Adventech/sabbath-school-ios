@@ -35,7 +35,7 @@ struct DevotionalResourceViewHeaderV4: View {
         KFImage(resource.splash)
             .resizable()
             .scaledToFill()
-            .frame(width: UIScreen.main.bounds.width ,height: UIScreen.main.bounds.height / (resource.cover != nil && resource.splash == nil ? 1.5:1.7))
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / (resource.cover != nil && resource.splash == nil ? 1.5:1.7))
             .cornerRadius(4)
             .overlay {
                 VStack(spacing: 20) {
