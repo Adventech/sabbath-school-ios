@@ -2,64 +2,68 @@
 "Andada" = "Andada";
 "By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Dacă vă autentificați în mod anonim, nu veți putea să vă sincronizați datele, cum ar fi comentariile și evidențierile, pe dispozitive sau după dezinstalarea aplicației. Sunteți sigur că doriți să continuați?";
 "Continue without login" = "Continuați fără conectare";
-"Contribute" = "A contribui";
-"Copy" = "Copie";
-"Paste" = "Pastă";
-"Dark" = "Întuneric";
+"Contribute" = "Contribuie";
+"Copy" = "Copiază";
+"Paste" = "Lipește";
+"Dark" = "Întunecat";
 "English" = "Engleză";
-"God's Ministry through Technology" = "Ministerul lui Dumnezeu prin tehnologie";
-"I am using Sabbath School app from Adventech! 🎉" = "Folosesc aplicația Școală de Sabat din Adventech! 🎉";
-"Languages" = "Limbile";
-"Lato" = "lato";
-"Light" = "Ușoară";
+"God's Ministry through Technology" = "Slujire lui Dumnezeu prin Tehnologie";
+"I am using Sabbath School app from Adventech! 🎉" = "Folosesc aplicația Școala de Sabat de la Adventech! 🎉";
+"Languages" = "Limbi";
+"Lato" = "Lato";
+"Light" = "Deschis";
+"Automatic" = "Automat";
 "Log out" = "Deconectați-vă";
+"Account removal" = "Eliminarea contului";
+"Delete account?" = "Șterge cont?";
+"By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Prin ștergerea contului, toate datele dvs., cum ar fi comentariile și evidențierile, vor fi șterse definitiv. Sunteți sigur că doriți să continuați?";
 "Login anonymously?" = "Autentificare anonimă?";
 "Made with ❤ by Adventech" = "Realizat cu ❤ de Adventech";
-"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Misiunea Adventistului este în primul rând - dăruiește-ne gloria Lgh, anticul zilelor noastre. Suntem dedicați lucrării noastre prin tehnologie. Scopul nostru este să ne unim Biserica Adventistă de Ziua a Șaptea. Scopul nostru este de a proclama Știri bune acestei lumi prin intermediul tehnologiei și progreselor în comunicare. Scopul nostru este să mărturisim a doua venire a lui Isus.\n\nSuntem inspirați de exemplul și metodele lui Isus, când El a slujit aici pe Pământ. Prin urmare, ne angajăm să oferim un grad ridicat de calitate a tuturor proiectelor noastre, fără nici un cost, cu dragoste și dedicație. Suntem hotărâți să dăm slavă Tatălui nostru, pentru că El este vrednic de cea mai înaltă laudă.\n\nCredem cu adevărat că Dumnezeu a mărit cunoașterea lumii moderne și dorește ca noi să-l folosim pentru gloria Lui pentru a proclama revenirea Lui curând!";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Misiunea Adventech este în primul rând – să-i dăm slavă lui Dumnezeu, Cel din veșnicii. Suntem dedicați lucrării noastre prin tehnologie. Scopul nostru este să unim Biserica Adventistă de Ziua a Șaptea, să proclamăm Vestea Bună acestei lumi prin intermediul tehnologiei și progreselor în materie de comunicare. Deasemenea dorim să propovăduim a doua venire a lui Isus.\n\nSuntem inspirați de exemplul și metodele lui Isus, când El a slujit aici pe Pământ. Prin urmare, ne angajăm să oferim un grad ridicat de calitate în toate proiectele noastre, fără nici un cost, cu dragoste și dedicație. Suntem hotărâți să-I dăm slavă Tatălui nostru, pentru că El este vrednic de cea mai înaltă laudă.\n\nCredem cu adevărat că Dumnezeu a mărit cunoașterea lumii moderne și dorește ca noi să o folosim pentru gloria Lui pentru a proclama apropiata Sa revenire!";
 "More" = "Mai Mult";
 "No" = "Nu";
 "Open" = "Deschis";
-"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Aplicațiile noastre sunt Open Source, inclusiv Școala de Sabat. Consultați GitHub-ul nostru dacă doriți să contribuiți";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Aplicațiile noastre sunt Open Source, inclusiv Școala de Sabat. Consultați pagina noastră de GitHub dacă doriți să contribuiți";
 "PT Sans" = "PT Sans";
 "PT Serif" = "PT Serif";
-"Read" = "Citit";
+"Read" = "Citește";
 "Reminder" = "Aducere aminte";
 "Sabbath School" = "Școala de Sabat";
 "Share" = "Acțiune";
 "Sepia" = "Sepia";
-"Set the reminder to be notified daily to study the lesson" = "Setați mementoul pentru a fi anunțat zilnic pentru a studia lecția";
+"Set the reminder to be notified daily to study the lesson" = "Setați mementoul pentru a fi notificat zilnic pentru a studia lecțiunea";
 "Settings" = "Setări";
-"Sign in with Facebook" = "Conectați-vă la Facebook";
-"Sign in with Google" = "Conectați-vă la Google";
+"Sign in with Facebook" = "Conectați-vă cu Facebook";
+"Sign in with Google" = "Conectați-vă cu Google";
 "There was an error during login" = "A apărut o eroare în timpul conectării";
 "Time" = "Timp";
 "Time to study Sabbath School 🙏" = "Timp pentru a studia Școala de Sabat 🙏";
-"Yes" = "da";
+"Yes" = "Da";
 "Your friends at Adventech" = "Prietenii tăi de la Adventech";
 "https://adventech.io" = "https://adventech.io";
 "🎉 Rate app" = "Evaluați aplicația";
 "🐙 GitHub" = "🐙 GitHub";
-"💌 Recommend Sabbath School" = "💌 Recomanda Școala de Sabat";
+"💌 Recommend Sabbath School" = "💌 Recomandă Școala de Sabat";
 "🙏 About us" = "🙏 Despre noi";
 /*Translated from: Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!*/
-"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "Bine ați venit la aplicația oficială a Conferinței Generale Sabbath School and Personal Ministries Department. Încă dezvoltat de Adventech, aplicația va primi în curând noi îmbunătățiri ale conținutului și caracteristicilor, rămânând în același timp simplă și ușor de utilizat. Nu a fost niciodată mai ușor să studiezi și să împărtășești Cuvântul lui Dumnezeu!";
+"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "Bine ați venit în aplicația oficială a Conferinței Generale a Bisericii Adventiste de Ziua a Șaptea – Departamentul Școala de Sabat și Lucrare Personală(SSMP). Încă dezvoltată de Adventech, aplicația va primi în curând noi actualizări ale conținutului și caracteristicilor, rămânând în același timp simplă și ușor de utilizat. Nu a fost niciodată mai ușor să studiezi și să împărtășești Cuvântul lui Dumnezeu!";
 /*Translated from: Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.*/
-"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech este o organizație non-profit din Canada dedicată utilizării tehnologiei pentru minister. În calitate de adventiști dedicați zilei a șaptea, misiunea lui Adventech este, în primul rând, să dea slavă lui Dumnezeu. De asemenea, prin ministerul nostru ne propunem să aducem unitate Bisericii Adventiste de Ziua a Șaptea din întreaga lume. Scopul nostru principal este să proclamăm Evanghelia veșnică prin tehnologie și progrese în comunicări și să facem partea noastră în pregătirea lumii pentru a doua venire a lui Isus.";
+"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech este o organizație non-profit din Canada dedicată utilizării tehnologiei pentru slujire. În calitate de adventiști de ziua a șaptea, misiunea Adventech este, în primul rând, să-I dea slavă lui Dumnezeu. De asemenea, prin departamentul nostru ne propunem să aducem unitate în Biserica Adventistă de Ziua a Șaptea din întreaga lume. Scopul nostru principal este să proclamăm Evanghelia veșnică prin tehnologie și progresele în comunicare și să ne facem partea noastră în pregătirea lumii pentru a doua venire a lui Isus.";
 /*Translated from: The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.*/
-"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "Misiunea Departamentului SSPM al Conferinței Generale este de a face discipoli, care la rândul lor fac alți discipoli. Ne propunem să facem acest lucru ajutând bisericile adventiste de ziua a șaptea și membrii acestora să descopere scopul și puterea Școlii Sabatului și inspirând și angajând fiecare membru să se implice activ în serviciul personal care câștigă sufletul. \ N \ n Departamentul SSPM produce resurse pentru a ajuta membrii bisericii adventiste de ziua a șaptea în mersul lor cu Hristos și în mărturia lor despre lume. Scopul aplicației Sabbath School și Personal Ministries este de a combina multe dintre aceste resurse într-o locație convenabilă. Pe măsură ce vor fi adăugate mai multe resurse, membrii bisericii și familiile lor vor fi în curând echipați cu o multitudine de resurse pentru a-i ajuta să studieze și să împărtășească Cuvântul lui Dumnezeu. \ N \ nPentru a facilita întreținerea și dezvoltarea aplicației, Departamentul SSPM se bucură să colaboreze cu echipa dedicată și talentată de la Adventech.";
+"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "Misiunea Departamentului SSMP al Conferinței Generale este de a face discipoli, care la rândul lor fac alți discipoli. Ne propunem să facem acest lucru ajutând bisericile adventiste de ziua a șaptea și membrii acestora să descopere scopul și puterea Școlii de Sabat, inspirând și angajând fiecare membru să se implice activ în Departamentul Lucrare Personală pentru câștigarea de suflete. \ N \ n Departamentul SSMP produce resurse pentru a ajuta membrii Bisericii Adventiste de Ziua a Șaptea în mersul lor cu Hristos și în mărturia lor în lume. Scopul aplicației Școala de Sabat este de a combina multe din aceste resurse într-un loc ușor accesibil. Pe măsură ce vor fi adăugate mai multe resurse, membrii bisericii și familiile lor vor fi în curând echipați cu o multitudine de resurse pentru a-i ajuta să studieze și să împărtășească Cuvântul lui Dumnezeu. \ N \ nPentru a facilita întreținerea și dezvoltarea aplicației, Departamentul SSMP se bucură să colaboreze cu echipa dedicată și talentată de la Adventech.";
 "Search…" = "Căutați…";
 /*Translated from: Today's lesson*/
 "Today's lesson" = "Lecția de azi";
 /*Translated from: Get quick access the Sabbath School lesson for today*/
-"Get quick access the Sabbath School lesson for today" = "Obțineți acces rapid la lecția Școlii Sabatului pentru astăzi";
+"Get quick access the Sabbath School lesson for today" = "Obțineți acces rapid la lecția Școlii de Sabat pentru astăzi";
 /*Translated from: Get quick access the Sabbath School lesson for today, featuring the background image*/
-"Get quick access the Sabbath School lesson for today, featuring the background image" = "Obțineți acces rapid la lecția Școlii Sabatului pentru astăzi, prezentând imaginea de fundal";
+"Get quick access the Sabbath School lesson for today, featuring the background image" = "Obțineți acces rapid la lecția Școlii de Sabat pentru astăzi, prezentând imaginea de fundal";
 /*Translated from: Preview and access Sabbath School lesson for this week*/
-"Preview and access Sabbath School lesson for this week" = "Previzualizați și accesați lecția Școlii Sabatului pentru această săptămână";
+"Preview and access Sabbath School lesson for this week" = "Previzualizați și accesați lecția Școlii de Sabat pentru această săptămână";
 /*Translated from: See All*/
 "See All" = "Vezi toate";
 /*Translated from: General Conference of Seventh-day Adventists*/
-"General Conference of Seventh-day Adventists" = "Conferința generală a adventiștilor de ziua a șaptea";
+"General Conference of Seventh-day Adventists" = "Conferința Generală a Bisericii Adventiste de Ziua a Șaptea";
 /*Translated from: Audio*/
 "Audio" = "Audio";
 /*Translated from: Video*/

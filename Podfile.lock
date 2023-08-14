@@ -70,6 +70,7 @@ PODS:
     - Texture/Core
   - Texture/Video (3.0.0):
     - Texture/Core
+  - Wormholy (1.6.5)
   - Zip (2.1.1)
 
 DEPENDENCIES:
@@ -90,6 +91,7 @@ DEPENDENCIES:
   - SwiftEntryKit
   - SwiftMessages
   - Texture
+  - Wormholy
   - Zip
 
 SPEC REPOS:
@@ -118,6 +120,7 @@ SPEC REPOS:
     - SwiftEntryKit
     - SwiftMessages
     - Texture
+    - Wormholy
     - Zip
 
 EXTERNAL SOURCES:
@@ -150,8 +153,9 @@ SPEC CHECKSUMS:
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftMessages: 9cca50659fa22bb523b4dd2a958d4442e843a354
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
+  Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 1d6c33c9bc548923763269c60d6cbe15751c5543
+PODFILE CHECKSUM: 4c437b8f06ab62da9e5f9b1440173908a681dd01
 
 COCOAPODS: 1.11.3

@@ -57,6 +57,7 @@ extension Downloader: URLSessionDelegate, URLSessionDownloadDelegate {
         do {
             try FileManager().moveItem(at: location, to: destinationFileURL)
             moveProgress.completedUnitCount = moveProgress.totalUnitCount
+            progress.completedUnitCount = progress.totalUnitCount
             didFinishDownloading?(location)
         } catch {
             print(error)

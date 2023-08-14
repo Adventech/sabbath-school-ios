@@ -17,7 +17,11 @@
 "Languages" = "ພາສາ";
 "Lato" = "Lato";
 "Light" = "ແສງສະຫວ່າງ";
+"Automatic" = "ອັດຕະໂນມັດ";
 "Log out" = "ອອກ​ຈາກ​ລະ​ບົບ";
+"Account removal" = "ການລຶບບັນຊີ";
+"Delete account?" = "ລຶບບັນຊີບໍ?";
+"By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "ໂດຍການລຶບບັນຊີຂອງທ່ານທັງໝົດຂໍ້ມູນຂອງທ່ານ, ເຊັ່ນ: ຄຳເຫັນ ແລະຈຸດເດັ່ນຈະຖືກລຶບຢ່າງຖາວອນ. ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການດຳເນີນການຕໍ່?";
 "Login anonymously?" = "ເຂົ້າສູ່ລະບົບໂດຍບໍ່ລະບຸ?";
 "Made with ❤ by Adventech" = "Made with ♥ by Adventech";
 "Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "ພາລະກິດຂອງ Adventech ແມ່ນຄັ້ງທໍາອິດແລະສໍາຄັນ - ໃຫ້ລັດສະຫມີພາບຂອງພຣະເຈົ້າຂອງພວກເຮົາ, ວັດຖຸບູຮານຂອງວັນ. ພວກເຮົາກໍາລັງອຸທິດຕົນເພື່ອເຮັດຫນ້າທີ່ຂອງພວກເຮົາຜ່ານເຕັກໂນໂລຢີ. ເປົ້າຫມາຍຂອງພວກເຮົາແມ່ນເພື່ອເປັນສະມາຊິກຂອງຄຣິສຕະຈັກຄຣິສຕະຈັກທີ່ເຈັດວັນ. ເປົ້າຫມາຍຂອງພວກເຮົາແມ່ນເພື່ອປະກາດຂ່າວດີຕໍ່ໂລກນີ້ໂດຍວິທີການເຕັກໂນໂລຢີແລະຄວາມກ້າວຫນ້າໃນການສື່ສານ. ເປົ້າຫມາຍຂອງພວກເຮົາແມ່ນເພື່ອເປັນພະຍານເຖິງການມາຄັ້ງທີສອງຂອງພະເຍຊູ.\n\nພວກເຮົາໄດ້ຮັບການດົນໃຈໂດຍຕົວຢ່າງແລະວິທີການຂອງພຣະເຢຊູ, ໃນເວລາທີ່ພຣະອົງໄດ້ປະຕິບັດຢູ່ທີ່ນີ້ໃນໂລກ. ດັ່ງນັ້ນ, ພວກເຮົາກໍາລັງມຸ່ງຫມັ້ນທີ່ຈະໃຫ້ມີຄຸນນະພາບສູງຂອງໂຄງການຂອງພວກເຮົາທັງຫມົດໂດຍບໍ່ມີຄ່າໃຊ້ຈ່າຍທີ່ມີຄວາມຮັກແລະການອຸທິດ. ພວກເຮົາຫມັ້ນໃຈທີ່ຈະໃຫ້ລັດສະຫມີພາບແກ່ພຣະບິດາຂອງພວກເຮົາ, ເພາະວ່າພຣະອົງມີຄຸນຄ່າສູງທີ່ສຸດຂອງການສັນລະເສີນ.\n\nພວກເຮົາມີຄວາມເຊື່ອແທ້ໆວ່າພຣະເຈົ້າໄດ້ເພີ່ມຄວາມຮູ້ກ່ຽວກັບໂລກທີ່ທັນສະໄຫມແລະຕ້ອງການໃຫ້ພວກເຮົານໍາໃຊ້ມັນສໍາລັບລັດສະຫມີພາບຂອງພຣະອົງເພື່ອປະກາດວ່າພຣະອົງຈະກັບມາໄວໆນີ້!";

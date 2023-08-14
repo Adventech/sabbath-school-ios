@@ -29,12 +29,14 @@ struct ReaderStyle {
         case light
         case sepia
         case dark
+        case auto
 
         static var items: [Theme] {
             return [
                 .light,
                 .sepia,
-                .dark
+                .dark,
+                .auto
             ]
         }
 
@@ -43,6 +45,7 @@ struct ReaderStyle {
             case .light: return AppStyle.Reader.Color.white
             case .sepia: return AppStyle.Reader.Color.sepia
             case .dark: return AppStyle.Reader.Color.dark
+            case .auto: return AppStyle.Reader.Color.auto
             }
         }
 
@@ -51,6 +54,7 @@ struct ReaderStyle {
             case .light: return AppStyle.Reader.Color.white
             case .sepia: return AppStyle.Reader.Color.sepia
             case .dark: return AppStyle.Reader.Color.dark
+            case .auto: return AppStyle.Reader.Color.auto
             }
         }
 
@@ -59,6 +63,8 @@ struct ReaderStyle {
             case .light: return .black
             case .sepia: return .black
             case .dark: return .white
+            case .auto:
+                return Preferences.darkModeEnable() ? UIColor.white:UIColor.black
             }
         }
     }
@@ -143,43 +149,68 @@ open class Reader: WKWebView {
     var contextMenuEnabled = false
 
     func createContextMenu() {
-        let highlightGreen = UIMenuItem(title: "Green", image: R.image.iconHighlightGreen()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.green.rawValue)
-        }
-
-        let highlightBlue = UIMenuItem(title: "Blue", image: R.image.iconHighlightBlue()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.blue.rawValue)
-        }
-
-        let highlightYellow = UIMenuItem(title: "Yellow", image: R.image.iconHighlightYellow()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.yellow.rawValue)
-        }
-
-        let highlightOrange = UIMenuItem(title: "Orange", image: R.image.iconHighlightOrange()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.orange.rawValue)
-        }
-
-        let clearHighlight = UIMenuItem(title: "Clear", image: R.image.iconHighlightClear()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapClearHighlight()
-        }
-
-        let copy = UIMenuItem(title: "Copy".localized()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapCopy()
-        }
-
-        let share = UIMenuItem(title: "Share".localized()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapShare()
-        }
+        let highlightGreen = UIMenuItem(title: "Green", image: R.image.iconHighlightGreen()) { _ in }
+        highlightGreen.action = #selector(didTapHighlightGreen)
         
-        let lookup = UIMenuItem(title: "Look Up".localized()) { [weak self] _ in
-            self?.readerViewDelegate?.didTapLookup()
-        }
+        let highlightBlue = UIMenuItem(title: "Blue", image: R.image.iconHighlightBlue()) { _ in }
+        highlightBlue.action = #selector(didTapHighlightBlue)
+
+        let highlightYellow = UIMenuItem(title: "Yellow", image: R.image.iconHighlightYellow()) { _ in }
+        highlightYellow.action = #selector(didTapHighlightYellow)
+
+        let highlightOrange = UIMenuItem(title: "Orange", image: R.image.iconHighlightOrange()) { _ in }
+        highlightOrange.action = #selector(didTapHighlightOrange)
+
+        let clearHighlight = UIMenuItem(title: "Clear", image: R.image.iconHighlightClear()) { _ in }
+        clearHighlight.action = #selector(didTapClearHighlight)
+
+        let copy = UIMenuItem(title: "Copy".localized()) { _ in }
+        copy.action = #selector(didTapCopy)
+
+        let share = UIMenuItem(title: "Share".localized()) { _ in }
+        share.action = #selector(didTapShare)
         
-        let paste = UIMenuItem(title: "Paste".localized()) { [weak self] _ in
-            self?.perform(#selector(self?.paste(_:)))
-        }
+        let lookup = UIMenuItem(title: "Look Up".localized()) { _ in }
+        lookup.action = #selector(didTapLookup)
+        
+        let paste = UIMenuItem(title: "Paste".localized()) { _ in }
+        paste.action = #selector(paste(_:))
 
         UIMenuController.shared.menuItems = [highlightGreen, highlightBlue, highlightYellow, highlightOrange, clearHighlight, copy, paste, lookup, share]
+    }
+    
+    // MARK: Context Menu Actions
+
+    @objc func didTapHighlightGreen() {
+        readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.green.rawValue)
+    }
+    
+    @objc func didTapHighlightBlue() {
+        readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.blue.rawValue)
+    }
+    
+    @objc func didTapHighlightYellow() {
+        readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.yellow.rawValue)
+    }
+    
+    @objc func didTapHighlightOrange() {
+        readerViewDelegate?.didTapHighlight(color: ReaderStyle.Highlight.orange.rawValue)
+    }
+    
+    @objc func didTapClearHighlight() {
+        readerViewDelegate?.didTapClearHighlight()
+    }
+    
+    @objc func didTapCopy() {
+        readerViewDelegate?.didTapCopy()
+    }
+    
+    @objc func didTapShare() {
+        readerViewDelegate?.didTapShare()
+    }
+    
+    @objc func didTapLookup() {
+        readerViewDelegate?.didTapLookup()
     }
 
     func setupContextMenu() {
@@ -190,7 +221,6 @@ open class Reader: WKWebView {
     func showContextMenu() {
         let rect = NSCoder.cgRect(for: "{{-1000, -1000}, {-1000, -10000}}")
         UIMenuController.shared.setTargetRect(rect, in: self)
-        UIMenuController.shared.setMenuVisible(true, animated: false)
     }
 
     func highlight(color: String) {
@@ -224,10 +254,22 @@ open class Reader: WKWebView {
     }
 
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if !contextMenuEnabled { return super.canPerformAction(action, withSender: sender) }
-        return false
+        switch action {
+        case #selector(didTapHighlightGreen),
+            #selector(didTapHighlightBlue),
+            #selector(didTapHighlightYellow),
+            #selector(didTapHighlightOrange),
+            #selector(didTapClearHighlight),
+            #selector(didTapCopy),
+            #selector(didTapShare),
+            #selector(didTapLookup),
+            #selector(paste(_:)):
+            return super.canPerformAction(action, withSender: sender)
+        default:
+            return false
+        }
     }
-
+    
     func loadContent(content: String) {
         var indexPath = Bundle.main.path(forResource: "index", ofType: "html", inDirectory: "sabbath-school-reader")
         
@@ -241,9 +283,13 @@ open class Reader: WKWebView {
         index = index?.replacingOccurrences(of: "{{content}}", with: content)
 
 
-        let theme = Preferences.currentTheme()
+        var theme = Preferences.currentTheme()
         let typeface = Preferences.currentTypeface()
         let size = Preferences.currentSize()
+        
+        if theme == .auto {
+            theme = Preferences.darkModeEnable() ? .dark: .light
+        }
 
         index = index?.replacingOccurrences(of: "ss-wrapper-light", with: "ss-wrapper-"+theme.rawValue)
         index = index?.replacingOccurrences(of: "ss-wrapper-lato", with: "ss-wrapper-"+typeface.rawValue)
@@ -312,7 +358,12 @@ open class Reader: WKWebView {
     }
 
     func setTheme(_ theme: ReaderStyle.Theme) {
-        self.evaluateJavaScript("ssReader.setTheme('"+theme.rawValue+"')")
+        if theme == .auto {
+            let readerTheme: ReaderStyle.Theme = Preferences.darkModeEnable() ? .dark:.light
+            evaluateJavaScript("ssReader.setTheme('"+readerTheme.rawValue+"')")
+        } else {
+            evaluateJavaScript("ssReader.setTheme('"+theme.rawValue+"')")
+        }
     }
 
     func setTypeface(_ typeface: ReaderStyle.Typeface) {
