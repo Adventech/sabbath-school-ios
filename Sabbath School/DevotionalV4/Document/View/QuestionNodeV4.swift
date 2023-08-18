@@ -26,6 +26,7 @@ struct QuestionNodeV4: View {
     
     let block: Block.Question
     var didTapLink: (([BibleVerses], String) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)?
     
     @State var text: String = ""
     
@@ -34,7 +35,7 @@ struct QuestionNodeV4: View {
             TextNodeV4(font: R.font.latoBlack(size: 20) ?? .boldSystemFont(ofSize: 20),
                        bibleVerses: [],
                        text: block.markdown,
-                       didTapLink: didTapLink)
+                       didTapLink: didTapLink, contextMenuAction: contextMenuAction)
 
             TextEditor(text: $text)
                 .scrollContentBackground(.hidden)
@@ -53,6 +54,6 @@ struct QuestionNodeV4: View {
 struct QuestionNodeV4_Previews: PreviewProvider {
     static var previews: some View {
         let question = Block.Question(type: "question", markdown: "What does Paul say about God and the actions of God?")
-        QuestionNodeV4(block: question, didTapLink: nil)
+        QuestionNodeV4(block: question, didTapLink: nil, contextMenuAction: { _ in })
     }
 }

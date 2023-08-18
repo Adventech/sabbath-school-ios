@@ -27,6 +27,7 @@ struct BlockquoteNodeV4: View {
     let block: Block.Blockquote
     var didTapLink: (([BibleVerses], String) -> Void)?
     var didClickReference: ((Block.ReferenceScope, String) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)
     
     var body: some View {
         HStack {
@@ -53,23 +54,23 @@ struct BlockquoteNodeV4: View {
                 ForEach(block.items, id: \.self) { block in
                     switch block {
                     case .paragraph(let paragraph):
-                        ParagraphNodeV4(block: paragraph, didTapLink: didTapLink)
+                        ParagraphNodeV4(block: paragraph, didTapLink: didTapLink, contextMenuAction: contextMenuAction)
                     case .heading(let heading):
                         HeadingNodeV4(block: heading)
                     case .list(let list):
-                        ListNodeV4(block: list)
+                        ListNodeV4(block: list, contextMenuAction: contextMenuAction)
                     case .listItem(let listItem):
-                        ListItemNodeV4(block: listItem, index: 0)
+                        ListItemNodeV4(block: listItem, index: 0, contextMenuAction: contextMenuAction)
                     case .hr(_):
                         HorizontalLineNodeV4()
                     case .reference(let reference):
                         ReferenceNodeV4(block: reference)
                     case .question(let question):
-                        QuestionNodeV4(block: question, didTapLink: didTapLink)
+                        QuestionNodeV4(block: question, didTapLink: didTapLink, contextMenuAction: contextMenuAction)
                     case .blockquote(let blockquote):
-                        BlockquoteNodeV4(block: blockquote)
+                        BlockquoteNodeV4(block: blockquote, contextMenuAction: contextMenuAction)
                     case .collapse(let collapse):
-                        CollapseNodeV4(block: collapse)
+                        CollapseNodeV4(block: collapse, contextMenuAction: contextMenuAction)
                     case .image(let image):
                         ImageNodeV4(block: image)
                     default:
@@ -90,6 +91,6 @@ struct BlockquoteNodeV4_Previews: PreviewProvider {
                                      caption: "¹ And I saw another mighty angel come down from heaven, clothed with a cloud: and a rainbow was upon his head, and his face was as it were the sun, and his feet as pillars of fire:\n² And he had in his hand a little book open: and he set his right foot upon the sea",
                                      items: [])
 
-        BlockquoteNodeV4(block: block)
+        BlockquoteNodeV4(block: block, contextMenuAction: { _ in })
     }
 }

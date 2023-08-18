@@ -27,6 +27,7 @@ struct CollapseNodeV4: View {
     let block: Block.Collapse
     var didTapLink: (([BibleVerses], String) -> Void)?
     var didClickReference: ((Block.ReferenceScope, String) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)
     
     @State private var isCollapsed = false
     
@@ -38,7 +39,7 @@ struct CollapseNodeV4: View {
             
             if !isCollapsed {
                 ForEach(block.items, id: \.self) { block in
-                    BlockWrapperNodeV4(block: block, didTapLink: didTapLink, didClickReference: didClickReference)
+                    BlockWrapperNodeV4(block: block, didTapLink: didTapLink, didClickReference: didClickReference, contextMenuAction: contextMenuAction)
                 }
             }
         }
@@ -50,6 +51,6 @@ struct CollapseNodeV4_Previews: PreviewProvider {
     static var previews: some View {
         let block = Block.Collapse(type: "colapse", caption: "", items: [])
         
-        CollapseNodeV4(block: block)
+        CollapseNodeV4(block: block, contextMenuAction: { _ in })
     }
 }

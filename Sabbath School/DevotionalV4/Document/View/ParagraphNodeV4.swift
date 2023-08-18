@@ -28,13 +28,14 @@ struct ParagraphNodeV4: View {
     
     let block: Block.Paragraph
     var didTapLink: (([BibleVerses], String) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)?
     
     var body: some View {
         VStack {
             TextNodeV4(font: R.font.latoMedium(size: 19)!,
                        bibleVerses: block.data?.bible ?? [],
                        text: block.markdown,
-                       didTapLink: didTapLink)
+                       didTapLink: didTapLink, contextMenuAction: contextMenuAction)
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
         }
     }
@@ -46,6 +47,6 @@ struct ParagraphNodeV4_Previews: PreviewProvider {
                                         markdown: "A disciple is not above his teacher, but everyone who is perfectly trained will be like his teacher” ([Luke 6:40](sspmBible://Luke640)). This one short statement outlines the object of the Christian life. The goal of every true disciple is to be like Jesus.",
                                         data: nil)
         
-        ParagraphNodeV4(block: paragraph)
+        ParagraphNodeV4(block: paragraph, contextMenuAction: { _ in })
     }
 }
