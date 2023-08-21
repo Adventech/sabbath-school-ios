@@ -27,17 +27,18 @@ struct BlockWrapperNodeV4: View {
     let block: Block
     var didTapLink: (([BibleVerses], String) -> Void)?
     var didClickReference: ((Block.ReferenceScope, String) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)
     
     var body: some View {
         switch block {
         case .paragraph(let paragraph):
-            ParagraphNodeV4(block: paragraph, didTapLink: didTapLink)
+            ParagraphNodeV4(block: paragraph, didTapLink: didTapLink, contextMenuAction: contextMenuAction)
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         case .heading(let heading):
             HeadingNodeV4(block: heading)
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         case .list(let list):
-            ListNodeV4(block: list)
+            ListNodeV4(block: list, contextMenuAction: contextMenuAction)
                 .padding(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 16))
         case .listItem(let listItem):
             ListItemNodeV4(block: listItem, index: 0)
@@ -49,10 +50,10 @@ struct BlockWrapperNodeV4: View {
         QuestionNodeV4(block: question, didTapLink: didTapLink)
             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         case .blockquote(let blockquote):
-            BlockquoteNodeV4(block: blockquote)
+            BlockquoteNodeV4(block: blockquote, contextMenuAction: contextMenuAction)
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         case .collapse(let collapse):
-            CollapseNodeV4(block: collapse)
+            CollapseNodeV4(block: collapse, contextMenuAction: contextMenuAction)
         case .image(let image):
             ImageNodeV4(block: image)
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -69,6 +70,6 @@ struct BlockWrapperNodeV4_Previews: PreviewProvider {
                                         data: nil)
         let block = Block.paragraph(paragraph)
         
-        BlockWrapperNodeV4(block: block)
+        BlockWrapperNodeV4(block: block, contextMenuAction: { _ in })
     }
 }

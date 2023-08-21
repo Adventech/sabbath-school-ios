@@ -78,6 +78,20 @@ class DevotionalDocumentControllerV4: CompositeScrollViewController {
             self.yPosition = yPosition
             self.scrollBehavior()
         }
+        
+        self.hosting.rootView.contextMenuAction = { [weak self] action in
+            guard let self else { return }
+
+            switch action {
+            case .highlight(let color):
+                break
+            case .copy(let text):
+                UIPasteboard.general.string = text
+            case .share(let text):
+                let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+                self.present(activityViewController, animated: true, completion: nil)
+            }
+        }
     }
     
     override var tintColors: (fromColor: UIColor, toColor: UIColor) {

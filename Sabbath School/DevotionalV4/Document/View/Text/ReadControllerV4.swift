@@ -20,33 +20,25 @@
  * THE SOFTWARE.
  */
 
-import SwiftUI
+import UIKit
 
-
-
-struct ParagraphNodeV4: View {
+class ReadControllerV4 : NSObject, UITextViewDelegate {
     
-    let block: Block.Paragraph
-    var didTapLink: (([BibleVerses], String) -> Void)?
-    var contextMenuAction: ((ContextMenuAction) -> Void)?
+    var parent: ReadViewV4
+    var didTapLink: ((String) -> Void)?
     
-    var body: some View {
-        VStack {
-            TextNodeV4(font: R.font.latoMedium(size: 19)!,
-                       bibleVerses: block.data?.bible ?? [],
-                       text: block.markdown,
-                       didTapLink: didTapLink, contextMenuAction: contextMenuAction)
-                .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-        }
+    init(_ view: ReadViewV4, didTapLink: ((String) -> Void)?) {
+        self.didTapLink = didTapLink
+        self.parent = view
     }
-}
-
-struct ParagraphNodeV4_Previews: PreviewProvider {
-    static var previews: some View {
-        let paragraph = Block.Paragraph(type: "paragraph",
-                                        markdown: "A disciple is not above his teacher, but everyone who is perfectly trained will be like his teacher” ([Luke 6:40](sspmBible://Luke640)). This one short statement outlines the object of the Christian life. The goal of every true disciple is to be like Jesus.",
-                                        data: nil)
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         
-        ParagraphNodeV4(block: paragraph, contextMenuAction: { _ in })
+        if URL.absoluteString.starts(with: "sspmBible://"),
+           let startIndex = URL.absoluteString.range(of: "sspmBible://") {
+            didTapLink?(String(URL.absoluteString[startIndex.upperBound...]))
+        }
+        
+        return true
     }
 }

@@ -27,6 +27,7 @@ struct ListNodeV4: View {
     let block: Block.List
     var didTapLink: (([BibleVerses], String) -> Void)?
     var didClickReference: ((Block.ReferenceScope, String) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)
     
     var body: some View {
         VStack(spacing: 5) {
@@ -36,12 +37,12 @@ struct ListNodeV4: View {
                     if let ordered = block.ordered,
                        let start = block.start,
                        ordered {
-                        ListItemNodeV4(block: listItem, index: index + start)
+                        ListItemNodeV4(block: listItem, index: index + start, contextMenuAction: contextMenuAction)
                     } else {
-                        TextNodeV4(font: R.font.latoMedium(size: 13)!, bibleVerses: [], text: block.bullet + listItem.markdown)
+                        TextNodeV4(font: R.font.latoMedium(size: 13)!, bibleVerses: [], text: block.bullet + listItem.markdown, contextMenuAction: contextMenuAction)
                     }
                 default:
-                    BlockWrapperNodeV4(block: itemBlock, didTapLink: didTapLink, didClickReference: didClickReference)
+                    BlockWrapperNodeV4(block: itemBlock, didTapLink: didTapLink, didClickReference: didClickReference, contextMenuAction: contextMenuAction)
                 }
             }
         }
@@ -65,6 +66,6 @@ struct ListNodeV4_Previews: PreviewProvider {
                                 .listItem(.init(type: "list-item", markdown: "Regular involvement in local church ministry")),
                               ])
 
-        ListNodeV4(block: list)
+        ListNodeV4(block: list, contextMenuAction: { _ in })
     }
 }

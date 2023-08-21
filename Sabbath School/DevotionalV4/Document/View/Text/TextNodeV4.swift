@@ -22,6 +22,7 @@
 
 import UIKit
 import SwiftUI
+import Down
 
 struct TextNodeV4: View {
     
@@ -29,32 +30,35 @@ struct TextNodeV4: View {
     let bibleVerses: [BibleVerses]
     let text: String
     var didTapLink: (([BibleVerses], String) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)?
+    
+    @State private var height: CGFloat = .zero
     
     var body: some View {
-        let markdown = try! AttributedString(markdown: text, options: .init(allowsExtendedAttributes: true))
-        Text(markdown)
-            .environment(\.openURL, OpenURLAction(handler: handleURL))
-            .environment(\.font, Font(font))
-            .environment(\.lineSpacing, 3)
-            .accentColor(Color(uiColor: UIColor.baseBlue))
-            .foregroundColor(
-                Color(uiColor: AppStyle.Quarterly.Color.introduction)
-            )
-            .frame(maxWidth: .infinity ,alignment: .leading)
-    }
-    
-    func handleURL(_ url: URL) -> OpenURLAction.Result {
-        if url.absoluteString.starts(with: "sspmBible://"),
-            let startIndex = url.absoluteString.range(of: "sspmBible://") {
-            didTapLink?(bibleVerses, String(url.absoluteString[startIndex.upperBound...]))
-        }
+        let down = Down(markdownString: text)
         
-        return .handled
+        let downStylerConfiguration = DownStylerConfiguration(
+            fonts: SSPMFontCollection(),
+            colors: SSPMColorCollection(),
+            paragraphStyles: SSPMParagraphStyleCollection()
+        )
+        
+        let styler = SSPMStyler(configuration: downStylerConfiguration)
+        
+        // TODO: handle error scenario
+        let markdown = try! down.toAttributedString(styler: styler)
+        
+        ReadViewV4(text: markdown, dynamicHeight: $height, didTapLink: { link in
+            didTapLink?(bibleVerses, link)
+        }, contextMenuAction: contextMenuAction)
+        .accentColor(Color(uiColor: UIColor.baseBlue))
+        .frame(height: height)
+        .frame(maxWidth: .infinity, idealHeight: height)
     }
 }
 
 struct TextNodeV4_Previews: PreviewProvider {
     static var previews: some View {
-        TextNodeV4(font: R.font.latoMedium(size: 19)!, bibleVerses: [], text: "A disciple is not above his teacher, but everyone who is perfectly trained will be like his teacher” ([Luke 6:40](sspmBible://Luke640)). This one short statement outlines the object of the Christian life. The goal of every true disciple is to be like Jesus.")
+        TextNodeV4(font: R.font.latoMedium(size: 19)!, bibleVerses: [], text: "A disciple is not above his teacher, but everyone who is perfectly trained will be like his teacher” ([Luke 6:40](sspmBible://Luke640)). This one short statement outlines the object of the Christian life. The goal of every true disciple is to be like Jesus.", contextMenuAction: {_ in })
     }
 }

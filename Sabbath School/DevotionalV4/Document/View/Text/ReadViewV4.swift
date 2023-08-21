@@ -22,31 +22,33 @@
 
 import SwiftUI
 
-
-
-struct ParagraphNodeV4: View {
+struct ReadViewV4: UIViewRepresentable {
     
-    let block: Block.Paragraph
-    var didTapLink: (([BibleVerses], String) -> Void)?
+    var text: NSAttributedString
+    @Binding var dynamicHeight: CGFloat
+    var didTapLink: ((String) -> Void)?
     var contextMenuAction: ((ContextMenuAction) -> Void)?
     
-    var body: some View {
-        VStack {
-            TextNodeV4(font: R.font.latoMedium(size: 19)!,
-                       bibleVerses: block.data?.bible ?? [],
-                       text: block.markdown,
-                       didTapLink: didTapLink, contextMenuAction: contextMenuAction)
-                .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
-        }
+    func makeCoordinator() -> ReadControllerV4 {
+        ReadControllerV4(self, didTapLink: didTapLink)
     }
-}
-
-struct ParagraphNodeV4_Previews: PreviewProvider {
-    static var previews: some View {
-        let paragraph = Block.Paragraph(type: "paragraph",
-                                        markdown: "A disciple is not above his teacher, but everyone who is perfectly trained will be like his teacher” ([Luke 6:40](sspmBible://Luke640)). This one short statement outlines the object of the Christian life. The goal of every true disciple is to be like Jesus.",
-                                        data: nil)
+    
+    func makeUIView(context: Context) -> UITextView {
+        let textView = ReaderV4(contextMenuAction: contextMenuAction)
+        textView.delegate = context.coordinator
+        textView.bounces = false
+        textView.isEditable = false
+        textView.attributedText = text
+        return textView
+    }
+    
+    func updateUIView(_ uiView: UITextView, context: Context) {
+        uiView.attributedText = text
         
-        ParagraphNodeV4(block: paragraph, contextMenuAction: { _ in })
+        let height = uiView.sizeThatFits(CGSize(width: uiView.bounds.width, height: CGFloat.greatestFiniteMagnitude)).height
+        
+        DispatchQueue.main.async {
+            dynamicHeight = height
+        }
     }
 }

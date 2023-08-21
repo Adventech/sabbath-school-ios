@@ -118,11 +118,14 @@
 		4E385D122A54DDED002DB1CD /* DevotionalResourceViewHeaderV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E385D112A54DDED002DB1CD /* DevotionalResourceViewHeaderV4.swift */; };
 		4E385D142A54DE06002DB1CD /* DevotionalResourceSectionViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E385D132A54DE06002DB1CD /* DevotionalResourceSectionViewV4.swift */; };
 		4E385D162A54DE19002DB1CD /* DevotionalResourceDocumentViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E385D152A54DE19002DB1CD /* DevotionalResourceDocumentViewV4.swift */; };
+		4E48C96B2A8D411A00617408 /* ReadViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E48C96A2A8D411A00617408 /* ReadViewV4.swift */; };
 		4E5633AA2A49D8AF0029E676 /* DevotionalFeedListViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5633A92A49D8AF0029E676 /* DevotionalFeedListViewV4.swift */; };
 		4E57799028E095B300D6F7ED /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57798F28E095B300D6F7ED /* SettingsInteractor.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
 		4E6FE2E128A9CB5E00566517 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FE2E028A9CB5E00566517 /* TabBarViewController.swift */; };
 		4E7186122A4DCB2C0005E0E6 /* DevotionalFeedSmallTileViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7186112A4DCB2C0005E0E6 /* DevotionalFeedSmallTileViewV4.swift */; };
+		4E7453B92A8C4DB700C4A335 /* ReaderV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7453B82A8C4DB700C4A335 /* ReaderV4.swift */; };
+		4E7453BB2A8CEAE800C4A335 /* ReadControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7453BA2A8CEAE800C4A335 /* ReadControllerV4.swift */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
 		4E88CDD72A48FE1700F6B6E4 /* BlockMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E88CDD62A48FE1700F6B6E4 /* BlockMockData.swift */; };
@@ -445,11 +448,14 @@
 		4E385D112A54DDED002DB1CD /* DevotionalResourceViewHeaderV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalResourceViewHeaderV4.swift; sourceTree = "<group>"; };
 		4E385D132A54DE06002DB1CD /* DevotionalResourceSectionViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalResourceSectionViewV4.swift; sourceTree = "<group>"; };
 		4E385D152A54DE19002DB1CD /* DevotionalResourceDocumentViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalResourceDocumentViewV4.swift; sourceTree = "<group>"; };
+		4E48C96A2A8D411A00617408 /* ReadViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadViewV4.swift; sourceTree = "<group>"; };
 		4E5633A92A49D8AF0029E676 /* DevotionalFeedListViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedListViewV4.swift; sourceTree = "<group>"; };
 		4E57798F28E095B300D6F7ED /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		4E6FE2E028A9CB5E00566517 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4E7186112A4DCB2C0005E0E6 /* DevotionalFeedSmallTileViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedSmallTileViewV4.swift; sourceTree = "<group>"; };
+		4E7453B82A8C4DB700C4A335 /* ReaderV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderV4.swift; sourceTree = "<group>"; };
+		4E7453BA2A8CEAE800C4A335 /* ReadControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadControllerV4.swift; sourceTree = "<group>"; };
 		4E7B09882814CA3D00687C33 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		4E7B098B2814CA8A00687C33 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
 		4E88CDD62A48FE1700F6B6E4 /* BlockMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockMockData.swift; sourceTree = "<group>"; };
@@ -992,6 +998,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4E48C96C2A8D43B400617408 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				4E7453BA2A8CEAE800C4A335 /* ReadControllerV4.swift */,
+				4E48C96A2A8D411A00617408 /* ReadViewV4.swift */,
+				4EED9DF12A687B7D004609AB /* TextNodeV4.swift */,
+				4E7453B82A8C4DB700C4A335 /* ReaderV4.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		4E6FE2DF28A9CB3B00566517 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1070,6 +1087,7 @@
 		4EED9DD42A6879C6004609AB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E48C96C2A8D43B400617408 /* Text */,
 				4EED9DD52A687A4C004609AB /* ListItemNodeV4.swift */,
 				4EED9DD92A687A8F004609AB /* BlockquoteNodeV4.swift */,
 				4EED9DDB2A687AA4004609AB /* BlockWrapperNodeV4.swift */,
@@ -1082,7 +1100,6 @@
 				4EED9DEB2A687B3F004609AB /* ParagraphNodeV4.swift */,
 				4EED9DED2A687B55004609AB /* QuestionNodeV4.swift */,
 				4EED9DEF2A687B69004609AB /* ReferenceNodeV4.swift */,
-				4EED9DF12A687B7D004609AB /* TextNodeV4.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2257,8 +2274,10 @@
 				7A28101C1EDDCDEC003C7458 /* LessonWireFrame.swift in Sources */,
 				2FB91F5928FB411100A2DAD7 /* DevotionalFeedController.swift in Sources */,
 				7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */,
+				4E48C96B2A8D411A00617408 /* ReadViewV4.swift in Sources */,
 				2FA1FFE626F6B9EB00E80868 /* PDFView.swift in Sources */,
 				7A28101A1EDDCC1A003C7458 /* LessonController.swift in Sources */,
+				4E7453BB2A8CEAE800C4A335 /* ReadControllerV4.swift in Sources */,
 				7A3BCE3A1EE292E9003EC12B /* BibleVersionController.swift in Sources */,
 				7A280FFC1EDD032E003C7458 /* LanguageController.swift in Sources */,
 				7A3BCE341EE2776A003EC12B /* BibleInteractor.swift in Sources */,
@@ -2277,6 +2296,7 @@
 				FE420255265D93840061C589 /* LanguageView.swift in Sources */,
 				2FB91F7B28FB459200A2DAD7 /* HeadingNode.swift in Sources */,
 				7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */,
+				4E7453B92A8C4DB700C4A335 /* ReaderV4.swift in Sources */,
 				2FB91F7528FB450900A2DAD7 /* BlockNode.swift in Sources */,
 				7A3BCE3C1EE29605003EC12B /* Button.swift in Sources */,
 				4EED9DDA2A687A8F004609AB /* BlockquoteNodeV4.swift in Sources */,
@@ -2744,7 +2764,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1007;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
@@ -2755,7 +2775,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 3.3.0;
+				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-l\"c++\"",
@@ -2883,11 +2903,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 1007;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -2896,7 +2915,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 3.3.0;
+				MARKETING_VERSION = 4.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-l\"c++\"",
@@ -3010,9 +3029,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.cryart.SabbathSchool 1659999027";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3031,14 +3048,14 @@
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1007;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 3.3.0;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -3075,17 +3092,16 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1007;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 3.3.0;
+				MARKETING_VERSION = 4.0.0;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -3104,7 +3120,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool.Widget 1659999040";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

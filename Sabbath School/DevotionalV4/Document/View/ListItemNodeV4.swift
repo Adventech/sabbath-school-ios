@@ -26,15 +26,11 @@ struct ListItemNodeV4: View {
     
     let block: Block.ListItem
     let index: Int
+    var contextMenuAction: ((ContextMenuAction) -> Void)?
     
     var body: some View {
         HStack {
-            Text("\(index).")
-                .font(Font(R.font.latoMedium(size: 18)!))
-                .foregroundColor(
-                    Color(uiColor: AppStyle.Quarterly.Color.introduction)
-                )
-            TextNodeV4(font: R.font.latoMedium(size: 18)!, bibleVerses: [], text: block.markdown)
+            TextNodeV4(font: R.font.latoMedium(size: 18)!, bibleVerses: [], text: "\(index). " + block.markdown, contextMenuAction: contextMenuAction)
         }
     }
 }
@@ -43,6 +39,6 @@ struct ListItemNodeV4_Previews: PreviewProvider {
     static var previews: some View {
         let block = Block.ListItem(type: "list-item", markdown: "Daily personal prayer")
         
-        ListItemNodeV4(block: block, index: 1)
+        ListItemNodeV4(block: block, index: 1, contextMenuAction: { _ in })
     }
 }
