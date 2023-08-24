@@ -33,7 +33,7 @@ class DevotionalDocumentControllerV4: CompositeScrollViewController {
     private let index: String
     private var yPosition: CGFloat = 0
     
-    let hosting = UIHostingController(rootView: DevotionalDocument())
+    let hosting = UIHostingController(rootView: DevotionalDocument(contextMenuAction: { _ in }))
     
     init(index: String) {
         self.index = index

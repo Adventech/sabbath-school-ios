@@ -28,7 +28,7 @@ struct DevotionalDocument: View {
     var didTapLink: (([BibleVerses], String) -> Void)?
     var didClickReference: ((Block.ReferenceScope, String) -> Void)?
     var didScroll: ((CGFloat) -> Void)?
-    var contextMenuAction: ((ContextMenuAction) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)
     
     @State private var navBarHeight: CGFloat = 0
     
@@ -48,7 +48,7 @@ struct DevotionalDocument: View {
                 }
                 
                 ForEach(viewModel.blocks) { blockViewModel in
-                    BlockWrapperNodeV4(block: blockViewModel.block, didTapLink: didTapLink, didClickReference: didClickReference, contextMenuAction: contextMenuAction!)
+                    BlockWrapperNodeV4(block: blockViewModel.block, didTapLink: didTapLink, didClickReference: didClickReference, contextMenuAction: contextMenuAction)
                         .listRowSeparator(.hidden)
                         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
@@ -71,6 +71,6 @@ struct DevotionalDocument: View {
 
 struct DevotionalDocument_Previews: PreviewProvider {
     static var previews: some View {
-        DevotionalDocument()
+        DevotionalDocument(contextMenuAction: { _ in })
     }
 }
