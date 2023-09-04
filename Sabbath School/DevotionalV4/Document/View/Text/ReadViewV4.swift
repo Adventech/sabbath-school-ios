@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,35 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
-        }
+struct ReadViewV4: UIViewRepresentable {
+    
+    var text: NSAttributedString
+    @Binding var dynamicHeight: CGFloat
+    var didTapLink: ((String) -> Void)?
+    var contextMenuAction: ((ContextMenuAction) -> Void)?
+    
+    func makeCoordinator() -> ReadControllerV4 {
+        ReadControllerV4(self, didTapLink: didTapLink)
     }
     
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
+    func makeUIView(context: Context) -> UITextView {
+        let textView = ReaderV4(contextMenuAction: contextMenuAction)
+        textView.delegate = context.coordinator
+        textView.bounces = false
+        textView.isEditable = false
+        textView.attributedText = text
+        return textView
+    }
+    
+    func updateUIView(_ uiView: UITextView, context: Context) {
+        uiView.attributedText = text
+        
+        let height = uiView.sizeThatFits(CGSize(width: uiView.bounds.width, height: CGFloat.greatestFiniteMagnitude)).height
+        
+        DispatchQueue.main.async {
+            dynamicHeight = height
         }
-        
-        
     }
 }

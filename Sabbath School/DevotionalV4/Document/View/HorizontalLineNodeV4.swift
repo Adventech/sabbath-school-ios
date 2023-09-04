@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,20 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
-        }
+struct HorizontalLineNodeV4: View {
+    var body: some View {
+        Divider()
+            .frame(height: 1)
+            .background(
+                Color(uiColor: .baseBlue)
+            )
     }
-    
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
-        }
-        
-        
+}
+
+struct HorizontalLineNodeV4_Previews: PreviewProvider {
+    static var previews: some View {
+        HorizontalLineNodeV4()
     }
 }

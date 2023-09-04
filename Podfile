@@ -20,6 +20,7 @@ target 'Sabbath School' do
   pod 'SwiftDate'
   pod 'Texture'
   pod 'Zip'
+  pod 'Kingfisher'
   pod 'Wormholy', :configurations => ['Debug']
 end
 
@@ -37,6 +38,21 @@ def fix_config(config)
  end
 
 post_install do |installer|
+  # TODO: Necessary to run project using Xcode 15, remove DT_TOOLCHAIN_DIR scripts when update to Cocoapods 1.13
+  installer.aggregate_targets.each do |target|
+          target.xcconfigs.each do |variant, xcconfig|
+            xcconfig_path = target.client_root + target.xcconfig_relative_path(variant)
+            IO.write(xcconfig_path, IO.read(xcconfig_path).gsub("DT_TOOLCHAIN_DIR", "TOOLCHAIN_DIR"))
+          end
+        end
+        installer.pods_project.targets.each do |target|
+          target.build_configurations.each do |config|
+            if config.base_configuration_reference.is_a? Xcodeproj::Project::Object::PBXFileReference
+              xcconfig_path = config.base_configuration_reference.real_path
+              IO.write(xcconfig_path, IO.read(xcconfig_path).gsub("DT_TOOLCHAIN_DIR", "TOOLCHAIN_DIR"))
+            end
+          end
+        end
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       fix_config(config)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,25 @@
  * THE SOFTWARE.
  */
 
-import Foundation
 import UIKit
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
-        }
+class ReadControllerV4 : NSObject, UITextViewDelegate {
+    
+    var parent: ReadViewV4
+    var didTapLink: ((String) -> Void)?
+    
+    init(_ view: ReadViewV4, didTapLink: ((String) -> Void)?) {
+        self.didTapLink = didTapLink
+        self.parent = view
     }
     
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        if URL.absoluteString.starts(with: "sspmBible://"),
+           let startIndex = URL.absoluteString.range(of: "sspmBible://") {
+            didTapLink?(String(URL.absoluteString[startIndex.upperBound...]))
         }
         
-        
+        return true
     }
 }

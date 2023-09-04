@@ -79,7 +79,16 @@ struct ResourceInfo: Codable {
     let study: Bool
 }
 
-struct Resource: Codable {
+struct Resource: Codable, Hashable, Identifiable {
+    static func == (lhs: Resource, rhs: Resource) -> Bool {
+        let result = lhs.id.compare(rhs.id) == .orderedSame
+        return result
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+    
     let id: String
     let index: String
     let title: String
@@ -110,7 +119,23 @@ struct SSPMSection: Codable {
     let documents: [SSPMDocument]
 }
 
-struct SSPMDocument: Codable {
+struct SSPMDocument: Codable, Hashable, Identifiable {
+    var id: String {
+        identifier
+    }
+    
+    var identifier: String {
+        return UUID().uuidString
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(index)
+    }
+
+    static func == (lhs: SSPMDocument, rhs: SSPMDocument) -> Bool {
+        return lhs.index == rhs.index && lhs.title == rhs.title && lhs.subtitle == rhs.subtitle && lhs.date == rhs.date && lhs.thumbnail == rhs.thumbnail
+    }
+
     let index: String
     let title: String
     let subtitle: String?
@@ -143,7 +168,24 @@ struct BlockStyle: Codable {
     let fullBleed: Bool?
 }
 
-enum Block: Codable {
+enum Block: Codable, Hashable, Identifiable {
+    
+    var id: String {
+        identifier
+    }
+    
+    var identifier: String {
+        return UUID().uuidString
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(identifier)
+    }
+    
+    static func == (lhs: Block, rhs: Block) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+    
     case paragraph(Paragraph)
     case heading(Heading)
     case list(Block.List)
@@ -161,7 +203,7 @@ enum Block: Codable {
     }
     
     enum type: String, Codable {
-        case paragraph, heading, list, listItem = "listItem", reference, question, blockquote, collapse, image, unknown
+        case paragraph, heading, list, listItem = "list-item", reference, question, blockquote, collapse, image, unknown
     }
     
     enum ReferenceScope: String, Codable {
@@ -254,8 +296,19 @@ enum Block: Codable {
         let ordered: Bool?
         let start: Int?
         let items: [Block]?
+        
+        var bullet: String {
+            switch depth {
+            case 1:
+                return "● "
+            case 2:
+                return "○ "
+            default:
+                return "◆ "
+            }
+        }
     }
-    
+
     struct ListItem: Codable {
         let type: String
         let markdown: String

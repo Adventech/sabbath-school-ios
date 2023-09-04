@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,28 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
-        }
-    }
+struct DocumentHeadNodeV4: View {
     
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
+    let title: String
+    let subtitle: String?
+    
+    var body: some View {
+        VStack {
+            if let subtitle {
+                Text(AppStyle.Markdown.Text.Head.subtitle(string: subtitle))
+                    .frame(maxWidth: .infinity ,alignment: .leading)
+            }
+            Text(AppStyle.Markdown.Text.Head.title(string: title))
+                .frame(maxWidth: .infinity ,alignment: .leading)
         }
-        
-        
+        .padding(EdgeInsets(top: 40, leading: 0, bottom: 20, trailing: 0))
+    }
+}
+
+struct DocumentHeadNodeV4_Previews: PreviewProvider {
+    static var previews: some View {
+        DocumentHeadNodeV4(title: "To Be Like Jesus", subtitle: "Chapter 1")
     }
 }

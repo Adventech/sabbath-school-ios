@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,27 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
-        }
-    }
+struct HeadingNodeV4: View {
     
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
-        }
-        
-        
+    let block: Block.Heading
+    
+    var body: some View {
+        Text(AppStyle.Markdown.Text.heading(string: block.markdown, depth: block.depth))
+            .frame(maxWidth: .infinity ,alignment: .leading)
+            .padding(
+                EdgeInsets(top: AppStyle.Markdown.Size.headingSpacing().top,
+                           leading: 0,
+                           bottom: AppStyle.Markdown.Size.headingSpacing().bottom,
+                           trailing: 0)
+            )
+            
+    }
+}
+
+struct HeadingNodeV4_Previews: PreviewProvider {
+    static var previews: some View {
+        HeadingNodeV4(block: Block.Heading(type: "heading", markdown: "The Cost of Discipleship", depth: 3))
     }
 }

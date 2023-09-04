@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,37 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
+import Kingfisher
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
+struct DevotionalFeedTileViewV4: View {
+    
+    let resource: Resource
+    var didTapResource: ((String) -> Void)?
+    
+    var body: some View {
+        VStack {
+            KFImage(resource.tile)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(4)
+            
+            Text(AppStyle.Devo.Text.resourceListSubtitle(string: resource.subtitle ?? ""))
+                .frame(maxWidth: .infinity ,alignment: .leading)
+            
+            Text(AppStyle.Devo.Text.resourceListTitle(string: resource.title))
+                .frame(maxWidth: .infinity ,alignment: .leading)
+            
+            Spacer()
+        }
+        .onTapGesture {
+            didTapResource?(resource.index)
         }
     }
-    
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
-        }
-        
-        
+}
+
+struct DevotionalFeedTileViewV4_Previews: PreviewProvider {
+    static var previews: some View {
+        DevotionalFeedTileViewV4(resource: BlockMockData.generateBookTileResource())
     }
 }

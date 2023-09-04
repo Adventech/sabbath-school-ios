@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,25 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
+struct ListItemNodeV4: View {
+    
+    let block: Block.ListItem
+    let index: Int
+    var contextMenuAction: ((ContextMenuAction) -> Void)?
+    
+    var body: some View {
+        HStack {
+            TextNodeV4(font: R.font.latoMedium(size: 18)!, bibleVerses: [], text: "\(index). " + block.markdown, contextMenuAction: contextMenuAction)
         }
     }
-    
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
-        }
+}
+
+struct ListItemNodeV4_Previews: PreviewProvider {
+    static var previews: some View {
+        let block = Block.ListItem(type: "list-item", markdown: "Daily personal prayer")
         
-        
+        ListItemNodeV4(block: block, index: 1, contextMenuAction: { _ in })
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,32 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
+import Kingfisher
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
+struct ImageNodeV4: View {
+    
+    let block: Block.Image
+    
+    var body: some View {
+        VStack {
+            KFImage(block.src)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(4)
+            Text(AppStyle.Markdown.Text.Image.caption(string: block.caption ?? ""))
+                .frame(maxWidth: .infinity ,alignment: .leading)
         }
     }
-    
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
-        }
+}
+
+struct ImageNodeV4_Previews: PreviewProvider {
+    static var previews: some View {
+        let image = Block.Image(type: "image",
+                                src: URL(string: "https://sabbath-school.adventech.io/api/v2/en/study/assets/img/rr-cover.png")!,
+                                caption: "teste",
+                                style: nil)
         
-        
+        ImageNodeV4(block: image)
     }
 }

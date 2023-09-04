@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Adventech <info@adventech.io>
+ * Copyright (c) 2023 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,31 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import UIKit
+import SwiftUI
 
-class DevotionalPresenter {
-    func presentDevotionalDetail(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalResourceControllerV4(resourceIndex: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalResourceController(resourceIndex: index), animated: true)
+struct DevotionalFeedListViewV4: View {
+    
+    let resource: Resource
+    var didTapResource: ((String) -> Void)?
+    
+    var body: some View {
+        VStack {
+            Text(AppStyle.Devo.Text.resourceListTitle(string: resource.title))
+                .frame(maxWidth: .infinity ,alignment: .leading)
+                .padding(EdgeInsets(top: 8, leading: 15, bottom: 0, trailing: 15))
+            
+            Text(AppStyle.Devo.Text.resourceListSubtitle(string: resource.subtitle ?? ""))
+                .frame(maxWidth: .infinity ,alignment: .leading)
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 8, trailing: 15))
+            Divider().background(Color( .baseGray1 | .baseGray4)).frame(height: 0)
+        }.onTapGesture {
+            didTapResource?(resource.index)
         }
     }
-    
-    func presentDevotionalDocument(source: UIViewController, index: String) {
-        if Helper.isSwiftUIEnable {
-            source.navigationController?.pushViewController(DevotionalDocumentControllerV4(index: index), animated: true)
-        } else {
-            source.navigationController?.pushViewController(DevotionalDocumentController(index: index), animated: true)
-        }
-        
-        
+}
+
+struct DevotionalFeedListViewNew_Previews: PreviewProvider {
+    static var previews: some View {
+        DevotionalFeedListViewV4(resource: BlockMockData.generateTileResource())
     }
 }
