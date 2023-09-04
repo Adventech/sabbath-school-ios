@@ -135,6 +135,7 @@
 		4EAED1022A4A433A00D35DE4 /* DevotionalFeedTileViewV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAED1012A4A433A00D35DE4 /* DevotionalFeedTileViewV4.swift */; };
 		4ED0B8C42A47853F008A6E71 /* DevotionalFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED0B8C32A47853F008A6E71 /* DevotionalFeed.swift */; };
 		4ED0B8C62A478746008A6E71 /* DevotionalFeedControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED0B8C52A478746008A6E71 /* DevotionalFeedControllerV4.swift */; };
+		4ED7613E2AA60F41003F10DE /* CopyrightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7613D2AA60F41003F10DE /* CopyrightsView.swift */; };
 		4EDBE3EA2A76F8A700D33F3A /* SSKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDBE3E92A76F8A700D33F3A /* SSKey.swift */; };
 		4EDBE3EC2A76F8E100D33F3A /* SSFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDBE3EB2A76F8E100D33F3A /* SSFrame.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
@@ -465,6 +466,7 @@
 		4EAED1012A4A433A00D35DE4 /* DevotionalFeedTileViewV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedTileViewV4.swift; sourceTree = "<group>"; };
 		4ED0B8C32A47853F008A6E71 /* DevotionalFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeed.swift; sourceTree = "<group>"; };
 		4ED0B8C52A478746008A6E71 /* DevotionalFeedControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalFeedControllerV4.swift; sourceTree = "<group>"; };
+		4ED7613D2AA60F41003F10DE /* CopyrightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightsView.swift; sourceTree = "<group>"; };
 		4EDBE3E92A76F8A700D33F3A /* SSKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSKey.swift; sourceTree = "<group>"; };
 		4EDBE3EB2A76F8E100D33F3A /* SSFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSFrame.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
@@ -1057,12 +1059,21 @@
 		4ED0B8C22A4784F2008A6E71 /* DevotionalV4 */ = {
 			isa = PBXGroup;
 			children = (
+				4ED7613C2AA60F1B003F10DE /* Copyright */,
 				4EED9DCF2A6751DE004609AB /* Document */,
 				4E88CDD52A48FDE300F6B6E4 /* Models */,
 				4E17686C2A48AF9200060649 /* Resource */,
 				4E17686A2A48AC7100060649 /* Feed */,
 			);
 			path = DevotionalV4;
+			sourceTree = "<group>";
+		};
+		4ED7613C2AA60F1B003F10DE /* Copyright */ = {
+			isa = PBXGroup;
+			children = (
+				4ED7613D2AA60F41003F10DE /* CopyrightsView.swift */,
+			);
+			path = Copyright;
 			sourceTree = "<group>";
 		};
 		4EDBE3E82A76F88C00D33F3A /* SwiftUI */ = {
@@ -2359,6 +2370,7 @@
 				FE611ABA267501F9003CDDB5 /* Constants.swift in Sources */,
 				FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */,
 				FE5CC73B268914F000B9F061 /* QuarterlyController.swift in Sources */,
+				4ED7613E2AA60F41003F10DE /* CopyrightsView.swift in Sources */,
 				2F96FF6826CC9BBA0045DC6D /* Video.swift in Sources */,
 				7AF326181EFF92C700A04568 /* ReadEmptyView.swift in Sources */,
 				7A280FFE1EDD039C003C7458 /* LanguageItemView.swift in Sources */,

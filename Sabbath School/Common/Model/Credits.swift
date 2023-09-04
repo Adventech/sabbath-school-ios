@@ -22,7 +22,8 @@
 
 import Foundation
 
-struct Credits: Codable {
+struct Credits: Codable, Identifiable {
+    let id: String = UUID().uuidString
     let name: String
     let value: String
     

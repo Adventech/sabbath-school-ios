@@ -570,6 +570,24 @@ struct AppStyle {
                 return NSAttributedString(string: string, attributes: attributes)
             }
             
+            static func creditsName(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = AppStyle.Base.Color.text
+                container.font = R.font.latoBold(size: 15)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
+            static func creditsValue(string: String) -> AttributedString {
+                var container = AttributeContainer()
+                container.foregroundColor = UIColor.baseGray2
+                container.font = R.font.latoRegular(size: 15)!
+
+                let attributedString = AttributedString(string, attributes: container)
+                return attributedString
+            }
+            
             static func copyright(string: String) -> NSAttributedString {
                 let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: AppStyle.Lesson.Color.copyright,

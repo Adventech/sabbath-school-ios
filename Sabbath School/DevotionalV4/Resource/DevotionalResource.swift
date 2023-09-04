@@ -54,6 +54,13 @@ struct DevotionalResource: View {
                         .listRowInsets(EdgeInsets())
                         .listRowSeparator(.hidden)
                 }
+                
+                if let credits = viewModel.resource.credits {
+                    CopyrightsView(credits: credits)
+                        .listRowInsets(EdgeInsets())
+                        .listRowSeparator(.hidden)
+                        
+                }
             }
             .environment(\.defaultMinListRowHeight, 0)
             .listStyle(.plain)
