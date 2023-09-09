@@ -74,6 +74,7 @@
 		4E3223C828BEC68300E88E1D /* SettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3223C728BEC68300E88E1D /* SettingsProtocols.swift */; };
 		4E57799028E095B300D6F7ED /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57798F28E095B300D6F7ED /* SettingsInteractor.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
+		4E6B1A6C2AACDA42006B9283 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
@@ -1964,6 +1965,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E6B1A6C2AACDA42006B9283 /* NotificationCenter.swift in Sources */,
 				FE611AAE267500F5003CDDB5 /* QuarterlyLanguage.swift in Sources */,
 				4E149B712814CCCE0014A070 /* Comparable.swift in Sources */,
 				2FC6F69F27A8E35C00BBC4A9 /* APICache.swift in Sources */,
