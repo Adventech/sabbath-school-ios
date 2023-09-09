@@ -54,17 +54,19 @@ struct Helper {
     }
     
     static func shareTextDialogue(vc: UIViewController, sourceView: UIView, objectsToShare: [Any]) {
+    #if os(iOS)
         let activityController = UIActivityViewController(
-                activityItems: objectsToShare,
-                applicationActivities: nil)
+            activityItems: objectsToShare,
+            applicationActivities: nil)
         activityController.popoverPresentationController?.sourceRect = sourceView.frame
         activityController.popoverPresentationController?.sourceView = sourceView
         if Helper.isPad {
             activityController.popoverPresentationController?.sourceRect = CGRect(x: sourceView.bounds.midX, y: sourceView.bounds.maxY, width: 0, height: 0)
         }
         activityController.popoverPresentationController?.permittedArrowDirections = .any
-
+        
         vc.present(activityController, animated: true, completion: nil)
+    #endif
     }
     
     static func getCurrentLessonIndex(lessons: [Lesson]) -> String {

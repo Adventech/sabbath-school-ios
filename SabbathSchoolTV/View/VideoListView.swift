@@ -24,10 +24,9 @@ import SwiftUI
 
 struct VideoListView: View {
     
-    let videos = []
+    let videos = [VideoModel(), VideoModel(), VideoModel(), VideoModel()]
     
     var body: some View {
-        
         
         VStack {
             

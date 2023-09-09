@@ -29,6 +29,13 @@ target 'WidgetExtension' do
   pod 'Cache'
 end
 
+target 'SabbathSchoolTV' do
+  inherit! :search_paths
+  pod 'Alamofire', '~> 5.5'
+  pod 'Hue'
+  pod 'Cache'
+end
+
 def fix_config(config)
    # https://github.com/CocoaPods/CocoaPods/issues/8891
    if config.build_settings['DEVELOPMENT_TEAM'].nil?

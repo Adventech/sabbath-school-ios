@@ -22,7 +22,7 @@
 
 import Foundation
 
-struct Quarterly: Codable {
+struct Quarterly: Codable, Equatable {
     static func ==(lhs: Quarterly, rhs: Quarterly) -> Bool {
         return lhs.id == rhs.id && lhs.index == rhs.index
     }
@@ -130,6 +130,12 @@ struct Quarterly: Codable {
     }
 }
 
-struct QuarterlyCache: Codable, Comparable {
+struct QuarterlyCache: Codable {
     let quarterlies: [Quarterly]?
+}
+
+extension QuarterlyCache: Equatable {
+    static func == (lhs: QuarterlyCache, rhs: QuarterlyCache) -> Bool {
+        lhs.quarterlies ?? [] == rhs.quarterlies ?? []
+    }
 }

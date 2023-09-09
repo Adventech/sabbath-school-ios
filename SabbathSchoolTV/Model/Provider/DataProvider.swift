@@ -23,6 +23,4 @@
 import Foundation
 
 class DataProvider: ObservableObject {
-    
-    
 }
