@@ -24,3 +24,5 @@ struct ReadHighlights: Codable {
     let readIndex: String
     let highlights: String
 }
+
+extension ReadHighlights: Equatable { }

@@ -44,6 +44,7 @@ class QuarterlyController: QuarterlyControllerCommon {
             }
         }
         setupNavigationBar()
+        setupNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool)  {
@@ -86,5 +87,18 @@ class QuarterlyController: QuarterlyControllerCommon {
     
     @objc func showLanguages(sender: UIBarButtonItem) {
         presenter?.presentLanguageScreen()
+    }
+}
+
+// MARK: Notification Center
+
+private extension QuarterlyController {
+    
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(logout), name: .logout, object: nil)
+    }
+    
+    @objc func logout() {
+        SettingsController.logOut()
     }
 }
