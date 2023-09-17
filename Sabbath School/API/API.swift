@@ -108,8 +108,9 @@ class APIRequestInterceptor: RequestInterceptor {
                         self.isRetrying = false
                         completion(.retryWithDelay(self.retryDelay))
                     case .failure:
+                        // redirect to login page
                         self.isRetrying = false
-                        NotificationCenter.default.post(name: .logout, object: nil, userInfo: nil)
+                        completion(.doNotRetry)
                     }
                 }
                 break
