@@ -24,23 +24,32 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @ObservedObject var dataProvider = DataProvider()
+    
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Spacer()
-                Image("ssa-logo")
-                    .foregroundColor(.white)
-                
-                Text("Sabbath School")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 0) {
+                    HStack(spacing: 0) {
+                        Spacer()
+                        Image("ssa-logo")
+                            .foregroundColor(.white)
+                        
+                        Text("Sabbath School")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                    }
+                    
+                    ForEach(dataProvider.sections) { section in
+                        VideoListView(section: section)
+                    }
+                    
+                    Spacer()
+                }
+                .animation(.default)
+                .padding()
             }
-        
-            VideoListView()
-            
-            Spacer()
         }
-        .padding()
     }
 }
 
