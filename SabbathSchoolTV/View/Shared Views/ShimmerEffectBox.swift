@@ -22,38 +22,24 @@
 
 import SwiftUI
 
-struct VideoListView: View {
+struct ShimmerEffectBox: View {
+    private var gradientColors = [
+        Color.black.opacity(0.1),
+        .black.opacity(0.3),
+        .black.opacity(0.1)
+    ]
     
-    let section: VideoSection
-    let didTapLink: ((Clip) -> Void)?
-    
-    @FocusState private var isFocused
+    @State var startPoint: UnitPoint = UnitPoint(x: -1.8, y: -1.2)
+    @State var endPoint: UnitPoint = UnitPoint(x: 0, y: -0.2)
     
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer(minLength: 0)
-            HStack {
-                Text(section.sectionTitle)
-                    .font(.headline)
-                    .bold()
-                Spacer()
+        LinearGradient(colors: gradientColors, startPoint: startPoint, endPoint: endPoint)
+            .animation(
+                .easeInOut(duration: 1).repeatForever()
+            )
+            .onAppear {
+                startPoint = .init(x: 1, y: 1)
+                endPoint = .init(x: 2.2, y: 2.2)
             }
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 0) {
-                    ForEach(section.clips) { clip in
-                        NavigationLink(destination: PlayerView(url: clip.url)) {
-                            VideoItemView(clip: clip)
-                                .frame(maxWidth: 460)
-                                .cornerRadius(10)
-                                .padding()
-                        }
-                        .buttonStyle(PlainNavigationLinkButtonStyle(didTapLink: {
-                            didTapLink?(clip)
-                        }))
-                        
-                    }
-                }
-            }
-        }
     }
 }
