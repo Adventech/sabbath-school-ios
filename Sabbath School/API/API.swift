@@ -21,6 +21,7 @@
  */
 
 import Alamofire
+import Foundation
 
 enum AuthenticationAction: Int {
     case refreshToken = 4010
