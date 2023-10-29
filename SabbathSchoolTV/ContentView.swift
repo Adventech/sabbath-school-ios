@@ -32,8 +32,6 @@ struct ContentView: View {
     @ObservedObject var imageLoader: ImageLoader = ImageLoader()
     @State var image: UIImage = UIImage()
     
-//    @ObservedObject var languageDataProvider = LanguageDataProvider()
-    
     var body: some View {
         Image(uiImage: image)
             .resizable()
@@ -45,23 +43,12 @@ struct ContentView: View {
             .overlay {
                 NavigationView {
                     TabView {
-                        
                         VStack(spacing: 0) {
-//                            HStack(spacing: 0) {
-//                                Spacer()
-//                                Image("ssa-logo").resizable().aspectRatio(contentMode: .fit).clipped().frame(width: 100)
-//                                
-//                                Text("Sabbath School")
-//                                    .font(.title3)
-//                                    .bold()
-//                            }
-                            
                             ScrollView(.vertical, showsIndicators: false) {
                                 VStack(spacing: 16) {
                                     ForEach(dataProvider.sections) { section in
                                         VideoListView(section: section, didTapLink: { backgroundImage in
                                             imageLoader.loadImage(urlString: backgroundImage.thumbnail)
-                                            
                                         })
                                     }
                                     .animation(.default)
@@ -72,7 +59,6 @@ struct ContentView: View {
                         .tabItem {
                             HStack {
                                 Image(systemName: "list.bullet.below.rectangle")
-//                                Text("All Videos")
                                 Text(NSLocalizedString("videos", comment: ""))
                             }
                         }
@@ -80,59 +66,38 @@ struct ContentView: View {
                         ScrollView {
                             VStack(spacing: 0) {
                                 ForEach(dataProvider.languages) { section in
-    //                                VideoListView(section: section, didTapLink: { backgroundImage in
-    //                                    imageLoader.loadImage(urlString: backgroundImage.thumbnail)
-    //
-    //                                })
-    //                                Text(section.language)
                                     Button {
                                         UserDefaults.standard.set(section.id, forKey: "languageCode")
                                         
                                         for (index, language) in dataProvider.languages.enumerated() {
                                             dataProvider.languages[index].isSelected = language.id == section.id
                                         }
-//                                        dataProvider.languages.forEach { inout language in
-//                                            language.isSelected = language.id == section.id
-//                                        }
-                                        
-                                        
-                                        dataProvider.teste()
+                                        dataProvider.loadVideos()
                                     } label: {
                                         LanguageItemView(language: section)
-                                            
+                                        
                                     }
-                                    .frame(width: 500)//), height: 100)
-                                    
-//                                    .frame(minWidth: 400, idealWidth: 450, maxWidth: 456)
+                                    .frame(width: 500)
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 10)
                                     
                                 }
                             }
                         }
-//                        Text("Configurações")
-                            .onAppear(perform: {
-                                debugPrint("l22 linguagem apareceu")
-                                dataProvider.loadLanguages()
-                            })
-//                        VStack
-                            .tabItem {
-                                HStack {
-//                                    Image("icon-navbar-language")//.resizable().frame(width: 40, height: 40, alignment: .center)
-                                    Image(systemName: "gearshape")
-//                                    Text("Language")
-                                    Text(NSLocalizedString("languages", comment: ""))
-                                }
+                        .onAppear(perform: {
+                            dataProvider.loadLanguages()
+                        })
+                        .tabItem {
+                            HStack {
+                                Image(systemName: "gearshape")
+                                Text(NSLocalizedString("languages", comment: ""))
                             }
-                        
-                        
-                        
-                        
+                        }
                     }
                     
                 }
                 .onAppear {
-                    dataProvider.teste()
+                    dataProvider.loadVideos()
                 }
                 
                 .onReceive(imageLoader.didChange) { data in
@@ -143,11 +108,5 @@ struct ContentView: View {
                 )
                 .background(.thickMaterial)
             }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

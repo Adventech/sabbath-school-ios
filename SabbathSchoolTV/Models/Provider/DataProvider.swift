@@ -42,22 +42,6 @@ class DataProvider: ObservableObject {
         setupImageCache()
     }
     
-    private func setupImageCache() {
-        let WebPCoder = SDImageWebPCoder.shared
-        SDImageCodersManager.shared.addCoder(WebPCoder)
-        SDWebImageDownloader.shared.setValue("image/webp,image/*,*/*;q=0.8", forHTTPHeaderField:"Accept")
-    }
-    
-    private func getSelectedLanguageCode() -> String {
-        let selectedLanguage = UserDefaults.standard.string(forKey: "languageCode")
-        
-        if let selectedLanguage {
-            return selectedLanguage
-        }
-        
-        return Locale.current.language.languageCode?.identifier ?? "en"
-    }
-    
     func loadVideos() {
         let url = "\(Constants.API.URL)/\(getSelectedLanguageCode())/video/latest.json"
         
@@ -127,7 +111,7 @@ class DataProvider: ObservableObject {
                 return
             }
             
-            var publishedLanguages = transformLanguages(languages)
+            let publishedLanguages = transformLanguages(languages)
 
             if self.languages != publishedLanguages {
                 self.languages = publishedLanguages
@@ -137,5 +121,23 @@ class DataProvider: ObservableObject {
                 } catch { }
             }
         }
+    }
+}
+
+private extension DataProvider {
+    func setupImageCache() {
+        let WebPCoder = SDImageWebPCoder.shared
+        SDImageCodersManager.shared.addCoder(WebPCoder)
+        SDWebImageDownloader.shared.setValue("image/webp,image/*,*/*;q=0.8", forHTTPHeaderField:"Accept")
+    }
+    
+    func getSelectedLanguageCode() -> String {
+        let selectedLanguage = UserDefaults.standard.string(forKey: "languageCode")
+        
+        if let selectedLanguage {
+            return selectedLanguage
+        }
+        
+        return Locale.current.language.languageCode?.identifier ?? "en"
     }
 }
