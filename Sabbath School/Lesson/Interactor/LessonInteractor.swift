@@ -38,7 +38,7 @@ class LessonInteractor: LessonInteractorInputProtocol {
         self.publishingInfoStorage = APICache.storage?.transformCodable(ofType: PublishingInfoData.self)
     }
 
-    func retrieveQuarterlyInfo(quarterlyIndex: String) {
+    func retrieveQuarterlyInfo(quarterlyIndex: String, completion: @escaping (QuarterlyInfo?) -> Void) {
         let parsedIndex =  Helper.parseIndex(index: quarterlyIndex)
         let url = "\(Constants.API.URL)/\(parsedIndex.lang)/quarterlies/\(parsedIndex.quarter)/index.json"
         
@@ -47,12 +47,14 @@ class LessonInteractor: LessonInteractorInputProtocol {
         if (try? self.storage?.existsObject(forKey: url)) != nil {
             if let quarterlyInfo = try? self.storage?.entry(forKey: url) {
                 cachedObject = quarterlyInfo.object
+                completion(quarterlyInfo.object)
                 self.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: quarterlyInfo.object)
             }
         }
         
         API.session.request(url).responseDecodable(of: QuarterlyInfo.self, decoder: Helper.SSJSONDecoder()) { response in
             guard let quarterlyInfo = response.value else {
+                completion(nil)
                 self.presenter?.onError(response.error)
                 return
             }
@@ -61,6 +63,7 @@ class LessonInteractor: LessonInteractorInputProtocol {
                 return
             }
             
+            completion(quarterlyInfo)
             self.presenter?.didRetrieveQuarterlyInfo(quarterlyInfo: quarterlyInfo)
             try? self.storage?.setObject(quarterlyInfo, forKey: url)
         }

@@ -57,6 +57,7 @@ class SplitVc : UISplitViewController, UISplitViewControllerDelegate {
 class QuarterlyWireFrame: QuarterlyWireFrameProtocol {
     class func createQuarterlyModule(initiateOpen: Bool = false) -> ASNavigationController {
         let controller: QuarterlyControllerProtocol = QuarterlyController()
+        controller.initiateOpen = initiateOpen
         let presenter: QuarterlyPresenterProtocol & QuarterlyInteractorOutputProtocol = QuarterlyPresenter()
         let wireFrame: QuarterlyWireFrameProtocol = QuarterlyWireFrame()
         let interactor: QuarterlyInteractorInputProtocol = QuarterlyInteractor()

@@ -157,8 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func launchQuarterlies() {
-        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule()
+    func launchQuarterlies(initiateOpen: Bool = false) {
+        let quarterlyController = QuarterlyWireFrame.createQuarterlyModule(initiateOpen: initiateOpen)
         Configuration.window?.rootViewController = quarterlyController
         Configuration.window?.makeKeyAndVisible()
     }

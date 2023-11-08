@@ -72,6 +72,9 @@
 		4E2882CE280CE46100AB8C31 /* PublishingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */; };
 		4E3223C628BEC53200E88E1D /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3223C528BEC53200E88E1D /* SettingsPresenter.swift */; };
 		4E3223C828BEC68300E88E1D /* SettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3223C728BEC68300E88E1D /* SettingsProtocols.swift */; };
+		4E476F2028ECE612009286CE /* ReadTodaySabbathSchoolIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E476F1D28ECE612009286CE /* ReadTodaySabbathSchoolIntent.swift */; };
+		4E476F2128ECE612009286CE /* ListenTodaySabbathSchoolIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E476F1E28ECE612009286CE /* ListenTodaySabbathSchoolIntent.swift */; };
+		4E476F2228ECE612009286CE /* SabbathSchoolShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E476F1F28ECE612009286CE /* SabbathSchoolShortcuts.swift */; };
 		4E57799028E095B300D6F7ED /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57798F28E095B300D6F7ED /* SettingsInteractor.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
 		4E6B1A6C2AACDA42006B9283 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
@@ -328,6 +331,9 @@
 		4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfoView.swift; sourceTree = "<group>"; };
 		4E3223C528BEC53200E88E1D /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		4E3223C728BEC68300E88E1D /* SettingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocols.swift; sourceTree = "<group>"; };
+		4E476F1D28ECE612009286CE /* ReadTodaySabbathSchoolIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadTodaySabbathSchoolIntent.swift; sourceTree = "<group>"; };
+		4E476F1E28ECE612009286CE /* ListenTodaySabbathSchoolIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenTodaySabbathSchoolIntent.swift; sourceTree = "<group>"; };
+		4E476F1F28ECE612009286CE /* SabbathSchoolShortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SabbathSchoolShortcuts.swift; sourceTree = "<group>"; };
 		4E57798F28E095B300D6F7ED /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		4E5C826C2AE5A9EF006FC26B /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E5C826D2AE5A9EF006FC26B /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -727,6 +733,24 @@
 				2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		4E476F1B28ECE612009286CE /* Siri */ = {
+			isa = PBXGroup;
+			children = (
+				4E476F1C28ECE612009286CE /* Intents */,
+				4E476F1F28ECE612009286CE /* SabbathSchoolShortcuts.swift */,
+			);
+			path = Siri;
+			sourceTree = "<group>";
+		};
+		4E476F1C28ECE612009286CE /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				4E476F1D28ECE612009286CE /* ReadTodaySabbathSchoolIntent.swift */,
+				4E476F1E28ECE612009286CE /* ListenTodaySabbathSchoolIntent.swift */,
+			);
+			path = Intents;
 			sourceTree = "<group>";
 		};
 		4E7B098A2814CA7400687C33 /* Protocols */ = {
@@ -1320,6 +1344,7 @@
 		7AF191AA1ED7B89B000CCF0C /* Sabbath School */ = {
 			isa = PBXGroup;
 			children = (
+				4E476F1B28ECE612009286CE /* Siri */,
 				2FC6F69927A8E0EA00BBC4A9 /* API */,
 				7A280F981EDA015D003C7458 /* Application */,
 				2F96FF4826C7186D0045DC6D /* Audio */,
@@ -1861,6 +1886,7 @@
 				7A280FC71EDA06F9003C7458 /* LoginButton.swift in Sources */,
 				2F96FF4C26C718A40045DC6D /* AudioPlaylistItemEmptyView.swift in Sources */,
 				7AC26AF81EE5EBDE003F946C /* Day.swift in Sources */,
+				4E476F2228ECE612009286CE /* SabbathSchoolShortcuts.swift in Sources */,
 				7A28101C1EDDCDEC003C7458 /* LessonWireFrame.swift in Sources */,
 				7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */,
 				2FA1FFE626F6B9EB00E80868 /* PDFView.swift in Sources */,
@@ -1879,6 +1905,7 @@
 				7A280FCC1EDA0F9D003C7458 /* LoginController.swift in Sources */,
 				FE420255265D93840061C589 /* LanguageView.swift in Sources */,
 				7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */,
+				4E476F2028ECE612009286CE /* ReadTodaySabbathSchoolIntent.swift in Sources */,
 				7A3BCE3C1EE29605003EC12B /* Button.swift in Sources */,
 				FE2FDF83268D6F430023A853 /* QuarterlyIntroductionController.swift in Sources */,
 				7AC26AFD1EE5EBDE003F946C /* QuarterlyLanguage.swift in Sources */,
@@ -1948,6 +1975,7 @@
 				4E3223C628BEC53200E88E1D /* SettingsPresenter.swift in Sources */,
 				7A3BCE2E1EE2753C003EC12B /* BibleController.swift in Sources */,
 				7A2810041EDD0675003C7458 /* LanguageInteractor.swift in Sources */,
+				4E476F2128ECE612009286CE /* ListenTodaySabbathSchoolIntent.swift in Sources */,
 				4E57799028E095B300D6F7ED /* SettingsInteractor.swift in Sources */,
 				7A2810291EDDE41F003C7458 /* ShimmeringNode.swift in Sources */,
 				7A28100A1EDD2546003C7458 /* QuarterlyFeaturedView.swift in Sources */,
