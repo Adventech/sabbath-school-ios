@@ -138,6 +138,10 @@ private extension DataProvider {
             return selectedLanguage
         }
         
-        return Locale.current.language.languageCode?.identifier ?? "en"
+        if #available(tvOS 16, *) {
+            return Locale.current.language.languageCode?.identifier ?? "en"
+        } else {
+            return Locale.current.languageCode ?? "en"
+        }
     }
 }

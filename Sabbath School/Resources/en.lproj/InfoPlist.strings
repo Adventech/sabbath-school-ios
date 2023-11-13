@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Adventech <info@adventech.io>
+ * Copyright (c) 2017 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,5 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
-struct Clip: Identifiable {
-    let id: String = UUID().uuidString
-    let thumbnail: String
-    let title: String
-    let url: URL?
-    let artist: String
-    
-    init(clip: ClipJSON) {
-        thumbnail = clip.thumbnail ?? ""
-        title = clip.title ?? ""
-        url = URL(string: clip.src ?? "")
-        artist = clip.artist ?? ""
-    }
-}
-
-extension Clip: Equatable {
-    static func == (lhs: Clip, rhs: Clip) -> Bool {
-        lhs.thumbnail == rhs.thumbnail && lhs.title == rhs.title && lhs.url == rhs.url
-    }
-}
+"CFBundleDisplayName" = "Sabbath School";
+"CFBundleName" = "Sabbath School";

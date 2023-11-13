@@ -26,11 +26,18 @@ import SDWebImageSwiftUI
 import Combine
 import Foundation
 
+enum TabMenu: Int {
+    case videos = 0
+    case language = 1
+}
+
 struct ContentView: View {
     
     @ObservedObject var dataProvider = DataProvider()
     @ObservedObject var imageLoader: ImageLoader = ImageLoader()
     @State var image: UIImage = UIImage()
+    
+    @State private var tabSelection = TabMenu.videos.rawValue
     
     var body: some View {
         Image(uiImage: image)
@@ -42,7 +49,7 @@ struct ContentView: View {
             .shadow(radius: 5)
             .overlay {
                 NavigationView {
-                    TabView {
+                    TabView(selection: $tabSelection) {
                         VStack(spacing: 0) {
                             ScrollView(.vertical, showsIndicators: false) {
                                 VStack(spacing: 16) {
@@ -61,7 +68,7 @@ struct ContentView: View {
                                 Image(systemName: "list.bullet.below.rectangle")
                                 Text(NSLocalizedString("videos", comment: ""))
                             }
-                        }
+                        }.tag(0)
                         
                         ScrollView {
                             VStack(spacing: 0) {
@@ -73,6 +80,10 @@ struct ContentView: View {
                                             dataProvider.languages[index].isSelected = language.id == section.id
                                         }
                                         dataProvider.loadVideos()
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                            tabSelection = TabMenu.videos.rawValue
+                                        }
                                     } label: {
                                         LanguageItemView(language: section)
                                         
@@ -92,7 +103,7 @@ struct ContentView: View {
                                 Image(systemName: "gearshape")
                                 Text(NSLocalizedString("languages", comment: ""))
                             }
-                        }
+                        }.tag(1)
                     }
                     
                 }
