@@ -41,7 +41,7 @@ struct VideoListView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(section.clips) { clip in
-                        NavigationLink(destination: PlayerView(url: clip.url)) {
+                        NavigationLink(destination: PlayerView(clip: clip)) {
                             VideoItemView(clip: clip)
                                 .frame(maxWidth: 460)
                                 .cornerRadius(10)

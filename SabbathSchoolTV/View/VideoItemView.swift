@@ -32,22 +32,31 @@ struct VideoItemView: View {
     @State var image: UIImage = UIImage()
     
     var body: some View {
-        Image(uiImage: image)
-            .resizable()
-            .frame(width: 384, height: 215)
-            .clipped()
-            .cornerRadius(10)
-            .shadow(radius: 5)
-            .onAppear(perform: {
-                imageLoader.loadImage(urlString: clip.thumbnail)
-            })
-            .onReceive(imageLoader.didChange) { image in
-                DispatchQueue.main.async {
-                    self.image = image
+        VStack {
+            Image(uiImage: image)
+                .resizable()
+                .frame(width: 384, height: 215)
+                .clipped()
+                .cornerRadius(10)
+                .shadow(radius: 5)
+                .onAppear(perform: {
+                    imageLoader.loadImage(urlString: clip.thumbnail)
+                })
+                .onReceive(imageLoader.didChange) { image in
+                    DispatchQueue.main.async {
+                        self.image = image
+                    }
                 }
-            }
-            .background(content: {
-                ShimmerEffectBox()
-            })
+                .background(content: {
+                    ShimmerEffectBox()
+                })
+            
+            Text(clip.title)
+                .fontWeight(.medium)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity ,alignment: .leading)
+                .frame(width: 384)
+        }
     }
 }

@@ -25,7 +25,7 @@ import AVKit
 
 struct PlayerView: View {
     
-    let url: URL?
+    let clip: Clip
     
     @State private var player: AVQueuePlayer?
     @State private var videoLooper: AVPlayerLooper?
@@ -33,10 +33,10 @@ struct PlayerView: View {
     var body: some View {
         VideoPlayer(player: player)
             .onAppear {
-                if let url, player == nil {
+                if let url = clip.url, player == nil {
                     
                     let templateItem = AVPlayerItem(url: url)
-                    
+                    templateItem.externalMetadata = createMetadataItems(for: clip)
                     player = AVQueuePlayer(playerItem: templateItem)
                     
                     if let player {
@@ -46,5 +46,23 @@ struct PlayerView: View {
                 player?.play()
             }
             .edgesIgnoringSafeArea(.all)
+    }
+    
+    private func createMetadataItems(for metadata: Clip) -> [AVMetadataItem] {
+        let mapping: [AVMetadataIdentifier: Any] = [
+            .commonIdentifierTitle: metadata.title,
+            .iTunesMetadataReleaseDate: metadata.artist
+        ]
+        return mapping.compactMap { createMetadataItem(for:$0, value:$1) }
+    }
+    
+    
+    private func createMetadataItem(for identifier: AVMetadataIdentifier,
+                                    value: Any) -> AVMetadataItem {
+        let item = AVMutableMetadataItem()
+        item.identifier = identifier
+        item.value = value as? NSCopying & NSObjectProtocol
+        item.extendedLanguageTag = "und"
+        return item.copy() as! AVMetadataItem
     }
 }
