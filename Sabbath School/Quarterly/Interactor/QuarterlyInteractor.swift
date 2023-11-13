@@ -57,7 +57,7 @@ class QuarterlyInteractor: QuarterlyInteractorInputProtocol {
                 return
             }
 
-            if let cachedObject = cachedObject, cachedObject.isEqual(from: QuarterlyCache(quarterlies: quarterlies)) {
+            if let cachedObject = cachedObject, cachedObject == QuarterlyCache(quarterlies: quarterlies) {
                 return
             }
             

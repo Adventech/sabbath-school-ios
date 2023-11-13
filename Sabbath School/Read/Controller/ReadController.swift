@@ -187,6 +187,9 @@ class ReadController: VideoPlaybackDelegatable {
             self.collectionNode.waitUntilAllUpdatesAreProcessed()
             self.collectionNode.reloadData()
             self.collectionNode.scrollToPage(at: self.lastPage ?? 0, animated: false)
+            
+            resetReader()
+            setHighlightsAndComments()
         }
         self.appeared = true
     }
@@ -241,11 +244,7 @@ class ReadController: VideoPlaybackDelegatable {
     @objc func resetReader() {
         if let webView = (self.collectionNode.nodeForPage(at: self.collectionNode.currentPageIndex) as? ReadView)?.webView {
             webView.createContextMenu()
-            webView.evaluateJavaScript("ssReader.clearSelection()") { _, error in
-                if error != nil {
-                    self.collectionNode.reloadData()
-                }
-            }
+            webView.evaluateJavaScript("ssReader.clearSelection()") { _, _ in }
         }
     }
 
@@ -442,25 +441,17 @@ class ReadController: VideoPlaybackDelegatable {
         }
 
         if Helper.isPad {
-            highlights.forEach { highlight in
-                setHighlights(highlights: highlight)
-            }
-            
-            comments.forEach { comment in
-                setComments(comments: comment)
-            }
+            setHighlightsAndComments()
         }
     }
     
-    private func updateCommentsListWhenRotateIpad(readComments: ReadComments) {
-        if Helper.isPad {
-            if !comments.filter({ $0.readIndex == readComments.readIndex }).isEmpty {
-                for (i, comment) in comments.enumerated() where comment.readIndex == readComments.readIndex {
-                    comments[i] = readComments
-                }
-            } else {
-                comments.append(readComments)
+    private func updateLocalCommentsList(readComments: ReadComments) {
+        if !comments.filter({ $0.readIndex == readComments.readIndex }).isEmpty {
+            for (i, comment) in comments.enumerated() where comment.readIndex == readComments.readIndex {
+                comments[i] = readComments
             }
+        } else {
+            comments.append(readComments)
         }
     }
     
@@ -481,6 +472,20 @@ class ReadController: VideoPlaybackDelegatable {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.modalPresentationStyle = .formSheet
         present(safariViewController, animated: true)
+    }
+}
+
+// MARK: Private Methods
+
+private extension ReadController {
+    func setHighlightsAndComments() {
+        highlights.forEach { highlight in
+            setHighlights(highlights: highlight)
+        }
+        
+        comments.forEach { comment in
+            setComments(comments: comment)
+        }
     }
 }
 
@@ -564,7 +569,9 @@ extension ReadController: ReadControllerProtocol {
     }
     
     func setHighlights(highlights: ReadHighlights) {
-        if Helper.isPad {
+        if !self.highlights.contains(where: { highlight in
+            highlights == highlight
+        }) {
             self.highlights.append(highlights)
         }
         
@@ -581,7 +588,7 @@ extension ReadController: ReadControllerProtocol {
             if let readView = self.collectionNode.nodeForPage(at: index) as? ReadView {
                 readView.comments = comments
                 if !comments.comments.isEmpty {
-                    updateCommentsListWhenRotateIpad(readComments: comments)
+                    updateLocalCommentsList(readComments: comments)
                 }
                 for comment in comments.comments {
                     readView.webView.setComment(comment)
@@ -675,15 +682,12 @@ extension ReadController: ReadViewOutputProtocol {
     }
 
     func didReceiveHighlights(readHighlights: ReadHighlights) {
-        if Helper.isPad {
-            highlights.append(readHighlights)
-        }
-        
+        highlights.append(readHighlights)
         presenter?.interactor?.saveHighlights(highlights: readHighlights)
     }
 
     func didReceiveComment(readComments: ReadComments) {
-        updateCommentsListWhenRotateIpad(readComments: readComments)
+        updateLocalCommentsList(readComments: readComments)
         presenter?.interactor?.saveComments(comments: readComments)
     }
 

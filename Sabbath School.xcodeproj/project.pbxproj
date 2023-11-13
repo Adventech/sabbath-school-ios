@@ -79,6 +79,7 @@
 		4E5947702AEEF14700EFBEEF /* VideoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59476F2AEEF14700EFBEEF /* VideoSection.swift */; };
 		4E5947722AEEF1BD00EFBEEF /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5947712AEEF1BD00EFBEEF /* Language.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
+		4E6B1A6C2AACDA42006B9283 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
 		4E80B4232AC0A2DA002B6FBF /* SabbathSchoolTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80B4222AC0A2DA002B6FBF /* SabbathSchoolTVApp.swift */; };
@@ -381,6 +382,8 @@
 		4E59476F2AEEF14700EFBEEF /* VideoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSection.swift; sourceTree = "<group>"; };
 		4E5947712AEEF1BD00EFBEEF /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		4E594F952AF43781004C0A5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E5C826C2AE5A9EF006FC26B /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E5C826D2AE5A9EF006FC26B /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		4E7B09882814CA3D00687C33 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		4E7B098B2814CA8A00687C33 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
@@ -1874,6 +1877,7 @@
 				el,
 				zu,
 				pt,
+				ca,
 			);
 			mainGroup = 7AF1919F1ED7B89B000CCF0C;
 			packageReferences = (
@@ -2366,6 +2370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E6B1A6C2AACDA42006B9283 /* NotificationCenter.swift in Sources */,
 				FE611AAE267500F5003CDDB5 /* QuarterlyLanguage.swift in Sources */,
 				4E149B712814CCCE0014A070 /* Comparable.swift in Sources */,
 				2FC6F69F27A8E35C00BBC4A9 /* APICache.swift in Sources */,
@@ -2510,6 +2515,7 @@
 				FE6FAA2A221091D200B0C002 /* el */,
 				FE6FAA2C221091E300B0C002 /* zu */,
 				FE78D5042682DD78004CEA11 /* pt */,
+				4E5C826D2AE5A9EF006FC26B /* ca */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2565,6 +2571,7 @@
 				FE6FAA2B221091E300B0C002 /* zu */,
 				FE78D5032682DD78004CEA11 /* pt */,
 				4E594F952AF43781004C0A5D /* en */,
+				4E5C826C2AE5A9EF006FC26B /* ca */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2919,10 +2926,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -2934,7 +2942,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 3.2.7;
+				MARKETING_VERSION = 3.4.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-l\"c++\"",
@@ -3050,6 +3058,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "29d99fff-a72e-4c42-9ceb-b8c5c4176926";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.cryart.SabbathSchool";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3066,6 +3075,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -3077,7 +3087,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/swift",
 				);
-				MARKETING_VERSION = 3.2.7;
+				MARKETING_VERSION = 3.4.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-l\"c++\"",
@@ -3193,6 +3203,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool 1659999027";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.cryart.SabbathSchool";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3210,10 +3221,11 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -3224,6 +3236,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 3.2.7;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 3.4.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
@@ -3244,6 +3258,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool.Widget";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.cryart.SabbathSchool.Widget";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3274,7 +3289,8 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.2.7;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 3.4.0;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -3293,7 +3309,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool.Widget 1659999040";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool.Widget";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
