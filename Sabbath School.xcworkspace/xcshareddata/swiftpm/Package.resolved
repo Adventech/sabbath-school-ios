@@ -19,15 +19,6 @@
       }
     },
     {
-      "identity" : "kingfisher",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/onevcat/Kingfisher.git",
-      "state" : {
-        "revision" : "b6f62758f21a8c03cd64f4009c037cfa580a256e",
-        "version" : "7.9.1"
-      }
-    },
-    {
       "identity" : "libwebp-xcode",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/libwebp-Xcode.git",
@@ -61,15 +52,6 @@
       "state" : {
         "revision" : "3819cb70faa2454b54d8364779bfacd8c216a6e2",
         "version" : "0.13.0"
-      }
-    },
-    {
-      "identity" : "shimmer",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/joshuajhomann/Shimmer.git",
-      "state" : {
-        "branch" : "master",
-        "revision" : "2fde687b3f1d9c5409c53da095d3686361e41343"
       }
     }
   ],

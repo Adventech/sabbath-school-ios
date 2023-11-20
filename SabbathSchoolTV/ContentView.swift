@@ -21,7 +21,6 @@
  */
 
 import SwiftUI
-import Kingfisher
 import SDWebImageSwiftUI
 import Combine
 import Foundation

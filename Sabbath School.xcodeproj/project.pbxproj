@@ -66,7 +66,6 @@
 		3DDC3D2AB9F67FC70562F316 /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDEA0CA8DEEB383392D21EE1 /* Pods_WidgetExtension.framework */; };
 		4E149B712814CCCE0014A070 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
 		4E149B722814CCDE0014A070 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
-		4E17BB922AC76756004EAC26 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 4E17BB912AC76756004EAC26 /* Shimmer */; };
 		4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */; };
 		4E2882CC280CCBB600AB8C31 /* PublishingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */; };
 		4E2882CE280CE46100AB8C31 /* PublishingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */; };
@@ -101,7 +100,6 @@
 		4E8709F72AC0A6CF008C3B59 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AEE1EE5EBDE003F946C /* Lesson.swift */; };
 		4E8709F82AC0A6EE008C3B59 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FE81EDCE4B1003C7458 /* Date.swift */; };
 		4E8709F92AC0A70C008C3B59 /* VideoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9EB4D2A83D777000E012D /* VideoItemView.swift */; };
-		4E8709FC2AC0A7C6008C3B59 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4E8709FB2AC0A7C6008C3B59 /* Kingfisher */; };
 		4E8709FE2AC0A7FC008C3B59 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8709FD2AC0A7FC008C3B59 /* PlayerView.swift */; };
 		4E8709FF2AC0A9AE008C3B59 /* Quarterly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF01EE5EBDE003F946C /* Quarterly.swift */; };
 		4E870A002AC0A9C1008C3B59 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF4B79326AF9A9B00548E36 /* Credits.swift */; };
@@ -679,8 +677,6 @@
 			files = (
 				4EB5D4392AC0ABB500ACE755 /* SDWebImageSwiftUI in Frameworks */,
 				4E853EB82ADC6C5800A46546 /* Cache in Frameworks */,
-				4E17BB922AC76756004EAC26 /* Shimmer in Frameworks */,
-				4E8709FC2AC0A7C6008C3B59 /* Kingfisher in Frameworks */,
 				4EB5D43C2AC0ACF500ACE755 /* SDWebImageWebPCoder in Frameworks */,
 				4E8709EF2AC0A5AA008C3B59 /* Alamofire in Frameworks */,
 			);
@@ -1688,10 +1684,8 @@
 			name = SabbathSchoolTV;
 			packageProductDependencies = (
 				4E8709EE2AC0A5AA008C3B59 /* Alamofire */,
-				4E8709FB2AC0A7C6008C3B59 /* Kingfisher */,
 				4EB5D4382AC0ABB500ACE755 /* SDWebImageSwiftUI */,
 				4EB5D43B2AC0ACF500ACE755 /* SDWebImageWebPCoder */,
-				4E17BB912AC76756004EAC26 /* Shimmer */,
 				4E853EB72ADC6C5800A46546 /* Cache */,
 			);
 			productName = SabbathSchoolTV;
@@ -1882,10 +1876,8 @@
 			mainGroup = 7AF1919F1ED7B89B000CCF0C;
 			packageReferences = (
 				4E8709ED2AC0A5AA008C3B59 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				4E8709FA2AC0A7C6008C3B59 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				4EB5D43A2AC0ACF500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */,
-				4E17BB902AC76756004EAC26 /* XCRemoteSwiftPackageReference "Shimmer" */,
 				4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
@@ -3382,14 +3374,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4E17BB902AC76756004EAC26 /* XCRemoteSwiftPackageReference "Shimmer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/joshuajhomann/Shimmer.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hyperoslo/Cache.git";
@@ -3404,14 +3388,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
-			};
-		};
-		4E8709FA2AC0A7C6008C3B59 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
 			};
 		};
 		4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
@@ -3433,11 +3409,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4E17BB912AC76756004EAC26 /* Shimmer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4E17BB902AC76756004EAC26 /* XCRemoteSwiftPackageReference "Shimmer" */;
-			productName = Shimmer;
-		};
 		4E853EB72ADC6C5800A46546 /* Cache */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */;
@@ -3447,11 +3418,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E8709ED2AC0A5AA008C3B59 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		4E8709FB2AC0A7C6008C3B59 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4E8709FA2AC0A7C6008C3B59 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		4EB5D4382AC0ABB500ACE755 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
