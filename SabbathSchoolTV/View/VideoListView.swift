@@ -50,6 +50,7 @@ struct VideoListView: View {
                         .buttonStyle(PlainNavigationLinkButtonStyle(didTapLink: {
                             didTapLink?(clip)
                         }))
+                        .animation(.default)
                         
                     }
                 }

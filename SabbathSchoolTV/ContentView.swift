@@ -50,18 +50,15 @@ struct ContentView: View {
             .overlay {
                 NavigationView {
                     TabView(selection: $tabSelection) {
-                        VStack(spacing: 0) {
-                            ScrollView(.vertical, showsIndicators: false) {
-                                VStack(spacing: 16) {
-                                    ForEach(dataProvider.sections) { section in
-                                        VideoListView(section: section, didTapLink: { backgroundImage in
-                                            imageLoader.loadImage(urlString: backgroundImage.thumbnail)
-                                        })
-                                    }
-                                    .animation(.default)
+                        ScrollView(.vertical, showsIndicators: false) {
+                            LazyVStack(spacing: 16) {
+                                ForEach(dataProvider.sections) { section in
+                                    VideoListView(section: section, didTapLink: { backgroundImage in
+                                        imageLoader.loadImage(urlString: backgroundImage.thumbnail)
+                                    })
                                 }
-                                .padding()
                             }
+                            .padding()
                         }
                         .tabItem {
                             HStack {
@@ -71,7 +68,7 @@ struct ContentView: View {
                         }.tag(0)
                         
                         ScrollView {
-                            VStack(spacing: 0) {
+                            LazyVStack(spacing: 0) {
                                 ForEach(dataProvider.languages) { section in
                                     Button {
                                         UserDefaults.standard.set(section.id, forKey: "languageCode")

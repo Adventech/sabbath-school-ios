@@ -40,7 +40,13 @@ struct VideoItemView: View {
                 .cornerRadius(10)
                 .shadow(radius: 5)
                 .onAppear(perform: {
-                    imageLoader.loadImage(urlString: clip.thumbnail)
+                    if image.size == .zero {
+                        imageLoader.loadImage(urlString: clip.thumbnail)
+                    } else {
+                        let imageUpdated = self.image
+                        self.image = imageUpdated
+                    }
+                    
                 })
                 .onReceive(imageLoader.didChange) { image in
                     DispatchQueue.main.async {
