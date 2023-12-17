@@ -55,7 +55,7 @@ class ReadPresenter: ReadPresenterProtocol {
 
     func configure() {
         interactor?.configure()
-        interactor?.retrieveLessonInfo(lessonIndex: lessonIndex!)
+        interactor?.retrieveLessonInfo(lessonIndex: lessonIndex!, quarterlyIndex: nil)
         interactor?.retrievePublishingInfo()
     }
 
