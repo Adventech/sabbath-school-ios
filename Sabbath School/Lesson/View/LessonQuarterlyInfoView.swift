@@ -28,7 +28,7 @@ class LessonQuarterlyInfo: ASCellNode {
     let title = ASTextNode()
     let humanDate = ASTextNode()
     let introduction = ASTextNode()
-    let readButton = ASButtonNode()
+    let readView = ReadButton()
     var coverImage = ASImageNode()
     var features: [ASNetworkImageNode] = []
     
@@ -54,12 +54,8 @@ class LessonQuarterlyInfo: ASCellNode {
         string.addAttributes(attributes, range: blurb.range(of: "More".localized().lowercased()))
         introduction.truncationAttributedText = string
 
-        readButton.setAttributedTitle(AppStyle.Lesson.Text.readButton(string: "Read".localized().uppercased()), for: .normal)
-        readButton.accessibilityIdentifier = "readLesson"
-        readButton.titleNode.pointSizeScaleFactors = [0.9, 0.8]
-        readButton.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
-        readButton.contentEdgeInsets = AppStyle.Lesson.Button.readButtonUIEdgeInsets()
-        readButton.cornerRadius = 18
+        readView.backgroundColor = UIColor(hex: (quarterly.colorPrimaryDark)!)
+        readView.cornerRadius = 18
 
         for feature in quarterly.features {
             let image = ASNetworkImageNode()
@@ -73,7 +69,7 @@ class LessonQuarterlyInfo: ASCellNode {
         addSubnode(title)
         addSubnode(humanDate)
         addSubnode(introduction)
-        addSubnode(readButton)
+        addSubnode(readView)
     }
 }
 
@@ -113,7 +109,7 @@ class LessonQuarterlyInfoView: LessonQuarterlyInfo {
         addSubnode(introduction)
         addSubnode(cover)
         addSubnode(coverImageNode)
-        addSubnode(readButton)
+        addSubnode(readView)
     }
     
     override func didLoad() {
@@ -158,9 +154,9 @@ class LessonQuarterlyInfoView: LessonQuarterlyInfo {
         }
         
         if !isHorizontal {
-            vSpecChildren.insert(readButton, at: 2)
+            vSpecChildren.insert(readView, at: 2)
         } else {
-            vSpecChildren.append(readButton)
+            vSpecChildren.append(readView)
         }
         
         let vSpec = ASStackLayoutSpec(
