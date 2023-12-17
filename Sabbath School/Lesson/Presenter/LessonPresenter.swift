@@ -44,6 +44,14 @@ class LessonPresenter: LessonPresenterProtocol {
 }
 
 extension LessonPresenter: LessonInteractorOutputProtocol {
+    func downloadedQuarterlyWithSuccess() {
+        controller?.downloadedQuarterlyWithSuccess()
+    }
+    
+    func downloadedQuarterlyWithError() {
+        controller?.downloadedQuarterlyWithError()
+    }
+    
     func onError(_ error: Error?) {
         print(error?.localizedDescription ?? "Unknown")
     }

@@ -39,6 +39,8 @@ protocol LessonControllerProtocol: AnyObject {
     var initiateOpenToday: Bool? { get set }
     func showLessons(quarterlyInfo: QuarterlyInfo)
     func showPublishingInfo(publishingInfo: PublishingInfo?)
+    func downloadedQuarterlyWithSuccess()
+    func downloadedQuarterlyWithError()
 }
 
 protocol LessonControllerDelegate: AnyObject {
@@ -56,6 +58,8 @@ protocol LessonInteractorOutputProtocol: AnyObject {
     func onError(_ error: Error?)
     func didRetrieveQuarterlyInfo(quarterlyInfo: QuarterlyInfo)
     func didRetrievePublishingInfo(publishingInfo: PublishingInfo?)
+    func downloadedQuarterlyWithSuccess()
+    func downloadedQuarterlyWithError()
 }
 
 protocol LessonInteractorInputProtocol: AnyObject {
@@ -64,4 +68,5 @@ protocol LessonInteractorInputProtocol: AnyObject {
     func configure()
     func retrieveQuarterlyInfo(quarterlyIndex: String)
     func retrievePublishingInfo()
+    func retrieveRead(readIndex: String, quarterlyIndex: String?)
 }
