@@ -26,7 +26,7 @@ struct AppStyle {
     struct Base {
         struct Button {
             static func pillButtonUIEdgeInsets() -> UIEdgeInsets {
-                return UIEdgeInsets(top: 8, left: 40, bottom: 8, right: 40)
+                return UIEdgeInsets(top: 0, left: 40, bottom: 8, right: 8)
             }
         }
         
