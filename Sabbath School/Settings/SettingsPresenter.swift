@@ -47,13 +47,34 @@ class SettingsPresenter: NSObject, SettingsPresenterProtocol {
 
         let yes = UIAlertAction(title: "Yes".localized(), style: .destructive) { _ in
             self.interactor?.removeAccount()
-//            SettingsController.logOut()
         }
         yes.accessibilityLabel = "removeAccountYes"
 
         alertController.addAction(no)
         alertController.addAction(yes)
         alertController.accessibilityLabel = "removeAccount"
+
+        (controller as? UIViewController)?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func presentRemoveAllDownloadsConfirmation() {
+        let alertController = UIAlertController(
+            title: "Remove all downloads".localized(),
+            message: "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?".localized(),
+            preferredStyle: .alert
+        )
+
+        let no = UIAlertAction(title: "No".localized(), style: .default, handler: nil)
+        no.accessibilityLabel = "removeDownloadsNo"
+
+        let yes = UIAlertAction(title: "Yes".localized(), style: .destructive) { _ in
+            self.interactor?.removeAllDownloads()
+        }
+        yes.accessibilityLabel = "removeDownloadsYes"
+
+        alertController.addAction(no)
+        alertController.addAction(yes)
+        alertController.accessibilityLabel = "removeDownloads"
 
         (controller as? UIViewController)?.present(alertController, animated: true, completion: nil)
     }
