@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "読書オプション";
 "Get Printed Resources" = "印刷されたリソースを入手する";
+"There was an error during download" = "ダウンロード中にエラーが発生しました";
+"Remove all downloads" = "すべてのダウンロードを削除する";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "すべてのダウンロードを削除すると、現在オフラインに保存されているレッスン コンテンツがすべて失われます。 続行してもよろしいですか?";

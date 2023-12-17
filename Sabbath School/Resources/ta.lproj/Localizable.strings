@@ -78,3 +78,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "வாசிப்பு விருப்பங்கள்";
 "Get Printed Resources" = "அச்சிடப்பட்ட வளங்களைப் பெறுங்கள்";
+"There was an error during download" = "பதிவிறக்கத்தின் போது பிழை ஏற்பட்டது";
+"Remove all downloads" = "அனைத்து பதிவிறக்கங்களையும் அகற்று";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "அனைத்து பதிவிறக்கங்களையும் அகற்றுவதன் மூலம், தற்போது ஆஃப்லைனில் சேமிக்கப்பட்டுள்ள அனைத்து பாடங்களின் உள்ளடக்கத்தையும் இழப்பீர்கள். நீங்கள் நிச்சயமாக தொடர விரும்புகிறீர்களா?";

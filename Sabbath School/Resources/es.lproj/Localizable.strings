@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Opciones de lectura";
 "Get Printed Resources" = "Obtenga recursos impresos";
+"There was an error during download" = "Hubo un error durante la descarga.";
+"Remove all downloads" = "Eliminar todas las descargas";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Al eliminar todas las descargas, perderá todo el contenido de las lecciones actualmente guardado sin conexión. ¿Estas seguro que deseas continuar?";

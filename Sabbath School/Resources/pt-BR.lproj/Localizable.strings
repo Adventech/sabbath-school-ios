@@ -70,3 +70,6 @@
 /*Translated from: Video*/
 "Video" = "Vídeo";
 "Get Printed Resources" = "Obter recursos impressos";
+"There was an error during download" = "Ocorreu um erro durante o download";
+"Remove all downloads" = "Remover todos os downloads";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Ao remover todos os downloads, você perderá todo o conteúdo das aulas atualmente salvo offline. Tem certeza de que deseja prosseguir?";

@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Læseindstillinger";
 "Get Printed Resources" = "Få trykte ressourcer";
+"There was an error during download" = "Der opstod en fejl under download";
+"Remove all downloads" = "Fjern alle downloads";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Ved at fjerne alle downloads mister du alt det lektionsindhold, der i øjeblikket er gemt offline. Er du sikker på, at du vil fortsætte?";

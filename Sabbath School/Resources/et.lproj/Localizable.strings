@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Lugemisvalikud";
 "Get Printed Resources" = "Hankige trükitud ressursse";
+"There was an error during download" = "Allalaadimise ajal ilmnes viga";
+"Remove all downloads" = "Eemaldage kõik allalaadimised";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Kõikide allalaadimiste eemaldamisel kaotate kogu praegu võrguühenduseta salvestatud õppetundide sisu. Kas olete kindel, et soovite jätkata?";
