@@ -26,6 +26,7 @@ import UIKit
 import StoreKit
 import WidgetKit
 import SafariServices
+import SwiftMessages
 
 enum LessonControllerSections: Int {
     case header = 0
@@ -77,6 +78,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         }
         setupNavigationbar()
         self.tableNode?.backgroundColor = AppStyle.Lesson.Color.backgroundFooter
+        setupObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -312,6 +314,17 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         openToday()
     }
     
+    @objc func downloadButtonAction(sender: ASButtonNode) {
+        if let quarterlyIndex = dataSource?.quarterly.index {
+            DownloadQuarterlyState.shared.setStateForQuarterly(.downloading, quarterlyIndex: quarterlyIndex)
+        }
+        
+        setReadViewState(.downloading)
+        dataSource?.lessons.forEach({ lesson in
+            presenter?.interactor?.retrieveRead(readIndex: lesson.index, quarterlyIndex: dataSource?.quarterly.index)
+        })
+    }
+    
     @objc func openIntroduction(sender: ASTextNode) {
         self.present(ASNavigationController(rootViewController: QuarterlyIntroductionController(quarterly: self.dataSource!.quarterly)), animated: true)
     }
@@ -354,6 +367,29 @@ extension LessonController: UINavigationControllerDelegate {
 }
 
 extension LessonController: LessonControllerProtocol {
+    func downloadedQuarterlyWithSuccess() {
+        setReadViewState(.downloaded)
+    }
+    
+    func setReadViewState(_ state: ReadButtonState) {
+        if let coverHeader = self.tableNode?.nodeForRow(at: IndexPath(row: 0, section: LessonControllerSections.header.rawValue)) as? LessonQuarterlyInfo {
+            coverHeader.readView.setState(state)
+        }
+    }
+    
+    func downloadedQuarterlyWithError() {
+        var config = SwiftMessages.Config()
+        config.presentationContext = .window(windowLevel: .statusBar)
+        config.duration = .seconds(seconds: 3)
+
+        let messageView = MessageView.viewFromNib(layout: .cardView)
+        messageView.button?.isHidden = true
+        messageView.bodyLabel?.font = R.font.latoBold(size: 17)
+        messageView.configureTheme(.warning)
+        messageView.configureContent(title: "", body: "There was an error during download".localized())
+        SwiftMessages.show(config: config, view: messageView)
+    }
+    
     func showLessons(quarterlyInfo: QuarterlyInfo) {
         self.dataSource = quarterlyInfo
         self.tableNode?.allowsSelection = true
@@ -445,8 +481,14 @@ extension LessonController: ASTableDataSource {
                     node = LessonQuarterlyInfoView(quarterly: (self.dataSource?.quarterly)!)
                 }
                 
-                node.readButton.addTarget(self, action: #selector(self.readButtonAction(sender:)), forControlEvents: .touchUpInside)
+                node.readView.readButton.addTarget(self, action: #selector(self.readButtonAction(sender:)), forControlEvents: .touchUpInside)
+                node.readView.downloadButton.addTarget(self, action: #selector(self.downloadButtonAction(sender:)), forControlEvents: .touchUpInside)
                 node.introduction.addTarget(self, action: #selector(self.openIntroduction(sender:)), forControlEvents: .touchUpInside)
+                
+                if let quarterlyIndex = self.dataSource?.quarterly.index {
+                    node.readView.setState(DownloadQuarterlyState.shared.getStateForQuarterly(quarterlyIndex: quarterlyIndex))
+                }
+                
                 return node
             }
             
@@ -492,5 +534,20 @@ extension LessonController: ASTableDataSource {
         }
         
         return sections
+    }
+}
+
+// MARK: Setup Observers
+extension LessonController {
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateQuarterlyDownloadState), name: .updateQuarterlyDownloadState, object: nil)
+    }
+
+    @objc private func updateQuarterlyDownloadState(notification: Notification) {
+        if let userInfo = notification.userInfo,
+           let quarterlyIndex = userInfo[Constants.DownloadQuarterly.downloadedQuarterlyIndex] as? String,
+            quarterlyIndex == dataSource?.quarterly.index {
+            downloadedQuarterlyWithSuccess()
+        }
     }
 }

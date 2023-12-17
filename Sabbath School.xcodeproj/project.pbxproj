@@ -77,6 +77,8 @@
 		4E59476E2AEEF10C00EFBEEF /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59476D2AEEF10C00EFBEEF /* Clip.swift */; };
 		4E5947702AEEF14700EFBEEF /* VideoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59476F2AEEF14700EFBEEF /* VideoSection.swift */; };
 		4E5947722AEEF1BD00EFBEEF /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5947712AEEF1BD00EFBEEF /* Language.swift */; };
+		4E6151A02B2FA13800368337 /* ReadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61519F2B2FA13800368337 /* ReadButton.swift */; };
+		4E6151A32B2FA55D00368337 /* DownloadQuarterlyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6151A22B2FA55D00368337 /* DownloadQuarterlyState.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
 		4E6B1A6C2AACDA42006B9283 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
@@ -89,7 +91,6 @@
 		4E80B42F2AC0A3B2002B6FBF /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9EB482A83BD61000E012D /* DataProvider.swift */; };
 		4E853EB82ADC6C5800A46546 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 4E853EB72ADC6C5800A46546 /* Cache */; };
 		4E853EB92ADC6C8400A46546 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
-		4E8709EF2AC0A5AA008C3B59 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E8709EE2AC0A5AA008C3B59 /* Alamofire */; };
 		4E8709F02AC0A5FC008C3B59 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FEA1EDCEAD2003C7458 /* Constants.swift */; };
 		4E8709F12AC0A60D008C3B59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69A27A8E0FA00BBC4A9 /* API.swift */; };
 		4E8709F22AC0A615008C3B59 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0249E92669C2E3006BFADC /* Helper.swift */; };
@@ -382,6 +383,8 @@
 		4E594F952AF43781004C0A5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E5C826C2AE5A9EF006FC26B /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E5C826D2AE5A9EF006FC26B /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E61519F2B2FA13800368337 /* ReadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadButton.swift; sourceTree = "<group>"; };
+		4E6151A22B2FA55D00368337 /* DownloadQuarterlyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadQuarterlyState.swift; sourceTree = "<group>"; };
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		4E7B09882814CA3D00687C33 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		4E7B098B2814CA8A00687C33 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
@@ -678,7 +681,6 @@
 				4EB5D4392AC0ABB500ACE755 /* SDWebImageSwiftUI in Frameworks */,
 				4E853EB82ADC6C5800A46546 /* Cache in Frameworks */,
 				4EB5D43C2AC0ACF500ACE755 /* SDWebImageWebPCoder in Frameworks */,
-				4E8709EF2AC0A5AA008C3B59 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +841,14 @@
 				2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		4E6151A12B2FA54000368337 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				4E6151A22B2FA55D00368337 /* DownloadQuarterlyState.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		4E7B098A2814CA7400687C33 /* Protocols */ = {
@@ -1041,6 +1051,7 @@
 		7A280FBF1EDA03C0003C7458 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4E6151A12B2FA54000368337 /* Cache */,
 				4E7B098A2814CA7400687C33 /* Protocols */,
 				7A280FC01EDA03C0003C7458 /* Configuration */,
 				7A280FC11EDA03C0003C7458 /* Extensions */,
@@ -1311,6 +1322,7 @@
 				FEF4B7A126AF9C7200548E36 /* LessonQuarterlyFooter.swift */,
 				FEDA4C9226B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift */,
 				4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */,
+				4E61519F2B2FA13800368337 /* ReadButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1683,7 +1695,6 @@
 			);
 			name = SabbathSchoolTV;
 			packageProductDependencies = (
-				4E8709EE2AC0A5AA008C3B59 /* Alamofire */,
 				4EB5D4382AC0ABB500ACE755 /* SDWebImageSwiftUI */,
 				4EB5D43B2AC0ACF500ACE755 /* SDWebImageWebPCoder */,
 				4E853EB72ADC6C5800A46546 /* Cache */,
@@ -1802,9 +1813,7 @@
 					};
 					7AF191A71ED7B89B000CCF0C = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = XVGX5G4YQ9;
 						LastSwiftMigration = 1130;
-						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1813,8 +1822,6 @@
 					};
 					FE1E34FB2673C5DF00DAC2D6 = {
 						CreatedOnToolsVersion = 12.4;
-						DevelopmentTeam = XVGX5G4YQ9;
-						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -1875,7 +1882,6 @@
 			);
 			mainGroup = 7AF1919F1ED7B89B000CCF0C;
 			packageReferences = (
-				4E8709ED2AC0A5AA008C3B59 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				4EB5D43A2AC0ACF500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */,
 				4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */,
@@ -2341,6 +2347,7 @@
 				7A2810081EDD0C51003C7458 /* Navigation.swift in Sources */,
 				4E3223C628BEC53200E88E1D /* SettingsPresenter.swift in Sources */,
 				7A3BCE2E1EE2753C003EC12B /* BibleController.swift in Sources */,
+				4E6151A02B2FA13800368337 /* ReadButton.swift in Sources */,
 				7A2810041EDD0675003C7458 /* LanguageInteractor.swift in Sources */,
 				4E57799028E095B300D6F7ED /* SettingsInteractor.swift in Sources */,
 				7A2810291EDDE41F003C7458 /* ShimmeringNode.swift in Sources */,
@@ -2353,6 +2360,7 @@
 				2FA1FFEA26F6D87600E80868 /* AudioInteractor.swift in Sources */,
 				2F96FF7B26CFF4DE0045DC6D /* VideoCollectionItemView.swift in Sources */,
 				2F5C48F726F2AEB6002C4C83 /* PDF.swift in Sources */,
+				4E6151A32B2FA55D00368337 /* DownloadQuarterlyState.swift in Sources */,
 				7A3BCE301EE275F1003EC12B /* BibleView.swift in Sources */,
 				2F96FF5626C7FAD90045DC6D /* ReadCollectionView.swift in Sources */,
 			);
@@ -2917,12 +2925,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -3048,9 +3055,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29d99fff-a72e-4c42-9ceb-b8c5c4176926";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.cryart.SabbathSchool";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3063,11 +3068,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = XVGX5G4YQ9;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -3193,9 +3197,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "44d38f5b-1d64-489f-9e90-5dc34cbf7ee7";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool 1659999027";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.cryart.SabbathSchool";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3212,12 +3214,10 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -3247,8 +3247,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.cryart.SabbathSchool.Widget";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore com.cryart.SabbathSchool.Widget";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3265,9 +3264,8 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
@@ -3298,7 +3296,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.cryart.SabbathSchool.Widget";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3382,14 +3380,6 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		4E8709ED2AC0A5AA008C3B59 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -3413,11 +3403,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */;
 			productName = Cache;
-		};
-		4E8709EE2AC0A5AA008C3B59 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4E8709ED2AC0A5AA008C3B59 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		4EB5D4382AC0ABB500ACE755 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
