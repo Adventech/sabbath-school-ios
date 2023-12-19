@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Pilihan Membaca";
 "Get Printed Resources" = "Dapatkan Sumber Bercetak";
+"There was an error during download" = "Terdapat ralat semasa muat turun";
+"Remove all downloads" = "Alih keluar semua muat turun";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Dengan mengalih keluar semua muat turun anda akan kehilangan semua kandungan pelajaran yang sedang disimpan di luar talian. Adakah anda pasti mahu meneruskan?";

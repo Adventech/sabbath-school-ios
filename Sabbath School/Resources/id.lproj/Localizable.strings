@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Pilihan Membaca";
 "Get Printed Resources" = "Dapatkan Sumber Daya Tercetak";
+"There was an error during download" = "Terjadi kesalahan saat mengunduh";
+"Remove all downloads" = "Hapus semua unduhan";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Dengan menghapus semua unduhan, Anda akan kehilangan semua konten pelajaran yang saat ini disimpan secara offline. Apakah Anda yakin ingin melanjutkan?";

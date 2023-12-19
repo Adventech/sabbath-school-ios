@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "گزینه های خواندن";
 "Get Printed Resources" = "دریافت منابع چاپی";
+"There was an error during download" = "هنگام دانلود خطایی رخ داد";
+"Remove all downloads" = "همه دانلودها را حذف کنید";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "با حذف همه دانلودها، تمام محتوای درسی که در حال حاضر به صورت آفلاین ذخیره شده اند را از دست خواهید داد. آیا مطمئن هستید که می خواهید ادامه دهید؟";

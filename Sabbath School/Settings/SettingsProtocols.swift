@@ -24,6 +24,7 @@ protocol SettingsPresenterProtocol: AnyObject {
     var controller: SettingsControllerProtocol? { get set }
     
     func presentRemoveAccountConfirmation()
+    func presentRemoveAllDownloadsConfirmation()
 }
 
 protocol SettingsControllerProtocol: AnyObject {
@@ -34,6 +35,7 @@ protocol SettingsInteractorInputProtocol: AnyObject {
     var presenter: SettingsInteractorOutputProtocol? { get set }
     
     func removeAccount()
+    func removeAllDownloads()
 }
 
 protocol SettingsInteractorOutputProtocol: AnyObject {

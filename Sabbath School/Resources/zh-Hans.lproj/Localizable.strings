@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "阅读选项";
 "Get Printed Resources" = "获取印刷资源";
+"There was an error during download" = "下载时出现错误";
+"Remove all downloads" = "删除所有下载";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "删除所有下载后，您将丢失当前离线保存的所有课程内容。 您确定要继续吗？";

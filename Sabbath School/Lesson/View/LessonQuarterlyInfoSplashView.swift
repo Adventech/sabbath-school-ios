@@ -48,7 +48,7 @@ class LessonQuarterlyInfoSplashView: LessonQuarterlyInfo {
         title.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMakeWithPoints(constrainedSize.max.width), height: ASDimensionMake(.auto, 0))
         introduction.style.minWidth = ASDimensionMakeWithPoints(constrainedSize.max.width)
         
-        var vSpecChildren: [ASLayoutElement] = [title, humanDate, readButton, introduction]
+        var vSpecChildren: [ASLayoutElement] = [title, humanDate, readView, introduction]
         
         if (features.count > 0) {
             var featuresSpecChildren: [ASLayoutElement] = []

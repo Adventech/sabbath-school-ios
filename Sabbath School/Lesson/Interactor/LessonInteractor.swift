@@ -24,12 +24,31 @@ import Alamofire
 import Foundation
 import Cache
 
+extension LessonInteractor: DownloadQuarterlyDelegate {
+    func downloadedQuarterlyWithSuccess() {
+        presenter?.downloadedQuarterlyWithSuccess()
+    }
+    
+    func downloadedQuarterlyWithError() {
+        presenter?.downloadedQuarterlyWithError()
+    }
+}
+
 class LessonInteractor: LessonInteractorInputProtocol {
+    func retrieveRead(readIndex: String, quarterlyIndex: String?) {
+        readInteractor?.retrieveLessonInfo(lessonIndex: readIndex, quarterlyIndex: quarterlyIndex)
+    }
+    
     weak var presenter: LessonInteractorOutputProtocol?
     private var storage: Storage<String, QuarterlyInfo>?
     private var publishingInfoStorage: Storage<String, PublishingInfoData>?
     
-    init () {
+    private let readInteractor: ReadInteractorInputProtocol?
+    
+    init(readInteractor: ReadInteractorInputProtocol = ReadInteractor()) {
+        self.readInteractor = readInteractor
+        self.readInteractor?.quarterlyDownloadDelegate = self
+        self.readInteractor?.presenter = ReadPresenter()
         self.configure()
     }
     

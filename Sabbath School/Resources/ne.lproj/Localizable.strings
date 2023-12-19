@@ -78,3 +78,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "पढ्ने विकल्प";
 "Get Printed Resources" = "मुद्रित स्रोतहरू प्राप्त गर्नुहोस्";
+"There was an error during download" = "डाउनलोड गर्दा एउटा त्रुटि भयो";
+"Remove all downloads" = "सबै डाउनलोडहरू हटाउनुहोस्";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "सबै डाउनलोडहरू हटाएर तपाईंले हाल अफलाइनमा सुरक्षित गरिएका सबै पाठ सामग्री गुमाउनुहुनेछ। के तपाइँ निश्चित रूपमा अगाडि बढ्न चाहनुहुन्छ?";

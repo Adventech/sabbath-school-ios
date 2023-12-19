@@ -48,12 +48,14 @@ class SettingsController: ASDKViewController<ASDisplayNode>, SettingsControllerP
 
         title = "Settings".localized()
         
-        var dangerZoneItems = ["Log out".localized(), "Account removal".localized()]
+        var dangerZoneItems = ["Log out".localized(),
+                               "Account removal".localized(),
+                               "Remove all downloads".localized()]
         
         if let user = PreferencesShared.currentUser(),
             let isAnonymous = user.isAnonymous,
             isAnonymous {
-            dangerZoneItems.removeLast()
+            dangerZoneItems.remove(at: 1)
         }
 
         titles = [
@@ -334,10 +336,17 @@ extension SettingsController: ASTableDelegate {
             }
 
         case 3:
-            if indexPath.row == 0 {
+            switch indexPath.row {
+            case 0:
                 SettingsController.logOut()
-            } else {
-                presenter?.presentRemoveAccountConfirmation()
+            case 1:
+                if let isAnonymous = PreferencesShared.currentUser()?.isAnonymous, isAnonymous {
+                    presenter?.presentRemoveAllDownloadsConfirmation()
+                } else {
+                    presenter?.presentRemoveAccountConfirmation()
+                }
+            default:
+                presenter?.presentRemoveAllDownloadsConfirmation()
             }
             
         default:

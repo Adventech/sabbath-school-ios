@@ -74,3 +74,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Параметры чтения";
 "Get Printed Resources" = "Получить печатные ресурсы";
+"There was an error during download" = "Во время загрузки произошла ошибка";
+"Remove all downloads" = "Удалить все загрузки";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Удалив все загрузки, вы потеряете весь контент уроков, сохраненный в офлайн-режиме. Вы уверены, что хотите продолжить?";

@@ -60,3 +60,6 @@
 "Original PDF" = "PDF original";
 "Reading Options" = "Opcions de lectura";
 "Get Printed Resources" = "Obteniu recursos impresos";
+"There was an error during download" = "S'ha produït un error durant la baixada";
+"Remove all downloads" = "Elimina totes les baixades";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Si suprimeixes totes les baixades, perdràs tot el contingut de les lliçons desat actualment fora de línia. Esteu segur que voleu continuar?";

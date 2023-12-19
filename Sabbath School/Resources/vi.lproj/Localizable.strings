@@ -78,3 +78,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Tùy chọn đọc";
 "Get Printed Resources" = "Nhận tài nguyên in";
+"There was an error during download" = "Đã xảy ra lỗi trong quá trình tải xuống";
+"Remove all downloads" = "Xóa tất cả nội dung tải xuống";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Bằng cách xóa tất cả các bản tải xuống, bạn sẽ mất tất cả nội dung bài học hiện được lưu ngoại tuyến. Bạn có chắc muốn tiếp tục?";

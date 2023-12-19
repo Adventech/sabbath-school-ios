@@ -36,4 +36,8 @@ class SettingsInteractor: NSObject, SettingsInteractorInputProtocol {
             self?.presenter?.onSuccess()
         }
     }
+    
+    func removeAllDownloads() {
+        try? APICache.storage?.removeAll()
+    }
 }

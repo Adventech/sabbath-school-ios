@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "읽기 옵션";
 "Get Printed Resources" = "인쇄된 리소스 얻기";
+"There was an error during download" = "다운로드하는 동안 오류가 발생했습니다.";
+"Remove all downloads" = "모든 다운로드 제거";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "모든 다운로드를 제거하면 현재 오프라인에 저장된 모든 수업 콘텐츠가 손실됩니다. 계속하시겠습니까?";

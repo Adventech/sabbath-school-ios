@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Olvasási lehetőségek";
 "Get Printed Resources" = "Nyomtatott források beszerzése";
+"There was an error during download" = "Hiba történt a letöltés során";
+"Remove all downloads" = "Távolítsa el az összes letöltést";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Az összes letöltés eltávolításával elveszíti az offline módban mentett összes tananyagot. Biztosan folytatja?";

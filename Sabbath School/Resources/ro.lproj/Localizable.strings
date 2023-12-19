@@ -73,3 +73,6 @@
 /*Translated from: Reading Options*/
 "Reading Options" = "Opțiuni de citire";
 "Get Printed Resources" = "Obțineți resurse tipărite";
+"There was an error during download" = "A apărut o eroare la descărcare";
+"Remove all downloads" = "Eliminați toate descărcările";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Prin eliminarea tuturor descărcărilor, veți pierde tot conținutul lecțiilor salvat în prezent offline. Sunteți sigur că doriți să continuați?";
