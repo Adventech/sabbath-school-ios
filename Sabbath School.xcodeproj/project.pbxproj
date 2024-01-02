@@ -111,6 +111,7 @@
 		4E870A032AC0A9E5008C3B59 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3BCE201EE0EC60003EC12B /* String.swift */; };
 		4E8AABF32AE4349B00390CC6 /* LanguageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8AABF22AE4349B00390CC6 /* LanguageItemView.swift */; };
 		4E8AABF72AE46DAC00390CC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8AABF92AE46DAC00390CC6 /* Localizable.strings */; };
+		4E8C7DAD2B44D997001BF387 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4E8C7DAC2B44D997001BF387 /* Zip */; };
 		4EA076E32AC6432F007350A6 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9827CDC6A600A4C745 /* Lato-Bold.ttf */; };
 		4EA076E52AC64532007350A6 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F613B9927CDC6A600A4C745 /* Lato-Black.ttf */; };
 		4EA3D7C32AEEDD5E00F08AFD /* ShimmerEffectBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3D7C22AEEDD5E00F08AFD /* ShimmerEffectBox.swift */; };
@@ -706,6 +707,7 @@
 				4EAB177A2B44D76F00F41E13 /* Alamofire in Frameworks */,
 				2AE07F381821CB0E7D89FF1F /* Pods_Sabbath_School.framework in Frameworks */,
 				4E6CEE402B44D35A00993389 /* Cache in Frameworks */,
+				4E8C7DAD2B44D997001BF387 /* Zip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1760,6 +1762,7 @@
 				4E6CEE3F2B44D35A00993389 /* Cache */,
 				4E2507302B44D51600B4D0C4 /* Hue */,
 				4EAB17792B44D76F00F41E13 /* Alamofire */,
+				4E8C7DAC2B44D997001BF387 /* Zip */,
 			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
@@ -1897,6 +1900,7 @@
 				4EF684782B44D1680072ACC3 /* XCRemoteSwiftPackageReference "Cache" */,
 				4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */,
 				4E2507322B44D6A600B4D0C4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4E8C7DAB2B44D98A001BF387 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -2044,7 +2048,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Wormholy/Wormholy.framework",
-				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PSPDFKit/Core/PSPDFKit.framework/PSPDFKit",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PSPDFKit/Core/PSPDFKitUI.framework/PSPDFKitUI",
 			);
@@ -2070,7 +2073,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wormholy.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSPDFKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSPDFKitUI.framework",
 			);
@@ -3026,8 +3028,6 @@
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"UIKit\"",
-					"-framework",
-					"\"Zip\"",
 					"-weak_framework",
 					"\"AuthenticationServices\"",
 					"-weak_framework",
@@ -3165,8 +3165,6 @@
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"UIKit\"",
-					"-framework",
-					"\"Zip\"",
 					"-weak_framework",
 					"\"AuthenticationServices\"",
 					"-weak_framework",
@@ -3358,6 +3356,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		4E8C7DAB2B44D98A001BF387 /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.2;
+			};
+		};
 		4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -3399,6 +3405,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4EF684782B44D1680072ACC3 /* XCRemoteSwiftPackageReference "Cache" */;
 			productName = Cache;
+		};
+		4E8C7DAC2B44D997001BF387 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E8C7DAB2B44D98A001BF387 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 		4EAB17772B44D76500F41E13 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

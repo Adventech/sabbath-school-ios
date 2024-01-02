@@ -16,7 +16,6 @@ target 'Sabbath School' do
   pod 'SwiftMessages'
   pod 'SwiftDate'
   pod 'Texture'
-  pod 'Zip'
   pod 'Wormholy', :configurations => ['Debug']
 end
 

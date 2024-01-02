@@ -68,7 +68,6 @@ PODS:
   - Texture/Video (3.0.0):
     - Texture/Core
   - Wormholy (1.6.5)
-  - Zip (2.1.1)
 
 DEPENDENCIES:
   - Armchair
@@ -86,7 +85,6 @@ DEPENDENCIES:
   - SwiftMessages
   - Texture
   - Wormholy
-  - Zip
 
 SPEC REPOS:
   trunk:
@@ -112,7 +110,6 @@ SPEC REPOS:
     - SwiftMessages
     - Texture
     - Wormholy
-    - Zip
 
 EXTERNAL SOURCES:
   PSPDFKit:
@@ -142,8 +139,7 @@ SPEC CHECKSUMS:
   SwiftMessages: 9cca50659fa22bb523b4dd2a958d4442e843a354
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
-  Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 0fc4ace5dab188ea4e8ff161de871f8305026916
+PODFILE CHECKSUM: 2cdc52205d75ec551298a18e0b2229a2d521fd30
 
 COCOAPODS: 1.14.3
