@@ -4,7 +4,6 @@ inhibit_all_warnings!
 
 target 'Sabbath School' do
   pod 'PSPDFKit', podspec: 'https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec'
-  pod 'Alamofire', '~> 5.5'
   pod 'Armchair'
   pod 'Down'
   pod 'FontBlaster'
@@ -19,10 +18,6 @@ target 'Sabbath School' do
   pod 'Texture'
   pod 'Zip'
   pod 'Wormholy', :configurations => ['Debug']
-end
-
-target 'WidgetExtension' do
-  pod 'Alamofire', '~> 5.5'
 end
 
 def fix_config(config)

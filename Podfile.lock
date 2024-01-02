@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (5.5.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -72,7 +71,6 @@ PODS:
   - Zip (2.1.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.5)
   - Armchair
   - Down
   - FontBlaster
@@ -92,7 +90,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - AppAuth
     - Armchair
     - Down
@@ -122,7 +119,6 @@ EXTERNAL SOURCES:
     :podspec: https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Armchair: ea2da13f78515da627bd63d9540bd58a50e71562
   Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
@@ -148,6 +144,6 @@ SPEC CHECKSUMS:
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: ee1cfa19603657b6628648c658d5eec3d559846e
+PODFILE CHECKSUM: 0fc4ace5dab188ea4e8ff161de871f8305026916
 
 COCOAPODS: 1.14.3

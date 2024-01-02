@@ -22,6 +22,7 @@
 
 import Alamofire
 import Cache
+import Foundation
 
 class LanguageInteractor: LanguageInteractorInputProtocol {
     weak var presenter: LanguageInteractorOutputProtocol?

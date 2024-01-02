@@ -64,7 +64,6 @@
 		2FC6F69E27A8E35C00BBC4A9 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
 		2FC6F69F27A8E35C00BBC4A9 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
 		2FE24EFD26BB90170036FD75 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE24EFC26BB90170036FD75 /* AudioController.swift */; };
-		3F6A6AA42D4ACDCD11350271 /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF6DBB656E15C6AC598C316 /* Pods_WidgetExtension.framework */; };
 		4E149B712814CCCE0014A070 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
 		4E149B722814CCDE0014A070 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E25072F2B44D4F000B4D0C4 /* Hue in Frameworks */ = {isa = PBXBuildFile; productRef = 4E25072E2B44D4F000B4D0C4 /* Hue */; };
@@ -117,6 +116,8 @@
 		4EA3D7C32AEEDD5E00F08AFD /* ShimmerEffectBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3D7C22AEEDD5E00F08AFD /* ShimmerEffectBox.swift */; };
 		4EA3D7C52AEEDDFD00F08AFD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3D7C42AEEDDFD00F08AFD /* ImageLoader.swift */; };
 		4EA3D7C72AEEDF3100F08AFD /* PlainNavigationLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3D7C62AEEDF3100F08AFD /* PlainNavigationLinkButton.swift */; };
+		4EAB17782B44D76500F41E13 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4EAB17772B44D76500F41E13 /* Alamofire */; };
+		4EAB177A2B44D76F00F41E13 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4EAB17792B44D76F00F41E13 /* Alamofire */; };
 		4EB5D4392AC0ABB500ACE755 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB5D4382AC0ABB500ACE755 /* SDWebImageSwiftUI */; };
 		4EB5D43C2AC0ACF500ACE755 /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB5D43B2AC0ACF500ACE755 /* SDWebImageWebPCoder */; };
 		4EBC0E542ADC62710019CB54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */; };
@@ -320,7 +321,6 @@
 		1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		1BDC817E4DEE5647231E268B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1BDC81CE3CAC580E4EC0FB13 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		1DF6DBB656E15C6AC598C316 /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlaybackRateButton.swift; sourceTree = "<group>"; };
 		2F487E8226D879D100B4AA7A /* PSPDFKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PSPDFKit.xcframework; sourceTree = "<group>"; };
 		2F487E8326D879D100B4AA7A /* PSPDFKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PSPDFKitUI.xcframework; sourceTree = "<group>"; };
@@ -370,7 +370,6 @@
 		2FC6F69A27A8E0FA00BBC4A9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICache.swift; sourceTree = "<group>"; };
 		2FE24EFC26BB90170036FD75 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
-		47B99593C4D0420CD426A588 /* Pods-WidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfoData.swift; sourceTree = "<group>"; };
 		4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfo.swift; sourceTree = "<group>"; };
 		4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishingInfoView.swift; sourceTree = "<group>"; };
@@ -430,7 +429,6 @@
 		4EDDA4E22A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
-		675204201512E031D9507207 /* Pods-WidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		6EF5A7B83E28534A5922C354 /* Pods-SnapshotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotUITests/Pods-SnapshotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6FDC8211E431A1BCDC793BF3 /* Pods_Sabbath_School.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabbath_School.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireFrame.swift; sourceTree = "<group>"; };
@@ -705,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E2507312B44D51600B4D0C4 /* Hue in Frameworks */,
+				4EAB177A2B44D76F00F41E13 /* Alamofire in Frameworks */,
 				2AE07F381821CB0E7D89FF1F /* Pods_Sabbath_School.framework in Frameworks */,
 				4E6CEE402B44D35A00993389 /* Cache in Frameworks */,
 			);
@@ -714,11 +713,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EAB17782B44D76500F41E13 /* Alamofire in Frameworks */,
 				FE1E35002673C5DF00DAC2D6 /* SwiftUI.framework in Frameworks */,
 				4EF6847A2B44D1680072ACC3 /* Cache in Frameworks */,
 				FE1E34FE2673C5DF00DAC2D6 /* WidgetKit.framework in Frameworks */,
 				4E25072F2B44D4F000B4D0C4 /* Hue in Frameworks */,
-				3F6A6AA42D4ACDCD11350271 /* Pods_WidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1593,8 +1592,6 @@
 				A86052A5D00DEC9EFC4AC731 /* Pods-Sabbath School.release.xcconfig */,
 				816BD5B4EE864668641EEEC3 /* Pods-SnapshotUITests.debug.xcconfig */,
 				6EF5A7B83E28534A5922C354 /* Pods-SnapshotUITests.release.xcconfig */,
-				675204201512E031D9507207 /* Pods-WidgetExtension.debug.xcconfig */,
-				47B99593C4D0420CD426A588 /* Pods-WidgetExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1611,7 +1608,6 @@
 				FE1E34FF2673C5DF00DAC2D6 /* SwiftUI.framework */,
 				6FDC8211E431A1BCDC793BF3 /* Pods_Sabbath_School.framework */,
 				054AA29D20BA1F9FD5696871 /* Pods_SnapshotUITests.framework */,
-				1DF6DBB656E15C6AC598C316 /* Pods_WidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1763,6 +1759,7 @@
 			packageProductDependencies = (
 				4E6CEE3F2B44D35A00993389 /* Cache */,
 				4E2507302B44D51600B4D0C4 /* Hue */,
+				4EAB17792B44D76F00F41E13 /* Alamofire */,
 			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
@@ -1772,7 +1769,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE1E350A2673C5E400DAC2D6 /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
 			buildPhases = (
-				C023A6DC6F4CCEA3D78EC179 /* [CP] Check Pods Manifest.lock */,
 				FE1E34F82673C5DF00DAC2D6 /* Sources */,
 				FE1E34F92673C5DF00DAC2D6 /* Frameworks */,
 				FE1E34FA2673C5DF00DAC2D6 /* Resources */,
@@ -1785,6 +1781,7 @@
 			packageProductDependencies = (
 				4EF684792B44D1680072ACC3 /* Cache */,
 				4E25072E2B44D4F000B4D0C4 /* Hue */,
+				4EAB17772B44D76500F41E13 /* Alamofire */,
 			);
 			productName = WidgetExtension;
 			productReference = FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */;
@@ -1899,6 +1896,7 @@
 				4EB5D43A2AC0ACF500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */,
 				4EF684782B44D1680072ACC3 /* XCRemoteSwiftPackageReference "Cache" */,
 				4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */,
+				4E2507322B44D6A600B4D0C4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -2026,7 +2024,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Sabbath School/Pods-Sabbath School-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/Armchair/Armchair.framework",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
@@ -2053,7 +2050,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Armchair.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
@@ -2081,28 +2077,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sabbath School/Pods-Sabbath School-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C023A6DC6F4CCEA3D78EC179 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WidgetExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C6CB2C643111F39C16578E85 /* [CP] Embed Pods Frameworks */ = {
@@ -2965,8 +2939,6 @@
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
-					"\"Alamofire\"",
-					"-framework",
 					"\"AppAuth\"",
 					"-framework",
 					"\"Armchair\"",
@@ -3106,8 +3078,6 @@
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
-					"\"Alamofire\"",
-					"-framework",
 					"\"AppAuth\"",
 					"-framework",
 					"\"Armchair\"",
@@ -3214,7 +3184,6 @@
 		};
 		FE1E350B2673C5E400DAC2D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 675204201512E031D9507207 /* Pods-WidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -3243,8 +3212,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
-					"\"Alamofire\"",
-					"-framework",
 					"\"CFNetwork\"",
 					"-framework",
 					"\"Foundation\"",
@@ -3263,7 +3230,6 @@
 		};
 		FE1E350C2673C5E400DAC2D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47B99593C4D0420CD426A588 /* Pods-WidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -3290,8 +3256,6 @@
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					"\"Alamofire\"",
 					"-framework",
 					"\"CFNetwork\"",
 					"-framework",
@@ -3378,6 +3342,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E2507322B44D6A600B4D0C4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.8.1;
+			};
+		};
 		4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/zenangst/Hue.git";
@@ -3427,6 +3399,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4EF684782B44D1680072ACC3 /* XCRemoteSwiftPackageReference "Cache" */;
 			productName = Cache;
+		};
+		4EAB17772B44D76500F41E13 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E2507322B44D6A600B4D0C4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		4EAB17792B44D76F00F41E13 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E2507322B44D6A600B4D0C4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		4EB5D4382AC0ABB500ACE755 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
