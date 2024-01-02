@@ -16,7 +16,6 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.6.1)
-  - Hue (5.0.0)
   - MenuItemKit (4.0.1)
   - PINCache (3.0.3):
     - PINCache/Arc-exception-safe (= 3.0.3)
@@ -78,7 +77,6 @@ DEPENDENCIES:
   - Down
   - FontBlaster
   - GoogleSignIn
-  - Hue
   - MenuItemKit
   - PSPDFKit (from `https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec`)
   - R.swift
@@ -102,7 +100,6 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
-    - Hue
     - MenuItemKit
     - PINCache
     - PINOperation
@@ -133,7 +130,6 @@ SPEC CHECKSUMS:
   GoogleSignIn: b7779a809e1dfb32ebb43131b10d8bfcd53c1383
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
-  Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
   MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
@@ -152,6 +148,6 @@ SPEC CHECKSUMS:
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 23c58d42b948a2ac68c866b382a2d26f3011a48c
+PODFILE CHECKSUM: ee1cfa19603657b6628648c658d5eec3d559846e
 
 COCOAPODS: 1.14.3

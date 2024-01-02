@@ -9,7 +9,6 @@ target 'Sabbath School' do
   pod 'Down'
   pod 'FontBlaster'
   pod 'GoogleSignIn'
-  pod 'Hue'
   pod 'MenuItemKit'
   pod 'R.swift'
   pod 'Shimmer'
@@ -24,7 +23,6 @@ end
 
 target 'WidgetExtension' do
   pod 'Alamofire', '~> 5.5'
-  pod 'Hue'
 end
 
 def fix_config(config)

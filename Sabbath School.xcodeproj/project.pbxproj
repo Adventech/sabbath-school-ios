@@ -67,6 +67,8 @@
 		3F6A6AA42D4ACDCD11350271 /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF6DBB656E15C6AC598C316 /* Pods_WidgetExtension.framework */; };
 		4E149B712814CCCE0014A070 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
 		4E149B722814CCDE0014A070 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
+		4E25072F2B44D4F000B4D0C4 /* Hue in Frameworks */ = {isa = PBXBuildFile; productRef = 4E25072E2B44D4F000B4D0C4 /* Hue */; };
+		4E2507312B44D51600B4D0C4 /* Hue in Frameworks */ = {isa = PBXBuildFile; productRef = 4E2507302B44D51600B4D0C4 /* Hue */; };
 		4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */; };
 		4E2882CC280CCBB600AB8C31 /* PublishingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */; };
 		4E2882CE280CE46100AB8C31 /* PublishingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */; };
@@ -702,6 +704,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E2507312B44D51600B4D0C4 /* Hue in Frameworks */,
 				2AE07F381821CB0E7D89FF1F /* Pods_Sabbath_School.framework in Frameworks */,
 				4E6CEE402B44D35A00993389 /* Cache in Frameworks */,
 			);
@@ -714,6 +717,7 @@
 				FE1E35002673C5DF00DAC2D6 /* SwiftUI.framework in Frameworks */,
 				4EF6847A2B44D1680072ACC3 /* Cache in Frameworks */,
 				FE1E34FE2673C5DF00DAC2D6 /* WidgetKit.framework in Frameworks */,
+				4E25072F2B44D4F000B4D0C4 /* Hue in Frameworks */,
 				3F6A6AA42D4ACDCD11350271 /* Pods_WidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1758,6 +1762,7 @@
 			name = "Sabbath School";
 			packageProductDependencies = (
 				4E6CEE3F2B44D35A00993389 /* Cache */,
+				4E2507302B44D51600B4D0C4 /* Hue */,
 			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
@@ -1779,6 +1784,7 @@
 			name = WidgetExtension;
 			packageProductDependencies = (
 				4EF684792B44D1680072ACC3 /* Cache */,
+				4E25072E2B44D4F000B4D0C4 /* Hue */,
 			);
 			productName = WidgetExtension;
 			productReference = FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */;
@@ -1892,6 +1898,7 @@
 				4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				4EB5D43A2AC0ACF500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */,
 				4EF684782B44D1680072ACC3 /* XCRemoteSwiftPackageReference "Cache" */,
+				4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -2027,7 +2034,6 @@
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework",
-				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
 				"${BUILT_PRODUCTS_DIR}/MenuItemKit/MenuItemKit.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
@@ -2055,7 +2061,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleSignIn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MenuItemKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
@@ -2998,8 +3003,6 @@
 					"-framework",
 					"\"GoogleSignIn\"",
 					"-framework",
-					"\"Hue\"",
-					"-framework",
 					"\"ImageIO\"",
 					"-framework",
 					"\"LocalAuthentication\"",
@@ -3140,8 +3143,6 @@
 					"\"GTMSessionFetcher\"",
 					"-framework",
 					"\"GoogleSignIn\"",
-					"-framework",
-					"\"Hue\"",
 					"-framework",
 					"\"ImageIO\"",
 					"-framework",
@@ -3377,6 +3378,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zenangst/Hue.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -3404,6 +3413,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4E25072E2B44D4F000B4D0C4 /* Hue */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */;
+			productName = Hue;
+		};
+		4E2507302B44D51600B4D0C4 /* Hue */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */;
+			productName = Hue;
+		};
 		4E6CEE3F2B44D35A00993389 /* Cache */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4EF684782B44D1680072ACC3 /* XCRemoteSwiftPackageReference "Cache" */;
