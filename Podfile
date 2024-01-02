@@ -6,7 +6,6 @@ target 'Sabbath School' do
   pod 'PSPDFKit', podspec: 'https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec'
   pod 'Alamofire', '~> 5.5'
   pod 'Armchair'
-  pod 'Cache'
   pod 'Down'
   pod 'FontBlaster'
   pod 'GoogleSignIn'
@@ -26,7 +25,6 @@ end
 target 'WidgetExtension' do
   pod 'Alamofire', '~> 5.5'
   pod 'Hue'
-  pod 'Cache'
 end
 
 def fix_config(config)

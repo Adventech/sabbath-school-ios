@@ -21,6 +21,7 @@
  */
 
 import Cache
+import Foundation
 
 struct WidgetInteractor {
     enum IndexType: String {
