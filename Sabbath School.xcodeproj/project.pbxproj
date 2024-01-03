@@ -94,6 +94,7 @@
 		4E80B42E2AC0A39D002B6FBF /* VideoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9EB4B2A83D5CE000E012D /* VideoListView.swift */; };
 		4E80B42F2AC0A3B2002B6FBF /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9EB482A83BD61000E012D /* DataProvider.swift */; };
 		4E81D2762B44DDB300837C71 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 4E81D2752B44DDB300837C71 /* SwiftMessages */; };
+		4E81D2792B44DE9D00837C71 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E81D2782B44DE9D00837C71 /* SwiftEntryKit */; };
 		4E853EB92ADC6C8400A46546 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
 		4E8709F02AC0A5FC008C3B59 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FEA1EDCEAD2003C7458 /* Constants.swift */; };
 		4E8709F12AC0A60D008C3B59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69A27A8E0FA00BBC4A9 /* API.swift */; };
@@ -709,6 +710,7 @@
 				4E81D2762B44DDB300837C71 /* SwiftMessages in Frameworks */,
 				4EAB177A2B44D76F00F41E13 /* Alamofire in Frameworks */,
 				4E661EEF2B44DC5300FD2AC6 /* SwiftDate in Frameworks */,
+				4E81D2792B44DE9D00837C71 /* SwiftEntryKit in Frameworks */,
 				2AE07F381821CB0E7D89FF1F /* Pods_Sabbath_School.framework in Frameworks */,
 				4E6CEE402B44D35A00993389 /* Cache in Frameworks */,
 				4E8C7DAD2B44D997001BF387 /* Zip in Frameworks */,
@@ -1769,6 +1771,7 @@
 				4E8C7DAC2B44D997001BF387 /* Zip */,
 				4E661EEE2B44DC5300FD2AC6 /* SwiftDate */,
 				4E81D2752B44DDB300837C71 /* SwiftMessages */,
+				4E81D2782B44DE9D00837C71 /* SwiftEntryKit */,
 			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
@@ -1909,6 +1912,7 @@
 				4E8C7DAB2B44D98A001BF387 /* XCRemoteSwiftPackageReference "Zip" */,
 				4E8C7DAE2B44DB9C001BF387 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				4E661EF02B44DD0100FD2AC6 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
+				4E81D2772B44DE8400837C71 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -2047,11 +2051,9 @@
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
-				"${BUILT_PRODUCTS_DIR}/QuickLayout/QuickLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftAudio/SwiftAudio.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Wormholy/Wormholy.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PSPDFKit/Core/PSPDFKit.framework/PSPDFKit",
@@ -2070,11 +2072,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftAudio.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEntryKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wormholy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSPDFKit.framework",
@@ -3009,8 +3009,6 @@
 					"-framework",
 					"\"QuartzCore\"",
 					"-framework",
-					"\"QuickLayout\"",
-					"-framework",
 					"\"QuickLook\"",
 					"-framework",
 					"\"Rswift\"",
@@ -3022,8 +3020,6 @@
 					"\"Shimmer\"",
 					"-framework",
 					"\"SwiftAudio\"",
-					"-framework",
-					"\"SwiftEntryKit\"",
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
@@ -3142,8 +3138,6 @@
 					"-framework",
 					"\"QuartzCore\"",
 					"-framework",
-					"\"QuickLayout\"",
-					"-framework",
 					"\"QuickLook\"",
 					"-framework",
 					"\"Rswift\"",
@@ -3155,8 +3149,6 @@
 					"\"Shimmer\"",
 					"-framework",
 					"\"SwiftAudio\"",
-					"-framework",
-					"\"SwiftEntryKit\"",
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
@@ -3360,6 +3352,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		4E81D2772B44DE8400837C71 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huri000/SwiftEntryKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		4E8C7DAB2B44D98A001BF387 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
@@ -3427,6 +3427,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E661EF02B44DD0100FD2AC6 /* XCRemoteSwiftPackageReference "SwiftMessages" */;
 			productName = SwiftMessages;
+		};
+		4E81D2782B44DE9D00837C71 /* SwiftEntryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E81D2772B44DE8400837C71 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
+			productName = SwiftEntryKit;
 		};
 		4E8C7DAC2B44D997001BF387 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;

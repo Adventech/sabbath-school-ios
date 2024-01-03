@@ -34,15 +34,12 @@ PODS:
   - PSPDFKit (10.4.2):
     - PSPDFKit/Core (= 10.4.2)
   - PSPDFKit/Core (10.4.2)
-  - QuickLayout (3.0.0)
   - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
   - Shimmer (1.0.2)
   - SimulatorStatusMagic (2.6)
   - SwiftAudio (0.11.2)
-  - SwiftEntryKit (1.2.7):
-    - QuickLayout (= 3.0.0)
   - Texture (3.0.0):
     - Texture/AssetsLibrary (= 3.0.0)
     - Texture/Core (= 3.0.0)
@@ -76,7 +73,6 @@ DEPENDENCIES:
   - Shimmer
   - SimulatorStatusMagic
   - SwiftAudio
-  - SwiftEntryKit
   - Texture
   - Wormholy
 
@@ -93,13 +89,11 @@ SPEC REPOS:
     - PINCache
     - PINOperation
     - PINRemoteImage
-    - QuickLayout
     - R.swift
     - R.swift.Library
     - Shimmer
     - SimulatorStatusMagic
     - SwiftAudio
-    - SwiftEntryKit
     - Texture
     - Wormholy
 
@@ -120,16 +114,14 @@ SPEC CHECKSUMS:
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PSPDFKit: 14fbf11a44313b2eac415a1dade24fd9e98a4a2f
-  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
   SwiftAudio: 217f5f184b27a0e25ff0fe7647021f05a21c06c9
-  SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
 
-PODFILE CHECKSUM: 02666bd004aba4ee05386a214f35dacb772c44d1
+PODFILE CHECKSUM: f1a14328237388549a712458382eb83f5b7ffc6f
 
 COCOAPODS: 1.14.3
