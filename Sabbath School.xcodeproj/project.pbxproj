@@ -82,6 +82,7 @@
 		4E6151A02B2FA13800368337 /* ReadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E61519F2B2FA13800368337 /* ReadButton.swift */; };
 		4E6151A32B2FA55D00368337 /* DownloadQuarterlyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6151A22B2FA55D00368337 /* DownloadQuarterlyState.swift */; };
 		4E6409F527C5593B00A43D89 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6409F427C5593A00A43D89 /* ScrollView.swift */; };
+		4E661EEF2B44DC5300FD2AC6 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 4E661EEE2B44DC5300FD2AC6 /* SwiftDate */; };
 		4E6B1A6C2AACDA42006B9283 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		4E6CEE402B44D35A00993389 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 4E6CEE3F2B44D35A00993389 /* Cache */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
@@ -705,6 +706,7 @@
 			files = (
 				4E2507312B44D51600B4D0C4 /* Hue in Frameworks */,
 				4EAB177A2B44D76F00F41E13 /* Alamofire in Frameworks */,
+				4E661EEF2B44DC5300FD2AC6 /* SwiftDate in Frameworks */,
 				2AE07F381821CB0E7D89FF1F /* Pods_Sabbath_School.framework in Frameworks */,
 				4E6CEE402B44D35A00993389 /* Cache in Frameworks */,
 				4E8C7DAD2B44D997001BF387 /* Zip in Frameworks */,
@@ -1763,6 +1765,7 @@
 				4E2507302B44D51600B4D0C4 /* Hue */,
 				4EAB17792B44D76F00F41E13 /* Alamofire */,
 				4E8C7DAC2B44D997001BF387 /* Zip */,
+				4E661EEE2B44DC5300FD2AC6 /* SwiftDate */,
 			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
@@ -1901,6 +1904,7 @@
 				4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */,
 				4E2507322B44D6A600B4D0C4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4E8C7DAB2B44D98A001BF387 /* XCRemoteSwiftPackageReference "Zip" */,
+				4E8C7DAE2B44DB9C001BF387 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -2043,7 +2047,6 @@
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftAudio/SwiftAudio.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftEntryKit/SwiftEntryKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
@@ -2068,7 +2071,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftAudio.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEntryKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
@@ -2920,7 +2922,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3018,8 +3020,6 @@
 					"\"Shimmer\"",
 					"-framework",
 					"\"SwiftAudio\"",
-					"-framework",
-					"\"SwiftDate\"",
 					"-framework",
 					"\"SwiftEntryKit\"",
 					"-framework",
@@ -3057,7 +3057,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3155,8 +3155,6 @@
 					"\"Shimmer\"",
 					"-framework",
 					"\"SwiftAudio\"",
-					"-framework",
-					"\"SwiftDate\"",
 					"-framework",
 					"\"SwiftEntryKit\"",
 					"-framework",
@@ -3364,6 +3362,14 @@
 				minimumVersion = 2.1.2;
 			};
 		};
+		4E8C7DAE2B44DB9C001BF387 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -3400,6 +3406,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E6CEE412B44D45A00993389 /* XCRemoteSwiftPackageReference "Hue" */;
 			productName = Hue;
+		};
+		4E661EEE2B44DC5300FD2AC6 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E8C7DAE2B44DB9C001BF387 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
 		};
 		4E6CEE3F2B44D35A00993389 /* Cache */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -41,7 +41,6 @@ PODS:
   - Shimmer (1.0.2)
   - SimulatorStatusMagic (2.6)
   - SwiftAudio (0.11.2)
-  - SwiftDate (6.3.1)
   - SwiftEntryKit (1.2.7):
     - QuickLayout (= 3.0.0)
   - SwiftMessages (9.0.5):
@@ -80,7 +79,6 @@ DEPENDENCIES:
   - Shimmer
   - SimulatorStatusMagic
   - SwiftAudio
-  - SwiftDate
   - SwiftEntryKit
   - SwiftMessages
   - Texture
@@ -105,7 +103,6 @@ SPEC REPOS:
     - Shimmer
     - SimulatorStatusMagic
     - SwiftAudio
-    - SwiftDate
     - SwiftEntryKit
     - SwiftMessages
     - Texture
@@ -134,12 +131,11 @@ SPEC CHECKSUMS:
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
   SwiftAudio: 217f5f184b27a0e25ff0fe7647021f05a21c06c9
-  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftMessages: 9cca50659fa22bb523b4dd2a958d4442e843a354
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
 
-PODFILE CHECKSUM: 2cdc52205d75ec551298a18e0b2229a2d521fd30
+PODFILE CHECKSUM: b3d0aaf57b932d2cace11cc4690d65746a0fb1e1
 
 COCOAPODS: 1.14.3

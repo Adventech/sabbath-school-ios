@@ -14,7 +14,6 @@ target 'Sabbath School' do
   pod 'SwiftAudio'
   pod 'SwiftEntryKit'
   pod 'SwiftMessages'
-  pod 'SwiftDate'
   pod 'Texture'
   pod 'Wormholy', :configurations => ['Debug']
 end
