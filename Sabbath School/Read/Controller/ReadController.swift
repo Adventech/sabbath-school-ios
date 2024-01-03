@@ -25,8 +25,7 @@ import SafariServices
 import UIKit
 import SwiftAudio
 import AVKit
-import PSPDFKit
-import PSPDFKitUI
+import WebKit
 
 class ReadController: VideoPlaybackDelegatable {
     var delegate: ReadControllerDelegate?
