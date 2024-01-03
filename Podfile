@@ -13,7 +13,6 @@ target 'Sabbath School' do
   pod 'Shimmer'
   pod 'SwiftAudio'
   pod 'SwiftEntryKit'
-  pod 'SwiftMessages'
   pod 'Texture'
   pod 'Wormholy', :configurations => ['Debug']
 end

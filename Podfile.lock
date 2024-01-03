@@ -43,9 +43,6 @@ PODS:
   - SwiftAudio (0.11.2)
   - SwiftEntryKit (1.2.7):
     - QuickLayout (= 3.0.0)
-  - SwiftMessages (9.0.5):
-    - SwiftMessages/App (= 9.0.5)
-  - SwiftMessages/App (9.0.5)
   - Texture (3.0.0):
     - Texture/AssetsLibrary (= 3.0.0)
     - Texture/Core (= 3.0.0)
@@ -80,7 +77,6 @@ DEPENDENCIES:
   - SimulatorStatusMagic
   - SwiftAudio
   - SwiftEntryKit
-  - SwiftMessages
   - Texture
   - Wormholy
 
@@ -104,7 +100,6 @@ SPEC REPOS:
     - SimulatorStatusMagic
     - SwiftAudio
     - SwiftEntryKit
-    - SwiftMessages
     - Texture
     - Wormholy
 
@@ -132,10 +127,9 @@ SPEC CHECKSUMS:
   SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
   SwiftAudio: 217f5f184b27a0e25ff0fe7647021f05a21c06c9
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
-  SwiftMessages: 9cca50659fa22bb523b4dd2a958d4442e843a354
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
 
-PODFILE CHECKSUM: b3d0aaf57b932d2cace11cc4690d65746a0fb1e1
+PODFILE CHECKSUM: 02666bd004aba4ee05386a214f35dacb772c44d1
 
 COCOAPODS: 1.14.3
