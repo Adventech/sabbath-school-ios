@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "b2fa556e4e48cbf06cf8c63def138c98f4b811fa",
-        "version" : "5.8.0"
+        "revision" : "3dc6a42c7727c49bf26508e29b0a0b35f9c7e1ad",
+        "version" : "5.8.1"
       }
     },
     {
@@ -16,6 +16,15 @@
       "state" : {
         "revision" : "c7f4d633049c3bd649a353bad36f6c17e9df085f",
         "version" : "6.0.0"
+      }
+    },
+    {
+      "identity" : "hue",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zenangst/Hue.git",
+      "state" : {
+        "revision" : "b9d920cee4ba795fefb828d130744eee1e3d2feb",
+        "version" : "5.0.1"
       }
     },
     {
@@ -52,6 +61,51 @@
       "state" : {
         "revision" : "3819cb70faa2454b54d8364779bfacd8c216a6e2",
         "version" : "0.13.0"
+      }
+    },
+    {
+      "identity" : "swiftaudioex",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/doublesymmetry/SwiftAudioEx.git",
+      "state" : {
+        "revision" : "7fb762db9c60ee232223122ace798333d6add195",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swiftdate",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/malcommac/SwiftDate.git",
+      "state" : {
+        "revision" : "5d943224c3bb173e6ecf27295611615eba90c80e",
+        "version" : "7.0.0"
+      }
+    },
+    {
+      "identity" : "swiftentrykit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/huri000/SwiftEntryKit.git",
+      "state" : {
+        "revision" : "5ad36cccf0c4b9fea32f4e9b17a8e38f07563ef0",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "swiftmessages",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftKickMobile/SwiftMessages.git",
+      "state" : {
+        "revision" : "62e12e138fc3eedf88c7553dd5d98712aa119f40",
+        "version" : "9.0.9"
+      }
+    },
+    {
+      "identity" : "zip",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marmelroy/Zip.git",
+      "state" : {
+        "revision" : "67fa55813b9e7b3b9acee9c0ae501def28746d76",
+        "version" : "2.1.2"
       }
     }
   ],

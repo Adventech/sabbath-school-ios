@@ -1,12 +1,10 @@
 PODS:
-  - Alamofire (5.5.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
   - Armchair (0.3.7)
-  - Cache (6.0.0)
   - Down (0.11.0)
   - FontBlaster (5.1.1)
   - GoogleSignIn (6.0.0):
@@ -17,7 +15,6 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.6.1)
-  - Hue (5.0.0)
   - MenuItemKit (4.0.1)
   - PINCache (3.0.3):
     - PINCache/Arc-exception-safe (= 3.0.3)
@@ -37,19 +34,11 @@ PODS:
   - PSPDFKit (10.4.2):
     - PSPDFKit/Core (= 10.4.2)
   - PSPDFKit/Core (10.4.2)
-  - QuickLayout (3.0.0)
   - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
   - Shimmer (1.0.2)
   - SimulatorStatusMagic (2.6)
-  - SwiftAudio (0.11.2)
-  - SwiftDate (6.3.1)
-  - SwiftEntryKit (1.2.7):
-    - QuickLayout (= 3.0.0)
-  - SwiftMessages (9.0.5):
-    - SwiftMessages/App (= 9.0.5)
-  - SwiftMessages/App (9.0.5)
   - Texture (3.0.0):
     - Texture/AssetsLibrary (= 3.0.0)
     - Texture/Core (= 3.0.0)
@@ -71,91 +60,64 @@ PODS:
   - Texture/Video (3.0.0):
     - Texture/Core
   - Wormholy (1.6.5)
-  - Zip (2.1.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.5)
   - Armchair
-  - Cache
   - Down
   - FontBlaster
   - GoogleSignIn
-  - Hue
   - MenuItemKit
   - PSPDFKit (from `https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec`)
   - R.swift
   - Shimmer
   - SimulatorStatusMagic
-  - SwiftAudio
-  - SwiftDate
-  - SwiftEntryKit
-  - SwiftMessages
   - Texture
   - Wormholy
-  - Zip
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - AppAuth
     - Armchair
-    - Cache
     - Down
     - FontBlaster
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
-    - Hue
     - MenuItemKit
     - PINCache
     - PINOperation
     - PINRemoteImage
-    - QuickLayout
     - R.swift
     - R.swift.Library
     - Shimmer
     - SimulatorStatusMagic
-    - SwiftAudio
-    - SwiftDate
-    - SwiftEntryKit
-    - SwiftMessages
     - Texture
     - Wormholy
-    - Zip
 
 EXTERNAL SOURCES:
   PSPDFKit:
     :podspec: https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Armchair: ea2da13f78515da627bd63d9540bd58a50e71562
-  Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
   FontBlaster: 8897ebdbb4b6ace3ab78c92b665d88c954f19e4a
   GoogleSignIn: b7779a809e1dfb32ebb43131b10d8bfcd53c1383
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
-  Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
   MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PSPDFKit: 14fbf11a44313b2eac415a1dade24fd9e98a4a2f
-  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
-  SwiftAudio: 217f5f184b27a0e25ff0fe7647021f05a21c06c9
-  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
-  SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
-  SwiftMessages: 9cca50659fa22bb523b4dd2a958d4442e843a354
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
-  Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 4c437b8f06ab62da9e5f9b1440173908a681dd01
+PODFILE CHECKSUM: 7411220db02d89f9a1a5f25a0d3393a223f12a16
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.14.3
