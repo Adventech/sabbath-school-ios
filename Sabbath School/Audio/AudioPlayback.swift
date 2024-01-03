@@ -21,7 +21,7 @@
  */
 
 import AVFoundation
-import SwiftAudio
+import SwiftAudioEx
 
 enum PlaybackRate {
     case slow

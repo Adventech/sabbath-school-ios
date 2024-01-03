@@ -64,6 +64,15 @@
       }
     },
     {
+      "identity" : "swiftaudioex",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/doublesymmetry/SwiftAudioEx.git",
+      "state" : {
+        "revision" : "7fb762db9c60ee232223122ace798333d6add195",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "swiftdate",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/malcommac/SwiftDate.git",

@@ -131,6 +131,7 @@
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		4EE8B6F5284D1FAA003C1A46 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		4EF6847A2B44D1680072ACC3 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF684792B44D1680072ACC3 /* Cache */; };
+		4EFDE44B2B44E10800BEF57A /* SwiftAudioEx in Frameworks */ = {isa = PBXBuildFile; productRef = 4EFDE44A2B44E10800BEF57A /* SwiftAudioEx */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
 		7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F841ED7D6B6003C7458 /* Assets.xcassets */; };
@@ -706,6 +707,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EFDE44B2B44E10800BEF57A /* SwiftAudioEx in Frameworks */,
 				4E2507312B44D51600B4D0C4 /* Hue in Frameworks */,
 				4E81D2762B44DDB300837C71 /* SwiftMessages in Frameworks */,
 				4EAB177A2B44D76F00F41E13 /* Alamofire in Frameworks */,
@@ -1772,6 +1774,7 @@
 				4E661EEE2B44DC5300FD2AC6 /* SwiftDate */,
 				4E81D2752B44DDB300837C71 /* SwiftMessages */,
 				4E81D2782B44DE9D00837C71 /* SwiftEntryKit */,
+				4EFDE44A2B44E10800BEF57A /* SwiftAudioEx */,
 			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
@@ -1913,6 +1916,7 @@
 				4E8C7DAE2B44DB9C001BF387 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				4E661EF02B44DD0100FD2AC6 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 				4E81D2772B44DE8400837C71 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
+				4E0C10A72B44E05A00C711F1 /* XCRemoteSwiftPackageReference "SwiftAudioEx" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -2053,7 +2057,6 @@
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftAudio/SwiftAudio.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Wormholy/Wormholy.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PSPDFKit/Core/PSPDFKit.framework/PSPDFKit",
@@ -2074,7 +2077,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftAudio.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wormholy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSPDFKit.framework",
@@ -3019,8 +3021,6 @@
 					"-framework",
 					"\"Shimmer\"",
 					"-framework",
-					"\"SwiftAudio\"",
-					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"UIKit\"",
@@ -3147,8 +3147,6 @@
 					"\"Security\"",
 					"-framework",
 					"\"Shimmer\"",
-					"-framework",
-					"\"SwiftAudio\"",
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
@@ -3328,6 +3326,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E0C10A72B44E05A00C711F1 /* XCRemoteSwiftPackageReference "SwiftAudioEx" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/doublesymmetry/SwiftAudioEx.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		4E2507322B44D6A600B4D0C4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -3462,6 +3468,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4EF684782B44D1680072ACC3 /* XCRemoteSwiftPackageReference "Cache" */;
 			productName = Cache;
+		};
+		4EFDE44A2B44E10800BEF57A /* SwiftAudioEx */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E0C10A72B44E05A00C711F1 /* XCRemoteSwiftPackageReference "SwiftAudioEx" */;
+			productName = SwiftAudioEx;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

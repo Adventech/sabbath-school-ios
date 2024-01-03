@@ -11,7 +11,6 @@ target 'Sabbath School' do
   pod 'MenuItemKit'
   pod 'R.swift'
   pod 'Shimmer'
-  pod 'SwiftAudio'
   pod 'Texture'
   pod 'Wormholy', :configurations => ['Debug']
 end
