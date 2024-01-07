@@ -4,6 +4,7 @@ on:
     branches:
       - develop
       - 'vl/**'
+      - 'ec/beta/**'
 jobs:
   deploy:
     runs-on: macos-latest

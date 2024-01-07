@@ -40,6 +40,10 @@ class DownloadQuarterlyState {
 
         quarterlies[key] = state.rawValue
         PreferencesShared.userDefaults.set(quarterlies, forKey: Constants.DownloadQuarterly.quarterlyDownloaded)
-        
+    }
+    
+    func removeAll() {
+        quarterlies = [String: Int]()
+        PreferencesShared.userDefaults.removeObject(forKey: Constants.DownloadQuarterly.quarterlyDownloaded)
     }
 }

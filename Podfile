@@ -20,7 +20,7 @@ target 'Sabbath School' do
   pod 'SwiftDate'
   pod 'Texture'
   pod 'Zip'
-  pod 'Wormholy', :configurations => ['Debug']
+  pod 'Wormholy'
 end
 
 target 'WidgetExtension' do

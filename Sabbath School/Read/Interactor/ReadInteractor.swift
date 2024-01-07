@@ -24,6 +24,7 @@ import Alamofire
 import FontBlaster
 import Zip
 import Cache
+import AsyncDisplayKit
 
 protocol DownloadQuarterlyDelegate: AnyObject {
     func downloadedQuarterlyWithSuccess()
@@ -57,8 +58,12 @@ class ReadInteractor: ReadInteractorInputProtocol {
     }
 
     func retrieveLessonInfo(lessonIndex: String, quarterlyIndex: String?) {
-        self.retrieveAudio(quarterlyIndex: String(lessonIndex.prefix(lessonIndex.count-3)))
-        self.retrieveVideo(quarterlyIndex: String(lessonIndex.prefix(lessonIndex.count-3)))
+        let isDownloadingQuarterly = quarterlyIndex != nil
+        if !isDownloadingQuarterly {
+            self.retrieveAudio(quarterlyIndex: String(lessonIndex.prefix(lessonIndex.count-3)))
+            self.retrieveVideo(quarterlyIndex: String(lessonIndex.prefix(lessonIndex.count-3)))
+        }
+
         
         let parsedIndex =  Helper.parseIndex(index: lessonIndex)
         
@@ -71,7 +76,11 @@ class ReadInteractor: ReadInteractorInputProtocol {
                 self.presenter?.didRetrieveLessonInfo(lessonInfo: lessonInfo.object)
                 self.retrieveReads(lessonInfo: lessonInfo.object, quarterlyIndex: quarterlyIndex)
                 hasCache = true
+            } else {
+                debugPrint("l22 não tem cache da url = \(url)")
             }
+        } else {
+            debugPrint("l22 não tem cache da url = \(url)")
         }
         
         API.session.request(url).responseDecodable(of: LessonInfo.self, decoder: Helper.SSJSONDecoder()) { response in
@@ -80,7 +89,21 @@ class ReadInteractor: ReadInteractorInputProtocol {
                 return
             }
             self.presenter?.didRetrieveLessonInfo(lessonInfo: lessonInfo)
-            try? self.lessonInfoStorage?.setObject(lessonInfo, forKey: url)
+            
+//            do {
+//            ASNetworkImageNode().url = lessonInfo.lesson.cover
+//                lesso
+                try! self.lessonInfoStorage?.setObject(lessonInfo, forKey: url)
+//                debugPrint("l22 salvou cache da url = \(url)")
+//            } catch let error {
+//                debugPrint("l22 não salvou cache da url = \(url) - \(error)")
+//            }
+            
+//            if let _ = try? self.lessonInfoStorage?.setObject(lessonInfo, forKey: url) {
+//                debugPrint("l22 salvou cache da url = \(url)")
+//            } else {
+//                debugPrint("l22 não salvou cache da url = \(url)")
+//            }
             if !hasCache {
                 self.retrieveReads(lessonInfo: lessonInfo, quarterlyIndex: quarterlyIndex)
             }
@@ -97,12 +120,17 @@ class ReadInteractor: ReadInteractorInputProtocol {
                 self.semaphore.wait()
             }
             
-            lessonInfo.days.forEach { (day) in
-                self.retrieveHighlights(readIndex: day.index)
-            }
-            
-            lessonInfo.days.forEach { (day) in
-                self.retrieveComments(readIndex: day.index)
+            if let user = PreferencesShared.currentUser(),
+                let isAnonymous = user.isAnonymous,
+                !isAnonymous {
+                
+                lessonInfo.days.forEach { (day) in
+                    self.retrieveHighlights(readIndex: day.index)
+                }
+                
+                lessonInfo.days.forEach { (day) in
+                    self.retrieveComments(readIndex: day.index)
+                }
             }
         }
     }
