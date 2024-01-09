@@ -38,17 +38,17 @@ class SettingsInteractor: NSObject, SettingsInteractorInputProtocol {
     }
     
     func removeAllDownloads() {
-        let lessonInfoStorage = APICache.storage?.transformCodable(ofType: LessonInfo.self)
-        let readStorage = APICache.storage?.transformCodable(ofType: Read.self)
-        let highlightStorage = APICache.storage?.transformCodable(ofType: ReadHighlights.self)
-        let commentStorage = APICache.storage?.transformCodable(ofType: ReadComments.self)
-        let publishingInfoStorage = APICache.storage?.transformCodable(ofType: PublishingInfoData.self)
-        
-        try? lessonInfoStorage?.removeAll()
-        try? readStorage?.removeAll()
-        try? highlightStorage?.removeAll()
-        try? commentStorage?.removeAll()
-        try? publishingInfoStorage?.removeAll()
+//        let lessonInfoStorage = APICache.storage?.transformCodable(ofType: LessonInfo.self)
+//        let readStorage = APICache.storage?.transformCodable(ofType: Read.self)
+//        let highlightStorage = APICache.storage?.transformCodable(ofType: ReadHighlights.self)
+//        let commentStorage = APICache.storage?.transformCodable(ofType: ReadComments.self)
+//        let publishingInfoStorage = APICache.storage?.transformCodable(ofType: PublishingInfoData.self)
+//        
+//        try? lessonInfoStorage?.removeAll()
+//        try? readStorage?.removeAll()
+//        try? highlightStorage?.removeAll()
+//        try? commentStorage?.removeAll()
+//        try? publishingInfoStorage?.removeAll()
         
         try? APICache.storage?.removeAll()
         

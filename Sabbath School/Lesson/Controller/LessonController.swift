@@ -485,9 +485,9 @@ extension LessonController: ASTableDataSource {
                 node.readView.downloadButton.addTarget(self, action: #selector(self.downloadButtonAction(sender:)), forControlEvents: .touchUpInside)
                 node.introduction.addTarget(self, action: #selector(self.openIntroduction(sender:)), forControlEvents: .touchUpInside)
                 
-//                if let quarterlyIndex = self.dataSource?.quarterly.index {
-//                    node.readView.setState(DownloadQuarterlyState.shared.getStateForQuarterly(quarterlyIndex: quarterlyIndex))
-//                }
+                if let quarterlyIndex = self.dataSource?.quarterly.index {
+                    node.readView.setState(DownloadQuarterlyState.shared.getStateForQuarterly(quarterlyIndex: quarterlyIndex))
+                }
                 
                 return node
             }

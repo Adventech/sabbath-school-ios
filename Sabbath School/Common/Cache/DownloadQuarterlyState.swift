@@ -27,6 +27,7 @@ class DownloadQuarterlyState {
     
     init() {
         let quarterlyDownloaded = PreferencesShared.userDefaults.object(forKey: Constants.DownloadQuarterly.quarterlyDownloaded) as? [String: Int] ?? [:]
+        debugPrint("l22 quarterlyDownloaded = \(quarterlyDownloaded)")
         quarterlies = quarterlyDownloaded
     }
     
@@ -45,5 +46,6 @@ class DownloadQuarterlyState {
     func removeAll() {
         quarterlies = [String: Int]()
         PreferencesShared.userDefaults.removeObject(forKey: Constants.DownloadQuarterly.quarterlyDownloaded)
+        PreferencesShared.userDefaults.synchronize()
     }
 }

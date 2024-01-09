@@ -72,6 +72,8 @@
 		4E3223C628BEC53200E88E1D /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3223C528BEC53200E88E1D /* SettingsPresenter.swift */; };
 		4E3223C828BEC68300E88E1D /* SettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3223C728BEC68300E88E1D /* SettingsProtocols.swift */; };
 		4E57799028E095B300D6F7ED /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57798F28E095B300D6F7ED /* SettingsInteractor.swift */; };
+		4E58E7972B4B48CA004B5D64 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 4E58E7962B4B48CA004B5D64 /* Cache */; };
+		4E58E7992B4B48D4004B5D64 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 4E58E7982B4B48D4004B5D64 /* Cache */; };
 		4E59476A2AEEF04D00EFBEEF /* ClipJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5947692AEEF04D00EFBEEF /* ClipJSON.swift */; };
 		4E59476C2AEEF08300EFBEEF /* VideoJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59476B2AEEF08300EFBEEF /* VideoJSON.swift */; };
 		4E59476E2AEEF10C00EFBEEF /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59476D2AEEF10C00EFBEEF /* Clip.swift */; };
@@ -91,6 +93,8 @@
 		4E80B42F2AC0A3B2002B6FBF /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC9EB482A83BD61000E012D /* DataProvider.swift */; };
 		4E853EB82ADC6C5800A46546 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = 4E853EB72ADC6C5800A46546 /* Cache */; };
 		4E853EB92ADC6C8400A46546 /* APICache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69D27A8E35C00BBC4A9 /* APICache.swift */; };
+		4E860A452B4B461200749BC3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E860A442B4B461200749BC3 /* Alamofire */; };
+		4E860A472B4B461D00749BC3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E860A462B4B461D00749BC3 /* Alamofire */; };
 		4E8709F02AC0A5FC008C3B59 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280FEA1EDCEAD2003C7458 /* Constants.swift */; };
 		4E8709F12AC0A60D008C3B59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC6F69A27A8E0FA00BBC4A9 /* API.swift */; };
 		4E8709F22AC0A615008C3B59 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0249E92669C2E3006BFADC /* Helper.swift */; };
@@ -702,7 +706,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E58E7972B4B48CA004B5D64 /* Cache in Frameworks */,
 				CCE50F0449C65DA9670BF26D /* Pods_Sabbath_School.framework in Frameworks */,
+				4E860A452B4B461200749BC3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,8 +717,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE1E35002673C5DF00DAC2D6 /* SwiftUI.framework in Frameworks */,
+				4E860A472B4B461D00749BC3 /* Alamofire in Frameworks */,
 				FE1E34FE2673C5DF00DAC2D6 /* WidgetKit.framework in Frameworks */,
 				3DDC3D2AB9F67FC70562F316 /* Pods_WidgetExtension.framework in Frameworks */,
+				4E58E7992B4B48D4004B5D64 /* Cache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,6 +1763,10 @@
 				FE1E35082673C5E300DAC2D6 /* PBXTargetDependency */,
 			);
 			name = "Sabbath School";
+			packageProductDependencies = (
+				4E860A442B4B461200749BC3 /* Alamofire */,
+				4E58E7962B4B48CA004B5D64 /* Cache */,
+			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
 			productType = "com.apple.product-type.application";
@@ -1773,6 +1785,10 @@
 			dependencies = (
 			);
 			name = WidgetExtension;
+			packageProductDependencies = (
+				4E860A462B4B461D00749BC3 /* Alamofire */,
+				4E58E7982B4B48D4004B5D64 /* Cache */,
+			);
 			productName = WidgetExtension;
 			productReference = FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1885,6 +1901,7 @@
 				4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				4EB5D43A2AC0ACF500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageWebPCoder" */,
 				4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */,
+				4E860A432B4B45FF00749BC3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -1974,10 +1991,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Sabbath School/Pods-Sabbath School-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/Armchair/Armchair.framework",
-				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 				"${BUILT_PRODUCTS_DIR}/FontBlaster/FontBlaster.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
@@ -2003,10 +2018,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Armchair.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Down.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontBlaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
@@ -2955,8 +2968,6 @@
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
-					"\"Alamofire\"",
-					"-framework",
 					"\"AppAuth\"",
 					"-framework",
 					"\"Armchair\"",
@@ -2968,8 +2979,6 @@
 					"\"AudioToolbox\"",
 					"-framework",
 					"\"CFNetwork\"",
-					"-framework",
-					"\"Cache\"",
 					"-framework",
 					"\"CoreGraphics\"",
 					"-framework",
@@ -3100,8 +3109,6 @@
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
-					"\"Alamofire\"",
-					"-framework",
 					"\"AppAuth\"",
 					"-framework",
 					"\"Armchair\"",
@@ -3113,8 +3120,6 @@
 					"\"AudioToolbox\"",
 					"-framework",
 					"\"CFNetwork\"",
-					"-framework",
-					"\"Cache\"",
 					"-framework",
 					"\"CoreGraphics\"",
 					"-framework",
@@ -3241,11 +3246,7 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
-					"\"Alamofire\"",
-					"-framework",
 					"\"CFNetwork\"",
-					"-framework",
-					"\"Cache\"",
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
@@ -3293,11 +3294,7 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
-					"\"Alamofire\"",
-					"-framework",
 					"\"CFNetwork\"",
-					"-framework",
-					"\"Cache\"",
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
@@ -3392,6 +3389,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		4E860A432B4B45FF00749BC3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.8.1;
+			};
+		};
 		4EB5D4372AC0ABB500ACE755 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -3411,10 +3416,30 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4E58E7962B4B48CA004B5D64 /* Cache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */;
+			productName = Cache;
+		};
+		4E58E7982B4B48D4004B5D64 /* Cache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */;
+			productName = Cache;
+		};
 		4E853EB72ADC6C5800A46546 /* Cache */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E853EB62ADC6C5800A46546 /* XCRemoteSwiftPackageReference "Cache" */;
 			productName = Cache;
+		};
+		4E860A442B4B461200749BC3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E860A432B4B45FF00749BC3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		4E860A462B4B461D00749BC3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E860A432B4B45FF00749BC3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		4EB5D4382AC0ABB500ACE755 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;

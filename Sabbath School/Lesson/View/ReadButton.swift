@@ -47,7 +47,7 @@ final class ReadButton: ASDisplayNode {
         downloadButton.imageNode.contentMode = .scaleAspectFit
         downloadButton.contentEdgeInsets = .init(top: 12, left: 0, bottom: 8, right: 0)
         
-        setState(state)
+//        setState(state)
         
         automaticallyManagesSubnodes = true
     }
