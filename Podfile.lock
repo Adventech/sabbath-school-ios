@@ -1,12 +1,10 @@
 PODS:
-  - Alamofire (5.5.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
   - Armchair (0.3.7)
-  - Cache (6.0.0)
   - Down (0.11.0)
   - FontBlaster (5.1.1)
   - GoogleSignIn (6.0.0):
@@ -74,9 +72,7 @@ PODS:
   - Zip (2.1.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.5)
   - Armchair
-  - Cache
   - Down
   - FontBlaster
   - GoogleSignIn
@@ -96,10 +92,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - AppAuth
     - Armchair
-    - Cache
     - Down
     - FontBlaster
     - GoogleSignIn
@@ -128,10 +122,8 @@ EXTERNAL SOURCES:
     :podspec: https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Armchair: ea2da13f78515da627bd63d9540bd58a50e71562
-  Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
   FontBlaster: 8897ebdbb4b6ace3ab78c92b665d88c954f19e4a
   GoogleSignIn: b7779a809e1dfb32ebb43131b10d8bfcd53c1383
@@ -156,6 +148,6 @@ SPEC CHECKSUMS:
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: 4c437b8f06ab62da9e5f9b1440173908a681dd01
+PODFILE CHECKSUM: ff7276990728ac7b87091e22b729ae0c25db8c98
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.14.3

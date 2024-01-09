@@ -24,17 +24,17 @@ import UIKit
 import AsyncDisplayKit
 
 class LessonQuarterlyInfo: ASCellNode {
-    var quarterly: Quarterly?
+    var quarterly: Quarterly
     let title = ASTextNode()
     let humanDate = ASTextNode()
     let introduction = ASTextNode()
-    let readView = ReadButton()
+    lazy var readView = ReadButton(state: DownloadQuarterlyState.shared.getStateForQuarterly(quarterlyIndex: quarterly.index))
     var coverImage = ASImageNode()
     var features: [ASNetworkImageNode] = []
     
     init(quarterly: Quarterly) {
-        super.init()
         self.quarterly = quarterly
+        super.init()
         selectionStyle = .none
 
         title.attributedText = AppStyle.Quarterly.Text.featuredTitle(string: quarterly.title)

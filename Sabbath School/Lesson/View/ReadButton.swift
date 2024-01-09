@@ -35,7 +35,7 @@ final class ReadButton: ASDisplayNode {
     let line = ASDisplayNode()
     let downloadButton = ASButtonNode()
 
-    override init() {
+    init(state: ReadButtonState) {
         super.init()
         readButton.setAttributedTitle(AppStyle.Lesson.Text.readButton(string: "Read".localized().uppercased()), for: .normal)
         readButton.accessibilityIdentifier = "readLesson"
@@ -46,7 +46,7 @@ final class ReadButton: ASDisplayNode {
         downloadButton.imageNode.style.preferredSize = CGSize(width: 15.12, height: 30)
         downloadButton.imageNode.contentMode = .scaleAspectFit
         downloadButton.contentEdgeInsets = .init(top: 12, left: 0, bottom: 8, right: 0)
-        
+
         automaticallyManagesSubnodes = true
     }
 

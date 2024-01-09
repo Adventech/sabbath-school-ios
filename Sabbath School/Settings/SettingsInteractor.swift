@@ -39,5 +39,6 @@ class SettingsInteractor: NSObject, SettingsInteractorInputProtocol {
     
     func removeAllDownloads() {
         try? APICache.storage?.removeAll()
+        DownloadQuarterlyState.shared.removeAll()
     }
 }

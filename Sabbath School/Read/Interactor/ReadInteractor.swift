@@ -45,9 +45,11 @@ class ReadInteractor: ReadInteractorInputProtocol {
     
     weak var quarterlyDownloadDelegate: DownloadQuarterlyDelegate?
     
-    init () {}
+    init () {
+        configure()
+    }
     
-    func configure() {
+    private func configure() {
         checkifReaderBundleNeeded()
         self.lessonInfoStorage = APICache.storage?.transformCodable(ofType: LessonInfo.self)
         self.readStorage = APICache.storage?.transformCodable(ofType: Read.self)
@@ -68,9 +70,9 @@ class ReadInteractor: ReadInteractorInputProtocol {
         
         if (try? self.lessonInfoStorage?.existsObject(forKey: url)) != nil {
             if let lessonInfo = try? self.lessonInfoStorage?.entry(forKey: url) {
+                hasCache = true
                 self.presenter?.didRetrieveLessonInfo(lessonInfo: lessonInfo.object)
                 self.retrieveReads(lessonInfo: lessonInfo.object, quarterlyIndex: quarterlyIndex)
-                hasCache = true
             }
         }
         

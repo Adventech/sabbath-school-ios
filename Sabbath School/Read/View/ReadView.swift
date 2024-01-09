@@ -67,7 +67,7 @@ class ReadView: ASCellNode {
         self.highlights = ReadHighlights(readIndex: read.index, highlights: "")
         self.comments = ReadComments(readIndex: read.index, comments: [Comment]())
 
-        cover.url = lessonInfo.lesson.cover
+        cover.setURL(lessonInfo.lesson.cover, resetToDefault: true)
         cover.placeholderEnabled = true
         cover.placeholderFadeDuration = 0.6
         cover.contentMode = .scaleAspectFill
