@@ -35,7 +35,6 @@ class LessonQuarterlyInfo: ASCellNode {
     init(quarterly: Quarterly) {
         self.quarterly = quarterly
         super.init()
-//        self.quarterly = quarterly
         selectionStyle = .none
 
         title.attributedText = AppStyle.Quarterly.Text.featuredTitle(string: quarterly.title)

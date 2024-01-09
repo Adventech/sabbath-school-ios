@@ -69,23 +69,19 @@ class ReadInteractor: ReadInteractorInputProtocol {
         var hasCache = false
         
         if (try? self.lessonInfoStorage?.existsObject(forKey: url)) != nil {
-            do {
-                let lessonInfo = try self.lessonInfoStorage?.entry(forKey: url)
+            if let lessonInfo = try? self.lessonInfoStorage?.entry(forKey: url) {
                 hasCache = true
-                self.presenter?.didRetrieveLessonInfo(lessonInfo: lessonInfo!.object)
-                self.retrieveReads(lessonInfo: lessonInfo!.object, quarterlyIndex: quarterlyIndex)
-            } catch let error {
-                debugPrint("l22 error recovering cache = \(error)")
+                self.presenter?.didRetrieveLessonInfo(lessonInfo: lessonInfo.object)
+                self.retrieveReads(lessonInfo: lessonInfo.object, quarterlyIndex: quarterlyIndex)
             }
         }
         
         API.session.request(url).responseDecodable(of: LessonInfo.self, decoder: Helper.SSJSONDecoder()) { response in
             guard let lessonInfo = response.value else {
-//                self.quarterlyDownloadDelegate?.downloadedQuarterlyWithError()
+                self.quarterlyDownloadDelegate?.downloadedQuarterlyWithError()
                 return
             }
             self.presenter?.didRetrieveLessonInfo(lessonInfo: lessonInfo)
-            debugPrint("l22 self.lessonInfoStorage = \(self.lessonInfoStorage)")
             try? self.lessonInfoStorage?.setObject(lessonInfo, forKey: url)
             if !hasCache {
                 self.retrieveReads(lessonInfo: lessonInfo, quarterlyIndex: quarterlyIndex)

@@ -30,9 +30,6 @@ class APICache: NSObject {
     private override init() {}
     
     static func configure() {
-        
-//        let diskConfig = DiskConfig(name: "Disk", expiry: .never, maxSize: 1024*1024*1024*500, directory: try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
-//                                                                                                                                       appropriateFor: nil, create: true).appendingPathComponent("MyPreferences"))
         let diskConfig = DiskConfig(name: "Disk", expiry: .never, maxSize: 1024*1024*1024*500)
         let memoryConfig = MemoryConfig(expiry: .never, countLimit: 10000, totalCostLimit: 0)
 
@@ -41,7 +38,5 @@ class APICache: NSObject {
             memoryConfig: memoryConfig,
             transformer: TransformerFactory.forCodable(ofType: String.self)
         )
-        
-        
     }
 }

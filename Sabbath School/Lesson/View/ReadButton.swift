@@ -46,9 +46,7 @@ final class ReadButton: ASDisplayNode {
         downloadButton.imageNode.style.preferredSize = CGSize(width: 15.12, height: 30)
         downloadButton.imageNode.contentMode = .scaleAspectFit
         downloadButton.contentEdgeInsets = .init(top: 12, left: 0, bottom: 8, right: 0)
-        
-//        setState(state)
-        
+
         automaticallyManagesSubnodes = true
     }
 
@@ -70,7 +68,6 @@ final class ReadButton: ASDisplayNode {
     }
     
     func setState(_ state: ReadButtonState) {
-        debugPrint("l22 passou aqui ReadButton 71")
         switch state {
         case .downloaded:
             downloadButton.setImage(R.image.iconDownloaded(), for: .normal)
