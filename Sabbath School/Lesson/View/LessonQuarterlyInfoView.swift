@@ -28,7 +28,7 @@ class LessonQuarterlyInfo: ASCellNode {
     let title = ASTextNode()
     let humanDate = ASTextNode()
     let introduction = ASTextNode()
-    lazy var readView = ReadButton(state: DownloadQuarterlyState.shared.getStateForQuarterly(quarterlyIndex: quarterly.index))
+    lazy var readView = ReadButton(state: DownloadQuarterlyState.shared.getStateForQuarterly(quarterlyIndex: quarterly.index), separatorColor: quarterly.colorPrimary)
     var coverImage = ASImageNode()
     var features: [ASNetworkImageNode] = []
     
