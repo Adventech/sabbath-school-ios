@@ -35,13 +35,14 @@ final class ReadButton: ASDisplayNode {
     let line = ASDisplayNode()
     let downloadButton = ASButtonNode()
 
-    init(state: ReadButtonState) {
+    init(state: ReadButtonState, separatorColor: String?) {
         super.init()
         readButton.setAttributedTitle(AppStyle.Lesson.Text.readButton(string: "Read".localized().uppercased()), for: .normal)
         readButton.accessibilityIdentifier = "readLesson"
         readButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 20)
-        line.backgroundColor = .white
+        line.backgroundColor = UIColor(hex: separatorColor ?? "")
         
+        downloadButton.alpha = 0.16
         downloadButton.style.preferredSize = CGSize(width: 15.12, height: 30)
         downloadButton.imageNode.style.preferredSize = CGSize(width: 15.12, height: 30)
         downloadButton.imageNode.contentMode = .scaleAspectFit
