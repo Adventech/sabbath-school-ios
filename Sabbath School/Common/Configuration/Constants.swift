@@ -29,6 +29,7 @@ struct Constants {
         }
         
         static let downloadedQuarterlyIndex = "io.adventech.downloadedQuarterlyIndex"
+        static let downloadedQuarterlyStatus = "io.adventech.downloadedQuarterlyStatus"
         static let quarterlyDownloaded = "io.adventech.quarterlyDownloaded"
     }
     

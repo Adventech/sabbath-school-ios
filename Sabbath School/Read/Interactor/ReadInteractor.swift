@@ -142,9 +142,12 @@ class ReadInteractor: ReadInteractorInputProtocol {
                 
                 if self.ticker == 0 {
                     if let quarterlyIndex {
-                        NotificationCenter.default.post(name: .updateQuarterlyDownloadState,
+                        let notificationName = Notification.Name(Constants.DownloadQuarterly.quarterlyDownloadStatus(quarterlyIndex: quarterlyIndex))
+                        let downloadStatus = ReadButtonState.downloaded.rawValue
+                        NotificationCenter.default.post(name: notificationName,
                                                         object: nil,
-                                                        userInfo: [Constants.DownloadQuarterly.downloadedQuarterlyIndex: quarterlyIndex])
+                                                        userInfo: [Constants.DownloadQuarterly.downloadedQuarterlyIndex: quarterlyIndex,
+                                                                   Constants.DownloadQuarterly.downloadedQuarterlyStatus: downloadStatus])
                         DownloadQuarterlyState.shared.setStateForQuarterly(.downloaded, quarterlyIndex: quarterlyIndex)
                     }
                 }

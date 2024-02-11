@@ -39,7 +39,7 @@ protocol LessonControllerProtocol: AnyObject {
     var initiateOpenToday: Bool? { get set }
     func showLessons(quarterlyInfo: QuarterlyInfo)
     func showPublishingInfo(publishingInfo: PublishingInfo?)
-    func downloadedQuarterlyWithSuccess()
+    func setQuarterlyDownloadState(state: ReadButtonState)
     func downloadedQuarterlyWithError()
 }
 
