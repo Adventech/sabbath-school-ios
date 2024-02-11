@@ -78,7 +78,6 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
         }
         setupNavigationbar()
         self.tableNode?.backgroundColor = AppStyle.Lesson.Color.backgroundFooter
-        setupObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -367,8 +366,8 @@ extension LessonController: UINavigationControllerDelegate {
 }
 
 extension LessonController: LessonControllerProtocol {
-    func downloadedQuarterlyWithSuccess() {
-        setReadViewState(.downloaded)
+    func setQuarterlyDownloadState(state: ReadButtonState) {
+        setReadViewState(state)
     }
     
     func setReadViewState(_ state: ReadButtonState) {
@@ -407,6 +406,8 @@ extension LessonController: LessonControllerProtocol {
             openToday()
             self.initiateOpenToday = false
         }
+        
+        setupObservers()
     }
     
     func showPublishingInfo(publishingInfo: PublishingInfo?) {
@@ -540,14 +541,18 @@ extension LessonController: ASTableDataSource {
 // MARK: Setup Observers
 extension LessonController {
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateQuarterlyDownloadState), name: .updateQuarterlyDownloadState, object: nil)
+        if let quarterlyIndex = dataSource?.quarterly.index {
+            let notificationName = Notification.Name(Constants.DownloadQuarterly.quarterlyDownloadStatus(quarterlyIndex: quarterlyIndex))
+            NotificationCenter.default.addObserver(self, selector: #selector(updateQuarterlyDownloadState), name: notificationName, object: nil)
+        }
     }
 
     @objc private func updateQuarterlyDownloadState(notification: Notification) {
         if let userInfo = notification.userInfo,
            let quarterlyIndex = userInfo[Constants.DownloadQuarterly.downloadedQuarterlyIndex] as? String,
-            quarterlyIndex == dataSource?.quarterly.index {
-            downloadedQuarterlyWithSuccess()
+           let quarterlyDownloadStatus = userInfo[Constants.DownloadQuarterly.downloadedQuarterlyStatus] as? Int,
+           let quarterlyDownloadState = ReadButtonState(rawValue: quarterlyDownloadStatus) {
+            setQuarterlyDownloadState(state: quarterlyDownloadState)
         }
     }
 }
