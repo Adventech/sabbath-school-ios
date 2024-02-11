@@ -54,6 +54,7 @@ final class ReadButton: ASDisplayNode {
         downloadButton.contentEdgeInsets = .init(top: 12, left: 0, bottom: 8, right: 0)
         
         let activityIndicator = ASDisplayNode(viewBlock: {
+            self.activityIndicator.color = AppStyle.Base.Color.background
             return self.activityIndicator
         })
         self.downloadButton.addSubnode(activityIndicator)
