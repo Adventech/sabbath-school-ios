@@ -35,7 +35,7 @@ final class ReadButton: ASDisplayNode {
     let line = ASDisplayNode()
     let downloadButton = ASButtonNode()
       
-    lazy var activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 22.67, height: 30))
+    lazy var activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 22.67, height: 32))
 
     var state: ReadButtonState
 
@@ -82,13 +82,19 @@ final class ReadButton: ASDisplayNode {
         switch state {
         case .downloaded:
             downloadButton.setImage(R.image.iconDownloaded(), for: .normal)
-            self.activityIndicator.stopAnimating()
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
         case .download:
             downloadButton.setImage(R.image.iconDownload(), for: .normal)
-            self.activityIndicator.stopAnimating()
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
         case .downloading:
             downloadButton.setImage(nil, for: .normal)
-            self.activityIndicator.startAnimating()
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
         }
     }
 }
