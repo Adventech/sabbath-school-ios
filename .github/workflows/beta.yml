@@ -19,8 +19,8 @@ jobs:
           xcode-version: 15.2
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '3.0.2'
-#          bundler-cache: true
+          ruby-version: '2.7'
+          bundler-cache: true
 #       - name: Install dependencies
 #         run: bundle install
       - name: Install Pods
