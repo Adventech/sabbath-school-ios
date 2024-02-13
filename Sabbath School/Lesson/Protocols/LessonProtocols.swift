@@ -49,7 +49,7 @@ protocol LessonControllerDelegate: AnyObject {
 
 protocol LessonWireFrameProtocol: AnyObject {
     static func createLessonModule(quarterlyIndex: String, initiateOpenToday: Bool) -> LessonController
-    static func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool) -> ASNavigationController
+    static func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool) -> ASDKNavigationController
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String)
     func showReadScreen(view: LessonControllerProtocol, readScreen: ReadController)
 }

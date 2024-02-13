@@ -23,7 +23,7 @@
 import UIKit
 import AsyncDisplayKit
 
-extension ASNavigationController {
+extension ASDKNavigationController {
     open override var preferredStatusBarStyle : UIStatusBarStyle {
         return topViewController?.preferredStatusBarStyle ?? .default
     }

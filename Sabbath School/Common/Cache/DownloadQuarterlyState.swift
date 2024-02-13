@@ -32,7 +32,7 @@ class DownloadQuarterlyState {
         
         quarterlyDownloaded.forEach { (key, value) in
             if value == ReadButtonState.downloading.rawValue {
-                quarterlyDownloaded[key] = ReadButtonState.downloading.rawValue
+                quarterlyDownloaded[key] = ReadButtonState.download.rawValue
             }
         }
         

@@ -24,7 +24,7 @@ PODS:
     - PINCache/Core
   - PINCache/Core (3.0.3):
     - PINOperation (~> 1.2.1)
-  - PINOperation (1.2.1)
+  - PINOperation (1.2.2)
   - PINRemoteImage/Core (3.0.3):
     - PINOperation
   - PINRemoteImage/iOS (3.0.3):
@@ -48,25 +48,25 @@ PODS:
   - SwiftMessages (9.0.5):
     - SwiftMessages/App (= 9.0.5)
   - SwiftMessages/App (9.0.5)
-  - Texture (3.0.0):
-    - Texture/AssetsLibrary (= 3.0.0)
-    - Texture/Core (= 3.0.0)
-    - Texture/MapKit (= 3.0.0)
-    - Texture/Photos (= 3.0.0)
-    - Texture/PINRemoteImage (= 3.0.0)
-    - Texture/Video (= 3.0.0)
-  - Texture/AssetsLibrary (3.0.0):
+  - Texture (3.1.0):
+    - Texture/AssetsLibrary (= 3.1.0)
+    - Texture/Core (= 3.1.0)
+    - Texture/MapKit (= 3.1.0)
+    - Texture/Photos (= 3.1.0)
+    - Texture/PINRemoteImage (= 3.1.0)
+    - Texture/Video (= 3.1.0)
+  - Texture/AssetsLibrary (3.1.0):
     - Texture/Core
-  - Texture/Core (3.0.0)
-  - Texture/MapKit (3.0.0):
+  - Texture/Core (3.1.0)
+  - Texture/MapKit (3.1.0):
     - Texture/Core
-  - Texture/Photos (3.0.0):
+  - Texture/Photos (3.1.0):
     - Texture/Core
-  - Texture/PINRemoteImage (3.0.0):
+  - Texture/PINRemoteImage (3.1.0):
     - PINRemoteImage/iOS (~> 3.0.0)
     - PINRemoteImage/PINCache
     - Texture/Core
-  - Texture/Video (3.0.0):
+  - Texture/Video (3.1.0):
     - Texture/Core
   - Wormholy (1.6.5)
   - Zip (2.1.1)
@@ -132,7 +132,7 @@ SPEC CHECKSUMS:
   Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
   MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
-  PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
+  PINOperation: daa34d4aa1d8449089be7d405b9d974abc4724c6
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   PSPDFKit: 14fbf11a44313b2eac415a1dade24fd9e98a4a2f
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
@@ -144,10 +144,10 @@ SPEC CHECKSUMS:
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftEntryKit: 537c92699d6034efb1ef9c32b11e0b37c97aa589
   SwiftMessages: 9cca50659fa22bb523b4dd2a958d4442e843a354
-  Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
+  Texture: 2e8ab2519452515f7f5a520f5a8f7e0a413abfa3
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
   Zip: 414f59909701fda9a84ab774ebe0f5449b1082cc
 
-PODFILE CHECKSUM: ff7276990728ac7b87091e22b729ae0c25db8c98
+PODFILE CHECKSUM: c5f23ca7fa97a774176c6348f848720dad6f29ef
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.0

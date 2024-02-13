@@ -267,7 +267,7 @@ class ReadController: VideoPlaybackDelegatable {
         if #available(iOS 13, *) {
             self.present(videoController, animated: true)
         } else {
-            self.present(ASNavigationController(rootViewController: videoController), animated: true)
+            self.present(ASDKNavigationController(rootViewController: videoController), animated: true)
         }
     }
     
@@ -282,7 +282,7 @@ class ReadController: VideoPlaybackDelegatable {
         if #available(iOS 13, *) {
             self.present(audioController, animated: true)
         } else {
-            self.present(ASNavigationController(rootViewController: audioController), animated: true)
+            self.present(ASDKNavigationController(rootViewController: audioController), animated: true)
         }
     }
     
