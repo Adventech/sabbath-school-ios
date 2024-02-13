@@ -44,18 +44,10 @@ class QuarterlyItemView: ASCellNode {
         cover.shadowOpacity = 0.3
         cover.clipsToBounds = false
         cover.cornerRadius = coverCornerRadius
-//        backgroundColor = .red
+        
         coverImage = RoundedCornersImage(imageURL: quarterly.cover, corner: coverCornerRadius, size: AppStyle.Quarterly.Size.coverImage(), backgroundColor: UIColor(hex: quarterly.colorPrimaryDark!))
         coverImage.style.alignSelf = .stretch
         coverImage.imageNode.delegate = self
-        
-//        downloadButton.alpha = 0.16
-//        downloadButton.style.preferredSize = CGSize(width: 15.12, height: 30)
-//        downloadButton.imageNode.style.preferredSize = CGSize(width: 15.12, height: 30)
-//        downloadButton.imageNode.contentMode = .scaleAspectFit
-//        downloadButton.contentEdgeInsets = .init(top: 12, left: 0, bottom: 8, right: 0)
-//        downloadButton.setImage(R.image.iconDownloadedQuarterly(), for: .normal)
-//        downloadButton.backgroundColor = .blue
         
         downloadButton.alpha = 0.16
         downloadButton.style.preferredSize = CGSize(width: 15.12, height: 30)
@@ -63,13 +55,11 @@ class QuarterlyItemView: ASCellNode {
         downloadButton.imageNode.contentMode = .scaleAspectFit
         downloadButton.contentEdgeInsets = .init(top: 12, left: 0, bottom: 8, right: 0)
         let quarterlyStatus = DownloadQuarterlyState.shared.getStateForQuarterly(quarterlyIndex: quarterly.index)
-        debugPrint("l22 quarterlyStatus = \(quarterlyStatus)")
         if  quarterlyStatus == .downloaded {
             setQuarterlyDownloadState(state: .downloaded)
         }
         
         setupObservers()
-//        DownloadQuarterlyState.shared.setStateForQuarterly(.downloading, quarterlyIndex: quarterly.id)
         
         automaticallyManagesSubnodes = true
     }
@@ -77,10 +67,7 @@ class QuarterlyItemView: ASCellNode {
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         cover.style.preferredSize = AppStyle.Quarterly.Size.coverImage()
         coverImage.style.preferredSize = AppStyle.Quarterly.Size.coverImage()
-//        title.style.spacingBefore = 10
-//        title.style.spacingAfter = 20
         title.style.preferredLayoutSize = ASLayoutSize(width: ASDimensionMake(AppStyle.Quarterly.Size.coverImage().width - 20), height: ASDimensionMake(.auto, 0))
-//        title.style.preferredLayoutSize = .init(width: , height: ASDimensionMake(.auto, 0))
         
         let coverSpec = ASBackgroundLayoutSpec(child: coverImage, background: cover)
         

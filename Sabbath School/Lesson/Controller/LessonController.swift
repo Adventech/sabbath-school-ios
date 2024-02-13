@@ -325,7 +325,7 @@ final class LessonController: ASDKViewController<ASDisplayNode> {
     }
     
     @objc func openIntroduction(sender: ASTextNode) {
-        self.present(ASNavigationController(rootViewController: QuarterlyIntroductionController(quarterly: self.dataSource!.quarterly)), animated: true)
+        self.present(ASDKNavigationController(rootViewController: QuarterlyIntroductionController(quarterly: self.dataSource!.quarterly)), animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -549,7 +549,6 @@ extension LessonController {
 
     @objc private func updateQuarterlyDownloadState(notification: Notification) {
         if let userInfo = notification.userInfo,
-           let quarterlyIndex = userInfo[Constants.DownloadQuarterly.downloadedQuarterlyIndex] as? String,
            let quarterlyDownloadStatus = userInfo[Constants.DownloadQuarterly.downloadedQuarterlyStatus] as? Int,
            let quarterlyDownloadState = ReadButtonState(rawValue: quarterlyDownloadStatus) {
             setQuarterlyDownloadState(state: quarterlyDownloadState)

@@ -38,7 +38,7 @@ protocol LanguageControllerProtocol: AnyObject {
 }
 
 protocol LanguageWireFrameProtocol: AnyObject {
-    static func createLanguageModule(didSelectLanguageHandler: @escaping () -> Void?) -> ASNavigationController
+    static func createLanguageModule(didSelectLanguageHandler: @escaping () -> Void?) -> ASDKNavigationController
 }
 
 protocol LanguageInteractorOutputProtocol: AnyObject {
