@@ -35,6 +35,5 @@ struct FeaturedTodayWidget: Widget {
         .configurationDisplayName("Today's lesson".localized())
         .description("Get quick access the Sabbath School lesson for today, featuring the background image".localized())
         .supportedFamilies([.systemSmall, .systemMedium])
-        .contentMarginsDisabledIfAvailable()
     }
 }

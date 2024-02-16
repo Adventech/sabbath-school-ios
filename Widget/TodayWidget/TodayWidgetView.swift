@@ -62,7 +62,7 @@ struct TodayWidgetView : View {
                             .padding(.bottom, 5)
                             .padding(.leading, 20)
                             .padding(.trailing, 20)
-                            .widgetBackground(Color.init(UIColor.baseBlue))
+                            .background(Color.init(UIColor.baseBlue))
                             .foregroundColor(.white)
                             .cornerRadius(11)
                             .font(.system(size: 9, weight: .bold))

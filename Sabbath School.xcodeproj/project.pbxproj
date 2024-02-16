@@ -85,8 +85,6 @@
 		4E6B1A6C2AACDA42006B9283 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		4E7B09892814CA3D00687C33 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B098B2814CA8A00687C33 /* Comparable.swift */; };
-		4E7E4F3F2B79715D00920230 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7E4F3E2B79715D00920230 /* ViewExtensions.swift */; };
-		4E7E4F412B7971A900920230 /* WidgetConfigurationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7E4F402B7971A900920230 /* WidgetConfigurationExtensions.swift */; };
 		4E80B4232AC0A2DA002B6FBF /* SabbathSchoolTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80B4222AC0A2DA002B6FBF /* SabbathSchoolTVApp.swift */; };
 		4E80B4252AC0A2DA002B6FBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80B4242AC0A2DA002B6FBF /* ContentView.swift */; };
 		4E80B4272AC0A2DA002B6FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E80B4262AC0A2DA002B6FBF /* Assets.xcassets */; };
@@ -394,8 +392,6 @@
 		4E6409F427C5593A00A43D89 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		4E7B09882814CA3D00687C33 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		4E7B098B2814CA8A00687C33 /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
-		4E7E4F3E2B79715D00920230 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		4E7E4F402B7971A900920230 /* WidgetConfigurationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetConfigurationExtensions.swift; sourceTree = "<group>"; };
 		4E80B4202AC0A2D9002B6FBF /* SabbathSchoolTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SabbathSchoolTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E80B4222AC0A2DA002B6FBF /* SabbathSchoolTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTVApp.swift; sourceTree = "<group>"; };
 		4E80B4242AC0A2DA002B6FBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -869,15 +865,6 @@
 				4E7B098B2814CA8A00687C33 /* Comparable.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		4E7E4F3D2B796FB900920230 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				4E7E4F3E2B79715D00920230 /* ViewExtensions.swift */,
-				4E7E4F402B7971A900920230 /* WidgetConfigurationExtensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4E80B4212AC0A2DA002B6FBF /* SabbathSchoolTV */ = {
@@ -1634,7 +1621,6 @@
 		FE1E35012673C5DF00DAC2D6 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				4E7E4F3D2B796FB900920230 /* Extensions */,
 				FED6B2D22680262E007093CE /* LessonInfoWidget */,
 				FE611A642674F9D2003CDDB5 /* TodayWidget */,
 				FE44266F26751C160038A863 /* Resources */,
@@ -2407,7 +2393,6 @@
 				FED6B3032680E0D9007093CE /* String.swift in Sources */,
 				FE611AAB267500F5003CDDB5 /* Day.swift in Sources */,
 				FEC92205267FB09100422F3D /* Color.swift in Sources */,
-				4E7E4F3F2B79715D00920230 /* ViewExtensions.swift in Sources */,
 				FE3FFA5426B11F4E0037539F /* QuarterlyGroup.swift in Sources */,
 				FE611AAD267500F5003CDDB5 /* Comment.swift in Sources */,
 				FE611AAC267500F5003CDDB5 /* LessonInfo.swift in Sources */,
@@ -2439,7 +2424,6 @@
 				FED6B2EB268026D0007093CE /* LessonInfoWidget.swift in Sources */,
 				FED6B2E6268026AE007093CE /* LessonInfoWidgetProvider.swift in Sources */,
 				FED6B3122680E6F7007093CE /* WidgetInteractor.swift in Sources */,
-				4E7E4F412B7971A900920230 /* WidgetConfigurationExtensions.swift in Sources */,
 				2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */,
 				FEC9219B267E452800422F3D /* Helper.swift in Sources */,
 				FED6B35826818BEA007093CE /* FeaturedTodayWidget.swift in Sources */,
