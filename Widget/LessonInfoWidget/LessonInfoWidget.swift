@@ -35,6 +35,5 @@ struct LessonInfoWidget: Widget {
         .configurationDisplayName("This week's lesson".localized())
         .description("Preview and access Sabbath School lesson for this week".localized())
         .supportedFamilies([.systemLarge])
-        .contentMarginsDisabledIfAvailable()
     }
 }
