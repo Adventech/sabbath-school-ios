@@ -16,9 +16,6 @@ PODS:
   - PINRemoteImage/PINCache (3.0.3):
     - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
-  - R.swift (5.4.0):
-    - R.swift.Library (~> 5.3.0)
-  - R.swift.Library (5.3.0)
   - Shimmer (1.0.2)
   - SimulatorStatusMagic (2.6)
   - SwiftAudio (0.11.2)
@@ -47,7 +44,6 @@ PODS:
 DEPENDENCIES:
   - Armchair
   - Hue
-  - R.swift
   - Shimmer
   - SimulatorStatusMagic
   - SwiftAudio
@@ -61,8 +57,6 @@ SPEC REPOS:
     - PINCache
     - PINOperation
     - PINRemoteImage
-    - R.swift
-    - R.swift.Library
     - Shimmer
     - SimulatorStatusMagic
     - SwiftAudio
@@ -84,14 +78,12 @@ SPEC CHECKSUMS:
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: daa34d4aa1d8449089be7d405b9d974abc4724c6
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
-  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
-  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
   SwiftAudio: 217f5f184b27a0e25ff0fe7647021f05a21c06c9
   Texture: 2e8ab2519452515f7f5a520f5a8f7e0a413abfa3
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
 
-PODFILE CHECKSUM: c27046f75ef133a0a39cb487c7e104778dfff8dd
+PODFILE CHECKSUM: 0ad1b45ccc10ee68ac64e3bb5c7b0f7f9d10ffc5
 
 COCOAPODS: 1.15.2

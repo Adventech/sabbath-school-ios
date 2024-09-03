@@ -1,5 +1,5 @@
 {
-  "originHash" : "3b99de16abf2080b9ed8126dcc1872267edf63742b098ea92302a2158979c346",
+  "originHash" : "f8ddd790e7480f167187b9abf723031cd735bb175a84af761f322a29394528ad",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -119,6 +119,15 @@
       }
     },
     {
+      "identity" : "r.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mac-cain13/R.swift.git",
+      "state" : {
+        "revision" : "384eab88d1a0b98ac96f4819e50a4308ecd5359f",
+        "version" : "7.5.0"
+      }
+    },
+    {
       "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",
@@ -146,6 +155,15 @@
       }
     },
     {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
+        "version" : "1.5.0"
+      }
+    },
+    {
       "identity" : "swiftdate",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/malcommac/SwiftDate.git",
@@ -170,6 +188,15 @@
       "state" : {
         "revision" : "62e12e138fc3eedf88c7553dd5d98712aa119f40",
         "version" : "9.0.9"
+      }
+    },
+    {
+      "identity" : "xcodeedit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomlokhorst/XcodeEdit",
+      "state" : {
+        "revision" : "b6b67389a0f1a6fdd9c6457a8ab5b02eaab13c5c",
+        "version" : "2.9.2"
       }
     },
     {
