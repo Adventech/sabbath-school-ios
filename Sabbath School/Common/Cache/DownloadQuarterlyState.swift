@@ -20,13 +20,22 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 class DownloadQuarterlyState {
     
     private var quarterlies = [String: Int]()
     static let shared = DownloadQuarterlyState()
     
     init() {
-        let quarterlyDownloaded = PreferencesShared.userDefaults.object(forKey: Constants.DownloadQuarterly.quarterlyDownloaded) as? [String: Int] ?? [:]
+        var quarterlyDownloaded = PreferencesShared.userDefaults.object(forKey: Constants.DownloadQuarterly.quarterlyDownloaded) as? [String: Int] ?? [:]
+        
+        quarterlyDownloaded.forEach { (key, value) in
+            if value == ReadButtonState.downloading.rawValue {
+                quarterlyDownloaded[key] = ReadButtonState.download.rawValue
+            }
+        }
+        
         quarterlies = quarterlyDownloaded
     }
     
@@ -40,6 +49,19 @@ class DownloadQuarterlyState {
 
         quarterlies[key] = state.rawValue
         PreferencesShared.userDefaults.set(quarterlies, forKey: Constants.DownloadQuarterly.quarterlyDownloaded)
+    }
+    
+    func removeAll() {
+        quarterlies.forEach { (key, value) in
+            let downloadStatus = ReadButtonState.download.rawValue
+            NotificationCenter.default.post(name: Notification.Name(key),
+                                            object: nil,
+                                            userInfo: [Constants.DownloadQuarterly.downloadedQuarterlyIndex: key,
+                                                       Constants.DownloadQuarterly.downloadedQuarterlyStatus: downloadStatus])
+        }
         
+        quarterlies = [String: Int]()
+        PreferencesShared.userDefaults.removeObject(forKey: Constants.DownloadQuarterly.quarterlyDownloaded)
+        PreferencesShared.userDefaults.synchronize()
     }
 }

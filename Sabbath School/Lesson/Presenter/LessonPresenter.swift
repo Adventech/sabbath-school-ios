@@ -45,7 +45,7 @@ class LessonPresenter: LessonPresenterProtocol {
 
 extension LessonPresenter: LessonInteractorOutputProtocol {
     func downloadedQuarterlyWithSuccess() {
-        controller?.downloadedQuarterlyWithSuccess()
+        controller?.setQuarterlyDownloadState(state: .downloaded)
     }
     
     func downloadedQuarterlyWithError() {

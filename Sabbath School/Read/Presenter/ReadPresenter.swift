@@ -54,7 +54,6 @@ class ReadPresenter: ReadPresenterProtocol {
     var lessonIndex: String?
 
     func configure() {
-        interactor?.configure()
         interactor?.retrieveLessonInfo(lessonIndex: lessonIndex!, quarterlyIndex: nil)
         interactor?.retrievePublishingInfo()
     }
@@ -62,7 +61,7 @@ class ReadPresenter: ReadPresenterProtocol {
     func presentBibleScreen(read: Read, verse: String, size: CGSize) {
         let bibleScreen = BibleWireFrame.createBibleModule(read: read, verse: verse)
         bibleScreen.delegate = (controller as! BibleControllerOutputProtocol)
-        let navigation = ASNavigationController(rootViewController: bibleScreen)
+        let navigation = ASDKNavigationController(rootViewController: bibleScreen)
         
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         

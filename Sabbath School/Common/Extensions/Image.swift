@@ -24,6 +24,7 @@ import UIKit
 
 extension UIImage {
     func imageTintColor(_ tintColor: UIColor) -> UIImage {
+        if (size.width == 0 || size.height == 0) { return UIImage() }
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
 
         let context = UIGraphicsGetCurrentContext()! as CGContext
@@ -44,6 +45,7 @@ extension UIImage {
 
     class func imageWithColor(_ color: UIColor?, width: CGFloat = 1.0, height: CGFloat = 1.0) -> UIImage! {
         let rect = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+        if (rect.size.width == 0 || rect.size.height == 0) { return UIImage() }
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
         let context = UIGraphicsGetCurrentContext()
 
@@ -61,6 +63,7 @@ extension UIImage {
     }
 
     class func imageWithView(_ view: UIView) -> UIImage {
+        if (view.bounds.size.width == 0 || view.bounds.size.height == 0) { return UIImage() }
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
 
@@ -114,6 +117,7 @@ extension UIImage {
 
     private func modifiedImage( draw: (CGContext, CGRect) -> Void) -> UIImage {
         // using scale correctly preserves retina images
+        if (size.width == 0 || size.height == 0) { return UIImage() }
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         let context: CGContext! = UIGraphicsGetCurrentContext()
         assert(context != nil)

@@ -34,18 +34,30 @@ final class ReadButton: ASDisplayNode {
     let readButton = ASButtonNode()
     let line = ASDisplayNode()
     let downloadButton = ASButtonNode()
+      
+    lazy var activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 22.67, height: 32))
 
-    override init() {
+    var state: ReadButtonState
+
+    init(state: ReadButtonState, separatorColor: String?) {
+        self.state = state
         super.init()
         readButton.setAttributedTitle(AppStyle.Lesson.Text.readButton(string: "Read".localized().uppercased()), for: .normal)
         readButton.accessibilityIdentifier = "readLesson"
         readButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 20)
-        line.backgroundColor = .white
+        line.backgroundColor = UIColor(hex: separatorColor ?? "")
         
+        downloadButton.alpha = 0.16
         downloadButton.style.preferredSize = CGSize(width: 15.12, height: 30)
         downloadButton.imageNode.style.preferredSize = CGSize(width: 15.12, height: 30)
         downloadButton.imageNode.contentMode = .scaleAspectFit
         downloadButton.contentEdgeInsets = .init(top: 12, left: 0, bottom: 8, right: 0)
+        
+        let activityIndicator = ASDisplayNode(viewBlock: {
+            self.activityIndicator.color = AppStyle.Base.Color.background
+            return self.activityIndicator
+        })
+        self.downloadButton.addSubnode(activityIndicator)
         
         automaticallyManagesSubnodes = true
     }
@@ -71,10 +83,19 @@ final class ReadButton: ASDisplayNode {
         switch state {
         case .downloaded:
             downloadButton.setImage(R.image.iconDownloaded(), for: .normal)
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
         case .download:
             downloadButton.setImage(R.image.iconDownload(), for: .normal)
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
         case .downloading:
-            downloadButton.setImage(R.image.iconDownloading(), for: .normal)
+            downloadButton.setImage(nil, for: .normal)
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
         }
     }
 }

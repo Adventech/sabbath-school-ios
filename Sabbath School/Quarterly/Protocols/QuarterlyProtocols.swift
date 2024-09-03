@@ -31,7 +31,7 @@ protocol QuarterlyControllerProtocol: AnyObject {
 }
 
 protocol QuarterlyWireFrameProtocol: AnyObject {
-    static func createQuarterlyModule(initiateOpen: Bool) -> ASNavigationController
+    static func createQuarterlyModule(initiateOpen: Bool) -> ASDKNavigationController
     static func presentLoginScreen()
     func presentLessonScreen(view: QuarterlyControllerProtocol, quarterlyIndex: String, initiateOpenToday: Bool)
     func showLessonScreen(view: QuarterlyControllerProtocol, lessonScreen: LessonController)

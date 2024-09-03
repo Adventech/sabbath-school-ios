@@ -29,6 +29,7 @@ class QuarterlyView: ASCellNode {
     var coverImage: RoundedCornersImage!
     let title = ASTextNode()
     let humanDate = ASTextNode()
+    let downloadButton = ASButtonNode()
     private let coverCornerRadius = CGFloat(6)
 
     init(quarterly: Quarterly) {
@@ -55,6 +56,19 @@ class QuarterlyView: ASCellNode {
         )
         coverImage.style.alignSelf = .stretch
         coverImage.imageNode.delegate = self
+        
+        downloadButton.alpha = 0.16
+        downloadButton.style.preferredSize = CGSize(width: 15.12, height: 30)
+        downloadButton.imageNode.style.preferredSize = CGSize(width: 15.12, height: 30)
+        downloadButton.imageNode.contentMode = .scaleAspectFit
+        downloadButton.contentEdgeInsets = .init(top: 12, left: 0, bottom: 8, right: 0)
+        
+        let quarterlyStatus = DownloadQuarterlyState.shared.getStateForQuarterly(quarterlyIndex: quarterly.index)
+        if  quarterlyStatus == .downloaded {
+            setQuarterlyDownloadState(state: .downloaded)
+        }
+        
+        setupObservers()
 
         automaticallyManagesSubnodes = true
     }
@@ -67,7 +81,7 @@ class QuarterlyView: ASCellNode {
             spacing: 0,
             justifyContent: .start,
             alignItems: .start,
-            children: [humanDate, title]
+            children: [humanDate, title, downloadButton]
         )
 
         vSpec.style.flexShrink = 1.0
@@ -99,6 +113,30 @@ extension QuarterlyView: ASNetworkImageNodeDelegate {
         DispatchQueue.global(qos: .userInitiated).async {
             guard let image = imageNode.image else { return }
             Spotlight.indexQuarterly(quarterly: self.quarterly, image: image)
+        }
+    }
+}
+
+extension QuarterlyView {
+    private func setupObservers() {
+        let notificationName = Notification.Name(Constants.DownloadQuarterly.quarterlyDownloadStatus(quarterlyIndex: quarterly.index))
+        NotificationCenter.default.addObserver(self, selector: #selector(updateQuarterlyDownloadState), name: notificationName, object: nil)
+    }
+    
+    @objc private func updateQuarterlyDownloadState(notification: Notification) {
+        if let userInfo = notification.userInfo,
+           let quarterlyDownloadStatus = userInfo[Constants.DownloadQuarterly.downloadedQuarterlyStatus] as? Int,
+           let quarterlyDownloadState = ReadButtonState(rawValue: quarterlyDownloadStatus) {
+            setQuarterlyDownloadState(state: quarterlyDownloadState)
+        }
+    }
+    
+    func setQuarterlyDownloadState(state: ReadButtonState) {
+        switch state {
+        case .downloaded:
+            downloadButton.setImage(R.image.iconDownloadedQuarterly(), for: .normal)
+        case .download, .downloading:
+            downloadButton.setImage(nil, for: .normal)
         }
     }
 }

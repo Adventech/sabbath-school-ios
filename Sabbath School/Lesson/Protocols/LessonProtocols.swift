@@ -39,7 +39,7 @@ protocol LessonControllerProtocol: AnyObject {
     var initiateOpenToday: Bool? { get set }
     func showLessons(quarterlyInfo: QuarterlyInfo)
     func showPublishingInfo(publishingInfo: PublishingInfo?)
-    func downloadedQuarterlyWithSuccess()
+    func setQuarterlyDownloadState(state: ReadButtonState)
     func downloadedQuarterlyWithError()
 }
 
@@ -49,7 +49,7 @@ protocol LessonControllerDelegate: AnyObject {
 
 protocol LessonWireFrameProtocol: AnyObject {
     static func createLessonModule(quarterlyIndex: String, initiateOpenToday: Bool) -> LessonController
-    static func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool) -> ASNavigationController
+    static func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool) -> ASDKNavigationController
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String)
     func showReadScreen(view: LessonControllerProtocol, readScreen: ReadController)
 }

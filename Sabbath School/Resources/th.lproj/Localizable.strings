@@ -5,8 +5,8 @@
 /*Translated from: Continue without login*/
 "Continue without login" = "ดำเนินการต่อโดยไม่ต้องเข้าสู่ระบบ";
 "Contribute" = "สนับสนุน";
-"Copy" = "สำเนา";
-"Paste" = "แปะ";
+"Copy" = "คัดลอก";
+"Paste" = "วาง";
 "Dark" = "มืด";
 "English" = "อังกฤษ";
 "God's Ministry through Technology" = "กระทรวงพระเจ้าผ่านเทคโนโลยี";
@@ -35,7 +35,7 @@
 "Read" = "อ่าน";
 "Reminder" = "การแจ้งเตือน";
 "Sabbath School" = "โรงเรียนวันสะบาโต";
-"Share" = "หุ้น";
+"Share" = "แชร์";
 "Sepia" = "สีซีเปีย";
 /*Translated from: Set the reminder to be notified daily to study the lesson*/
 "Set the reminder to be notified daily to study the lesson" = "ตั้งเตือนให้แจ้งเตือนทุกวันเพื่อศึกษาบทเรียน";
@@ -72,7 +72,7 @@
 /*Translated from: General Conference of Seventh-day Adventists*/
 "General Conference of Seventh-day Adventists" = "การประชุมใหญ่สามัญของมิชชั่นวันที่เจ็ด";
 /*Translated from: Audio*/
-"Audio" = "เครื่องเสียง";
+"Audio" = "เสียง";
 /*Translated from: Video*/
 "Video" = "วีดีโอ";
 /*Translated from: Original PDF*/

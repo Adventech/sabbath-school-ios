@@ -24,5 +24,4 @@ import Foundation
 
 extension Notification.Name {
     static let resetReader = Notification.Name("resetReader")
-    static let updateQuarterlyDownloadState = Notification.Name("updateQuarterlyDownloadState")
 }

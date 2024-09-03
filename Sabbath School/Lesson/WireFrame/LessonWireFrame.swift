@@ -42,7 +42,7 @@ class LessonWireFrame: LessonWireFrameProtocol {
 
         return controller as! LessonController
     }
-    class func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool = false) -> ASNavigationController {
+    class func createLessonModuleNav(quarterlyIndex: String, initiateOpenToday: Bool = false) -> ASDKNavigationController {
         let controller: LessonControllerProtocol = LessonController()
         let presenter: LessonPresenterProtocol & LessonInteractorOutputProtocol = LessonPresenter()
         let wireFrame: LessonWireFrameProtocol = LessonWireFrame()
@@ -60,7 +60,7 @@ class LessonWireFrame: LessonWireFrameProtocol {
         interactor.presenter = presenter
 
 //        return controller as! LessonController
-        return ASNavigationController(rootViewController: controller as! UIViewController)
+        return ASDKNavigationController(rootViewController: controller as! UIViewController)
     }
 
     func presentReadScreen(view: LessonControllerProtocol, lessonIndex: String) {

@@ -72,7 +72,6 @@ protocol ReadInteractorInputProtocol: AnyObject {
     var presenter: ReadInteractorOutputProtocol? { get set }
     var quarterlyDownloadDelegate: DownloadQuarterlyDelegate? { get set }
 
-    func configure()
     func retrieveRead(readIndex: String, quarterlyIndex: String?)
     func retrieveLessonInfo(lessonIndex: String, quarterlyIndex: String?)
     func retrieveHighlights(readIndex: String)
