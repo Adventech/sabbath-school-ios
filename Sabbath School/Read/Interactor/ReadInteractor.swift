@@ -24,6 +24,7 @@ import Alamofire
 import FontBlaster
 import Zip
 import Cache
+import Foundation
 
 protocol DownloadQuarterlyDelegate: AnyObject {
     func downloadedQuarterlyWithSuccess()

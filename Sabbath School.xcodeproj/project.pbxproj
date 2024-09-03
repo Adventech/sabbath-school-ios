@@ -130,6 +130,8 @@
 		4EB5D4392AC0ABB500ACE755 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB5D4382AC0ABB500ACE755 /* SDWebImageSwiftUI */; };
 		4EB5D43C2AC0ACF500ACE755 /* SDWebImageWebPCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB5D43B2AC0ACF500ACE755 /* SDWebImageWebPCoder */; };
 		4EBC0E542ADC62710019CB54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */; };
+		4ECDCBC92C872D9F00E306BB /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECDCBC72C872D9F00E306BB /* ViewExtensions.swift */; };
+		4ECDCBCA2C872D9F00E306BB /* WidgetConfigurationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECDCBC82C872D9F00E306BB /* WidgetConfigurationExtensions.swift */; };
 		4ED3F5352C870AE900CAC2C9 /* MenuItemKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4ED3F5342C870AE900CAC2C9 /* MenuItemKit */; };
 		4EDDA4D72A83B8F70078B29E /* SabbathSchoolTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDA4D62A83B8F70078B29E /* SabbathSchoolTVTests.swift */; };
 		4EDDA4E12A83B8F70078B29E /* SabbathSchoolTVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDA4E02A83B8F70078B29E /* SabbathSchoolTVUITests.swift */; };
@@ -430,6 +432,8 @@
 		4EC9EB482A83BD61000E012D /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4EC9EB4B2A83D5CE000E012D /* VideoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListView.swift; sourceTree = "<group>"; };
 		4EC9EB4D2A83D777000E012D /* VideoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItemView.swift; sourceTree = "<group>"; };
+		4ECDCBC72C872D9F00E306BB /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		4ECDCBC82C872D9F00E306BB /* WidgetConfigurationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetConfigurationExtensions.swift; sourceTree = "<group>"; };
 		4EDDA4C52A83B8F60078B29E /* SabbathSchoolTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTVApp.swift; sourceTree = "<group>"; };
 		4EDDA4C72A83B8F60078B29E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4EDDA4C92A83B8F70078B29E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -890,6 +894,8 @@
 		4E7E4F3D2B796FB900920230 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4ECDCBC72C872D9F00E306BB /* ViewExtensions.swift */,
+				4ECDCBC82C872D9F00E306BB /* WidgetConfigurationExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2413,6 +2419,7 @@
 				FED6B3032680E0D9007093CE /* String.swift in Sources */,
 				FE611AAB267500F5003CDDB5 /* Day.swift in Sources */,
 				FEC92205267FB09100422F3D /* Color.swift in Sources */,
+				4ECDCBC92C872D9F00E306BB /* ViewExtensions.swift in Sources */,
 				FE3FFA5426B11F4E0037539F /* QuarterlyGroup.swift in Sources */,
 				FE611AAD267500F5003CDDB5 /* Comment.swift in Sources */,
 				FE611AAC267500F5003CDDB5 /* LessonInfo.swift in Sources */,
@@ -2444,6 +2451,7 @@
 				FED6B2EB268026D0007093CE /* LessonInfoWidget.swift in Sources */,
 				FED6B2E6268026AE007093CE /* LessonInfoWidgetProvider.swift in Sources */,
 				FED6B3122680E6F7007093CE /* WidgetInteractor.swift in Sources */,
+				4ECDCBCA2C872D9F00E306BB /* WidgetConfigurationExtensions.swift in Sources */,
 				2F95D39F26C0B2E8008E6666 /* Audio.swift in Sources */,
 				FEC9219B267E452800422F3D /* Helper.swift in Sources */,
 				FED6B35826818BEA007093CE /* FeaturedTodayWidget.swift in Sources */,
@@ -3058,8 +3066,6 @@
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"UIKit\"",
-					"-framework",
-					"\"Zip\"",
 					"-weak_framework",
 					"\"AuthenticationServices\"",
 					"-weak_framework",
@@ -3178,8 +3184,6 @@
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"UIKit\"",
-					"-framework",
-					"\"Zip\"",
 					"-weak_framework",
 					"\"AuthenticationServices\"",
 					"-weak_framework",
