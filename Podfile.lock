@@ -1,89 +1,63 @@
 PODS:
-  - AppAuth (1.4.0):
-    - AppAuth/Core (= 1.4.0)
-    - AppAuth/ExternalUserAgent (= 1.4.0)
-  - AppAuth/Core (1.4.0)
-  - AppAuth/ExternalUserAgent (1.4.0)
   - Armchair (0.3.7)
-  - Down (0.11.0)
-  - FontBlaster (5.1.1)
-  - GoogleSignIn (6.0.0):
-    - AppAuth (~> 1.4)
-    - GTMAppAuth (~> 1.0)
-    - GTMSessionFetcher/Core (~> 1.1)
-  - GTMAppAuth (1.2.2):
-    - AppAuth/Core (~> 1.4)
-    - GTMSessionFetcher/Core (~> 1.5)
-  - GTMSessionFetcher/Core (1.6.1)
-  - MenuItemKit (4.0.1)
-  - PINCache (3.0.3):
-    - PINCache/Arc-exception-safe (= 3.0.3)
-    - PINCache/Core (= 3.0.3)
-  - PINCache/Arc-exception-safe (3.0.3):
+  - Hue (5.0.0)
+  - PINCache (3.0.4):
+    - PINCache/Arc-exception-safe (= 3.0.4)
+    - PINCache/Core (= 3.0.4)
+  - PINCache/Arc-exception-safe (3.0.4):
     - PINCache/Core
-  - PINCache/Core (3.0.3):
-    - PINOperation (~> 1.2.1)
-  - PINOperation (1.2.1)
-  - PINRemoteImage/Core (3.0.3):
+  - PINCache/Core (3.0.4):
+    - PINOperation (~> 1.2.3)
+  - PINOperation (1.2.3)
+  - PINRemoteImage/Core (3.0.4):
     - PINOperation
-  - PINRemoteImage/iOS (3.0.3):
+  - PINRemoteImage/iOS (3.0.4):
     - PINRemoteImage/Core
-  - PINRemoteImage/PINCache (3.0.3):
-    - PINCache (~> 3.0.3)
+  - PINRemoteImage/PINCache (3.0.4):
+    - PINCache (~> 3.0.4)
     - PINRemoteImage/Core
-  - PSPDFKit (10.4.2):
-    - PSPDFKit/Core (= 10.4.2)
-  - PSPDFKit/Core (10.4.2)
   - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
   - Shimmer (1.0.2)
   - SimulatorStatusMagic (2.6)
-  - Texture (3.0.0):
-    - Texture/AssetsLibrary (= 3.0.0)
-    - Texture/Core (= 3.0.0)
-    - Texture/MapKit (= 3.0.0)
-    - Texture/Photos (= 3.0.0)
-    - Texture/PINRemoteImage (= 3.0.0)
-    - Texture/Video (= 3.0.0)
-  - Texture/AssetsLibrary (3.0.0):
+  - SwiftAudio (0.11.2)
+  - Texture (3.2.0):
+    - Texture/AssetsLibrary (= 3.2.0)
+    - Texture/Core (= 3.2.0)
+    - Texture/MapKit (= 3.2.0)
+    - Texture/Photos (= 3.2.0)
+    - Texture/PINRemoteImage (= 3.2.0)
+    - Texture/Video (= 3.2.0)
+  - Texture/AssetsLibrary (3.2.0):
     - Texture/Core
-  - Texture/Core (3.0.0)
-  - Texture/MapKit (3.0.0):
+  - Texture/Core (3.2.0)
+  - Texture/MapKit (3.2.0):
     - Texture/Core
-  - Texture/Photos (3.0.0):
+  - Texture/Photos (3.2.0):
     - Texture/Core
-  - Texture/PINRemoteImage (3.0.0):
+  - Texture/PINRemoteImage (3.2.0):
     - PINRemoteImage/iOS (~> 3.0.0)
     - PINRemoteImage/PINCache
     - Texture/Core
-  - Texture/Video (3.0.0):
+  - Texture/Video (3.2.0):
     - Texture/Core
   - Wormholy (1.6.5)
 
 DEPENDENCIES:
   - Armchair
-  - Down
-  - FontBlaster
-  - GoogleSignIn
-  - MenuItemKit
-  - PSPDFKit (from `https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec`)
+  - Hue
   - R.swift
   - Shimmer
   - SimulatorStatusMagic
-  - Texture
+  - SwiftAudio
+  - Texture (from `https://github.com/TextureGroup/Texture.git`, branch `master`)
   - Wormholy
 
 SPEC REPOS:
   trunk:
-    - AppAuth
     - Armchair
-    - Down
-    - FontBlaster
-    - GoogleSignIn
-    - GTMAppAuth
-    - GTMSessionFetcher
-    - MenuItemKit
+    - Hue
     - PINCache
     - PINOperation
     - PINRemoteImage
@@ -91,33 +65,33 @@ SPEC REPOS:
     - R.swift.Library
     - Shimmer
     - SimulatorStatusMagic
-    - Texture
+    - SwiftAudio
     - Wormholy
 
 EXTERNAL SOURCES:
-  PSPDFKit:
-    :podspec: https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec
+  Texture:
+    :branch: master
+    :git: https://github.com/TextureGroup/Texture.git
+
+CHECKOUT OPTIONS:
+  Texture:
+    :commit: f8d91810fb2bb0e96f8b498b6d75e8b413282202
+    :git: https://github.com/TextureGroup/Texture.git
 
 SPEC CHECKSUMS:
-  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Armchair: ea2da13f78515da627bd63d9540bd58a50e71562
-  Down: b6ba1bc985c9d2f4e15e3b293d2207766fa12612
-  FontBlaster: 8897ebdbb4b6ace3ab78c92b665d88c954f19e4a
-  GoogleSignIn: b7779a809e1dfb32ebb43131b10d8bfcd53c1383
-  GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
-  GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
-  MenuItemKit: 1459920e984d823e1bcc858b7a964f94e6bfa0f6
-  PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
-  PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
-  PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
-  PSPDFKit: 14fbf11a44313b2eac415a1dade24fd9e98a4a2f
+  Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
+  PINCache: d9a87a0ff397acffe9e2f0db972ac14680441158
+  PINOperation: fb563bcc9c32c26d6c78aaff967d405aa2ee74a7
+  PINRemoteImage: 6256a644f4996991f124811763c7286b2a63ff94
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
-  Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
+  SwiftAudio: 217f5f184b27a0e25ff0fe7647021f05a21c06c9
+  Texture: 26fbaae98c5f479dce12924de11531ae2587e2e8
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
 
-PODFILE CHECKSUM: 7411220db02d89f9a1a5f25a0d3393a223f12a16
+PODFILE CHECKSUM: c27046f75ef133a0a39cb487c7e104778dfff8dd
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2

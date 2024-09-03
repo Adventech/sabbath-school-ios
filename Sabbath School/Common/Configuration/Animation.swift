@@ -23,6 +23,7 @@
 import Foundation
 import UIKit
 import SwiftEntryKit
+import UIKit
 
 struct Animation {
     static func modalAnimationAttributes(widthRatio: CGFloat = 1, heightRatio: CGFloat = 1, backgroundColor: UIColor = AppStyle.Base.Color.background, statusBar: EKAttributes.StatusBar = .inferred) -> EKAttributes {

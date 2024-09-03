@@ -1,18 +1,18 @@
-platform :ios, '12.1'
+platform :ios, '14'
 use_frameworks!
 inhibit_all_warnings!
 
 target 'Sabbath School' do
-  pod 'PSPDFKit', podspec: 'https://customers.pspdfkit.com/pspdfkit-ios/10.4.2.podspec'
   pod 'Armchair'
-  pod 'Down'
-  pod 'FontBlaster'
-  pod 'GoogleSignIn'
-  pod 'MenuItemKit'
   pod 'R.swift'
   pod 'Shimmer'
-  pod 'Texture'
+  pod 'SwiftAudio'
+  pod 'Texture', :git => 'https://github.com/TextureGroup/Texture.git', :branch => 'master'
   pod 'Wormholy', :configurations => ['Debug']
+end
+
+target 'WidgetExtension' do
+  pod 'Hue'
 end
 
 def fix_config(config)
@@ -36,6 +36,11 @@ post_install do |installer|
         else
           config.build_settings['OTHER_SWIFT_FLAGS'] = ''
         end
+      end
+    end
+    if target.name == 'PSPDFKit'
+      target.build_configurations.each do |config|
+        config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
       end
     end
   end
