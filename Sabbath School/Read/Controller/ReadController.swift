@@ -23,7 +23,7 @@
 import AsyncDisplayKit
 import SafariServices
 import UIKit
-import SwiftAudioEx
+import SwiftAudio
 import AVKit
 import PSPDFKit
 import PSPDFKitUI

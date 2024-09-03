@@ -22,7 +22,7 @@
 
 import AsyncDisplayKit
 import UIKit
-import SwiftAudioEx
+import SwiftAudio
 import MediaPlayer
 
 extension Audio {

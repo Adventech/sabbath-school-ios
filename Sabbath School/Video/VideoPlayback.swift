@@ -22,7 +22,7 @@
 
 import AsyncDisplayKit
 import AVKit
-import SwiftAudioEx
+import SwiftAudio
 import MediaPlayer
 
 class VideoPlayback: NSObject {
