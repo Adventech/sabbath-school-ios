@@ -10,10 +10,6 @@ target 'Sabbath School' do
   pod 'Wormholy', :configurations => ['Debug']
 end
 
-target 'WidgetExtension' do
-  pod 'Hue'
-end
-
 def fix_config(config)
    # https://github.com/CocoaPods/CocoaPods/issues/8891
    if config.build_settings['DEVELOPMENT_TEAM'].nil?

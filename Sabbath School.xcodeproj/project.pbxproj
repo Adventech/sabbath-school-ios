@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A43D7801EF8BABD00D6A639 /* SnapshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D77F1EF8BABD00D6A639 /* SnapshotUITests.swift */; };
 		1A43D7881EF8C48B00D6A639 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */; };
-		23E2D8CE8D0E10DD03D1FBC1 /* Pods_WidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77455DBE33EE891E8D1B7FEB /* Pods_WidgetExtension.framework */; };
 		2F487E8126D8567300B4AA7A /* VideoPlaybackRateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */; };
 		2F487E8B26D87A5E00B4AA7A /* PDFController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8A26D87A5E00B4AA7A /* PDFController.swift */; };
 		2F487E8F26DC80F300B4AA7A /* ReadMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F487E8E26DC80F300B4AA7A /* ReadMenuController.swift */; };
@@ -139,6 +138,7 @@
 		4EDDA4E32A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDA4E22A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift */; };
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		4EE8B6F5284D1FAA003C1A46 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
+		4EF2A46B2C87DA9000DCE92E /* Hue in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF2A46A2C87DA9000DCE92E /* Hue */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
 		7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F841ED7D6B6003C7458 /* Assets.xcassets */; };
@@ -333,7 +333,6 @@
 		1A43D7871EF8C48B00D6A639 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		1BDC817E4DEE5647231E268B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1BDC81CE3CAC580E4EC0FB13 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		200EF746E3B48D1A52F6937A /* Pods-WidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		2F487E8026D8567300B4AA7A /* VideoPlaybackRateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlaybackRateButton.swift; sourceTree = "<group>"; };
 		2F487E8226D879D100B4AA7A /* PSPDFKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PSPDFKit.xcframework; sourceTree = "<group>"; };
 		2F487E8326D879D100B4AA7A /* PSPDFKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PSPDFKitUI.xcframework; sourceTree = "<group>"; };
@@ -445,7 +444,6 @@
 		4EDDA4E22A83B8F70078B29E /* SabbathSchoolTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabbathSchoolTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4EE2DF0727DA7AFC00812552 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
-		77455DBE33EE891E8D1B7FEB /* Pods_WidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireFrame.swift; sourceTree = "<group>"; };
 		7A280F791ED7CF2C003C7458 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7A280F841ED7D6B6003C7458 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -675,7 +673,6 @@
 		FED6B352268133B2007093CE /* FeaturedTodayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedTodayWidgetView.swift; sourceTree = "<group>"; };
 		FED6B35726818BEA007093CE /* FeaturedTodayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedTodayWidget.swift; sourceTree = "<group>"; };
 		FEDA4C9226B5AB0300B110B9 /* LessonQuarterlyInfoEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonQuarterlyInfoEmptyView.swift; sourceTree = "<group>"; };
-		FEDAE37640E1D2ADD391980C /* Pods-WidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WidgetExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WidgetExtension/Pods-WidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		FEE3024224730E8000A71314 /* MenuItemKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MenuItemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEF4B75226AF934100548E36 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		FEF4B79326AF9A9B00548E36 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
@@ -743,8 +740,8 @@
 				FE1E35002673C5DF00DAC2D6 /* SwiftUI.framework in Frameworks */,
 				4E860A472B4B461D00749BC3 /* Alamofire in Frameworks */,
 				FE1E34FE2673C5DF00DAC2D6 /* WidgetKit.framework in Frameworks */,
+				4EF2A46B2C87DA9000DCE92E /* Hue in Frameworks */,
 				4E58E7992B4B48D4004B5D64 /* Cache in Frameworks */,
-				23E2D8CE8D0E10DD03D1FBC1 /* Pods_WidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1627,8 +1624,6 @@
 				E136C645A7341136BC851DBC /* Pods-Sabbath School.release.xcconfig */,
 				D1850976F8373897BE44B287 /* Pods-SnapshotUITests.debug.xcconfig */,
 				445C4D7FC7597B0CF46F8DD5 /* Pods-SnapshotUITests.release.xcconfig */,
-				200EF746E3B48D1A52F6937A /* Pods-WidgetExtension.debug.xcconfig */,
-				FEDAE37640E1D2ADD391980C /* Pods-WidgetExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1645,7 +1640,6 @@
 				FE1E34FF2673C5DF00DAC2D6 /* SwiftUI.framework */,
 				17F9103B4FAFAEA5CE830C0A /* Pods_Sabbath_School.framework */,
 				CD4A2D9F7826E1DA68AF7796 /* Pods_SnapshotUITests.framework */,
-				77455DBE33EE891E8D1B7FEB /* Pods_WidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1819,7 +1813,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE1E350A2673C5E400DAC2D6 /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
 			buildPhases = (
-				4EC50F4537A0B59F7B1367A3 /* [CP] Check Pods Manifest.lock */,
 				FE1E34F82673C5DF00DAC2D6 /* Sources */,
 				FE1E34F92673C5DF00DAC2D6 /* Frameworks */,
 				FE1E34FA2673C5DF00DAC2D6 /* Resources */,
@@ -1832,6 +1825,7 @@
 			packageProductDependencies = (
 				4E860A462B4B461D00749BC3 /* Alamofire */,
 				4E58E7982B4B48D4004B5D64 /* Cache */,
+				4EF2A46A2C87DA9000DCE92E /* Hue */,
 			);
 			productName = WidgetExtension;
 			productReference = FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */;
@@ -2039,28 +2033,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4EC50F4537A0B59F7B1367A3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WidgetExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		623C0FA944FE64E060E47EF7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2094,7 +2066,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftAudio/SwiftAudio.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Wormholy/Wormholy.framework",
-				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2106,7 +2077,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftAudio.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wormholy.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3009,8 +2979,6 @@
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
-					"\"Hue\"",
-					"-framework",
 					"\"ImageIO\"",
 					"-framework",
 					"\"LocalAuthentication\"",
@@ -3125,8 +3093,6 @@
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
-					"\"Hue\"",
-					"-framework",
 					"\"ImageIO\"",
 					"-framework",
 					"\"LocalAuthentication\"",
@@ -3183,7 +3149,6 @@
 		};
 		FE1E350B2673C5E400DAC2D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 200EF746E3B48D1A52F6937A /* Pods-WidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -3214,8 +3179,6 @@
 					"-framework",
 					"\"Foundation\"",
 					"-framework",
-					"\"Hue\"",
-					"-framework",
 					"\"UIKit\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchool.Widget;
@@ -3229,7 +3192,6 @@
 		};
 		FE1E350C2673C5E400DAC2D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FEDAE37640E1D2ADD391980C /* Pods-WidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -3260,8 +3222,6 @@
 					"\"CFNetwork\"",
 					"-framework",
 					"\"Foundation\"",
-					"-framework",
-					"\"Hue\"",
 					"-framework",
 					"\"UIKit\"",
 				);
@@ -3561,6 +3521,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4ED3F5332C870AE900CAC2C9 /* XCRemoteSwiftPackageReference "MenuItemKit" */;
 			productName = MenuItemKit;
+		};
+		4EF2A46A2C87DA9000DCE92E /* Hue */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E673ABA2C8709FC009C5C8D /* XCRemoteSwiftPackageReference "Hue" */;
+			productName = Hue;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
