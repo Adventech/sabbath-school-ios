@@ -1,5 +1,5 @@
 {
-  "originHash" : "9a9ca7613c821e813fe1f82d12b72abc30e3e33bfd237272cbbe0017d10046ab",
+  "originHash" : "2f976438cbaebbc4c5a735933d0c1d517a5c2bad06fde220ccc2eaa2b642e5cd",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "c89ed571ae140f8eb1142735e6e23d7bb8c34cb2",
         "version" : "1.7.5"
+      }
+    },
+    {
+      "identity" : "armchair",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/guidev/Armchair.git",
+      "state" : {
+        "revision" : "53d6bc3efaeb9306d0aaee7353fdf0fab8479453",
+        "version" : "0.3.8"
       }
     },
     {
@@ -152,6 +161,15 @@
       "state" : {
         "revision" : "3819cb70faa2454b54d8364779bfacd8c216a6e2",
         "version" : "0.13.0"
+      }
+    },
+    {
+      "identity" : "shimmer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/somenkovnikita/Shimmer.git",
+      "state" : {
+        "revision" : "2c76b2404dfceadd50d649c945be212e44239d18",
+        "version" : "1.0.3"
       }
     },
     {

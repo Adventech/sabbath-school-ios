@@ -68,6 +68,8 @@
 		4E149B722814CCDE0014A070 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7B09882814CA3D00687C33 /* Encodable.swift */; };
 		4E1A6CF82C87D56F00B4DE9C /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1A6CF72C87D56F00B4DE9C /* RswiftLibrary */; };
 		4E1B19562C872335009211E2 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1B19552C872335009211E2 /* Zip */; };
+		4E1CAFBB2C88F2F900B4AE58 /* Armchair in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1CAFBA2C88F2F900B4AE58 /* Armchair */; };
+		4E282BAB2C88EFB8002EE979 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 4E282BAA2C88EFB8002EE979 /* Shimmer */; };
 		4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882C9280CCB7000AB8C31 /* PublishingInfoData.swift */; };
 		4E2882CC280CCBB600AB8C31 /* PublishingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CB280CCBB600AB8C31 /* PublishingInfo.swift */; };
 		4E2882CE280CE46100AB8C31 /* PublishingInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2882CD280CE46000AB8C31 /* PublishingInfoView.swift */; };
@@ -719,6 +721,7 @@
 			files = (
 				4E58E7972B4B48CA004B5D64 /* Cache in Frameworks */,
 				4ED3F5352C870AE900CAC2C9 /* MenuItemKit in Frameworks */,
+				4E1CAFBB2C88F2F900B4AE58 /* Armchair in Frameworks */,
 				4E1B19562C872335009211E2 /* Zip in Frameworks */,
 				4EF2A46F2C87DCF500DCE92E /* SwiftAudioEx in Frameworks */,
 				4E07FE2F2C871E9800710FB2 /* SwiftEntryKit in Frameworks */,
@@ -729,6 +732,7 @@
 				4E6C7CD32C87203000903A88 /* SwiftMessages in Frameworks */,
 				4E79C6672C87215100A78D23 /* SwiftDate in Frameworks */,
 				4E673ABC2C8709FC009C5C8D /* Hue in Frameworks */,
+				4E282BAB2C88EFB8002EE979 /* Shimmer in Frameworks */,
 				4E1A6CF82C87D56F00B4DE9C /* RswiftLibrary in Frameworks */,
 				4E614DAD2C87074B008C74E8 /* FontBlaster in Frameworks */,
 				4E961B072C870880000A2B66 /* GoogleSignIn in Frameworks */,
@@ -1807,6 +1811,8 @@
 				4E1B19552C872335009211E2 /* Zip */,
 				4E1A6CF72C87D56F00B4DE9C /* RswiftLibrary */,
 				4EF2A46E2C87DCF500DCE92E /* SwiftAudioEx */,
+				4E282BAA2C88EFB8002EE979 /* Shimmer */,
+				4E1CAFBA2C88F2F900B4AE58 /* Armchair */,
 			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
@@ -1955,6 +1961,8 @@
 				4E1B19542C872335009211E2 /* XCRemoteSwiftPackageReference "Zip" */,
 				4E1A6CF62C87D56F00B4DE9C /* XCRemoteSwiftPackageReference "R.swift" */,
 				4EF2A46D2C87DCF500DCE92E /* XCRemoteSwiftPackageReference "SwiftAudio" */,
+				4E282BA92C88EFB8002EE979 /* XCRemoteSwiftPackageReference "Shimmer" */,
+				4E1CAFB92C88F2F800B4AE58 /* XCRemoteSwiftPackageReference "Armchair" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -2062,21 +2070,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Sabbath School/Pods-Sabbath School-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Armchair/Armchair.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Wormholy/Wormholy.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Armchair.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wormholy.framework",
 			);
@@ -2957,8 +2961,6 @@
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
-					"\"Armchair\"",
-					"-framework",
 					"\"AssetsLibrary\"",
 					"-framework",
 					"\"AsyncDisplayKit\"",
@@ -3012,8 +3014,6 @@
 					"\"SafariServices\"",
 					"-framework",
 					"\"Security\"",
-					"-framework",
-					"\"Shimmer\"",
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
@@ -3069,8 +3069,6 @@
 					"-framework",
 					"\"Accelerate\"",
 					"-framework",
-					"\"Armchair\"",
-					"-framework",
 					"\"AssetsLibrary\"",
 					"-framework",
 					"\"AsyncDisplayKit\"",
@@ -3124,8 +3122,6 @@
 					"\"SafariServices\"",
 					"-framework",
 					"\"Security\"",
-					"-framework",
-					"\"Shimmer\"",
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
@@ -3326,6 +3322,22 @@
 				minimumVersion = 2.1.2;
 			};
 		};
+		4E1CAFB92C88F2F800B4AE58 /* XCRemoteSwiftPackageReference "Armchair" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/guidev/Armchair.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.8;
+			};
+		};
+		4E282BA92C88EFB8002EE979 /* XCRemoteSwiftPackageReference "Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/somenkovnikita/Shimmer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
 		4E614DAB2C87074B008C74E8 /* XCRemoteSwiftPackageReference "FontBlaster" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ArtSabintsev/FontBlaster.git";
@@ -3452,6 +3464,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E1B19542C872335009211E2 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		4E1CAFBA2C88F2F900B4AE58 /* Armchair */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E1CAFB92C88F2F800B4AE58 /* XCRemoteSwiftPackageReference "Armchair" */;
+			productName = Armchair;
+		};
+		4E282BAA2C88EFB8002EE979 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E282BA92C88EFB8002EE979 /* XCRemoteSwiftPackageReference "Shimmer" */;
+			productName = Shimmer;
 		};
 		4E58E7962B4B48CA004B5D64 /* Cache */ = {
 			isa = XCSwiftPackageProductDependency;
