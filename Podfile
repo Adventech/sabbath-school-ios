@@ -5,7 +5,6 @@ inhibit_all_warnings!
 target 'Sabbath School' do
   pod 'Armchair'
   pod 'Shimmer'
-  pod 'SwiftAudio'
   pod 'Texture', :git => 'https://github.com/TextureGroup/Texture.git', :branch => 'master'
   pod 'Wormholy', :configurations => ['Debug']
 end

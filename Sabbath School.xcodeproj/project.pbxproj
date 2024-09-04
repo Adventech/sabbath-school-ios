@@ -139,6 +139,7 @@
 		4EE2DF0827DA7AFC00812552 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE2DF0727DA7AFC00812552 /* Array.swift */; };
 		4EE8B6F5284D1FAA003C1A46 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8B6F4284D1FAA003C1A46 /* NotificationCenter.swift */; };
 		4EF2A46B2C87DA9000DCE92E /* Hue in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF2A46A2C87DA9000DCE92E /* Hue */; };
+		4EF2A46F2C87DCF500DCE92E /* SwiftAudioEx in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF2A46E2C87DCF500DCE92E /* SwiftAudioEx */; };
 		7A280F781ED7CF05003C7458 /* LoginWireFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F771ED7CF05003C7458 /* LoginWireFrame.swift */; };
 		7A280F7A1ED7CF2C003C7458 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A280F791ED7CF2C003C7458 /* LoginView.swift */; };
 		7A280F851ED7D6B6003C7458 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A280F841ED7D6B6003C7458 /* Assets.xcassets */; };
@@ -719,6 +720,7 @@
 				4E58E7972B4B48CA004B5D64 /* Cache in Frameworks */,
 				4ED3F5352C870AE900CAC2C9 /* MenuItemKit in Frameworks */,
 				4E1B19562C872335009211E2 /* Zip in Frameworks */,
+				4EF2A46F2C87DCF500DCE92E /* SwiftAudioEx in Frameworks */,
 				4E07FE2F2C871E9800710FB2 /* SwiftEntryKit in Frameworks */,
 				4E6F12782C8701AE001C4280 /* PSPDFKit in Frameworks */,
 				4E7A08572C8702CF00B7430A /* Down in Frameworks */,
@@ -1804,6 +1806,7 @@
 				4E79C6662C87215100A78D23 /* SwiftDate */,
 				4E1B19552C872335009211E2 /* Zip */,
 				4E1A6CF72C87D56F00B4DE9C /* RswiftLibrary */,
+				4EF2A46E2C87DCF500DCE92E /* SwiftAudioEx */,
 			);
 			productName = "Sabbath School";
 			productReference = 7AF191A81ED7B89B000CCF0C /* Sabbath School.app */;
@@ -1951,6 +1954,7 @@
 				4E79C6652C87215100A78D23 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 				4E1B19542C872335009211E2 /* XCRemoteSwiftPackageReference "Zip" */,
 				4E1A6CF62C87D56F00B4DE9C /* XCRemoteSwiftPackageReference "R.swift" */,
+				4EF2A46D2C87DCF500DCE92E /* XCRemoteSwiftPackageReference "SwiftAudio" */,
 			);
 			productRefGroup = 7AF191A91ED7B89B000CCF0C /* Products */;
 			projectDirPath = "";
@@ -2063,7 +2067,6 @@
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftAudio/SwiftAudio.framework",
 				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Wormholy/Wormholy.framework",
 			);
@@ -2074,7 +2077,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftAudio.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wormholy.framework",
 			);
@@ -3013,8 +3015,6 @@
 					"-framework",
 					"\"Shimmer\"",
 					"-framework",
-					"\"SwiftAudio\"",
-					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"UIKit\"",
@@ -3126,8 +3126,6 @@
 					"\"Security\"",
 					"-framework",
 					"\"Shimmer\"",
-					"-framework",
-					"\"SwiftAudio\"",
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
@@ -3424,6 +3422,14 @@
 				minimumVersion = 4.0.1;
 			};
 		};
+		4EF2A46D2C87DCF500DCE92E /* XCRemoteSwiftPackageReference "SwiftAudio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/doublesymmetry/SwiftAudio.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3526,6 +3532,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E673ABA2C8709FC009C5C8D /* XCRemoteSwiftPackageReference "Hue" */;
 			productName = Hue;
+		};
+		4EF2A46E2C87DCF500DCE92E /* SwiftAudioEx */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EF2A46D2C87DCF500DCE92E /* XCRemoteSwiftPackageReference "SwiftAudio" */;
+			productName = SwiftAudioEx;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

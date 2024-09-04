@@ -17,7 +17,6 @@ PODS:
     - PINRemoteImage/Core
   - Shimmer (1.0.2)
   - SimulatorStatusMagic (2.6)
-  - SwiftAudio (0.11.2)
   - Texture (3.1.0):
     - Texture/AssetsLibrary (= 3.1.0)
     - Texture/Core (= 3.1.0)
@@ -44,7 +43,6 @@ DEPENDENCIES:
   - Armchair
   - Shimmer
   - SimulatorStatusMagic
-  - SwiftAudio
   - Texture (from `https://github.com/TextureGroup/Texture.git`, branch `master`)
   - Wormholy
 
@@ -56,7 +54,6 @@ SPEC REPOS:
     - PINRemoteImage
     - Shimmer
     - SimulatorStatusMagic
-    - SwiftAudio
     - Wormholy
 
 EXTERNAL SOURCES:
@@ -76,10 +73,9 @@ SPEC CHECKSUMS:
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimulatorStatusMagic: 9f5294c12ca99c6cadb243a60362a66000df540c
-  SwiftAudio: 217f5f184b27a0e25ff0fe7647021f05a21c06c9
   Texture: 2e8ab2519452515f7f5a520f5a8f7e0a413abfa3
   Wormholy: 3252bc3e55a1847ef9a0976c1377bd77bf3635fa
 
-PODFILE CHECKSUM: acc28b8bc4e28859393d22be27126503657dc646
+PODFILE CHECKSUM: e2c2d3aa657e8165e08443c6b7e4f0e89986f7b8
 
 COCOAPODS: 1.15.2
