@@ -325,6 +325,8 @@ struct ResourceView: View {
             }
         }
         .task {
+            Configuration.reloadAllWidgets()
+            
             if viewModel.resource != nil { return }
             
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()

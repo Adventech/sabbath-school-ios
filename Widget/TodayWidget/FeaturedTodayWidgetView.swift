@@ -26,10 +26,12 @@ import SwiftUI
 struct FeaturedTodayWidgetView : View {
     var entry: TodayWidgetProvider.Entry
     @Environment(\.widgetFamily) var widgetFamily
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
 
     var body: some View {
         ZStack(alignment: widgetFamily == .systemLarge ? .bottomTrailing : .topTrailing) {
             ZStack {
+                // For some reason, LazyImage and AsyncImage do not work correctly here
                 NetworkImage(url: entry.lessonInfo.lesson.cover)
                     .aspectRatio(contentMode: .fill)
                     .frame(
@@ -38,9 +40,12 @@ struct FeaturedTodayWidgetView : View {
                         minHeight: 0,
                         maxHeight: .infinity,
                         alignment: .bottomLeading)
-                Rectangle()
+                
+                if widgetRenderingMode != .accented {
+                    Rectangle()
                         .foregroundColor(.clear)
                         .background(LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
+                }
             }.frame(
                 minWidth: 0,
                 maxWidth: .infinity,
@@ -63,17 +68,16 @@ struct FeaturedTodayWidgetView : View {
                     .lineLimit(WidgetStyle.getStyle(widgetFamily: widgetFamily).titleMaxLines)
                 
                 Link(destination: entry.day.webURL, label: {
-                    Button(action: {}) {
-                        Text("Read".localized().uppercased())
-                            .padding(.top, 5)
-                            .padding(.bottom, 5)
-                            .padding(.leading, 20)
-                            .padding(.trailing, 20)
-                            .widgetBackground(Color.init(UIColor.baseBlue))
-                            .foregroundColor(.white)
-                            .cornerRadius(11)
-                            .font(.system(size: 9, weight: .bold))
-                    }
+                    Text("Read".localized().uppercased())
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 40)
+                        .foregroundColor(.white)
+                        .cornerRadius(11)
+                        .font(.system(size: 9, weight: .bold))
+                        .background {
+                          Capsule()
+                            .fill(Color.baseBlue.opacity(widgetRenderingMode != .accented ? 1 : 0.2))
+                        }
                 })
             }.frame(
                 minWidth: 0,
@@ -84,7 +88,10 @@ struct FeaturedTodayWidgetView : View {
             .padding(.bottom, WidgetStyle.getStyle(widgetFamily: widgetFamily).contentPaddingBottom)
             .padding(.leading, WidgetStyle.getStyle(widgetFamily: widgetFamily).contentPaddingLeading)
             .padding(.trailing, WidgetStyle.getStyle(widgetFamily: widgetFamily).contentPaddingTrailing)
-        }.widgetURL(entry.day.webURL)
+        }
+        .widgetURL(entry.day.webURL)
+        .widgetAccentable(true)
+        .widgetBackground(Color.clear)
     }
 }
 

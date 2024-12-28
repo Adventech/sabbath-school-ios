@@ -38,6 +38,8 @@ struct WidgetStyle {
         switch widgetFamily {
         case .systemMedium:
             return (10, 10, 10, 20, 3, 14, 2)
+        case .accessoryRectangular:
+            return (0, 0, 0, 12, 2, 10, 2)
         default:
             return (10, 10, 10, 15, 3, 12, 2)
         }

@@ -26,25 +26,38 @@ import SwiftUI
 struct TodayWidgetView : View {
     var entry: TodayWidgetProvider.Entry
     @Environment(\.widgetFamily) var widgetFamily
+    @Environment(\.widgetRenderingMode) var widgetRenderingMode
     
     var body: some View {
-        ZStack(alignment: widgetFamily == .systemLarge ? .bottomTrailing : .topTrailing) {
-            Color("WidgetBackground")
-            ZStack {
-                ZStack(alignment: .topTrailing) {
+        ZStack(alignment: widgetFamily == .systemLarge ? .bottomTrailing : widgetFamily == .accessoryRectangular ? .trailing : .topTrailing) {
+            if widgetRenderingMode != .accented && widgetFamily != .accessoryRectangular {
+                Color("WidgetBackground")
+            }
+            
+            if widgetFamily != .accessoryRectangular {
+                ZStack {
+                    ZStack(alignment: .topTrailing) {
+                        Image("AppLogo")
+                            .resizable()
+                            .padding(WidgetStyle.getLogoSize()*0.1)
+                            .unredacted()
+                    }
+                }
+                .frame(width: WidgetStyle.getLogoSize(), height: WidgetStyle.getLogoSize())
+                .offset(x: WidgetStyle.getLogoOffset(widgetFamily: widgetFamily).x, y: WidgetStyle.getLogoOffset(widgetFamily: widgetFamily).y)
+                .opacity(0.2)
+            } else {
+                VStack {
                     Image("AppLogo")
                         .resizable()
-                        .padding(WidgetStyle.getLogoSize()*0.1)
+                        .frame(width: 40, height: 40)
+                        .opacity(0.5)
                         .unredacted()
-                }
+                }.frame(maxHeight: .infinity)
             }
-            .frame(width: WidgetStyle.getLogoSize(), height: WidgetStyle.getLogoSize())
-            .offset(x: WidgetStyle.getLogoOffset(widgetFamily: widgetFamily).x, y: WidgetStyle.getLogoOffset(widgetFamily: widgetFamily).y)
-            .opacity(0.2)
-            
             
             VStack(alignment: .leading) {
-                Text(entry.day.date.stringReadDate())
+                Text(widgetFamily == .accessoryRectangular ? entry.day.date.stringWidgetDate() : entry.day.date.stringReadDate())
                     .padding(.bottom, 0.1)
                     .font(.system(size: WidgetStyle.getStyle(widgetFamily: widgetFamily).dateFontSize, weight: .regular))
                     .lineLimit(WidgetStyle.getStyle(widgetFamily: widgetFamily).dateMaxLines)
@@ -55,29 +68,33 @@ struct TodayWidgetView : View {
                     .font(.system(size: WidgetStyle.getStyle(widgetFamily: widgetFamily).titleFontSize, weight: .bold))
                     .lineLimit(WidgetStyle.getStyle(widgetFamily: widgetFamily).titleMaxLines)
                 
-                Link(destination: entry.day.webURL, label: {
-                    Button(action: {}) {
+                if widgetFamily != .accessoryRectangular {
+                    Link(destination: entry.day.webURL, label: {
                         Text("Read".localized().uppercased())
-                            .padding(.top, 5)
-                            .padding(.bottom, 5)
-                            .padding(.leading, 20)
-                            .padding(.trailing, 20)
-                            .widgetBackground(Color.init(UIColor.baseBlue))
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 40)
                             .foregroundColor(.white)
                             .cornerRadius(11)
                             .font(.system(size: 9, weight: .bold))
-                    }
-                })
+                            .background {
+                                Capsule()
+                                    .fill(Color.baseBlue.opacity(widgetRenderingMode != .accented ? 1 : 0.2))
+                            }
+                    })
+                }
             }.frame(
                 minWidth: 0,
                 maxWidth: .infinity,
                 minHeight: 0,
                 maxHeight: .infinity,
-                alignment: .bottomLeading)
+                alignment: widgetFamily == .accessoryRectangular ? .leading : .bottomLeading)
             .padding(.bottom, WidgetStyle.getStyle(widgetFamily: widgetFamily).contentPaddingBottom)
             .padding(.leading, WidgetStyle.getStyle(widgetFamily: widgetFamily).contentPaddingLeading)
             .padding(.trailing, WidgetStyle.getStyle(widgetFamily: widgetFamily).contentPaddingTrailing)
-        }.widgetURL(entry.day.webURL)
+        }
+        .widgetURL(entry.day.webURL)
+        .widgetAccentable(true)
+        .widgetBackground(Color.clear)
     }
 }
 

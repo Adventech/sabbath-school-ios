@@ -30,7 +30,6 @@ struct LessonInfoWidgetView : View {
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Color("WidgetBackground")
             ZStack {
                 ZStack(alignment: .center) {
                     Image("AppLogo")
@@ -45,8 +44,9 @@ struct LessonInfoWidgetView : View {
             VStack(alignment: .leading) {
                 HStack() {
                     NetworkImage(url: entry.quarterly.cover)
-                        .frame(height: 70)
+                        .frame(width: 45, height: 70)
                         .cornerRadius(4)
+                    
                     VStack(alignment: .leading) {
                         Text(entry.quarterly.title)
                             .foregroundColor(Color(.label))
@@ -145,7 +145,10 @@ struct LessonInfoWidgetView : View {
                 alignment: .topLeading)
             .padding(.top, 15)
             .padding(.bottom, 15)
-        }.widgetURL(entry.quarterly.webURL)
+        }
+        .widgetURL(entry.quarterly.webURL)
+        .widgetAccentable(true)
+        .widgetBackground(Color.clear)
     }
 }
 

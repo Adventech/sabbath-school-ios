@@ -30,10 +30,16 @@ struct NetworkImage: View {
     Group {
      if let url = url, let imageData = try? Data(contentsOf: url),
        let uiImage = UIImage(data: imageData) {
-
-       Image(uiImage: uiImage)
-         .resizable()
-         .aspectRatio(contentMode: .fit)
+         if #available(iOS 18, *) {
+             Image(uiImage: uiImage)
+               .resizable()
+               .widgetAccentedRenderingMode(.accentedDesaturated)
+               .aspectRatio(contentMode: .fit)
+         } else {
+             Image(uiImage: uiImage)
+               .resizable()
+               .aspectRatio(contentMode: .fit)
+         }
       }
       else {
        Image("QuarterlyPlaceholder")

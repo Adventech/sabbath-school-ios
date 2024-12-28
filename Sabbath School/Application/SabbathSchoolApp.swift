@@ -77,6 +77,7 @@ struct SabbathSchoolApp: App {
         Configuration.configureMisc()
         Configuration.configureCache()
         Configuration.configureUI()
+        Configuration.reloadAllWidgets()
     }
     
     var body: some Scene {
