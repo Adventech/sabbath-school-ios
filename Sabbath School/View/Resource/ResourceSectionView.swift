@@ -112,7 +112,7 @@ struct ResourceSectionView: View {
                                 .foregroundColor(.secondary)
                         }
                         
-                        if let cover = document.cover, resourceKind == .blog {
+                        if let cover = document.cover, resourceKind == .blog || resourceKind == .magazine {
                             LazyImage(url: cover) { state in
                                 if let image = state.image {
                                     image

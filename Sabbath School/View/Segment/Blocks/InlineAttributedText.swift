@@ -114,31 +114,41 @@ struct InlineTextViewWrapper: UIViewRepresentable {
         func textView(_ textView: UITextView, editMenuForTextIn range: NSRange, suggestedActions: [UIMenuElement]) -> UIMenu? {
             let highlightBlue = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightBlue), renderingMode: .alwaysOriginal)) { action in
                 self.parent.onHighlight?(range, .blue)
+                self.clearSelection(textView)
             }
             
             let highlightGreen = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightGreen), renderingMode: .alwaysOriginal)) { action in
                 self.parent.onHighlight?(range, .green)
+                self.clearSelection(textView)
             }
             
             let highlightOrange = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlighOrange), renderingMode: .alwaysOriginal)) { action in
                 self.parent.onHighlight?(range, .orange)
+                self.clearSelection(textView)
             }
 
             let highlightYellow = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightYellow), renderingMode: .alwaysOriginal)) { action in
                 self.parent.onHighlight?(range, .yellow)
+                self.clearSelection(textView)
             }
             
             let removeHighlight = UIAction(title: "", image: UIImage(systemName: "x.circle.fill")) { action in
                 self.parent.onRemoveHighlight?(range)
+                self.clearSelection(textView)
             }
             
             let comment = UIAction(title: "", image: UIImage(systemName: "text.bubble")) { action in
                 self.parent.onComment?()
+                self.clearSelection(textView)
             }
             
             let highlightMenu = UIMenu(title: "", image: UIImage(systemName: "highlighter"), children: [highlightBlue, highlightGreen, highlightOrange, highlightYellow, removeHighlight])
 
             return UIMenu(title: "", children: [highlightMenu, comment] + suggestedActions)
+        }
+        
+        func clearSelection(_ textView: UITextView) {
+            textView.selectedRange = NSRange(location: 0, length: 0)
         }
     
 

@@ -39,7 +39,7 @@ struct Styler {
         let allowColorChange = (themeManager.currentTheme == .light || (themeManager.currentTheme == .auto && !Preferences.darkModeEnable())) || !template.textColorThemeOverride
         
         if let style = style {
-            textTypeface = Styler.getTextTypeface(style, template)
+            textTypeface = Styler.getTextTypeface(style, template, nil, nil, nil, block)
             if allowColorChange {
                 textColor = Styler.getTextColor(style, template, nil, nil, textColor)
             }
@@ -51,7 +51,7 @@ struct Styler {
                     if allowColorChange {
                         textColor = Styler.getTextColor(style, template, \.blocks?.nested?.all?.text, nil, textColor)
                     }
-                    textTypeface = Styler.getTextTypeface(style, template, \.blocks?.nested?.all?.text, nil, textTypeface)
+                    textTypeface = Styler.getTextTypeface(style, template, \.blocks?.nested?.all?.text, nil, textTypeface, block)
                 }
                 
                 if allowColorChange {
@@ -63,7 +63,7 @@ struct Styler {
                 // Global default style for that type of block
                 textTypeface = Styler.getTextTypeface(style, template, nil, { style in
                     return style?.blocks?.inline?.blocks?.first { $0.type == block.type }?.style.text
-                }, textTypeface)
+                }, textTypeface, block)
                 
                 
                 if let nested = block.nested, nested {
@@ -75,7 +75,7 @@ struct Styler {
                     
                     textTypeface = Styler.getTextTypeface(style, template, nil, { style in
                         return style?.blocks?.nested?.blocks?.first { $0.type == block.type }?.style.text
-                    }, textTypeface)
+                    }, textTypeface, block)
                 }
                 
                 // Style for that specific block
@@ -88,7 +88,7 @@ struct Styler {
                     
                     textTypeface = Styler.getTextTypeface(style, template, nil, { style in
                         return blockStyle.text
-                    }, textTypeface)
+                    }, textTypeface, block)
                 }
             }
             
@@ -103,7 +103,7 @@ struct Styler {
             // Here order matters, so the custom attributes should be last,
             // so they are not overwritten by the whole range of attributes
             if template.textInlineStyleEnabled {
-                attributedString = attributedString.annotateCustomAttributes(style, template, textTypeface, textColor)
+                attributedString = attributedString.annotateCustomAttributes(style, template, textTypeface, textColor, block)
             }
         } else {
             attributedString.foregroundColor = textColor
@@ -124,19 +124,55 @@ struct Styler {
         return template.textColorEnabled ? resolveTextColor(from: style) : defaultTextColorOverride ?? template.textColorDefault
     }
     
-    static func getTextSize(_ style: Style?, _ template: StyleTemplate, _ keyPath: KeyPath<Style, TextStyle?>? = nil, _ filter: ((_ style: Style?) -> TextStyle?)? = nil) -> CGFloat {
-        func resolveTextSize(from style: Style?) -> CGFloat {
-            guard let textSize = (filter?(style) ?? style?[keyPath: keyPath ?? template.textKeyPath])?.size else {
+    static func getTextSize(_ style: Style?, _ template: StyleTemplate, _ keyPath: KeyPath<Style, TextStyle?>? = nil, _ filter: ((_ style: Style?) -> TextStyle?)? = nil, _ block: AnyBlock?) -> CGFloat {
+        
+        func resolveTextSize(_ style: Style?, _ defaultTextSize: CGFloat, _ filter: ((_ style: Style?) -> TextStyle?)? = nil) -> CGFloat {
+            var target = style?[keyPath: template.textKeyPath]
+            
+            if filter != nil {
+                target = filter?(style)
+            }
+            
+            guard let textSize = target?.size else {
                 return template.textSizeDefault
             }
             return template.textSizePoints(textSize)
         }
         
-        return template.textSizeEnabled ? resolveTextSize(from: style) : template.textSizeDefault
+        if (!template.textSizeEnabled) {
+            return template.textSizeDefault
+        }
+        
+        var textSize = resolveTextSize(style, template.textSizeDefault)
+        
+        if let block = block {
+            // Global default style for that type of block
+            textSize = resolveTextSize(style, textSize, { style in
+                return style?.blocks?.inline?.blocks?.first { $0.type == block.type }?.style.text
+            })
+            
+            if let nested = block.nested, nested {
+                textSize = resolveTextSize(style, textSize, { _ in
+                    return style?.blocks?.nested?.all?.text
+                })
+                textSize = resolveTextSize(style, textSize, { style in
+                    return style?.blocks?.nested?.blocks?.first { $0.type == block.type }?.style.text
+                })
+            }
+            
+            // Style for that specific block
+            if let addedBlockStyle = block.style {
+                textSize = resolveTextSize(style, textSize, { style in
+                    return addedBlockStyle.text
+                })
+            }
+        }
+        
+        return textSize
     }
     
-    static func getTextTypeface(_ style: Style?, _ template: StyleTemplate, _ keyPath: KeyPath<Style, TextStyle?>? = nil, _ filter: ((_ style: Style?) -> TextStyle?)? = nil, _ defaultTypefaceOverride: UIFont? = nil) -> UIFont {
-        let textSize = Styler.getTextSize(style, template, keyPath, filter)
+    static func getTextTypeface(_ style: Style?, _ template: StyleTemplate, _ keyPath: KeyPath<Style, TextStyle?>? = nil, _ filter: ((_ style: Style?) -> TextStyle?)? = nil, _ defaultTypefaceOverride: UIFont? = nil, _ block: AnyBlock?) -> UIFont {
+        let textSize = Styler.getTextSize(style, template, keyPath, filter, block)
         
         func resolveTextTypeface(from style: Style?) -> UIFont {
             guard let textTypeface = (filter?(style) ?? style?[keyPath: keyPath ?? template.textKeyPath])?.typeface else {
@@ -491,11 +527,11 @@ extension Styler {
 }
 
 extension AttributedString {
-    func annotateCustomAttributes(_ style: Style?, _ template: StyleTemplate, _ defaultTypefaceF: UIFont? = nil, _ defaultColorF: Color? = nil) -> AttributedString {
+    func annotateCustomAttributes(_ style: Style?, _ template: StyleTemplate, _ defaultTypefaceF: UIFont? = nil, _ defaultColorF: Color? = nil, _ block: AnyBlock?) -> AttributedString {
         var attrString = self
         
-        let defaultTypeface = defaultTypefaceF ?? Styler.getTextTypeface(style, template)
-        let defaultTextSize = defaultTypefaceF?.pointSize ?? Styler.getTextSize(style, template)
+        let defaultTypeface = defaultTypefaceF ?? Styler.getTextTypeface(style, template, nil, nil, nil, block)
+        let defaultTextSize = defaultTypefaceF?.pointSize ?? Styler.getTextSize(style, template, nil, nil, block)
         let defaultColor = defaultColorF
         
         for run in attrString.runs {
