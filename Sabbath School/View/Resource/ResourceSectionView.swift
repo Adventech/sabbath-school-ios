@@ -118,7 +118,7 @@ struct ResourceSectionView: View {
                                     image
                                         .resizable()
                                         .aspectRatio(16/9, contentMode: .fill)
-                                        .frame(width: 80)
+                                        .frame(width: 80, height: 45)
                                 } else {
                                     ZStack {
                                         Color.gray.opacity(0.5)
@@ -128,7 +128,7 @@ struct ResourceSectionView: View {
                                     }
                                 }
                             }
-                            .frame(width: 80)
+                            .frame(width: 80, height: 45)
                             .aspectRatio(16/9, contentMode: .fill)
                             .cornerRadius(6)
                             .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
