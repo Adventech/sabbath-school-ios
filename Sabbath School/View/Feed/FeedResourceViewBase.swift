@@ -24,12 +24,10 @@ import SwiftUI
 import NukeUI
 
 @MainActor @ViewBuilder
-func FeedGroupItemCoverView(_ url: URL, _ dimensions: CGSize, _ placeholderColor: String? = nil, _ scaleFactor: CGFloat = 1) -> some View {
+func FeedGroupItemCoverView(_ url: URL, _ dimensions: CGSize, _ placeholderColor: String? = "#cccccc", _ scaleFactor: CGFloat = 1) -> some View {
     LazyImage(url: url) { state in
         if let image = state.image {
             image.resizable().aspectRatio(contentMode: .fill)
-        } else if state.error != nil {
-
         } else {
             Color(hex: placeholderColor ?? "#cccccc")
         }

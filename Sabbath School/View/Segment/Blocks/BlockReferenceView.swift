@@ -75,8 +75,13 @@ struct BlockReferenceView: StyledBlock, View {
     var label: some View {
         HStack {
             if let resource = block.resource, !isHiddenSegment {
-                LazyImage(url: resource.covers.portrait) { image in
-                    image.image?.resizable()
+                LazyImage(url: resource.covers.portrait) { state in
+                    if let image = state.image {
+                        image.resizable()
+                    } else {
+                        Color(hex: resource.primaryColor)
+                    }
+                    
                 }
                 .frame(width: AppStyle.Block.Reference.thumbnailSize.width, height: AppStyle.Block.Reference.thumbnailSize.height)
                 .cornerRadius(6)

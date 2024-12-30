@@ -54,7 +54,7 @@ struct BlockImageView: StyledBlock, View {
             .cornerRadius(Styler.getBlockCornerRadius(defaultStyles, AnyBlock(block)))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onTapGesture {
-                if image != nil {
+                if block.style?.image?.expandable != false, image != nil {
                     withAnimation {
                         isFullScreen.toggle()
                     }

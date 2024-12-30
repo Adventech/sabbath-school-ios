@@ -39,7 +39,7 @@ struct FeedResourceViewBanner: View {
                              coverType: .landscape,
                              content: { dimensions in
             ZStack (alignment: .bottomLeading) {
-                FeedGroupItemCoverView(cover, dimensions, primaryColor ?? "#333333", scaleFactor)
+                FeedGroupItemCoverView(cover, dimensions, primaryColor, scaleFactor)
                 
                 if showTitle {
                     Rectangle()

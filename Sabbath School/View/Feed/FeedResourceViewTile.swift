@@ -44,7 +44,7 @@ struct FeedResourceViewTile: View {
                     spacing: AppStyle.Feed.Spacing.betweenCoverAndTitle(direction),
                     direction: direction
                 ) {
-                    FeedGroupItemCoverView(cover, dimensions, primaryColor ?? "#000000", scaleFactor)
+                    FeedGroupItemCoverView(cover, dimensions, primaryColor, scaleFactor)
                     if showTitle {
                         FeedGroupItemTitleView(title, subtitle, direction == .horizontal ? dimensions : nil, direction, externalURL: externalURL, scaleFactor, backgroundColorEnabled)
                     }
