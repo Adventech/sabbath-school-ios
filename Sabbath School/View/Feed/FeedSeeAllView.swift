@@ -25,6 +25,7 @@ import SwiftUI
 struct FeedSeeAllView: View {
     @StateObject var viewModel: ResourceFeedViewModel = ResourceFeedViewModel()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var screenSizeMonitor: ScreenSizeMonitor
 
     var resourceType: ResourceType
     var feedGroupId: String
@@ -52,7 +53,7 @@ struct FeedSeeAllView: View {
                             feedGroup: feedGroup,
                             displayFeedGroupTitle: false
                         )
-                    }
+                    }.frame(maxWidth: screenSizeMonitor.screenSize.width)
                 }
                 .refreshable {
                     await retrieveContent()

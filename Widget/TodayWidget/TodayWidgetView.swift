@@ -51,7 +51,7 @@ struct TodayWidgetView : View {
                     Image("AppLogo")
                         .resizable()
                         .frame(width: 40, height: 40)
-                        .opacity(0.5)
+                        .opacity(0.3)
                         .unredacted()
                 }.frame(maxHeight: .infinity)
             }

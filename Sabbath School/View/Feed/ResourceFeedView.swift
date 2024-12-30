@@ -33,6 +33,7 @@ struct ResourceFeedView: View {
 
     @StateObject var viewModel: ResourceFeedViewModel = ResourceFeedViewModel()
     @EnvironmentObject var languageManager: LanguageManager
+    @EnvironmentObject var screenSizeMonitor: ScreenSizeMonitor
     
     @State var showLanguage: Bool = false
     @State var showSettings: Bool = false
@@ -48,7 +49,7 @@ struct ResourceFeedView: View {
                                 FeedGroupView(resourceType: resourceType, feedGroup: group)
                             }
                         }
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: screenSizeMonitor.screenSize.width)
                     }
                     .navigationTitle(feed.title)
                     
@@ -60,8 +61,8 @@ struct ResourceFeedView: View {
                switch step {
                case .resource(let resourceIndex):
                    ResourceView(resourceIndex: resourceIndex)
-               case .document(let documentIndex):
-                   DocumentView(documentIndex: documentIndex.0, segmentName: documentIndex.1)
+               case .document(let documentIndex, let segmentName):
+                   DocumentView(documentIndex: documentIndex, segmentName: segmentName)
                }
             }
             .navigationBarTitleDisplayMode(.large)
