@@ -97,63 +97,61 @@ import SwiftUI
     }
     
     func downloadFonts(resourceIndex: String) async {
-        await self.retrieveResource(resourceIndex: resourceIndex, completion: {
-            if let resource = self.resource {
-                guard let fonts = resource.fonts else {
-                    self.fontsDownloaded = true
-                    return
-                }
-                
-                self.downloadAndRegisterFonts(fontURLs: fonts.map({ $0.src }), completion: {
-                    self.fontsDownloaded = true
-                })
-            }
-        })
+        await self.retrieveResource(resourceIndex: resourceIndex)
+        
+        guard let resource = self.resource else {
+            self.fontsDownloaded = true
+            return
+        }
+       
+        if let fonts = resource.fonts {
+            await downloadAndRegisterFonts(fontURLs: fonts.map { $0.src })
+        }
+        self.fontsDownloaded = true
     }
 
-    func downloadAndRegisterFonts(fontURLs: [URL], completion: @escaping () -> Void) {
-        let dispatchGroup = DispatchGroup()
-
+    func downloadAndRegisterFonts(fontURLs: [URL]) async {
         for fontURL in fontURLs {
-            dispatchGroup.enter()
             downloadFont(from: fontURL) { localURL in
                 guard let localURL = localURL else {
-                    dispatchGroup.leave()
                     return
                 }
                 self.registerFont(with: localURL)
-                dispatchGroup.leave()
             }
-        }
-
-        dispatchGroup.notify(queue: .main) {
-            completion()
         }
     }
     
-    func retrieveResource(resourceIndex: String, completion: (() -> Void)? = nil) async {
+    func retrieveResource(resourceIndex: String) async {
         let url = "\(Constants.API.URLv3)/\(resourceIndex)/sections/index.json"
         
-        var completed = false
-        if (try? ResourceViewModel.resourceStorage?.existsObject(forKey: url)) != nil {
-            if let resource = try? ResourceViewModel.resourceStorage?.entry(forKey: url) {
-                self.resource = resource.object
-                completed = true
-                completion?()
-            }
-        }
-        API.session.request(url).responseDecodable(of: Resource.self, decoder: Helper.SSJSONDecoder()) { response in
-            guard let resource = response.value else {
+        if let exists = try? ResourceViewModel.resourceStorage?.existsObject(forKey: url), exists {
+            if let resourceEntry = try? ResourceViewModel.resourceStorage?.entry(forKey: url) {
+                self.resource = resourceEntry.object
                 return
             }
+        }
+        
+        do {
+            let resource = try await withCheckedThrowingContinuation { continuation in
+                API.session.request(url).responseDecodable(of: Resource.self, decoder: Helper.SSJSONDecoder()) { response in
+                    if let resource = response.value {
+                        continuation.resume(returning: resource)
+                    } else if let error = response.error {
+                        continuation.resume(throwing: error)
+                    } else {
+                        continuation.resume(throwing: URLError(.badServerResponse))
+                    }
+                }
+            }
+            
             self.resource = resource
             try? ResourceViewModel.resourceStorage?.setObject(resource, forKey: url)
-            if !completed { completion?() }
-        }
+        } catch {}
     }
     
     func retrieveProgress(completion: (() -> Void)? = nil) async {
         guard let resource = self.resource else {
+            print("SSDEBUG no resource")
             return
         }
         
@@ -171,9 +169,11 @@ import SwiftUI
             .customValidate()
             .responseDecodable(of: [DocumentProgress].self, decoder: Helper.SSJSONDecoder()) { response in
                 guard let resourceProgress = response.value else {
+                    print("SSDEBUG", response)
                     return
                 }
                 self.resourceProgress = resourceProgress
+                print("SSDEBUG from API", resourceProgress)
                 try? ResourceViewModel.progressStorage?.setObject(resourceProgress, forKey: url)
                 completion?()
         }
