@@ -127,7 +127,6 @@ import SwiftUI
         if let exists = try? ResourceViewModel.resourceStorage?.existsObject(forKey: url), exists {
             if let resourceEntry = try? ResourceViewModel.resourceStorage?.entry(forKey: url) {
                 self.resource = resourceEntry.object
-                return
             }
         }
         
