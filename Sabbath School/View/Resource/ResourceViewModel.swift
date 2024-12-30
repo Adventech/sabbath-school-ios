@@ -151,7 +151,6 @@ import SwiftUI
     
     func retrieveProgress(completion: (() -> Void)? = nil) async {
         guard let resource = self.resource else {
-            print("SSDEBUG no resource")
             return
         }
         
@@ -169,11 +168,9 @@ import SwiftUI
             .customValidate()
             .responseDecodable(of: [DocumentProgress].self, decoder: Helper.SSJSONDecoder()) { response in
                 guard let resourceProgress = response.value else {
-                    print("SSDEBUG", response)
                     return
                 }
                 self.resourceProgress = resourceProgress
-                print("SSDEBUG from API", resourceProgress)
                 try? ResourceViewModel.progressStorage?.setObject(resourceProgress, forKey: url)
                 completion?()
         }
