@@ -231,11 +231,12 @@ struct DocumentView: View {
                             .renderingMode(.original)
                             .imageScale(.large)
                             .foregroundColor(.black | .secondary)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
                     }
                     Spacer()
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 10)
+                
             }
         }
     }
