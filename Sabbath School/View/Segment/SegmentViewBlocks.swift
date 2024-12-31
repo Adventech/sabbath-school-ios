@@ -288,6 +288,7 @@ struct SegmentViewBase<Content: View>: View {
     @EnvironmentObject var audioPlayback: AudioPlayback
     
     @StateObject var savedScrollPosition: SegmentSavedScrollPosition = SegmentSavedScrollPosition()
+    @State var heightTimeout: Bool = true
     
     private var hasCover: Bool {
         return segment.type == .block && (segment.cover != nil || document.cover != nil)
@@ -324,7 +325,7 @@ struct SegmentViewBase<Content: View>: View {
                         let height = frame.size.height
                         
                         if index == documentViewOperator.activeTab || (index == -1 && isHiddenSegment), segment.type != .video {
-                            if height != savedScrollPosition.frameHeight, abs(height - savedScrollPosition.frameHeight) > 50 {
+                            if height != savedScrollPosition.frameHeight, abs(height - savedScrollPosition.frameHeight) > 50, heightTimeout {
                                 scrollToLastSavedPosition(proxy: proxy)
                                 savedScrollPosition.frameHeight = height
                             }
@@ -359,6 +360,13 @@ struct SegmentViewBase<Content: View>: View {
                     savedScrollPosition.retrieveSavedScrollPosition(segmentId: segment.id) { cachedScrollOffset in
                         savedScrollPosition.cachedScrollOffset = cachedScrollOffset
                         scrollToLastSavedPosition(proxy: proxy)
+                    }
+                }
+                
+                if heightTimeout {
+                    // Giving 2 seconds timeout to scroll to the last saved position if height changes
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.heightTimeout = false
                     }
                 }
             }.onDisappear {

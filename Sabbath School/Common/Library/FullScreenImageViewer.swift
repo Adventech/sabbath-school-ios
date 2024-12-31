@@ -111,7 +111,7 @@ public struct FullScreenImageViewer: View {
                                             Spacer()
                                         }
                                         .padding()
-                                        .background(Color(red: 0.12, green: 0.12, blue: 0.12))
+                                        .background(Color(red: 0.12, green: 0.12, blue: 0.12, opacity: 0.5))
                                     }
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 }

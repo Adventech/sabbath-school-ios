@@ -183,6 +183,7 @@ public extension Color {
     static let primary800: Color = Color(hex: "#003877")
     static let primary900: Color = Color(hex: "#002550")
     static let primary950: Color = Color(hex: "#001328")
+    static let primary980: Color = Color(hex: "#222222")
     
     static let gray20: Color = Color(hex: "#F9FAFB")
     static let gray50: Color = Color(hex: "#ECEFF2")
@@ -196,6 +197,7 @@ public extension Color {
     static let gray800: Color = Color(hex: "#33404C")
     static let gray900: Color = Color(hex: "#1F262E")
     static let gray950: Color = Color(hex: "#141A1F")
+    static let gray980: Color = Color(hex: "#adadad")
     
     static let sepia100: Color = Color(hex: "#FDF4E6")
     static let sepia200: Color = Color(hex: "#E8DAC4")

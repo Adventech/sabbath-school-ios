@@ -25,11 +25,12 @@ import SwiftUI
 struct BlockHrView: StyledBlock, View {
     var block: Hr
     @Environment(\.defaultBlockStyles) var defaultStyles: Style
+    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         Rectangle()
+            .fill(themeManager.getTextColor().opacity(0.5))
             .frame(maxWidth: .infinity)
             .frame(height: 0.4)
-            .background(.gray) // TODO: get color from styleblock
     }
 }
