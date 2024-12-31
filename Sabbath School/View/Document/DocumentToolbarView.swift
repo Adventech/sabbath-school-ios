@@ -28,7 +28,7 @@ extension DocumentView {
     @ToolbarContentBuilder
     func toolbarView() -> some ToolbarContent {
         if let segment = viewModel.document?.segments?[documentViewOperator.activeTab],
-           segment.type == .block || (segment.type == .story && documentViewOperator.shouldShowNavigationBar) {
+           (segment.type == .block || segment.type == .pdf || segment.type == .video || (segment.type == .story) && documentViewOperator.shouldShowNavigationBar) {
             Group {
                 if let audio = viewModel.audioAuxiliary, audio.count > 0 {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -65,7 +65,7 @@ extension DocumentView {
         }
         
         if let segment = viewModel.document?.segments?[documentViewOperator.activeTab],
-           segment.type == .block {
+           segment.type == .block || segment.type == .video {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {

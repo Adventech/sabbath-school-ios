@@ -92,8 +92,6 @@ struct Constants {
         static let URL = "\(Constants.API.HOST)/api/v2"
         static let URLv2 = "\(Constants.API.HOST)/api/v2"
         static let URLv3 = "\(Constants.API.HOST)/api/v3"
-//        static let URLv3 = "http://localhost:3002/api/v3"
-        static let READER_BUNDLE_FILENAME = "sabbath-school-reader-latest.zip"
     }
     
     struct URLs {
