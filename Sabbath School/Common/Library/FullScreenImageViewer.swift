@@ -110,8 +110,9 @@ public struct FullScreenImageViewer: View {
 
                                             Spacer()
                                         }
+                                        .padding()
+                                        .background(Color(red: 0.12, green: 0.12, blue: 0.12))
                                     }
-                                    .padding()
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 }
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -134,7 +135,6 @@ public struct FullScreenImageViewer: View {
 }
 
 class PinchZoomView: UIView {
-
     weak var delegate: PinchZoomViewDelgate?
 
     private(set) var scale: CGFloat = 0 {
@@ -223,7 +223,6 @@ protocol PinchZoomViewDelgate: AnyObject {
 }
 
 struct PinchZoom: UIViewRepresentable {
-
     @Binding var scale: CGFloat
     @Binding var anchor: UnitPoint
     @Binding var offset: CGSize
@@ -285,4 +284,3 @@ extension View {
         self.modifier(PinchToZoom())
     }
 }
-

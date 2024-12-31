@@ -182,8 +182,6 @@ struct SavedScrollOffset: Codable {
     }
     
     func setSelectedSegmentIndex() {
-        
-        
         if let segments = self.document?.segments {
             if let selectedSegmentName = selectedSegmentName {
                 segments.enumerated().forEach { segmentIndex, segment in

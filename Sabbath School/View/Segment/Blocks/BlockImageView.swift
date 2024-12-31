@@ -44,11 +44,13 @@ struct BlockImageView: StyledBlock, View {
                         }
                 } else {
                     ZStack {
-                        Color.gray.opacity(0.5)
+                        Color.secondary.opacity(0.2)
                         Image(systemName: "photo")
-                            .imageScale(.small)
-                            .foregroundColor(.white)
+                            .imageScale(.medium)
+                            .foregroundColor(.secondary.opacity(0.7) | .white)
                     }
+                    .aspectRatio(block.style?.image?.aspectRatio ?? 16/9, contentMode: .fit)
+                    .frame(maxWidth: .infinity)
                 }
             }
             .cornerRadius(Styler.getBlockCornerRadius(defaultStyles, AnyBlock(block)))

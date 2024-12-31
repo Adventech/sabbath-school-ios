@@ -218,7 +218,7 @@ import SwiftUI
             var progressBasedDocument: ResourceDocument? = nil
             var progressBasedSection: ResourceSection? = nil
             
-            if weekday == 7 && hour == 12 {
+            if (weekday == 7 && hour < 12 && self.resource?.type == .ss) {
                 today = Calendar.current.date(byAdding: .day, value: -1, to: today) ?? today
             }
             

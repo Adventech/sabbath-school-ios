@@ -165,4 +165,5 @@ struct Resource: Codable, Identifiable {
     let progressTracking: ProgressTracking?
     let displayProgress: Bool?
     let authors: [Author]?
+    let type: ResourceType?
 }
