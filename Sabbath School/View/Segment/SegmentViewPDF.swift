@@ -41,7 +41,7 @@ struct SegmentViewPDF: View {
             )
             .toolbar {
                 if showNavigationBarButtons {
-                    ToolbarItem {
+                    ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
                             (pdfTabbedViewController?.pdfController as? PDFAuxiliaryViewController)?.toggleAnnotations()
                         }) {
@@ -49,7 +49,7 @@ struct SegmentViewPDF: View {
                         }
                     }
                     
-                    ToolbarItem {
+                    ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
                             (pdfTabbedViewController?.pdfController as? PDFAuxiliaryViewController)?.toggleOutline()
                         }) {
@@ -57,7 +57,7 @@ struct SegmentViewPDF: View {
                         }
                     }
                     
-                    ToolbarItem {
+                    ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
                             (pdfTabbedViewController?.pdfController as? PDFAuxiliaryViewController)?.toggleSettings()
                         }) {
