@@ -139,10 +139,10 @@ class ThemeManager: ObservableObject {
     
     func getTextColor() -> Color {
         switch currentTheme {
-        case .light: return Color.primary980
+        case .light: return Color.primary950
         case .sepia: return Color.sepia400
-        case .dark: return Color.gray980
-        case .auto: return Color.primary980 | Color.gray980
+        case .dark: return Color.gray20
+        case .auto: return Color.primary950 | Color.gray20
         }
     }
     
