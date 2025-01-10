@@ -263,12 +263,12 @@ class HeadingStyleTemplate: BlockStyleTemplate {
                 ],
                 
                 .huge: [
-                    .one: 34,
-                    .two: 28,
-                    .three: 24,
-                    .four: 20,
-                    .five: 17,
-                    .six: 15
+                    .one: 42,
+                    .two: 38,
+                    .three: 34,
+                    .four: 30,
+                    .five: 24,
+                    .six: 20
                 ]
             ]
             
