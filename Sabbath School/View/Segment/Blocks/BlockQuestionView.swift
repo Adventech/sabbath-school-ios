@@ -48,31 +48,41 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
             .background(AppStyle.Block.genericBackgroundColorForInteractiveBlock(theme: themeManager.currentTheme))
             
             VStack (spacing: 0) {
-                TextEditor(text: $answer)
-                    .onChange(of: answer) { newValue in
-                        resetTypingTimer()
-                    }
-                    .frame(height: 100, alignment: .leading)
-                    .lineLimit(5)
-                    .font(Font.custom("Lato-Regular", size: BlockStyleTemplate().textSizePoints(.base)))
-                    .foregroundColor(themeManager.getTextColor())
-                    .scrollContentBackground(.hidden)
-                    .padding(.leading, 50)
-                    .padding(.vertical, 0)
-                    .overlay {
-                        HStack(spacing: 0) {
-                            Divider().background(.red)
+                ZStack {
+                    Text(answer)
+                        .padding(.leading, 50)
+                        .padding(.vertical, 0)
+                        .opacity(0)
+                        .font(Font.custom("Lato-Regular", size: BlockStyleTemplate().textSizePoints(.base)))
+                        .frame(maxHeight: 600)
+                    
+                    TextEditor(text: $answer)
+                        .onChange(of: answer) { newValue in
+                            resetTypingTimer()
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 40)
-                    }
-                    .background {
-                        VStack {
-                            Image("question-line")
-                                .resizable(resizingMode: .tile)
-                                .colorMultiply(.gray.opacity(0.2))
-                        }.padding(0)
-                    }
+                        .frame(minHeight: 100, alignment: .leading)
+                        .frame(maxHeight: 600)
+                        .lineLimit(5)
+                        .font(Font.custom("Lato-Regular", size: BlockStyleTemplate().textSizePoints(.base)))
+                        .foregroundColor(themeManager.getTextColor())
+                        .scrollContentBackground(.hidden)
+                        .padding(.leading, 50)
+                        .padding(.vertical, 0)
+                        .overlay {
+                            HStack(spacing: 0) {
+                                Divider().background(.red)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 40)
+                        }
+                        .background {
+                            VStack {
+                                Image("question-line")
+                                    .resizable(resizingMode: .tile)
+                                    .colorMultiply(.gray.opacity(0.2))
+                            }.padding(0)
+                        }
+                }
             }
             .padding(0)
             .background(AppStyle.Block.Question.answerBackgroundColor(theme: themeManager.currentTheme))
