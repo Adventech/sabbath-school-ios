@@ -23,7 +23,6 @@
 import PSPDFKitUI
 
 protocol PDFAuxiliaryViewControllerDelegate {
-    func saveUserInput()
     func saveUserInput(for document: Document)
 }
 
