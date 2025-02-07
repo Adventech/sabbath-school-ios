@@ -153,12 +153,13 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
         }
     }
     
-    func saveUserInput() {
+    func saveUserInput(for documentToBeSaved: Document) {
         if let documents = self.tabbedPDFController?.documents {
             for (index, document) in documents.enumerated() {
-                guard (0 ..< self.pdfs.count).contains(index) else { continue }
+                guard documentToBeSaved == document else { continue }
                 
                 let inkAnnotations = document.allAnnotations(of: .all)
+                
                 var allAnnotations: [PDFAuxAnnotations] = []
                 for pageIndex in inkAnnotations {
                     var annotations: [String] = []

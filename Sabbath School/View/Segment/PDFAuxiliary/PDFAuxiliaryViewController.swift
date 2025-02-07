@@ -24,6 +24,7 @@ import PSPDFKitUI
 
 protocol PDFAuxiliaryViewControllerDelegate {
     func saveUserInput()
+    func saveUserInput(for document: Document)
 }
 
 class PDFAuxiliaryViewController: PDFViewController {
@@ -68,7 +69,7 @@ class PDFAuxiliaryViewController: PDFViewController {
     
     override func handleAutosaveRequest(for document: Document, reason: PSPDFAutosaveReason) {
         super.handleAutosaveRequest(for: document, reason: reason)
-        pdfAuxiliaryViewControllerDelegate?.saveUserInput()
+        pdfAuxiliaryViewControllerDelegate?.saveUserInput(for: document)
     }
     
     public func configureAnnotationToolbar () {
