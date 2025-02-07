@@ -132,7 +132,7 @@ struct FeedGroupView: View {
                         externalURL: resource.externalURL,
                         destination: ResourceView(resourceIndex: resource.index)
                     ) {
-                        FeedResourceView(resource: resource, feedGroupViewType: feedGroup.view, feedGroupDirection: feedGroup.direction, backgroundColorEnabled: feedGroup.backgroundColor != nil)
+                        FeedResourceView(resource: resource, feedGroupViewType: feedGroup.view, feedGroupDirection: feedGroup.direction, backgroundColorEnabled: feedGroup.backgroundColor != nil, showTitle: feedGroup.showTitle != false)
                     }
                     .contextMenu {
                         NavigationLink {
@@ -190,7 +190,7 @@ struct FeedGroupView: View {
                     NavigationLink {
                         AuthorFeedView(authorId: author.id)
                     } label: {
-                        FeedAuthorView(author: author, feedGroupViewType: feedGroup.view, feedGroupDirection: feedGroup.direction, backgroundColorEnabled: feedGroup.backgroundColor != nil)
+                        FeedAuthorView(author: author, feedGroupViewType: feedGroup.view, feedGroupDirection: feedGroup.direction, backgroundColorEnabled: feedGroup.backgroundColor != nil, showTitle: feedGroup.showTitle != false)
                             .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
