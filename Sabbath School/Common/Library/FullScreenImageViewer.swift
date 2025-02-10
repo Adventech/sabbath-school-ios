@@ -21,7 +21,6 @@
  */
 
 import SwiftUI
-import UIKit
 import Photos
 
 public struct FullScreenImageViewer: View {
@@ -35,41 +34,67 @@ public struct FullScreenImageViewer: View {
     
     @State var caption: String?
     @State private var imageUrl: URL?
-    @State private var showingAlert = false
-
+    
+    @State private var showDownloadSuccess = false
+    @State private var baseImageSize: CGSize = .zero
+    @State private var maximumScale: CGFloat = 4.0
+    
     public init(image: Binding<Image?>, viewerShown: Binding<Bool>, url: URL?, caption: String? = nil) {
         _image = image
         _viewerShown = viewerShown
         _caption = State(initialValue: caption)
         _imageUrl = State(initialValue: url)
     }
-
+    
     private var displayedImage: Image {
         image ?? Image(systemName: "questionmark.diamond")
     }
-
+    
     public var body: some View {
-        GeometryReader { proxy in
+        GeometryReader { containerProxy in
+            let containerSize = containerProxy.size
             ZStack {
                 Color.black.edgesIgnoringSafeArea(.all)
-                
                 displayedImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .background(
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    baseImageSize = geo.size
+                                }
+                                .onChange(of: geo.size) { newSize in
+                                    baseImageSize = newSize
+                                }
+                        }
+                    )
                     .scaleEffect(scale)
                     .offset(x: offset.x, y: offset.y)
-                    .gesture(dragGesture(size: proxy.size))
-                    .gesture(magnificationGesture(size: proxy.size))
+                    .gesture(dragGesture(for: containerSize))
+                    .gesture(magnificationGesture(for: containerSize))
                     .gesture(dismissGesture())
+                    .simultaneousGesture(
+                        TapGesture(count: 2).onEnded {
+                            withAnimation(.spring()) {
+                                if scale == 1 {
+                                    scale = maximumScale
+                                } else {
+                                    scale = 1
+                                    offset = .zero
+                                }
+                            }
+                        }
+                    )
                 
                 if let caption, !caption.isEmpty {
                     captionView
                 }
-                
                 topControls
-            }
-            .alert("Image saved successfully!".localized(), isPresented: $showingAlert) {
-                Button("OK", role: .cancel) {}
+                if showDownloadSuccess {
+                    downloadSuccessView
+                        .transition(.scale)
+                }
             }
         }
     }
@@ -117,21 +142,12 @@ public struct FullScreenImageViewer: View {
         }
     }
     
-    private func magnificationGesture(size: CGSize) -> some Gesture {
-        MagnificationGesture()
-            .onChanged { value in
-                let delta = value / lastScale
-                lastScale = value
-                scale *= delta
-            }
-            .onEnded { _ in
-                lastScale = 1
-                withAnimation { scale = max(scale, 1) }
-                adjustMaxOffset(size: size)
-            }
+    private var downloadSuccessView: some View {
+        CheckmarkAnimationView()
+            .frame(width: 80, height: 80)
     }
     
-    private func dragGesture(size: CGSize) -> some Gesture {
+    private func dragGesture(for containerSize: CGSize) -> some Gesture {
         DragGesture()
             .onChanged { value in
                 let diff = CGPoint(
@@ -142,26 +158,65 @@ public struct FullScreenImageViewer: View {
                 offset.y += diff.y
                 lastTranslation = value.translation
             }
-            .onEnded { _ in adjustMaxOffset(size: size) }
+            .onEnded { _ in
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                    offset = clampedOffset(for: containerSize)
+                    lastTranslation = .zero
+                }
+            }
+    }
+    
+    private func magnificationGesture(for containerSize: CGSize) -> some Gesture {
+        MagnificationGesture()
+            .onChanged { value in
+                let delta = value / lastScale
+                lastScale = value
+                let newScale = scale * delta
+                scale = min(newScale, maximumScale)
+            }
+            .onEnded { _ in
+                lastScale = 1
+                withAnimation(.spring()) {
+                    scale = max(1, min(scale, maximumScale))
+                    offset = clampedOffset(for: containerSize)
+                }
+            }
     }
     
     private func dismissGesture() -> some Gesture {
         DragGesture()
             .onEnded { value in
                 if abs(value.translation.height) > 200 {
-                    withAnimation(.spring()) { viewerShown = false }
+                    withAnimation(.spring()) {
+                        viewerShown = false
+                    }
                 }
             }
     }
     
-    private func adjustMaxOffset(size: CGSize) {
-        let maxOffsetX = (size.width * (scale - 1)) / 2
-        let maxOffsetY = (size.height * (scale - 1)) / 2
+    private func clampedOffset(for containerSize: CGSize) -> CGPoint {
+        let effectiveWidth = baseImageSize.width * scale
+        let effectiveHeight = baseImageSize.height * scale
         
-        offset.x = max(-maxOffsetX, min(maxOffsetX, offset.x))
-        offset.y = max(-maxOffsetY, min(maxOffsetY, offset.y))
+        let clampedX: CGFloat
+        if effectiveWidth > containerSize.width {
+            let maxOffsetX = (effectiveWidth - containerSize.width) / 2
+            clampedX = max(-maxOffsetX, min(maxOffsetX, offset.x))
+        } else {
+            // Center horizontally
+            clampedX = 0
+        }
         
-        lastTranslation = .zero
+        let clampedY: CGFloat
+        if effectiveHeight > containerSize.height {
+            let maxOffsetY = (effectiveHeight - containerSize.height) / 2
+            clampedY = max(-maxOffsetY, min(maxOffsetY, offset.y))
+        } else {
+            // Center vertically
+            clampedY = 0
+        }
+        
+        return CGPoint(x: clampedX, y: clampedY)
     }
     
     private func downloadImage() {
@@ -169,9 +224,10 @@ public struct FullScreenImageViewer: View {
             print("No URL available for downloading.")
             return
         }
-        
         URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil, let image = UIImage(data: data) else {
+            guard let data = data,
+                  error == nil,
+                  let uiImage = UIImage(data: data) else {
                 print("Error downloading image: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
@@ -183,11 +239,18 @@ public struct FullScreenImageViewer: View {
                 }
                 
                 PHPhotoLibrary.shared().performChanges {
-                    PHAssetChangeRequest.creationRequestForAsset(from: image)
+                    PHAssetChangeRequest.creationRequestForAsset(from: uiImage)
                 } completionHandler: { success, error in
                     DispatchQueue.main.async {
                         if success {
-                            showingAlert = true
+                            withAnimation(.spring()) {
+                                showDownloadSuccess = true
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                withAnimation(.spring()) {
+                                    showDownloadSuccess = false
+                                }
+                            }
                         } else {
                             print("Error saving image: \(error?.localizedDescription ?? "Unknown error")")
                         }
