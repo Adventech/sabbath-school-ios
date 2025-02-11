@@ -268,11 +268,6 @@ struct ResourceView: View {
                                     ResourceCreditsView(credits: resource.credits)
                                 }
                                 
-                                Text(AppStyle.Resource.Copyright.text(String(format: "© %d " + "General Conference of Seventh-day Adventists".localized() + "®", year)))
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .multilineTextAlignment(.leading)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                
                             }
                             .padding(AppStyle.Resource.Spacing.paddingForFooter)
                             .background(AppStyle.Resource.Footer.color)

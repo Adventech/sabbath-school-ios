@@ -116,21 +116,21 @@ struct SabbathSchoolApp: App {
                                                 }
                                             }
                                         
-                                        ResourceFeedView(resourceType: .explore, path: $explorepath)
-                                            .tag(TabSelection.explore)
-                                            .tabItem {
-                                                VStack {
-                                                    Text("")
-                                                    Image(uiImage: UIImage(named: "icon-navbar-explore")!)
-                                                }
-                                            }
-                                        
                                         ResourceFeedView(resourceType: .devo, path: $devopath)
                                             .tag(TabSelection.devo)
                                             .tabItem {
                                                 VStack {
                                                     Text("")
                                                     Image(uiImage: UIImage(named: "icon-navbar-devo")!)
+                                                }
+                                            }
+                                        
+                                        ResourceFeedView(resourceType: .explore, path: $explorepath)
+                                            .tag(TabSelection.explore)
+                                            .tabItem {
+                                                VStack {
+                                                    Text("")
+                                                    Image(uiImage: UIImage(named: "icon-navbar-explore")!)
                                                 }
                                             }
                                     }

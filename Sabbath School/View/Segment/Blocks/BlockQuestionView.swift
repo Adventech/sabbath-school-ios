@@ -38,7 +38,8 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
                 if !block.markdown.isEmpty {
                     InlineAttributedText(
                         block: AnyBlock(block),
-                        markdown: block.markdown
+                        markdown: block.markdown,
+                        selectable: true
                     )
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(20)
