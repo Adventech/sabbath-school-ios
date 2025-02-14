@@ -71,7 +71,7 @@ struct BlockImageView: StyledBlock, View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .fullScreenCover(isPresented: $isFullScreen) {
-            FullScreenImageViewer(image: self.$image, viewerShown: self.$isFullScreen, caption: block.caption)
+            FullScreenImageViewer(image: self.$image, viewerShown: self.$isFullScreen, url: block.src, caption: block.caption)
         }
     }
 }
