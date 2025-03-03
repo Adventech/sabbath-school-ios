@@ -278,6 +278,7 @@
 		7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */; };
 		7AF371551EF9CB3400547916 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF371531EF9CB3400547916 /* Localizable.strings */; };
 		7AF371611EF9CB5A00547916 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */; };
+		EC225C842D76074A00A220C4 /* MultilineTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC225C832D76074A00A220C4 /* MultilineTitleView.swift */; };
 		EC2A60542D5A545C003726C5 /* CheckmarkAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2A60532D5A5454003726C5 /* CheckmarkAnimationView.swift */; };
 		FE0249EA2669C2E3006BFADC /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0249E92669C2E3006BFADC /* Helper.swift */; };
 		FE0249F8266A9068006BFADC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0249F7266A9068006BFADC /* Configuration.swift */; };
@@ -641,6 +642,7 @@
 		7AF371681EF9CB6D00547916 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7AF371691EF9CB6F00547916 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7AF3716A1EF9CB7100547916 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EC225C832D76074A00A220C4 /* MultilineTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTitleView.swift; sourceTree = "<group>"; };
 		EC2A60532D5A5454003726C5 /* CheckmarkAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkAnimationView.swift; sourceTree = "<group>"; };
 		FE002A5B200C89D6009CE4DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FE002A5C200C89D6009CE4DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1248,6 +1250,7 @@
 		7A280FBF1EDA03C0003C7458 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EC225C832D76074A00A220C4 /* MultilineTitleView.swift */,
 				2FC5CACB2D09DCA100FB1D87 /* Components */,
 				7A280FC01EDA03C0003C7458 /* Configuration */,
 				7A280FC11EDA03C0003C7458 /* Extensions */,
@@ -1831,6 +1834,7 @@
 				2FC5CAC42D09DA8900FB1D87 /* AlwaysPopover.swift in Sources */,
 				2F7621DF2C1F3EDC00CB7C33 /* Appeal.swift in Sources */,
 				2FAC63A62C2336E5002C5093 /* SegmentViewPDF.swift in Sources */,
+				EC225C842D76074A00A220C4 /* MultilineTitleView.swift in Sources */,
 				2F4420AA2CEFDE24004A793E /* VideoAuxiliaryView.swift in Sources */,
 				2FC6F69B27A8E0FA00BBC4A9 /* API.swift in Sources */,
 				2F76221C2C1F423900CB7C33 /* ResourceSectionsView.swift in Sources */,
