@@ -64,9 +64,10 @@ struct DocumentView: View {
                     : "arrow.backward")
             .symbolRenderingMode(documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar ? .multicolor : .monochrome)
             .foregroundColor(documentViewOperator.shouldShowNavigationBar
-                             ? colorScheme == .dark ? .white : .black
-                             : (documentViewOperator.shouldShowCovers() ? .black.opacity(0.5) : colorScheme == .dark ? .white : .black)
-            )
+                             ? themeManager.getTextColor()
+                             : (documentViewOperator.shouldShowCovers()
+                                ? themeManager.getSecondaryTextColor().opacity(0.5)
+                                : themeManager.getTextColor()))
             .aspectRatio(contentMode: .fit)
             .id(documentViewOperator.shouldShowNavigationBar)
             .transition(.opacity.animation(.easeInOut))

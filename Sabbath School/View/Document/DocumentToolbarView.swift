@@ -37,9 +37,7 @@ extension DocumentView {
                         } label: {
                             Image(systemName: "headphones")
                                 .renderingMode(.original)
-                                .foregroundColor(documentViewOperator.shouldShowNavigationBar
-                                                 ? (colorScheme == .dark ? .white : .black)
-                                                 : (documentViewOperator.shouldShowCovers() ? .white : .black))
+                                .foregroundColor(resolvedForegroundColor())
                                 .aspectRatio(contentMode: .fit)
                                 .imageScale(.medium)
                         }
@@ -53,9 +51,7 @@ extension DocumentView {
                         } label: {
                             Image(systemName: "play.tv")
                                 .renderingMode(.original)
-                                .foregroundColor(documentViewOperator.shouldShowNavigationBar
-                                                 ? (colorScheme == .dark ? .white : .black)
-                                                 : (documentViewOperator.shouldShowCovers() ? .white : .black))
+                                .foregroundColor(resolvedForegroundColor())
                                 .aspectRatio(contentMode: .fit)
                                 .imageScale(.medium)
                         }
@@ -99,9 +95,7 @@ extension DocumentView {
                 } label : {
                     Image(systemName: "ellipsis")
                         .renderingMode(.original)
-                        .foregroundColor(documentViewOperator.shouldShowNavigationBar
-                                         ? (colorScheme == .dark ? .white : .black)
-                                         : (documentViewOperator.shouldShowCovers() ? .white : .black))
+                        .foregroundColor(resolvedForegroundColor())
                         .aspectRatio(contentMode: .fit)
                         .id(documentViewOperator.shouldShowNavigationBar)
                         .transition(.opacity.animation(.easeInOut))
@@ -111,4 +105,13 @@ extension DocumentView {
             }
         }
     }
+    
+    private func resolvedForegroundColor() -> Color {
+        documentViewOperator.shouldShowNavigationBar
+            ? themeManager.getTextColor()
+            : (documentViewOperator.shouldShowCovers()
+               ? themeManager.getSecondaryBackgroundColor()
+               : themeManager.getTextColor())
+    }
+
 }
