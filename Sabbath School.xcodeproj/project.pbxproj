@@ -278,6 +278,7 @@
 		7AC26B001EE5EBDE003F946C /* ReadHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC26AF51EE5EBDE003F946C /* ReadHighlights.swift */; };
 		7AF371551EF9CB3400547916 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF371531EF9CB3400547916 /* Localizable.strings */; };
 		7AF371611EF9CB5A00547916 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3715F1EF9CB5A00547916 /* InfoPlist.strings */; };
+		EC2A60542D5A545C003726C5 /* CheckmarkAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2A60532D5A5454003726C5 /* CheckmarkAnimationView.swift */; };
 		FE0249EA2669C2E3006BFADC /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0249E92669C2E3006BFADC /* Helper.swift */; };
 		FE0249F8266A9068006BFADC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0249F7266A9068006BFADC /* Configuration.swift */; };
 		FE1E34F326731A5F00DAC2D6 /* Spotlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1E34F226731A5F00DAC2D6 /* Spotlight.swift */; };
@@ -640,6 +641,7 @@
 		7AF371681EF9CB6D00547916 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7AF371691EF9CB6F00547916 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7AF3716A1EF9CB7100547916 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EC2A60532D5A5454003726C5 /* CheckmarkAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkAnimationView.swift; sourceTree = "<group>"; };
 		FE002A5B200C89D6009CE4DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FE002A5C200C89D6009CE4DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FE002A5D200C89F3009CE4DF /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1080,6 +1082,7 @@
 		2FC5CACB2D09DCA100FB1D87 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EC2A60532D5A5454003726C5 /* CheckmarkAnimationView.swift */,
 				2F75266E2CCE9FD10027FD1E /* Style */,
 				2FBF2AFC2D027853007F5615 /* Blur.swift */,
 				2F8C3A322D07F068001F7A62 /* PagingScrollView.swift */,
@@ -1812,6 +1815,7 @@
 				4E7B098C2814CA8A00687C33 /* Comparable.swift in Sources */,
 				7A2810001EDD051D003C7458 /* Image.swift in Sources */,
 				2F3F16BA2D13163A005E0232 /* DocumentHiddenSegment.swift in Sources */,
+				EC2A60542D5A545C003726C5 /* CheckmarkAnimationView.swift in Sources */,
 				2F7622232C1F429600CB7C33 /* ResourceFeaturesView.swift in Sources */,
 				7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */,
 				FEF4B79426AF9A9B00548E36 /* Credits.swift in Sources */,
@@ -2311,7 +2315,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 27;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
@@ -2403,7 +2407,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2498,7 +2502,7 @@
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -2544,7 +2548,7 @@
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
