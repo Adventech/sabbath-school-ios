@@ -41,31 +41,37 @@ struct ResourceFeedView: View {
     var body: some View {
         NavigationStack(path: $path) {
             VStack {
-                if let feed = self.viewModel.feed {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        // Adding VStack to prevent unnecessary spacing between elements in the ScrollView
-                        VStack (spacing: 0) {
-                            ForEach(feed.groups, id: \.id) { group in
-                                FeedGroupView(resourceType: resourceType, feedGroup: group)
+                if let feed = viewModel.feed {
+                    MultilineTitleView(
+                        trailingOffset: 0,
+                        content: {
+                            VStack(spacing: 0) {
+                                ForEach(feed.groups, id: \.id) { group in
+                                    FeedGroupView(resourceType: resourceType, feedGroup: group)
+                                }
                             }
+                            .frame(maxWidth: screenSizeMonitor.screenSize.width)
+                        },
+                        largeLabel: {
+                            Text(feed.title)
+                        },
+                        smallLabel: {
+                            Text(feed.title)
                         }
-                        .frame(maxWidth: screenSizeMonitor.screenSize.width)
-                    }
-                    .navigationTitle(feed.title)
-                    
+                    )
                 } else {
                     FeedLoadingView()
                 }
             }
             .navigationDestination(for: NavigationStep.self) { step in
-               switch step {
-               case .resource(let resourceIndex):
-                   ResourceView(resourceIndex: resourceIndex)
-               case .document(let documentIndex, let segmentName):
-                   DocumentView(documentIndex: documentIndex, segmentName: segmentName)
-               }
+                switch step {
+                case .resource(let resourceIndex):
+                    ResourceView(resourceIndex: resourceIndex)
+                case .document(let documentIndex, let segmentName):
+                    DocumentView(documentIndex: documentIndex, segmentName: segmentName)
+                }
             }
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {

@@ -45,27 +45,38 @@ struct FeedSeeAllView: View {
     var body: some View {
         VStack(spacing: 0) {
             if let feedGroup = self.viewModel.feedGroup {
-                ScrollView(.vertical, showsIndicators: false) {
-                    // Adding VStack to prevent unnecessary spacing between elements in the ScrollView
-                    VStack (spacing: 0) {
-                        FeedGroupView(
-                            resourceType: resourceType,
-                            feedGroup: feedGroup,
-                            displayFeedGroupTitle: false
-                        )
-                    }.frame(maxWidth: screenSizeMonitor.screenSize.width)
-                }
+                
+                MultilineTitleView(
+                    trailingOffset: 0,
+                    content: {
+                        VStack (spacing: 0) {
+                            FeedGroupView(
+                                resourceType: resourceType,
+                                feedGroup: feedGroup,
+                                displayFeedGroupTitle: false
+                            )
+                        }.frame(maxWidth: screenSizeMonitor.screenSize.width)
+
+                    },
+                    largeLabel: {
+                        Text(feedGroup.title ?? (viewModel.feed?.title ?? "See all"))
+
+                    },
+                    smallLabel: {
+                        Text(feedGroup.title ?? (viewModel.feed?.title ?? "See all"))
+                            
+                    }
+                )
                 .refreshable {
                     await retrieveContent()
                 }
-                .navigationTitle(feedGroup.title ?? (viewModel.feed?.title ?? "test"))
             } else {
                 FeedLoadingView()
             }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: btnBack)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .task {
             await retrieveContent()
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
