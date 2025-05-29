@@ -45,6 +45,9 @@ struct MultilineTitleView<Content: View, LargeLabel: View, SmallLabel: View>: Vi
                         }
                     }
                     .padding(.bottom)
+                    .font(.custom("Lato-Black", size: 36))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
                 content
             }
             
@@ -54,7 +57,8 @@ struct MultilineTitleView<Content: View, LargeLabel: View, SmallLabel: View>: Vi
                 smallLabel()
                     .padding(.trailing, trailingOffset)
                     .opacity(showToolbarTitle ? 1.0 : 0.0)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 16, weight: .semibold))
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

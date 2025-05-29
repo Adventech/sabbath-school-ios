@@ -54,14 +54,9 @@ struct ResourceFeedView: View {
                         },
                         largeLabel: {
                             Text(feed.title)
-                                .font(.largeTitle.weight(.bold))
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.horizontal)
                         },
                         smallLabel: {
                             Text(feed.title)
-                                .font(.system(size: 14, weight: .bold))
-                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                     )
                 } else {
@@ -76,6 +71,7 @@ struct ResourceFeedView: View {
                     DocumentView(documentIndex: documentIndex, segmentName: segmentName)
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
