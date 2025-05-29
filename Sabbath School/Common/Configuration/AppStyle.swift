@@ -249,7 +249,7 @@ struct AppStyle {
             }
             
             static var lineLimit: Int {
-                return 2
+                return 3
             }
         }
         

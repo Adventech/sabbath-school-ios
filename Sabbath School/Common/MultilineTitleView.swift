@@ -32,6 +32,7 @@ struct MultilineTitleView<Content: View, LargeLabel: View, SmallLabel: View>: Vi
         ScrollView {
             LazyVStack(alignment: .leading) {
                 largeLabel()
+                    .multilineTextAlignment(.leading)
                     .padding(.trailing, trailingOffset)
                     .overlay {
                         GeometryReader { geo in
@@ -59,6 +60,7 @@ struct MultilineTitleView<Content: View, LargeLabel: View, SmallLabel: View>: Vi
                     .opacity(showToolbarTitle ? 1.0 : 0.0)
                     .font(.system(size: 16, weight: .semibold))
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .lineLimit(1)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

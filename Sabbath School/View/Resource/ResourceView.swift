@@ -259,19 +259,21 @@ struct ResourceView: View {
                                 .padding(20)
                             }
                             
-                            VStack (spacing: 20) {
-                                if resource.features.count > 0 {
-                                    ResourceFeaturesView(features: resource.features)
+                            if (resource.features.count > 0 || resource.credits.count > 0) {
+                                VStack (spacing: 20) {
+                                    if resource.features.count > 0 {
+                                        ResourceFeaturesView(features: resource.features)
+                                    }
+                                    
+                                    if resource.credits.count > 0 {
+                                        ResourceCreditsView(credits: resource.credits)
+                                    }
                                 }
-                                
-                                if resource.credits.count > 0 {
-                                    ResourceCreditsView(credits: resource.credits)
-                                }
-                                
+                                .padding(AppStyle.Resource.Spacing.paddingForFooter)
+                                .background(AppStyle.Resource.Footer.color)
                             }
-                            .padding(AppStyle.Resource.Spacing.paddingForFooter)
-                            .background(AppStyle.Resource.Footer.color)
                         }
+                        
                         .background(AppStyle.Base.backgroundColor)
                         .offset(y: -10)
                         .frame(width: screenSizeMonitor.screenSize.width)
