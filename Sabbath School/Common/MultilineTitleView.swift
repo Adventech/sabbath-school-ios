@@ -47,7 +47,7 @@ struct MultilineTitleView<Content: View, LargeLabel: View, SmallLabel: View>: Vi
                     .padding(.bottom)
                 content
             }
-            .padding()
+            
         }
         .toolbar {
             ToolbarItem(placement: .principal) {

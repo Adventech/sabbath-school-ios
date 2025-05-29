@@ -56,6 +56,7 @@ struct ResourceFeedView: View {
                             Text(feed.title)
                                 .font(.largeTitle.weight(.bold))
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
                         },
                         smallLabel: {
                             Text(feed.title)
