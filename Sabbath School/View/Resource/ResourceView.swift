@@ -328,6 +328,7 @@ struct ResourceView: View {
             
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             await viewModel.downloadFonts(resourceIndex: resourceIndex)
+            
             await viewModel.retrieveProgress() {
                 viewModel.setReadDocumentIndex()
             }

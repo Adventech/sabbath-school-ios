@@ -1084,9 +1084,10 @@
 		2FC5CACB2D09DCA100FB1D87 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				EC2A60532D5A5454003726C5 /* CheckmarkAnimationView.swift */,
 				2F75266E2CCE9FD10027FD1E /* Style */,
 				2FBF2AFC2D027853007F5615 /* Blur.swift */,
+				EC2A60532D5A5454003726C5 /* CheckmarkAnimationView.swift */,
+				EC225C832D76074A00A220C4 /* MultilineTitleView.swift */,
 				2F8C3A322D07F068001F7A62 /* PagingScrollView.swift */,
 				2F7622172C1F41E700CB7C33 /* ParallaxHeader.swift */,
 				2F76222F2C1F442C00CB7C33 /* RoundedCorner.swift */,
@@ -1250,7 +1251,6 @@
 		7A280FBF1EDA03C0003C7458 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EC225C832D76074A00A220C4 /* MultilineTitleView.swift */,
 				2FC5CACB2D09DCA100FB1D87 /* Components */,
 				7A280FC01EDA03C0003C7458 /* Configuration */,
 				7A280FC11EDA03C0003C7458 /* Extensions */,

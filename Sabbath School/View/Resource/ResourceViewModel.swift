@@ -98,6 +98,7 @@ import SwiftUI
     
     func downloadFonts(resourceIndex: String) async {
         await self.retrieveResource(resourceIndex: resourceIndex)
+        self.setReadDocumentIndex()
         
         guard let resource = self.resource else {
             self.fontsDownloaded = true
@@ -167,6 +168,7 @@ import SwiftUI
             .customValidate()
             .responseDecodable(of: [DocumentProgress].self, decoder: Helper.SSJSONDecoder()) { response in
                 guard let resourceProgress = response.value else {
+                    completion?()
                     return
                 }
                 self.resourceProgress = resourceProgress
