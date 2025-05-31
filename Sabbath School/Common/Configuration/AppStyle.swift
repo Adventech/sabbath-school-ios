@@ -797,7 +797,7 @@ struct AppStyle {
         }
         
         static var highlightGreen: Color {
-            return Color(hex: "#53E23F")
+            return Color(hex: "#63D724")
         }
         
         static var highlighOrange: Color {
@@ -805,11 +805,15 @@ struct AppStyle {
         }
         
         static var highlightBlue: Color {
-            return Color(hex: "#3ACEFF")
+            return Color(hex: "#69D2F5")
         }
         
         static var highlightYellow: Color {
-            return Color(hex: "#DBC94C")
+            return Color(hex: "#FFF3A0")
+        }
+        
+        static var highlightForeground: Color {
+            return Color(hex: "#222222")
         }
         
         static func genericBackgroundColorForInteractiveBlock(theme: ReaderStyle.Theme) -> Color {

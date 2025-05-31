@@ -359,6 +359,7 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
                 }
                 
                 attributedString[range].backgroundColor = backgroundColor
+                attributedString[range].foregroundColor = AppStyle.Block.highlightForeground
             }
         }
     }
