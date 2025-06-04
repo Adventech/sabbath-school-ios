@@ -25,4 +25,5 @@ import Foundation
 struct UserInputUnknown: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
+    let timestamp: Int
 }

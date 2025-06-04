@@ -133,15 +133,61 @@ struct SavedScrollOffset: Codable {
         }
     }
     
-    func retrieveDocumentUserInput(documentId: String) async {
+    func syncLocallySavedNotSyncedItems(documentId: String) {
+        for localUserInput in SyncManager.shared.getAllUnsyncedLocalInputs(documentId: documentId) {
+            do {
+                let userInput = try JSONSerialization.jsonObject(with: JSONEncoder().encode(localUserInput.userInput), options: .allowFragments) as! [String: Any]
+                
+                API.auth.request(
+                    "\(Constants.API.URLv3)/resources/user/input/\(localUserInput.userInput.inputType.rawValue)/\(documentId)/\(localUserInput.userInput.blockId)",
+                    method: .post,
+                    parameters: userInput,
+                    encoding: JSONEncoding.default
+                ).response { response in
+                    if response.response?.statusCode == 200 {
+                        SyncManager.shared.markAsSynced(documentIndex: documentId, localUserInputUUID: localUserInput.id)
+                    }
+                }
+            } catch {}
+        }
+    }
+    
+    func retrieveDocumentUserInput(documentId: String) {
+        self.documentUserInput = SyncManager.shared.getLocalInput(documentIndex: documentId).map { $0.userInput }
+            
         API.auth.request("\(Constants.API.URLv3)/resources/user/input/document/\(documentId)")
             .customValidate()
             .responseDecodable(of: [AnyUserInput].self, decoder: Helper.SSJSONDecoder()) { response in
-            guard let userInput = response.value else {
-                return
+                guard let remoteUserInput = response.value else {
+                    return
+                }
+                    
+                let localUserInputForDocument = SyncManager.shared.getLocalInput(documentIndex: documentId)
+                
+                var mergedUserInput: [AnyUserInput] = []
+                
+                for userInput in remoteUserInput {
+                    // If
+                    if let localUserInput = localUserInputForDocument.first(where: { $0.userInput.blockId == userInput.blockId && $0.userInput.inputType == userInput.inputType && ($0.userInput.timestamp > userInput.timestamp) }) {
+                        mergedUserInput.append(localUserInput.userInput)
+                    } else {
+                        let _ = SyncManager.shared.saveLocalInput(documentIndex: documentId, userInput: userInput, syncStatus: true)
+                        mergedUserInput.append(userInput)
+                    }
+                }
+                
+                // Show any other locally saved user input
+                for userInput in localUserInputForDocument.map({ $0.userInput }) {
+                    guard mergedUserInput.firstIndex(where: { $0.blockId == userInput.blockId && $0.inputType == userInput.inputType }) == nil else {
+                        continue
+                    }
+                    
+                    mergedUserInput.append(userInput)
+                }
+                    
+                self.documentUserInput = mergedUserInput
+                self.syncLocallySavedNotSyncedItems(documentId: documentId)
             }
-            self.documentUserInput = userInput
-        }
     }
     
     func retrievePollData(pollId: String, completion: ((PollResults?) -> Void?)? = nil) async {
@@ -168,6 +214,8 @@ struct SavedScrollOffset: Codable {
                 documentUserInput.append(userInput)
             }
             
+            let localUserInputUUID = SyncManager.shared.saveLocalInput(documentIndex: documentId, userInput: userInput)
+            
             let userInput = try JSONSerialization.jsonObject(with: JSONEncoder().encode(userInput), options: .allowFragments) as! [String: Any]
             
             API.auth.request(
@@ -175,7 +223,13 @@ struct SavedScrollOffset: Codable {
                 method: .post,
                 parameters: userInput,
                 encoding: JSONEncoding.default
-            ).responseDecodable(of: String.self, decoder: Helper.SSJSONDecoder()) { response in }
+            ).response { response in
+                if response.response?.statusCode == 200 {
+                    if let localUserInputUUID = localUserInputUUID {
+                        SyncManager.shared.markAsSynced(documentIndex: documentId, localUserInputUUID: localUserInputUUID.id)
+                    }
+                }
+            }
         } catch let error {
             print("SSDEBUG", error)
         }

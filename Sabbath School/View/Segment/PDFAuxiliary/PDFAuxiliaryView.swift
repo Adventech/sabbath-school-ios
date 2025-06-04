@@ -171,7 +171,7 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
                     allAnnotations.append(PDFAuxAnnotations(pageIndex: Int(pageIndex.key.intValue), annotations: annotations))
                 }
                 
-                self.viewModel.saveBlockUserInput(documentId: self.viewModel.document?.id, blockId: self.pdfs[index].id, userInputType: .annotation, userInput: AnyUserInput(UserInputAnnotation(pdfId: self.pdfs[index].id, data: allAnnotations, inputType: .annotation, blockId: self.pdfs[index].id)))
+                self.viewModel.saveBlockUserInput(documentId: self.viewModel.document?.id, blockId: self.pdfs[index].id, userInputType: .annotation, userInput: AnyUserInput(UserInputAnnotation(pdfId: self.pdfs[index].id, data: allAnnotations, inputType: .annotation, blockId: self.pdfs[index].id, timestamp: Int(Date().timeIntervalSince1970))))
             }
         }
     }

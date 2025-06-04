@@ -47,4 +47,5 @@ struct UserInputHighlights: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
     let highlights: [UserInputHighlight]
+    let timestamp: Int
 }

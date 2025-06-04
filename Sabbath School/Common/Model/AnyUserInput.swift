@@ -25,6 +25,7 @@ import Foundation
 protocol UserInputProtocol: Codable {
     var blockId: String { get }
     var inputType: UserInputType { get }
+    var timestamp: Int { get }
 }
 
 enum UserInputType: String, Codable {
@@ -60,6 +61,10 @@ struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
         return _base.inputType
     }
     
+    var timestamp: Int {
+        return _base.timestamp
+    }
+    
     init(_ base: any UserInputProtocol) {
         self._base = base
     }
@@ -71,6 +76,7 @@ struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case blockId
         case inputType
+        case timestamp
     }
     
     func asType<T: UserInputProtocol>(_ type: T.Type) -> T? {
@@ -79,7 +85,6 @@ struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-//        let blockId = try container.decode(String.self, forKey: .blockId)
         let inputType = try container.decode(UserInputType.self, forKey: .inputType)
         
         switch inputType {

@@ -26,4 +26,5 @@ struct UserInputCompletion: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
     let completion: [String: String]
+    let timestamp: Int
 }

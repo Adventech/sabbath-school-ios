@@ -94,6 +94,7 @@ class Configuration: NSObject {
             AuthorFeedViewModel.clearAllCache()
             CategoryFeedViewModel.clearAllCache()
             DocumentViewModel.clearAllCache()
+            SyncManager.clearAllCache()
         }
     }
     

@@ -70,7 +70,7 @@ struct BlockChecklistView: StyledBlock, InteractiveBlock, View {
         }.onChange(of: checklistViewModel.checked) { newValue in
             if !checklistViewModel.savingMode { return }
             
-            saveUserInput(AnyUserInput(UserInputChecklist(blockId: block.id, inputType: .checklist, checked: newValue)))
+            saveUserInput(AnyUserInput(UserInputChecklist(blockId: block.id, inputType: .checklist, checked: newValue, timestamp: Int(Date().timeIntervalSince1970))))
         }
     }
     

@@ -26,4 +26,5 @@ struct UserInputAppeal: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
     let appeal: Bool
+    let timestamp: Int
 }

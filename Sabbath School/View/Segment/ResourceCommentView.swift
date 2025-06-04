@@ -119,7 +119,7 @@ struct ResourceCommentView: View {
         
         // Currently ugly, but this is the case where the comment is being made upon the paragraph that is shown in the modal
         if let blockId = blockId, viewModel.document != nil {
-            let userInput = AnyUserInput(UserInputComment(blockId: blockId, inputType: .comment, comment: comment))
+            let userInput = AnyUserInput(UserInputComment(blockId: blockId, inputType: .comment, comment: comment, timestamp: Int(Date().timeIntervalSince1970)))
             viewModel.saveBlockUserInput(
                 documentId: viewModel.document?.id,
                 blockId: blockId,

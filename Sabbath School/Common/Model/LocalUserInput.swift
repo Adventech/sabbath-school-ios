@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Adventech <info@adventech.io>
+ * Copyright (c) 2025 Adventech <info@adventech.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,9 +22,18 @@
 
 import Foundation
 
-struct UserInputComment: UserInputProtocol {
-    let blockId: String
-    let inputType: UserInputType
-    let comment: String
-    let timestamp: Int
+struct LocalUserInput: Codable {
+    let id: String
+    var synced: Bool
+    let userInput: AnyUserInput
+
+    init(
+        id: String = UUID().uuidString,
+        synced: Bool = false,
+        userInput: AnyUserInput
+    ) {
+        self.id = id
+        self.synced = synced
+        self.userInput = userInput
+    }
 }

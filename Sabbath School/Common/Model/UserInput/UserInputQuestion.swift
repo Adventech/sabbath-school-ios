@@ -26,4 +26,5 @@ struct UserInputQuestion: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
     let answer: String
+    let timestamp: Int
 }

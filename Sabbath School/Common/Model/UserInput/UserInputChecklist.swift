@@ -26,4 +26,5 @@ struct UserInputChecklist: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
     let checked: [Int]
+    let timestamp: Int
 }

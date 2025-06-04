@@ -141,7 +141,7 @@ struct BlockPollView: StyledBlock, InteractiveBlock, View {
             
             if !pollViewModel.savingMode { return }
             
-            saveUserInput(AnyUserInput(UserInputPoll(blockId: block.id, inputType: .poll, vote: vote)))
+            saveUserInput(AnyUserInput(UserInputPoll(blockId: block.id, inputType: .poll, vote: vote, timestamp: Int(Date().timeIntervalSince1970))))
         }
     }
     

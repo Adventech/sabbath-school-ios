@@ -250,19 +250,19 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
                             
                             if !paragraphViewModel.savingMode { return }
                             
-                            saveUserInput(AnyUserInput(UserInputHighlights(blockId: block.id, inputType: .highlights, highlights: newValue)))
+                            saveUserInput(AnyUserInput(UserInputHighlights(blockId: block.id, inputType: .highlights, highlights: newValue, timestamp: Int(Date().timeIntervalSince1970))))
                         }
                         .onChange(of: paragraphViewModel.comment) { newValue in
                             if !paragraphViewModel.savingMode { return }
                             
-                            saveUserInput(AnyUserInput(UserInputComment(blockId: block.id, inputType: .comment, comment: newValue)))
+                            saveUserInput(AnyUserInput(UserInputComment(blockId: block.id, inputType: .comment, comment: newValue, timestamp: Int(Date().timeIntervalSince1970))))
                         }
                         .onChange(of: paragraphViewModel.completion) { newValue in
                             initializeText(newValue)
                             
                             if !paragraphViewModel.savingMode { return }
                             
-                            saveUserInput(AnyUserInput(UserInputCompletion(blockId: block.id, inputType: .completion, completion: newValue)))
+                            saveUserInput(AnyUserInput(UserInputCompletion(blockId: block.id, inputType: .completion, completion: newValue, timestamp: Int(Date().timeIntervalSince1970))))
                         }
                 
                 if !paragraphViewModel.comment.isEmpty && selectable {

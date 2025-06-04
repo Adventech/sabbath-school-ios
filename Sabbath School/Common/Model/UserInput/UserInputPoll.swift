@@ -26,4 +26,5 @@ struct UserInputPoll: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
     let vote: Int
+    let timestamp: Int
 }

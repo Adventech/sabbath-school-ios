@@ -92,6 +92,8 @@ struct Constants {
         static let URL = "\(Constants.API.HOST)/api/v2"
         static let URLv2 = "\(Constants.API.HOST)/api/v2"
         static let URLv3 = "\(Constants.API.HOST)/api/v3"
+//      static let URLv3 = "http://192.168.4.27:3002/api/v3"
+//      static let URLv3Input = "http://192.168.2.226:3001/api/v3"
     }
     
     struct URLs {

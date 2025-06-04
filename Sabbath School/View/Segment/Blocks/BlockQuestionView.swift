@@ -30,7 +30,7 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
     
     @State var answer: String = ""
     @State private var typingTimer: Timer? = nil
-    let delay: TimeInterval = 2.0
+    let delay: TimeInterval = 1.0
     
     var body: some View {
         VStack (spacing: 0) {
@@ -105,7 +105,8 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
         typingTimer?.invalidate()
         typingTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { _ in
             DispatchQueue.main.async {
-                self.saveUserInput(AnyUserInput(UserInputQuestion(blockId: block.id, inputType: .question, answer: self.answer)))
+                print("SSDEBUG SAVING comment")
+                self.saveUserInput(AnyUserInput(UserInputQuestion(blockId: block.id, inputType: .question, answer: self.answer, timestamp: Int(Date().timeIntervalSince1970))))
             }
         }
     }

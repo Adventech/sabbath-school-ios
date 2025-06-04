@@ -66,7 +66,7 @@ struct DocumentView: View {
             .foregroundColor(documentViewOperator.shouldShowNavigationBar
                              ? themeManager.getTextColor()
                              : (documentViewOperator.shouldShowCovers()
-                                ? themeManager.getSecondaryTextColor().opacity(0.5)
+                                ? .black.opacity(0.5)
                                 : themeManager.getTextColor()))
             .aspectRatio(contentMode: .fit)
             .id(documentViewOperator.shouldShowNavigationBar)

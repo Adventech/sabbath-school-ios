@@ -32,4 +32,5 @@ struct UserInputAnnotation: UserInputProtocol {
     let data: [PDFAuxAnnotations]
     let inputType: UserInputType
     let blockId: String
+    let timestamp: Int
 }

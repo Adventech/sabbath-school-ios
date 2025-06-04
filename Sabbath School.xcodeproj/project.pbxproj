@@ -183,6 +183,8 @@
 		2FAC63A42C1FD4B3002C5093 /* UserInputHighlights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC63A32C1FD4B3002C5093 /* UserInputHighlights.swift */; };
 		2FAC63A62C2336E5002C5093 /* SegmentViewPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC63A52C2336E5002C5093 /* SegmentViewPDF.swift */; };
 		2FAC63A82C235BB3002C5093 /* SegmentViewStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC63A72C235BB3002C5093 /* SegmentViewStory.swift */; };
+		2FB638602DEB7B7A008C17F8 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB6385F2DEB7B77008C17F8 /* SyncManager.swift */; };
+		2FB638622DEB8170008C17F8 /* LocalUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638612DEB816D008C17F8 /* LocalUserInput.swift */; };
 		2FBB9BF02C0CE61200882F8C /* ResourceFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBB9BEF2C0CE61200882F8C /* ResourceFeedView.swift */; };
 		2FBB9BF22C0CE6CB00882F8C /* ResourceFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBB9BF12C0CE6CB00882F8C /* ResourceFeedViewModel.swift */; };
 		2FBF2AF72D0277CA007F5615 /* DocumentViewOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF2AF62D0277CA007F5615 /* DocumentViewOperator.swift */; };
@@ -514,6 +516,8 @@
 		2FAC63A32C1FD4B3002C5093 /* UserInputHighlights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputHighlights.swift; sourceTree = "<group>"; };
 		2FAC63A52C2336E5002C5093 /* SegmentViewPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewPDF.swift; sourceTree = "<group>"; };
 		2FAC63A72C235BB3002C5093 /* SegmentViewStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewStory.swift; sourceTree = "<group>"; };
+		2FB6385F2DEB7B77008C17F8 /* SyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
+		2FB638612DEB816D008C17F8 /* LocalUserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserInput.swift; sourceTree = "<group>"; };
 		2FBB9BEF2C0CE61200882F8C /* ResourceFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFeedView.swift; sourceTree = "<group>"; };
 		2FBB9BF12C0CE6CB00882F8C /* ResourceFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFeedViewModel.swift; sourceTree = "<group>"; };
 		2FBF2AF62D0277CA007F5615 /* DocumentViewOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewOperator.swift; sourceTree = "<group>"; };
@@ -1035,6 +1039,14 @@
 			path = ESTMusicIndicator;
 			sourceTree = "<group>";
 		};
+		2FB6385E2DEB7B5F008C17F8 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				2FB6385F2DEB7B77008C17F8 /* SyncManager.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
 		2FBB9BEB2C0CE12B00882F8C /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -1257,6 +1269,7 @@
 				7A280FEC1EDCFB38003C7458 /* Library */,
 				7AC26AEA1EE5EBDE003F946C /* Model */,
 				4E7B098A2814CA7400687C33 /* Protocols */,
+				2FB6385E2DEB7B5F008C17F8 /* Sync */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1323,6 +1336,7 @@
 				2F7621DC2C1F3DB600CB7C33 /* BlockStyle.swift */,
 				2F3F16CC2D1B2256005E0232 /* Category.swift */,
 				2F7621D12C1F3C7300CB7C33 /* FeedGroup.swift */,
+				2FB638612DEB816D008C17F8 /* LocalUserInput.swift */,
 				2F698B682CDF636D0070FEF9 /* PDFAux.swift */,
 				2F99F6002C31F3B600FCB05F /* PollResults.swift */,
 				2F7621CD2C1F3C0100CB7C33 /* Resource.swift */,
@@ -1752,6 +1766,7 @@
 				2F7621E52C1F3F4700CB7C33 /* Collapse.swift in Sources */,
 				2F7622362C1F448300CB7C33 /* BlockHrView.swift in Sources */,
 				2F7526722CCEA28F0027FD1E /* ResourceStyleTemplate.swift in Sources */,
+				2FB638622DEB8170008C17F8 /* LocalUserInput.swift in Sources */,
 				7AC26AFC1EE5EBDE003F946C /* QuarterlyInfo.swift in Sources */,
 				2F698B692CDF636D0070FEF9 /* PDFAux.swift in Sources */,
 				2F7621C92C19168700CB7C33 /* DocumentViewModel.swift in Sources */,
@@ -1777,6 +1792,7 @@
 				2FA1FFE826F6BA6700E80868 /* Downloader.swift in Sources */,
 				2F7622482C1F454400CB7C33 /* ResourceBibleView.swift in Sources */,
 				2F3F16B62D129C5F005E0232 /* ResourceEGWView.swift in Sources */,
+				2FB638602DEB7B7A008C17F8 /* SyncManager.swift in Sources */,
 				2F96B6912D022EC700FD5CEF /* ScreenSizeMonitor.swift in Sources */,
 				7AC26AF81EE5EBDE003F946C /* Day.swift in Sources */,
 				7AC26AF91EE5EBDE003F946C /* Lesson.swift in Sources */,

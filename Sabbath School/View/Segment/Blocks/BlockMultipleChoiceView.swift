@@ -59,7 +59,7 @@ struct BlockMultipleChoiceView: StyledBlock, InteractiveBlock, View {
         }.onChange(of: multipleChoiceViewModel.choice) { newValue in
             if !multipleChoiceViewModel.savingMode { return }
             
-            saveUserInput(AnyUserInput(UserInputMultipleChoice(blockId: block.id, inputType: .multipleChoice, choice: newValue)))
+            saveUserInput(AnyUserInput(UserInputMultipleChoice(blockId: block.id, inputType: .multipleChoice, choice: newValue, timestamp: Int(Date().timeIntervalSince1970))))
         }.task {
             multipleChoiceViewModel.answer = block.answer
         }

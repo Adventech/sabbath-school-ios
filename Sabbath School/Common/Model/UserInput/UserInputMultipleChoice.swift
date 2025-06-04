@@ -26,4 +26,5 @@ struct UserInputMultipleChoice: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
     let choice: Int
+    let timestamp: Int
 }
