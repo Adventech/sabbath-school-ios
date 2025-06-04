@@ -146,6 +146,10 @@ class ThemeManager: ObservableObject {
         }
     }
     
+    func getToolbarColor() -> Color {
+        return Color.primary950 | Color.gray20
+    }
+    
     func getSecondaryTextColor() -> Color {
         switch currentTheme {
         case .light: return Color.gray700

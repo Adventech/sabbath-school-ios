@@ -64,7 +64,7 @@ struct DocumentView: View {
                     : "arrow.backward")
             .symbolRenderingMode(documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar ? .multicolor : .monochrome)
             .foregroundColor(documentViewOperator.shouldShowNavigationBar
-                             ? themeManager.getTextColor()
+                             ? themeManager.getToolbarColor()
                              : (documentViewOperator.shouldShowCovers()
                                 ? .black.opacity(0.5)
                                 : themeManager.getTextColor()))
@@ -284,7 +284,7 @@ struct DocumentView: View {
                     Configuration.configureFontblaster()
                     
                     await resourceViewModel.saveProgress(documentId: document.id)
-                    await viewModel.retrieveDocumentUserInput(documentId: document.id)
+                    viewModel.retrieveDocumentUserInput(documentId: document.id)
                     await viewModel.retrievePDFAux(resourceIndex: document.resourceIndex, documentIndex: document.index)
                     await viewModel.retrieveVideoAux(resourceIndex: document.resourceIndex, documentIndex: document.index)
                     await viewModel.retrieveAudioAux(resourceIndex: document.resourceIndex, documentIndex: document.id)

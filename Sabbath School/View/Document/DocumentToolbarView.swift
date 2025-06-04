@@ -108,9 +108,9 @@ extension DocumentView {
     
     private func resolvedForegroundColor() -> Color {
         documentViewOperator.shouldShowNavigationBar
-            ? themeManager.getTextColor()
+            ? themeManager.getToolbarColor()
             : (documentViewOperator.shouldShowCovers()
-               ? themeManager.getSecondaryBackgroundColor()
+               ? .white
                : themeManager.getTextColor())
     }
 
