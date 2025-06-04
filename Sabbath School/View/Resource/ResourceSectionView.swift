@@ -112,13 +112,13 @@ struct ResourceSectionView: View {
                                 .foregroundColor(.secondary)
                         }
                         
-                        if let cover = document.cover, resourceKind == .blog || resourceKind == .magazine {
+                        if let cover = document.cover, resourceViewModel.resource?.displayCoversInTableOfContents == true {
                             LazyImage(url: cover) { state in
                                 if let image = state.image {
                                     image
                                         .resizable()
-                                        .aspectRatio(16/9, contentMode: .fill)
-                                        .frame(width: 80, height: 45)
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 80, height: 45, alignment: .center)
                                 } else {
                                     ZStack {
                                         Color.gray.opacity(0.5)
@@ -128,8 +128,8 @@ struct ResourceSectionView: View {
                                     }
                                 }
                             }
-                            .frame(width: 80, height: 45)
-                            .aspectRatio(16/9, contentMode: .fill)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 80, height: 45, alignment: .center)
                             .cornerRadius(6)
                             .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
                         }

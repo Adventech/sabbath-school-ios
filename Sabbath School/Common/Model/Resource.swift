@@ -166,4 +166,5 @@ struct Resource: Codable, Identifiable {
     let displayProgress: Bool?
     let authors: [Author]?
     let type: ResourceType?
+    let displayCoversInTableOfContents: Bool?
 }
