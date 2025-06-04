@@ -64,12 +64,22 @@ func FeedGroupConditionalStack<Content: View>(
 func ResourceLink<Destination: View, Content: View>(
     externalURL: URL?,
     destination: Destination,
+    destinationAlternate: ((String) -> AnyView)? = nil,
+    documentIndex: String? = nil,
     @ViewBuilder content: @escaping () -> Content
 ) -> some View {
     if let url = externalURL {
         Link(destination: url) {
             content()
         }
+    } else if let documentIndex = documentIndex, let destinationAlternate = destinationAlternate {
+        NavigationLink {
+            destinationAlternate(documentIndex)
+        } label: {
+            content()
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
     } else {
         NavigationLink {
             destination
@@ -130,13 +140,21 @@ struct FeedGroupView: View {
                 ForEach(resources) { resource in
                     ResourceLink(
                         externalURL: resource.externalURL,
-                        destination: ResourceView(resourceIndex: resource.index)
+                        destination: ResourceView(resourceIndex: resource.index),
+                        destinationAlternate: { index in
+                            AnyView(DocumentView(documentIndex: index))
+                        },
+                        documentIndex: resource.documentIndex
                     ) {
                         FeedResourceView(resource: resource, feedGroupViewType: feedGroup.view, feedGroupDirection: feedGroup.direction, backgroundColorEnabled: feedGroup.backgroundColor != nil, showTitle: feedGroup.showTitle != false)
                     }
                     .contextMenu {
                         NavigationLink {
-                            ResourceView(resourceIndex: resource.index)
+                            if let documentIndex = resource.documentIndex {
+                                DocumentView(documentIndex: documentIndex)
+                            } else {
+                                ResourceView(resourceIndex: resource.index)
+                            }
                         } label: {
                             Text("Read".localized())
                         }
