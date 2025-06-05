@@ -32,9 +32,6 @@ struct ResourceCommentView: View {
     @EnvironmentObject var paragraphViewModel: ParagraphViewModel
     @EnvironmentObject var themeManager: ThemeManager
     
-    @State private var typingTimer: Timer? = nil
-    let delay: TimeInterval = 2.0
-    
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -69,9 +66,6 @@ struct ResourceCommentView: View {
             
             VStack {
                 TextEditor(text: $comment)
-                    .onChange(of: comment) { newValue in
-                        saveCommentWithDelay()
-                    }
                     .font(Font.custom("Lato-Regular", size: BlockStyleTemplate().textSizePoints(.base)))
                     .padding(.horizontal, 20)
                     .background(Color(uiColor: .secondarySystemBackground))
@@ -84,7 +78,6 @@ struct ResourceCommentView: View {
                     
                     .overlay(alignment: .bottomTrailing) {
                         Button (action: {
-                            typingTimer?.invalidate()
                             saveComment()
                             SwiftEntryKit.dismiss()
                         }) {
@@ -95,21 +88,12 @@ struct ResourceCommentView: View {
                                 .padding(.bottom, 20)
                                 .padding(.trailing, 20)
                         }
-                    }                    
+                    }
             }
             
         }
         .background(themeManager.backgroundColor)
         .cornerRadius(6)
-    }
-    
-    func saveCommentWithDelay() {
-        typingTimer?.invalidate()
-        typingTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { _ in
-            DispatchQueue.main.async {
-                self.saveComment()
-            }
-        }
     }
     
     func saveComment() {
