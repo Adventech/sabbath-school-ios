@@ -1150,4 +1150,26 @@ struct AppStyle {
             }
         }
     }
+    
+    struct VideoSegment {
+        struct Text {
+            static func title(_ string: String, _ featured: Bool = false) -> AttributedString {
+                let themeManager = ThemeManager()
+                
+                var result = AttributedString(string)
+                result.foregroundColor = themeManager.getTextColor()
+                result.font = Font.custom("Lato-Bold", size: 16)
+                return result
+            }
+            
+            static func subtitle(_ string: String) -> AttributedString {
+                let themeManager = ThemeManager()
+                
+                var result = AttributedString(string)
+                result.foregroundColor = themeManager.getTextColor().opacity(0.7)
+                result.font = Font.custom("Lato-Regular", size: 14)
+                return result
+            }
+        }
+    }
 }

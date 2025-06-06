@@ -275,7 +275,7 @@ struct SegmentViewBase<Content: View>: View {
     var progressTrackingSubtitle: String?
     var progressNextSegmentIteratorIndex: Int?
     
-    let content: (SegmentViewCover, SegmentViewBlocks, SegmentViewVideo, SegmentHeader) -> Content
+    let content: (SegmentViewCover, SegmentViewBlocks, SegmentViewVideo<SegmentHeader>, SegmentHeader) -> Content
     
     @Environment(\.sizeCategory) var sizeCategory
     @Environment(\.defaultBlockStyles) var defaultStyles: Style
@@ -307,7 +307,15 @@ struct SegmentViewBase<Content: View>: View {
                             progressTrackingSubtitle: progressTrackingSubtitle,
                             progressNextSegmentIteratorIndex: progressNextSegmentIteratorIndex
                         ),
-                        SegmentViewVideo(video: segment.video),
+                        SegmentViewVideo(video: segment.video) {
+                            SegmentHeader(segment.markdownTitle ?? segment.title,
+                                          segment.date,
+                                          segment.markdownSubtitle ?? segment.subtitle,
+                                          false,
+                                          segment.style ?? resource.style,
+                                          0,
+                                          isHiddenSegment)
+                        },
                         SegmentHeader(segment.markdownTitle ?? segment.title,
                                       segment.date,
                                       segment.markdownSubtitle ?? segment.subtitle,

@@ -75,12 +75,10 @@ extension DocumentView {
                                 .frame(width: 50, height: 5)
                             VStack (spacing: 0) {
                                 video
-                                title
                                 blocks
                             }
                         } else {
                             video.padding(.top, isHiddenSegment ? 0 : 100)
-                            title
                             blocks
                         }
                     }.padding(.top, isHiddenSegment ? 10 : 0)

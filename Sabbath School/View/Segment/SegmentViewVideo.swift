@@ -35,7 +35,11 @@ struct FullscreenVideoPlayer: UIViewControllerRepresentable {
         return controller
     }
 
-    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) { }
+    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
+        if uiViewController.player != player {
+            uiViewController.player = player
+        }
+    }
 }
 
 class VideoPlayerSegmentViewModel: ObservableObject {
@@ -44,6 +48,9 @@ class VideoPlayerSegmentViewModel: ObservableObject {
     @Published var artwork: UIImage? = nil
     
     func setupVideoPlayer(_ url: URL, _ title: String? = nil) {
+        player?.pause()
+        player?.replaceCurrentItem(with: nil)
+        
         let playerItem = AVPlayerItem(url: url)
         
         if let title = title {
@@ -58,6 +65,9 @@ class VideoPlayerSegmentViewModel: ObservableObject {
     }
         
     func setupVideoPlayer(_ video: VideoClipSegment) {
+        player?.pause()
+        player?.replaceCurrentItem(with: nil)
+        
         let playerItem = AVPlayerItem(url: video.hls ?? video.src)
         
         var items: [AVMutableMetadataItem] = []
@@ -76,11 +86,12 @@ class VideoPlayerSegmentViewModel: ObservableObject {
             items.append(artistMetadata)
         }
         
-        if items.count > 0 {
+        if !items.isEmpty {
             playerItem.externalMetadata = items
         }
         
         player = AVPlayer(playerItem: playerItem)
+        played = false
     }
     
     func play() {
@@ -107,7 +118,7 @@ class VideoPlayerSegmentViewModel: ObservableObject {
     }
 }
 
-struct SegmentViewVideo: View {
+struct SegmentViewVideo<Content: View>: View {
     var video: [VideoClipSegment]?
     
     @EnvironmentObject var themeManager: ThemeManager
@@ -117,63 +128,146 @@ struct SegmentViewVideo: View {
     @State private var selectedVideo: VideoClipSegment
     @State private var isFullscreen = false
     
-    init(video: [VideoClipSegment]?) {
+    let content: () -> Content
+    
+    init(video: [VideoClipSegment]?, @ViewBuilder content: @escaping () -> Content) {
         self.video = video
         
         // TODO: avoid ugly code
-        self.selectedVideo = self.video?[safe: 0] ?? VideoClipSegment(
+        self._selectedVideo = State(initialValue: self.video?[safe: 0] ?? VideoClipSegment(
             src: URL(string: "https://this-should-not-happen.com")!,
             artist: nil,
             title: nil,
             thumbnail: nil,
             hls: nil
-        )
+        ))
+        
+        self.content = content
     }
     
     var body: some View {
         if let _ = video {
             VStack {
-                if let _ = viewModel.player {
-                    FullscreenVideoPlayer(player: viewModel.player!)
-                        .background(Color.black)
-                        .cornerRadius(6)
-                        .overlay {
-                            if !viewModel.played {
-                                ZStack(alignment: .center) {
-                                    if let thumbnail = video?.first?.thumbnail {
-                                        LazyImage(url: thumbnail) { image in
-                                            image.image?.resizable()
-                                                .scaledToFill()
-                                                .onAppear {
-                                                    if let thumbnail = image.imageContainer?.image {
-                                                        viewModel.artwork = thumbnail
+                VStack {
+                    if let _ = viewModel.player {
+                        FullscreenVideoPlayer(player: viewModel.player!)
+                            .background(Color.black)
+                            .cornerRadius(6)
+                            .overlay {
+                                if !viewModel.played {
+                                    ZStack(alignment: .center) {
+                                        if let thumbnail = selectedVideo.thumbnail {
+                                            LazyImage(url: thumbnail) { image in
+                                                image.image?.resizable()
+                                                    .scaledToFit()
+                                                    .onAppear {
+                                                        if let thumbnail = image.imageContainer?.image {
+                                                            viewModel.artwork = thumbnail
+                                                        }
                                                     }
-                                                }
+                                            }
                                         }
+                                        
+                                        Color.black.opacity(0.5)
+                                        
+                                        Button {
+                                            viewModel.play()
+                                        } label: {
+                                            Image(systemName: "play.fill")
+                                                .font(.system(size: 53))
+                                                .foregroundColor(.white)
+                                        }.buttonStyle(.plain)
+                                    }.cornerRadius(6)
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .aspectRatio(16/9, contentMode: .fill)
+                    }
+                }
+                .padding()
+                .task {
+                    if viewModel.player == nil {
+                        viewModel.setupVideoPlayer(selectedVideo)
+                    }
+                }
+                
+                content()
+                
+                if let video = self.video, video.count > 1 {
+                    VStack {
+                        ForEach(Array(video.enumerated()), id: \.offset) { index, clip in
+                            if let thumbnail = clip.thumbnail {
+                                Button(action: {
+                                    if let selectedVideo = self.video?[safe: index] {
+                                        self.selectedVideo = selectedVideo
+                                        viewModel.setupVideoPlayer(self.selectedVideo)
+                                        viewModel.played = true
+                                        viewModel.player?.play()
                                     }
-                                    
-                                    Color.black.opacity(0.5)
-                                    
-                                    Button {
-                                        viewModel.play()
-                                    } label: {
-                                        Image(systemName: "play.fill")
-                                            .font(.system(size: 53))
-                                            .foregroundColor(.white)
-                                    }.buttonStyle(.plain)
-                                }.cornerRadius(6)
+                                }) {
+                                    HStack (spacing: 10) {
+                                        thumbnailView(thumbnail, AppStyle.VideoAux.Size.thumbnail(viewMode: .vertical))
+                                        
+                                        VStack (spacing: 5) {
+                                            if let title = clip.title {
+                                                titleView(title)
+                                            }
+                                            
+                                            if let subtitle = clip.artist {
+                                                subtitleView(subtitle)
+                                            }
+                                        }.frame(maxWidth: .infinity)
+                                        
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding()
+                                }.background(selectedVideo == clip ? Color.secondary.opacity(0.2) : .clear)
                             }
                         }
-                        .frame(maxWidth: .infinity)
-                        .aspectRatio(16/9, contentMode: .fill)
-                }
-            }
-            .padding()
-            .task {
-                if viewModel.player == nil {
-                    viewModel.setupVideoPlayer(selectedVideo)
+                    }
                 }
             }
         }
+    }
+                                
+    @MainActor
+    func thumbnailView (_ url: URL, _ size: CGSize? = nil) -> some View {
+        LazyImage(url: url) { state in
+            if let image = state.image {
+                image.resizable().aspectRatio(contentMode: .fill)
+            } else if state.error != nil {
+                
+            } else {
+                Color(hex: "#cccccc")
+            }
+        }
+        .if(size != nil) { view in
+            view.frame(width: size?.width ?? 0, height: size?.height ?? 0)
+        }
+        .if(size == nil) { view in
+            view
+                .frame(maxWidth: .infinity)
+                .aspectRatio(16 / 9, contentMode: .fill)
+        }
+        
+        .cornerRadius(6)
+        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
+    }
+    
+    func titleView (_ title: String) -> some View {
+        Text(AppStyle.VideoSegment.Text.title(title))
+            .lineLimit(1)
+            .multilineTextAlignment(.leading)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+    }
+    
+    func subtitleView (_ subtitle: String) -> some View {
+        Text(AppStyle.VideoSegment.Text.subtitle(subtitle))
+            .lineLimit(1)
+            .multilineTextAlignment(.leading)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
