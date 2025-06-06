@@ -668,9 +668,6 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
     
     private func onPosition(positions: [IconPosition]) {
         DispatchQueue.main.async {
-            if self.positions.count > 0 && positions.count == 0 {
-                return
-            }
             self.positions = positions
         }
     }
