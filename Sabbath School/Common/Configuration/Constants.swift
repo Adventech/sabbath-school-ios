@@ -51,6 +51,8 @@ struct Constants {
         static let settingsDefaultReminderTime = "08:00"
         static let settingsTheme = "io.adventech.settings.theme"
         
+        static let lastUsedTab = "io.adventech.lastUsedTab"
+        
         static let gcPopup = "io.adventech.gcpopup"
         static let appleAuthorizedUserIdKey = "io.adventech.appleAuthorizedUserIdKey"
         static let shortcutItem = "io.adventech.shortcutItem"

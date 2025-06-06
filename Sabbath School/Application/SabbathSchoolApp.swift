@@ -152,9 +152,29 @@ struct SabbathSchoolApp: App {
                     }
                     .task {
                         await resourceInfoViewModel.retrieveResourceInfo()
+                        if let resourceInfo = resourceInfoViewModel.resourceInfoForLanguage,
+                           let lastUsedTabString = PreferencesShared.lastUsedTab() {
+                            let lastUsedTab = TabSelection(rawValue: lastUsedTabString) 
+                            if lastUsedTab == .aij && resourceInfo.aij {
+                                self.selected = .aij
+                            }
+                            
+                            if lastUsedTab == .pm && resourceInfo.pm {
+                                self.selected = .pm
+                            }
+                            
+                            if lastUsedTab == .devo && resourceInfo.devo {
+                                self.selected = .devo
+                            }
+                            
+                            if lastUsedTab == .explore && resourceInfo.explore {
+                                self.selected = .explore
+                            }
+                        }
                     }
                     .onChange(of: selected) { _ in
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        Preferences.userDefaults.set(selected.rawValue, forKey: Constants.DefaultKey.lastUsedTab)
                     }
                     .id(shortcutLaunched)
                 } else {

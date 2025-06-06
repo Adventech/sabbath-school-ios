@@ -60,4 +60,11 @@ struct PreferencesShared {
         }
         return lastQuarterlyIndex
     }
+    
+    static func lastUsedTab() -> String? {
+        guard let lastUsedTab = PreferencesShared.userDefaults.string(forKey: Constants.DefaultKey.lastUsedTab) else {
+            return nil
+        }
+        return lastUsedTab
+    }
 }
