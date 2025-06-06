@@ -167,7 +167,6 @@ struct SavedScrollOffset: Codable {
                 var mergedUserInput: [AnyUserInput] = []
                 
                 for userInput in remoteUserInput {
-                    // If
                     if let localUserInput = localUserInputForDocument.first(where: { $0.userInput.blockId == userInput.blockId && $0.userInput.inputType == userInput.inputType && ($0.userInput.timestamp > userInput.timestamp) }) {
                         mergedUserInput.append(localUserInput.userInput)
                     } else {

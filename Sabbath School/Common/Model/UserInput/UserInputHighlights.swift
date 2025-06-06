@@ -27,6 +27,9 @@ enum HighlightColor: String, Codable {
     case yellow
     case orange
     case green
+    case purple
+    case brown
+    case red
 }
 
 struct UserInputHighlight: Codable, Equatable {

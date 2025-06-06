@@ -35,9 +35,11 @@ enum UserInputType: String, Codable {
          comment,
          completion,
          highlights,
+         inlineComments,
          multipleChoice = "multiple-choice",
          poll,
          question,
+         underlines,
          unknown
     
     init(from decoder: Decoder) throws {
@@ -98,6 +100,8 @@ struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
             _base = try UserInputCompletion(from: decoder)
         case .highlights:
             _base = try UserInputHighlights(from: decoder)
+        case .inlineComments:
+            _base = try UserInputInlineComments(from: decoder)
         case .multipleChoice:
             _base = try UserInputMultipleChoice(from: decoder)
         case .poll:
@@ -106,6 +110,8 @@ struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
             _base = try UserInputQuestion(from: decoder)
         case .annotation:
             _base = try UserInputAnnotation(from: decoder)
+        case .underlines:
+            _base = try UserInputUnderlines(from: decoder)
         default:
             _base = try UserInputUnknown(from: decoder)
         }

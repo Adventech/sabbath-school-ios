@@ -800,7 +800,7 @@ struct AppStyle {
             return Color(hex: "#63D724")
         }
         
-        static var highlighOrange: Color {
+        static var highlightOrange: Color {
             return Color(hex: "#F59569")
         }
         
@@ -810,6 +810,18 @@ struct AppStyle {
         
         static var highlightYellow: Color {
             return Color(hex: "#FFF3A0")
+        }
+        
+        static var highlightPurple: Color {
+            return Color(hex: "#A36AFC")
+        }
+        
+        static var highlightBrown: Color {
+            return Color(hex: "#A58064")
+        }
+        
+        static var highlightRed: Color {
+            return Color(hex: "#EC5252")
         }
         
         static var highlightForeground: Color {

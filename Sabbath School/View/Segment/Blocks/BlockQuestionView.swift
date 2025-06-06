@@ -29,6 +29,7 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
     @EnvironmentObject var viewModel: DocumentViewModel
     
     @State var answer: String = ""
+    @State var typingStarted: Bool = false
     @State private var typingTimer: Timer? = nil
     let delay: TimeInterval = 1.0
     
@@ -59,6 +60,7 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
                     
                     TextEditor(text: $answer)
                         .onChange(of: answer) { newValue in
+                            typingStarted = true
                             resetTypingTimer()
                         }
                         .frame(minHeight: 100, alignment: .leading)
@@ -102,17 +104,21 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
     }
     
     func resetTypingTimer() {
+        if !typingStarted { return }
         typingTimer?.invalidate()
         typingTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { _ in
             DispatchQueue.main.async {
-                print("SSDEBUG SAVING comment")
                 self.saveUserInput(AnyUserInput(UserInputQuestion(blockId: block.id, inputType: .question, answer: self.answer, timestamp: Int(Date().timeIntervalSince1970))))
             }
         }
     }
     
     internal func loadInputData() {
-        self.answer = getUserInputForBlock(blockId: block.id, userInput: nil)?.asType(UserInputQuestion.self)?.answer ?? ""
+        if let newAnswer = getUserInputForBlock(blockId: block.id, userInput: nil)?.asType(UserInputQuestion.self)?.answer {
+            if newAnswer != answer {
+                self.answer = newAnswer
+            }
+        }
     }
 }
 

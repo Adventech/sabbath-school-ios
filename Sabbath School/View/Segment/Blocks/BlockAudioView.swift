@@ -32,6 +32,8 @@ class AudioPlayerViewModel: ObservableObject {
     @Published var currentTime: Double = 0
     @Published var duration: Double = 1
     
+    @Published var finished = false
+    
     func setupAudioPlayer(_ url: URL) {
         let playerItem = AVPlayerItem(url: url)
         player = AVPlayer(playerItem: playerItem)
@@ -74,6 +76,7 @@ class AudioPlayerViewModel: ObservableObject {
         player?.seek(to: .zero)
         isPlaying = false
         currentTime = 0
+        finished = true
     }
     
     deinit {

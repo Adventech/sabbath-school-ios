@@ -24,18 +24,57 @@ import SwiftUI
 import SwiftEntryKit
 import SafariServices
 import SwiftEntryKit
+import Combine
+
+class LayoutAwareTextViewController: ObservableObject {
+    var getPositionsForInlineComments: (([UserInputInlineComment]) -> Void)?
+
+    func getPositionsForInlineComments(inlineComments: [UserInputInlineComment]) {
+        getPositionsForInlineComments?(inlineComments)
+    }
+}
+
+class LayoutAwareTextView: UITextView {
+    var onFullyLaidOut: (() -> Void)?
+    public var didLayout = false
+    public var counter = 0
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        guard !didLayout && counter < 5 else { return }
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.didLayout = true
+            self.counter += 1
+            self.onFullyLaidOut?()
+        }
+    }
+
+    func resetLayoutFlag() {
+        didLayout = false
+    }
+}
 
 struct InlineTextViewWrapper: UIViewRepresentable {
+    @ObservedObject var controller: LayoutAwareTextViewController
     var attributedString: AttributedString
     @Binding var height: CGFloat
+    @ObservedObject var paragraphViewModel: ParagraphViewModel
     var onLinkClick: ((URL) -> Void)?
     var onHighlight: ((NSRange, HighlightColor) -> Void)?
+    var onUnderline: ((NSRange, HighlightColor) -> Void)?
     var onRemoveHighlight: ((NSRange) -> Void)?
+    var onRemoveUnderline: ((NSRange) -> Void)?
     var onComment: (() -> Void)?
+    var onInlineComment: ((NSRange, UserInputInlineComment?) -> Void)?
+    var onPosition: (([IconPosition]) -> Void)?
     var alignment: TextAlignment
-
-    func makeUIView(context: Context) -> UITextView {
-        let textView = UITextView()
+    var cachedPositions: [IconPosition] = []
+    
+    func makeUIView(context: Context) -> LayoutAwareTextView {
+        let textView = LayoutAwareTextView()
         textView.isEditable = false
         textView.isSelectable = true
         
@@ -53,12 +92,26 @@ struct InlineTextViewWrapper: UIViewRepresentable {
 
         textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
         
+        context.coordinator.textView = textView
+
+        controller.getPositionsForInlineComments = { inlineComments in
+            DispatchQueue.main.async {
+                textView.counter = 0
+                textView.didLayout = false
+                calculateThePositionOfTheInlineCommentIcons(textView: textView, inlineComments: inlineComments)
+            }
+        }
+        
+        textView.onFullyLaidOut = {
+            calculateThePositionOfTheInlineCommentIcons(textView: textView, inlineComments: paragraphViewModel.inlineComments)
+        }
+        
         return textView
     }
     
-   
-
-    func updateUIView(_ textView: UITextView, context: Context) {
+    func updateUIView(_ textView: LayoutAwareTextView, context: Context) {
+        textView.resetLayoutFlag()
+        
         let attributedText = NSMutableAttributedString(attributedString)
         
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.clear]
@@ -85,7 +138,9 @@ struct InlineTextViewWrapper: UIViewRepresentable {
             attributedText.setAttributes(newAttributes, range: range)
         }
         
-        textView.attributedText = attributedText
+        DispatchQueue.main.async {
+            textView.attributedText = attributedText
+        }
         
         textView.sizeToFit()
         
@@ -93,6 +148,26 @@ struct InlineTextViewWrapper: UIViewRepresentable {
             self.height = textView.contentSize.height
         }
     }
+    
+    func calculateThePositionOfTheInlineCommentIcons(textView: LayoutAwareTextView, inlineComments: [UserInputInlineComment]) {
+        var positions: [IconPosition] = []
+        for inlineComment in inlineComments {
+            let layoutManager = textView.layoutManager
+            let textContainer = textView.textContainer
+            
+
+            let glyphRange = layoutManager.glyphRange(forCharacterRange: NSRange(location: inlineComment.startIndex, length: inlineComment.length), actualCharacterRange: nil)
+            let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
+            let x = rect.maxX + 7
+            let y = rect.minY
+            if !x.isInfinite && !y.isInfinite {
+                positions.append(IconPosition(x: x, y: y, inlineComment: inlineComment))
+            }
+            
+        }
+        self.onPosition?(positions)
+    }
+    
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -100,6 +175,7 @@ struct InlineTextViewWrapper: UIViewRepresentable {
 
     class Coordinator: NSObject, UITextViewDelegate {
         var parent: InlineTextViewWrapper
+        weak var textView: UITextView?
 
         init(_ parent: InlineTextViewWrapper) {
             self.parent = parent
@@ -122,7 +198,7 @@ struct InlineTextViewWrapper: UIViewRepresentable {
                 self.clearSelection(textView)
             }
             
-            let highlightOrange = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlighOrange), renderingMode: .alwaysOriginal)) { action in
+            let highlightOrange = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightOrange), renderingMode: .alwaysOriginal)) { action in
                 self.parent.onHighlight?(range, .orange)
                 self.clearSelection(textView)
             }
@@ -132,19 +208,76 @@ struct InlineTextViewWrapper: UIViewRepresentable {
                 self.clearSelection(textView)
             }
             
+            let highlightPurple = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightPurple), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onHighlight?(range, .purple)
+                self.clearSelection(textView)
+            }
+            
+            let highlightBrown = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightBrown), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onHighlight?(range, .brown)
+                self.clearSelection(textView)
+            }
+            
+            let highlightRed = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightRed), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onHighlight?(range, .red)
+                self.clearSelection(textView)
+            }
+            
             let removeHighlight = UIAction(title: "", image: UIImage(systemName: "x.circle.fill")) { action in
                 self.parent.onRemoveHighlight?(range)
                 self.clearSelection(textView)
             }
             
-            let comment = UIAction(title: "", image: UIImage(systemName: "text.bubble")) { action in
-                self.parent.onComment?()
+            let underlineBlue = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightBlue), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onUnderline?(range, .blue)
                 self.clearSelection(textView)
             }
             
-            let highlightMenu = UIMenu(title: "", image: UIImage(systemName: "highlighter"), children: [highlightBlue, highlightGreen, highlightOrange, highlightYellow, removeHighlight])
+            let underlineGreen = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightGreen), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onUnderline?(range, .green)
+                self.clearSelection(textView)
+            }
+            
+            let underlineOrange = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightOrange), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onUnderline?(range, .orange)
+                self.clearSelection(textView)
+            }
 
-            return UIMenu(title: "", children: [highlightMenu, comment] + suggestedActions)
+            let underlineYellow = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightYellow), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onUnderline?(range, .yellow)
+                self.clearSelection(textView)
+            }
+            
+            let underlinePurple = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightPurple), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onUnderline?(range, .purple)
+                self.clearSelection(textView)
+            }
+            
+            let underlineBrown = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightBrown), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onUnderline?(range, .brown)
+                self.clearSelection(textView)
+            }
+            
+            let underlineRed = UIAction(title: "", image: UIImage(systemName: "circle.fill")?.withTintColor(UIColor(AppStyle.Block.highlightRed), renderingMode: .alwaysOriginal)) { action in
+                self.parent.onUnderline?(range, .red)
+                self.clearSelection(textView)
+            }
+            
+            let removeUnderline = UIAction(title: "", image: UIImage(systemName: "x.circle.fill")) { action in
+                self.parent.onRemoveUnderline?(range)
+                self.clearSelection(textView)
+            }
+            
+            let comment = UIAction(title: "", image: UIImage(systemName: "text.bubble")) { action in
+                self.parent.onInlineComment?(range, nil)
+                self.clearSelection(textView)
+            }
+            
+            let highlightMenu = UIMenu(title: "", image: UIImage(systemName: "highlighter"), children: [highlightBlue, highlightGreen, highlightOrange, highlightYellow, highlightPurple, highlightBrown, highlightRed, removeHighlight])
+            
+            let underlineMenu = UIMenu(title: "", image: UIImage(systemName: "underline"), children: [underlineBlue, underlineGreen, underlineOrange, underlineYellow, underlinePurple, underlineBrown, underlineRed, removeUnderline])
+
+            return UIMenu(title: "", children: [highlightMenu, underlineMenu, comment] + suggestedActions)
         }
         
         func clearSelection(_ textView: UITextView) {
@@ -166,6 +299,13 @@ struct InlineTextViewWrapper: UIViewRepresentable {
     }
 }
 
+struct IconPosition: Hashable, Identifiable {
+    var id = UUID()
+    var x: CGFloat
+    var y: CGFloat
+    var inlineComment: UserInputInlineComment
+}
+
 struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
     var block: AnyBlock
     @State var markdown: String
@@ -175,6 +315,7 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
     var headingDepth: HeadingDepth? = nil
     var styleTemplate: StyleTemplate? = nil
     var urlsEnabled: Bool = true
+    var startFrom: Int = 0
     
     @Environment(\.sizeCategory) var sizeCategory
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -192,8 +333,10 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
     @State private var attributedStringWithoutHighlights: AttributedString = AttributedString("")
     
     @State private var initialized = false
+    @State private var positions: [IconPosition] = []
+    @State private var controller = LayoutAwareTextViewController()
     
-    init (block: AnyBlock, markdown: String, selectable: Bool = false, lineLimit: Int? = nil, headingDepth: HeadingDepth? = nil, styleTemplate: StyleTemplate? = nil, urlsEnabled: Bool = true) {
+    init (block: AnyBlock, markdown: String, selectable: Bool = false, lineLimit: Int? = nil, headingDepth: HeadingDepth? = nil, styleTemplate: StyleTemplate? = nil, urlsEnabled: Bool = true, startFrom: Int = 0) {
         self.block = block
         self.markdown = markdown
         self.originalMarkdown = markdown
@@ -202,6 +345,7 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
         self.headingDepth = headingDepth
         self.styleTemplate = styleTemplate
         self.urlsEnabled = urlsEnabled
+        self.startFrom = startFrom
     }
     
     var body: some View {
@@ -246,11 +390,25 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
                             loadInputData()
                         }
                         .onChange(of: paragraphViewModel.highlights) { newValue in
-                            setHighlights(highlights: newValue)
+                            setHighlights(highlights: newValue, inlineComments: paragraphViewModel.inlineComments, underlines: paragraphViewModel.underlines)
                             
                             if !paragraphViewModel.savingMode { return }
                             
                             saveUserInput(AnyUserInput(UserInputHighlights(blockId: block.id, inputType: .highlights, highlights: newValue, timestamp: Int(Date().timeIntervalSince1970))))
+                        }
+                        .onChange(of: paragraphViewModel.underlines) { newValue in
+                            setHighlights(highlights: paragraphViewModel.highlights, inlineComments: paragraphViewModel.inlineComments, underlines: newValue)
+                            
+                            if !paragraphViewModel.savingMode { return }
+                            
+                            saveUserInput(AnyUserInput(UserInputUnderlines(blockId: block.id, inputType: .underlines, underlines: newValue, timestamp: Int(Date().timeIntervalSince1970))))
+                        }
+                        .onChange(of: paragraphViewModel.inlineComments) { newValue in
+                            setHighlights(highlights: paragraphViewModel.highlights, inlineComments: newValue, underlines: paragraphViewModel.underlines)
+
+                            if !paragraphViewModel.savingMode { return }
+
+                            saveUserInput(AnyUserInput(UserInputInlineComments(blockId: block.id, inputType: .inlineComments, inlineComments: newValue, timestamp: Int(Date().timeIntervalSince1970))))
                         }
                         .onChange(of: paragraphViewModel.comment) { newValue in
                             if !paragraphViewModel.savingMode { return }
@@ -278,6 +436,25 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
+                
+                ForEach(positions) { position in
+                    VStack(alignment: .leading) {
+                        Button (action: {
+                            onInlineComment(
+                                range: NSRange(location: position.inlineComment.startIndex, length: position.inlineComment.length),
+                                inlineComment: position.inlineComment
+                            )
+                        }) {
+                            Image(systemName: "text.bubble")
+                                .foregroundColor(themeManager.getTextColor() | .white)
+                                .imageScale(.small)
+                        }
+                        .frame(width: 14, height: 14)
+                        .frame(maxWidth: 14, maxHeight: 14)
+                        .position(x: position.x, y: position.y)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
             .padding(0)
         }.padding(0)
@@ -295,7 +472,8 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
         attributedString = AppStyle.Block.text(markdown, defaultStyles, block, styleTemplate ?? template)
         attributedStringWithoutHighlights = attributedString
         initialized = true
-        setHighlights(highlights: paragraphViewModel.highlights)
+        setHighlights(highlights: paragraphViewModel.highlights, inlineComments: paragraphViewModel.inlineComments, underlines: paragraphViewModel.underlines)
+        controller.getPositionsForInlineComments(inlineComments: paragraphViewModel.inlineComments)
     }
     
     internal func updateMarkdownWithCompletions(_ completion: [String: String]) {
@@ -325,8 +503,17 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
     }
     
     internal func loadInputData() {
-        if let userInput = getUserInputForBlock(blockId: block.id, userInput: viewModel.documentUserInput)?.asType(UserInputHighlights.self) {
+        if let userInput = viewModel.documentUserInput.first(where: { $0.blockId == block.id && $0.inputType == .highlights })?.asType(UserInputHighlights.self) {
             paragraphViewModel.loadUserInput(userInput: userInput)
+        }
+        
+        if let userInputUnderlines = viewModel.documentUserInput.first(where: { $0.blockId == block.id && $0.inputType == .underlines })?.asType(UserInputUnderlines.self) {
+            paragraphViewModel.loadUserInputUnderlines(userInput: userInputUnderlines)
+        }
+        
+        if let userInputInlineComments = viewModel.documentUserInput.first(where: { $0.blockId == block.id && $0.inputType == .inlineComments })?.asType(UserInputInlineComments.self) {
+            paragraphViewModel.loadUserInputInlineComments(userInput: userInputInlineComments)
+            controller.getPositionsForInlineComments(inlineComments: userInputInlineComments.inlineComments)
         }
         
         // TODO: refactor so that getUserInputForBlock can support multiple userinputs for the same block but different type
@@ -340,7 +527,7 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
         }
     }
     
-    private func setHighlights(highlights: [UserInputHighlight]) {
+    private func setHighlights(highlights: [UserInputHighlight], inlineComments: [UserInputInlineComment], underlines: [UserInputUnderline]) {
         attributedString = attributedStringWithoutHighlights
         
         for highlight in highlights {
@@ -353,13 +540,82 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
                 case .blue:
                     backgroundColor = AppStyle.Block.highlightBlue
                 case .orange:
-                    backgroundColor = AppStyle.Block.highlighOrange
+                    backgroundColor = AppStyle.Block.highlightOrange
                 case .green:
                     backgroundColor = AppStyle.Block.highlightGreen
+                case .purple:
+                    backgroundColor = AppStyle.Block.highlightPurple
+                case .brown:
+                    backgroundColor = AppStyle.Block.highlightBrown
+                case .red:
+                    backgroundColor = AppStyle.Block.highlightRed
                 }
                 
                 attributedString[range].backgroundColor = backgroundColor
                 attributedString[range].foregroundColor = AppStyle.Block.highlightForeground
+
+            }
+        }
+        
+        for inlineComment in inlineComments {
+            let range = NSRange(location: inlineComment.startIndex, length: inlineComment.length)
+            var backgroundColor: Color
+            if let range = Range(range, in: attributedString) {
+                switch inlineComment.color {
+                case .yellow:
+                    backgroundColor = AppStyle.Block.highlightYellow
+                case .blue:
+                    backgroundColor = AppStyle.Block.highlightBlue
+                case .orange:
+                    backgroundColor = AppStyle.Block.highlightOrange
+                case .green:
+                    backgroundColor = AppStyle.Block.highlightGreen
+                case .purple:
+                    backgroundColor = AppStyle.Block.highlightPurple
+                case .brown:
+                    backgroundColor = AppStyle.Block.highlightBrown
+                case .red:
+                    backgroundColor = AppStyle.Block.highlightRed
+                }
+                
+                attributedString[range].backgroundColor = backgroundColor
+                attributedString[range].foregroundColor = AppStyle.Block.highlightForeground
+            }
+        }
+        
+        for underline in underlines {
+            let range = NSRange(location: underline.startIndex, length: underline.length)
+            var backgroundColor: Color
+            if let range = Range(range, in: attributedString) {
+                switch underline.color {
+                case .yellow:
+                    backgroundColor = AppStyle.Block.highlightYellow
+                case .blue:
+                    backgroundColor = AppStyle.Block.highlightBlue
+                case .orange:
+                    backgroundColor = AppStyle.Block.highlightOrange
+                case .green:
+                    backgroundColor = AppStyle.Block.highlightGreen
+                case .purple:
+                    backgroundColor = AppStyle.Block.highlightPurple
+                case .brown:
+                    backgroundColor = AppStyle.Block.highlightBrown
+                case .red:
+                    backgroundColor = AppStyle.Block.highlightRed
+                }
+                
+                
+                attributedString[range].underlineStyle = Text.LineStyle(pattern: .solid, color: backgroundColor)
+            }
+        }
+        self.trimTextIfNeeded()
+    }
+    
+    func trimTextIfNeeded() {
+        if startFrom > 0 {
+            if let startIndex = attributedString.characters.index(attributedString.startIndex, offsetBy: startFrom, limitedBy: attributedString.endIndex) {
+                let substring = AttributedString(attributedString[startIndex..<attributedString.endIndex])
+                attributedString = substring
             }
         }
     }
@@ -367,16 +623,22 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
     @ViewBuilder
     func overlaySelectableText(attributedString: AttributedString, alignment: TextAlignment) -> some View {
         InlineTextViewWrapper(
+            controller: controller,
             attributedString: attributedStringWithoutHighlights,
             height: $height,
+            paragraphViewModel: paragraphViewModel,
             onLinkClick: handleURL,
             onHighlight: onHighlight,
+            onUnderline: onUnderline,
             onRemoveHighlight: onRemoveHighlight,
+            onRemoveUnderline: onRemoveUnderline,
             onComment: onComment,
+            onInlineComment: onInlineComment,
+            onPosition: onPosition,
             alignment: alignment
         )
-          .frame(height: height, alignment: .leading)
-          .padding(0)
+        .frame(height: height, alignment: .leading)
+        .padding(0)
     }
     
     private func handleURL(url: URL) {
@@ -404,12 +666,65 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
         }
     }
     
+    private func onPosition(positions: [IconPosition]) {
+        DispatchQueue.main.async {
+            if self.positions.count > 0 && positions.count == 0 {
+                return
+            }
+            self.positions = positions
+        }
+    }
+    
     private func onHighlight(range: NSRange, color: HighlightColor) {
         paragraphViewModel.setHighlight(startIndex: range.location, endIndex: range.location + range.length, length: range.length, color: color)
     }
     
+    private func onUnderline(range: NSRange, color: HighlightColor) {
+        paragraphViewModel.setUnderline(startIndex: range.location, endIndex: range.location + range.length, length: range.length, color: color)
+    }
+    
+    private func onInlineComment(range: NSRange, inlineComment: UserInputInlineComment? = nil) {
+        let hostingController = UIHostingController(
+            rootView: ResourceInlineCommentView(
+                comment: inlineComment?.comment ?? "",
+                block: block,
+                markdown: markdown,
+                blockId: SwiftEntryKit.isCurrentlyDisplaying ? block.id : nil,
+                startIndex: range.location,
+                endIndex: range.location + range.length,
+                length: range.length,
+                inlineComment: inlineComment)
+                .environmentObject(viewModel)
+                .environmentObject(paragraphViewModel)
+                .environmentObject(themeManager)
+                .environment(\.defaultBlockStyles, defaultStyles)
+        )
+        hostingController.view.layer.cornerRadius = 6
+        
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        
+        var attrs = Animation.modalAnimationAttributes(widthRatio: 0.9, heightRatio: 0.6, backgroundColor: UIColor(themeManager.getBackgroundColor()), hasKeyboard: true)
+    
+        
+        if let currentBibleBlock = ModalManager.shared.currentBibleBlock, SwiftEntryKit.isCurrentlyDisplaying {
+            attrs.lifecycleEvents.didDisappear = {
+                self.showBibleModal(bible: currentBibleBlock)
+            }
+        } else if let currentEGWBlock = ModalManager.shared.currentEGWBlock, SwiftEntryKit.isCurrentlyDisplaying {
+            attrs.lifecycleEvents.didDisappear = {
+                self.showEGWModal(paragraphs: currentEGWBlock)
+            }
+        }
+        
+        SwiftEntryKit.display(entry: hostingController, using: attrs)
+    }
+    
     private func onRemoveHighlight(range: NSRange) {
         paragraphViewModel.removeHighlight(startIndex: range.location, endIndex: range.location + range.length, length: range.length)
+    }
+    
+    private func onRemoveUnderline(range: NSRange) {
+        paragraphViewModel.removeUnderline(startIndex: range.location, endIndex: range.location + range.length, length: range.length)
     }
     
     private func showBibleModal(bible: Excerpt) {

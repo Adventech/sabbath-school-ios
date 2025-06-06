@@ -185,6 +185,9 @@
 		2FAC63A82C235BB3002C5093 /* SegmentViewStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAC63A72C235BB3002C5093 /* SegmentViewStory.swift */; };
 		2FB638602DEB7B7A008C17F8 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB6385F2DEB7B77008C17F8 /* SyncManager.swift */; };
 		2FB638622DEB8170008C17F8 /* LocalUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638612DEB816D008C17F8 /* LocalUserInput.swift */; };
+		2FB638642DF119C0008C17F8 /* UserInputInlineComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638632DF119C0008C17F8 /* UserInputInlineComments.swift */; };
+		2FB638662DF1EA4F008C17F8 /* ResourceInlineCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638652DF1EA4B008C17F8 /* ResourceInlineCommentView.swift */; };
+		2FB638682DF23B36008C17F8 /* UserInputUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638672DF23B33008C17F8 /* UserInputUnderline.swift */; };
 		2FBB9BF02C0CE61200882F8C /* ResourceFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBB9BEF2C0CE61200882F8C /* ResourceFeedView.swift */; };
 		2FBB9BF22C0CE6CB00882F8C /* ResourceFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBB9BF12C0CE6CB00882F8C /* ResourceFeedViewModel.swift */; };
 		2FBF2AF72D0277CA007F5615 /* DocumentViewOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF2AF62D0277CA007F5615 /* DocumentViewOperator.swift */; };
@@ -518,6 +521,9 @@
 		2FAC63A72C235BB3002C5093 /* SegmentViewStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewStory.swift; sourceTree = "<group>"; };
 		2FB6385F2DEB7B77008C17F8 /* SyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
 		2FB638612DEB816D008C17F8 /* LocalUserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserInput.swift; sourceTree = "<group>"; };
+		2FB638632DF119C0008C17F8 /* UserInputInlineComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputInlineComments.swift; sourceTree = "<group>"; };
+		2FB638652DF1EA4B008C17F8 /* ResourceInlineCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceInlineCommentView.swift; sourceTree = "<group>"; };
+		2FB638672DF23B33008C17F8 /* UserInputUnderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputUnderline.swift; sourceTree = "<group>"; };
 		2FBB9BEF2C0CE61200882F8C /* ResourceFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFeedView.swift; sourceTree = "<group>"; };
 		2FBB9BF12C0CE6CB00882F8C /* ResourceFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFeedViewModel.swift; sourceTree = "<group>"; };
 		2FBF2AF62D0277CA007F5615 /* DocumentViewOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewOperator.swift; sourceTree = "<group>"; };
@@ -945,6 +951,7 @@
 				2F99F6022C32427700FCB05F /* ExternalLinkView.swift */,
 				2F3F16BD2D14C9E1005E0232 /* ProgressSaveButton.swift */,
 				2F7622472C1F454400CB7C33 /* ResourceBibleView.swift */,
+				2FB638652DF1EA4B008C17F8 /* ResourceInlineCommentView.swift */,
 				2F3F16B32D129C39005E0232 /* ResourceCommentView.swift */,
 				2F3F16C12D167A27005E0232 /* ResourceCompletionView.swift */,
 				2F3F16B52D129C5D005E0232 /* ResourceEGWView.swift */,
@@ -987,12 +994,14 @@
 		2F7621FC2C1F402000CB7C33 /* UserInput */ = {
 			isa = PBXGroup;
 			children = (
+				2FB638672DF23B33008C17F8 /* UserInputUnderline.swift */,
 				2F698B6A2CDF6FE20070FEF9 /* UserInputAnnotation.swift */,
 				2F7622012C1F404500CB7C33 /* UserInputAppeal.swift */,
 				2F7621FD2C1F402D00CB7C33 /* UserInputChecklist.swift */,
 				2F3F16A72D12125C005E0232 /* UserInputComment.swift */,
 				2F3F16BF2D160135005E0232 /* UserInputCompletion.swift */,
 				2FAC63A32C1FD4B3002C5093 /* UserInputHighlights.swift */,
+				2FB638632DF119C0008C17F8 /* UserInputInlineComments.swift */,
 				2F7622572C1F5A1900CB7C33 /* UserInputMultipleChoice.swift */,
 				2F99F5FE2C304CE300FCB05F /* UserInputPoll.swift */,
 				2F7621FF2C1F403A00CB7C33 /* UserInputQuestion.swift */,
@@ -1730,6 +1739,7 @@
 				2F7621D42C1F3D2500CB7C33 /* ResourceSection.swift in Sources */,
 				2F7622212C1F428800CB7C33 /* ResourceFeaturesHeaderView.swift in Sources */,
 				2F99F5FF2C304CE300FCB05F /* UserInputPoll.swift in Sources */,
+				2FB638662DF1EA4F008C17F8 /* ResourceInlineCommentView.swift in Sources */,
 				2F76220F2C1F413600CB7C33 /* FeedResourceViewSquare.swift in Sources */,
 				2F0EB50D2C12814800ADBD9D /* FeedSeeAllView.swift in Sources */,
 				7AC26AE91EE5EB63003F946C /* Preferences.swift in Sources */,
@@ -1811,6 +1821,7 @@
 				2F99F5FB2C304B8100FCB05F /* Poll.swift in Sources */,
 				2F7622342C1F446800CB7C33 /* BlockExcerptView.swift in Sources */,
 				4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */,
+				2FB638642DF119C0008C17F8 /* UserInputInlineComments.swift in Sources */,
 				2F7621D02C1F3C2400CB7C33 /* ResourceFeed.swift in Sources */,
 				2F7526832CD07A130027FD1E /* ThemeManager.swift in Sources */,
 				2FBF2AFF2D0279F5007F5615 /* DocumentPagerView.swift in Sources */,
@@ -1906,6 +1917,7 @@
 				2F5C48F726F2AEB6002C4C83 /* PDF.swift in Sources */,
 				2F7621F32C1F3F9F00CB7C33 /* BlockImage.swift in Sources */,
 				2F7621ED2C1F3F7B00CB7C33 /* Hr.swift in Sources */,
+				2FB638682DF23B36008C17F8 /* UserInputUnderline.swift in Sources */,
 				2F7622272C1F434800CB7C33 /* StyleTextAttribute.swift in Sources */,
 				2F7622002C1F403A00CB7C33 /* UserInputQuestion.swift in Sources */,
 				2F698B622CDEC96A0070FEF9 /* PDFAuxiliaryView.swift in Sources */,

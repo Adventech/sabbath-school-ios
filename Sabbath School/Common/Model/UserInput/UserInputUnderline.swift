@@ -22,41 +22,23 @@
 
 import Foundation
 
-struct UserInputInlineComment: Codable, Equatable, Hashable {
-    let id: String
+struct UserInputUnderline: Codable, Equatable {
     let startIndex: Int
     let endIndex: Int
     let length: Int
     let color: HighlightColor
-    var comment: String
     
-    static func ==(lhs: UserInputInlineComment, rhs: UserInputInlineComment) -> Bool {
+    static func ==(lhs: UserInputUnderline, rhs: UserInputUnderline) -> Bool {
         return lhs.startIndex == rhs.startIndex &&
                lhs.endIndex == rhs.endIndex &&
                lhs.length == rhs.length &&
                lhs.color == rhs.color
     }
-    
-    init(
-        id: String = UUID().uuidString.lowercased(),
-        startIndex: Int,
-        endIndex: Int,
-        length: Int,
-        color: HighlightColor,
-        comment: String
-    ) {
-        self.id = id
-        self.startIndex = startIndex
-        self.endIndex = endIndex
-        self.length = length
-        self.color = color
-        self.comment = comment
-    }
 }
 
-struct UserInputInlineComments: UserInputProtocol {
+struct UserInputUnderlines: UserInputProtocol {
     let blockId: String
     let inputType: UserInputType
-    let inlineComments: [UserInputInlineComment]
+    let underlines: [UserInputUnderline]
     let timestamp: Int
 }

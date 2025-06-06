@@ -25,12 +25,22 @@ import SwiftUI
 class ParagraphViewModel: ObservableObject {
     @Published var highlights: [UserInputHighlight] = []
     @Published var comment: String = ""
+    @Published var inlineComments: [UserInputInlineComment] = []
+    @Published var underlines: [UserInputUnderline] = []
     @Published var savingMode: Bool = false
     @Published var completion: [String: String] = [:]
 
-
     public func loadUserInput(userInput: UserInputHighlights) {
         self.highlights = userInput.highlights
+    }
+    
+    public func loadUserInputUnderlines(userInput: UserInputUnderlines) {
+        self.underlines = userInput.underlines
+    }
+    
+    public func loadUserInputInlineComments(userInput: UserInputInlineComments) {
+        self.inlineComments = []
+        self.inlineComments = userInput.inlineComments
     }
     
     public func loadUserInputComment(userInput: UserInputComment) {
@@ -41,12 +51,30 @@ class ParagraphViewModel: ObservableObject {
         savingMode = true
         self.highlights.append(UserInputHighlight(startIndex: startIndex, endIndex: endIndex, length: length, color: color))
     }
+    
+    public func setUnderline(startIndex: Int, endIndex: Int, length: Int, color: HighlightColor) {
+        savingMode = true
+        self.underlines.append(UserInputUnderline(startIndex: startIndex, endIndex: endIndex, length: length, color: color))
+    }
+    
+    public func setInlineComment(startIndex: Int, endIndex: Int, length: Int, color: HighlightColor, comment: String) {
+        savingMode = true
+        self.inlineComments.append(UserInputInlineComment(startIndex: startIndex, endIndex: endIndex, length: length, color: color, comment: comment))
+    }
 
     public func removeHighlight(startIndex: Int, endIndex: Int, length: Int) {
         savingMode = true
         let endIndex = startIndex + length
         self.highlights = self.highlights.filter { highlight in
             return (highlight.startIndex + highlight.length <= startIndex) || (highlight.startIndex >= endIndex)
+        }
+    }
+    
+    public func removeUnderline(startIndex: Int, endIndex: Int, length: Int) {
+        savingMode = true
+        let endIndex = startIndex + length
+        self.underlines = self.underlines.filter { underline in
+            return (underline.startIndex + underline.length <= startIndex) || (underline.startIndex >= endIndex)
         }
     }
 
