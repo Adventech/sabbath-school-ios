@@ -34,6 +34,8 @@ class AudioPlayerViewModel: ObservableObject {
     
     @Published var finished = false
     
+    @Published var onFinished: (() -> Void)?
+    
     func setupAudioPlayer(_ url: URL) {
         let playerItem = AVPlayerItem(url: url)
         player = AVPlayer(playerItem: playerItem)
@@ -77,6 +79,7 @@ class AudioPlayerViewModel: ObservableObject {
         isPlaying = false
         currentTime = 0
         finished = true
+        onFinished?()
     }
     
     deinit {
@@ -154,6 +157,7 @@ struct BlockAudioView: View {
     
     @StateObject var viewModel = AudioPlayerViewModel()
     @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var inlineAudioPlaybackManager: InlineAudioPlaybackManager
     
     var body: some View {
         VStack (spacing: 10){
@@ -212,10 +216,17 @@ struct BlockAudioView: View {
         }.task {
             if viewModel.player == nil {
                 viewModel.setupAudioPlayer(block.src)
+                viewModel.onFinished = {
+                    inlineAudioPlaybackManager.finishedPlaying(blockId: self.block.id)
+                }
             }
         }.sheet(isPresented: $showCredits) {
             if let credits = block.credits {
                 BlockAudioViewCredits(credits: credits)
+            }
+        }.onChange(of: inlineAudioPlaybackManager.nextUp) { newValue in
+            if newValue == block.id {
+                viewModel.playPause()
             }
         }
     }

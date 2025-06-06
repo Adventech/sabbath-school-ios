@@ -29,6 +29,7 @@ struct BlockWrapperView: StyledBlock, View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var inlineAudioPlaybackManager: InlineAudioPlaybackManager
     
     var parentBlock: AnyBlock?
     
@@ -122,6 +123,11 @@ struct BlockWrapperView: StyledBlock, View {
                     }
                 default:
                     EmptyView()
+                }
+            }
+            .task {
+                if let audio = block.asType(AudioBlock.self), !inlineAudioPlaybackManager.audios.contains(block.id) {
+                    inlineAudioPlaybackManager.audios.insert(block.id, at: 0)
                 }
             }
             .padding(Styler.getBlockPadding(defaultStyles, block))

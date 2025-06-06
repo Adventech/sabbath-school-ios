@@ -123,6 +123,7 @@ extension DocumentView {
             }
         }
         .environmentObject(viewModel)
+        .environmentObject(viewModel.inlineAudioPlaybackManager)
         .environmentObject(resourceViewModel)
         .environmentObject(documentViewOperator)
         .environment(\.defaultBlockStyles, document.style ?? Style(resource: nil, segment: nil, blocks: nil))

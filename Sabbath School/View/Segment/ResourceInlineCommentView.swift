@@ -53,7 +53,6 @@ struct ResourceInlineCommentView: View {
         self._inlineComment = State(initialValue: inlineComment)
         
         if let inlineComment = inlineComment {
-            print("SSDEBUG", inlineComment.color)
             self._highlightColor = State(initialValue: inlineComment.color)
         } else {
             self._highlightColor = State(initialValue: highlightColor)

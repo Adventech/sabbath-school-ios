@@ -29,6 +29,16 @@ struct SavedScrollOffset: Codable {
     let scrollOffset: CGFloat
 }
 
+class InlineAudioPlaybackManager: ObservableObject {
+    var onFinishedPlayingAudioBlock: ((String) -> Void)?
+    @Published var audios: [String] = []
+    @Published var nextUp: String? = nil
+    
+    func finishedPlaying(blockId: String) {
+        self.onFinishedPlayingAudioBlock?(blockId)
+    }
+}
+
 @MainActor class DocumentViewModel: ObservableObject {
     @Published var document: ResourceDocument? = nil
     @Published var pdfAuxiliary: [PDFAux]? = nil
@@ -43,8 +53,10 @@ struct SavedScrollOffset: Codable {
     private static var segmentStorage: Storage<String, Segment>?
     public static var lastVisibleScrollOffset: Storage<String, SavedScrollOffset>?
     
+    @Published var inlineAudioPlaybackManager = InlineAudioPlaybackManager()
+    
     init() {
-         self.configure()
+        self.configure()
     }
     
     public static func clearAllCache() {
@@ -57,6 +69,13 @@ struct SavedScrollOffset: Codable {
         DocumentViewModel.documentStorage = APICache.storage?.transformCodable(ofType: ResourceDocument.self)
         DocumentViewModel.segmentStorage = APICache.storage?.transformCodable(ofType: Segment.self)
         DocumentViewModel.lastVisibleScrollOffset = APICache.storage?.transformCodable(ofType: SavedScrollOffset.self)
+        
+        inlineAudioPlaybackManager.onFinishedPlayingAudioBlock = { blockId in
+            if let index = self.inlineAudioPlaybackManager.audios.firstIndex(where: { $0 == blockId}),
+               let nextUp = self.inlineAudioPlaybackManager.audios[safe: index+1] {
+                self.inlineAudioPlaybackManager.nextUp = nextUp
+            }
+        }
     }
     
     func retrievePDFAux(resourceIndex: String, documentIndex: String) async {
