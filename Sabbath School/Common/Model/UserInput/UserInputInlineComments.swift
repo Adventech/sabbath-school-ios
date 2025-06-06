@@ -27,7 +27,7 @@ struct UserInputInlineComment: Codable, Equatable, Hashable {
     let startIndex: Int
     let endIndex: Int
     let length: Int
-    let color: HighlightColor
+    var color: HighlightColor
     var comment: String
     
     static func ==(lhs: UserInputInlineComment, rhs: UserInputInlineComment) -> Bool {

@@ -676,10 +676,12 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
     }
     
     private func onHighlight(range: NSRange, color: HighlightColor) {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         paragraphViewModel.setHighlight(startIndex: range.location, endIndex: range.location + range.length, length: range.length, color: color)
     }
     
     private func onUnderline(range: NSRange, color: HighlightColor) {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         paragraphViewModel.setUnderline(startIndex: range.location, endIndex: range.location + range.length, length: range.length, color: color)
     }
     
@@ -701,7 +703,7 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
         )
         hostingController.view.layer.cornerRadius = 6
         
-        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         
         var attrs = Animation.modalAnimationAttributes(widthRatio: 0.9, heightRatio: 0.6, backgroundColor: UIColor(themeManager.getBackgroundColor()), hasKeyboard: true)
     

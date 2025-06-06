@@ -32,6 +32,8 @@ struct ResourceInlineCommentView: View {
     @State var endIndex: Int
     @State var length: Int
     @State var inlineComment: UserInputInlineComment? = nil
+    @State var highlightColor: HighlightColor = .blue
+    
     @EnvironmentObject var viewModel: DocumentViewModel
     @EnvironmentObject var paragraphViewModel: ParagraphViewModel
     @EnvironmentObject var themeManager: ThemeManager
@@ -39,6 +41,24 @@ struct ResourceInlineCommentView: View {
     @FocusState private var isFocused: Bool
     
     @State private var showDeleteAlert = false
+    
+    init (comment: String, block: AnyBlock, markdown: String, blockId: String? = nil, startIndex: Int, endIndex: Int, length: Int, inlineComment: UserInputInlineComment? = nil, highlightColor: HighlightColor = .blue) {
+        self.comment = comment
+        self.block = block
+        self.markdown = markdown
+        self.blockId = blockId
+        self.startIndex = startIndex
+        self.endIndex = endIndex
+        self.length = length
+        self._inlineComment = State(initialValue: inlineComment)
+        
+        if let inlineComment = inlineComment {
+            print("SSDEBUG", inlineComment.color)
+            self._highlightColor = State(initialValue: inlineComment.color)
+        } else {
+            self._highlightColor = State(initialValue: highlightColor)
+        }
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -68,6 +88,116 @@ struct ResourceInlineCommentView: View {
                 )
                 .frame(maxWidth: .infinity, alignment: .leading)
             }.padding(20)
+            
+            Divider()
+            
+            HStack {
+                Button (action: {
+                    setColor(highlightColor: .blue)
+                }) {
+                    Image(systemName: "circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(AppStyle.Block.highlightBlue)
+                        .overlay {
+                            if highlightColor == .blue {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                }
+                
+                Button (action: {
+                    setColor(highlightColor: .green)
+                }) {
+                    Image(systemName: "circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(AppStyle.Block.highlightGreen)
+                        .overlay {
+                            if highlightColor == .green {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                }
+                
+                Button (action: {
+                    setColor(highlightColor: .orange)
+                }) {
+                    Image(systemName: "circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(AppStyle.Block.highlightOrange)
+                        .overlay {
+                            if highlightColor == .orange {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                }
+                
+                Button (action: {
+                    setColor(highlightColor: .yellow)
+                }) {
+                    Image(systemName: "circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(AppStyle.Block.highlightYellow)
+                        .overlay {
+                            if highlightColor == .yellow {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.yellow)
+                            }
+                        }
+                }
+                
+                Button (action: {
+                    setColor(highlightColor: .purple)
+                }) {
+                    Image(systemName: "circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(AppStyle.Block.highlightPurple)
+                        .overlay {
+                            if highlightColor == .purple {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                }
+                
+                Button (action: {
+                    setColor(highlightColor: .brown)
+                }) {
+                    Image(systemName: "circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(AppStyle.Block.highlightBrown)
+                        .overlay {
+                            if highlightColor == .brown {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                }
+                
+                Button (action: {
+                    setColor(highlightColor: .red)
+                }) {
+                    Image(systemName: "circle.fill")
+                        .font(.system(size: 24))
+                        .foregroundColor(AppStyle.Block.highlightRed)
+                        .overlay {
+                            if highlightColor == .red {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                }
+                    
+            }.padding(10)
             
             Divider()
             
@@ -128,12 +258,19 @@ struct ResourceInlineCommentView: View {
         .cornerRadius(6)
     }
     
+    func setColor(highlightColor: HighlightColor) {
+        self.highlightColor = highlightColor
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+    }
+    
     func saveComment() {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         if inlineComment == nil {
-            self.paragraphViewModel.setInlineComment(startIndex: startIndex, endIndex: endIndex, length: length, color: .yellow, comment: comment)
+            self.paragraphViewModel.setInlineComment(startIndex: startIndex, endIndex: endIndex, length: length, color: highlightColor, comment: comment)
         } else if viewModel.document != nil, let inlineComment = inlineComment, let existingIndex = self.paragraphViewModel.inlineComments.firstIndex(where: { $0.id == inlineComment.id }) {
             var a = self.paragraphViewModel.inlineComments
             a[existingIndex].comment = comment
+            a[existingIndex].color = highlightColor
             self.paragraphViewModel.inlineComments = []
             
             let userInput = AnyUserInput(UserInputInlineComments(blockId: block.id, inputType: .inlineComments, inlineComments: a, timestamp: Int(Date().timeIntervalSince1970)))
@@ -147,6 +284,7 @@ struct ResourceInlineCommentView: View {
     }
     
     func deleteComment() {
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         if let inlineComment = inlineComment,
            let index = self.paragraphViewModel.inlineComments.firstIndex(where: { $0.id == inlineComment.id }) {
             self.paragraphViewModel.inlineComments.remove(at: index)
