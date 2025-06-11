@@ -75,15 +75,23 @@ class DownloadManager: ObservableObject {
     private let MAX_ATTEMPTS = 3
     private let KEYS_STORAGE = "ss_download_manager_keys"
     private static var downloadManagerStorage: Storage<String, DownloadItem>?
+    private static var downloadManagerKeys: Storage<String, [String]>?
     private static var downloadManagerResourceStorage: Storage<String, Resource>?
     private static var downloadManagerDocumentStorage: Storage<String, ResourceDocument>?
-    private static var downloadManagerKeys: Storage<String, [String]>?
+    private static var downloadManagerSegmentStorage: Storage<String, Segment>?
+    private static var downloadManagerPDFAuxStorage: Storage<String, [PDFAux]>?
+    private static var downloadManagerVideoAuxStorage: Storage<String, [VideoAux]>?
+    private static var downloadManagerAudioAuxStorage: Storage<String, [Audio]>?
 
     init () {
         DownloadManager.downloadManagerStorage = APICache.storage?.transformCodable(ofType: DownloadItem.self)
         DownloadManager.downloadManagerKeys = APICache.storage?.transformCodable(ofType: [String].self)
         DownloadManager.downloadManagerResourceStorage = APICache.storage?.transformCodable(ofType: Resource.self)
         DownloadManager.downloadManagerDocumentStorage = APICache.storage?.transformCodable(ofType: ResourceDocument.self)
+        DownloadManager.downloadManagerSegmentStorage = APICache.storage?.transformCodable(ofType: Segment.self)
+        DownloadManager.downloadManagerPDFAuxStorage = APICache.storage?.transformCodable(ofType: [PDFAux].self)
+        DownloadManager.downloadManagerVideoAuxStorage = APICache.storage?.transformCodable(ofType: [VideoAux].self)
+        DownloadManager.downloadManagerAudioAuxStorage = APICache.storage?.transformCodable(ofType: [Audio].self)
         loadFromCache()
     }
     
@@ -136,6 +144,40 @@ class DownloadManager: ObservableObject {
                 
                 
                 await withTaskGroup(of: Void.self) { group in
+                    group.addTask {
+                        do {
+                            let pdfAux = try await self.downloadPDFAux(resourceIndex: resourceIndex)
+                            
+                            try? DownloadManager.downloadManagerPDFAuxStorage?.setObject(pdfAux.pdfAux, forKey: pdfAux.url)
+                            
+                            for pdf in pdfAux.pdfAux {
+                                let remoteURL = pdf.src
+                                let fileName = pdf.id
+                                let destinationFileURL = Helper.PDFDownloadFileURL(fileName: fileName)
+                                
+                                if !Helper.PDFDownloadFileExists(fileName: fileName) {
+                                    _ = try await Downloader.download(remoteURL: remoteURL, destinationFileURL: destinationFileURL)
+                                }
+                            }
+                        } catch {}
+                    }
+                    
+                    group.addTask {
+                        do {
+                            let videoAuxData = try await self.downloadVideoAux(resourceIndex: resourceIndex)
+                            
+                            try? DownloadManager.downloadManagerVideoAuxStorage?.setObject(videoAuxData.videoAux, forKey: videoAuxData.url)
+                        } catch {}
+                    }
+                    
+                    group.addTask {
+                        do {
+                            let audioAuxData = try await self.downloadAudioAux(resourceIndex: resourceIndex)
+                            
+                            try? DownloadManager.downloadManagerAudioAuxStorage?.setObject(audioAuxData.audioAux, forKey: audioAuxData.url)
+                        } catch {}
+                    }
+                    
                     for section in sections {
                         for document in section.documents {
                             group.addTask {
@@ -155,6 +197,22 @@ class DownloadManager: ObservableObject {
                                         if let cover = segment.cover {
                                             let imageTask = ImagePipeline.shared.imageTask(with: cover)
                                             _ = try await imageTask.image
+                                        }
+                                        
+                                        let hiddenSegments = segment.blocks?.filter({
+                                            $0.type == .reference
+                                            && $0.asType(Reference.self)?.scope == .segment
+                                            && $0.asType(Reference.self)?.segment != nil
+                                        }) ?? []
+                                        
+                                        for hiddenSegment in hiddenSegments {
+                                            if let hiddenSegmentBlock = hiddenSegment.asType(Reference.self),
+                                               let segmentIndex = hiddenSegmentBlock.segment?.index {
+                                                let segmentData = try await self.downloadSegment(segmentIndex: segmentIndex)
+                                                
+                                                try? DownloadManager.downloadManagerSegmentStorage?.setObject(segmentData.segment, forKey: segmentData.url)
+                                            }
+                                            
                                         }
                                         
                                         // If segment type is .pdf then download all pdf files
@@ -229,6 +287,70 @@ class DownloadManager: ObservableObject {
             API.session.request(url).responseDecodable(of: ResourceDocument.self, decoder: Helper.SSJSONDecoder()) { response in
                 if let document = response.value {
                     continuation.resume(returning: (document, url))
+                } else if let error = response.error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(throwing: URLError(.badServerResponse))
+                }
+            }
+        }
+    }
+    
+    private func downloadSegment(segmentIndex: String) async throws -> (segment: Segment, url: String) {
+        let url = "\(Constants.API.URLv3)/\(segmentIndex)/index.json"
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            API.session.request(url).responseDecodable(of: Segment.self, decoder: Helper.SSJSONDecoder()) { response in
+                if let document = response.value {
+                    continuation.resume(returning: (document, url))
+                } else if let error = response.error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(throwing: URLError(.badServerResponse))
+                }
+            }
+        }
+    }
+    
+    private func downloadPDFAux(resourceIndex: String) async throws -> (pdfAux: [PDFAux], url: String) {
+        let url = "\(Constants.API.URLv3)/\(resourceIndex)/pdf.json"
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            API.session.request(url).responseDecodable(of: [PDFAux].self, decoder: Helper.SSJSONDecoder()) { response in
+                if let pdfAux = response.value {
+                    continuation.resume(returning: (pdfAux, url))
+                } else if let error = response.error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(throwing: URLError(.badServerResponse))
+                }
+            }
+        }
+    }
+    
+    private func downloadVideoAux(resourceIndex: String) async throws -> (videoAux: [VideoAux], url: String) {
+        let url = "\(Constants.API.URLv3)/\(resourceIndex)/video.json"
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            API.session.request(url).responseDecodable(of: [VideoAux].self, decoder: Helper.SSJSONDecoder()) { response in
+                if let videoAux = response.value {
+                    continuation.resume(returning: (videoAux, url))
+                } else if let error = response.error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(throwing: URLError(.badServerResponse))
+                }
+            }
+        }
+    }
+    
+    private func downloadAudioAux(resourceIndex: String) async throws -> (audioAux: [Audio], url: String) {
+        let url = "\(Constants.API.URLv3)/\(resourceIndex)/audio.json"
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            API.session.request(url).responseDecodable(of: [Audio].self, decoder: Helper.SSJSONDecoder()) { response in
+                if let audioAux = response.value {
+                    continuation.resume(returning: (audioAux, url))
                 } else if let error = response.error {
                     continuation.resume(throwing: error)
                 } else {

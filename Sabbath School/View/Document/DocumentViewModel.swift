@@ -51,6 +51,9 @@ class InlineAudioPlaybackManager: ObservableObject {
 
     public static var documentStorage: Storage<String, ResourceDocument>?
     private static var segmentStorage: Storage<String, Segment>?
+    private static var pdfAuxStorage: Storage<String, [PDFAux]>?
+    private static var audioAuxStorage: Storage<String, [Audio]>?
+    private static var videoAuxStorage: Storage<String, [VideoAux]>?
     public static var lastVisibleScrollOffset: Storage<String, SavedScrollOffset>?
     
     @Published var inlineAudioPlaybackManager = InlineAudioPlaybackManager()
@@ -62,12 +65,18 @@ class InlineAudioPlaybackManager: ObservableObject {
     public static func clearAllCache() {
         try? DocumentViewModel.documentStorage?.removeAll()
         try? DocumentViewModel.segmentStorage?.removeAll()
+        try? DocumentViewModel.pdfAuxStorage?.removeAll()
+        try? DocumentViewModel.audioAuxStorage?.removeAll()
+        try? DocumentViewModel.videoAuxStorage?.removeAll()
         try? DocumentViewModel.lastVisibleScrollOffset?.removeAll()
     }
     
     func configure() {
         DocumentViewModel.documentStorage = APICache.storage?.transformCodable(ofType: ResourceDocument.self)
         DocumentViewModel.segmentStorage = APICache.storage?.transformCodable(ofType: Segment.self)
+        DocumentViewModel.pdfAuxStorage = APICache.storage?.transformCodable(ofType: [PDFAux].self)
+        DocumentViewModel.audioAuxStorage = APICache.storage?.transformCodable(ofType: [Audio].self)
+        DocumentViewModel.videoAuxStorage = APICache.storage?.transformCodable(ofType: [VideoAux].self)
         DocumentViewModel.lastVisibleScrollOffset = APICache.storage?.transformCodable(ofType: SavedScrollOffset.self)
         
         inlineAudioPlaybackManager.onFinishedPlayingAudioBlock = { blockId in
@@ -81,27 +90,41 @@ class InlineAudioPlaybackManager: ObservableObject {
     func retrievePDFAux(resourceIndex: String, documentIndex: String) async {
         let url = "\(Constants.API.URLv3)/\(resourceIndex)/pdf.json"
         
+        if let pdfAux = try? DocumentViewModel.pdfAuxStorage?.object(forKey: url) {
+            self.pdfAuxiliary = pdfAux.filter { $0.target == documentIndex }
+        }
+        
         API.session.request(url).responseDecodable(of: [PDFAux].self, decoder: Helper.SSJSONDecoder()) { response in
             guard let pdfAuxiliary = response.value else {
                 return
             }
             self.pdfAuxiliary = pdfAuxiliary.filter { $0.target == documentIndex }
+            try? DocumentViewModel.pdfAuxStorage?.setObject(pdfAuxiliary, forKey: url)
         }
     }
     
     func retrieveVideoAux(resourceIndex: String, documentIndex: String) async {
         let url = "\(Constants.API.URLv3)/\(resourceIndex)/video.json"
         
+        if let videoAuxiliary = try? DocumentViewModel.videoAuxStorage?.object(forKey: url) {
+            self.videoAuxiliary = videoAuxiliary
+        }
+        
         API.session.request(url).responseDecodable(of: [VideoAux].self, decoder: Helper.SSJSONDecoder()) { response in
             guard let videoAuxiliary = response.value else {
                 return
             }
             self.videoAuxiliary = videoAuxiliary
+            try? DocumentViewModel.videoAuxStorage?.setObject(videoAuxiliary, forKey: url)
         }
     }
     
     func retrieveAudioAux(resourceIndex: String, documentIndex: String) async {
         let url = "\(Constants.API.URLv3)/\(resourceIndex)/audio.json"
+        
+        if let audioAuxiliary = try? DocumentViewModel.audioAuxStorage?.object(forKey: url) {
+            self.audioAuxiliary = audioAuxiliary.filter { $0.targetIndex.starts(with: documentIndex) }
+        }
         
         API.session.request(url).responseDecodable(of: [Audio].self, decoder: Helper.SSJSONDecoder()) { response in
             guard let audioAuxiliary = response.value else {
@@ -109,6 +132,7 @@ class InlineAudioPlaybackManager: ObservableObject {
             }
 
             self.audioAuxiliary = audioAuxiliary.filter { $0.targetIndex.starts(with: documentIndex) }
+            try? DocumentViewModel.audioAuxStorage?.setObject(audioAuxiliary, forKey: url)
         }
     }
     
