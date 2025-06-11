@@ -28,7 +28,7 @@ class ResourceInfoViewModel: ObservableObject {
     @Published var resourceInfo: [ResourceInfo]? = nil
     @Published var resourceInfoForLanguage: ResourceInfo? = nil
     
-    private static var resourceInfoStorage: Storage<String, [ResourceInfo]>?
+    public static var resourceInfoStorage: Storage<String, [ResourceInfo]>?
     
     
     init() {

@@ -22,6 +22,7 @@
 
 import SwiftUI
 import CoreSpotlight
+import Cache
 
 enum TabSelection: String {
     case ss
@@ -61,7 +62,7 @@ struct SabbathSchoolApp: App {
     
     @StateObject private var resourceInfoViewModel: ResourceInfoViewModel = ResourceInfoViewModel()
     
-    @State private var selected: TabSelection = .ss
+    @State private var selected: TabSelection
 
     @State private var sspath: [NavigationStep] = []
     @State private var aijpath: [NavigationStep] = []
@@ -79,6 +80,34 @@ struct SabbathSchoolApp: App {
         Configuration.configureCache()
         Configuration.configureUI()
         Configuration.reloadAllWidgets()
+        
+        self._selected = State(initialValue: Self.initializeLastSavedTab())
+    }
+    
+    static func initializeLastSavedTab() -> TabSelection {
+        let viewModel = ResourceInfoViewModel()
+        guard
+            let resourceInfo = try? ResourceInfoViewModel.resourceInfoStorage?.object(forKey: viewModel.resourceInfoEndpoint),
+            let lastUsedTabString = PreferencesShared.lastUsedTab()
+        else {
+            return .ss
+        }
+
+        viewModel.resourceInfo = resourceInfo
+        viewModel.setResourceInfoForLanguage()
+
+        guard let info = viewModel.resourceInfoForLanguage else {
+            return .ss
+        }
+
+        let lastUsedTab = TabSelection(rawValue: lastUsedTabString)
+
+        if lastUsedTab == .aij && info.aij { return .aij }
+        if lastUsedTab == .pm && info.pm { return .pm }
+        if lastUsedTab == .devo && info.devo { return .devo }
+        if lastUsedTab == .explore && info.explore { return .explore }
+
+        return .ss
     }
     
     var body: some Scene {
@@ -153,25 +182,6 @@ struct SabbathSchoolApp: App {
                     }
                     .task {
                         await resourceInfoViewModel.retrieveResourceInfo()
-                        if let resourceInfo = resourceInfoViewModel.resourceInfoForLanguage,
-                           let lastUsedTabString = PreferencesShared.lastUsedTab() {
-                            let lastUsedTab = TabSelection(rawValue: lastUsedTabString) 
-                            if lastUsedTab == .aij && resourceInfo.aij {
-                                self.selected = .aij
-                            }
-                            
-                            if lastUsedTab == .pm && resourceInfo.pm {
-                                self.selected = .pm
-                            }
-                            
-                            if lastUsedTab == .devo && resourceInfo.devo {
-                                self.selected = .devo
-                            }
-                            
-                            if lastUsedTab == .explore && resourceInfo.explore {
-                                self.selected = .explore
-                            }
-                        }
                     }
                     .onChange(of: selected) { _ in
                         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
