@@ -54,6 +54,7 @@ struct SabbathSchoolApp: App {
     @StateObject private var accountManager = AccountManager()
     @StateObject private var languageManager = LanguageManager()
     @StateObject private var audioPlaybackV2 = AudioPlayback()
+    @StateObject private var downloadManager = DownloadManager.shared
     
     private var screenSizeMonitor = ScreenSizeMonitor()
     private var themeManager = ThemeManager()
@@ -188,6 +189,7 @@ struct SabbathSchoolApp: App {
             .environmentObject(screenSizeMonitor)
             .environmentObject(themeManager)
             .environmentObject(audioPlaybackV2)
+            .environmentObject(downloadManager)
             .animation(.easeInOut(duration: 0.5), value: accountManager.account != nil)
             .onOpenURL { url in
                 handleUrl(url)

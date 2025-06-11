@@ -169,4 +169,5 @@ struct Resource: Codable, Identifiable {
     let displayCoversInTableOfContents: Bool?
     let documentId: String?
     let documentIndex: String?
+    let downloadable: Bool?
 }

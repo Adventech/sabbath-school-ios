@@ -97,6 +97,8 @@ struct FeedGroupView: View {
     var displayFeedGroupTitle: Bool = true
     var prefix: String = ""
     
+    @EnvironmentObject var downloadManager: DownloadManager
+    
     var body: some View {
         VStack(spacing: 0) {
             if (displayFeedGroupTitle
@@ -146,7 +148,7 @@ struct FeedGroupView: View {
                         },
                         documentIndex: resource.documentIndex
                     ) {
-                        FeedResourceView(resource: resource, feedGroupViewType: feedGroup.view, feedGroupDirection: feedGroup.direction, backgroundColorEnabled: feedGroup.backgroundColor != nil, showTitle: feedGroup.showTitle != false)
+                        FeedResourceView(resource: resource, feedGroupViewType: feedGroup.view, feedGroupDirection: feedGroup.direction, backgroundColorEnabled: feedGroup.backgroundColor != nil, showTitle: feedGroup.showTitle != false, downloaded: downloadManager.downloadItems[resource.id]?.isCompleted() == true)
                     }
                     .contextMenu {
                         NavigationLink {

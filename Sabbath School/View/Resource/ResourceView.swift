@@ -39,6 +39,7 @@ struct ResourceView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var screenSizeMonitor: ScreenSizeMonitor
+    @EnvironmentObject var downloadManager: DownloadManager
     
     @State private var scrollOffset: CGFloat = 0
     @State private var showNavigationBar: Bool = false
@@ -362,36 +363,131 @@ struct ResourceView: View {
     
     @ViewBuilder
     func ctaButton(resource: Resource) -> some View {
-        NavigationLink {
-            if let readButtonIndex = self.viewModel.readButtonDocumentIndex ?? self.viewModel.resource?.sections?.first?.documents.first?.index {
-                DocumentView(documentIndex: readButtonIndex)
+        HStack (spacing: 0) {
+            NavigationLink {
+                if let readButtonIndex = self.viewModel.readButtonDocumentIndex ?? self.viewModel.resource?.sections?.first?.documents.first?.index {
+                    DocumentView(documentIndex: readButtonIndex)
+                }
+            } label: {
+                HStack (spacing: 5) {
+                    Text(AppStyle.Resource.ReadButton.text(resource.cta?.text ?? "Read".localized().uppercased()))
+                        .lineLimit(AppStyle.Resource.ReadButton.lineLimit)
+                        .layoutPriority(2)
+                    
+                    if let selectedDocumentTitle = viewModel.readButtonDocumentTitle,
+                       let progressTracking = viewModel.resource?.progressTracking,
+                       progressTracking != .none
+                    {
+                        Text(AppStyle.Resource.ReadButton.textSelectedDocument(selectedDocumentTitle))
+                            .lineLimit(1)
+                            .layoutPriority(1)
+                    }
+                }
+                .padding(.leading, AppStyle.Resource.ReadButton.horizontalPadding)
+                .padding(.trailing, 20)
+                .padding(.vertical, AppStyle.Resource.ReadButton.verticalPadding)
             }
-        } label: {
-            HStack (spacing: 5) {
-                Text(AppStyle.Resource.ReadButton.text(resource.cta?.text ?? "Read".localized().uppercased()))
-                    .lineLimit(AppStyle.Resource.ReadButton.lineLimit)
-                    .layoutPriority(2)
-                
-                if let selectedDocumentTitle = viewModel.readButtonDocumentTitle,
-                    let progressTracking = viewModel.resource?.progressTracking,
-                   progressTracking != .none
-                {
-                    Text(AppStyle.Resource.ReadButton.textSelectedDocument(selectedDocumentTitle))
-                        .lineLimit(1)
-                        .layoutPriority(1)
+            
+            Divider()
+                .overlay(Color(hex: resource.primaryColor))
+            
+            downloadButton(resource: resource)
+                .padding(.vertical, AppStyle.Resource.ReadButton.verticalPadding)
+                .padding(.horizontal, 10)
+        }
+        
+        .shadow(radius: AppStyle.Resource.ReadButton.shadowRadius)
+        .layoutPriority(3)
+        .buttonStyle(.plain)
+        .background(Color(hex: resource.primaryColorDark))
+        .clipShape(
+            RoundedCorner(radius: 25, corners: [.allCorners])
+        )
+        .frame(maxHeight: 40)
+    }
+    
+    @ViewBuilder
+    func downloadButton(resource: Resource) -> some View {
+        Button {
+            guard let item = downloadManager.downloadItems[resource.id] else {
+                downloadManager.download(resourceId: resource.id, resourceIndex: resource.index)
+                return
+            }
+
+            switch item.getStatus() {
+            case .downloading:
+                // Do nothing or show cancel option
+                break
+            default:
+                if item.isCompleted() {
+                    // Handle completed action (e.g., remove)
+                } else {
+                    downloadManager.download(resourceId: resource.id, resourceIndex: resource.index)
                 }
             }
-            .padding(.vertical, AppStyle.Resource.ReadButton.verticalPadding)
-            .padding(.horizontal, AppStyle.Resource.ReadButton.horizontalPadding)
-            .background(Color(UIColor(hex: resource.primaryColorDark)))
-            .clipShape(Capsule())
-            .cornerRadius(viewModel.readButtonDocumentTitle == nil ? 0 : 10)
-            .frame(maxWidth: AppStyle.Resource.ReadButton.width*1.5, alignment: headerFrameAlignment)
-            .shadow(radius: AppStyle.Resource.ReadButton.shadowRadius)
-            .layoutPriority(3)
-            
+        } label: {
+            Group {
+                let item = downloadManager.downloadItems[resource.id]
+                let status = item?.getStatus()
+                let isCompleted = item?.isCompleted() ?? false
+
+                ZStack {
+                    Image(systemName: "cloud.fill")
+                        .foregroundColor(.white)
+
+                    Group {
+                        if status == .downloading {
+                            SpinningIcon(foregroundColor: Color(hex: resource.primaryColorDark))
+                        } else if isCompleted {
+                            Image(systemName: "checkmark")
+                                .font(.system(size: 7, weight: .semibold))
+                                .foregroundColor(Color(hex: resource.primaryColorDark))
+                        } else {
+                            Image(systemName: "arrow.down")
+                                .font(.system(size: 8, weight: .semibold))
+                                .foregroundColor(Color(hex: resource.primaryColorDark))
+                        }
+                    }
+                    .transition(.opacity)
+                    .animation(.easeInOut(duration: 2), value: status)
+                }
+                .frame(maxWidth: 15)
+            }
         }
         .buttonStyle(.plain)
+        .padding(.horizontal, 10)
+        .background(.clear)
+        .clipShape(
+            RoundedCorner(radius: 25, corners: [.topRight, .bottomRight])
+        ).contextMenu {
+            let item = downloadManager.downloadItems[resource.id]
+            if item == nil || (item?.isCompleted() == false && item?.getStatus() == .idle) {
+                Group {
+                    Button(action: {
+                        downloadManager.download(resourceId: resource.id, resourceIndex: resource.index)
+                    }) {
+                          Text("Download")
+                          Image(systemName: "arrow.down.circle")
+                    }
+                }
+            } else if item != nil && (item?.isCompleted() == true && item?.getStatus() == .idle) {
+                Group {
+                    Button(action: {
+                        downloadManager.download(resourceId: resource.id, resourceIndex: resource.index)
+                    }) {
+                          Text("Download again")
+                          Image(systemName: "arrow.down.circle")
+                    }
+                    
+                    Button(role: .destructive, action: {
+                        downloadManager.removeDownload(resourceId: resource.id, resourceIndex: resource.index)
+                    }) {
+                          Text("Remove download")
+                          Image(systemName: "trash")
+                    }
+                }
+            }
+        }
     }
     
     func indexResourceForSpotlight() {
@@ -401,7 +497,25 @@ struct ResourceView: View {
                 Spotlight.indexResource(resource: resource, image: image)
             }
         }
-        
+    }
+}
+
+struct SpinningIcon: View {
+    @State var foregroundColor: Color = .black
+    @State private var isAnimating = false
+
+    var body: some View {
+        Image(systemName: "arrow.trianglehead.2.clockwise.rotate.90")
+            .font(.system(size: 7, weight: .semibold))
+            .rotationEffect(Angle(degrees: isAnimating ? 360 : 0), anchor: .center)
+            .animation(
+                .linear(duration: 1.0).repeatForever(autoreverses: false),
+                value: isAnimating
+            )
+            .onAppear {
+                isAnimating = true
+            }
+            .foregroundColor(foregroundColor)
     }
 }
 

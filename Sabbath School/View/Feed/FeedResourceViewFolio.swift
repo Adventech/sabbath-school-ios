@@ -32,6 +32,7 @@ struct FeedResourceViewFolio: View {
     var scaleFactor: CGFloat = 1
     var backgroundColorEnabled: Bool = false
     var showTitle: Bool = true
+    var downloaded: Bool = false
     
     var body: some View {
         FeedResourceViewBase(direction: direction,
@@ -46,7 +47,7 @@ struct FeedResourceViewFolio: View {
                 ) {
                     FeedGroupItemCoverView(cover, dimensions, primaryColor, scaleFactor)
                     if showTitle {
-                        FeedGroupItemTitleView(title, subtitle, direction == .horizontal ? dimensions : nil, direction, direction == .vertical, externalURL: externalURL, scaleFactor, backgroundColorEnabled)
+                        FeedGroupItemTitleView(title, subtitle, direction == .horizontal ? dimensions : nil, direction, direction == .vertical, externalURL: externalURL, scaleFactor, backgroundColorEnabled, downloaded)
                     }
                 }
                 .frame(maxWidth: direction == .vertical ? .infinity : nil, alignment: .topLeading)

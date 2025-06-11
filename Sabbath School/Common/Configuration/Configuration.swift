@@ -95,6 +95,9 @@ class Configuration: NSObject {
             CategoryFeedViewModel.clearAllCache()
             DocumentViewModel.clearAllCache()
             SyncManager.clearAllCache()
+            DownloadManager.clearAllCache()
+            
+            Downloader.removeAllDownloadedFiles()
         }
     }
     

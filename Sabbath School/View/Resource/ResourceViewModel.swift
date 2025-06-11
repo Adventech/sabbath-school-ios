@@ -34,7 +34,7 @@ import SwiftUI
     
     @Published var resourceProgress: [DocumentProgress] = []
     
-    private static var resourceStorage: Storage<String, Resource>?
+    public static var resourceStorage: Storage<String, Resource>?
     private static var progressStorage: Storage<String, [DocumentProgress]>?
     
     init() {

@@ -50,6 +50,33 @@ class Downloader: NSObject {
         progress.addChild(downloadProgress, withPendingUnitCount: 99)
         progress.addChild(moveProgress, withPendingUnitCount: 1)
     }
+    
+    static func download(remoteURL: URL, destinationFileURL: URL) async throws -> URL {
+        let (tempURL, _) = try await URLSession.shared.download(from: remoteURL)
+
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: destinationFileURL.path) {
+            try fileManager.removeItem(at: destinationFileURL)
+        }
+        try fileManager.moveItem(at: tempURL, to: destinationFileURL)
+
+        return destinationFileURL
+    }
+    
+    static func removeAllDownloadedFiles() {
+        let fileManager = FileManager.default
+        let fileURLs = try? fileManager.contentsOfDirectory(at: .documentsDirectory, includingPropertiesForKeys: nil, options: [])
+
+        for fileURL in fileURLs ?? [] {
+            try? fileManager.removeItem(at: fileURL)
+        }
+    }
+    
+    static func removeDownloadedFile(at fileURL: URL) {
+        let fileManager = FileManager.default
+
+        try? fileManager.removeItem(at: fileURL)
+    }
 }
 
 extension Downloader: URLSessionDelegate, URLSessionDownloadDelegate {

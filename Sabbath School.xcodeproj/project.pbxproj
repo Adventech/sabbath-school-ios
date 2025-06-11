@@ -188,6 +188,7 @@
 		2FB638642DF119C0008C17F8 /* UserInputInlineComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638632DF119C0008C17F8 /* UserInputInlineComments.swift */; };
 		2FB638662DF1EA4F008C17F8 /* ResourceInlineCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638652DF1EA4B008C17F8 /* ResourceInlineCommentView.swift */; };
 		2FB638682DF23B36008C17F8 /* UserInputUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638672DF23B33008C17F8 /* UserInputUnderline.swift */; };
+		2FB6386A2DF3C7B5008C17F8 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638692DF3C7B3008C17F8 /* DownloadManager.swift */; };
 		2FBB9BF02C0CE61200882F8C /* ResourceFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBB9BEF2C0CE61200882F8C /* ResourceFeedView.swift */; };
 		2FBB9BF22C0CE6CB00882F8C /* ResourceFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBB9BF12C0CE6CB00882F8C /* ResourceFeedViewModel.swift */; };
 		2FBF2AF72D0277CA007F5615 /* DocumentViewOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF2AF62D0277CA007F5615 /* DocumentViewOperator.swift */; };
@@ -524,6 +525,7 @@
 		2FB638632DF119C0008C17F8 /* UserInputInlineComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputInlineComments.swift; sourceTree = "<group>"; };
 		2FB638652DF1EA4B008C17F8 /* ResourceInlineCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceInlineCommentView.swift; sourceTree = "<group>"; };
 		2FB638672DF23B33008C17F8 /* UserInputUnderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputUnderline.swift; sourceTree = "<group>"; };
+		2FB638692DF3C7B3008C17F8 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		2FBB9BEF2C0CE61200882F8C /* ResourceFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFeedView.swift; sourceTree = "<group>"; };
 		2FBB9BF12C0CE6CB00882F8C /* ResourceFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFeedViewModel.swift; sourceTree = "<group>"; };
 		2FBF2AF62D0277CA007F5615 /* DocumentViewOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewOperator.swift; sourceTree = "<group>"; };
@@ -1048,14 +1050,6 @@
 			path = ESTMusicIndicator;
 			sourceTree = "<group>";
 		};
-		2FB6385E2DEB7B5F008C17F8 /* Sync */ = {
-			isa = PBXGroup;
-			children = (
-				2FB6385F2DEB7B77008C17F8 /* SyncManager.swift */,
-			);
-			path = Sync;
-			sourceTree = "<group>";
-		};
 		2FBB9BEB2C0CE12B00882F8C /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -1278,7 +1272,6 @@
 				7A280FEC1EDCFB38003C7458 /* Library */,
 				7AC26AEA1EE5EBDE003F946C /* Model */,
 				4E7B098A2814CA7400687C33 /* Protocols */,
-				2FB6385E2DEB7B5F008C17F8 /* Sync */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1292,6 +1285,7 @@
 				FE0249F7266A9068006BFADC /* Configuration.swift */,
 				FEC9218C267E315300422F3D /* ConfigurationShared.swift */,
 				7A280FEA1EDCEAD2003C7458 /* Constants.swift */,
+				2FB638692DF3C7B3008C17F8 /* DownloadManager.swift */,
 				2FC5CAC52D09DAEB00FB1D87 /* EnvironmentValues.swift */,
 				FE0249E92669C2E3006BFADC /* Helper.swift */,
 				2FC5CAC72D09DB2100FB1D87 /* LanguageManager.swift */,
@@ -1300,6 +1294,7 @@
 				FEC92192267E32C400422F3D /* PreferencesShared.swift */,
 				2F96B6902D022EC700FD5CEF /* ScreenSizeMonitor.swift */,
 				FE1E34F226731A5F00DAC2D6 /* Spotlight.swift */,
+				2FB6385F2DEB7B77008C17F8 /* SyncManager.swift */,
 				2F7526822CD07A130027FD1E /* ThemeManager.swift */,
 			);
 			path = Configuration;
@@ -1825,6 +1820,7 @@
 				2F7621D02C1F3C2400CB7C33 /* ResourceFeed.swift in Sources */,
 				2F7526832CD07A130027FD1E /* ThemeManager.swift in Sources */,
 				2FBF2AFF2D0279F5007F5615 /* DocumentPagerView.swift in Sources */,
+				2FB6386A2DF3C7B5008C17F8 /* DownloadManager.swift in Sources */,
 				2F7622302C1F442C00CB7C33 /* RoundedCorner.swift in Sources */,
 				2FAC63A42C1FD4B3002C5093 /* UserInputHighlights.swift in Sources */,
 				2F7622442C1F450B00CB7C33 /* BlockChecklistView.swift in Sources */,

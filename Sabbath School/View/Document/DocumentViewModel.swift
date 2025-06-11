@@ -49,7 +49,7 @@ class InlineAudioPlaybackManager: ObservableObject {
     @Published var selectedSegmentIndex: Int? = nil
     @Published var selectedSegmentName: String? = nil
 
-    private static var documentStorage: Storage<String, ResourceDocument>?
+    public static var documentStorage: Storage<String, ResourceDocument>?
     private static var segmentStorage: Storage<String, Segment>?
     public static var lastVisibleScrollOffset: Storage<String, SavedScrollOffset>?
     

@@ -38,7 +38,7 @@ func FeedGroupItemCoverView(_ url: URL, _ dimensions: CGSize, _ placeholderColor
 }
 
 @ViewBuilder
-func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: CGSize? = nil, _ direction: FeedGroupDirection, _ enlarge: Bool = false, externalURL: URL? = nil, _ scaleFactor: CGFloat = 1, _ backgroundColorEnabled: Bool = false) -> some View {
+func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: CGSize? = nil, _ direction: FeedGroupDirection, _ enlarge: Bool = false, externalURL: URL? = nil, _ scaleFactor: CGFloat = 1, _ backgroundColorEnabled: Bool = false, _ downloaded: Bool = false) -> some View {
     HStack {
         VStack(alignment: .leading, spacing: AppStyle.Feed.Spacing.betweenTitleAndSubtitle) {
             Text(AppStyle.Feed.Title.text(title, enlarge, backgroundColorEnabled))
@@ -59,6 +59,20 @@ func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: 
             Image(systemName: "arrow.up.forward.square")
                 .font(.system(size: 16, weight: .light))
                 .foregroundColor(.secondary)
+        }
+        
+        if downloaded {
+            VStack {
+                Image(systemName: "cloud.fill")
+                    .font(.system(size: 16, weight: .light))
+                    .foregroundColor(.gray200)
+                    .overlay {
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 8, weight: .light))
+                            .foregroundColor(.white | .black)
+                    }
+                Spacer()
+            }
         }
     }.frame(width: dimensions != nil ? dimensions!.width * scaleFactor : .infinity, alignment: .leading)
 }
@@ -109,6 +123,8 @@ struct FeedResourceView: View {
     var feedGroupDirection: FeedGroupDirection
     var backgroundColorEnabled: Bool = false
     var showTitle: Bool = true
+    var downloaded: Bool = false
+    
     
     var body: some View {
         switch feedGroupViewType {
@@ -121,7 +137,8 @@ struct FeedResourceView: View {
                 primaryColor: resource.primaryColor,
                 direction: feedGroupDirection,
                 backgroundColorEnabled: backgroundColorEnabled,
-                showTitle: showTitle)
+                showTitle: showTitle,
+                downloaded: downloaded)
         case .folio:
             FeedResourceViewFolio(
                 title: resource.title,
@@ -131,7 +148,8 @@ struct FeedResourceView: View {
                 primaryColor: resource.primaryColor,
                 direction: feedGroupDirection,
                 backgroundColorEnabled: backgroundColorEnabled,
-                showTitle: showTitle)
+                showTitle: showTitle,
+                downloaded: downloaded)
         case .square:
             FeedResourceViewSquare(
                 title: resource.title,
@@ -141,7 +159,8 @@ struct FeedResourceView: View {
                 primaryColor: resource.primaryColor,
                 direction: feedGroupDirection,
                 backgroundColorEnabled: backgroundColorEnabled,
-                showTitle: showTitle)
+                showTitle: showTitle,
+                downloaded: downloaded)
         case .tile:
             FeedResourceViewTile(
                 title: resource.title,
@@ -151,7 +170,8 @@ struct FeedResourceView: View {
                 primaryColor: resource.primaryColor,
                 direction: feedGroupDirection,
                 backgroundColorEnabled: backgroundColorEnabled,
-                showTitle: showTitle)
+                showTitle: showTitle,
+                downloaded: downloaded)
         }
     }
 }

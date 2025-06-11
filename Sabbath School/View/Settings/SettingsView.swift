@@ -97,16 +97,13 @@ struct SettingsView: View {
                 }
                 
                 Section {
-                    Button(role: .destructive, action: {
-                        accountManager.logOut()
-                    }) {
-                        Text("Log out".localized())
-                    }
-                    
-                    Button(role: .destructive, action: {
+                    Button(action: {
                         showRemoveDownloadsAlert = true
                     }) {
-                        Text("Remove all downloads".localized())
+                        HStack {
+                            Image(systemName: "trash")
+                            Text("Remove all downloads".localized())
+                        }
                     }.alert(isPresented: $showRemoveDownloadsAlert) {
                         Alert(
                             title: Text("Remove all downloads".localized()),
@@ -116,6 +113,14 @@ struct SettingsView: View {
                             },
                             secondaryButton: .cancel()
                         )
+                    }
+                }
+                
+                Section {
+                    Button(role: .destructive, action: {
+                        accountManager.logOut()
+                    }) {
+                        Text("Log out".localized())
                     }
                     
                     if let isAnonymous = accountManager.account?.isAnonymous,

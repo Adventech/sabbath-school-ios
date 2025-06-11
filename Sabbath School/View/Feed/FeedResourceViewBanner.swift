@@ -32,6 +32,7 @@ struct FeedResourceViewBanner: View {
     var scaleFactor: CGFloat = 1
     var backgroundColorEnabled: Bool = true
     var showTitle: Bool = true
+    var downloaded: Bool = false
     
     var body: some View {
         FeedResourceViewBase(direction: direction,
@@ -63,7 +64,7 @@ struct FeedResourceViewBanner: View {
                             }.cornerRadius(6)
                             
                         }
-                    FeedGroupItemTitleView(title, subtitle, dimensions, direction, false, externalURL: externalURL, scaleFactor, true)
+                    FeedGroupItemTitleView(title, subtitle, dimensions, direction, false, externalURL: externalURL, scaleFactor, true, downloaded)
                         .frame(width: dimensions.width * scaleFactor - AppStyle.Feed.Spacing.horizontalPadding * 2, alignment: .leading)
                         .padding(AppStyle.Feed.Spacing.insideBanner)
                 }
