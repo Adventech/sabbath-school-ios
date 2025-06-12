@@ -327,21 +327,25 @@ struct SegmentViewBase<Content: View>: View {
                 }
                 
                 .onChange(of: sizeCategory) { newValue in }
-                .background(GeometryReader { geometry in
-                    Color.clear.onChange(of: geometry.frame(in: .global)) { frame in
-                        let scrollOffset = frame.minY
-                        let height = frame.size.height
-                        
-                        if index == documentViewOperator.activeTab || (index == -1 && isHiddenSegment), segment.type != .video {
-                            if height != savedScrollPosition.frameHeight, abs(height - savedScrollPosition.frameHeight) > 50, heightTimeout {
-                                scrollToLastSavedPosition(proxy: proxy)
-                                savedScrollPosition.frameHeight = height
+                .background{
+                    if !isHiddenSegment {
+                        GeometryReader { geometry in
+                            Color.clear.onChange(of: geometry.frame(in: .global)) { frame in
+                                let scrollOffset = frame.minY
+                                let height = frame.size.height
+                                
+                                if index == documentViewOperator.activeTab || (index == -1 && isHiddenSegment), segment.type != .video {
+                                    if height != savedScrollPosition.frameHeight, abs(height - savedScrollPosition.frameHeight) > 50, heightTimeout {
+                                        scrollToLastSavedPosition(proxy: proxy)
+                                        savedScrollPosition.frameHeight = height
+                                    }
+                                    savedScrollPosition.scrollOffset = scrollOffset
+                                    updateNavigationBar(scrollOffset)
+                                }
                             }
-                            savedScrollPosition.scrollOffset = scrollOffset
-                            updateNavigationBar(scrollOffset)
                         }
                     }
-                })
+                }
             }
             .scrollDismissesKeyboard(.interactively)
             .onPreferenceChange(VisibleBlockPreferenceKey.self) { values in
