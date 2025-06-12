@@ -29,78 +29,93 @@ extension DocumentView {
     func toolbarView() -> some ToolbarContent {
         if let segment = viewModel.document?.segments?[documentViewOperator.activeTab],
            (segment.type == .block || segment.type == .pdf || segment.type == .video || (segment.type == .story) && documentViewOperator.shouldShowNavigationBar) {
-            Group {
-                if let audio = viewModel.audioAuxiliary, audio.count > 0 {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                HStack(spacing: 0) {
+                    if let audio = viewModel.audioAuxiliary, audio.count > 0 {
                         Button {
                             showAudioAux = true
                         } label: {
                             Image(systemName: "headphones")
-                                .renderingMode(.original)
-                                .foregroundColor(resolvedForegroundColor())
-                                .aspectRatio(contentMode: .fit)
-                                .imageScale(.medium)
+                                    .resizable()
+                                    .frame(width: 18, height: 18)
+                                    .padding(7)
+                                    .foregroundColor(resolvedForegroundColor())
                         }
                     }
-                }
-                
-                if viewModel.videoAuxiliary != nil {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    
+                    if viewModel.videoAuxiliary != nil {
                         Button {
                             showVideoAux = true
                         } label: {
                             Image(systemName: "play.tv")
-                                .renderingMode(.original)
-                                .foregroundColor(resolvedForegroundColor())
-                                .aspectRatio(contentMode: .fit)
-                                .imageScale(.medium)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20)
+                                    .padding(4)
+                                    .foregroundColor(resolvedForegroundColor())
                         }
                     }
-                }
-            }
-        }
-        
-        if let segment = viewModel.document?.segments?[documentViewOperator.activeTab],
-           segment.type == .block || segment.type == .video {
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    ForEach(menuItems, id:\.self) { menuItem in
-                        switch menuItem {
-                        case .originalPDF:
-                            if let pdfAuxiliary = viewModel.pdfAuxiliary,
-                               pdfAuxiliary.count > 0 {
-                                NavigationLink {
-                                    PDFAuxiliaryView(pdfs: viewModel.pdfAuxiliary ?? [])
-                                        .environmentObject(viewModel)
-                                } label: {
-                                    HStack {
-                                        Text("Original PDF".localized())
-                                        Image(systemName: "doc.text")
+                    
+                    if segment.type == .block || segment.type == .video {
+                        Menu {
+                            ForEach(menuItems, id:\.self) { menuItem in
+                                switch menuItem {
+                                case .originalPDF:
+                                    if let pdfAuxiliary = viewModel.pdfAuxiliary,
+                                       pdfAuxiliary.count > 0 {
+                                        NavigationLink {
+                                            PDFAuxiliaryView(pdfs: viewModel.pdfAuxiliary ?? [])
+                                                .environmentObject(viewModel)
+                                        } label: {
+                                            HStack {
+                                                Text("Original PDF".localized())
+                                                Image(systemName: "doc.text")
+                                            }
+                                        }
+                                    }
+                                    
+                                case .readingOptions:
+                                    Button(action: {
+                                        self.showThemeAux = true
+                                    }) {
+                                        HStack {
+                                            Text("Reading Options".localized())
+                                            Image(systemName: "textformat")
+                                        }
                                     }
                                 }
                             }
-                            
-                        case .readingOptions:
-                            Button(action: {
-                                self.showThemeAux = true
-                            }) {
-                                HStack {
-                                    Text("Reading Options".localized())
-                                    Image(systemName: "textformat")
-                                }
-                            }
+                        } label : {
+                            Image(systemName: "ellipsis")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 17, height: 17)
+                                    .padding(7)
+                                    .id(documentViewOperator.shouldShowNavigationBar)
+                                    .foregroundColor(resolvedForegroundColor())
+                                    .transition(.opacity.animation(.easeInOut))
+                        }.alwaysPopover(isPresented: $showThemeAux) {
+                            ThemeAuxiliaryView().environmentObject(themeManager)
                         }
                     }
-                } label : {
-                    Image(systemName: "ellipsis")
-                        .renderingMode(.original)
-                        .foregroundColor(resolvedForegroundColor())
-                        .aspectRatio(contentMode: .fit)
-                        .id(documentViewOperator.shouldShowNavigationBar)
+                }
+                .background {
+                    Rectangle().fill(.black.opacity(0.4))
+                        .cornerRadius(20)
+                        .if(viewModel.audioAuxiliary?.count ?? 0 > 0 || viewModel.videoAuxiliary != nil) { view in
+                                view
+                                    .padding([.top, .bottom], 2)
+                                    .padding(.trailing, -4)
+                        }
+                        .if(viewModel.audioAuxiliary?.count ?? 0 <= 0 && viewModel.videoAuxiliary == nil) { view in
+                                view
+                                    .padding([.top, .bottom], 3)
+                                    .padding([.leading], 7)
+                                    .padding(.trailing, -1)
+                        }
+                        .opacity(!documentViewOperator.shouldShowNavigationBar && documentViewOperator.shouldShowCovers() ? 1 : 0)
                         .transition(.opacity.animation(.easeInOut))
-                }.alwaysPopover(isPresented: $showThemeAux) {
-                    ThemeAuxiliaryView().environmentObject(themeManager)
                 }
             }
         }

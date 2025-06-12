@@ -56,6 +56,9 @@ struct ResourceView: View {
        }) {
            Image(systemName: showNavigationBar ? "arrow.backward" : "arrow.backward.circle.fill")
                .renderingMode(.original)
+               .if (!showNavigationBar) { view in
+                   view.resizable().frame(width: 30, height: 30)
+               }
                .foregroundColor(showNavigationBar ? colorScheme == .dark ? .white : .black : Color(hex: viewModel.resource?.primaryColorDark ?? "#000000"))
                .aspectRatio(contentMode: .fit)
                .id(showNavigationBar)

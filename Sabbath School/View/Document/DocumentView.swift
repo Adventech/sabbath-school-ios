@@ -62,11 +62,16 @@ struct DocumentView: View {
                     documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar
                     ? "arrow.backward.circle.fill"
                     : "arrow.backward")
+            
+            .if (documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar) { view in
+                view.resizable().frame(width: 30, height: 30)
+                    
+            }
             .symbolRenderingMode(documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar ? .multicolor : .monochrome)
             .foregroundColor(documentViewOperator.shouldShowNavigationBar
                              ? themeManager.getToolbarColor()
                              : (documentViewOperator.shouldShowCovers()
-                                ? .black.opacity(0.5)
+                                ? .black.opacity(0.4)
                                 : themeManager.getTextColor()))
             .aspectRatio(contentMode: .fit)
             .id(documentViewOperator.shouldShowNavigationBar)

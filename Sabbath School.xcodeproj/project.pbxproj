@@ -1319,10 +1319,10 @@
 		7A280FEC1EDCFB38003C7458 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				2F3F16892D0A1113005E0232 /* FullScreenImageViewer.swift */,
-				2FC5CAC32D09DA8400FB1D87 /* AlwaysPopover.swift */,
 				2F96FF5926C8477F0045DC6D /* ESTMusicIndicator */,
+				2FC5CAC32D09DA8400FB1D87 /* AlwaysPopover.swift */,
 				2FA1FFE726F6BA6700E80868 /* Downloader.swift */,
+				2F3F16892D0A1113005E0232 /* FullScreenImageViewer.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
