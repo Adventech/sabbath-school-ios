@@ -551,7 +551,7 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
                     backgroundColor = AppStyle.Block.highlightRed
                 }
                 
-                attributedString[range].backgroundColor = backgroundColor.opacity(0.2)
+                attributedString[range].backgroundColor = backgroundColor.opacity(0.15)
                 attributedString[range].foregroundColor = backgroundColor
 
             }
@@ -578,7 +578,7 @@ struct InlineAttributedText: StyledBlock, InteractiveBlock, View {
                     backgroundColor = AppStyle.Block.highlightRed
                 }
                 
-                attributedString[range].backgroundColor = backgroundColor.opacity(0.2)
+                attributedString[range].backgroundColor = backgroundColor.opacity(0.15)
                 attributedString[range].foregroundColor = backgroundColor
             }
         }

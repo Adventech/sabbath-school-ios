@@ -809,7 +809,7 @@ struct AppStyle {
         }
         
         static var highlightYellow: Color {
-            return Color(hex: "#C8DF00")
+            return Color(hex: "#C7DF00")
         }
         
         static var highlightPurple: Color {
