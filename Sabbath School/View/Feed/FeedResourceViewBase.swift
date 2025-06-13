@@ -39,7 +39,7 @@ func FeedGroupItemCoverView(_ url: URL, _ dimensions: CGSize, _ placeholderColor
 
 @ViewBuilder
 func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: CGSize? = nil, _ direction: FeedGroupDirection, _ enlarge: Bool = false, externalURL: URL? = nil, _ scaleFactor: CGFloat = 1, _ backgroundColorEnabled: Bool = false, _ downloaded: Bool = false) -> some View {
-    HStack {
+    HStack(alignment: .top) {
         VStack(alignment: .leading, spacing: AppStyle.Feed.Spacing.betweenTitleAndSubtitle) {
             Text(AppStyle.Feed.Title.text(title, enlarge, backgroundColorEnabled))
                 .lineLimit(AppStyle.Feed.Title.lineLimit)
@@ -57,7 +57,7 @@ func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: 
         Spacer()
         if externalURL != nil {
             Image(systemName: "arrow.up.forward.square")
-                .font(.system(size: 16, weight: .light))
+                .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.secondary)
         }
         
@@ -65,10 +65,10 @@ func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: 
             VStack {
                 Image(systemName: "cloud.fill")
                     .font(.system(size: 16, weight: .light))
-                    .foregroundColor(.gray200)
+                    .foregroundColor(.secondary.opacity(0.4) | .secondary)
                     .overlay {
                         Image(systemName: "checkmark")
-                            .font(.system(size: 8, weight: .light))
+                            .font(.system(size: 6, weight: .bold))
                             .foregroundColor(.white | .black)
                     }
                 Spacer()

@@ -148,6 +148,17 @@ struct SegmentViewCover: View {
                 .id(segment.index)
                 
                 if !titleBelowCover {
+                    LinearGradient(
+                        gradient: Gradient(stops: [
+                            .init(color: .clear, location: 0.0),
+                            .init(color: .black.opacity(0.15), location: 0.4),
+                            .init(color: .black.opacity(0.3), location: 0.7),
+                            .init(color: .black.opacity(0.4), location: 1.0),
+                        ]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    ).frame(height: AppStyle.Segment.Cover.height()/2.5)
+                    
                     SegmentHeader(segment.markdownTitle ?? segment.title,
                                   segment.date,
                                   segment.markdownSubtitle ?? segment.subtitle,

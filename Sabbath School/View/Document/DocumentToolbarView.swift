@@ -101,21 +101,23 @@ extension DocumentView {
                     }
                 }
                 .background {
-                    Rectangle().fill(.black.opacity(0.4))
-                        .cornerRadius(20)
-                        .if(viewModel.audioAuxiliary?.count ?? 0 > 0 || viewModel.videoAuxiliary != nil) { view in
+                    if #unavailable(iOS 19) {
+                        Rectangle().fill(.black.opacity(0.4))
+                            .cornerRadius(20)
+                            .if(viewModel.audioAuxiliary?.count ?? 0 > 0 || viewModel.videoAuxiliary != nil) { view in
                                 view
                                     .padding([.top, .bottom], 2)
                                     .padding(.trailing, -4)
-                        }
-                        .if(viewModel.audioAuxiliary?.count ?? 0 <= 0 && viewModel.videoAuxiliary == nil) { view in
+                            }
+                            .if(viewModel.audioAuxiliary?.count ?? 0 <= 0 && viewModel.videoAuxiliary == nil) { view in
                                 view
                                     .padding([.top, .bottom], 3)
                                     .padding([.leading], 7)
                                     .padding(.trailing, -1)
-                        }
-                        .opacity(!documentViewOperator.shouldShowNavigationBar && documentViewOperator.shouldShowCovers() ? 1 : 0)
-                        .transition(.opacity.animation(.easeInOut))
+                            }
+                            .opacity(!documentViewOperator.shouldShowNavigationBar && documentViewOperator.shouldShowCovers() ? 1 : 0)
+                            .transition(.opacity.animation(.easeInOut))
+                    }
                 }
             }
         }
