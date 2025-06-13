@@ -103,6 +103,10 @@ struct ResourceView: View {
         return (url: nil, size: nil)
     }
     
+    private var downloadDisabled: Bool {
+        return viewModel.resource?.downloadable == false
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             if let resource = self.viewModel.resource {
@@ -387,16 +391,18 @@ struct ResourceView: View {
                     }
                 }
                 .padding(.leading, AppStyle.Resource.ReadButton.horizontalPadding)
-                .padding(.trailing, 20)
+                .padding(.trailing, downloadDisabled ? AppStyle.Resource.ReadButton.horizontalPadding : 20)
                 .padding(.vertical, AppStyle.Resource.ReadButton.verticalPadding)
             }
             
             Divider()
                 .overlay(Color(hex: resource.primaryColor))
             
-            downloadButton(resource: resource)
-                .padding(.vertical, AppStyle.Resource.ReadButton.verticalPadding)
-                .padding(.horizontal, 10)
+            if !downloadDisabled {
+                downloadButton(resource: resource)
+                    .padding(.vertical, AppStyle.Resource.ReadButton.verticalPadding)
+                    .padding(.horizontal, 10)
+            }
         }
         
         .shadow(radius: AppStyle.Resource.ReadButton.shadowRadius)
