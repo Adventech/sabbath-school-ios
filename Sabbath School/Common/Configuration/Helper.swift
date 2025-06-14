@@ -120,6 +120,10 @@ struct Helper {
         return fileManager.fileExists(atPath: filePath)
     }
     
+    static func ShareFileURL(fileName: String) -> URL {
+        return FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
+    }
+    
     static func SSJSONDecoder() -> JSONDecoder {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase

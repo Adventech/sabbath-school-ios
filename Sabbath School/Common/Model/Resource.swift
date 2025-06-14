@@ -170,4 +170,5 @@ struct Resource: Codable, Identifiable {
     let documentId: String?
     let documentIndex: String?
     let downloadable: Bool?
+    let share: ShareOptions?
 }

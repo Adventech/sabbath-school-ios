@@ -189,6 +189,13 @@
 		2FB638662DF1EA4F008C17F8 /* ResourceInlineCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638652DF1EA4B008C17F8 /* ResourceInlineCommentView.swift */; };
 		2FB638682DF23B36008C17F8 /* UserInputUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638672DF23B33008C17F8 /* UserInputUnderline.swift */; };
 		2FB6386A2DF3C7B5008C17F8 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638692DF3C7B3008C17F8 /* DownloadManager.swift */; };
+		2FB6387D2DFC885A008C17F8 /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB6387C2DFC884D008C17F8 /* Share.swift */; };
+		2FB638812DFC8C21008C17F8 /* ShareDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638802DFC8C1E008C17F8 /* ShareDialog.swift */; };
+		2FB638832DFCF155008C17F8 /* ShareLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638822DFCF152008C17F8 /* ShareLabel.swift */; };
+		2FB638852DFCF179008C17F8 /* ShareGroupLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638842DFCF177008C17F8 /* ShareGroupLinkView.swift */; };
+		2FB638872DFCF1D9008C17F8 /* ShareDialogControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638862DFCF1D3008C17F8 /* ShareDialogControllerWrapper.swift */; };
+		2FB638892DFCF207008C17F8 /* ShareDialogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB638882DFCF204008C17F8 /* ShareDialogManager.swift */; };
+		2FB6388B2DFCF357008C17F8 /* ShareGroupFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB6388A2DFCF352008C17F8 /* ShareGroupFileView.swift */; };
 		2FBB9BF02C0CE61200882F8C /* ResourceFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBB9BEF2C0CE61200882F8C /* ResourceFeedView.swift */; };
 		2FBB9BF22C0CE6CB00882F8C /* ResourceFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBB9BF12C0CE6CB00882F8C /* ResourceFeedViewModel.swift */; };
 		2FBF2AF72D0277CA007F5615 /* DocumentViewOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF2AF62D0277CA007F5615 /* DocumentViewOperator.swift */; };
@@ -526,6 +533,13 @@
 		2FB638652DF1EA4B008C17F8 /* ResourceInlineCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceInlineCommentView.swift; sourceTree = "<group>"; };
 		2FB638672DF23B33008C17F8 /* UserInputUnderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputUnderline.swift; sourceTree = "<group>"; };
 		2FB638692DF3C7B3008C17F8 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		2FB6387C2DFC884D008C17F8 /* Share.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
+		2FB638802DFC8C1E008C17F8 /* ShareDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDialog.swift; sourceTree = "<group>"; };
+		2FB638822DFCF152008C17F8 /* ShareLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLabel.swift; sourceTree = "<group>"; };
+		2FB638842DFCF177008C17F8 /* ShareGroupLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareGroupLinkView.swift; sourceTree = "<group>"; };
+		2FB638862DFCF1D3008C17F8 /* ShareDialogControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDialogControllerWrapper.swift; sourceTree = "<group>"; };
+		2FB638882DFCF204008C17F8 /* ShareDialogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDialogManager.swift; sourceTree = "<group>"; };
+		2FB6388A2DFCF352008C17F8 /* ShareGroupFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareGroupFileView.swift; sourceTree = "<group>"; };
 		2FBB9BEF2C0CE61200882F8C /* ResourceFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFeedView.swift; sourceTree = "<group>"; };
 		2FBB9BF12C0CE6CB00882F8C /* ResourceFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFeedViewModel.swift; sourceTree = "<group>"; };
 		2FBF2AF62D0277CA007F5615 /* DocumentViewOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewOperator.swift; sourceTree = "<group>"; };
@@ -815,6 +829,7 @@
 				2FBB9BEC2C0CE13500882F8C /* Resource */,
 				2F7621CA2C1F3BC400CB7C33 /* Segment */,
 				2F1C33BD2D02101A008D30C0 /* Settings */,
+				2FB6387F2DFC8C14008C17F8 /* Share */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1048,6 +1063,19 @@
 				2F96FF5E26C848AF0045DC6D /* ESTMusicIndicatorViewState.swift */,
 			);
 			path = ESTMusicIndicator;
+			sourceTree = "<group>";
+		};
+		2FB6387F2DFC8C14008C17F8 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				2FB638802DFC8C1E008C17F8 /* ShareDialog.swift */,
+				2FB638862DFCF1D3008C17F8 /* ShareDialogControllerWrapper.swift */,
+				2FB638882DFCF204008C17F8 /* ShareDialogManager.swift */,
+				2FB6388A2DFCF352008C17F8 /* ShareGroupFileView.swift */,
+				2FB638842DFCF177008C17F8 /* ShareGroupLinkView.swift */,
+				2FB638822DFCF152008C17F8 /* ShareLabel.swift */,
+			);
+			path = Share;
 			sourceTree = "<group>";
 		};
 		2FBB9BEB2C0CE12B00882F8C /* Feed */ = {
@@ -1349,6 +1377,7 @@
 				2F3F16BB2D14B179005E0232 /* ResourceProgress.swift */,
 				2F7621D32C1F3D2500CB7C33 /* ResourceSection.swift */,
 				2F7621D72C1F3D4C00CB7C33 /* Segment.swift */,
+				2FB6387C2DFC884D008C17F8 /* Share.swift */,
 				2F75266F2CCE9FF50027FD1E /* Style.swift */,
 				2F4420A62CEFD585004A793E /* VideoAux.swift */,
 			);
@@ -1744,6 +1773,7 @@
 				2F8C3A332D07F06D001F7A62 /* PagingScrollView.swift in Sources */,
 				2FBF2B012D027B00007F5615 /* DocumentChipsView.swift in Sources */,
 				2F7526742CCF26750027FD1E /* ResourceLoadingView.swift in Sources */,
+				2FB638892DFCF207008C17F8 /* ShareDialogManager.swift in Sources */,
 				2F754A1F2C5AB271009FE014 /* FeedLoadingView.swift in Sources */,
 				2F76224A2C1F455D00CB7C33 /* InlineAttributedText.swift in Sources */,
 				2F7622582C1F5A1900CB7C33 /* UserInputMultipleChoice.swift in Sources */,
@@ -1789,6 +1819,7 @@
 				7AC26AFE1EE5EBDE003F946C /* Read.swift in Sources */,
 				2FC6F69E27A8E35C00BBC4A9 /* APICache.swift in Sources */,
 				FEF4B75326AF934100548E36 /* Feature.swift in Sources */,
+				2FB638832DFCF155008C17F8 /* ShareLabel.swift in Sources */,
 				2F76222C2C1F43DC00CB7C33 /* StyledBlock.swift in Sources */,
 				2F99F6032C32427700FCB05F /* ExternalLinkView.swift in Sources */,
 				2FAC63A82C235BB3002C5093 /* SegmentViewStory.swift in Sources */,
@@ -1818,12 +1849,14 @@
 				4E2882CA280CCB7000AB8C31 /* PublishingInfoData.swift in Sources */,
 				2FB638642DF119C0008C17F8 /* UserInputInlineComments.swift in Sources */,
 				2F7621D02C1F3C2400CB7C33 /* ResourceFeed.swift in Sources */,
+				2FB638872DFCF1D9008C17F8 /* ShareDialogControllerWrapper.swift in Sources */,
 				2F7526832CD07A130027FD1E /* ThemeManager.swift in Sources */,
 				2FBF2AFF2D0279F5007F5615 /* DocumentPagerView.swift in Sources */,
 				2FB6386A2DF3C7B5008C17F8 /* DownloadManager.swift in Sources */,
 				2F7622302C1F442C00CB7C33 /* RoundedCorner.swift in Sources */,
 				2FAC63A42C1FD4B3002C5093 /* UserInputHighlights.swift in Sources */,
 				2F7622442C1F450B00CB7C33 /* BlockChecklistView.swift in Sources */,
+				2FB638812DFC8C21008C17F8 /* ShareDialog.swift in Sources */,
 				7AC26AFD1EE5EBDE003F946C /* QuarterlyLanguage.swift in Sources */,
 				2FBF2AFD2D027853007F5615 /* Blur.swift in Sources */,
 				2F3F16CD2D1B2257005E0232 /* Category.swift in Sources */,
@@ -1843,6 +1876,7 @@
 				2F3F16BA2D13163A005E0232 /* DocumentHiddenSegment.swift in Sources */,
 				EC2A60542D5A545C003726C5 /* CheckmarkAnimationView.swift in Sources */,
 				2F7622232C1F429600CB7C33 /* ResourceFeaturesView.swift in Sources */,
+				2FB638852DFCF179008C17F8 /* ShareGroupLinkView.swift in Sources */,
 				7AC26AF71EE5EBDE003F946C /* Comment.swift in Sources */,
 				FEF4B79426AF9A9B00548E36 /* Credits.swift in Sources */,
 				2F7622112C1F414800CB7C33 /* FeedResourceViewFolio.swift in Sources */,
@@ -1858,6 +1892,7 @@
 				2F7621DF2C1F3EDC00CB7C33 /* Appeal.swift in Sources */,
 				2FAC63A62C2336E5002C5093 /* SegmentViewPDF.swift in Sources */,
 				EC225C842D76074A00A220C4 /* MultilineTitleView.swift in Sources */,
+				2FB6388B2DFCF357008C17F8 /* ShareGroupFileView.swift in Sources */,
 				2F4420AA2CEFDE24004A793E /* VideoAuxiliaryView.swift in Sources */,
 				2FC6F69B27A8E0FA00BBC4A9 /* API.swift in Sources */,
 				2F76221C2C1F423900CB7C33 /* ResourceSectionsView.swift in Sources */,
@@ -1896,6 +1931,7 @@
 				2F7621C72C19166E00CB7C33 /* DocumentView.swift in Sources */,
 				2FBF2B052D02814E007F5615 /* DocumentMiniPlayerView.swift in Sources */,
 				2F7622422C1F44F400CB7C33 /* BlockListView.swift in Sources */,
+				2FB6387D2DFC885A008C17F8 /* Share.swift in Sources */,
 				2F7621E72C1F3F5900CB7C33 /* Paragraph.swift in Sources */,
 				7AC26AFB1EE5EBDE003F946C /* Quarterly.swift in Sources */,
 				2FEB5D052CBDA0F5002D5C4C /* ResourceInfoViewModel.swift in Sources */,
@@ -2343,7 +2379,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
@@ -2435,7 +2471,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Sabbath School/Resources/Sabbath School.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Sabbath School/Application/Info.plist";
@@ -2530,7 +2566,7 @@
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -2576,7 +2612,7 @@
 				CODE_SIGN_ENTITLEMENTS = Widget/Resources/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = XVGX5G4YQ9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";

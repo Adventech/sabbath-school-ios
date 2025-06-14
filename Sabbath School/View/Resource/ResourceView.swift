@@ -301,6 +301,8 @@ struct ResourceView: View {
                     .onAppear {
                         UIApplication.shared.currentTabBarController()?.tabBar.isHidden = false
                     }
+                }.toolbar {
+                    toolbarView(resource: resource)
                 }
             }
             else {
@@ -366,6 +368,7 @@ struct ResourceView: View {
         }.onAppear {
             UIApplication.shared.currentTabBarController()?.tabBar.isHidden = false
         }
+        
     }
     
     @ViewBuilder
@@ -496,6 +499,63 @@ struct ResourceView: View {
                     }
                 }
             }
+        }
+    }
+    
+    @ToolbarContentBuilder
+    func toolbarView(resource: Resource) -> some ToolbarContent {
+        if let shareOptions = resource.share {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                shareButton(resource: resource, shareOptions: shareOptions)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func shareButton(resource: Resource, shareOptions: ShareOptions) -> some View {
+        // TODO: when personalization implemented add as a check:
+        // resource.share?.personalize != true,
+        if resource.share?.shareGroups.count == 1,
+           resource.share?.shareGroups.first?.type == .link,
+           let shareLink = resource.share?.shareGroups.first?.asType(ShareGroupLink.self),
+           shareLink.links.count == 1,
+           let shareURL = shareLink.links.first?.src
+        {
+            ShareLink(item: shareURL){
+                Image(systemName:
+                        !showNavigationBar ? "square.and.arrow.up.circle.fill" : "square.and.arrow.up"
+                    )
+                    .renderingMode(.original)
+                    .if (!showNavigationBar) { view in
+                        view.resizable().frame(width: 30, height: 30)
+                    }
+                    .fontWeight(.medium)
+                    .foregroundColor(showNavigationBar ? colorScheme == .dark ? .white : .black : Color(hex: resource.primaryColorDark))
+                    .aspectRatio(contentMode: .fit)
+                    .id(showNavigationBar)
+                    .transition(.opacity.animation(.easeInOut))
+            }
+            .buttonStyle(.plain)
+        } else {
+            Button {
+                let shareManager = ShareDialogManager(shareOptions: shareOptions)
+                shareManager.showShareDialog(resource: resource)
+            } label: {
+                Image(systemName:
+                        !showNavigationBar ? "square.and.arrow.up.circle.fill" : "square.and.arrow.up"
+                    )
+                    .renderingMode(.original)
+                    
+                    .if (!showNavigationBar) { view in
+                        view.resizable().frame(width: 30, height: 30)
+                    }
+                    .fontWeight(.medium)
+                    .foregroundColor(showNavigationBar ? colorScheme == .dark ? .white : .black : Color(hex: resource.primaryColorDark))
+                    .aspectRatio(contentMode: .fit)
+                    .id(showNavigationBar)
+                    .transition(.opacity.animation(.easeInOut))
+            }
+            .buttonStyle(.plain)
         }
     }
     

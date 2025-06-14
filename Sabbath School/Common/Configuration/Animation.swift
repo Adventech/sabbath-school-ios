@@ -65,4 +65,45 @@ struct Animation {
         attributes.statusBar = statusBar
         return attributes
     }
+    
+    static func shareDialogue(widthRatio: CGFloat = 1, heightRatio: CGFloat = 1, backgroundColor: UIColor = .black | .white, statusBar: EKAttributes.StatusBar = .inferred, hasKeyboard: Bool = false) -> EKAttributes {
+        var attributes = hasKeyboard ? EKAttributes.bottomFloat : EKAttributes.centerFloat
+        
+        attributes.positionConstraints.size = .init(
+            width: .ratio(value: Helper.isPad ? 0.4 : widthRatio),
+            height: .ratio(value: heightRatio)
+        )
+        
+        if hasKeyboard {
+            let offset = EKAttributes.PositionConstraints.KeyboardRelation.Offset(bottom: 10, screenEdgeResistance: 20)
+            let keyboardRelation = EKAttributes.PositionConstraints.KeyboardRelation.bind(offset: offset)
+            attributes.positionConstraints.keyboardRelation = keyboardRelation
+        }
+        
+        attributes.precedence.priority = .normal
+        attributes.precedence = .override(priority: .normal, dropEnqueuedEntries: false)
+        attributes.displayDuration = .infinity
+        attributes.roundCorners = .all(radius: 6)
+        attributes.entryBackground = .color(color: EKColor(backgroundColor))
+        attributes.screenBackground = .color(color: EKColor(UIColor(white: 0, alpha: 0.5) | UIColor(white: 0, alpha: 0.8)))
+        
+        attributes.shadow = .active(
+            with: .init(
+                color: EKColor(Preferences.currentTheme() == .dark ? .white : .black),
+                opacity: Preferences.currentTheme() == .dark ? 0.1 : 0.3,
+                radius: 10,
+                offset: .zero
+            )
+        )
+        attributes.entranceAnimation = .init(
+            scale: .init(from: 0.6, to: 1, duration: 0.4, spring: .init(damping: 0.6, initialVelocity: 2)),
+            fade: .init(from: 0.3, to: 1, duration: 0.1)
+        )
+        attributes.entryInteraction = .forward
+        attributes.screenInteraction = .dismiss
+        attributes.exitAnimation = .init(fade: .init(from: 1, to: 0, duration: 0.2))
+        attributes.windowLevel = .normal
+        attributes.statusBar = statusBar
+        return attributes
+    }
 }
