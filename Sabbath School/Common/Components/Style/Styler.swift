@@ -174,8 +174,14 @@ struct Styler {
     static func getTextTypeface(_ style: Style?, _ template: StyleTemplate, _ keyPath: KeyPath<Style, TextStyle?>? = nil, _ filter: ((_ style: Style?) -> TextStyle?)? = nil, _ defaultTypefaceOverride: UIFont? = nil, _ block: AnyBlock?) -> UIFont {
         let textSize = Styler.getTextSize(style, template, keyPath, filter, block)
         
-        func resolveTextTypeface(from style: Style?) -> UIFont {
-            guard let textTypeface = (filter?(style) ?? style?[keyPath: keyPath ?? template.textKeyPath])?.typeface else {
+        func resolveTextTypeface(from style: Style?, _ internalFilter: ((_ style: Style?) -> TextStyle?)? = nil) -> UIFont {
+            var target = (filter?(style) ?? style?[keyPath: keyPath ?? template.textKeyPath])
+            
+            if internalFilter != nil {
+                target = internalFilter?(style)
+            }
+            
+            guard let textTypeface = target?.typeface else {
                 return defaultTypefaceOverride ?? UIFont(name: template.textTypefaceDefault, size: textSize)!
             }
             
@@ -186,7 +192,36 @@ struct Styler {
             return UIFont(name: template.textTypefaceDefault, size: textSize)!
         }
         
-        return template.textTypefaceEnabled ? resolveTextTypeface(from: style) : defaultTypefaceOverride ?? UIFont(name: template.textTypefaceDefault, size: template.textSizeDefault)!
+        if (!template.textTypefaceEnabled) {
+            return defaultTypefaceOverride ?? UIFont(name: template.textTypefaceDefault, size: template.textSizeDefault)!
+        }
+        
+        var textTypeface = resolveTextTypeface(from: style)
+        
+        if let block = block {
+            // Global default style for that type of block
+            textTypeface = resolveTextTypeface(from: style, { style in
+                return style?.blocks?.inline?.blocks?.first { $0.type == block.type }?.style.text
+            })
+            
+            if let nested = block.nested, nested {
+                textTypeface = resolveTextTypeface(from: style, { _ in
+                    return style?.blocks?.nested?.all?.text
+                })
+                textTypeface = resolveTextTypeface(from: style, { style in
+                    return style?.blocks?.nested?.blocks?.first { $0.type == block.type }?.style.text
+                })
+            }
+            
+            // Style for that specific block
+            if let addedBlockStyle = block.style {
+                textTypeface = resolveTextTypeface(from: style, { style in
+                    return addedBlockStyle.text
+                })
+            }
+        }
+        
+        return textTypeface
     }
     
     static func getTextOffset(_ style: Style?, _ template: StyleTemplate) -> CGFloat {
