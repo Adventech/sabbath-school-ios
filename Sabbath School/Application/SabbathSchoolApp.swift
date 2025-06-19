@@ -204,6 +204,7 @@ struct SabbathSchoolApp: App {
             .onOpenURL { url in
                 handleUrl(url)
             }
+            .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleWebActivity)
             .onChange(of: phase) { (newPhase) in
                 switch newPhase {
                 case .active:
@@ -224,6 +225,14 @@ struct SabbathSchoolApp: App {
                 screenSizeMonitor.updateAppSize()
             }
         }
+    }
+    
+    func handleWebActivity(_ userActivity: NSUserActivity) {
+        guard let url = userActivity.webpageURL else {
+            return
+        }
+        
+        handleUrl(url)
     }
     
     func loadItem(_ userActivity: NSUserActivity) {
