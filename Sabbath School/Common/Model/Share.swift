@@ -109,5 +109,6 @@ struct AnyShareGroup: Codable {
 struct ShareOptions: Codable {
     let shareGroups: [AnyShareGroup]
     let shareText: String
+    let shareCTA: Bool?
     let personalize: Bool?
 }

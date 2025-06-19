@@ -88,10 +88,12 @@ import SwiftUI
         let font = CGFont(provider)
         let error: UnsafeMutablePointer<Unmanaged<CFError>?>? = nil
 
-        guard CTFontManagerRegisterGraphicsFont(font!, error) else {
-            guard let unError = error?.pointee?.takeUnretainedValue(),
-                  let _ = CFErrorCopyDescription(unError) else {
-                return
+        if let font = font {
+            guard CTFontManagerRegisterGraphicsFont(font, error) else {
+                guard let unError = error?.pointee?.takeUnretainedValue(),
+                      let _ = CFErrorCopyDescription(unError) else {
+                    return
+                }
             }
         }
     }

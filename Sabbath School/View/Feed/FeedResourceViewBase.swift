@@ -44,12 +44,14 @@ func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: 
             Text(AppStyle.Feed.Title.text(title, enlarge, backgroundColorEnabled))
                 .lineLimit(AppStyle.Feed.Title.lineLimit)
                 .multilineTextAlignment(.leading)
+                .allowsTightening(true)
                 .fixedSize(horizontal: false, vertical: true)
             
             if let subtitle = subtitle, direction == .vertical {
                 Text(AppStyle.Feed.Subtitle.text(subtitle, false, backgroundColorEnabled))
                     .lineLimit(AppStyle.Feed.Subtitle.lineLimit)
                     .multilineTextAlignment(.leading)
+                    .allowsTightening(true)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }.frame(alignment: .leading)

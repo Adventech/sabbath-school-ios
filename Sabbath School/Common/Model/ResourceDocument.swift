@@ -45,4 +45,5 @@ struct ResourceDocument: Codable, Identifiable {
     let cover: URL?
     let externalURL: URL?
     let background: URL?
+    let share: ShareOptions?
 }

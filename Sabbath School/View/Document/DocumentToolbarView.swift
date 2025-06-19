@@ -61,6 +61,31 @@ extension DocumentView {
                         Menu {
                             ForEach(menuItems, id:\.self) { menuItem in
                                 switch menuItem {
+                                case .share:
+                                    if let shareOptions = viewModel.document?.share, let document = viewModel.document {
+                                        if shareOptions.shareGroups.count == 1,
+                                           shareOptions.shareGroups.first?.type == .link,
+                                           let shareLink = shareOptions.shareGroups.first?.asType(ShareGroupLink.self),
+                                           shareLink.links.count == 1,
+                                           let shareURL = shareLink.links.first?.src
+                                        {
+                                            ShareLink(item: shareURL) {
+                                                Text(shareOptions.shareText)
+                                                Image(systemName: "square.and.arrow.up")
+                                            }
+                                            .buttonStyle(.plain)
+                                        } else {
+                                            Button(action: {
+                                                let shareManager = ShareDialogManager(shareOptions: shareOptions)
+                                                shareManager.showShareDialog(document: document)
+                                            }) {
+                                                HStack {
+                                                    Text(shareOptions.shareText)
+                                                    Image(systemName: "square.and.arrow.up")
+                                                }
+                                            }
+                                        }
+                                    }
                                 case .originalPDF:
                                     if let pdfAuxiliary = viewModel.pdfAuxiliary,
                                        pdfAuxiliary.count > 0 {
@@ -130,5 +155,4 @@ extension DocumentView {
                ? .white
                : themeManager.getTextColor())
     }
-
 }

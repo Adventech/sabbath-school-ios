@@ -48,11 +48,12 @@ struct DocumentView: View {
     @State var ready: Bool = false
     
     enum MenuItemIdentifier: String, Hashable {
+        case share
         case originalPDF
         case readingOptions
     }
     
-    var menuItems: [MenuItemIdentifier] = [.originalPDF, .readingOptions]
+    var menuItems: [MenuItemIdentifier] = [.share, .originalPDF, .readingOptions]
     
     var btnBack: some View {
         Button(action: {

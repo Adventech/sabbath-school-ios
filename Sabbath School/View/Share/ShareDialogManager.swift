@@ -27,11 +27,19 @@ struct ShareDialogManager {
     let shareOptions: ShareOptions
     
     func showShareDialog(resource: Resource) {
+        showShareDialog(featuredTitle: resource.title, featuredColor: Color(hex: resource.primaryColorDark))
+    }
+    
+    func showShareDialog(document: ResourceDocument) {
+        showShareDialog(featuredTitle: document.title, featuredColor: .baseBlue)
+    }
+    
+    internal func showShareDialog(featuredTitle: String, featuredColor: Color) {
         let hostingController = ShareDialogControllerWrapper(
             rootView: ShareDialog(
                 shareOptions: shareOptions,
-                featuredTitle: resource.title,
-                featuredColor: Color(hex: resource.primaryColorDark)
+                featuredTitle: featuredTitle,
+                featuredColor: featuredColor
             )
         )
         
