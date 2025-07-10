@@ -76,3 +76,7 @@
 "There was an error during download" = "حدث خطأ أثناء التنزيل";
 "Remove all downloads" = "إزالة كافة التنزيلات";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "من خلال إزالة جميع التنزيلات، ستفقد كل محتوى الدروس المحفوظ حاليًا في وضع عدم الاتصال. هل انت متأكد انك تريد المتابعة؟";
+"Download" = "تنزيل";
+"Download again" = "تنزيل مرة أخرى";
+"Remove download" = "إزالة التنزيل";
+"Are you sure you want to delete?" = "هل أنت متأكد أنك تريد الحذف؟";

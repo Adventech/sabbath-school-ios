@@ -81,3 +81,7 @@
 "There was an error during download" = "Kulikuwa na hitilafu wakati wa kupakua";
 "Remove all downloads" = "Ondoa vipakuliwa vyote";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Kwa kuondoa vipakuliwa vyote utapoteza maudhui yote ya masomo yaliyohifadhiwa sasa hivi nje ya mtandao. Je, una uhakika unataka kuendelea?";
+"Download" = "Pakua";
+"Download again" = "Pakua tena";
+"Remove download" = "Ondoa upakuaji";
+"Are you sure you want to delete?" = "Una hakika unataka kufuta?";

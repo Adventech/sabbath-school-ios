@@ -81,3 +81,7 @@
 "There was an error during download" = "Kube nephutha ngesikhathi sokulanda";
 "Remove all downloads" = "Susa konke okulandiwe";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Ngokususa konke okulandiwe uzolahlekelwa yikho konke okuqukethwe kwezifundo okulondolozwe ungaxhunyiwe ku-inthanethi okwamanje. Uqinisekile ukuthi ufuna ukuqhubeka?";
+"Download" = "Landa";
+"Download again" = "Phinda ulande";
+"Remove download" = "Susa ukulandwa";
+"Are you sure you want to delete?" = "Uqinisekile ukuthi ufuna ukususa?";

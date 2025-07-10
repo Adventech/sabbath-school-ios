@@ -160,13 +160,23 @@ struct FeedGroupView: View {
                         } label: {
                             Text("Read".localized())
                         }
+                        
                         Divider()
                         
-                        ShareLink(
-                            item: URL(string: "\(Constants.API.HOST)/resources/\(resource.index)")!,
-                            subject: Text(resource.title)
-                        ) {
-                            Text("Share".localized())
+                        if downloadManager.downloadItems[resource.id]?.isCompleted() == true {
+                            Button(role: .destructive, action: {
+                                downloadManager.removeDownload(resourceId: resource.id, resourceIndex: resource.index)
+                            }) {
+                                Text("Remove download".localized())
+                                  Image(systemName: "trash")
+                            }
+                        } else {
+                            Button {
+                                downloadManager.download(resourceId: resource.id, resourceIndex: resource.index)
+                            } label: {
+                                Text("Download".localized())
+                                Image(systemName: "arrow.down.circle")
+                            }
                         }
                     } preview: {
                         HStack {
@@ -177,8 +187,9 @@ struct FeedGroupView: View {
                                     .scaledToFill()
                             }
                             .cornerRadius(5)
-                            .frame(width: 80, height: 100)
-                            .frame(minWidth: 80, minHeight: 100)
+                            .frame(width: 80, height: 120)
+                            .frame(minWidth: 80, minHeight: 120)
+                            .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
                             
                             VStack(alignment: .leading, spacing: 10) {
                                 if let subtitle = resource.subtitle {
@@ -187,18 +198,22 @@ struct FeedGroupView: View {
                                         .foregroundColor((.black | .white).opacity(0.5))
                                         .lineLimit(1)
                                         .frame(maxWidth: .infinity, alignment: .leading)
+                                        .frame(idealWidth: 250)
                                 }
                                 
                                 Text(resource.title)
                                     .font(.custom("Lato-Bold", size: 18))
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .frame(idealWidth: 250)
                             }
                             Spacer()
                         }
                         .padding(.horizontal, 20)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .frame(height: 220)
-                        .frame(maxHeight: 220)
+                        .frame(height: 140)
+                        .frame(minHeight: 140)
+                        .frame(idealHeight: 140)
+                        .frame(maxHeight: 140)
                     }
                 }
             }

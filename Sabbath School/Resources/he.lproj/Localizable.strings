@@ -76,3 +76,7 @@
 "There was an error during download" = "אירעה שגיאה במהלך ההורדה";
 "Remove all downloads" = "הסר את כל ההורדות";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "על ידי הסרת כל ההורדות תאבד את כל תוכן השיעורים שנשמר כעת במצב לא מקוון. האם אתה בטוח שאתה רוצה להמשיך?";
+"Download" = "הורד";
+"Download again" = "הורד שוב";
+"Remove download" = "הסר הורדה";
+"Are you sure you want to delete?" = "האם אתה בטוח שברצונך למחוק?";

@@ -81,3 +81,7 @@
 "There was an error during download" = "ມີຄວາມຜິດພາດໃນລະຫວ່າງການດາວໂຫຼດ";
 "Remove all downloads" = "ລຶບການດາວໂຫຼດທັງໝົດອອກ";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "ໂດຍການລຶບການດາວໂຫຼດທັງໝົດ, ທ່ານຈະສູນເສຍເນື້ອໃນບົດຮຽນທັງໝົດທີ່ບັນທຶກໄວ້ໃນເວລາອອບລາຍ. ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການດຳເນີນການຕໍ່?";
+"Download" = "ດາວໂຫຼດ";
+"Download again" = "ດາວໂຫຼດອີກຄັ້ງ";
+"Remove download" = "ລຶບການດາວໂຫຼດ";
+"Are you sure you want to delete?" = "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບ?";

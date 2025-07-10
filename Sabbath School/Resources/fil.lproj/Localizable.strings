@@ -64,3 +64,7 @@
 "There was an error during download" = "Nagkaroon ng error habang nagda-download";
 "Remove all downloads" = "Alisin ang lahat ng pag-download";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Sa pamamagitan ng pag-alis ng lahat ng mga pag-download, mawawala ang lahat ng nilalaman ng mga aralin na kasalukuyang naka-save offline. Sigurado ka bang gusto mong magpatuloy?";
+"Download" = "I-download";
+"Download again" = "I-download muli";
+"Remove download" = "Alisin ang download";
+"Are you sure you want to delete?" = "Sigurado ka bang gusto mong tanggalin?";

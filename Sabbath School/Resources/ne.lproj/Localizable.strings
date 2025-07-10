@@ -81,3 +81,7 @@
 "There was an error during download" = "डाउनलोड गर्दा एउटा त्रुटि भयो";
 "Remove all downloads" = "सबै डाउनलोडहरू हटाउनुहोस्";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "सबै डाउनलोडहरू हटाएर तपाईंले हाल अफलाइनमा सुरक्षित गरिएका सबै पाठ सामग्री गुमाउनुहुनेछ। के तपाइँ निश्चित रूपमा अगाडि बढ्न चाहनुहुन्छ?";
+"Download" = "डाउनलोड गर्नुहोस्";
+"Download again" = "फेरि डाउनलोड गर्नुहोस्";
+"Remove download" = "डाउनलोड हटाउनुहोस्";
+"Are you sure you want to delete?" = "के तपाईं साँच्चै मेटाउन चाहनुहुन्छ?";

@@ -76,3 +76,7 @@
 "There was an error during download" = "ダウンロード中にエラーが発生しました";
 "Remove all downloads" = "すべてのダウンロードを削除する";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "すべてのダウンロードを削除すると、現在オフラインに保存されているレッスン コンテンツがすべて失われます。 続行してもよろしいですか?";
+"Download" = "ダウンロード";
+"Download again" = "再ダウンロード";
+"Remove download" = "ダウンロードを削除";
+"Are you sure you want to delete?" = "削除してもよろしいですか？";

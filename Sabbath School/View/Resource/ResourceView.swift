@@ -484,8 +484,8 @@ struct ResourceView: View {
                     Button(action: {
                         downloadManager.download(resourceId: resource.id, resourceIndex: resource.index)
                     }) {
-                          Text("Download")
-                          Image(systemName: "arrow.down.circle")
+                        Text("Download".localized())
+                        Image(systemName: "arrow.down.circle")
                     }
                 }
             } else if item != nil && (item?.isCompleted() == true && item?.getStatus() == .idle) {
@@ -493,15 +493,15 @@ struct ResourceView: View {
                     Button(action: {
                         downloadManager.download(resourceId: resource.id, resourceIndex: resource.index)
                     }) {
-                          Text("Download again")
-                          Image(systemName: "arrow.down.circle")
+                        Text("Download again".localized())
+                        Image(systemName: "arrow.down.circle")
                     }
                     
                     Button(role: .destructive, action: {
                         downloadManager.removeDownload(resourceId: resource.id, resourceIndex: resource.index)
                     }) {
-                          Text("Remove download")
-                          Image(systemName: "trash")
+                        Text("Remove download".localized())
+                        Image(systemName: "trash")
                     }
                 }
             }

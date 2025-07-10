@@ -76,3 +76,7 @@
 "There was an error during download" = "Beim Download ist ein Fehler aufgetreten";
 "Remove all downloads" = "Entfernen Sie alle Downloads";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Durch das Entfernen aller Downloads gehen alle derzeit offline gespeicherten Unterrichtsinhalte verloren. Sind Sie sicher, dass Sie fortfahren möchten?";
+"Download" = "Herunterladen";
+"Download again" = "Erneut herunterladen";
+"Remove download" = "Herunterladen entfernen";
+"Are you sure you want to delete?" = "Sind Sie sicher, dass Sie löschen möchten?";

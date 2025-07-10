@@ -76,3 +76,7 @@
 "There was an error during download" = "下載時出現錯誤";
 "Remove all downloads" = "刪除所有下載";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "刪除所有下載後，您將遺失目前離線儲存的所有課程內容。 您確定要繼續嗎？";
+"Download" = "下載";
+"Download again" = "重新下載";
+"Remove download" = "移除下載";
+"Are you sure you want to delete?" = "您確定要刪除嗎？";

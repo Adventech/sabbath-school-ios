@@ -76,3 +76,7 @@
 "There was an error during download" = "Під час завантаження сталася помилка";
 "Remove all downloads" = "Видалити всі завантаження";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Вилучивши всі завантаження, ви втратите весь вміст уроків, який зараз зберігається в автономному режимі. Ви впевнені, що бажаєте продовжити?";
+"Download" = "Завантажити";
+"Download again" = "Завантажити знову";
+"Remove download" = "Видалити завантаження";
+"Are you sure you want to delete?" = "Ви впевнені, що хочете видалити?";

@@ -239,7 +239,7 @@ struct ResourceInlineCommentView: View {
                             }
                         }
                     }
-                    .alert("Are you sure you want to delete?", isPresented: $showDeleteAlert) {
+                    .alert("Are you sure you want to delete?".localized(), isPresented: $showDeleteAlert) {
                         Button("Delete", role: .destructive) {
                             deleteComment()
                             SwiftEntryKit.dismiss()
@@ -247,8 +247,6 @@ struct ResourceInlineCommentView: View {
                         Button("Cancel", role: .cancel) {
                             showDeleteAlert = false
                         }
-                    } message: {
-                        Text("This action cannot be undone.")
                     }
             }
             

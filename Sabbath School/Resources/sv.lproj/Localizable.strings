@@ -76,3 +76,7 @@
 "There was an error during download" = "Det uppstod ett fel under nedladdningen";
 "Remove all downloads" = "Ta bort alla nedladdningar";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Genom att ta bort alla nedladdningar förlorar du allt lektionsinnehåll som för närvarande är sparat offline. Är du säker på att du vill fortsätta?";
+"Download" = "Ladda ner";
+"Download again" = "Ladda ner igen";
+"Remove download" = "Ta bort nedladdning";
+"Are you sure you want to delete?" = "Är du säker på att du vill ta bort?";

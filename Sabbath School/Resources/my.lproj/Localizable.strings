@@ -64,3 +64,7 @@
 "There was an error during download" = "ဒေါင်းလုဒ်လုပ်နေစဉ် အမှားအယွင်းရှိခဲ့သည်။";
 "Remove all downloads" = "ဒေါင်းလုဒ်များအားလုံးကို ဖယ်ရှားပါ။";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "ဒေါင်းလုဒ်များအားလုံးကို ဖယ်ရှားခြင်းဖြင့် သင်သည် အော့ဖ်လိုင်းတွင် လက်ရှိသိမ်းဆည်းထားသည့် သင်ခန်းစာများအားလုံးကို ဆုံးရှုံးသွားမည်ဖြစ်သည်။ ရှေ့ဆက်လိုသည်မှာ သေချာပါသလား။";
+"Download" = "ဒေါင်းလုပ်";
+"Download again" = "နောက်တစ်ကြိမ်ဒေါင်းလုပ်လုပ်ပါ";
+"Remove download" = "ဒေါင်းလုပ်ဖိုင်ကိုဖျက်ပါ";
+"Are you sure you want to delete?" = "ဖျက်ချင်သည်မှာ သေချာပါသလား။";

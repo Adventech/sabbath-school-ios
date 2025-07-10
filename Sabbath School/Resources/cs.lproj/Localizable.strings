@@ -76,3 +76,7 @@
 "There was an error during download" = "Při stahování došlo k chybě";
 "Remove all downloads" = "Odstraňte všechna stažená data";
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Odebráním všech stažených souborů ztratíte veškerý obsah lekcí aktuálně uložený offline. Opravdu chcete pokračovat?";
+"Download" = "Stáhnout";
+"Download again" = "Stáhnout znovu";
+"Remove download" = "Odstranit stažený soubor";
+"Are you sure you want to delete?" = "Opravdu chcete smazat?";
