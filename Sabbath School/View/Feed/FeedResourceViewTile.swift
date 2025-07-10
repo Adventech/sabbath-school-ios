@@ -43,7 +43,7 @@ struct FeedResourceViewTile: View {
             VStack(spacing: 0) {
                 FeedResourceConditionalStack(
                     spacing: AppStyle.Feed.Spacing.betweenCoverAndTitle(direction),
-                    direction: .vertical
+                    direction: direction
                 ) {
                     FeedGroupItemCoverView(cover, dimensions, primaryColor, scaleFactor)
                     if showTitle {

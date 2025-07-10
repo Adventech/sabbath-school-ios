@@ -12,7 +12,7 @@
 "Languages" = "Языки";
 "Lato" = "Lato";
 "Light" = "Светлая";
-"Automatic" = "автоматический";
+"Automatic" = "Автоматический";
 "Log out" = "Выйти";
 "Account removal" = "Удаление аккаунта";
 "Delete account?" = "Удалить аккаунт?";
@@ -68,7 +68,7 @@
 /*Translated from: Audio*/
 "Audio" = "Аудио";
 /*Translated from: Video*/
-"Video" = "видео";
+"Video" = "Видео";
 /*Translated from: Original PDF*/
 "Original PDF" = "Исходный PDF";
 /*Translated from: Reading Options*/
