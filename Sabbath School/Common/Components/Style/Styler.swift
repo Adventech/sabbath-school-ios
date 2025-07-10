@@ -49,46 +49,28 @@ struct Styler {
                 
                 if let nested = block.nested, nested {
                     if allowColorChange {
-                        textColor = Styler.getTextColor(style, template, \.blocks?.nested?.all?.text, nil, textColor)
-                    }
-                    textTypeface = Styler.getTextTypeface(style, template, \.blocks?.nested?.all?.text, nil, textTypeface, block)
-                }
-                
-                if allowColorChange {
-                    textColor = Styler.getTextColor(style, template, nil, { style in
-                        return style?.blocks?.inline?.blocks?.first { $0.type == block.type }?.style.text
-                    }, textColor)
-                }
-                
-                // Global default style for that type of block
-                textTypeface = Styler.getTextTypeface(style, template, nil, { style in
-                    return style?.blocks?.inline?.blocks?.first { $0.type == block.type }?.style.text
-                }, textTypeface, block)
-                
-                
-                if let nested = block.nested, nested {
-                    if allowColorChange {
                         textColor = Styler.getTextColor(style, template, nil, { style in
                             return style?.blocks?.nested?.blocks?.first { $0.type == block.type }?.style.text
                         }, textColor)
+                        
+                        textColor = Styler.getTextColor(style, template, \.blocks?.nested?.all?.text, nil, textColor)
                     }
-                    
-                    textTypeface = Styler.getTextTypeface(style, template, nil, { style in
-                        return style?.blocks?.nested?.blocks?.first { $0.type == block.type }?.style.text
-                    }, textTypeface, block)
+                } else {
+                    if allowColorChange {
+                        textColor = Styler.getTextColor(style, template, nil, { style in
+                            return style?.blocks?.inline?.blocks?.first { $0.type == block.type }?.style.text
+                        }, textColor)
+                        
+                        textColor = Styler.getTextColor(style, template, \.blocks?.nested?.all?.text, nil, textColor)
+                    }
                 }
                 
-                // Style for that specific block
                 if let blockStyle = block.style {
                     if allowColorChange {
                         textColor = Styler.getTextColor(style, template, nil, { style in
                             return blockStyle.text
                         }, textColor)
                     }
-                    
-                    textTypeface = Styler.getTextTypeface(style, template, nil, { style in
-                        return blockStyle.text
-                    }, textTypeface, block)
                 }
             }
             
@@ -174,7 +156,7 @@ struct Styler {
     static func getTextTypeface(_ style: Style?, _ template: StyleTemplate, _ keyPath: KeyPath<Style, TextStyle?>? = nil, _ filter: ((_ style: Style?) -> TextStyle?)? = nil, _ defaultTypefaceOverride: UIFont? = nil, _ block: AnyBlock?) -> UIFont {
         let textSize = Styler.getTextSize(style, template, keyPath, filter, block)
         
-        func resolveTextTypeface(from style: Style?, _ internalFilter: ((_ style: Style?) -> TextStyle?)? = nil) -> UIFont {
+        func resolveTextTypeface(from style: Style?, _ internalFilter: ((_ style: Style?) -> TextStyle?)? = nil, _ defaultTypeface: UIFont? = nil) -> UIFont {
             var target = (filter?(style) ?? style?[keyPath: keyPath ?? template.textKeyPath])
             
             if internalFilter != nil {
@@ -182,14 +164,14 @@ struct Styler {
             }
             
             guard let textTypeface = target?.typeface else {
-                return defaultTypefaceOverride ?? UIFont(name: template.textTypefaceDefault, size: textSize)!
+                return defaultTypeface ?? defaultTypefaceOverride ?? UIFont(name: template.textTypefaceDefault, size: textSize)!
             }
             
             if let resolvedTypeface = UIFont(name: textTypeface, size: textSize) {
                 return resolvedTypeface
             }
 
-            return UIFont(name: template.textTypefaceDefault, size: textSize)!
+            return defaultTypeface ?? UIFont(name: template.textTypefaceDefault, size: textSize)!
         }
         
         if (!template.textTypefaceEnabled) {
@@ -200,24 +182,33 @@ struct Styler {
         
         if let block = block {
             // Global default style for that type of block
-            textTypeface = resolveTextTypeface(from: style, { style in
-                return style?.blocks?.inline?.blocks?.first { $0.type == block.type }?.style.text
-            })
+            
             
             if let nested = block.nested, nested {
-                textTypeface = resolveTextTypeface(from: style, { _ in
-                    return style?.blocks?.nested?.all?.text
-                })
                 textTypeface = resolveTextTypeface(from: style, { style in
                     return style?.blocks?.nested?.blocks?.first { $0.type == block.type }?.style.text
-                })
+                }, textTypeface)
+                
+                textTypeface = resolveTextTypeface(from: style, { _ in
+                    return style?.blocks?.nested?.all?.text
+                }, textTypeface)
+            } else {
+                textTypeface = resolveTextTypeface(from: style, { style in
+                    return style?.blocks?.inline?.blocks?.first { $0.type == block.type }?.style.text
+                }, textTypeface)
+                
+                textTypeface = resolveTextTypeface(from: style, { _ in
+                    return style?.blocks?.inline?.all?.text
+                }, textTypeface)
             }
             
             // Style for that specific block
             if let addedBlockStyle = block.style {
                 textTypeface = resolveTextTypeface(from: style, { style in
                     return addedBlockStyle.text
-                })
+                }, textTypeface)
+                
+                
             }
         }
         

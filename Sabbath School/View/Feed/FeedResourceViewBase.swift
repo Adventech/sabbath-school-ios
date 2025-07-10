@@ -39,7 +39,7 @@ func FeedGroupItemCoverView(_ url: URL, _ dimensions: CGSize, _ placeholderColor
 
 @ViewBuilder
 func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: CGSize? = nil, _ direction: FeedGroupDirection, _ enlarge: Bool = false, externalURL: URL? = nil, _ scaleFactor: CGFloat = 1, _ backgroundColorEnabled: Bool = false, _ downloaded: Bool = false) -> some View {
-    HStack(alignment: .top) {
+    HStack(alignment: .center) {
         VStack(alignment: .leading, spacing: AppStyle.Feed.Spacing.betweenTitleAndSubtitle) {
             Text(AppStyle.Feed.Title.text(title, enlarge, backgroundColorEnabled))
                 .lineLimit(AppStyle.Feed.Title.lineLimit)
@@ -73,7 +73,6 @@ func FeedGroupItemTitleView(_ title: String, _ subtitle: String?, _ dimensions: 
                             .font(.system(size: 6, weight: .bold))
                             .foregroundColor(.white | .black)
                     }
-                Spacer()
             }
         }
     }.frame(width: dimensions != nil ? dimensions!.width * scaleFactor : .infinity, alignment: .leading)

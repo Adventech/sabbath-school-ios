@@ -99,9 +99,9 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
         pdfController.viewType = viewType
         pdfController.showNavigationBarButtons = showNavigationBarButtons
         
-        if viewType == .segment {
-            pdfController.delegate = context.coordinator
-        }
+
+        pdfController.delegate = context.coordinator
+        
 
         let tabbedPDFController = PDFAuxiliaryTabbedViewController(pdfViewController: pdfController)
         tabbedPDFController.documents = documents
@@ -177,7 +177,7 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
     }
 
     func updateUIViewController(_ uiViewController: PDFAuxiliaryTabbedViewController, context: Context) {
-        uiViewController.tabbedBar.frame.origin = CGPoint(x: 0, y: 90)
+        uiViewController.tabbedBar.frame.origin = CGPoint(x: 0, y: self.viewType == .aux ? 0 : 90)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -226,8 +226,8 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
         }
         
         func fixTabBar () {
-            if let t = parent.tabbedPDFController, parent.viewType == .segment {
-                t.tabbedBar.frame.origin = CGPoint(x: 0, y: parent.getNavbarMaxY())
+            if let t = parent.tabbedPDFController {
+                t.tabbedBar.frame.origin = CGPoint(x: 0, y: parent.viewType == .segment ? parent.getNavbarMaxY() : 0)
             }
         }
         

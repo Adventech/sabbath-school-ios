@@ -191,8 +191,14 @@ struct ResourceView: View {
                                             .fixedSize(horizontal: false, vertical: true)
                                     }
                                     
-                                    if resource.cta?.hidden != true {
-                                        ctaButton(resource: resource)
+                                    HStack {
+                                        if resource.cta?.hidden != true {
+                                            ctaButton(resource: resource)
+                                        }
+                                        
+                                        if let share = resource.share, share.shareCTA == true {
+                                            shareButton(resource: resource, shareOptions: share, cta: true)
+                                        }
                                     }
 
                                     if let description = resource.description {
@@ -504,7 +510,7 @@ struct ResourceView: View {
     
     @ToolbarContentBuilder
     func toolbarView(resource: Resource) -> some ToolbarContent {
-        if let shareOptions = resource.share {
+        if let shareOptions = resource.share, !(shareOptions.shareCTA == true) || showNavigationBar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 shareButton(resource: resource, shareOptions: shareOptions)
             }
@@ -512,7 +518,7 @@ struct ResourceView: View {
     }
     
     @ViewBuilder
-    func shareButton(resource: Resource, shareOptions: ShareOptions) -> some View {
+    func shareButton(resource: Resource, shareOptions: ShareOptions, cta: Bool = false) -> some View {
         // TODO: when personalization implemented add as a check:
         // resource.share?.personalize != true,
         if resource.share?.shareGroups.count == 1,
@@ -523,11 +529,14 @@ struct ResourceView: View {
         {
             ShareLink(item: shareURL){
                 Image(systemName:
-                        !showNavigationBar ? "square.and.arrow.up.circle.fill" : "square.and.arrow.up"
+                        cta || !showNavigationBar ? "square.and.arrow.up.circle.fill" : "square.and.arrow.up"
                     )
                     .renderingMode(.original)
-                    .if (!showNavigationBar) { view in
+                    .if (!cta && !showNavigationBar) { view in
                         view.resizable().frame(width: 30, height: 30)
+                    }
+                    .if (cta) { view in
+                        view.font(.title)
                     }
                     .fontWeight(.medium)
                     .foregroundColor(showNavigationBar ? colorScheme == .dark ? .white : .black : Color(hex: resource.primaryColorDark))
@@ -542,12 +551,15 @@ struct ResourceView: View {
                 shareManager.showShareDialog(resource: resource)
             } label: {
                 Image(systemName:
-                        !showNavigationBar ? "square.and.arrow.up.circle.fill" : "square.and.arrow.up"
+                        cta || !showNavigationBar ? "square.and.arrow.up.circle.fill" : "square.and.arrow.up"
                     )
                     .renderingMode(.original)
                     
-                    .if (!showNavigationBar) { view in
+                    .if (!cta && !showNavigationBar) { view in
                         view.resizable().frame(width: 30, height: 30)
+                    }
+                    .if (cta) { view in
+                        view.font(.title)
                     }
                     .fontWeight(.medium)
                     .foregroundColor(showNavigationBar ? colorScheme == .dark ? .white : .black : Color(hex: resource.primaryColorDark))

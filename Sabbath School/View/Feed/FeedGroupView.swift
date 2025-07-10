@@ -178,6 +178,7 @@ struct FeedGroupView: View {
                             }
                             .cornerRadius(5)
                             .frame(width: 80, height: 100)
+                            .frame(minWidth: 80, minHeight: 100)
                             
                             VStack(alignment: .leading, spacing: 10) {
                                 if let subtitle = resource.subtitle {
@@ -194,8 +195,10 @@ struct FeedGroupView: View {
                             }
                             Spacer()
                         }
-                        .padding(20)
+                        .padding(.horizontal, 20)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(height: 220)
+                        .frame(maxHeight: 220)
                     }
                 }
             }
