@@ -58,6 +58,7 @@ struct SegmentViewBlocks: View {
     var progressTrackingTitle: String?
     var progressTrackingSubtitle: String?
     var progressNextSegmentIteratorIndex: Int?
+    var scrollViewProxy: ScrollViewProxy?
     
     @Environment(\.defaultBlockStyles) var defaultStyles: Style
     @EnvironmentObject var themeManager: ThemeManager
@@ -70,7 +71,7 @@ struct SegmentViewBlocks: View {
         if let blocks = segment.blocks {
             VStack (spacing: AppStyle.Segment.Spacing.betweenBlocks)  {
                 ForEach(blocks) { block in
-                    BlockWrapperView(block: block)
+                    BlockWrapperView(block: block, scrollViewProxy: scrollViewProxy)
                         .environment(\.themeManager, themeManager)
                         .environment(\.defaultBlockStyles, defaultStyles)
                         .id(block.id)
@@ -316,7 +317,8 @@ struct SegmentViewBase<Content: View>: View {
                             isHiddenSegment: isHiddenSegment,
                             progressTrackingTitle: progressTrackingTitle,
                             progressTrackingSubtitle: progressTrackingSubtitle,
-                            progressNextSegmentIteratorIndex: progressNextSegmentIteratorIndex
+                            progressNextSegmentIteratorIndex: progressNextSegmentIteratorIndex,
+                            scrollViewProxy: proxy
                         ),
                         SegmentViewVideo(video: segment.video) {
                             SegmentHeader(segment.markdownTitle ?? segment.title,
