@@ -24,14 +24,18 @@ import SwiftUI
 
 struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
     var block: Question
+    var scrollViewProxy: ScrollViewProxy?
     @Environment(\.defaultBlockStyles) var defaultStyles: Style
     @EnvironmentObject var themeManager: ThemeManager
     @EnvironmentObject var viewModel: DocumentViewModel
     
+    @FocusState var isFocused: Bool
     @State var answer: String = ""
     @State var typingStarted: Bool = false
     @State private var typingTimer: Timer? = nil
     let delay: TimeInterval = 1.0
+    
+    var textEditorId: String = UUID().uuidString
     
     var body: some View {
         VStack (spacing: 0) {
@@ -59,10 +63,18 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
                         .frame(maxHeight: 600)
                     
                     TextEditor(text: $answer)
+                        .focused($isFocused)
                         .onChange(of: answer) { newValue in
                             typingStarted = true
                             resetTypingTimer()
                         }
+                        .onChange(of: isFocused, perform: { newValue in
+                            if newValue {
+                                withAnimation(.default) {
+                                    scrollViewProxy?.scrollTo(textEditorId, anchor: .center)
+                                }
+                            }
+                        })
                         .frame(minHeight: 100, alignment: .leading)
                         .frame(maxHeight: 600)
                         .lineLimit(5)
@@ -85,6 +97,7 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
                                     .colorMultiply(.gray.opacity(0.2))
                             }.padding(0)
                         }
+                        .id(textEditorId)
                 }
             }
             .padding(0)

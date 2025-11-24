@@ -25,6 +25,7 @@ import SwiftUI
 
 struct BlockWrapperView: StyledBlock, View {
     var block: AnyBlock
+    var scrollViewProxy: ScrollViewProxy?
     @Environment(\.defaultBlockStyles) var defaultStyles: Style
     @Environment(\.colorScheme) var colorScheme
     
@@ -107,7 +108,7 @@ struct BlockWrapperView: StyledBlock, View {
                     }
                 case .question:
                     if let question = block.asType(Question.self) {
-                        BlockQuestionView(block: question)
+                        BlockQuestionView(block: question, scrollViewProxy: scrollViewProxy)
                     }
                 case .reference:
                     if let reference = block.asType(Reference.self) {
