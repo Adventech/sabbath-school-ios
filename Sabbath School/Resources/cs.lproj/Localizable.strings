@@ -1,76 +1,63 @@
 "Aa" = "Aa";
 "Andada" = "Andada";
-"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Tím, že se anonymně přihlásíte, nebudete moci synchronizovat data, například komentáře a upozornění, po zařízeních nebo po odinstalování aplikace. Opravdu chcete pokračovat?";
-"Continue without login" = "Pokračujte bez přihlášení";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "Pokud se přihlásíte anonymně, nebudete moci synchronizovat data (například komentáře a zvýraznění) v různých zařízeních nebo po odinstalování aplikace. Opravdu chcete pokračovat?";
+"Continue without login" = "Pokračovat bez přihlášení";
 "Contribute" = "Přispět";
 "Copy" = "Kopírovat";
 "Paste" = "Vložit";
-"Dark" = "Temný";
+"Dark" = "Tmavý";
 "English" = "Angličtina";
-"God's Ministry through Technology" = "Boží ministerstvo prostřednictvím technologie";
-"I am using Sabbath School app from Adventech! 🎉" = "Používám Sobotní škola od Adventech! 🎉";
+"God's Ministry through Technology" = "Boží služba prostřednictvím technologie";
+"I am using Sabbath School app from Adventech! 🎉" = "Používám aplikaci Sobotní škola od Adventech! 🎉";
 "Languages" = "Jazyky";
 "Lato" = "Lato";
-"Light" = "Světlo";
-"Automatic" = "Automatický";
+"Light" = "Světlý";
+"Automatic" = "Automaticky";
 "Log out" = "Odhlásit se";
 "Account removal" = "Odstranění účtu";
 "Delete account?" = "Smazat účet?";
 "By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "Smazáním účtu budou všechna vaše data, jako jsou komentáře a zvýraznění, trvale smazána. Opravdu chcete pokračovat?";
-"Login anonymously?" = "Přihlásit se anonymní?";
-"Made with ❤ by Adventech" = "Vyrobil s ❤ Adventech";
-"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Poslání Adventech je především a nejdůležitější - dáme slávu našemu Lᴏʀᴅ, Starověku dnů. Jsme odhodláni dělat naše ministerstvo prostřednictvím technologie. Naším cílem je sjednotit církev adventistů sedmého dne. Naším cílem je hlásit dobré zprávy tomuto světu pomocí technologií a pokroků v komunikaci. Naším cílem je svědčit o Ježíšově druhém příchodu.\n\nJsme inspirováni příkladem a metodami Ježíše, když zde působil na Zemi. Proto jsme se zavázali poskytovat vysoký stupeň kvality všech našich projektů v absolutně bez nákladů s láskou a věnováním. Jsme odhodláni dát slávu našemu Otci, protože je hoden nejvyššího chvály.\n\nOpravdu věříme, že Bůh rozšířil znalosti o moderním světě a chce, abychom ji využili k Jeho slávě, aby prohlásili, že se brzy vrátí!";
+"Login anonymously?" = "Přihlásit se anonymně?";
+"Made with ❤ by Adventech" = "Vytvořené s ❤ od Adventech";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Posláním Adventechu je především vzdávat slávu našemu Pánu, Věkovitému. Jsme odhodláni vykonávat naši službu prostřednictvím technologií. Naším cílem je sjednotit naši Církev adventistů sedmého dne. Naším cílem je hlásat dobrou zprávu tomuto světu prostřednictvím technologií a pokroku v komunikaci. Naším cílem je dosvědčovat druhý příchod Ježíše.\n\nJsme inspirováni příkladem a metodami Ježíše, když zde na Zemi konal svou službu. Proto jsme odhodláni poskytovat vysokou úroveň kvality všech našich projektů zcela zdarma, s láskou a oddaností. Jsme odhodláni vzdávat slávu našemu Otci, protože On je hoden té nejvyšší chvály.\n\nSkutečně věříme, že Bůh rozšířil poznání moderního světa a chce, abychom jej využívali k Jeho slávě a k hlásání Jeho brzkého návratu!";
 "More" = "Více";
 "No" = "Ne";
-"Open" = "Otevřeno";
-"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Naše aplikace jsou Open Source, včetně Sobotní škola. Podívejte se na náš GitHub, pokud chcete přispět";
+"Open" = "Otevřít";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "Naše aplikace jsou Open Source, včetně Sobotní školy. Podívejte se na náš GitHub, pokud chcete přispět";
 "PT Sans" = "PT Sans";
 "PT Serif" = "PT Serif";
 "Read" = "Číst";
-"Reminder" = "Připomínka";
+"Reminder" = "Připomenutí";
 "Sabbath School" = "Sobotní škola";
-"Share" = "Podíl";
+"Share" = "Sdílet";
 "Sepia" = "Sépie";
-"Set the reminder to be notified daily to study the lesson" = "Nastavte připomenutí, které budete každodenně informovat o studiu lekce";
+"Set the reminder to be notified daily to study the lesson" = "Nastavte připomenutí, které vás bude každodenně upozorňovat na studium lekce";
 "Settings" = "Nastavení";
-"Sign in with Facebook" = "Přihlásit se pomocí Facebooku";
-"Sign in with Google" = "Přihlaste se pomocí služby Google";
+"Sign in with Facebook" = "Přihlásit se s účtem Facebook";
+"Sign in with Google" = "Přihlaste se s účtem Google";
 "There was an error during login" = "Během přihlášení došlo k chybě";
 "Time" = "Čas";
-"Time to study Sabbath School 🙏" = "Čas studovat Sobotní škola 🙏";
+"Time to study Sabbath School 🙏" = "Čas studovat Sobotní školu 🙏";
 "Yes" = "Ano";
 "Your friends at Adventech" = "Tví přátelé z Adventech";
 "https://adventech.io" = "https://adventech.io";
 "🎉 Rate app" = "🎉 Hodnotit aplikaci";
 "🐙 GitHub" = "🐙 GitHub";
-"💌 Recommend Sabbath School" = "💌 Doporučit Sabbath School";
+"💌 Recommend Sabbath School" = "💌 Doporučte Sobotní školu";
 "🙏 About us" = "🙏 O nás";
-/*Translated from: Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!*/
-"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "Vítejte v oficiální aplikaci oddělení základní školy Sabbath School a Personal Ministries. Tato aplikace, stále používaná společností Adventech, brzy získá nová vylepšení obsahu a funkcí, přičemž zůstane jednoduchá a snadno použitelná. Studovat a sdílet Boží slovo nikdy nebylo jednodušší!";
-/*Translated from: Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.*/
-"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech je nezisková organizace v Kanadě, která se věnuje využívání technologií pro službu. Jako oddaní adventisté sedmého dne je úkolem Adventechu především vzdávat slávu Bohu. Prostřednictvím naší služby se také snažíme přinést jednotu celosvětové Církvi adventistů sedmého dne. Naším hlavním cílem je ohlašovat věčné evangelium pomocí technologie a pokroku v komunikaci a podílet se na přípravě světa na druhý příchod Ježíše.";
-/*Translated from: The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.*/
-"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "Posláním Oddělení SSPM na Generální konferenci je získávat učedníky, kteří zase dělají další učedníky. Usilujeme o to tím, že pomáháme místním církvím adventistů sedmého dne a jejich členům objevovat účel a moc školy Sabbath School a inspirujeme a získáváme každého člena, aby se aktivně zapojil do osobní služby, která zvítězí v duši.\n\nOddělení SSPM produkuje zdroje na pomoc členům církve adventistů sedmého dne při jejich cestě s Kristem a jejich svědectví světu. Cílem aplikace Sabbath School and Personal Ministries je spojit mnoho z těchto zdrojů do jednoho vhodného místa. Jak budou stále přibývat další zdroje, členové církve a jejich rodiny budou brzy vybaveni velkým množstvím zdrojů, které jim pomohou při studiu a sdílení Božího slova.\n\nAby byla údržba a vývoj aplikace usnadněna, je oddělení SSPM ráda navázat partnerství s obětavým a talentovaným týmem společnosti Adventech.";
+"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "Vítejte v oficiální aplikaci Oddělení sobotní školy a osobní služby Generální konference. Aplikace, kterou i nadále vyvíjí Adventech, brzy přinese nová vylepšení obsahu a funkcí, přičemž zůstane jednoduchá a snadno použitelná.\nStudovat a sdílet Boží slovo nebylo nikdy snazší!";
+"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech je nezisková organizace v Kanadě, která se věnuje využívání technologií ve službě. Posláním Adventechu, jakožto oddaných Adventistů sedmého dne, je především vzdávat slávu Bohu. Naším cílem je také prostřednictvím naší služby přinášet jednotu celosvětové Církvi adventistů sedmého dne. Naším hlavním cílem je hlásat věčné evangelium prostřednictvím technologií a pokroků ve sdělovacích prostředcích a přispět svým dílem k přípravě světa na druhý příchod Ježíše.";
+"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "Posláním Oddělení sobotní školy a osobní služby Generální konference je vytvářet učedníky, kteří pak vytvářejí další učedníky. Toho chceme dosáhnout tím, že pomáháme místním sborům Církve adventistů sedmého dne a jejich členům objevovat smysl a moc Sobotní školy a že inspirujeme a zapojujeme každého člena do aktivní osobní služby získávání duší.\n\nOddělení sobotní školy a osobní služby vytváří zdroje, které pomáhají členům Církve adventistů sedmého dne v jejich cestě s Kristem a ve svědectví světu. Cílem aplikace Sobotní školy a osobní služby je spojit mnohé z těchto zdrojů na jednom vhodném místě. Jak budou přibývat další zdroje, členové církve a jejich rodiny budou mít brzy k dispozici bohaté zdroje, které jim pomohou při studiu a sdílení Božího slova.\n\nPro usnadnění údržby a vývoje aplikace je Oddělení sobotní školy a osobní služby rádo, že může spolupracovat s oddaným a talentovaným týmem v Adventech.";
 "Search…" = "Vyhledat…";
-/*Translated from: Today's lesson*/
 "Today's lesson" = "Dnešní lekce";
-/*Translated from: Get quick access the Sabbath School lesson for today*/
-"Get quick access the Sabbath School lesson for today" = "Získejte rychlý přístup k lekci Sabbath School pro dnešek";
-/*Translated from: Get quick access the Sabbath School lesson for today, featuring the background image*/
-"Get quick access the Sabbath School lesson for today, featuring the background image" = "Získejte rychlý přístup k lekci Sabbath School pro dnešek s obrázkem na pozadí";
-/*Translated from: Preview and access Sabbath School lesson for this week*/
-"Preview and access Sabbath School lesson for this week" = "Náhled a přístup k lekci Sabbath School pro tento týden";
-/*Translated from: See All*/
+"Get quick access the Sabbath School lesson for today" = "Získejte rychlý přístup k lekci Sobotní školy pro dnešní den";
+"Get quick access the Sabbath School lesson for today, featuring the background image" = "Získejte rychlý přístup k lekci Sobotní školy pro dnešní den s obrázkem na pozadí";
+"Preview and access Sabbath School lesson for this week" = "Náhled a přístup k lekci Sobotní školy pro tento týden";
 "See All" = "Vidět vše";
-/*Translated from: General Conference of Seventh-day Adventists*/
-"General Conference of Seventh-day Adventists" = "Generální konference adventistů sedmého dne";
-/*Translated from: Audio*/
-"Audio" = "Zvuk";
-/*Translated from: Video*/
+"General Conference of Seventh-day Adventists" = "Generální konference Adventistů sedmého dne";
+"Audio" = "Audio";
 "Video" = "Video";
-/*Translated from: Original PDF*/
 "Original PDF" = "Původní PDF";
-/*Translated from: Reading Options*/
 "Reading Options" = "Možnosti čtení";
 "Get Printed Resources" = "Získejte tištěné zdroje";
 "There was an error during download" = "Při stahování došlo k chybě";
@@ -78,5 +65,5 @@
 "By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "Odebráním všech stažených souborů ztratíte veškerý obsah lekcí aktuálně uložený offline. Opravdu chcete pokračovat?";
 "Download" = "Stáhnout";
 "Download again" = "Stáhnout znovu";
-"Remove download" = "Odstranit stažený soubor";
-"Are you sure you want to delete?" = "Opravdu chcete smazat?";
+"Remove download" = "Odstranit stáhnutí";
+"Are you sure you want to delete?" = "Opravdu to chcete smazat?";
