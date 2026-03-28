@@ -1,81 +1,102 @@
+/*
+ * Copyright (c) 2017 Adventech <info@adventech.io>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 "Aa" = "Aa";
 "Andada" = "Andada";
-"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "如果您以匿名方式登錄，則無法在設備之間或卸載應用程序之後同步數據（如註釋和突出顯示）。你確定你要繼續嗎？";
-"Continue without login" = "继续而不登录";
-"Contribute" = "有助於";
+"By logging in anonymously you will not be able to synchronize your data, such as comments and highlights, across devices or after uninstalling application. Are you sure you want to proceed?" = "如果您以匿名方式登入，將無法透過不同裝置或解除安裝應用程式後同步您的資料（例如註解和重點標示）。您確定要繼續嗎？";
+"Continue without login" = "繼續使用匿名登入";
+"Contribute" = "貢獻";
 "Copy" = "複製";
-"Paste" = "粘貼";
-"Dark" = "黑暗";
-"English" = "英語";
-"God's Ministry through Technology" = "是上帝的事工，通過技術";
-"I am using Sabbath School app from Adventech! 🎉" = "我正在使用Adventech的安息日學應用程序！ 🎉";
+"Paste" = "貼上";
+"Dark" = "深色";
+"English" = "英文";
+"God's Ministry through Technology" = "透過科技實踐上帝的事工";
+"I am using Sabbath School app from Adventech! 🎉" = "我正在使用 Adventech 的安息日學應用程式！🎉";
 "Languages" = "語言";
 "Lato" = "Lato";
-"Light" = "光";
-"Automatic" = "自動的";
+"Light" = "淺色";
+"Automatic" = "自動";
 "Log out" = "登出";
-"Account removal" = "帳戶刪除";
-"Delete account?" = "刪除帳戶？";
-"By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "通過刪除您的帳戶，您的所有數據（例如評論和亮點）將被永久刪除。 您確定要繼續嗎？";
-"Login anonymously?" = "匿名登錄？";
-"Made with ❤ by Adventech" = "用Adventech的❤做出來";
-"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus’ Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "亚历山大的使命首先是荣耀我们的天，古代的天。我们致力于通过技术来做我们的事工。我们的目标是团结我们的基督复临安息日会。我们的目标是通过技术和通信进步宣传好消息给这个世界。我们的目标是见证耶稣的第二次来临。\n\n当他在地球上投身时，我们受到耶稣的榜样和方法的启发。因此，我们致力于通过爱与奉献，绝对没有任何成本提供我们所有项目的高品质。我们致力于荣耀我们的父，因为他值得赞美的最高。\n\n我们真的相信神已经增加了现代世界的知识，并希望我们用他的荣耀来宣告他即将回归！";
+"Account removal" = "解除帳戶";
+"Delete account?" = "確定要刪除帳戶？";
+"By deleting your account all your data, such as comments and highlights will be permanently deleted. Are you sure you want to proceed?" = "刪除帳戶後，您的所有資料（例如註解和重點標示）將被永久刪除。您確定要繼續嗎？";
+"Login anonymously?" = "匿名登入？";
+"Made with ❤ by Adventech" = "由 Adventech 用 ❤ 製作";
+"Mission of Adventech is first and foremost - give glory to our Lᴏʀᴅ, the Ancient of Days. We are dedicated to do our ministry through technology. Our goal is to unite our Seventh-Day Adventist Church. Our goal is to proclaim Good News to this world by means of technology and advancements in communications. Our goal is to witness Jesus' Second Coming.\n\nWe are inspired by the example and methods of Jesus, when He ministered here on Earth. Therefore, we are committed to deliver high degree of quality of all our projects at absolutely no cost with love and dedication. We are committed to give glory to our Father, because He is worthy of the highest of praise.\n\nWe truly believe that God has increased the knowledge of the modern world and wants us to use it for His glory to proclaim His soon return!" = "Adventech 的使命首要是榮耀我們的主、萬古之昔的神。我們致力於透過科技推動事工，目標是團結基督復臨安息日會，並透過科技與通訊的進步向世界宣揚福音，見證耶穌的再來。\n\n我們受到耶穌在地上服事時的榜樣與方法啟發，承諾以愛心與奉獻，無償提供高品質的專案。我們致力於榮耀天父，因炘配得最高的讚美。\n\n我們深信神賙予現代世界更多知識，並希望我們用這些知識榮耀炘，宣告炘即將回歸！";
 "More" = "更多";
-"No" = "沒有";
-"Open" = "打開";
-"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "我們的應用程序是開源的，包括安息日學校。看看我們的GitHub，如果你想貢獻";
+"No" = "否";
+"Open" = "開啟";
+"Our apps are Open Source, including Sabbath School. Check out our GitHub if you would like to contribute" = "我們的應用程式皆為開源，包括安息日學。歡迎造訪我們的 GitHub，若您愿意貢獻。";
 "PT Sans" = "PT Sans";
 "PT Serif" = "PT Serif";
-"Read" = "读";
-"Reminder" = "每日提醒";
-"Sabbath School" = "安息日學校";
+"Read" = "閱讀";
+"Reminder" = "提醒";
+"Sabbath School" = "安息日學";
 "Share" = "分享";
-"Sepia" = "烏賊";
-"Set the reminder to be notified daily to study the lesson" = "將提醒設置為每天通知以學習該課程";
-"Settings" = "設置";
-"Sign in with Facebook" = "用Facebook登入";
-"Sign in with Google" = "用Google登入";
-"There was an error during login" = "登錄失敗，請再次嘗試。";
+"Sepia" = "棕褐色";
+"Set the reminder to be notified daily to study the lesson" = "設定每日提醒，通知您學習課程";
+"Settings" = "設定";
+"Sign in with Facebook" = "使用 Facebook 登入";
+"Sign in with Google" = "使用 Google 登入";
+"There was an error during login" = "登入時發生錯誤，請再試一次。";
 "Time" = "時間";
 "Time to study Sabbath School 🙏" = "該學習安息日學了 🙏";
 "Yes" = "是";
-"Your friends at Adventech" = "你的Adventech的朋友們";
+"Your friends at Adventech" = "Adventech 敬上";
 "https://adventech.io" = "https://adventech.io";
-"🎉 Rate app" = "🎉 評價我們的應用";
+"🎉 Rate app" = "🎉 評分應用程式";
 "🐙 GitHub" = "🐙 GitHub";
-"💌 Recommend Sabbath School" = "💌 推薦安息日學校";
+"💌 Recommend Sabbath School" = "💌 推薦安息日學";
 "🙏 About us" = "🙏 關於我們";
-/*Translated from: Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!*/
-"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It’s never been easier to study and share God’s Word!" = "歡迎來到總會安息日學和個人事工部的官方應用程序。該應用程序仍由 Adventech 提供支持，很快將在內容和功能方面進行新的改進，同時保持簡單易用。學習和分享上帝的話語從未如此簡單！";
+/*Translated from: Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It's never been easier to study and share God's Word!*/
+"Welcome to the official app of the General Conference Sabbath School and Personal Ministries Department. Still powered by Adventech, the app will soon receive new improvements in content and features while remaining simple and easy to use. It's never been easier to study and share God's Word!" = "歡迎使用總會安息日學與個人事工部官方應用程式。此應用程式由 Adventech 持續支援，未來將陸續推出內容與功能更新，並保持簡潔易用。學習與分享上帝的話語從未如此簡單！";
 /*Translated from: Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus.*/
-"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech 是加拿大的一個非營利組織，致力於將技術用於事工。作為獻身的基督复臨安息日會信徒，研華的使命首先是將榮耀歸給上帝。我們還旨在通過我們的事工為全球基督复臨安息日會帶來合一。我們的主要目標是通過技術和通訊的進步來宣揚永恆的福音，並儘我們的一份力量為世界準備耶穌的第二次來臨。";
-/*Translated from: The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.*/
-"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God’s Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "總會 SSPM 部的使命是使門徒成為門徒，而門徒反過來又使其他門徒成為門徒。我們的目標是通過幫助當地的基督复臨安息日會及其成員發現安息日學的目的和力量，並通過激勵和招募每個成員積極參與個人贏得靈魂的服務來實現這一目標。\n\nSSPM 部門產生幫助基督复臨安息日會成員與基督同行並向世界作見證的資源。安息日學和個人事工應用程序的目的是將許多這些資源組合到一個方便的位置。隨著更多資源的不斷加入，教會成員和他們的家人很快就會配備豐富的資源來幫助他們學習和分享神的話語。\n\n為了方便應用程序的維護和開發，SSPM部門很高興與 Adventech 敬業且才華橫溢的團隊合作。";
+"Adventech is a non-profit organization in Canada that is dedicated to the use of technology for ministry. As dedicated Seventh-day Adventists, the mission of Adventech is first and foremost to give glory to God. We also aim through our ministry to bring unity to the worldwide Seventh-day Adventist Church. Our primary goal is to proclaim the everlasting gospel by means of technology and advancements in communications, and to do our part in preparing the world for the second coming of Jesus." = "Adventech 是加拿大非營利組織，致力於運用科技推動事工。作為獻身的基督復臨安息日會信徒，Adventech 的使命首要是榮耀上帝。我們也透過事工促進全球基督復臨安息日會的合一，並以科技與通訊進步宣揚永恒福音，為耶穌再來預備世界。";
+/*Translated from: The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God's Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech.*/
+"The mission of the General Conference SSPM Department is to make disciples, who in turn make other disciples. We aim to do this by helping local Seventh-day Adventist churches and their members to discover the purpose and power of Sabbath School and by inspiring and enlisting every member to become actively involved in personal soul-winning service.\n\nThe SSPM Department produces resources to help Seventh-day Adventist church members in their walk with Christ and their witness to the world. The aim of the Sabbath School and Personal Ministries app is to combine many of these resources into one convenient location. As more resources continue to be added, church members and their families will soon be equipped with a wealth of resources to aid them in studying and sharing God's Word.\n\nTo facilitate the maintenance and development of the app, the SSPM Department is glad to partner with the dedicated and talented team at Adventech." = "總會安息日學與個人事工部（SSPM）的使命是造就門徒，並使這些門徒再造門徒。我們透過協助地方基督復臨安息日會教會及其成員，發掘安息日學的意義與力量，並激勵每位成員積極參與個人靈魂得救的事工，來達成此目標。\n\nSSPM 部門製作資源，幫助基督復臨安息日會成員與基督同行，並向世人作見證。安息日學與個人事工應用程式旨在將這些資源整合於一處，隨著更多資源陸續加入，教會成員及其家庭將能獲得豐富資源，協助他們學習並分享神的話語。\n\n為了方便應用程式的維護與開發，SSPM 部門很榮幸與敬業且才華洋溢的 Adventech 團隊合作。";
 "Search…" = "搜尋…";
 /*Translated from: Today's lesson*/
-"Today's lesson" = "今天的課";
+"Today's lesson" = "今日課程";
 /*Translated from: Get quick access the Sabbath School lesson for today*/
-"Get quick access the Sabbath School lesson for today" = "快速訪問今天的安息日學課程";
+"Get quick access the Sabbath School lesson for today" = "快速取得今日安息日學課程";
 /*Translated from: Get quick access the Sabbath School lesson for today, featuring the background image*/
-"Get quick access the Sabbath School lesson for today, featuring the background image" = "快速訪問今天的安息日學課程，其中包含背景圖片";
+"Get quick access the Sabbath School lesson for today, featuring the background image" = "快速取得今日安息日學課程，並搭配背景圖片";
 /*Translated from: Preview and access Sabbath School lesson for this week*/
-"Preview and access Sabbath School lesson for this week" = "預覽和訪問本週的安息日學課程";
+"Preview and access Sabbath School lesson for this week" = "預覽並取得本週安息日學課程";
 /*Translated from: See All*/
-"See All" = "看到所有";
+"See All" = "查看全部";
 /*Translated from: General Conference of Seventh-day Adventists*/
-"General Conference of Seventh-day Adventists" = "基督复臨安息日會總會";
+"General Conference of Seventh-day Adventists" = "基督復臨安息日會總會";
 /*Translated from: Audio*/
-"Audio" = "聲音的";
+"Audio" = "音訊";
 /*Translated from: Video*/
-"Video" = "視頻";
+"Video" = "影片";
 /*Translated from: Original PDF*/
-"Original PDF" = "原始PDF";
+"Original PDF" = "原始 PDF";
 /*Translated from: Reading Options*/
 "Reading Options" = "閱讀選項";
-"Get Printed Resources" = "獲取印刷資源";
-"There was an error during download" = "下載時出現錯誤";
-"Remove all downloads" = "刪除所有下載";
-"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "刪除所有下載後，您將遺失目前離線儲存的所有課程內容。 您確定要繼續嗎？";
+"Get Printed Resources" = "取得印刷資源";
+"There was an error during download" = "下載時發生錯誤";
+"Remove all downloads" = "移除所有下載";
+"By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?" = "移除所有下載後，您將遗失目前離線儲存的所有課程內容。您確定要繼續嗎？";
 "Download" = "下載";
 "Download again" = "重新下載";
 "Remove download" = "移除下載";
