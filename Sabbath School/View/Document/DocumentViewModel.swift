@@ -213,7 +213,11 @@ class InlineAudioPlaybackManager: ObservableObject {
                     if let localUserInput = localUserInputForDocument.first(where: { $0.userInput.blockId == userInput.blockId && $0.userInput.inputType == userInput.inputType && ($0.userInput.timestamp > userInput.timestamp) }) {
                         mergedUserInput.append(localUserInput.userInput)
                     } else {
-                        let _ = SyncManager.shared.saveLocalInput(documentIndex: documentId, userInput: userInput, syncStatus: true)
+                        do {
+                            let _ = try SyncManager.shared.saveLocalInput(documentIndex: documentId, userInput: userInput, syncStatus: true)
+                        } catch let error {
+                            print("SSDEBUG", error)
+                        }
                         mergedUserInput.append(userInput)
                     }
                 }
@@ -256,7 +260,7 @@ class InlineAudioPlaybackManager: ObservableObject {
                 documentUserInput.append(userInput)
             }
             
-            let localUserInputUUID = SyncManager.shared.saveLocalInput(documentIndex: documentId, userInput: userInput)
+            let localUserInputUUID = try SyncManager.shared.saveLocalInput(documentIndex: documentId, userInput: userInput)
             
             let userInput = try JSONSerialization.jsonObject(with: JSONEncoder().encode(userInput), options: .allowFragments) as! [String: Any]
             
@@ -267,9 +271,7 @@ class InlineAudioPlaybackManager: ObservableObject {
                 encoding: JSONEncoding.default
             ).response { response in
                 if response.response?.statusCode == 200 {
-                    if let localUserInputUUID = localUserInputUUID {
-                        SyncManager.shared.markAsSynced(documentIndex: documentId, localUserInputUUID: localUserInputUUID.id)
-                    }
+                    SyncManager.shared.markAsSynced(documentIndex: documentId, localUserInputUUID: localUserInputUUID.id)
                 }
             }
         } catch let error {
