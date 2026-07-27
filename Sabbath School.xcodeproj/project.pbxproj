@@ -2746,7 +2746,7 @@
 		};
 		2F7526602CCB09890027FD1E /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Nuke?tab=readme-ov-file";
+			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
 				kind = exactVersion;
 				version = 12.8.0;
