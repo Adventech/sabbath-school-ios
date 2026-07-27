@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A66300000000000000000003 /* InfrastructureSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66300000000000000000001 /* InfrastructureSmokeTests.swift */; };
 		2F0EB50D2C12814800ADBD9D /* FeedSeeAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EB50C2C12814800ADBD9D /* FeedSeeAllView.swift */; };
 		2F0EB51D2C13A0FD00ADBD9D /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EB51C2C13A0FD00ADBD9D /* ResourceView.swift */; };
 		2F0EB51F2C13A48F00ADBD9D /* ResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EB51E2C13A48E00ADBD9D /* ResourceViewModel.swift */; };
@@ -345,6 +346,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A6630000000000000000000C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AF191A01ED7B89B000CCF0C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AF191A71ED7B89B000CCF0C;
+			remoteInfo = "Sabbath School";
+		};
 		FE1E35072673C5E300DAC2D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7AF191A01ED7B89B000CCF0C /* Project object */;
@@ -369,6 +377,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A66300000000000000000001 /* InfrastructureSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfrastructureSmokeTests.swift; sourceTree = "<group>"; };
+		A66300000000000000000002 /* SabbathSchoolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SabbathSchoolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6630000000000000000000E /* SabbathSchoolTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SabbathSchoolTests.xctestplan; sourceTree = "<group>"; };
 		1BDC817E4DEE5647231E268B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1BDC81CE3CAC580E4EC0FB13 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		2F0EB50C2C12814800ADBD9D /* FeedSeeAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSeeAllView.swift; sourceTree = "<group>"; };
@@ -759,6 +770,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A66300000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E80B41D2AC0A2D9002B6FBF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -802,6 +820,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A66300000000000000000004 /* SabbathSchoolTests */ = {
+			isa = PBXGroup;
+			children = (
+				A66300000000000000000001 /* InfrastructureSmokeTests.swift */,
+			);
+			path = SabbathSchoolTests;
+			sourceTree = "<group>";
+		};
 		2F1C33BA2D00CEFA008D30C0 /* Language */ = {
 			isa = PBXGroup;
 			children = (
@@ -1388,8 +1414,10 @@
 			isa = PBXGroup;
 			children = (
 				7AF191AA1ED7B89B000CCF0C /* Sabbath School */,
+				A66300000000000000000004 /* SabbathSchoolTests */,
 				4EDDA4C42A83B8F60078B29E /* SabbathSchoolTV */,
 				FE1E35012673C5DF00DAC2D6 /* Widget */,
+				A6630000000000000000000E /* SabbathSchoolTests.xctestplan */,
 				7AF191A91ED7B89B000CCF0C /* Products */,
 				1BDC81CE3CAC580E4EC0FB13 /* LICENSE.md */,
 				1BDC817E4DEE5647231E268B /* README.md */,
@@ -1401,6 +1429,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF191A81ED7B89B000CCF0C /* Sabbath School.app */,
+				A66300000000000000000002 /* SabbathSchoolTests.xctest */,
 				FE1E34FC2673C5DF00DAC2D6 /* WidgetExtension.appex */,
 				4E80B4202AC0A2D9002B6FBF /* SabbathSchoolTV.app */,
 			);
@@ -1471,6 +1500,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A66300000000000000000008 /* SabbathSchoolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6630000000000000000000B /* Build configuration list for PBXNativeTarget "SabbathSchoolTests" */;
+			buildPhases = (
+				A66300000000000000000005 /* Sources */,
+				A66300000000000000000006 /* Frameworks */,
+				A66300000000000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6630000000000000000000D /* PBXTargetDependency */,
+			);
+			name = SabbathSchoolTests;
+			productName = SabbathSchoolTests;
+			productReference = A66300000000000000000002 /* SabbathSchoolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4E80B41F2AC0A2D9002B6FBF /* SabbathSchoolTV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E80B42B2AC0A2DA002B6FBF /* Build configuration list for PBXNativeTarget "SabbathSchoolTV" */;
@@ -1563,6 +1610,10 @@
 				LastUpgradeCheck = 1610;
 				ORGANIZATIONNAME = Adventech;
 				TargetAttributes = {
+					A66300000000000000000008 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 7AF191A71ED7B89B000CCF0C;
+					};
 					4E80B41F2AC0A2D9002B6FBF = {
 						CreatedOnToolsVersion = 14.3.1;
 						DevelopmentTeam = XVGX5G4YQ9;
@@ -1655,6 +1706,7 @@
 			projectRoot = "";
 			targets = (
 				7AF191A71ED7B89B000CCF0C /* Sabbath School */,
+				A66300000000000000000008 /* SabbathSchoolTests */,
 				FE1E34FB2673C5DF00DAC2D6 /* WidgetExtension */,
 				4E80B41F2AC0A2D9002B6FBF /* SabbathSchoolTV */,
 			);
@@ -1662,6 +1714,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A66300000000000000000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E80B41E2AC0A2D9002B6FBF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1717,6 +1776,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A66300000000000000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A66300000000000000000003 /* InfrastructureSmokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E80B41C2AC0A2D9002B6FBF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2025,6 +2092,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A6630000000000000000000D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7AF191A71ED7B89B000CCF0C /* Sabbath School */;
+			targetProxy = A6630000000000000000000C /* PBXContainerItemProxy */;
+		};
 		FE1E35082673C5E300DAC2D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FE1E34FB2673C5DF00DAC2D6 /* WidgetExtension */;
@@ -2177,6 +2249,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A66300000000000000000009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchoolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sabbath School.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Sabbath School";
+			};
+			name = Debug;
+		};
+		A6630000000000000000000A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cryart.SabbathSchoolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sabbath School.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Sabbath School";
+			};
+			name = Release;
+		};
 		4E80B42C2AC0A2DA002B6FBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2649,6 +2771,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A6630000000000000000000B /* Build configuration list for PBXNativeTarget "SabbathSchoolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A66300000000000000000009 /* Debug */,
+				A6630000000000000000000A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4E80B42B2AC0A2DA002B6FBF /* Build configuration list for PBXNativeTarget "SabbathSchoolTV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

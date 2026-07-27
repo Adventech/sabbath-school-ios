@@ -1,0 +1,30 @@
+{
+  "configurations" : [
+    {
+      "id" : "A6630000-0000-0000-0000-00000000000F",
+      "name" : "Default",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Sabbath School.xcodeproj",
+      "identifier" : "7AF191A71ED7B89B000CCF0C",
+      "name" : "Sabbath School"
+    },
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:Sabbath School.xcodeproj",
+        "identifier" : "A66300000000000000000008",
+        "name" : "SabbathSchoolTests"
+      }
+    }
+  ],
+  "version" : 1
+}
