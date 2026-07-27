@@ -210,7 +210,7 @@ class InlineAudioPlaybackManager: ObservableObject {
                 var mergedUserInput: [AnyUserInput] = []
                 
                 for userInput in remoteUserInput {
-                    if let localUserInput = localUserInputForDocument.first(where: { $0.userInput.blockId == userInput.blockId && $0.userInput.inputType == userInput.inputType && ($0.userInput.timestamp > userInput.timestamp) }) {
+                    if let localUserInput = localUserInputForDocument.first(where: { $0.shouldBePreserved(over: userInput) }) {
                         mergedUserInput.append(localUserInput.userInput)
                     } else {
                         let _ = SyncManager.shared.saveLocalInput(documentIndex: documentId, userInput: userInput, syncStatus: true)

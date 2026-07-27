@@ -36,4 +36,19 @@ struct LocalUserInput: Codable {
         self.synced = synced
         self.userInput = userInput
     }
+
+    func shouldBePreserved(over remoteUserInput: AnyUserInput) -> Bool {
+        guard userInput.blockId == remoteUserInput.blockId,
+              userInput.inputType == remoteUserInput.inputType else {
+            return false
+        }
+
+        // A dirty local row is the only unacknowledged copy and must survive a fetch.
+        if synced == false {
+            return true
+        }
+
+        // Equality cannot prove that a second-resolution remote response is newer.
+        return userInput.timestampInMilliseconds >= remoteUserInput.timestampInMilliseconds
+    }
 }
