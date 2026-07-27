@@ -30,12 +30,100 @@ enum PDFAxiliryViewType {
     case aux
 }
 
-struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliaryViewControllerDelegate {
+private enum PDFAnnotationRestoreError: Error {
+    case missingDocumentProvider
+    case invalidPageIndex
+    case duplicatePageIndex
+    case invalidAnnotationEncoding
+    case mismatchedPageIndex
+    case annotationRemovalFailed
+    case annotationAdditionFailed
+    case rollbackFailed
+}
+
+private final class PDFAnnotationRestoreState {
+    private var acceptedSnapshots: [String: UserInputAnnotation] = [:]
+    private var dirtyPDFIds: Set<String> = []
+
+    func markDirty(pdfId: String) {
+        dirtyPDFIds.insert(pdfId)
+    }
+
+    func recordLocalSnapshot(_ snapshot: UserInputAnnotation) {
+        acceptedSnapshots[snapshot.pdfId] = snapshot
+        dirtyPDFIds.remove(snapshot.pdfId)
+    }
+
+    func recordRestoredSnapshot(_ snapshot: UserInputAnnotation) {
+        acceptedSnapshots[snapshot.pdfId] = snapshot
+    }
+
+    func shouldRestore(_ snapshot: UserInputAnnotation) -> Bool {
+        guard !dirtyPDFIds.contains(snapshot.pdfId) else {
+            return false
+        }
+
+        guard let acceptedSnapshot = acceptedSnapshots[snapshot.pdfId] else {
+            return true
+        }
+
+        // Timestamps have one-second precision. An equal version with different
+        // content cannot be ordered safely, so keep the last-known-good snapshot.
+        return snapshot.timestamp > acceptedSnapshot.timestamp
+    }
+
+    func candidates(
+        from documentUserInput: [AnyUserInput],
+        matchingPDFIds: Set<String>
+    ) -> [UserInputAnnotation] {
+        var candidatesByPDFId: [String: UserInputAnnotation] = [:]
+        var ambiguousPDFIds: Set<String> = []
+
+        for userInput in documentUserInput where userInput.inputType == .annotation {
+            guard let candidate = userInput.asType(UserInputAnnotation.self),
+                  matchingPDFIds.contains(candidate.pdfId) else {
+                continue
+            }
+
+            guard let existingCandidate = candidatesByPDFId[candidate.pdfId] else {
+                candidatesByPDFId[candidate.pdfId] = candidate
+                continue
+            }
+
+            if candidate.timestamp > existingCandidate.timestamp {
+                candidatesByPDFId[candidate.pdfId] = candidate
+                ambiguousPDFIds.remove(candidate.pdfId)
+            } else if candidate.timestamp == existingCandidate.timestamp,
+                      !Self.hasSamePayload(candidate, existingCandidate) {
+                ambiguousPDFIds.insert(candidate.pdfId)
+            }
+        }
+
+        return candidatesByPDFId.values
+            .filter { !ambiguousPDFIds.contains($0.pdfId) && shouldRestore($0) }
+            .sorted { $0.pdfId < $1.pdfId }
+    }
+
+    private static func hasSamePayload(
+        _ lhs: UserInputAnnotation,
+        _ rhs: UserInputAnnotation
+    ) -> Bool {
+        guard lhs.pdfId == rhs.pdfId,
+              lhs.data.count == rhs.data.count else {
+            return false
+        }
+
+        return zip(lhs.data, rhs.data).allSatisfy { lhsPage, rhsPage in
+            lhsPage.pageIndex == rhsPage.pageIndex &&
+            lhsPage.annotations == rhsPage.annotations
+        }
+    }
+}
+
+struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable {
     var pdfs: [PDFAux]
     var viewType: PDFAxiliryViewType = .aux
     var showNavigationBarButtons: Bool = true
-    
-    @State var tabbedPDFController: PDFAuxiliaryTabbedViewController? = nil
     
     @Binding var pdfTabbedViewController: PDFAuxiliaryTabbedViewController?
     
@@ -95,7 +183,7 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
         
         let pdfController = PDFAuxiliaryViewController(document: nil, configuration: pdfConfiguration)
         
-        pdfController.pdfAuxiliaryViewControllerDelegate = self
+        pdfController.pdfAuxiliaryViewControllerDelegate = context.coordinator
         pdfController.viewType = viewType
         pdfController.showNavigationBarButtons = showNavigationBarButtons
         
@@ -105,78 +193,19 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
 
         let tabbedPDFController = PDFAuxiliaryTabbedViewController(pdfViewController: pdfController)
         tabbedPDFController.documents = documents
+        context.coordinator.tabbedPDFController = tabbedPDFController
         
         DispatchQueue.main.async {
-            self.tabbedPDFController = tabbedPDFController
             self.pdfTabbedViewController = tabbedPDFController
-            self.loadUserInput(documentUserInput: viewModel.documentUserInput)            
+            context.coordinator.loadUserInput(documentUserInput: viewModel.documentUserInput)
         }
         
         return tabbedPDFController
     }
-    
-    func loadUserInput(documentUserInput: [AnyUserInput]) {
-        let userInput = documentUserInput.filter { $0.inputType == .annotation }
-        
-        if let documents = self.tabbedPDFController?.documents {
-            documents.forEach { document in
-                let allAnnotations = document.allAnnotations(of: .all)
-
-                for pageIndex in allAnnotations {
-                    document.remove(annotations: pageIndex.value, options: .none)
-                }
-            }
-        }
-        
-        userInput.forEach { userInput in
-            if let annotation = userInput.asType(UserInputAnnotation.self),
-               let pdfIndex = pdfs.firstIndex(where: { $0.id == annotation.pdfId }),
-               let document = self.tabbedPDFController?.documents[pdfIndex]
-            {
-                for pageAnnotations in annotation.data {
-
-                    guard let documentProvider = document.documentProviders.first else { continue }
-                    var annotations: [Annotation] = []
-
-                    for annotation in pageAnnotations.annotations {
-                        do {
-                            let annotation = try Annotation(fromInstantJSON: annotation.data(using: .utf8)!, documentProvider: documentProvider)
-                            annotations.append(annotation)
-                        } catch let error as NSError {
-                            print(error)
-                        }
-
-                    }
-                    document.add(annotations: annotations)
-                }
-            }
-        }
-    }
-    
-    func saveUserInput(for documentToBeSaved: Document) {
-        if let documents = self.tabbedPDFController?.documents {
-            for (index, document) in documents.enumerated() {
-                guard documentToBeSaved == document else { continue }
-                
-                let inkAnnotations = document.allAnnotations(of: .all)
-                
-                var allAnnotations: [PDFAuxAnnotations] = []
-                for pageIndex in inkAnnotations {
-                    var annotations: [String] = []
-                    for annotation in pageIndex.value {
-                        let data = try! annotation.generateInstantJSON(version: .v1)
-                        let jsonString = String(data: data, encoding: .utf8)
-                        annotations.append(jsonString!)
-                    }
-                    allAnnotations.append(PDFAuxAnnotations(pageIndex: Int(pageIndex.key.intValue), annotations: annotations))
-                }
-                
-                self.viewModel.saveBlockUserInput(documentId: self.viewModel.document?.id, blockId: self.pdfs[index].id, userInputType: .annotation, userInput: AnyUserInput(UserInputAnnotation(pdfId: self.pdfs[index].id, data: allAnnotations, inputType: .annotation, blockId: self.pdfs[index].id, timestamp: Int(Date().timeIntervalSince1970))))
-            }
-        }
-    }
 
     func updateUIViewController(_ uiViewController: PDFAuxiliaryTabbedViewController, context: Context) {
+        context.coordinator.parent = self
+        context.coordinator.tabbedPDFController = uiViewController
         uiViewController.tabbedBar.frame.origin = CGPoint(x: 0, y: self.viewType == .aux ? 0 : 90)
     }
     
@@ -184,21 +213,292 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
         Coordinator(self, viewModel: viewModel)
     }
     
-    class Coordinator: NSObject, PDFViewControllerDelegate {
+    class Coordinator: NSObject, PDFViewControllerDelegate, PDFAuxiliaryViewControllerDelegate {
         var parent: PDFAuxiliaryViewRepresentable
-        var viewModel: DocumentViewModel
+        weak var tabbedPDFController: PDFAuxiliaryTabbedViewController?
+
+        private let viewModel: DocumentViewModel
+        private let restoreState = PDFAnnotationRestoreState()
         private var cancellable: AnyCancellable?
+        private var annotationObservers: [NSObjectProtocol] = []
+        private var isApplyingRestore = false
         
         init(_ parent: PDFAuxiliaryViewRepresentable, viewModel: DocumentViewModel) {
             self.parent = parent
             self.viewModel = viewModel
             super.init()
             
-            DispatchQueue.main.async { [self] in
-                cancellable = viewModel.$documentUserInput.sink { newValue in
-                    self.parent.loadUserInput(documentUserInput: newValue)
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+
+                self.cancellable = viewModel.$documentUserInput.sink { [weak self] newValue in
+                    self?.loadUserInput(documentUserInput: newValue)
+                }
+                self.startObservingAnnotationChanges()
+            }
+        }
+
+        func loadUserInput(documentUserInput: [AnyUserInput]) {
+            let candidates = restoreState.candidates(
+                from: documentUserInput,
+                matchingPDFIds: Set(parent.pdfs.map(\.id))
+            )
+
+            for candidate in candidates {
+                guard let target = restoreTarget(for: candidate.pdfId) else {
+                    continue
+                }
+
+                do {
+                    let replacement = try stageReplacement(for: candidate, in: target.document)
+                    try replaceAnnotations(in: target.document, with: replacement)
+                    restoreState.recordRestoredSnapshot(candidate)
+                } catch {
+                    // Keep the displayed and last-known-good annotations intact.
+                    print("Ignoring invalid PDF annotation snapshot for \(candidate.pdfId): \(error)")
                 }
             }
+        }
+
+        private func restoreTarget(for pdfId: String) -> (document: Document, index: Int)? {
+            guard let documents = tabbedPDFController?.documents else {
+                return nil
+            }
+
+            let matchingIndices = parent.pdfs.indices.filter { parent.pdfs[$0].id == pdfId }
+            guard matchingIndices.count == 1,
+                  let index = matchingIndices.first,
+                  documents.indices.contains(index) else {
+                return nil
+            }
+
+            return (documents[index], index)
+        }
+
+        private func stageReplacement(
+            for snapshot: UserInputAnnotation,
+            in document: Document
+        ) throws -> [Annotation] {
+            guard let documentProvider = document.documentProviders.first else {
+                throw PDFAnnotationRestoreError.missingDocumentProvider
+            }
+
+            var replacement: [Annotation] = []
+            var seenPageIndices: Set<Int> = []
+            let pageCount = Int(document.pageCount)
+
+            for pageSnapshot in snapshot.data {
+                guard pageSnapshot.pageIndex >= 0,
+                      pageCount == 0 || pageSnapshot.pageIndex < pageCount else {
+                    throw PDFAnnotationRestoreError.invalidPageIndex
+                }
+                guard seenPageIndices.insert(pageSnapshot.pageIndex).inserted else {
+                    throw PDFAnnotationRestoreError.duplicatePageIndex
+                }
+
+                for serializedAnnotation in pageSnapshot.annotations {
+                    guard let annotationData = serializedAnnotation.data(using: .utf8) else {
+                        throw PDFAnnotationRestoreError.invalidAnnotationEncoding
+                    }
+
+                    let decodedAnnotation = try Annotation(
+                        fromInstantJSON: annotationData,
+                        documentProvider: documentProvider
+                    )
+                    guard Int(decodedAnnotation.pageIndex) == pageSnapshot.pageIndex else {
+                        throw PDFAnnotationRestoreError.mismatchedPageIndex
+                    }
+
+                    replacement.append(decodedAnnotation)
+                }
+            }
+
+            return replacement
+        }
+
+        private func replaceAnnotations(
+            in document: Document,
+            with replacement: [Annotation]
+        ) throws {
+            // Instant JSON parsing above is deliberately side-effect free. Keep the
+            // remove/add window as small as the SDK permits and suppress our dirty guard.
+            isApplyingRestore = true
+            defer { isApplyingRestore = false }
+
+            let currentAnnotations = document.allAnnotations(of: .all).values.flatMap { $0 }
+            if !currentAnnotations.isEmpty {
+                guard document.remove(annotations: currentAnnotations, options: .none) else {
+                    guard restoreOriginalAnnotations(currentAnnotations, in: document) else {
+                        throw PDFAnnotationRestoreError.rollbackFailed
+                    }
+                    throw PDFAnnotationRestoreError.annotationRemovalFailed
+                }
+            }
+            if !replacement.isEmpty {
+                guard document.add(annotations: replacement, options: nil) else {
+                    let removedPartialReplacement = removeAttachedAnnotations(
+                        from: replacement,
+                        in: document
+                    )
+                    let restoredOriginal = restoreOriginalAnnotations(
+                        currentAnnotations,
+                        in: document
+                    )
+                    guard removedPartialReplacement, restoredOriginal else {
+                        throw PDFAnnotationRestoreError.rollbackFailed
+                    }
+                    throw PDFAnnotationRestoreError.annotationAdditionFailed
+                }
+            }
+        }
+
+        private func restoreOriginalAnnotations(
+            _ originalAnnotations: [Annotation],
+            in document: Document
+        ) -> Bool {
+            let attachedAnnotationIds = Set(
+                document.allAnnotations(of: .all).values
+                    .flatMap { $0 }
+                    .map { ObjectIdentifier($0) }
+            )
+            let missingAnnotations = originalAnnotations.filter {
+                !attachedAnnotationIds.contains(ObjectIdentifier($0))
+            }
+
+            return missingAnnotations.isEmpty ||
+                document.add(annotations: missingAnnotations, options: nil)
+        }
+
+        private func removeAttachedAnnotations(
+            from candidateAnnotations: [Annotation],
+            in document: Document
+        ) -> Bool {
+            let candidateIds = Set(candidateAnnotations.map { ObjectIdentifier($0) })
+            let attachedCandidates = document.allAnnotations(of: .all).values
+                .flatMap { $0 }
+                .filter { candidateIds.contains(ObjectIdentifier($0)) }
+
+            return attachedCandidates.isEmpty ||
+                document.remove(annotations: attachedCandidates, options: .none)
+        }
+
+        func saveUserInput(for documentToBeSaved: Document) {
+            guard let documentId = viewModel.document?.id,
+                  let documents = tabbedPDFController?.documents,
+                  let index = documents.firstIndex(where: { $0 == documentToBeSaved }),
+                  parent.pdfs.indices.contains(index),
+                  let snapshot = makeUserInputSnapshot(
+                    for: documentToBeSaved,
+                    pdfId: parent.pdfs[index].id
+                  ) else {
+                return
+            }
+
+            // Record the exact in-memory snapshot before @Published emits it back to
+            // this coordinator, avoiding a destructive self-restore during autosave.
+            restoreState.recordLocalSnapshot(snapshot)
+            viewModel.saveBlockUserInput(
+                documentId: documentId,
+                blockId: snapshot.blockId,
+                userInputType: .annotation,
+                userInput: AnyUserInput(snapshot)
+            )
+        }
+
+        private func makeUserInputSnapshot(
+            for document: Document,
+            pdfId: String
+        ) -> UserInputAnnotation? {
+            let annotationsByPage = document.allAnnotations(of: .all)
+            var pageSnapshots: [PDFAuxAnnotations] = []
+
+            for pageIndex in annotationsByPage.keys.sorted(by: { $0.intValue < $1.intValue }) {
+                guard let annotations = annotationsByPage[pageIndex] else {
+                    continue
+                }
+
+                var serializedAnnotations: [String] = []
+                for annotation in annotations {
+                    do {
+                        let data = try annotation.generateInstantJSON(version: .v1)
+                        guard let serializedAnnotation = String(data: data, encoding: .utf8) else {
+                            print("Unable to encode PDF annotation snapshot for \(pdfId)")
+                            return nil
+                        }
+                        serializedAnnotations.append(serializedAnnotation)
+                    } catch {
+                        print("Unable to serialize PDF annotation snapshot for \(pdfId): \(error)")
+                        return nil
+                    }
+                }
+
+                pageSnapshots.append(PDFAuxAnnotations(
+                    pageIndex: Int(pageIndex.intValue),
+                    annotations: serializedAnnotations
+                ))
+            }
+
+            return UserInputAnnotation(
+                pdfId: pdfId,
+                data: pageSnapshots,
+                inputType: .annotation,
+                blockId: pdfId,
+                timestamp: Int(Date().timeIntervalSince1970)
+            )
+        }
+
+        private func startObservingAnnotationChanges() {
+            guard annotationObservers.isEmpty else { return }
+
+            let names: [NSNotification.Name] = [
+                .PSPDFAnnotationsAdded,
+                .PSPDFAnnotationsRemoved,
+                .PSPDFAnnotationChanged
+            ]
+            annotationObservers = names.map { name in
+                NotificationCenter.default.addObserver(
+                    forName: name,
+                    object: nil,
+                    queue: .main
+                ) { [weak self] notification in
+                    self?.annotationDidChange(notification)
+                }
+            }
+        }
+
+        private func annotationDidChange(_ notification: Notification) {
+            guard !isApplyingRestore else { return }
+
+            let annotations: [Annotation]
+            if let changedAnnotation = notification.object as? Annotation {
+                annotations = [changedAnnotation]
+            } else if let changedAnnotations = notification.object as? NSArray {
+                annotations = changedAnnotations.compactMap { $0 as? Annotation }
+            } else {
+                return
+            }
+
+            for annotation in annotations {
+                if let pdfId = pdfId(for: annotation) {
+                    restoreState.markDirty(pdfId: pdfId)
+                }
+            }
+        }
+
+        private func pdfId(for annotation: Annotation) -> String? {
+            guard let documents = tabbedPDFController?.documents else {
+                return nil
+            }
+            let documentProvider = annotation.documentProvider
+
+            for (index, document) in documents.enumerated()
+                where parent.pdfs.indices.contains(index) {
+                if document.documentProviders.contains(where: { $0 === documentProvider }) {
+                    return parent.pdfs[index].id
+                }
+            }
+
+            return nil
         }
         
         func pdfViewController(_ pdfController: PDFViewController, didFinishRenderTaskFor: PDFPageView) {
@@ -226,13 +526,14 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
         }
         
         func fixTabBar () {
-            if let t = parent.tabbedPDFController {
+            if let t = tabbedPDFController {
                 t.tabbedBar.frame.origin = CGPoint(x: 0, y: parent.viewType == .segment ? parent.getNavbarMaxY() : 0)
             }
         }
         
         deinit {
             cancellable?.cancel()
+            annotationObservers.forEach { NotificationCenter.default.removeObserver($0) }
         }
     }
 }
