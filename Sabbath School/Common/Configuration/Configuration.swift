@@ -77,7 +77,7 @@ class Configuration: NSObject {
         }
     }
     
-    static func clearAllCache() {
+    static func clearDownloadedContent() {
         UIApplication.shared.shortcutItems = []
         Spotlight.clearSpotlight()
         
@@ -89,6 +89,15 @@ class Configuration: NSObject {
         }
 
         DispatchQueue.main.async {
+            DownloadManager.clearInMemoryDownloads()
+            Downloader.removeAllDownloadedFiles()
+        }
+    }
+
+    static func clearAllCache() {
+        clearDownloadedContent()
+
+        DispatchQueue.main.async {
             ResourceInfoViewModel.clearAllCache()
             ResourceFeedViewModel.clearAllCache()
             AuthorFeedViewModel.clearAllCache()
@@ -96,8 +105,6 @@ class Configuration: NSObject {
             DocumentViewModel.clearAllCache()
             SyncManager.clearAllCache()
             DownloadManager.clearAllCache()
-            
-            Downloader.removeAllDownloadedFiles()
         }
     }
     
