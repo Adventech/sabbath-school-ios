@@ -35,10 +35,11 @@ struct ResourceCompletionView: View {
     @EnvironmentObject var viewModel: DocumentViewModel
     @EnvironmentObject var paragraphViewModel: ParagraphViewModel
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.scenePhase) private var scenePhase
     
     @State var tipShown: Bool = false
     
-    @State private var typingTimer: Timer? = nil
+    @StateObject private var pendingSave = PendingUserInputSave()
     let delay: TimeInterval = 2.0
     
     @FocusState private var isFocused: Bool
@@ -62,6 +63,7 @@ struct ResourceCompletionView: View {
         VStack(spacing: 0) {
             HStack {
                 Button(action: {
+                    flushPendingSave()
                     SwiftEntryKit.dismiss()
                 }) {
                     Image(systemName: "xmark")
@@ -102,7 +104,7 @@ struct ResourceCompletionView: View {
                 
                 TextEditor(text: $comment)
                     .onChange(of: comment) { newValue in
-                        saveCompletionWithDelay()
+                        scheduleCompletionSave(newValue)
                     }
                     .font(Font.custom("Lato-Regular", size: BlockStyleTemplate().textSizePoints(.base)))
                     .padding(.horizontal, 20)
@@ -121,8 +123,9 @@ struct ResourceCompletionView: View {
                     }
                     .overlay(alignment: .bottomTrailing) {
                         Button (action: {
-                            typingTimer?.invalidate()
-                            saveCompletion()
+                            if !flushPendingSave() {
+                                saveCompletion(comment)
+                            }
                             SwiftEntryKit.dismiss()
                         }) {
                             Image(systemName: "paperplane.fill")
@@ -138,6 +141,14 @@ struct ResourceCompletionView: View {
         }
         .background(themeManager.backgroundColor)
         .cornerRadius(6)
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase != .active {
+                flushPendingSave()
+            }
+        }
+        .onDisappear {
+            flushPendingSave()
+        }
     }
     
     func limitText(_ upper: Int) {
@@ -146,25 +157,85 @@ struct ResourceCompletionView: View {
         }
     }
     
-    func saveCompletionWithDelay() {
-        typingTimer?.invalidate()
-        typingTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { _ in
-            DispatchQueue.main.async {
-                self.saveCompletion()
-            }
+    func scheduleCompletionSave(_ comment: String) {
+        let completionId = completionId
+        let blockId = blockId
+        let sourceBlockId = block.id
+        let paragraphViewModel = paragraphViewModel
+        let documentViewModel = viewModel
+        let documentId = documentViewModel.document?.id
+
+        pendingSave.schedule(after: delay) {
+            Self.persistCompletion(
+                comment,
+                completionId: completionId,
+                blockId: blockId,
+                sourceBlockId: sourceBlockId,
+                documentId: documentId,
+                paragraphViewModel: paragraphViewModel,
+                viewModel: documentViewModel
+            )
         }
     }
+
+    @discardableResult
+    func flushPendingSave() -> Bool {
+        pendingSave.flush()
+    }
+
+    func saveCompletion(_ comment: String) {
+        Self.persistCompletion(
+            comment,
+            completionId: completionId,
+            blockId: blockId,
+            sourceBlockId: block.id,
+            documentId: viewModel.document?.id,
+            paragraphViewModel: paragraphViewModel,
+            viewModel: viewModel
+        )
+    }
     
-    func saveCompletion() {
+    private static func persistCompletion(
+        _ comment: String,
+        completionId: String,
+        blockId: String?,
+        sourceBlockId: String,
+        documentId: String?,
+        paragraphViewModel: ParagraphViewModel,
+        viewModel: DocumentViewModel
+    ) {
         if blockId == nil {
-            self.paragraphViewModel.setCompletion(completionId: completionId, completionComment: comment)
+            var completions = paragraphViewModel.completion
+            completions[completionId] = comment
+
+            // The local persistence write below owns this update. Suppress the paragraph
+            // observer's duplicate save when it renders the same value.
+            paragraphViewModel.savingMode = false
+            paragraphViewModel.completion = completions
+
+            if let documentId = documentId {
+                let userInput = AnyUserInput(UserInputCompletion(
+                    blockId: sourceBlockId,
+                    inputType: .completion,
+                    completion: completions,
+                    timestamp: Int(Date().timeIntervalSince1970)
+                ))
+                viewModel.saveBlockUserInput(
+                    documentId: documentId,
+                    blockId: sourceBlockId,
+                    userInputType: .completion,
+                    userInput: userInput
+                )
+            }
+
+            return
         }
         
         // Currently ugly, but this is the case where the comment is being made upon the paragraph that is shown in the modal
-        if let blockId = blockId, viewModel.document != nil {
+        if let blockId = blockId, let documentId = documentId {
             let userInput = AnyUserInput(UserInputCompletion(blockId: blockId, inputType: .comment, completion: [completionId: comment], timestamp: Int(Date().timeIntervalSince1970)))
             viewModel.saveBlockUserInput(
-                documentId: viewModel.document?.id,
+                documentId: documentId,
                 blockId: blockId,
                 userInputType: .completion,
                 userInput: userInput)

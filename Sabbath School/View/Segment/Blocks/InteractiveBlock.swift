@@ -23,6 +23,41 @@
 import Foundation
 import SwiftUI
 
+final class PendingUserInputSave: ObservableObject {
+    private var timer: Timer?
+    private var pendingSave: (() -> Void)?
+
+    var hasPendingSave: Bool {
+        pendingSave != nil
+    }
+
+    func schedule(after delay: TimeInterval, save: @escaping () -> Void) {
+        timer?.invalidate()
+        pendingSave = save
+        timer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { [weak self] _ in
+            self?.flush()
+        }
+    }
+
+    @discardableResult
+    func flush() -> Bool {
+        timer?.invalidate()
+        timer = nil
+
+        guard let save = pendingSave else {
+            return false
+        }
+
+        pendingSave = nil
+        save()
+        return true
+    }
+
+    deinit {
+        timer?.invalidate()
+    }
+}
+
 protocol InteractiveBlock: View where Body: View {
     var viewModel: DocumentViewModel { get }
     func loadInputData()

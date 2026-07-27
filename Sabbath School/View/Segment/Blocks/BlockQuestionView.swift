@@ -25,12 +25,12 @@ import SwiftUI
 struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
     var block: Question
     @Environment(\.defaultBlockStyles) var defaultStyles: Style
+    @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject var themeManager: ThemeManager
     @EnvironmentObject var viewModel: DocumentViewModel
     
     @State var answer: String = ""
-    @State var typingStarted: Bool = false
-    @State private var typingTimer: Timer? = nil
+    @StateObject private var pendingSave = PendingUserInputSave()
     let delay: TimeInterval = 1.0
     
     var body: some View {
@@ -60,8 +60,7 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
                     
                     TextEditor(text: $answer)
                         .onChange(of: answer) { newValue in
-                            typingStarted = true
-                            resetTypingTimer()
+                            scheduleAnswerSave(newValue)
                         }
                         .frame(minHeight: 100, alignment: .leading)
                         .frame(maxHeight: 600)
@@ -100,20 +99,47 @@ struct BlockQuestionView: StyledBlock, InteractiveBlock, View {
         .onChange(of: viewModel.documentUserInput) { newValue in
             loadInputData()
         }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase != .active {
+                flushPendingSave()
+            }
+        }
+        .onDisappear {
+            flushPendingSave()
+        }
         .shadow(color: AppStyle.Block.genericBackgroundColorForInteractiveBlock(theme: themeManager.currentTheme), radius: 5)
     }
     
-    func resetTypingTimer() {
-        if !typingStarted { return }
-        typingTimer?.invalidate()
-        typingTimer = Timer.scheduledTimer(withTimeInterval: delay, repeats: false) { _ in
-            DispatchQueue.main.async {
-                self.saveUserInput(AnyUserInput(UserInputQuestion(blockId: block.id, inputType: .question, answer: self.answer, timestamp: Int(Date().timeIntervalSince1970))))
-            }
+    func scheduleAnswerSave(_ answer: String) {
+        let documentId = viewModel.document?.id
+        let blockId = block.id
+        let documentViewModel = viewModel
+
+        pendingSave.schedule(after: delay) {
+            let userInput = AnyUserInput(UserInputQuestion(
+                blockId: blockId,
+                inputType: .question,
+                answer: answer,
+                timestamp: Int(Date().timeIntervalSince1970)
+            ))
+            documentViewModel.saveBlockUserInput(
+                documentId: documentId,
+                blockId: blockId,
+                userInputType: .question,
+                userInput: userInput
+            )
         }
+    }
+
+    func flushPendingSave() {
+        pendingSave.flush()
     }
     
     internal func loadInputData() {
+        guard !pendingSave.hasPendingSave else {
+            return
+        }
+
         if let newAnswer = getUserInputForBlock(blockId: block.id, userInput: nil)?.asType(UserInputQuestion.self)?.answer {
             if newAnswer != answer {
                 self.answer = newAnswer
