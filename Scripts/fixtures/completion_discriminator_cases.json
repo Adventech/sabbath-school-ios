@@ -1,0 +1,25 @@
+{
+  "fixtureVersion": 1,
+  "legacyCompletion": {
+    "blockId": "synthetic-modal-block",
+    "inputType": "comment",
+    "completion": {
+      "blank-1": "synthetic answer"
+    },
+    "timestamp": 1700000000
+  },
+  "currentCompletion": {
+    "blockId": "synthetic-modal-block",
+    "inputType": "completion",
+    "completion": {
+      "blank-1": "synthetic answer"
+    },
+    "timestamp": 1700000000
+  },
+  "currentComment": {
+    "blockId": "synthetic-modal-block",
+    "inputType": "comment",
+    "comment": "synthetic comment",
+    "timestamp": 1700000001
+  }
+}

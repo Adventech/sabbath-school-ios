@@ -79,6 +79,8 @@ struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
         case blockId
         case inputType
         case timestamp
+        case comment
+        case completion
     }
     
     func asType<T: UserInputProtocol>(_ type: T.Type) -> T? {
@@ -95,7 +97,19 @@ struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
         case .checklist:
             _base = try UserInputChecklist(from: decoder)
         case .comment:
-            _base = try UserInputComment(from: decoder)
+            if container.contains(.completion) && !container.contains(.comment) {
+                // Nested completion modals in older iOS builds used the
+                // comment discriminator. Normalize that unambiguous v0 shape.
+                let legacyCompletion = try UserInputCompletion(from: decoder)
+                _base = UserInputCompletion(
+                    blockId: legacyCompletion.blockId,
+                    inputType: .completion,
+                    completion: legacyCompletion.completion,
+                    timestamp: legacyCompletion.timestamp
+                )
+            } else {
+                _base = try UserInputComment(from: decoder)
+            }
         case .completion:
             _base = try UserInputCompletion(from: decoder)
         case .highlights:
