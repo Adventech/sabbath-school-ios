@@ -51,6 +51,8 @@ enum UserInputType: String, Codable {
 }
 
 struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
+    private static let millisecondTimestampThreshold: Int64 = 10_000_000_000
+
     private let _base: any UserInputProtocol
     
     var id: String = UUID().uuidString
@@ -65,6 +67,15 @@ struct AnyUserInput: UserInputProtocol, Decodable, Hashable {
     
     var timestamp: Int {
         return _base.timestamp
+    }
+
+    var timestampInMilliseconds: Int64 {
+        let timestamp = Int64(self.timestamp)
+        // Existing iOS records use epoch seconds while other clients use milliseconds.
+        if timestamp >= 0 && timestamp < Self.millisecondTimestampThreshold {
+            return timestamp * 1000
+        }
+        return timestamp
     }
     
     init(_ base: any UserInputProtocol) {
