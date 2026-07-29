@@ -48,6 +48,7 @@ class PageSnapshot:
 @dataclasses.dataclass(frozen=True)
 class Snapshot:
     pdf_id: str
+    block_id: str
     timestamp: int
     pages: tuple[PageSnapshot, ...]
 
@@ -134,6 +135,7 @@ def annotation(annotation_id: str, page_index: int = 0) -> str:
 def snapshot(pdf_id: str, timestamp: int, *annotation_ids: str) -> Snapshot:
     return Snapshot(
         pdf_id=pdf_id,
+        block_id=pdf_id,
         timestamp=timestamp,
         pages=(PageSnapshot(0, tuple(annotation(value) for value in annotation_ids)),),
     )
@@ -158,7 +160,7 @@ class RestoreContractTests(unittest.TestCase):
 
     def test_malformed_snapshot_preserves_last_known_good(self) -> None:
         model = RestoreModel({"pdf-a": [{"id": "visible"}]})
-        malformed = Snapshot("pdf-a", 3, (PageSnapshot(0, ("not-json",)),))
+        malformed = Snapshot("pdf-a", "pdf-a", 3, (PageSnapshot(0, ("not-json",)),))
 
         model.restore([malformed])
 
@@ -167,7 +169,7 @@ class RestoreContractTests(unittest.TestCase):
 
     def test_one_malformed_pdf_does_not_block_an_independent_valid_pdf(self) -> None:
         model = RestoreModel({"pdf-a": [{"id": "old-a"}], "pdf-b": [{"id": "old-b"}]})
-        malformed = Snapshot("pdf-a", 3, (PageSnapshot(0, ("not-json",)),))
+        malformed = Snapshot("pdf-a", "pdf-a", 3, (PageSnapshot(0, ("not-json",)),))
 
         model.restore([malformed, snapshot("pdf-b", 3, "new-b")])
 
@@ -195,7 +197,7 @@ class RestoreContractTests(unittest.TestCase):
     def test_explicit_empty_snapshot_clears_only_matching_pdf(self) -> None:
         model = RestoreModel({"pdf-a": [{"id": "a"}], "pdf-b": [{"id": "b"}]})
 
-        model.restore([Snapshot("pdf-a", 2, ())])
+        model.restore([Snapshot("pdf-a", "pdf-a", 2, ())])
 
         self.assertEqual(model.documents["pdf-a"], [])
         self.assertEqual(model.documents["pdf-b"], [{"id": "b"}])
@@ -203,16 +205,37 @@ class RestoreContractTests(unittest.TestCase):
     def test_duplicate_page_and_page_mismatch_are_rejected_before_swap(self) -> None:
         duplicate_page = Snapshot(
             "pdf-a",
+            "pdf-a",
             2,
             (PageSnapshot(0, (annotation("one"),)), PageSnapshot(0, (annotation("two"),))),
         )
-        mismatch = Snapshot("pdf-a", 3, (PageSnapshot(1, (annotation("wrong", 0),)),))
+        mismatch = Snapshot(
+            "pdf-a",
+            "pdf-a",
+            3,
+            (PageSnapshot(1, (annotation("wrong", 0),)),),
+        )
 
         for malformed in (duplicate_page, mismatch):
             with self.subTest(malformed=malformed):
                 model = RestoreModel({"pdf-a": [{"id": "visible"}]})
                 model.restore([malformed])
                 self.assertEqual(model.documents["pdf-a"], [{"id": "visible"}])
+
+    def test_cross_id_snapshot_is_rejected_without_mutation(self) -> None:
+        model = RestoreModel({"pdf-a": [{"id": "visible-a"}], "pdf-b": [{"id": "visible-b"}]})
+        cross_id = Snapshot(
+            pdf_id="pdf-a",
+            block_id="pdf-b",
+            timestamp=4,
+            pages=(PageSnapshot(0, (annotation("wrong-document"),)),),
+        )
+
+        model.restore([cross_id])
+
+        self.assertEqual(model.documents["pdf-a"], [{"id": "visible-a"}])
+        self.assertEqual(model.documents["pdf-b"], [{"id": "visible-b"}])
+        self.assertNotIn("pdf-a", model.accepted)
 
 
 class ProductionSourceTests(unittest.TestCase):
@@ -264,6 +287,9 @@ class ProductionSourceTests(unittest.TestCase):
     def test_global_annotation_wipe_pattern_is_removed(self) -> None:
         self.assertNotIn("documents.forEach { document in", self.source)
         self.assertIn("guard let target = restoreTarget(for: candidate.pdfId)", self.source)
+
+    def test_restore_rejects_cross_id_annotation_records(self) -> None:
+        self.assertIn("candidate.blockId == candidate.pdfId", self.source)
 
 
 if __name__ == "__main__":
