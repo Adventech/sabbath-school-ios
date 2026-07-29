@@ -162,7 +162,7 @@ struct ResourceCompletionView: View {
         
         // Currently ugly, but this is the case where the comment is being made upon the paragraph that is shown in the modal
         if let blockId = blockId, viewModel.document != nil {
-            let userInput = AnyUserInput(UserInputCompletion(blockId: blockId, inputType: .comment, completion: [completionId: comment], timestamp: Int(Date().timeIntervalSince1970)))
+            let userInput = AnyUserInput(UserInputCompletion(blockId: blockId, inputType: .completion, completion: [completionId: comment], timestamp: Int(Date().timeIntervalSince1970)))
             viewModel.saveBlockUserInput(
                 documentId: viewModel.document?.id,
                 blockId: blockId,
