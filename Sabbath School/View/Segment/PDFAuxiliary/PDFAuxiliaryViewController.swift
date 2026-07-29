@@ -22,12 +22,12 @@
 
 import PSPDFKitUI
 
-protocol PDFAuxiliaryViewControllerDelegate {
+protocol PDFAuxiliaryViewControllerDelegate: AnyObject {
     func saveUserInput(for document: Document)
 }
 
 class PDFAuxiliaryViewController: PDFViewController {
-    var pdfAuxiliaryViewControllerDelegate: PDFAuxiliaryViewControllerDelegate?
+    weak var pdfAuxiliaryViewControllerDelegate: PDFAuxiliaryViewControllerDelegate?
     var viewType: PDFAxiliryViewType = .aux
     var showNavigationBarButtons: Bool = false
     
