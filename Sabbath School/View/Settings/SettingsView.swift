@@ -109,7 +109,7 @@ struct SettingsView: View {
                             title: Text("Remove all downloads".localized()),
                             message: Text("By removing all downloads you will lose all the lessons content currently saved offline. Are you sure you want to proceed?".localized()),
                             primaryButton: .destructive(Text("Yes".localized())) {
-                                Configuration.clearAllCache()
+                                Configuration.clearDownloadedContent()
                             },
                             secondaryButton: .cancel()
                         )

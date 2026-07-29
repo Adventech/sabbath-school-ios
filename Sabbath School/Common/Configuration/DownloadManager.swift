@@ -394,10 +394,14 @@ class DownloadManager: ObservableObject {
         }
     }
     
+    public static func clearInMemoryDownloads() {
+        DownloadManager.shared.downloadItems = [:]
+        DownloadManager.shared.downloadKeys = []
+    }
+
     public static func clearAllCache() {
         try? DownloadManager.downloadManagerStorage?.removeAll()
         try? DownloadManager.downloadManagerKeys?.removeAll()
-        DownloadManager.shared.downloadItems = [:]
-        DownloadManager.shared.downloadKeys = []
+        clearInMemoryDownloads()
     }
 }
