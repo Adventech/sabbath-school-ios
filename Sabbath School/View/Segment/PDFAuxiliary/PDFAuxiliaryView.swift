@@ -81,6 +81,7 @@ private final class PDFAnnotationRestoreState {
 
         for userInput in documentUserInput where userInput.inputType == .annotation {
             guard let candidate = userInput.asType(UserInputAnnotation.self),
+                  candidate.blockId == candidate.pdfId,
                   matchingPDFIds.contains(candidate.pdfId) else {
                 continue
             }

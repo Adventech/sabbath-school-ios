@@ -74,7 +74,11 @@ class RestoreModel:
         ambiguous: set[str] = set()
 
         for value in inputs:
-            if not isinstance(value, Snapshot) or value.pdf_id not in self.documents:
+            if (
+                not isinstance(value, Snapshot)
+                or value.block_id != value.pdf_id
+                or value.pdf_id not in self.documents
+            ):
                 continue
 
             existing = candidates.get(value.pdf_id)
