@@ -131,6 +131,7 @@ public struct FullScreenImageViewer: View {
                 .font(.system(size: 24))
                 .padding()
         }
+        .modifier(FloatingControlButtonStyle())
     }
     
     private var downloadButton: some View {
@@ -140,6 +141,7 @@ public struct FullScreenImageViewer: View {
                 .font(.system(size: 24))
                 .padding()
         }
+        .modifier(FloatingControlButtonStyle())
     }
     
     private var downloadSuccessView: some View {

@@ -250,13 +250,18 @@ struct PDFAuxiliaryView: View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
-           Image(systemName: "arrow.backward")
-               .renderingMode(.original)
-               .foregroundColor(.black | .white)
-               .aspectRatio(contentMode: .fit)
+            if #available(iOS 26.0, *) {
+                Image(systemName: "chevron.backward")
+                    .imageScale(.medium)
+            } else {
+                Image(systemName: "arrow.backward")
+                    .renderingMode(.original)
+                    .foregroundColor(.black | .white)
+                    .aspectRatio(contentMode: .fit)
+            }
         }
     }
-    
+
     var body: some View {
         PDFAuxiliaryViewRepresentable(
             pdfs: pdfs,
@@ -265,7 +270,11 @@ struct PDFAuxiliaryView: View {
             pdfTabbedViewController: $pdfTabbedViewController
         )
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: btnBack)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                btnBack
+            }
+        }
         .toolbar {
             ToolbarItem {
                 Button(action: {

@@ -36,15 +36,20 @@ struct AuthorFeedView: View {
     var btnBack: some View {Button(action: {
         self.presentationMode.wrappedValue.dismiss()
        }) {
-           Image(systemName: showNavigationBar ? "arrow.backward" : "arrow.backward.circle.fill")
-               .renderingMode(.original)
-               .foregroundColor(showNavigationBar ? (colorScheme == .dark ? .white : .black) : Color(hex: viewModel.author?.primaryColorDark ?? "#000000"))
-               .aspectRatio(contentMode: .fit)
-               .id(showNavigationBar)
-               .transition(.opacity.animation(.easeInOut))
-       }
+            if #available(iOS 26.0, *) {
+                Image(systemName: "chevron.backward")
+                    .imageScale(.medium)
+            } else {
+                Image(systemName: showNavigationBar ? "arrow.backward" : "arrow.backward.circle.fill")
+                    .renderingMode(.original)
+                    .foregroundColor(showNavigationBar ? (colorScheme == .dark ? .white : .black) : Color(hex: viewModel.author?.primaryColorDark ?? "#000000"))
+                    .aspectRatio(contentMode: .fit)
+                    .id(showNavigationBar)
+                    .transition(.opacity.animation(.easeInOut))
+            }
+        }
     }
-    
+
     private enum CoordinateSpaces {
         case scrollView
     }
@@ -181,7 +186,11 @@ struct AuthorFeedView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(false)
-        .navigationBarItems(leading: btnBack)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                btnBack
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(showNavigationBar ? .visible : .hidden, for: .navigationBar)
         .toolbarColorScheme(colorScheme == .dark ? .dark : (showNavigationBar ? .light : .dark), for: .navigationBar)

@@ -36,11 +36,12 @@ extension DocumentView {
                         Button {
                             showAudioAux = true
                         } label: {
-                            Image(systemName: "headphones")
-                                    .resizable()
-                                    .frame(width: 18, height: 18)
-                                    .padding(7)
-                                    .foregroundColor(resolvedForegroundColor())
+                            SystemToolbarIcon(
+                                systemName: "headphones",
+                                legacySize: CGSize(width: 18, height: 18),
+                                legacyPadding: 7,
+                                legacyColor: resolvedForegroundColor()
+                            )
                         }
                     }
                     
@@ -48,12 +49,12 @@ extension DocumentView {
                         Button {
                             showVideoAux = true
                         } label: {
-                            Image(systemName: "play.tv")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 20, height: 20)
-                                    .padding(4)
-                                    .foregroundColor(resolvedForegroundColor())
+                            SystemToolbarIcon(
+                                systemName: "play.tv",
+                                legacySize: CGSize(width: 20, height: 20),
+                                legacyPadding: 4,
+                                legacyColor: resolvedForegroundColor()
+                            )
                         }
                     }
                     
@@ -112,14 +113,14 @@ extension DocumentView {
                                 }
                             }
                         } label : {
-                            Image(systemName: "ellipsis")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 17, height: 17)
-                                    .padding(7)
-                                    .id(documentViewOperator.shouldShowNavigationBar)
-                                    .foregroundColor(resolvedForegroundColor())
-                                    .transition(.opacity.animation(.easeInOut))
+                            SystemToolbarIcon(
+                                systemName: "ellipsis",
+                                legacySize: CGSize(width: 17, height: 17),
+                                legacyPadding: 7,
+                                legacyColor: resolvedForegroundColor()
+                            )
+                            .id(documentViewOperator.shouldShowNavigationBar)
+                            .transition(.opacity.animation(.easeInOut))
                         }.alwaysPopover(isPresented: $showThemeAux) {
                             ThemeAuxiliaryView().environmentObject(themeManager)
                         }

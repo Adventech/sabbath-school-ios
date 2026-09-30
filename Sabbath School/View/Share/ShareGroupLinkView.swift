@@ -109,6 +109,7 @@ struct ShareGroupLinkView: View {
             ) {
                 ShareLabel(shareText: shareText, featuredColor: featuredColor)
             }
+            .modifier(ShareActionButtonStyle(tint: featuredColor))
         }
         .frame(maxWidth: .infinity)
         .sheet(isPresented: $showQRCode) {
@@ -147,6 +148,7 @@ struct ShareGroupLinkView: View {
                 ) {
                     ShareLabel(shareText: shareText, featuredColor: featuredColor)
                 }
+                .modifier(ShareActionButtonStyle(tint: featuredColor))
                 
                 Spacer()
             }

@@ -58,10 +58,8 @@ extension DocumentView {
                 }
                 .frame(height: AppStyle.Audio.miniPlayerHeight)
                 .padding(.horizontal, AppStyle.Audio.miniPlayerContentPadding)
-                .background(.ultraThinMaterial)
                 .frame(width: screenSizeMonitor.screenSize.width - AppStyle.Segment.Spacing.horizontalPaddingHeader(screenSizeMonitor.screenSize.width) * 2)
-                .cornerRadius(AppStyle.Audio.miniPlayerCornerRadius)
-                .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
+                .modifier(FloatingControlSurface(cornerRadius: AppStyle.Audio.miniPlayerCornerRadius))
             }
             .buttonStyle(.plain)
         }

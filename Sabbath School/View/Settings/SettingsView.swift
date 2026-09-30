@@ -147,7 +147,7 @@ struct SettingsView: View {
             }
             .navigationBarTitleDisplayMode(.large)
             .navigationTitle("Settings".localized())
-            .toolbarBackground(Color.clear, for: .navigationBar)
+            .modifier(SettingsNavigationBackground())
             .sheet(isPresented: $showAboutUs) {
                 AboutView()
             }
