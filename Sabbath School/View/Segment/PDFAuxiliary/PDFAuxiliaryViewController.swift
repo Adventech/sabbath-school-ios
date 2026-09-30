@@ -23,7 +23,7 @@
 import PSPDFKitUI
 
 protocol PDFAuxiliaryViewControllerDelegate {
-    func saveUserInput(for document: Document)
+    func saveUserInput(for document: PSPDFKit.Document)
 }
 
 class PDFAuxiliaryViewController: PDFViewController {
@@ -66,7 +66,7 @@ class PDFAuxiliaryViewController: PDFViewController {
     }
     
     
-    override func handleAutosaveRequest(for document: Document, reason: PSPDFAutosaveReason) {
+    override func handleAutosaveRequest(for document: PSPDFKit.Document, reason: PSPDFAutosaveReason) {
         super.handleAutosaveRequest(for: document, reason: reason)
         pdfAuxiliaryViewControllerDelegate?.saveUserInput(for: document)
     }
