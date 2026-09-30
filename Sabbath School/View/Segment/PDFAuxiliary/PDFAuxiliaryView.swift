@@ -47,21 +47,21 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
     
     func makeUIViewController(context: Context) -> PDFAuxiliaryTabbedViewController {
         var downloader: Downloader?
-        var documents: [Document] = []
+        var documents: [PSPDFKit.Document] = []
         
         for pdf in pdfs {
             let remoteURL = pdf.src
             let fileName = pdf.id
             let destinationFileURL = Helper.PDFDownloadFileURL(fileName: fileName)
             
-            let document: Document!
+            let document: PSPDFKit.Document!
             
             if Helper.PDFDownloadFileExists(fileName: fileName) {
-                document = Document(url: destinationFileURL)
+                document = PSPDFKit.Document(url: destinationFileURL)
             } else {
                 downloader = Downloader(remoteURL: remoteURL, destinationFileURL: destinationFileURL)
                 let provider = CoordinatedFileDataProvider(fileURL: destinationFileURL, progress: downloader?.progress)
-                document = Document(dataProviders: [provider])
+                document = PSPDFKit.Document(dataProviders: [provider])
             }
             
             document.title = pdf.title
@@ -153,7 +153,7 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
         }
     }
     
-    func saveUserInput(for documentToBeSaved: Document) {
+    func saveUserInput(for documentToBeSaved: PSPDFKit.Document) {
         if let documents = self.tabbedPDFController?.documents {
             for (index, document) in documents.enumerated() {
                 guard documentToBeSaved == document else { continue }
@@ -221,7 +221,7 @@ struct PDFAuxiliaryViewRepresentable: UIViewControllerRepresentable, PDFAuxiliar
             fixTabBar()
         }
         
-        func pdfViewController(_ pdfController: PDFViewController, didChange: Document?) {
+        func pdfViewController(_ pdfController: PDFViewController, didChange: PSPDFKit.Document?) {
             fixTabBar()
         }
         
@@ -250,13 +250,18 @@ struct PDFAuxiliaryView: View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
-           Image(systemName: "arrow.backward")
-               .renderingMode(.original)
-               .foregroundColor(.black | .white)
-               .aspectRatio(contentMode: .fit)
+            if #available(iOS 26.0, *) {
+                Image(systemName: "chevron.backward")
+                    .imageScale(.medium)
+            } else {
+                Image(systemName: "arrow.backward")
+                    .renderingMode(.original)
+                    .foregroundColor(.black | .white)
+                    .aspectRatio(contentMode: .fit)
+            }
         }
     }
-    
+
     var body: some View {
         PDFAuxiliaryViewRepresentable(
             pdfs: pdfs,
@@ -265,7 +270,11 @@ struct PDFAuxiliaryView: View {
             pdfTabbedViewController: $pdfTabbedViewController
         )
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: btnBack)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                btnBack
+            }
+        }
         .toolbar {
             ToolbarItem {
                 Button(action: {

@@ -35,13 +35,18 @@ struct FeedSeeAllView: View {
         Button(action: {
             presentationMode.wrappedValue.dismiss()
         }) {
-           Image(systemName: "arrow.backward")
-               .renderingMode(.original)
-               .foregroundColor(.black | .white)
-               .aspectRatio(contentMode: .fit)
-       }
+            if #available(iOS 26.0, *) {
+                Image(systemName: "chevron.backward")
+                    .imageScale(.medium)
+            } else {
+                Image(systemName: "arrow.backward")
+                    .renderingMode(.original)
+                    .foregroundColor(.black | .white)
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             if let feedGroup = self.viewModel.feedGroup {
@@ -75,7 +80,11 @@ struct FeedSeeAllView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: btnBack)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                btnBack
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await retrieveContent()

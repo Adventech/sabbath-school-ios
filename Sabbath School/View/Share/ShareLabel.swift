@@ -26,13 +26,19 @@ struct ShareLabel: View {
     var shareText: String = "Share".localized()
     var featuredColor: Color
     
+    @ViewBuilder
     var body: some View {
-        Label(shareText, systemImage: "square.and.arrow.up")
-            .frame(maxWidth: .infinity)
-            .font(.custom("Lato-Medium", size: 18))
-            .padding(10)
-            .background(featuredColor)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+        if #available(iOS 26.0, *) {
+            Label(shareText, systemImage: "square.and.arrow.up")
+                .frame(maxWidth: .infinity)
+        } else {
+            Label(shareText, systemImage: "square.and.arrow.up")
+                .frame(maxWidth: .infinity)
+                .font(.custom("Lato-Medium", size: 18))
+                .padding(10)
+                .background(featuredColor)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+        }
     }
 }

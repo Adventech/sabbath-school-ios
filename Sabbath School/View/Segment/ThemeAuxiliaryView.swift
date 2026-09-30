@@ -199,6 +199,6 @@ struct ThemeAuxiliaryView: View {
                 Spacer()
             }
             .padding(10)
-        }.background(.thickMaterial).frame(maxWidth: 400)
+        }.modifier(ReadingOptionsBackground()).frame(maxWidth: 400)
     }
 }

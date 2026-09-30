@@ -59,24 +59,29 @@ struct DocumentView: View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
-            Image(systemName:
-                    documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar
-                    ? "arrow.backward.circle.fill"
-                    : "arrow.backward")
-            
-            .if (documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar) { view in
-                view.resizable().frame(width: 30, height: 30)
-                    
+            if #available(iOS 26.0, *) {
+                Image(systemName: "chevron.backward")
+                    .imageScale(.medium)
+            } else {
+                Image(systemName:
+                        documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar
+                        ? "arrow.backward.circle.fill"
+                        : "arrow.backward")
+
+                .if (documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar) { view in
+                    view.resizable().frame(width: 30, height: 30)
+
+                }
+                .symbolRenderingMode(documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar ? .multicolor : .monochrome)
+                .foregroundColor(documentViewOperator.shouldShowNavigationBar
+                                 ? themeManager.getToolbarColor()
+                                 : (documentViewOperator.shouldShowCovers()
+                                    ? .black.opacity(0.4)
+                                    : themeManager.getTextColor()))
+                .aspectRatio(contentMode: .fit)
+                .id(documentViewOperator.shouldShowNavigationBar)
+                .transition(.opacity.animation(.easeInOut))
             }
-            .symbolRenderingMode(documentViewOperator.shouldShowCovers() && !documentViewOperator.shouldShowNavigationBar ? .multicolor : .monochrome)
-            .foregroundColor(documentViewOperator.shouldShowNavigationBar
-                             ? themeManager.getToolbarColor()
-                             : (documentViewOperator.shouldShowCovers()
-                                ? .black.opacity(0.4)
-                                : themeManager.getTextColor()))
-            .aspectRatio(contentMode: .fit)
-            .id(documentViewOperator.shouldShowNavigationBar)
-            .transition(.opacity.animation(.easeInOut))
         }
     }
 
@@ -91,7 +96,7 @@ struct DocumentView: View {
             set: { _ in }
         )
     }
-    
+
     var body: some View {
         Group {
             if resourceViewModel.fontsDownloaded {
@@ -112,6 +117,7 @@ struct DocumentView: View {
                                 
                                 miniHiddenSegment()
                             }
+                            .modifier(FloatingControlGroup())
                             .padding(.vertical, 20)
                             .padding(.horizontal, AppStyle.Segment.Spacing.horizontalPaddingHeader(screenSizeMonitor.screenSize.width))
                         }
@@ -168,7 +174,11 @@ struct DocumentView: View {
         .toolbarBackground(documentViewOperator.shouldShowNavigationBar ? .visible : .hidden, for: .navigationBar)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(false)
-        .navigationBarItems(leading: btnBack)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                btnBack
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(documentViewOperator.navigationBarTitle)
         .toolbar {

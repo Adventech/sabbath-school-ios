@@ -78,7 +78,9 @@ struct SabbathSchoolApp: App {
         Configuration.configurePDF()
         Configuration.configureMisc()
         Configuration.configureCache()
-        Configuration.configureUI()
+        if #unavailable(iOS 26.0) {
+            Configuration.configureUI()
+        }
         Configuration.reloadAllWidgets()
         
         self._selected = State(initialValue: Self.initializeLastSavedTab())
@@ -166,8 +168,10 @@ struct SabbathSchoolApp: App {
                                     }
                                 }
                                 .onAppear {
-                                    let appearance = UITabBarAppearance()
-                                    UITabBar.appearance().scrollEdgeAppearance = appearance
+                                    if #unavailable(iOS 26.0) {
+                                        let appearance = UITabBarAppearance()
+                                        UITabBar.appearance().scrollEdgeAppearance = appearance
+                                    }
                                 }
                                 .accentColor(.black | .white)
                                 .transition(.opacity)

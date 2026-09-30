@@ -82,7 +82,9 @@ struct ShareGroupFileView: View {
             if let fileURL = downloadedFileURL {
                 ShareLink(item: fileURL) {
                     ShareLabel(shareText: shareText, featuredColor: featuredColor)
-                }.id(selectedFile)
+                }
+                .modifier(ShareActionButtonStyle(tint: featuredColor))
+                .id(selectedFile)
             } else {
                 if downloading {
                     ProgressView()

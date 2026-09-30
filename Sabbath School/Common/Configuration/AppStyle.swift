@@ -1173,3 +1173,137 @@ struct AppStyle {
         }
     }
 }
+
+// Liquid Glass is reserved for floating controls. Reading surfaces keep their styles.
+struct FloatingControlSurface: ViewModifier {
+    var cornerRadius: CGFloat
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: cornerRadius))
+        } else {
+            content
+                .background(.ultraThinMaterial)
+                .cornerRadius(cornerRadius)
+                .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
+        }
+    }
+}
+
+struct FloatingControlGroup: ViewModifier {
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            GlassEffectContainer(spacing: 20) {
+                content
+            }
+        } else {
+            content
+        }
+    }
+}
+
+struct FloatingControlButtonStyle: ViewModifier {
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.buttonStyle(.glass).buttonBorderShape(.circle)
+        } else {
+            content
+        }
+    }
+}
+
+struct SystemToolbarIcon: View {
+    var systemName: String
+    var legacySize: CGSize
+    var legacyPadding: CGFloat
+    var legacyColor: Color
+
+    @ViewBuilder
+    var body: some View {
+        if #available(iOS 26.0, *) {
+            Image(systemName: systemName)
+                .imageScale(.medium)
+        } else {
+            Image(systemName: systemName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: legacySize.width, height: legacySize.height)
+                .padding(legacyPadding)
+                .foregroundColor(legacyColor)
+        }
+    }
+}
+
+struct ReadingOptionsBackground: ViewModifier {
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content
+        } else {
+            content.background(.thickMaterial)
+        }
+    }
+}
+
+struct SettingsNavigationBackground: ViewModifier {
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content
+        } else {
+            content.toolbarBackground(Color.clear, for: .navigationBar)
+        }
+    }
+}
+
+struct ShareActionButtonStyle: ViewModifier {
+    var tint: Color
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.buttonStyle(.borderedProminent).tint(tint).controlSize(.large)
+        } else {
+            content
+        }
+    }
+}
+
+struct SegmentChipLabelStyle: ViewModifier {
+    var isSelected: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            content.font(.subheadline).lineLimit(1)
+        } else {
+            content
+                .padding(.vertical, 4)
+                .padding(.horizontal, 8)
+                .background(isSelected ? .black | .white : .white | Color(uiColor: .darkGray))
+                .foregroundColor(isSelected ? .white | .black : .black | .white)
+                .font(.custom("Lato-Regular", size: 15))
+                .cornerRadius(3)
+        }
+    }
+}
+
+struct SegmentChipButtonStyle: ViewModifier {
+    var isSelected: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            if isSelected {
+                content.buttonStyle(.borderedProminent).tint(.primary).buttonBorderShape(.capsule)
+            } else {
+                content.buttonStyle(.bordered).tint(.primary).buttonBorderShape(.capsule)
+            }
+        } else {
+            content.shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
+        }
+    }
+}
